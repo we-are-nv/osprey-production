@@ -32,27 +32,18 @@ router.get('/product-page', async (req, res) => {
 //
 
 router.get(
-	'/product-page/:product_code',
+	'/products/cctv/cameras/:product_code',
 	breadcrumbs.Middleware(),
 	async (req, res) => {
 		try {
-			let camInfo = {};
-			let movement = {};
-			let camFeatures = {};
-			let camFeaturesConcat = {};
-			let audioVideo = {};
-			let physical = {};
-			let power = {};
-			let certs = {};
-
-			camInfo = await dbQuery.getAllInfo(req);
-			movement = await dbQuery.getMovement(req);
-			camFeaturesConcat = await dbQuery.getConcatFeatures(req);
-			allFeatures = await dbQuery.getAllFeatures(req);
-			audioVideo = await dbQuery.getAV(req);
-			physical = await dbQuery.getPhysical(req);
-			power = await dbQuery.getPower(req);
-			certs = await dbQuery.getCerts(req);
+			let camInfo = await dbQuery.getAllInfo(req);
+			let movement = await dbQuery.getMovement(req);
+			let camFeaturesConcat = await dbQuery.getConcatFeatures(req);
+			let allFeatures = await dbQuery.getAllFeatures(req);
+			let audioVideo = await dbQuery.getAV(req);
+			let physical = await dbQuery.getPhysical(req);
+			let power = await dbQuery.getPower(req);
+			let certs = await dbQuery.getCerts(req);
 
 			camInfo = camInfo[0];
 			movement = movement[0];
@@ -62,19 +53,6 @@ router.get(
 			physical = physical[0];
 			power = power[0];
 			certs = certs[0];
-
-			// var dataObj = {};
-
-			// dataObj.camInfo = camInfo;
-			// dataObj.movement = movement;
-			// dataObj.allFeatures = camFeatures;
-			// dataObj.camFeaturesConcat = camFeaturesConcat;
-			// dataObj.audioVideo = audioVideo;
-			// dataObj.physical = physical;
-			// dataObj.power = power;
-			// dataObj.certs = certs;
-
-			// movement = controllers.removeFirst(movement);
 
 			allFeatures = controllers.removeFirst(allFeatures);
 			movement = controllers.removeProductCode(movement);
@@ -620,8 +598,6 @@ router.get(
 				return prev;
 			}, []);
 
-			// values
-
 			let allFeatureVals = controllers.listAllVals(noConcat);
 			let allInterfaceVals = controllers.listAllVals(interface);
 			let allIntEthVals = controllers.listAllVals(eth_interface);
@@ -630,11 +606,6 @@ router.get(
 			let allPowerVals = controllers.listAllVals(power);
 			let allPhysVals = controllers.listAllVals(physical);
 			let constDeadVals = ['*', 'n/a', ''];
-
-			// res.send(allFeatureVals);
-			// return
-
-			// new vals
 
 			let newFeaturesOnlyVals = allFeatureVals.reduce(function (prev, value) {
 				var isDuplicate = false;
@@ -760,21 +731,6 @@ router.get(
 
 			let finalObj = {};
 
-			// let intVal = Object.values(interface);
-			// let intKey = Object.keys(interface)
-			// res.send(intKey);
-			// return;
-			// res.send(intVal);
-
-			// res.send(finalPower)
-			// return
-
-			// res.send(finalInterface)
-			// return
-
-			// res.send(finalInterface);
-			// return;
-
 			info = info[0];
 
 			finalObj.info = info;
@@ -785,18 +741,6 @@ router.get(
 			finalObj.OB = finalOB;
 			finalObj.physical = finalPhys;
 			finalObj.power = finalPower;
-
-			// res.send(info.description);
-			// return;
-
-			// res.send(finalObj);
-			// return;
-
-			// res.send(info)
-			// return
-
-			// res.send(newFeaturesOnlyVals);
-			// return;
 
 			res.render('product-pages/ethernet-product-page', {
 				data: finalObj,
@@ -813,6 +757,191 @@ router.get(
 		} catch (e) {
 			console.log(e);
 			return res.render('index');
+		}
+	}
+);
+// http://localhost/products/cctv/marine-grade-cable/LMCat5E
+
+router.get(
+	'/products/cctv/marine-grade-cable/:product_code',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let info = await dbQuery.getData(
+				'SELECT `product_code`, `product_name`, `description` FROM `cables_all` WHERE `product_code` = ? ',
+				[req.params.product_code]
+			);
+
+			let featureQuery =
+				'SELECT feature_1, feature_2, feature_3, feature_4 ' +
+				'feature_5, feature_6, feature_7, feature_8, feature_9 ' +
+				'feature_10, feature_11, feature_12, feature_13, feature_14, feature_15, feature_16 ' +
+				'FROM `cables_all` WHERE `product_code` = ? ;';
+
+			let features = await dbQuery.getData(featureQuery, [req.params.product_code]);
+
+			info = info[0];
+
+			let constDeadVals = ['*', 'n/a', ''];
+
+			let featureVals = Object.values(features[0]);
+
+			let newFeaturesOnlyVals = featureVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			// res.send(features);
+			res.render('product-pages/marine-cables', {
+				breadcrumbs: req.breadcrumbs,
+				features: newFeaturesOnlyVals,
+				info: info
+			});
+			return;
+		} catch (e) {
+			console.log(e);
+		}
+	}
+);
+
+// http://localhost/products/cctv/cctv-nvr/
+
+router.get(
+	'/products/cctv/cctv-nvr/:product_code',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			// Return array of tables starting with 'nvr_'
+			let allTables = await dbQuery.getData(
+				'SELECT table_name ' +
+					'FROM information_schema.tables ' +
+					"WHERE table_type= 'BASE TABLE' " +
+					"AND table_name LIKE 'nvr_%' " +
+					"AND table_schema = 'osprey-all' ;"
+			);
+			// Query nvr info
+			let info = await dbQuery.getData(
+				'SELECT * FROM `nvr_info` WHERE `product_code` = ? ;',
+				[req.params.product_code]
+			);
+
+			// Query nvr features
+			let features = await dbQuery.getData(
+				'SELECT * FROM features_nvr WHERE product_code = ?',
+				[req.params.product_code]
+			);
+
+			// Remove the concat and the prod_code from the object
+			features = controllers.removeProp(features, 'features_concat');
+			features = controllers.removeFirst(features);
+
+			let constDeadVals = ['*', 'n/a', ''];
+			let featureVals = Object.values(features[0]);
+
+			// Filter out only good values for the final feature array
+			let newFeaturesOnlyVals = featureVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			// Perform the search query on all tables retrieved earlier
+			let tableArr = [];
+
+			allTables.forEach(tableObj => {
+				tableArr.push(Object.values(tableObj));
+			});
+
+			let flat = tableArr.flat();
+
+			var mappedData = {};
+			for (let i = 0; i < flat.length; i++) {
+				let table = flat[i];
+				mappedData[flat[i]] = await dbQuery.getData(
+					`SELECT * FROM \`${table}\` WHERE \`product_code\` = ? `,
+					[req.params.product_code]
+				);
+			}
+
+			// create array of arrays of objects from the tables queried in the loop
+			let newData = Object.entries(mappedData);
+
+			let adv_features = newData[0][1][0];
+			let adv_features_1 = newData[1][1][0];
+			let audio = newData[2][1][0];
+			let deep_search = newData[3][1][0];
+			let device = newData[4][1][0];
+			let display = newData[5][1][0];
+			let general = newData[6][1][0];
+			let interface = newData[8][1][0];
+			let network = newData[9][1][0];
+			let playback = newData[10][1][0];
+			let recording = newData[11][1][0];
+			let remote = newData[12][1][0];
+			let storage = newData[13][1][0];
+			let system = newData[14][1][0];
+			let video = newData[15][1][0];
+
+			let temp = [
+				adv_features,
+				adv_features_1,
+				audio,
+				deep_search,
+				device,
+				display,
+				general,
+				interface,
+				network,
+				playback,
+				recording,
+				remote,
+				storage,
+				system,
+				video
+			];
+
+			temp.forEach(element => {
+				controllers.noCode(element);
+			});
+
+			res.render('product-pages/nvr', {
+				adv_features: temp[0],
+				adv_features_1: temp[1],
+				audio: temp[2],
+				deep_search: temp[3],
+				device: temp[4],
+				display: temp[5],
+				general: temp[6],
+				interface: temp[7],
+				network: temp[8],
+				playback: temp[9],
+				recording: temp[0],
+				remote: temp[11],
+				system: temp[12],
+				video: temp[13],
+				info: info,
+				features: newFeaturesOnlyVals,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (e) {
+			console.log(e);
 		}
 	}
 );
@@ -923,18 +1052,97 @@ router.get(
 
 // ////////////////
 
+// router.get('/products/cctv/cctv-nvr', breadcrumbs.Middleware(), (req, res) => {
+// 	res.render('nvr', { breadcrumbs: req.breadcrumbs });
+// });
+
 router.get(
-	'/products/cctv/cctv-recording-analytics',
+	'/products/cctv/cctv-nvr',
 	breadcrumbs.Middleware(),
 	async (req, res) => {
 		try {
 			let data = {};
 			let sqlQuery = "SELECT * FROM nvr_info WHERE `monitor_type` != 'station' ";
 			data = await dbQuery.genericQuery(sqlQuery);
+			let diskInfo = await dbQuery.genericQuery(
+				'SELECT `product_code`,`product_name`, `image`, `description` FROM `disk_nvr_info`'
+			);
+			let diskFeatures = await dbQuery.genericQuery(
+				'SELECT * FROM `disk_nvr_features`'
+			);
+			let diskSizes = await dbQuery.genericQuery('SELECT * FROM `disk_nvr_sizes`');
+
+			diskFeatures = controllers.removeFirst(diskFeatures);
+			let constDeadVals = ['*', 'n/a', ''];
+			let featureVals = Object.values(diskFeatures[0]);
+			let newDiskFeaturesOnlyVals = featureVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			// res.send({
+			// 	newDiskFeaturesOnlyVals,
+			// 	diskInfo,
+			// 	data
+			// })
+			// return
+
+			res.render('cctv-recording', {
+				diskFeatures: newDiskFeaturesOnlyVals,
+				diskInfo: diskInfo,
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
+router.get(
+	'/products/cctv/cctv-monitors',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let specQuery = 'SELECT * FROM `monitor_specs` ';
+			let typeQuery =
+				'SELECT `monitor_type`, `type`, `image` FROM `monitors_types` ';
+			let UHD = 'SELECT * FROM `monitor_specs` WHERE `type` = "UHD"; ';
+			let fullHD = 'SELECT * FROM `monitor_specs` WHERE `type` = "Full HD"; ';
+
+			let HD = 'SELECT * FROM `monitor_specs` WHERE `type` = "HD"; ';
+			let specs = await dbQuery.genericQuery(specQuery);
+			let types = await dbQuery.genericQuery(typeQuery);
+			let UHDMonitors = await dbQuery.genericQuery(UHD);
+			let fullHDMonitors = await dbQuery.genericQuery(fullHD);
+			let HDMonitors = await dbQuery.genericQuery(HD);
+
+			let UHDFeatures = Object.values(UHDMonitors[0]);
+			let FHDFeatures;
+			let HDFeatures;
+
+
+
+			// res.send(UHDFeatures)
+			// return
+
 			// res.send(data);
 			// return;
-			res.render('cctv-recording', {
-				data: data,
+			res.render('cctv-monitors', {
+				specs: specs,
+				types: types,
+				UHD: UHDMonitors,
+				FHD: fullHDMonitors,
+				HD: HDMonitors,
 				breadcrumbs: req.breadcrumbs
 			});
 		} catch (error) {
@@ -983,17 +1191,33 @@ router.get(
 	}
 );
 
+router.get('/products/cctv/storage', breadcrumbs.Middleware(), async (req, res) => {
+	try {
+		let data = {};
+		let sqlQuery = 'SELECT * FROM nvr_disk_info';
+		data = await dbQuery.genericQuery(sqlQuery);
+		// res.send(data);
+		// return;
+		res.render('nvr-disk', {
+			data: data,
+			breadcrumbs: req.breadcrumbs
+		});
+	} catch (error) {
+		console.log(error);
+	}
+});
+
 router.get(
-	'/products/cctv/cctv-recording-analytics/storage',
+	'/products/cctv/analytics',
 	breadcrumbs.Middleware(),
 	async (req, res) => {
 		try {
 			let data = {};
-			let sqlQuery = 'SELECT * FROM nvr_disk_info';
+			// let sqlQuery = 'SELECT * FROM nvr_disk_info';
 			data = await dbQuery.genericQuery(sqlQuery);
 			// res.send(data);
 			// return;
-			res.render('nvr-disk', {
+			res.render('analytics', {
 				data: data,
 				breadcrumbs: req.breadcrumbs
 			});

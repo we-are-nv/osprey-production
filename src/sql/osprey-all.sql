@@ -314,7 +314,7 @@ INSERT INTO `av` (`product_code`, `Camera`, `Resolution`, `Pixels`, `Frame rate`
 DROP TABLE IF EXISTS `cables_all`;
 CREATE TABLE `cables_all` (
   `product_code` varchar(11) DEFAULT NULL,
-  `product_name_` varchar(54) DEFAULT NULL,
+  `product_name` varchar(54) DEFAULT NULL,
   `image` varchar(1) DEFAULT NULL,
   `technical_image` varchar(13) DEFAULT NULL,
   `technical_image_2` varchar(10) DEFAULT NULL,

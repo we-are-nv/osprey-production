@@ -5,7 +5,6 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
 async function getAllInfo(req) {
 	try {
 		results = await db.id('SELECT * FROM info WHERE product_code = ?', [
@@ -111,18 +110,16 @@ async function getCerts(req) {
 	}
 }
 
-async function getData(sqlQuery,params) {
+async function getData(sqlQuery, params) {
 	try {
 		let results = await db.id(sqlQuery, params);
 		return results;
 	} catch (e) {
 		console.log(e);
-		const status = 500;
-		return status;
+		// const status = 500;
+		// return status;
 	}
 }
-
-
 
 async function genericQuery(sqlQuery) {
 	try {
@@ -132,6 +129,21 @@ async function genericQuery(sqlQuery) {
 		return console.log(e);
 	}
 }
+
+// async function queryAll(tableArr) {
+// 	let mappedData = {};
+// 	for (let i = 0; i < tableArr.length; i++){
+// 		let table = tableArr[i];
+// 		mappedData[tableArr[i]] = await dbQuery.getData(
+// 			`SELECT * FROM \`${table}\` WHERE \`product_code\` = ? `,
+// 			[req.params.product_code]
+// 		)
+
+// 	}
+// 	return mappedData;
+// }
+
+
 
 
 module.exports = {

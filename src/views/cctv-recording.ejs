@@ -32,11 +32,12 @@
 					<div class="section-header">
 						<div class="upper-head green" data-ix="fade-on-scroll-1">Comprehensive solutions for any security
 							requirements</div>
-						<div class="section-title" data-ix="fade-on-scroll-1">CCTV Recording and Analytics </div>
-						<div class="section-subhead" data-ix="fade-on-scroll-2">Osprey Security’s digital video recorders (DVRs) and
-							Network Video Recorders (NVRs) are industrial 19” rack mount units with options for resilient RAID
-							recording. Recorders are supplied from 4-input to 128-input. All have on-board video analytics options to
-							alarm on behaviour including:<br><br>
+						<div class="section-title" data-ix="fade-on-scroll-1">CCTV Recorders</div>
+						<div class="section-subhead" data-ix="fade-on-scroll-2">Osprey Security's digital video recorders (DVRs) and
+							Our digital video recorders (DVRs) and Network Video Recorders (NVRs) are industrial 19” rack mount units
+							with options for resilient RAID recording. Recorders are supplied from 4-input to 128-input. All have
+							on-board <a href="/products" class="internal-link">video analytics</a> options to alarm on behaviour
+							including:<br><br>
 							<ul class="feature-list">
 								<li>Loitering</li>
 								<li>Line crossing</li>
@@ -49,14 +50,26 @@
 							</ul>
 							<%- include('partials/product-category-partials/nvr-partial.ejs') %>
 						</div>
-						<%- include('partials/product-category-partials/nvr-partial.ejs') %>
-							<div class="example-use recording"><br><br>
-								<div class="image-frame use-case-image-wrapper recording">
-									<img
-										src="https://osprey-marine-security.s3.eu-west-2.amazonaws.com/asset-images/cctv-recording-detection.jpg"
-										alt="CCTV recording and detection interface"><br><br>
+						<div class="section-title smaller" data-ix="fade-on-scroll-1">CCTV Recorder Hard Disks</div>
+						<div class="section-subhead" data-ix="fade-on-scroll-2">OWe provide Seagate Skyhawk hard drives for our CCTV
+							recorders. Designed with advanced features, they are is intended for use with NVRs and CCTV servers. <%-
+								include('partials/product-category-partials/disk-partial.ejs') %>
+								<div class="features-box">
+									<ul class="ft-list" role="list">
+										<% diskFeatures.forEach(element=> { %> <li class="ft-element no-style">
+												<%= element %>
+											</li>
+											<%}); %>
+									</ul>
 								</div>
+						</div>
+						<div class="example-use recording"><br><br>
+							<div class="image-frame use-case-image-wrapper recording">
+								<img
+									src="https://osprey-marine-security.s3.eu-west-2.amazonaws.com/asset-images/cctv-recording-detection.jpg"
+									alt="CCTV recording and detection interface"><br><br>
 							</div>
+						</div>
 					</div>
 					<%- include('partials/get-started-partial.ejs') %>
 				</div>

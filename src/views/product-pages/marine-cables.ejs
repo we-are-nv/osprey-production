@@ -133,166 +133,32 @@
 									</div>
 								</div>
 								<div data-w-tab="Specification" class="tab-2 w-tab-pane w--tab-active">
-									<div class="specs-container">
-										<table class="spec-table">
-											<tbody>
-												<tr>
-													<% let intVal=Object.values(interface) %>
-														<% let intKey=Object.values(interface) %>
-															<% if (intKey.length < 1) { %>
-																<% } else { %>
-																	<th>
-																		<h4 class="specs-subheading">Interface</h4>
-																	</th>
-												</tr>
-												<% for (let i=0; i < intVal.length; i++) { %>
-													<tr class="spec-row">
-														<td class="key-data">
-															<%= intKey[i]; %>
-														</td>
-														<td class="val-data">
-															<%= intVal[i]; %>
-														</td>
-													</tr>
-													<% } %>
-														<% } %>
-															<tr>
-																<% let ethIntVal=Object.values(ethInt); %>
-																	<% let ethIntKey=Object.keys(ethInt); %>
-																		<% ethIntKey=0; %>
-																			<% if(ethIntKey < 1) { %>
-																				<% }else{ %>
-																					<th>
-																						<h4 class="specs-subheading">Ethernet Interface</h4>
-																					</th>
-															</tr>
-															<tr>
-																<% for ( let i=0; i < ethIntKey.length; i++ ) { %>
-															<tr class="spec-row">
-																<td class="key-data av-keys">
-																	<%= ethIntKey[i] %>
-																</td>
-																<td class="val-data av-vals">
-																	<%= ethIntVal[i] %>
-																</td>
-															</tr>
-															<% } %>
-																<% } %>
-																	<tr>
-																		<% let ledVal=Object.values(LED); %>
-																			<% let ledKey=Object.keys(LED); %>
-																				<% if (ledKey < 1) { %>
-																					<% } else { %>
-																						<th>
-																							<h4 class="specs-subheading">LED Indicators</h4>
-																						</th>
-																	</tr>
-																	<tr>
-																		<% for( let i=0; i < ledKey.length; i++ ) { %>
-																	<tr class="spec-row">
-																		<td class="key-data auto-keys">
-																			<%= ledKey[i] %>
-																		</td>
-																		<td class="val-data auto-vals">
-																			<%= ledVal[i] %>
-																		</td>
-																	</tr>
-																	<% } %>
-																		<% } %>
-																			<tr>
-																				<% let OBVal=Object.values(OB); %>
-																					<% let OBKey=Object.keys(OB); %>
-																						<th>
-																							<% if (OBKey.length < 1) { %>
-																								<% } else { %>
-																									<h4 class="specs-subheading">On Board Specifications</h4>
-																						</th>
-																			</tr>
-																			<tr>
-																				<% for( let i=0; i < OBKey.length; i++ ) { %>
-																			<tr>
-																				<td>
-																					<%= OBKey[i] %>
-																				</td>
-																				<td class="val-data elec-vals">
-																					<%= OBVal[i] %>
-																				</td>
-																			</tr>
-																			<% } %>
-																				<% } %>
-																					</tr>
-																					<tr>
-																						<% let physVal=Object.values(phys); %>
-																							<% let physKey=Object.keys(phys); %>
-																								<% if (physKey < 1) { %>
-																									<% } else { %>
-																										<th>
-																											<h4 class="specs-subheading">Physical Specifications</h4>
-																										</th>
-																					</tr>
-																					<tr>
-																						<% for( let i=0; i < physKey.length; i++ ) { %>
-																					<tr class="spec-row">
-																						<td class="key-data elec-keys">
-																							<%= physKey[i] %>
-																						</td>
-																						<td class="val-data elec-vals">
-																							<%= physVal[i] %>
-																						</td>
-																					</tr>
-																					<% } %>
-																						<% } %>
-																							</tr>
-																							<tr>
-																								<% let powerVal=Object.values(power); %>
-																									<% let powerKey=Object.keys(power); %>
-																										<% if (powerKey.length < 1) { %>
-																											<% } else { %>
-																												<th>
-																													<h4 class="specs-subheading">Power Specifications</h4>
-																												</th>
-																							</tr>
-																							<tr>
-																								<% for( let i=0; i < powerKey.length; i++ ) { %>
-																							<tr class="spec-row">
-																								<td class="key-data elec-keys">
-																									<%= powerKey[i] %>
-																								</td>
-																								<td class="val-data elec-vals">
-																									<%= powerVal[i] %>
-																								</td>
-																							</tr>
-																							<% } %>
-																								<% } %>
-																									</tr>
-											</tbody>
-										</table>
-									</div>
+									<h4 class="no-specs"> <%= info.specs %>  </h4>
 								</div>
 								<div data-w-tab="Images" class="tab-pane-tab-2 w-tab-pane">
 									<h3 class="heading-11">Images</h3>
 									<div class="gallery-wrapper">
 										<div id="w-node-bb445dc3-3323-edee-e039-527b8590d68d-d3243517" class="gallery-grid">
-											<% if(data.info.image ) { %>
-												<img src="<%= data.info.image %>" loading="lazy" width="345" height="345"
-													alt="<%= data.info.image %>" class="product-image main-product-img" />
+											<% if(info.image ) { %>
+												<img src="<%= info.image %>" loading="lazy" width="345" height="345" alt="<%= info.image %>"
+													class="product-image main-product-img" />
 												<% }%>
-													<% if(data.info.image_2 ) { %>
-														<img src="<%= data.info.image_2 %>" loading="lazy" width="345" height="345" alt=""
+													<% if(info.image_2 ) { %>
+														<img src="<%= info.image_2 %>" loading="lazy" width="345" height="345" alt=""
 															class="product-image main-product-img" />
 														<% }%>
-															<% if(data.info.technical_image ) { %>
-																<img src="<%= data.info.technical_image %>" loading="lazy" width="345" height="345"
-																	alt="" class="product-image main-product-img" />
+															<% if(info.technical_image ) { %>
+																<img src="<%= info.technical_image %>" loading="lazy" width="345" height="345" alt=""
+																	class="product-image main-product-img" />
 																<% }%>
 										</div>
 										<div class="gallery-grid">
-											<% if(data.info.technical_image_2 ) { %>
-												<img src="<%= data.info.technical_image_2 %>" loading="lazy" width="345" height="345" alt=""
+											<% if(info.technical_image_2 ) { %>
+												<img src="<%= info.technical_image_2 %>" loading="lazy" width="345" height="345" alt=""
 													class="product-image main-product-img" />
 												<% }%>
-													<% if(data.info.technical_image_3 ) { %>
-														<img src="<%= data.info.technical_image_3 %>" loading="lazy" width="345" height="345" alt=""
+													<% if(info.technical_image_3 ) { %>
+														<img src="<%= info.technical_image_3 %>" loading="lazy" width="345" height="345" alt=""
 															class="product-image main-product-img" />
 														<% }%>
 										</div>

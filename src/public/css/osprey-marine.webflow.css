@@ -2997,6 +2997,8 @@ td.val-data {
 	letter-spacing: -0.05rem
 }
 
+
+
 .section-title.smaller {
 	color: #093273;
 	margin-top: 10px;
@@ -3572,12 +3574,22 @@ td.val-data {
 	flex-wrap: nowrap;
 }
 
+.product-card-holder.cctv-monitors {
+
+}
+
+
 
 .individual-product {
 	width: 33%;
 	margin-bottom: 20px;
 	padding-top: 0;
 	padding-bottom: 0
+}
+.individual-product.monitors-card {
+	border: 1px solid #093273;
+	width: 20em;
+	padding:0 0.7em
 }
 
 .category-img {
@@ -5114,11 +5126,16 @@ img.product-list-image {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-
+	width: 100;
 	max-width: 100%;
 
 	padding-right: 1rem;
 
+
+}
+
+.link-block-wrapper>a {
+	width: 100%
 }
 
 /* .tab-link-tab-1 {
@@ -6463,6 +6480,10 @@ a#link4 {
 li.ft-element {
 	font-size: 1.2rem;
 	padding-bottom: 6px;
+}
+
+li.no-style {
+	list-style: none;
 }
 
 .collection-item {

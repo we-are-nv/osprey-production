@@ -1,5 +1,5 @@
 <div id="NVR-hdd" class="product-card-holder cctv-nvr-hdd" data-ix="fade-on-scroll-2">
-	<% data.forEach(function(el){ %>
+	<% diskInfo.forEach(function(el){ %>
 		<div class="individual-product product-card" id="main-categoriesId">
 			<a href="<%= `/products/cctv/nvr-hdd/${el.product_code}` %>">
 				<div class="product-image">
@@ -9,9 +9,6 @@
 				<%= el.product_name %>
 					<%- console.log(el.product_name) %>
 						<br> <br>
-						<span class="product_code">
-							<%= el.product_code %>
-						</span>
 			</a>
 		</div>
 		<% }) %>
