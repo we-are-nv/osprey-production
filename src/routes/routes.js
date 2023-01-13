@@ -10,10 +10,8 @@ router.use(function timeLog(req, res, next) {
 });
 
 ////////////////////////////////////////////
-router.get('/', breadcrumbs.Middleware(), (req, res) => {
-	res.render('index', {
-		breadcrumbs: req.breadcrumbs
-	});
+router.get('/', (req, res) => {
+	res.render('index', {});
 });
 
 router.get('/product-page', async (req, res) => {
