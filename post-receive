@@ -10,7 +10,7 @@ TARGET="/home/wearenv/osprey"
 GIT_DIR="/home/wearenv/osprey.git"
 
 
-BRANCH="production-nearly"
+BRANCH="main"
 
 while read oldrev newrev ref
 do
