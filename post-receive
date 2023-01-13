@@ -4,10 +4,10 @@
 #set -ex
 
 # the work tree, where the checkout/deploy should happen
-TARGET="/home/webuser/deploy-dir"
+TARGET="/home/wearenv/deployment"
 
 # the location of the .git directory
-GIT_DIR="/home/webuser/project.git"
+GIT_DIR="/home/wearenv/osprey.git"
 
 
 BRANCH="production-nearly"
