@@ -20,13 +20,19 @@
 		"express-breadcrumbs": "^0.0.2",
 		"express-url-breadcrumb": "^1.0.2",
 		"express-winston": "^4.2.0",
+		"fs": "^0.0.1-security",
 		"jquery": "^3.6.1",
 		"logform": "^2.4.2",
 		"mariadb": "^3.0.1",
+		"morgan": "^1.10.0",
 		"mysql": "^2.18.1",
 		"mysql2": "^2.3.3",
 		"nodemailer": "^6.8.0",
-		"stdio": "^2.1.1"
+		"path": "^0.12.7",
+		"stdio": "^2.1.1",
+		"winston": "^3.8.2",
+		"winston-console-transport": "^1.1.9",
+		"winston-daily-rotate-file": "^4.7.1"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.20"

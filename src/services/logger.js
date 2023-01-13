@@ -1,9 +1,9 @@
-const { info } = require('console');
+
 const fs = require('fs');
 const logform = require('logform');
 const tripleBeam = require('triple-beam');
 const { createLogger, transports, format, transport } = require('winston');
-const { options } = require('../routes/routes');
+
 require('winston-daily-rotate-file');
 const logDir = './winston_logs';
 

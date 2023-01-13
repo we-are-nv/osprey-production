@@ -1,12 +1,24 @@
 [api]
 	insecure = true
+
 [entryPoints]
 	[entryPoints.web]
 		address = ":80"
+
 [providers]
 	[providers.docker]
 		watch = true
 		exposedByDefault = false
 		network = "traefik-proxy"
+
+[log]
+	level = "DEBUG"
+	filePath = "/opt/traefik/log.log"
+
 [accessLog]
-	filePath = "./logs/access.log"
+	filePath = "/opt/traefik/logs/access.log"
+	format = "json"
+
+[trafikLog]
+	filePath = "/opt/traefik/logs/traefik.log"
+	format = "json"

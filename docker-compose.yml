@@ -58,6 +58,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik/:/etc/traefik/
+      - ./traefik/logs:/opt/traefik/logs/
     labels:
       - traefik.enable=true
       - api.insecure=true
@@ -70,6 +71,7 @@ services:
       - traefik.port=8080
     networks:
       - traefik-proxy
+
 
   sql:
 

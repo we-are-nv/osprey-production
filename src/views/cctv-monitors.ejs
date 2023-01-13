@@ -56,15 +56,18 @@
             <h5 class="card-title">
               MonUHD Series
             </h5>
-            <div class="product-image">
-              <img class="product-list-image" src="" alt="">
-            </div>
-            <br>
-            <br>
-            <br>
-            <div class="hidden-content">
+            <button id="btnUHD" class="feature-hide" onclick="showFeaturesUHD()">
+              <div class="product-image monitor-image">
+                <img class="product-list-image monitor" src="https://osprey-security.s3.eu-west-2.amazonaws.com/products/accessories/monitor.png" alt="">
+              </div>
+              <h4 class="subtitle">Click to show more..</h4>
+            </button>
+            <div id="hidden-content" class="hidden-content">
               <div class="feature-list-wrapper">
                 <ul class="feature-list-monitors">
+                  <% UHDF.forEach(element => { %>
+                  <li class="monitor-features no-style"><%= element %></li><br>
+                  <% }) %>
                 </ul>
               </div>
             </div>
@@ -73,39 +76,79 @@
             <h5 class="card-title">
               MonFHD Series
             </h5>
-            <div class="product-image">
-              <img class="product-list-image" src="" alt="">
-            </div>
-            <br>
-            <br>
-            <br>
-            <div class="hidden-content">
+            <button id="btnFHD" class="feature-hide" onclick="showFeaturesFHD()">
+              <div class="product-image monitor-image">
+                <img class="product-list-image monitor" src="https://osprey-security.s3.eu-west-2.amazonaws.com/products/accessories/monitor.png" alt="">
+              </div>
+              <h4 class="subtitle">Click to show more..</h4>
+            </button>
+            <div id="hidden-content" class="hidden-content">
               <div class="feature-list-wrapper">
                 <ul class="feature-list-monitors">
-									<% UHD.forEach(element => { %>
-										<li class="feature"><%= element %> </li>
-									<% }) %>
+                  <% FHDF.forEach(element => { %>
+                  <li class="monitor-features no-style"><%= element %></li><br>
+                  <% }) %>
                 </ul>
               </div>
             </div>
           </div>
           <div class="individual-product monitors-card product-card" id="main-categoriesId">
             <h5 class="card-title">
-              MonHD Series
+              MonFHD Series
             </h5>
-            <div class="product-image">
-              <img class="product-list-image" src="" alt="">
-            </div>
-            <br>
-            <br>
-            <br>
-            <div class="hidden-content">
+            <button id="btnHD" class="feature-hide" onclick="showFeaturesHD()">
+              <div class="product-image monitor-image">
+                <img class="product-list-image monitor" src="https://osprey-security.s3.eu-west-2.amazonaws.com/products/accessories/monitor.png" alt="">
+              </div>
+              <h4 class="subtitle">Click to show more..</h4>
+            </button>
+            <div id="hidden-content" class="hidden-content">
               <div class="feature-list-wrapper">
                 <ul class="feature-list-monitors">
+                  <% HDF.forEach(element => { %>
+                  <li class="monitor-features no-style"><%= element %></li><br>
+                  <% }) %>
                 </ul>
               </div>
             </div>
           </div>
+          <script>
+            function showFeaturesUHD() {
+              let button = document.getElementById('btnUHD');
+              let x = button.nextElementSibling;
+              if (x.style.display === 'none') {
+                x.style.display = 'block';
+                x.classList.add("animated-content");
+              } else {
+                x.style.display = 'none';
+                x.classList.remove("animated-content");
+              }
+            }
+
+            function showFeaturesFHD() {
+              let button = document.getElementById('btnFHD');
+              let x = button.nextElementSibling;
+              if (x.style.display === 'none') {
+                x.style.display = 'block';
+                x.classList.add("animated-content");
+              } else {
+                x.style.display = 'none';
+                x.classList.remove("animated-content");
+              }
+            }
+
+            function showFeaturesHD() {
+              let button = document.getElementById('btnHD');
+              let x = button.nextElementSibling;
+              if (x.style.display === 'none') {
+                x.style.display = 'block';
+                x.classList.add("animated-content");
+              } else {
+                x.style.display = 'none';
+                x.classList.remove("animated-content");
+              }
+            }
+          </script>
         </div>
       </div>
       <div class="example-use recording"><br><br>

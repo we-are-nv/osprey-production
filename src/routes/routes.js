@@ -10,9 +10,10 @@ router.use(function timeLog(req, res, next) {
 });
 
 ////////////////////////////////////////////
-
 router.get('/', breadcrumbs.Middleware(), (req, res) => {
-	res.render('index', { breadcrumbs: req.breadcrumbs });
+	res.render('index', {
+		breadcrumbs: req.breadcrumbs
+	});
 });
 
 router.get('/product-page', async (req, res) => {
@@ -1115,22 +1116,33 @@ router.get(
 		try {
 			let specQuery = 'SELECT * FROM `monitor_specs` ';
 			let typeQuery =
-				'SELECT `monitor_type`, `type`, `image` FROM `monitors_types` ';
+				'SELECT `monitor_type`, `type`, `image` FROM `monitor_types` ';
 			let UHD = 'SELECT * FROM `monitor_specs` WHERE `type` = "UHD"; ';
 			let fullHD = 'SELECT * FROM `monitor_specs` WHERE `type` = "Full HD"; ';
-
 			let HD = 'SELECT * FROM `monitor_specs` WHERE `type` = "HD"; ';
+			let UHDF = 'SELECT * FROM `monitor_features` WHERE `type` = "UHD"; ';
+			let FHDF = 'SELECT * FROM `monitor_features` WHERE `type` = "FHD"; ';
+			let HDF = 'SELECT * FROM `monitor_features` WHERE `type` = "HD"; ';
 			let specs = await dbQuery.genericQuery(specQuery);
 			let types = await dbQuery.genericQuery(typeQuery);
 			let UHDMonitors = await dbQuery.genericQuery(UHD);
 			let fullHDMonitors = await dbQuery.genericQuery(fullHD);
 			let HDMonitors = await dbQuery.genericQuery(HD);
+			let UHDFeat = await dbQuery.genericQuery(UHDF);
+			let FHDFeat = await dbQuery.genericQuery(FHDF);
+			let HDFeat = await dbQuery.genericQuery(HDF);
 
-			let UHDFeatures = Object.values(UHDMonitors[0]);
-			let FHDFeatures;
-			let HDFeatures;
+			UHDFeat = Object.values(UHDFeat[0]);
+			FHDFeat = Object.values(FHDFeat[0]);
+			HDFeat = Object.values(HDFeat[0]);
 
+			let dead = UHDFeat.shift();
+			dead = FHDFeat.shift();
+			dead = HDFeat.shift();
 
+			let UHDSpecs = Object.values(UHDMonitors[0]);
+			let FHDSpecs = Object.values(fullHDMonitors[0]);
+			let HDSpecs = Object.values(HDMonitors[0]);
 
 			// res.send(UHDFeatures)
 			// return
@@ -1143,6 +1155,12 @@ router.get(
 				UHD: UHDMonitors,
 				FHD: fullHDMonitors,
 				HD: HDMonitors,
+				UHDSpecs: UHDSpecs,
+				FHDSpecs: FHDSpecs,
+				HDSpecs: HDSpecs,
+				UHDF: UHDFeat,
+				FHDF: FHDFeat,
+				HDF: HDFeat,
 				breadcrumbs: req.breadcrumbs
 			});
 		} catch (error) {

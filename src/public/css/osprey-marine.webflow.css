@@ -8,6 +8,7 @@
 	}
 }
 
+
 /* Form Styling */
 
 :root {
@@ -3564,7 +3565,7 @@ td.val-data {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
 	gap: 30px;
 }
@@ -3574,22 +3575,26 @@ td.val-data {
 	flex-wrap: nowrap;
 }
 
-.product-card-holder.cctv-monitors {
-
-}
-
-
-
 .individual-product {
 	width: 33%;
 	margin-bottom: 20px;
 	padding-top: 0;
-	padding-bottom: 0
+	padding-bottom: 0;
+
 }
+
 .individual-product.monitors-card {
-	border: 1px solid #093273;
 	width: 20em;
-	padding:0 0.7em
+	padding: 0 0.7em;
+	background-color: #efefef;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+		rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.product-list-image.monitor {
+	margin: 0;
+	text-align: center;
+	max-height: none;
 }
 
 .category-img {
@@ -8397,4 +8402,42 @@ nav.breadcrumb-product-page {
 .security-risk-assessment,
 .fire-risk-assessment {
 	height: 300px;
+}
+
+ul.feature-list-monitors {
+	padding: 0;
+}
+
+button.feature-hide {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+@keyframes  features {
+	from {
+		top: 0%;
+	}
+	to {
+		bottom: 100%;
+	}
+}
+
+
+
+.hidden-content {
+	display: none;
+	padding-top: 2em;
+	/* transform: scaleY(0); */
+
+	opacity: 0;
+	transition: opacity 500ms ease-in-out;
+}
+.animated-content {
+	opacity: 1;
+	transition: opacity 500ms ease-in-out;
+
 }
