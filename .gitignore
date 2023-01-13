@@ -17,7 +17,7 @@ src/sql/mysql/*
 # deploy.sh
 # GIT_ADD.sh
 # undeploy.sh
-
+post-receive
 
 # Logs
 logs
