@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql
--- Generation Time: Jan 10, 2023 at 07:06 PM
+-- Generation Time: Jan 13, 2023 at 10:51 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.27
 
@@ -314,8 +314,10 @@ INSERT INTO `av` (`product_code`, `Camera`, `Resolution`, `Pixels`, `Frame rate`
 DROP TABLE IF EXISTS `cables_all`;
 CREATE TABLE `cables_all` (
   `product_code` varchar(11) DEFAULT NULL,
-  `product_name` varchar(54) DEFAULT NULL,
+  `product_name` varchar(54) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `image` varchar(1) DEFAULT NULL,
+  `image_2` varchar(255) NOT NULL,
+  `image_3` varchar(255) NOT NULL,
   `technical_image` varchar(13) DEFAULT NULL,
   `technical_image_2` varchar(10) DEFAULT NULL,
   `technical_image_3` varchar(10) DEFAULT NULL,
@@ -344,9 +346,9 @@ CREATE TABLE `cables_all` (
 -- Dumping data for table `cables_all`
 --
 
-INSERT INTO `cables_all` (`product_code`, `product_name_`, `image`, `technical_image`, `technical_image_2`, `technical_image_3`, `description`, `feature_1`, `feature_2`, `feature_3`, `feature_4`, `feature_5`, `feature_6`, `feature_7`, `feature_8`, `feature_9`, `feature_10`, `feature_11`, `feature_12`, `feature_13`, `feature_14`, `feature_15`, `feature_16`, `features_concat`, `specs`) VALUES
-('LMCat5E', 'Cat 5E S/FTP DNV-GL Offshore Marine Approved LAN Cable', '`', 'Not available', '', '', 'To meet the demands of the offshore industry this UV  & Oil resistant DNV- GL approved Category 5E cable is used extensively on vessels. LAN cable, designed for ship- and offshore applications. Tinned Cu-connectors and braid, SHF1 jacket.', 'Designed for ship and offshore applications', 'Flame & fire retardant', 'Oil, fuel and hydrocarbons resistant', 'UV-resistant', 'S/FTP Flexible', 'Tinned conductors', 'SHF1', 'DNV-GL and Lloyd\'s Register approval', 'CPR-Compliant options', 'DNV-GL and Lloyd\'s Register approval', 'Fully compliant to IEC', 'Transmission speeds up to 1GBps', 'SHF1 NEK 606 sheaths', 'LSHF throughout', '', '', '• Designed for ship and offshore applications\n• Flame & fire retardant\n• Oil, fuel and hydrocarbons resistant\n• UV-resistant\n• S/FTP Flexible\n• Tinned conductors\n• SHF1\n• DNV-GL and Lloyd\'s Register approval\n• CPR-Compliant options\n• DNV-GL and Lloyd\'s Register approval\n• Fully compliant to IEC\n• Transmission speeds up to 1GBps\n• SHF1 NEK 606 sheaths\n• LSHF throughout', 'See data sheet'),
-('LMCat6ASHF1', 'Cat 6A S/FTP DNV-GL Offshore Marine Approved LAN Cable', '', 'Not available', '', '', 'To meet the demands of the offshore industry this UV  & Oil resistant DNV- GL approved Category 5E cable is used extensively on vessels. Approved LAN cable, designed for ship- and offshore applications. Tested according to IEC 61156 - 5 for transmission characteristics up to 500 MHz - Horizontal floor wiring - Sectional specification.', 'Designed for ship and offshore applications', 'Flame & fire retardant', 'Oil, fuel and hydrocarbons resistant', 'UV-resistant', 'S/FTP', 'LSZH', 'SHF1, UV', 'AWG 23/7', 'DNV-GL and Lloyd\'s Register approval', 'Category 6A DNV- GL marine approved LAN cables are used extensively on vessels', 'CPR-Compliant options', 'DNV-GL and Lloyd\'s Register approval', 'Fully compliant to IEC', 'Transmission speeds up to 1GBps', 'SHF1 NEK 606 sheaths', 'LSHF throughout', '', 'See data sheet');
+INSERT INTO `cables_all` (`product_code`, `product_name`, `image`, `image_2`, `image_3`, `technical_image`, `technical_image_2`, `technical_image_3`, `description`, `feature_1`, `feature_2`, `feature_3`, `feature_4`, `feature_5`, `feature_6`, `feature_7`, `feature_8`, `feature_9`, `feature_10`, `feature_11`, `feature_12`, `feature_13`, `feature_14`, `feature_15`, `feature_16`, `features_concat`, `specs`) VALUES
+('LMCat5E', 'Cat 5E S/FTP DNV-GL Offshore Marine Approved LAN Cable', '`', '', '', 'Not available', '', '', 'To meet the demands of the offshore industry this UV  & Oil resistant DNV- GL approved Category 5E cable is used extensively on vessels. LAN cable, designed for ship- and offshore applications. Tinned Cu-connectors and braid, SHF1 jacket.', 'Designed for ship and offshore applications', 'Flame & fire retardant', 'Oil, fuel and hydrocarbons resistant', 'UV-resistant', 'S/FTP Flexible', 'Tinned conductors', 'SHF1', 'DNV-GL and Lloyd\'s Register approval', 'CPR-Compliant options', 'DNV-GL and Lloyd\'s Register approval', 'Fully compliant to IEC', 'Transmission speeds up to 1GBps', 'SHF1 NEK 606 sheaths', 'LSHF throughout', '', '', '• Designed for ship and offshore applications\n• Flame & fire retardant\n• Oil, fuel and hydrocarbons resistant\n• UV-resistant\n• S/FTP Flexible\n• Tinned conductors\n• SHF1\n• DNV-GL and Lloyd\'s Register approval\n• CPR-Compliant options\n• DNV-GL and Lloyd\'s Register approval\n• Fully compliant to IEC\n• Transmission speeds up to 1GBps\n• SHF1 NEK 606 sheaths\n• LSHF throughout', 'See data sheet'),
+('LMCat6ASHF1', 'Cat 6A S/FTP DNV-GL Offshore Marine Approved LAN Cable', '', '', '', 'Not available', '', '', 'To meet the demands of the offshore industry this UV  & Oil resistant DNV- GL approved Category 5E cable is used extensively on vessels. Approved LAN cable, designed for ship- and offshore applications. Tested according to IEC 61156 - 5 for transmission characteristics up to 500 MHz - Horizontal floor wiring - Sectional specification.', 'Designed for ship and offshore applications', 'Flame & fire retardant', 'Oil, fuel and hydrocarbons resistant', 'UV-resistant', 'S/FTP', 'LSZH', 'SHF1, UV', 'AWG 23/7', 'DNV-GL and Lloyd\'s Register approval', 'Category 6A DNV- GL marine approved LAN cables are used extensively on vessels', 'CPR-Compliant options', 'DNV-GL and Lloyd\'s Register approval', 'Fully compliant to IEC', 'Transmission speeds up to 1GBps', 'SHF1 NEK 606 sheaths', 'LSHF throughout', '', 'See data sheet');
 
 -- --------------------------------------------------------
 
@@ -419,6 +421,112 @@ INSERT INTO `certification` (`product_code`, `Impact Protection`, `Salt Fog Resi
 ('BSOP-2Z4I-I67', 'IK10', '', 'NEMA 250-2018', '', 'IP67', 'FCC (47 CFR Part 15, Subpart B); CE-EMC (EN 55032: 2015, EN 61000-3-2: 2014, EN \n61000-3-3: 2013, EN 50130-4: 2011 +A1: 2014); RCM (AS/NZS CISPR 32: 2015); IC \n(ICES-003: Issue 6, 2016); KC (KN 32: 2015, KN 35: 2015) ', '', ''),
 ('BSTAIF80I67', 'IK10', '', '', '', 'IP67', '', '', ''),
 ('PSOA5Z30II66', '', '', '', '', 'IP66', 'EMC: CE (EN 55032 Class A, EN55035, EN50121-4), UKCA (BS EN 55032: 2015 +A11: 2020, BS EN 55035: 2017), FCC (FCC Part 15 Subpart B Class A), IC (ICES-003:2020 Issue7, Class A), RCM (AS/NZS CISPR 32 Class A), VCCI (VCCI-CISPR 32 Class A); Safety: UKCA (BS EN 62368-1:2014+A11:2017), UL (UL 62368-1), CB (IEC/EN 62368-1, IEC/EN 60950-22, IEC/EN 62471); Environment: IK10 (IEC 62262), IP66 (IEC 60529), NEMA (NEMA 250 Type 4X); IA: BIS (IS 13252), BSMI', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `disk_nvr_features`
+--
+
+DROP TABLE IF EXISTS `disk_nvr_features`;
+CREATE TABLE `disk_nvr_features` (
+  `product_code` varchar(13) DEFAULT NULL,
+  `feature_1` varchar(35) DEFAULT NULL,
+  `feature_2` varchar(144) DEFAULT NULL,
+  `feature_3` varchar(137) DEFAULT NULL,
+  `feature_4` varchar(80) DEFAULT NULL,
+  `feature_5` varchar(169) DEFAULT NULL,
+  `feature_6` varchar(10) DEFAULT NULL,
+  `feature_7` varchar(156) DEFAULT NULL,
+  `feature_8` varchar(100) DEFAULT NULL,
+  `feature_9` varchar(123) DEFAULT NULL,
+  `feature_10` varchar(115) DEFAULT NULL,
+  `feature_11` varchar(107) DEFAULT NULL,
+  `feature_12` varchar(10) DEFAULT NULL,
+  `feature_13` varchar(10) DEFAULT NULL,
+  `feature_14` varchar(10) DEFAULT NULL,
+  `feature_15` varchar(10) DEFAULT NULL,
+  `feature_16` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `disk_nvr_features`
+--
+
+INSERT INTO `disk_nvr_features` (`product_code`, `feature_1`, `feature_2`, `feature_3`, `feature_4`, `feature_5`, `feature_6`, `feature_7`, `feature_8`, `feature_9`, `feature_10`, `feature_11`, `feature_12`, `feature_13`, `feature_14`, `feature_15`, `feature_16`) VALUES
+('STXXXXXVXXXX ', 'Available from 1TB to 20TB capacity', 'ImagePerfect™ firmware is designed to ensure seamless video footage capture in 24×7 surveillance workloads that record video from 64 HD cameras.', 'SkyHawk Health Management actively helps protect your surveillance storage by focusing on prevention, intervention, and recovery options.', 'RapidRebuild™ provides 3× faster volume rebuilds over traditional RAID rebuilds.', 'Unparalleled data protection with included 3-year Rescue Data Recovery Services plan, helping protect important video data with Seagate\'s in-house data recovery services', '', 'RV sensors built in allow drives to maintain performance in multi-bay systems, giving you the flexibility to scale your systems when more storage is needed.', 'ATA streaming support enables recordings from up to 64 HD cameras for smooth, uninterrupted footage.', '1M hours MTBF, 3-year limited warranty represents an improved total cost of ownership (TCO) with reduced maintenance costs.', 'Lower power consumption means a reduction in heat emissions, which improves reliability in surveillance solutions. ', 'Tarnish-resistant components help protect drives from environmental elements, increasing field reliability.', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `disk_nvr_info`
+--
+
+DROP TABLE IF EXISTS `disk_nvr_info`;
+CREATE TABLE `disk_nvr_info` (
+  `product_code` varchar(13) DEFAULT NULL,
+  `product_name` varchar(13) DEFAULT NULL,
+  `image` varchar(10) DEFAULT NULL,
+  `technical_drawing` varchar(13) DEFAULT NULL,
+  `description` varchar(10) DEFAULT NULL,
+  `Hidden field 1` varchar(10) DEFAULT NULL,
+  `Cost price Euro` varchar(10) DEFAULT NULL,
+  `Cost price £` varchar(10) DEFAULT NULL,
+  `Manufacturer` varchar(7) DEFAULT NULL,
+  `Hidden field 5` varchar(10) DEFAULT NULL,
+  `feature_1` varchar(35) DEFAULT NULL,
+  `feature_2` varchar(144) DEFAULT NULL,
+  `feature_3` varchar(137) DEFAULT NULL,
+  `feature_4` varchar(80) DEFAULT NULL,
+  `feature_5` varchar(169) DEFAULT NULL,
+  `feature_6` varchar(10) DEFAULT NULL,
+  `feature_7` varchar(156) DEFAULT NULL,
+  `feature_8` varchar(100) DEFAULT NULL,
+  `feature_9` varchar(123) DEFAULT NULL,
+  `feature_10` varchar(115) DEFAULT NULL,
+  `feature_11` varchar(107) DEFAULT NULL,
+  `feature_12` varchar(10) DEFAULT NULL,
+  `feature_13` varchar(10) DEFAULT NULL,
+  `feature_14` varchar(10) DEFAULT NULL,
+  `feature_15` varchar(10) DEFAULT NULL,
+  `feature_16` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `disk_nvr_info`
+--
+
+INSERT INTO `disk_nvr_info` (`product_code`, `product_name`, `image`, `technical_drawing`, `description`, `Hidden field 1`, `Cost price Euro`, `Cost price £`, `Manufacturer`, `Hidden field 5`, `feature_1`, `feature_2`, `feature_3`, `feature_4`, `feature_5`, `feature_6`, `feature_7`, `feature_8`, `feature_9`, `feature_10`, `feature_11`, `feature_12`, `feature_13`, `feature_14`, `feature_15`, `feature_16`) VALUES
+('STXXXXXVXXXX ', 'NVR Hard Disk', '', 'Not available', '', '', '', '', 'Seagate', '', 'Available from 1TB to 20TB capacity', 'ImagePerfect™ firmware is designed to ensure seamless video footage capture in 24×7 surveillance workloads that record video from 64 HD cameras.', 'SkyHawk Health Management actively helps protect your surveillance storage by focusing on prevention, intervention, and recovery options.', 'RapidRebuild™ provides 3× faster volume rebuilds over traditional RAID rebuilds.', 'Unparalleled data protection with included 3-year Rescue Data Recovery Services plan, helping protect important video data with Seagate\'s in-house data recovery services', '', 'RV sensors built in allow drives to maintain performance in multi-bay systems, giving you the flexibility to scale your systems when more storage is needed.', 'ATA streaming support enables recordings from up to 64 HD cameras for smooth, uninterrupted footage.', '1M hours MTBF, 3-year limited warranty represents an improved total cost of ownership (TCO) with reduced maintenance costs.', 'Lower power consumption means a reduction in heat emissions, which improves reliability in surveillance solutions. ', 'Tarnish-resistant components help protect drives from environmental elements, increasing field reliability.', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `disk_nvr_sizes`
+--
+
+DROP TABLE IF EXISTS `disk_nvr_sizes`;
+CREATE TABLE `disk_nvr_sizes` (
+  `product_code` varchar(13) DEFAULT NULL,
+  `size (TB)` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `disk_nvr_sizes`
+--
+
+INSERT INTO `disk_nvr_sizes` (`product_code`, `size (TB)`) VALUES
+('ST20000VE002 ', 20),
+('ST18000VE002 ', 18),
+('ST16000VE002 ', 16),
+('ST12000VE001 ', 12),
+('ST10000VE001 ', 10),
+('ST8000VE001', 8),
+('ST6000VX009 ', 6),
+('ST4000VX016 ', 4),
+('ST3000VX015 ', 3),
+('ST2000VX017 ', 2),
+('ST1000VX013 ', 1);
 
 -- --------------------------------------------------------
 
@@ -728,6 +836,47 @@ INSERT INTO `features` (`product_code`, `feature_1`, `feature_2`, `feature_3`, `
 ('BSOP-2Z4I-I67', 'Vehicle & license plate recognition algorithm can recognise standard license plates of multiple countries', 'Recognises vehicle type, brand and colour', ' Supports blacklist and whitelist configuration ', 'Collaborates with lanes to control the entry & exit of vehicles and trigger gate opening ', 'On-board storage up to 256GB ', 'Interfaces to vehicle barriers and LED message signs', 'Wiegand output to access control systems', '', '', '', '', '', '', '', '', '', '• Vehicle & license plate recognition algorithm can recognise standard license plates of multiple countries\n• Recognises vehicle type, brand and colour\n•  Supports blacklist and whitelist configuration \n• Collaborates with lanes to control the entry & exit of vehicles and trigger gate opening \n• On-board storage up to 256GB \n• Interfaces to vehicle barriers and LED message signs\n• Wiegand output to access control systems'),
 ('BSTAIF80I67', 'Uncooled VOx Infrared Detector', '720x480 Resolution', 'NETD < 50 mk @ F1.0', 'H265 Compression Technology', 'Lens options from 8.8 to 50mm', 'Two-way Audio', 'Supports ONVIF Standard to Simplify Integration and Enhance Interoperability', 'UL Certification', 'Weather-proof IP67, Vandal-proof IK10 and NEMA 4X-rated Housing', 'Video Content Analysis', '', '', '', '', '', '', '• Uncooled VOx Infrared Detector\n• 720x480 Resolution\n• NETD < 50 mk @ F1.0\n• H265 Compression Technology\n• Lens options from 8.8 to 50mm\n• Two-way Audio\n• Supports ONVIF Standard to Simplify Integration and Enhance Interoperability\n• UL Certification\n• Weather-proof IP67, Vandal-proof IK10 and NEMA 4X-rated Housing\n• Video Content Analysis'),
 ('PSOA5Z30II66', '25 fps @ 2560x1920', '30x Optical Zoom, Auto Focus', '360° Continuous Pan, -20° to 90° (auto flip) Tilt', '200M IR with Smart IR', 'Weather-proof IP66-rated, Vandal-proof IK10 and NEMA 4X-rated Housing', '-40°C ~ 60°C Wide Temperature Range for Extreme Weather Conditions', 'EIS (Electronic Image Stabilization) for Image Stability', '', 'Smart Tracking Advanced for Moving People with People-based Deep Learning Technology', '', '', '', '', '', '', '', '• 25 fps @ 2560x1920\n• 30x Optical Zoom, Auto Focus\n• 360° Continuous Pan, -20° to 90° (auto flip) Tilt\n• 200M IR with Smart IR\n• Weather-proof IP66-rated, Vandal-proof IK10 and NEMA 4X-rated Housing\n• -40°C ~ 60°C Wide Temperature Range for Extreme Weather Conditions\n• EIS (Electronic Image Stabilization) for Image Stability\n• Smart Tracking Advanced for Moving People with People-based Deep Learning Technology');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `features_nvr`
+--
+
+DROP TABLE IF EXISTS `features_nvr`;
+CREATE TABLE `features_nvr` (
+  `product_code` varchar(10) DEFAULT NULL,
+  `feature_1` varchar(37) DEFAULT NULL,
+  `feature_2` varchar(35) DEFAULT NULL,
+  `feature_3` varchar(52) DEFAULT NULL,
+  `feature_4` varchar(28) DEFAULT NULL,
+  `feature_5` varchar(57) DEFAULT NULL,
+  `feature_6` varchar(44) DEFAULT NULL,
+  `feature_7` varchar(55) DEFAULT NULL,
+  `feature_8` varchar(34) DEFAULT NULL,
+  `feature_9` varchar(58) DEFAULT NULL,
+  `feature_10` varchar(35) DEFAULT NULL,
+  `feature_11` varchar(77) DEFAULT NULL,
+  `feature_12` varchar(33) DEFAULT NULL,
+  `feature_13` varchar(11) DEFAULT NULL,
+  `feature_14` varchar(10) DEFAULT NULL,
+  `feature_15` varchar(10) DEFAULT NULL,
+  `feature_16` varchar(10) DEFAULT NULL,
+  `features_concat` varchar(457) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `features_nvr`
+--
+
+INSERT INTO `features_nvr` (`product_code`, `feature_1`, `feature_2`, `feature_3`, `feature_4`, `feature_5`, `feature_6`, `feature_7`, `feature_8`, `feature_9`, `feature_10`, `feature_11`, `feature_12`, `feature_13`, `feature_14`, `feature_15`, `feature_16`, `features_concat`) VALUES
+('NVR0400TB', 'H.265/H.264 upto 8MP camera supported', '4K Display ', '4 x PoE Port ', '', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', '', '802.3at/af PoE with PoE Management', '', 'Alarm In *16, Alarm Out *8', 'Made in Taiwan', 'Upto 48TB on-board storage', '', '', '', '', '• H.265/H.264 upto 8MP camera supported\n• 4K Display \n• 4 x PoE Port \n• 4K Video Output Display for Clear and Detailed Monitoring\n• Deep Search (Attribute Search, Scene Search)\n• 802.3at/af PoE with PoE Management\n• Alarm In *16, Alarm Out *8\n• Made in Taiwan\n• Upto 48TB on-board storage'),
+('NVR0800TB', 'H.265/H.264 upto 8MP camera supported', '4K Display ', '8 x PoE Port ', '', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', '', '802.3at/af PoE with PoE Management', 'RAID 0, 1 supported to Prevent from Recording Data Loss', 'Alarm In *16, Alarm Out *8', 'Made in Taiwan', 'Upto 48TB on-board storage', '', '', '', '', '• H.265/H.264 upto 8MP camera supported\n• 4K Display \n• 8 x PoE Port \n• 4K Video Output Display for Clear and Detailed Monitoring\n• Deep Search (Attribute Search, Scene Search)\n• 802.3at/af PoE with PoE Management\n• RAID 0, 1 supported to Prevent from Recording Data Loss\n• Alarm In *16, Alarm Out *8\n• Made in Taiwan\n• Upto 48TB on-board storage'),
+('NVR1600TB', 'H.265/H.264 Compression Technology', '4K Display ', '16 x PoE Port ', 'Up to 20MP Cameras Supported', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', 'Smart VCA Camera Supported for Event Search & Recording', '802.3at/af PoE with PoE Management', 'RAID 0, 1, 5 Supported to Prevent from Recording Data Loss', 'Alarm In *16, Alarm Out *8', 'Made in Taiwan', 'Upto 48TB on-board storage', '', '', '', '', '• H.265/H.264 Compression Technology\n• 4K Display \n• 16 x PoE Port \n• Up to 20MP Cameras Supported\n• 4K Video Output Display for Clear and Detailed Monitoring\n• Deep Search (Attribute Search, Scene Search)\n• Smart VCA Camera Supported for Event Search & Recording\n• 802.3at/af PoE with PoE Management\n• RAID 0, 1, 5 Supported to Prevent from Recording Data Loss\n• Alarm In *16, Alarm Out *8\n• Made in Taiwan\n• Upto 48TB on-board storage'),
+('NVR3200TB', 'H.265/H.264 Compression Technology', '4K Display ', '16 x PoE Port ', 'Up to 20MP Cameras Supported', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', 'Smart VCA Camera Supported for Event Search & Recording', '802.3at/af PoE with PoE Management', 'RAID 0, 1, 5 Supported to Prevent from Recording Data Loss', 'Alarm In *16, Alarm Out *8', 'Made in Taiwan', 'Upto 48TB on-board storage', '', '', '', '', '• H.265/H.264 Compression Technology\n• 4K Display \n• 16 x PoE Port \n• Up to 20MP Cameras Supported\n• 4K Video Output Display for Clear and Detailed Monitoring\n• Deep Search (Attribute Search, Scene Search)\n• Smart VCA Camera Supported for Event Search & Recording\n• 802.3at/af PoE with PoE Management\n• RAID 0, 1, 5 Supported to Prevent from Recording Data Loss\n• Alarm In *16, Alarm Out *8\n• Made in Taiwan\n• Upto 48TB on-board storage'),
+('NVR6400TB', 'H.265/H.264 Compression Technology', 'Up to 64CH Recording, 64CH Display', 'Support HDMI, Display Port & DVI Simultaneous Output', '16 Hot-Swappable HDD Bays', 'Support RAID 0/1/5/6/10 Storage', 'Redundant Power', 'Dual Lan Giga Network Ports', 'Multiple Fisheye Dewarp Support', 'Upto 256TB on-board storage', 'Smart Search: People/Vehicle Search', 'Analytics Integration: Smart VCA, Parking Violation/Restricted Zone Detection', 'Cybersecurity Management Solution', '', '', '', '', '• H.265/H.264 Compression Technology\n• Up to 64CH Recording, 64CH Display\n• Support HDMI, Display Port & DVI Simultaneous Output\n• 16 Hot-Swappable HDD Bays\n• Support RAID 0/1/5/6/10 Storage\n• Redundant Power\n• Dual Lan Giga Network Ports\n• Multiple Fisheye Dewarp Support\n• Upto 256TB on-board storage\n• Smart Search: People/Vehicle Search\n• Analytics Integration: Smart VCA, Parking Violation/Restricted Zone Detection\n• Cybersecurity Management Solution'),
+('NVR12800TB', 'H.265/H.264 Compression Technology', 'Up to 128CH Recording, 64CH Display', 'Support HDMI, Display Port & DVI Simultaneous Output', '16 Hot-Swappable HDD Bays', 'Support RAID 0/1/5/6/10 Storage', 'Redundant Power', 'Dual Lan Giga Network Ports', 'Multiple Fisheye Dewarp Support', 'Upto 256TB on-board storage', 'Smart Search: People/Vehicle Search', 'Analytics Integration: Smart VCA, Parking Violation/Restricted Zone Detection', 'Cybersecurity Management Solution', '', '', '', '', '• H.265/H.264 Compression Technology\n• Up to 128CH Recording, 64CH Display\n• Support HDMI, Display Port & DVI Simultaneous Output\n• 16 Hot-Swappable HDD Bays\n• Support RAID 0/1/5/6/10 Storage\n• Redundant Power\n• Dual Lan Giga Network Ports\n• Multiple Fisheye Dewarp Support\n• Upto 256TB on-board storage\n• Smart Search: People/Vehicle Search\n• Analytics Integration: Smart VCA, Parking Violation/Restricted Zone Detection\n• Cybersecurity Management Solution'),
+('SMW00TB', 'H.265/H.264 Compression Technology', '4K Display ', 'Can act as NVR if required', 'Up to 20MP Cameras Supported', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', 'Smart VCA Camera Supported for Event Search & Recording', 'Upto 4 monitor outputs', '', '', 'Built in United Kingdom', 'Upto 32TB on-board storage', 'Slim design', '', '', '', '• H.265/H.264 Compression Technology\n• 4K Display \n• Can act as NVR if required\n• Up to 20MP Cameras Supported\n• 4K Video Output Display for Clear and Detailed Monitoring\n• Deep Search (Attribute Search, Scene Search)\n• Smart VCA Camera Supported for Event Search & Recording\n• Upto 4 monitor outputs\n• Built in United Kingdom\n• Upto 32TB on-board storage\n• Slim design');
 
 -- --------------------------------------------------------
 
@@ -1073,84 +1222,114 @@ INSERT INTO `info` (`ID`, `movement`, `category`, `addit_category`, `product_cod
 -- --------------------------------------------------------
 
 --
--- Table structure for table `monitors_specs`
+-- Table structure for table `monitor_features`
 --
 
-DROP TABLE IF EXISTS `monitors_specs`;
-CREATE TABLE `monitors_specs` (
-  `Model` varchar(8) DEFAULT NULL,
-  `type` varchar(7) DEFAULT NULL,
-  `Spec_1` varchar(10) DEFAULT NULL,
-  `Spec_2` varchar(22) DEFAULT NULL,
-  `Spec_3` varchar(34) DEFAULT NULL,
-  `Spec_4` varchar(14) DEFAULT NULL,
-  `Spec_5` varchar(33) DEFAULT NULL,
-  `Spec_6` varchar(25) DEFAULT NULL,
-  `Spec_7` varchar(70) DEFAULT NULL,
-  `Spec_8` varchar(70) DEFAULT NULL,
-  `Spec_9` varchar(17) DEFAULT NULL,
-  `Spec_10` varchar(15) DEFAULT NULL,
-  `Spec_11` varchar(40) DEFAULT NULL,
-  `Spec_12` varchar(11) DEFAULT NULL,
-  `Spec_13` varchar(20) DEFAULT NULL,
-  `Spec_14` varchar(31) DEFAULT NULL,
-  `Spec_15` varchar(19) DEFAULT NULL,
-  `Spec_16` varchar(28) DEFAULT NULL,
-  `Spec_17` varchar(18) DEFAULT NULL,
-  `Spec_18` varchar(24) DEFAULT NULL,
-  `Spec_19` varchar(22) DEFAULT NULL,
-  `Spec_20` varchar(37) DEFAULT NULL,
-  `Spec_21` varchar(21) DEFAULT NULL,
-  `Spec_22` varchar(12) DEFAULT NULL,
-  `Spec_23` varchar(11) DEFAULT NULL,
-  `Spec_24` varchar(20) DEFAULT NULL,
-  `Spec_25` varchar(50) DEFAULT NULL,
-  `Spec_26` varchar(53) DEFAULT NULL,
-  `Spec_27` varchar(11) DEFAULT NULL,
-  `Spec_28` varchar(34) DEFAULT NULL,
-  `Spec_29` varchar(26) DEFAULT NULL,
-  `Spec_30` varchar(19) DEFAULT NULL,
-  `Spec_31` varchar(15) DEFAULT NULL,
-  `Spec_32` varchar(24) DEFAULT NULL,
-  `Spec_33` varchar(32) DEFAULT NULL,
-  `Spec_34` varchar(24) DEFAULT NULL,
-  `Spec_35` varchar(21) DEFAULT NULL,
-  `Spec_36` varchar(37) DEFAULT NULL,
-  `Spec_37` varchar(11) DEFAULT NULL,
-  `Spec_38` varchar(30) DEFAULT NULL
+DROP TABLE IF EXISTS `monitor_features`;
+CREATE TABLE `monitor_features` (
+  `type` varchar(3) DEFAULT NULL,
+  `feature 1` varchar(55) DEFAULT NULL,
+  `feature 2` varchar(31) DEFAULT NULL,
+  `feature 3` varchar(29) DEFAULT NULL,
+  `feature 4` varchar(39) DEFAULT NULL,
+  `feature 5` varchar(33) DEFAULT NULL,
+  `feature 6` varchar(96) DEFAULT NULL,
+  `feature 7` varchar(27) DEFAULT NULL,
+  `feature 8` varchar(105) DEFAULT NULL,
+  `feature 9` varchar(105) DEFAULT NULL,
+  `feature 10` varchar(68) DEFAULT NULL,
+  `feature 11` varchar(23) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Dumping data for table `monitors_specs`
+-- Dumping data for table `monitor_features`
 --
 
-INSERT INTO `monitors_specs` (`Model`, `type`, `Spec_1`, `Spec_2`, `Spec_3`, `Spec_4`, `Spec_5`, `Spec_6`, `Spec_7`, `Spec_8`, `Spec_9`, `Spec_10`, `Spec_11`, `Spec_12`, `Spec_13`, `Spec_14`, `Spec_15`, `Spec_16`, `Spec_17`, `Spec_18`, `Spec_19`, `Spec_20`, `Spec_21`, `Spec_22`, `Spec_23`, `Spec_24`, `Spec_25`, `Spec_26`, `Spec_27`, `Spec_28`, `Spec_29`, `Spec_30`, `Spec_31`, `Spec_32`, `Spec_33`, `Spec_34`, `Spec_35`, `Spec_36`, `Spec_37`, `Spec_38`) VALUES
-('model_no', 'type', 'Resolution', 'Diagonal size (inches)', 'Viewable Area WxH (inches/mm)', 'Led Type', 'Pixel Pitch (mm)', 'Screen Maximum Resolution', 'Display Resolutions', 'Supported Input Resolutions', 'Refresh Rate (Hz）', 'Color Depth (M）', 'Brightness (cd/㎡) (typical)', 'Auto Adjust', 'Monitor Aspect Ratio', 'Display Aspect Ratio', 'Horizontal TV Lines', 'Contrast Ratio', 'Response Time (ms)', 'View Angle H/V (degrees)', 'Digital Video Inputs', 'Analog Video In/Out', 'Audio Inputs (stereo)', 'Speakers (W)', 'Stand-by（W）', 'Power Consumption（W）', 'Monitor Body Dimensions', 'Dimensions Monitor+Stand', 'Colour', 'Case & Stand Material', 'VESA Mounting Pattern (mm)', 'Base/Stand Included', 'Base Tilt Angle', 'Weight Cabinet Only (kg)', 'Weight Cabinet+Base Stand(Ib/kg)', 'Power Supply (internal)', 'Operating Temperature', 'Operating Humidity', 'Accessories', 'Certications'),
-('MONUHD27', 'UHD', 'UHD', '27', '23.54*13.24', 'LED', '0.3114x0.3114', '1920x1080', '', '', '60', '16.7', '250', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '00:00', '3000 :1SCR', '5 (GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x1080', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 3', '＜0.5', '32W Typical', '24.57*14.7*2.05', '24.57*18.2*7.6', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '11.06', '10.42', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
-('MONUHD43', 'UHD', 'UHD', '43', '', '', '0.2451mm×0.2451mm', '3840×2160', '', '', '', '', '260', '', '', '', '', '1000 :1SCR', '8(GTG)', '', '', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 5W', '', '<83W', '970.2×558.8×83.8mm', '', '', '', '', 'Yes', '', '7.7', '', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '', '10~90%', 'CE/FCC/WEEE/REACH'),
-('MONUHD49', 'UHD', 'UHD', '49', '', '', '0.2797mm×0.2797mm', '', '', '', '', '', '260', '', '', '', '', '1000 :1SCR', '8(GTG)', '', '', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 5W', '', '<94W', '1107.4×645.1×88.9mm', '', '', '', '', 'Yes', '', '10', '', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '', '10~90%', 'CE/FCC/WEEE/REACH'),
-('MONUHD55', 'UHD', 'UHD', '55', '', '', ' 0.3151mm×0.3151mm', '', '', '', '', '', '260', '', '', '', '', '1000 :1SCR', '8(GTG)', '', '', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 5W', '', '<165W', '1244.6×729×94mm', '', '', '', '', 'Yes', '', '13.9', '', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '', '10~90%', 'CE/FCC/WEEE/REACH'),
-('MONUHD65', 'UHD', 'UHD', '65', '', '', ' 0.372mm×0.372mm', '', '', '', '', '', '260', '', '', '', '', '1000 :1SCR', '8(GTG)', '', '', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 5W', '', '<189W', '1460.5×843.2×90.5mm', '', '', '', '', 'Yes', '', '17.8', '', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '', '10~90%', 'CE/FCC/WEEE/REACH'),
-('MONFHD20', 'Full HD', 'Full HD', '19.53', '', 'LED', '', '1920x1080', '640 x 480; 800 x 600; 1024 x 768; 1280 x 1024; 1366 x 768; 1920 x 1080', '640 x 480; 800 x 600; 1024 x 768; 1280 x 1024; 1366 x 768; 1920 x 1080', '60', '16.7', '250', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '1080', '1000 :1SCR', '5(GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x1080', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 3W', '＜0.5', '19W Typical', '18.52inchx11.1inchx1.88inch / 470.4mmx282mmx47.7mm', '18.52inchx13.43inchx5.87inch/ 470.4mmx341.2mmx149.1mm', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '5.8Ibs / 2.6kg', '6.3Ibs / 2.85kg', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
-('MONFHD22', 'Full HD', 'Full HD', '21.5', '', 'LED', '', '', '1920x1080', '640x480;800x600;1024x768;1280x1024;1366x768;1920x1080', '60', '16.7', '250', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '1080', '1000 :1SCR', '5(GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x1080', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 3W', '＜0.5', '20W Typical', '19.96inchx12.16inchx1.9inch / 507mmx309.1mmx48.5mm', '19.96inchx14.57inchx5.87inch / 507mmx370.2mmx149mm', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '6.9Ibs / 3kg', '7.5Ibs / 3.4kg', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
-('MONFHD24', 'Full HD', 'Full HD', '23.6', '20.52inch*11.54inch / 521mm*293mm', 'LED', '0.2715x0.2715', '1920x1080', '', '', '60', '16.7', '250', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '1080', '1000 :1SCR', '5(GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x1080', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 3', '＜0.5', '25W Typical', '21.88inchx13.28inchx2inch / 555.9mmx337mmx50.8mm', '21.88inchx15.69inchx5.87inch / 555.9mmx398.5mmx149mm', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '8.5Ibs / 3.85kg', '9.0Ibs / 4.08kg', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
-('MONFHD27', 'Full HD', 'Full HD', '27', '23.54*13.24', 'LED', '0.3114x0.3114', '1920x1080', '', '', '60', '16.7', '250', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '1080', '3000 :1SCR', '5 (GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x1080', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 3', '＜0.5', '32W Typical', '24.57*14.7*2.05', '24.57*18.2*7.6', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '11.06', '10.42', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
-('MONFHD32', 'Full HD', 'Full HD', '31.5', '27.5inch*15.47inch / 698.5mm*393mm', 'LED', '0.36x0.36', '1920x1080', '640 x 480; 800 x 600; 1024 x 768; 1280 x 1024; 1920 x 1080', '640 x 480; 800 x 600; 1024 x 768; 1280 x 1024; 1920 x 1080', '60', '16.7', '300', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '1080', '3000 :1SCR', '5 (GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x1080', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 5', '＜0.5', '50W Typical', '28.8inchx17inchx1.9inch / 731.4mmx432.5mmx49mm', '28.8inchx19.6inchx6.3inch / 731.4mmx497.5mmx160mm', 'Matte black', 'Metal + Aluminum (removable stand)', '200 x 200', 'Yes', '-5°~15°', '21.1Ibs / 9.6kg', '22.9Ibs / 10.4kg', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', 'VGA up to 1920x1080, BNC CVBS looping', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
-('MONFHD43', 'Full HD', 'Full HD', '43', '', 'DLED', '0.02” x 0.02” (0.4902mmx0.4902mm)', '1920x1080', '', '', '', '', '500cd/m² (NITS)', '', '', '', '', '1200 :1SCR', '', '', '', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 10W', '', '110W', '38.3\" x 22.3\" x 3.7\" (972.5×566×94.2mm)', '', '', '', '', 'Yes', '', '7.45', '', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '', '10~90%', 'CE/FCC/WEEE/REACH'),
-('MONHD19', 'HD', 'HD', '18.5', '16.13*9.07', 'LED', '0.30x0.30', '1366 x 768', '640x480;800x600;1024x768;1280x1024;1366 x 768', '640x480;800x600;1024x768;1280x1024;1366 x 768', '60', '16.7', '250', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '768', '1000 :1SCR or 1,000,000:1DCR', '5(GTG)', '170°x 150°/CR＞10', 'HDMI up to 1366 x 768', 'VGA up to 1366 x 768', '1x3.5mm mini-jack', '2 x 3', '＜0.5', '18W Typical', '17.37*10.67*1.81', '17.37*13.08*5.87', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '5.1', '5.7', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
-('MONHD24', 'HD', 'HD', '23.8', '20.74x11.67(527.04×296.46)', 'LED', '0.2745×0.2745', '1920x1080', '720x400;640x480;800x600;1024x768;1280x1024;1366x768;1920x1080', '720x400;640x480;800x600;1024x768;1280x1024;1366x768;1920x1080', '60', '16.7', '250', 'Yes', '16:09', 'OSD options: Full/4:3/Over Scan', '1080', '1000:1 SCR', '8 (GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x 1080', 'VGA up to 1920 x 1080', '1x3.5mm mini-jack', '2x2', '＜0.5', '20W Typical', '21.3”x12.6”x1.7”(541.4×321.8×43.8mm)', '21.3”x16.1”x7.5”(541.4×409×190mm)', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '6.9Ibs(3.15 Kg)', '7.7Ibs(3.5 Kg)', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
-('MONHD27', 'HD', 'HD', '27', '23.53x13.24(597.888×336.312)', 'LED', '0.3114×0.3114', '1920x1080', '720x400;640x480;800x600;1024x768;1280x1024;1366x768;1920x1080', '720x400;640x480;800x600;1024x768;1280x1024;1366x768;1920x1080', '60', '16.7', '250', 'Yes', '16:09', 'OSD options: Full/4:3/Over Scan', '1080', '1000:1 SCR', '8 (GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x 1080', 'VGA up to 1920 x 1080', '1x3.5mm mini-jack', '2x2', '＜0.5', '26W Typical', '24.1”x14.3”x1.9”(614.4×363.5×49.5mm)', '24.1”x17.7”x7.5”(614.4×450.7×190mm)', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '9.7Ibs(4.4 Kg)', '10.5Ibs(4.8 Kg)', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
-('MONHD32', 'HD', 'HD', '32', '', 'Backlight DLED', '0.02” x 0.02” (0.510mmx0.510mm)', '1366x768', '', '', '', '', 'Typ.:400cd/m² (NITS) Center Luminance of', '', '', '', '', 'Typ.:1100:1', '9ms (GTG)', '', '', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 10W', '', '75W', '28.8” x 17.1” x 3.2” (732×434×80.9mm) ', '', '', '', '', 'Yes', '', '4.5', '', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '', '10~90%', 'CE/FCC/WEEE/REACH');
+INSERT INTO `monitor_features` (`type`, `feature 1`, `feature 2`, `feature 3`, `feature 4`, `feature 5`, `feature 6`, `feature 7`, `feature 8`, `feature 9`, `feature 10`, `feature 11`) VALUES
+('UHD', '27, 43, 49, 55 and 65’’ 4K UHD LED screen size options', '3840 x 2160 screen resolution ', 'Designed for 24/7 monitoring ', 'HDMI, USB, VGA, DVI, BNC & Audio inputs', 'Desktop and VESA mounting options', 'Experience breathtaking level of details when you open your eyes to the clarity of 4K UHD screen', '5 ms GTG response time ', '16:9 widescreen resolution ', 'LED backlight technology provides for industry-leading low power consumption and less hazardous materials', 'Enjoy crisp content and energetic hues with the 300 cd/m² brightness', 'Analogue CVBS BNC input'),
+('FHD', '20, 22, 24, 32 and 43’’ Full HD LED screen size options', '1920 x 1080P screen resolution ', 'Designed for 24/7 monitoring ', 'BNC, HDMI, VGA & Audio inputs', 'Desktop and VESA mounting options', '6 ms GTG response time ', '16:9 widescreen resolution ', 'LED backlight technology provides for industry-leading low power consumption and less hazardous materials', '250 cd/m² brightness gives an exceptional visible display for clear and consistent on-screen pictures', '100mm x 100mm VESA Mounting Pattern', 'Analogue CVBS BNC input'),
+('HD', '19, 24, 27 and 32\" HD LED screen size options', '1366 x 768 screen resolution ', 'Designed for 24/7 monitoring ', 'HDMI, VGA & Audio inputs', 'Desktop and VESA mounting options', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `monitors_types`
+-- Table structure for table `monitor_specs`
 --
 
-DROP TABLE IF EXISTS `monitors_types`;
-CREATE TABLE `monitors_types` (
-  `Monitor Type` varchar(15) DEFAULT NULL,
+DROP TABLE IF EXISTS `monitor_specs`;
+CREATE TABLE `monitor_specs` (
+  `model_no` varchar(8) DEFAULT NULL,
+  `type` varchar(7) DEFAULT NULL,
+  `Resolution` varchar(7) DEFAULT NULL,
+  `Diagonal size (inches)` decimal(4,2) DEFAULT NULL,
+  `Viewable Area WxH (inches/mm)` varchar(34) DEFAULT NULL,
+  `Led Type` varchar(14) DEFAULT NULL,
+  `Pixel Pitch (mm)` varchar(33) DEFAULT NULL,
+  `Screen Maximum Resolution` varchar(10) DEFAULT NULL,
+  `Display Resolutions` varchar(70) DEFAULT NULL,
+  `Supported Input Resolutions` varchar(70) DEFAULT NULL,
+  `Refresh Rate (Hz）` varchar(2) DEFAULT NULL,
+  `Colour Depth (M)` varchar(99) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `Brightness (cd/㎡) (typical)` varchar(40) DEFAULT NULL,
+  `Auto Adjust` varchar(3) DEFAULT NULL,
+  `Monitor Aspect Ratio` varchar(5) DEFAULT NULL,
+  `Display Aspect Ratio` varchar(31) DEFAULT NULL,
+  `Horizontal TV Lines` varchar(5) DEFAULT NULL,
+  `Contrast Ratio` varchar(28) DEFAULT NULL,
+  `Response Time (ms)` varchar(9) DEFAULT NULL,
+  `View Angle H/V (degrees)` varchar(16) DEFAULT NULL,
+  `Digital Video Inputs` varchar(22) DEFAULT NULL,
+  `Analog Video In/Out` varchar(37) DEFAULT NULL,
+  `Audio Inputs (stereo)` varchar(17) DEFAULT NULL,
+  `Speakers (W)` varchar(7) DEFAULT NULL,
+  `Stand-by（W）` varchar(4) DEFAULT NULL,
+  `Power Consumption（W）` varchar(11) DEFAULT NULL,
+  `Monitor Body Dimensions` varchar(50) DEFAULT NULL,
+  `Dimensions Monitor+Stand` varchar(53) DEFAULT NULL,
+  `Colour` varchar(11) DEFAULT NULL,
+  `Case & Stand Material` varchar(34) DEFAULT NULL,
+  `VESA Mounting Pattern (mm)` varchar(9) DEFAULT NULL,
+  `Base/Stand Included` varchar(3) DEFAULT NULL,
+  `Base Tilt Angle` varchar(7) DEFAULT NULL,
+  `Weight Cabinet Only (kg)` varchar(15) DEFAULT NULL,
+  `Weight Cabinet+Base Stand(Ib/kg)` varchar(16) DEFAULT NULL,
+  `Power Supply (internal)` varchar(24) DEFAULT NULL,
+  `Operating Temperature` varchar(21) DEFAULT NULL,
+  `Operating Humidity` varchar(37) DEFAULT NULL,
+  `Accessories` varchar(6) DEFAULT NULL,
+  `Certications` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `monitor_specs`
+--
+
+INSERT INTO `monitor_specs` (`model_no`, `type`, `Resolution`, `Diagonal size (inches)`, `Viewable Area WxH (inches/mm)`, `Led Type`, `Pixel Pitch (mm)`, `Screen Maximum Resolution`, `Display Resolutions`, `Supported Input Resolutions`, `Refresh Rate (Hz）`, `Colour Depth (M)`, `Brightness (cd/㎡) (typical)`, `Auto Adjust`, `Monitor Aspect Ratio`, `Display Aspect Ratio`, `Horizontal TV Lines`, `Contrast Ratio`, `Response Time (ms)`, `View Angle H/V (degrees)`, `Digital Video Inputs`, `Analog Video In/Out`, `Audio Inputs (stereo)`, `Speakers (W)`, `Stand-by（W）`, `Power Consumption（W）`, `Monitor Body Dimensions`, `Dimensions Monitor+Stand`, `Colour`, `Case & Stand Material`, `VESA Mounting Pattern (mm)`, `Base/Stand Included`, `Base Tilt Angle`, `Weight Cabinet Only (kg)`, `Weight Cabinet+Base Stand(Ib/kg)`, `Power Supply (internal)`, `Operating Temperature`, `Operating Humidity`, `Accessories`, `Certications`) VALUES
+('MONUHD27', 'UHD', 'UHD', '27.00', '23.54*13.24', 'LED', '0.3114x0.3114', '1920x1080', '', '', '60', '16.7', '250', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '00:00', '3000 :1SCR', '5 (GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x1080', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 3', '＜0.5', '32W Typical', '24.57*14.7*2.05', '24.57*18.2*7.6', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '11.06', '10.42', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
+('MONUHD43', 'UHD', 'UHD', '43.00', '', '', '0.2451mm×0.2451mm', '3840×2160', '', '', '', '', '260', '', '', '', '', '1000 :1SCR', '8(GTG)', '', '', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 5W', '', '<83W', '970.2×558.8×83.8mm', '', '', '', '', 'Yes', '', '7.7', '', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '', '10~90%', 'CE/FCC/WEEE/REACH'),
+('MONUHD49', 'UHD', 'UHD', '49.00', '', '', '0.2797mm×0.2797mm', '', '', '', '', '', '260', '', '', '', '', '1000 :1SCR', '8(GTG)', '', '', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 5W', '', '<94W', '1107.4×645.1×88.9mm', '', '', '', '', 'Yes', '', '10', '', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '', '10~90%', 'CE/FCC/WEEE/REACH'),
+('MONUHD55', 'UHD', 'UHD', '55.00', '', '', ' 0.3151mm×0.3151mm', '', '', '', '', '', '260', '', '', '', '', '1000 :1SCR', '8(GTG)', '', '', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 5W', '', '<165W', '1244.6×729×94mm', '', '', '', '', 'Yes', '', '13.9', '', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '', '10~90%', 'CE/FCC/WEEE/REACH'),
+('MONUHD65', 'UHD', 'UHD', '65.00', '', '', ' 0.372mm×0.372mm', '', '', '', '', '', '260', '', '', '', '', '1000 :1SCR', '8(GTG)', '', '', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 5W', '', '<189W', '1460.5×843.2×90.5mm', '', '', '', '', 'Yes', '', '17.8', '', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '', '10~90%', 'CE/FCC/WEEE/REACH'),
+('MONFHD20', 'Full HD', 'Full HD', '19.53', '', 'LED', '', '1920x1080', '640 x 480; 800 x 600; 1024 x 768; 1280 x 1024; 1366 x 768; 1920 x 1080', '640 x 480; 800 x 600; 1024 x 768; 1280 x 1024; 1366 x 768; 1920 x 1080', '60', '16.7', '250', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '1080', '1000 :1SCR', '5(GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x1080', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 3W', '＜0.5', '19W Typical', '18.52inchx11.1inchx1.88inch / 470.4mmx282mmx47.7mm', '18.52inchx13.43inchx5.87inch/ 470.4mmx341.2mmx149.1mm', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '5.8Ibs / 2.6kg', '6.3Ibs / 2.85kg', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
+('MONFHD22', 'Full HD', 'Full HD', '21.50', '', 'LED', '', '', '1920x1080', '640x480;800x600;1024x768;1280x1024;1366x768;1920x1080', '60', '16.7', '250', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '1080', '1000 :1SCR', '5(GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x1080', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 3W', '＜0.5', '20W Typical', '19.96inchx12.16inchx1.9inch / 507mmx309.1mmx48.5mm', '19.96inchx14.57inchx5.87inch / 507mmx370.2mmx149mm', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '6.9Ibs / 3kg', '7.5Ibs / 3.4kg', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
+('MONFHD24', 'Full HD', 'Full HD', '23.60', '20.52inch*11.54inch / 521mm*293mm', 'LED', '0.2715x0.2715', '1920x1080', '', '', '60', '16.7', '250', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '1080', '1000 :1SCR', '5(GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x1080', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 3', '＜0.5', '25W Typical', '21.88inchx13.28inchx2inch / 555.9mmx337mmx50.8mm', '21.88inchx15.69inchx5.87inch / 555.9mmx398.5mmx149mm', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '8.5Ibs / 3.85kg', '9.0Ibs / 4.08kg', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
+('MONFHD27', 'Full HD', 'Full HD', '27.00', '23.54*13.24', 'LED', '0.3114x0.3114', '1920x1080', '', '', '60', '16.7', '250', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '1080', '3000 :1SCR', '5 (GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x1080', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 3', '＜0.5', '32W Typical', '24.57*14.7*2.05', '24.57*18.2*7.6', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '11.06', '10.42', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
+('MONFHD32', 'Full HD', 'Full HD', '31.50', '27.5inch*15.47inch / 698.5mm*393mm', 'LED', '0.36x0.36', '1920x1080', '640 x 480; 800 x 600; 1024 x 768; 1280 x 1024; 1920 x 1080', '640 x 480; 800 x 600; 1024 x 768; 1280 x 1024; 1920 x 1080', '60', '16.7', '300', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '1080', '3000 :1SCR', '5 (GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x1080', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 5', '＜0.5', '50W Typical', '28.8inchx17inchx1.9inch / 731.4mmx432.5mmx49mm', '28.8inchx19.6inchx6.3inch / 731.4mmx497.5mmx160mm', 'Matte black', 'Metal + Aluminum (removable stand)', '200 x 200', 'Yes', '-5°~15°', '21.1Ibs / 9.6kg', '22.9Ibs / 10.4kg', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', 'VGA up to 1920x1080, BNC CVBS looping', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
+('MONFHD43', 'Full HD', 'Full HD', '43.00', '', 'DLED', '0.02” x 0.02” (0.4902mmx0.4902mm)', '1920x1080', '', '', '', '', '500cd/m² (NITS)', '', '', '', '', '1200 :1SCR', '', '', '', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 10W', '', '110W', '38.3\" x 22.3\" x 3.7\" (972.5×566×94.2mm)', '', '', '', '', 'Yes', '', '7.45', '', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '', '10~90%', 'CE/FCC/WEEE/REACH'),
+('MONHD19', 'HD', 'HD', '18.50', '16.13*9.07', 'LED', '0.30x0.30', '1366 x 768', '640x480;800x600;1024x768;1280x1024;1366 x 768', '640x480;800x600;1024x768;1280x1024;1366 x 768', '60', '16.7', '250', 'Yes', '16:09', 'OSD selectable 16:9 or 4:3', '768', '1000 :1SCR or 1,000,000:1DCR', '5(GTG)', '170°x 150°/CR＞10', 'HDMI up to 1366 x 768', 'VGA up to 1366 x 768', '1x3.5mm mini-jack', '2 x 3', '＜0.5', '18W Typical', '17.37*10.67*1.81', '17.37*13.08*5.87', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '5.1', '5.7', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
+('MONHD24', 'HD', 'HD', '23.80', '20.74x11.67(527.04×296.46)', 'LED', '0.2745×0.2745', '1920x1080', '720x400;640x480;800x600;1024x768;1280x1024;1366x768;1920x1080', '720x400;640x480;800x600;1024x768;1280x1024;1366x768;1920x1080', '60', '16.7', '250', 'Yes', '16:09', 'OSD options: Full/4:3/Over Scan', '1080', '1000:1 SCR', '8 (GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x 1080', 'VGA up to 1920 x 1080', '1x3.5mm mini-jack', '2x2', '＜0.5', '20W Typical', '21.3”x12.6”x1.7”(541.4×321.8×43.8mm)', '21.3”x16.1”x7.5”(541.4×409×190mm)', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '6.9Ibs(3.15 Kg)', '7.7Ibs(3.5 Kg)', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
+('MONHD27', 'HD', 'HD', '27.00', '23.53x13.24(597.888×336.312)', 'LED', '0.3114×0.3114', '1920x1080', '720x400;640x480;800x600;1024x768;1280x1024;1366x768;1920x1080', '720x400;640x480;800x600;1024x768;1280x1024;1366x768;1920x1080', '60', '16.7', '250', 'Yes', '16:09', 'OSD options: Full/4:3/Over Scan', '1080', '1000:1 SCR', '8 (GTG)', '178°x 178°/CR＞10', 'HDMI up to 1920 x 1080', 'VGA up to 1920 x 1080', '1x3.5mm mini-jack', '2x2', '＜0.5', '26W Typical', '24.1”x14.3”x1.9”(614.4×363.5×49.5mm)', '24.1”x17.7”x7.5”(614.4×450.7×190mm)', 'Matte black', 'Plastic', '100 x 100', 'Yes', '-5°~15°', '9.7Ibs(4.4 Kg)', '10.5Ibs(4.8 Kg)', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '-20°C~50°C / -4°F~122°F', '10~90%', 'CE/FCC/ROHS/HDMI/UL/WEEE/REACH'),
+('MONHD32', 'HD', 'HD', '32.00', '', 'Backlight DLED', '0.02” x 0.02” (0.510mmx0.510mm)', '1366x768', '', '', '', '', 'Typ.:400cd/m² (NITS) Center Luminance of', '', '', '', '', 'Typ.:1100:1', '9ms (GTG)', '', '', 'VGA up to 1920x1080, BNC CVBS looping', '1x3.5mm mini-jack', '2 x 10W', '', '75W', '28.8” x 17.1” x 3.2” (732×434×80.9mm) ', '', '', '', '', 'Yes', '', '4.5', '', 'AC 100-240V~50/60Hz 1.1A', '0°C~40°C / 32°F~104°F', '', '10~90%', 'CE/FCC/WEEE/REACH');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `monitor_types`
+--
+
+DROP TABLE IF EXISTS `monitor_types`;
+CREATE TABLE `monitor_types` (
+  `monitor_type` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `type` varchar(3) DEFAULT NULL,
   `image` varchar(10) DEFAULT NULL,
   `technical_image` varchar(10) DEFAULT NULL,
@@ -1170,10 +1349,10 @@ CREATE TABLE `monitors_types` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Dumping data for table `monitors_types`
+-- Dumping data for table `monitor_types`
 --
 
-INSERT INTO `monitors_types` (`Monitor Type`, `type`, `image`, `technical_image`, `description`, `feature 1`, `feature 2`, `feature 3`, `feature 4`, `feature 5`, `feature 6`, `feature 7`, `feature 8`, `feature 9`, `feature 10`, `feature 11`, `features_concat`) VALUES
+INSERT INTO `monitor_types` (`monitor_type`, `type`, `image`, `technical_image`, `description`, `feature 1`, `feature 2`, `feature 3`, `feature 4`, `feature 5`, `feature 6`, `feature 7`, `feature 8`, `feature 9`, `feature 10`, `feature 11`, `features_concat`) VALUES
 ('UHD 4k Monitors', 'UHD', '', '', 'Experience True 4K CCTV security monitoring. Boasting 16.7 million colours 4K UHD Resolution these monitors will make your CCTV video come to life. Designed specifically to run for 24 hours a day, 7 days a week, 365 days a year and compatible with HDMI, VGA, DVI, BNC and Audio. 27, 43, 49, 55 and 65’’ 4K UHD LED screen size options.', '27, 43, 49, 55 and 65’’ 4K UHD LED screen size options', '3840 x 2160 screen resolution ', 'Designed for 24/7 monitoring ', 'HDMI, USB, VGA, DVI, BNC & Audio inputs', 'Desktop and VESA mounting options', 'Experience breathtaking level of details when you open your eyes to the clarity of 4K UHD screen', '5 ms GTG response time ', '16:9 widescreen resolution ', 'LED backlight technology provides for industry-leading low power consumption and less hazardous materials', 'Enjoy crisp content and energetic hues with the 300 cd/m² brightness', 'Analogue CVBS BNC input', '• 27, 43, 49, 55 and 65’’ 4K UHD LED screen size options\n• 3840 x 2160 screen resolution \n• Designed for 24/7 monitoring \n• HDMI, USB, VGA, DVI, BNC & Audio inputs\n• Desktop and VESA mounting options\n• Experience breathtaking level of details when you open your eyes to the clarity of 4K UHD screen\n• 5 ms GTG response time \n• 16:9 widescreen resolution \n• LED backlight technology provides for industry-leading low power consumption and less hazardous materials\n• Enjoy crisp content and energetic hues with the 300 cd/m² brightness\n• Analogue CVBS BNC input'),
 ('FHD monitors', 'FHD', '', '', 'Experience Full HD CCTV security monitoring. Designed specifically to run for 24 hours a day, 7 days a week, 365 days a year and compatible with BNC, HDMI, VGA, DVI and Audio.  These monitors combine extremely high contrast and low power consumption to be the perfect deploy-anywhere option. 20, 22, 24, 27, 32 and 43’’ Full HD LED screen size options.', '20, 22, 24, 32 and 43’’ Full HD LED screen size options', '1920 x 1080P screen resolution ', 'Designed for 24/7 monitoring ', 'BNC, HDMI, VGA & Audio inputs', 'Desktop and VESA mounting options', '6 ms GTG response time ', '16:9 widescreen resolution ', 'LED backlight technology provides for industry-leading low power consumption and less hazardous materials', '250 cd/m² brightness gives an exceptional visible display for clear and consistent on-screen pictures', '100mm x 100mm VESA Mounting Pattern', 'Analogue CVBS BNC input', '• 20, 22, 24, 32 and 43’’ Full HD LED screen size options\n• 1920 x 1080P screen resolution \n• Designed for 24/7 monitoring \n• BNC, HDMI, VGA & Audio inputs\n• Desktop and VESA mounting options\n• 6 ms GTG response time \n• 16:9 widescreen resolution \n• LED backlight technology provides for industry-leading low power consumption and less hazardous materials\n• 250 cd/m² brightness gives an exceptional visible display for clear and consistent on-screen pictures\n• 100mm x 100mm VESA Mounting Pattern\n• Analogue CVBS BNC input'),
 ('HD Monitors', 'HD', '', '', 'Experience HD CCTV security monitoring. Designed specifically to run for 24 hours a day, 7 days a week, 365 days a year and compatible with HDMI, VGA, DVI and   19, 24, 27 and 32\" HD LED screen size options.', '19, 24, 27 and 32\" HD LED screen size options', '1366 x 768 screen resolution ', 'Designed for 24/7 monitoring ', 'HDMI, VGA & Audio inputs', 'Desktop and VESA mounting options', '', '', '', '', '', '', '• 19, 24, 27 and 32\" HD LED screen size options\n• 1366 x 768 screen resolution \n• Designed for 24/7 monitoring \n• HDMI, VGA & Audio inputs\n• Desktop and VESA mounting options');
@@ -1320,113 +1499,6 @@ INSERT INTO `nvr_device` (`product_code`, `OS`, `Watchdog`, `Power Restoration`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nvr_disk_features`
---
-
-DROP TABLE IF EXISTS `nvr_disk_features`;
-CREATE TABLE `nvr_disk_features` (
-  `product_code` varchar(13) DEFAULT NULL,
-  `feature_1` varchar(35) DEFAULT NULL,
-  `feature_2` varchar(144) DEFAULT NULL,
-  `feature_3` varchar(137) DEFAULT NULL,
-  `feature_4` varchar(80) DEFAULT NULL,
-  `feature_5` varchar(169) DEFAULT NULL,
-  `feature_6` varchar(10) DEFAULT NULL,
-  `feature_7` varchar(156) DEFAULT NULL,
-  `feature_8` varchar(100) DEFAULT NULL,
-  `feature_9` varchar(123) DEFAULT NULL,
-  `feature_10` varchar(115) DEFAULT NULL,
-  `feature_11` varchar(107) DEFAULT NULL,
-  `feature_12` varchar(10) DEFAULT NULL,
-  `feature_13` varchar(10) DEFAULT NULL,
-  `feature_14` varchar(10) DEFAULT NULL,
-  `feature_15` varchar(10) DEFAULT NULL,
-  `feature_16` varchar(10) DEFAULT NULL,
-  `features_concat` varchar(1195) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `nvr_disk_features`
---
-
-INSERT INTO `nvr_disk_features` (`product_code`, `feature_1`, `feature_2`, `feature_3`, `feature_4`, `feature_5`, `feature_6`, `feature_7`, `feature_8`, `feature_9`, `feature_10`, `feature_11`, `feature_12`, `feature_13`, `feature_14`, `feature_15`, `feature_16`, `features_concat`) VALUES
-('STXXXXXVXXXX ', 'Available from 1TB to 20TB capacity', 'ImagePerfect™ firmware is designed to ensure seamless video footage capture in 24×7 surveillance workloads that record video from 64 HD cameras.', 'SkyHawk Health Management actively helps protect your surveillance storage by focusing on prevention, intervention, and recovery options.', 'RapidRebuild™ provides 3× faster volume rebuilds over traditional RAID rebuilds.', 'Unparalleled data protection with included 3-year Rescue Data Recovery Services plan, helping protect important video data with Seagate\'s in-house data recovery services', '', 'RV sensors built in allow drives to maintain performance in multi-bay systems, giving you the flexibility to scale your systems when more storage is needed.', 'ATA streaming support enables recordings from up to 64 HD cameras for smooth, uninterrupted footage.', '1M hours MTBF, 3-year limited warranty represents an improved total cost of ownership (TCO) with reduced maintenance costs.', 'Lower power consumption means a reduction in heat emissions, which improves reliability in surveillance solutions. ', 'Tarnish-resistant components help protect drives from environmental elements, increasing field reliability.', '', '', '', '', '', '• Available from 1TB to 20TB capacity\n• ImagePerfect™ firmware is designed to ensure seamless video footage capture in 24×7 surveillance workloads that record video from 64 HD cameras.\n• SkyHawk Health Management actively helps protect your surveillance storage by focusing on prevention, intervention, and recovery options.\n• RapidRebuild™ provides 3× faster volume rebuilds over traditional RAID rebuilds.\n• Unparalleled data protection with included 3-year Rescue Data Recovery Services plan, helping protect important video data with Seagate\'s in-house data recovery services\n• RV sensors built in allow drives to maintain performance in multi-bay systems, giving you the flexibility to scale your systems when more storage is needed.\n• ATA streaming support enables recordings from up to 64 HD cameras for smooth, uninterrupted footage.\n• 1M hours MTBF, 3-year limited warranty represents an improved total cost of ownership (TCO) with reduced maintenance costs.\n• Lower power consumption means a reduction in heat emissions, which improves reliability in surveillance solutions. \n• Tarnish-resistant components help protect drives from environmental elements, increasing field reliability.');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nvr_disk_info`
---
-
-DROP TABLE IF EXISTS `nvr_disk_info`;
-CREATE TABLE `nvr_disk_info` (
-  `product_code` varchar(13) DEFAULT NULL,
-  `product_name` varchar(13) DEFAULT NULL,
-  `image` varchar(10) DEFAULT NULL,
-  `technical_drawing` varchar(13) DEFAULT NULL,
-  `description` varchar(10) DEFAULT NULL,
-  `Hidden field 1` varchar(10) DEFAULT NULL,
-  `Cost price Euro` varchar(10) DEFAULT NULL,
-  `Cost price £` varchar(10) DEFAULT NULL,
-  `Manufacturer` varchar(7) DEFAULT NULL,
-  `Hidden field 5` varchar(10) DEFAULT NULL,
-  `feature_1` varchar(35) DEFAULT NULL,
-  `feature_2` varchar(144) DEFAULT NULL,
-  `feature_3` varchar(137) DEFAULT NULL,
-  `feature_4` varchar(80) DEFAULT NULL,
-  `feature_5` varchar(169) DEFAULT NULL,
-  `feature_6` varchar(10) DEFAULT NULL,
-  `feature_7` varchar(156) DEFAULT NULL,
-  `feature_8` varchar(100) DEFAULT NULL,
-  `feature_9` varchar(123) DEFAULT NULL,
-  `feature_10` varchar(115) DEFAULT NULL,
-  `feature_11` varchar(107) DEFAULT NULL,
-  `feature_12` varchar(10) DEFAULT NULL,
-  `feature_13` varchar(10) DEFAULT NULL,
-  `feature_14` varchar(10) DEFAULT NULL,
-  `feature_15` varchar(10) DEFAULT NULL,
-  `feature_16` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `nvr_disk_info`
---
-
-INSERT INTO `nvr_disk_info` (`product_code`, `product_name`, `image`, `technical_drawing`, `description`, `Hidden field 1`, `Cost price Euro`, `Cost price £`, `Manufacturer`, `Hidden field 5`, `feature_1`, `feature_2`, `feature_3`, `feature_4`, `feature_5`, `feature_6`, `feature_7`, `feature_8`, `feature_9`, `feature_10`, `feature_11`, `feature_12`, `feature_13`, `feature_14`, `feature_15`, `feature_16`) VALUES
-('STXXXXXVXXXX ', 'NVR Hard Disk', '', 'Not available', '', '', '', '', 'Seagate', '', 'Available from 1TB to 20TB capacity', 'ImagePerfect™ firmware is designed to ensure seamless video footage capture in 24×7 surveillance workloads that record video from 64 HD cameras.', 'SkyHawk Health Management actively helps protect your surveillance storage by focusing on prevention, intervention, and recovery options.', 'RapidRebuild™ provides 3× faster volume rebuilds over traditional RAID rebuilds.', 'Unparalleled data protection with included 3-year Rescue Data Recovery Services plan, helping protect important video data with Seagate\'s in-house data recovery services', '', 'RV sensors built in allow drives to maintain performance in multi-bay systems, giving you the flexibility to scale your systems when more storage is needed.', 'ATA streaming support enables recordings from up to 64 HD cameras for smooth, uninterrupted footage.', '1M hours MTBF, 3-year limited warranty represents an improved total cost of ownership (TCO) with reduced maintenance costs.', 'Lower power consumption means a reduction in heat emissions, which improves reliability in surveillance solutions. ', 'Tarnish-resistant components help protect drives from environmental elements, increasing field reliability.', '', '', '', '', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nvr_disk_size_specs`
---
-
-DROP TABLE IF EXISTS `nvr_disk_size_specs`;
-CREATE TABLE `nvr_disk_size_specs` (
-  `product_code` varchar(13) DEFAULT NULL,
-  `size (TB)` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `nvr_disk_size_specs`
---
-
-INSERT INTO `nvr_disk_size_specs` (`product_code`, `size (TB)`) VALUES
-('ST20000VE002 ', 20),
-('ST18000VE002 ', 18),
-('ST16000VE002 ', 16),
-('ST12000VE001 ', 12),
-('ST10000VE001 ', 10),
-('ST8000VE001', 8),
-('ST6000VX009 ', 6),
-('ST4000VX016 ', 4),
-('ST3000VX015 ', 3),
-('ST2000VX017 ', 2),
-('ST1000VX013 ', 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `nvr_display`
 --
 
@@ -1454,47 +1526,6 @@ INSERT INTO `nvr_display` (`product_code`, `LiveView Display Channels`, `LiveVie
 ('NVR6400TB', '64 Channels', 'Multi-Layout Display: 1x1, 2x2, 3x3, 1P+3,2P+3,1M+5, 1P+6, 3V,1M+12, 4x4, 1M+31', 'HDMI x1, VGA x1, DVI x 1', 'HDMI/DVI 1920x1080', 'Local: 1O, 1R, 1P, 1O3R, 1O8R, 1P3R', 'Web: 1O, 1R, 1P', 'Direction Control, Home, Iris, Preset, Patrol (Group)'),
 ('NVR12800TB', '128 Channels', 'Multi-Layout Display: 1x1, 2x2, 3x3, 1P+3,2P+3,1M+5, 1P+6, 3V,1M+12, 4x4, 1M+31', 'HDMI x1, VGA x1', 'HDMI/DVI 1920x1080', 'Local: 1O, 1R, 1P, 1O3R, 1O8R, 1P3R', 'Web: 1O, 1R, 1P', 'Direction Control, Home, Iris, Preset, Patrol (Group)'),
 ('SMW00TB', '32 Channels', 'Multi-Layout Display: 1x1, 2x2, 3x3, 1P+3,2P+3,1M+5, 1P+6, 3V,1M+12, 4x4, 1M+31', 'HDMI x1, VGA x1', 'HDMI 4096x2160, DVI 1920x1080', 'Local: 1O, 1R, 1P, 1O3R, 1O8R, 1P3R', 'Web: 1O, 1R, 1P', 'Direction Control, Home, Iris, Preset, Patrol (Group)');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nvr_features`
---
-
-DROP TABLE IF EXISTS `nvr_features`;
-CREATE TABLE `nvr_features` (
-  `product_code` varchar(10) DEFAULT NULL,
-  `feature_1` varchar(37) DEFAULT NULL,
-  `feature_2` varchar(35) DEFAULT NULL,
-  `feature_3` varchar(52) DEFAULT NULL,
-  `feature_4` varchar(28) DEFAULT NULL,
-  `feature_5` varchar(57) DEFAULT NULL,
-  `feature_6` varchar(44) DEFAULT NULL,
-  `feature_7` varchar(55) DEFAULT NULL,
-  `feature_8` varchar(34) DEFAULT NULL,
-  `feature_9` varchar(58) DEFAULT NULL,
-  `feature_10` varchar(35) DEFAULT NULL,
-  `feature_11` varchar(77) DEFAULT NULL,
-  `feature_12` varchar(33) DEFAULT NULL,
-  `feature_13` varchar(11) DEFAULT NULL,
-  `feature_14` varchar(10) DEFAULT NULL,
-  `feature_15` varchar(10) DEFAULT NULL,
-  `feature_16` varchar(10) DEFAULT NULL,
-  `features_concat` varchar(457) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `nvr_features`
---
-
-INSERT INTO `nvr_features` (`product_code`, `feature_1`, `feature_2`, `feature_3`, `feature_4`, `feature_5`, `feature_6`, `feature_7`, `feature_8`, `feature_9`, `feature_10`, `feature_11`, `feature_12`, `feature_13`, `feature_14`, `feature_15`, `feature_16`, `features_concat`) VALUES
-('NVR0400TB', 'H.265/H.264 upto 8MP camera supported', '4K Display ', '4 x PoE Port ', '', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', '', '802.3at/af PoE with PoE Management', '', 'Alarm In *16, Alarm Out *8', 'Made in Taiwan', 'Upto 48TB on-board storage', '', '', '', '', '• H.265/H.264 upto 8MP camera supported\n• 4K Display \n• 4 x PoE Port \n• 4K Video Output Display for Clear and Detailed Monitoring\n• Deep Search (Attribute Search, Scene Search)\n• 802.3at/af PoE with PoE Management\n• Alarm In *16, Alarm Out *8\n• Made in Taiwan\n• Upto 48TB on-board storage'),
-('NVR0800TB', 'H.265/H.264 upto 8MP camera supported', '4K Display ', '8 x PoE Port ', '', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', '', '802.3at/af PoE with PoE Management', 'RAID 0, 1 supported to Prevent from Recording Data Loss', 'Alarm In *16, Alarm Out *8', 'Made in Taiwan', 'Upto 48TB on-board storage', '', '', '', '', '• H.265/H.264 upto 8MP camera supported\n• 4K Display \n• 8 x PoE Port \n• 4K Video Output Display for Clear and Detailed Monitoring\n• Deep Search (Attribute Search, Scene Search)\n• 802.3at/af PoE with PoE Management\n• RAID 0, 1 supported to Prevent from Recording Data Loss\n• Alarm In *16, Alarm Out *8\n• Made in Taiwan\n• Upto 48TB on-board storage'),
-('NVR1600TB', 'H.265/H.264 Compression Technology', '4K Display ', '16 x PoE Port ', 'Up to 20MP Cameras Supported', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', 'Smart VCA Camera Supported for Event Search & Recording', '802.3at/af PoE with PoE Management', 'RAID 0, 1, 5 Supported to Prevent from Recording Data Loss', 'Alarm In *16, Alarm Out *8', 'Made in Taiwan', 'Upto 48TB on-board storage', '', '', '', '', '• H.265/H.264 Compression Technology\n• 4K Display \n• 16 x PoE Port \n• Up to 20MP Cameras Supported\n• 4K Video Output Display for Clear and Detailed Monitoring\n• Deep Search (Attribute Search, Scene Search)\n• Smart VCA Camera Supported for Event Search & Recording\n• 802.3at/af PoE with PoE Management\n• RAID 0, 1, 5 Supported to Prevent from Recording Data Loss\n• Alarm In *16, Alarm Out *8\n• Made in Taiwan\n• Upto 48TB on-board storage'),
-('NVR3200TB', 'H.265/H.264 Compression Technology', '4K Display ', '16 x PoE Port ', 'Up to 20MP Cameras Supported', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', 'Smart VCA Camera Supported for Event Search & Recording', '802.3at/af PoE with PoE Management', 'RAID 0, 1, 5 Supported to Prevent from Recording Data Loss', 'Alarm In *16, Alarm Out *8', 'Made in Taiwan', 'Upto 48TB on-board storage', '', '', '', '', '• H.265/H.264 Compression Technology\n• 4K Display \n• 16 x PoE Port \n• Up to 20MP Cameras Supported\n• 4K Video Output Display for Clear and Detailed Monitoring\n• Deep Search (Attribute Search, Scene Search)\n• Smart VCA Camera Supported for Event Search & Recording\n• 802.3at/af PoE with PoE Management\n• RAID 0, 1, 5 Supported to Prevent from Recording Data Loss\n• Alarm In *16, Alarm Out *8\n• Made in Taiwan\n• Upto 48TB on-board storage'),
-('NVR6400TB', 'H.265/H.264 Compression Technology', 'Up to 64CH Recording, 64CH Display', 'Support HDMI, Display Port & DVI Simultaneous Output', '16 Hot-Swappable HDD Bays', 'Support RAID 0/1/5/6/10 Storage', 'Redundant Power', 'Dual Lan Giga Network Ports', 'Multiple Fisheye Dewarp Support', 'Upto 256TB on-board storage', 'Smart Search: People/Vehicle Search', 'Analytics Integration: Smart VCA, Parking Violation/Restricted Zone Detection', 'Cybersecurity Management Solution', '', '', '', '', '• H.265/H.264 Compression Technology\n• Up to 64CH Recording, 64CH Display\n• Support HDMI, Display Port & DVI Simultaneous Output\n• 16 Hot-Swappable HDD Bays\n• Support RAID 0/1/5/6/10 Storage\n• Redundant Power\n• Dual Lan Giga Network Ports\n• Multiple Fisheye Dewarp Support\n• Upto 256TB on-board storage\n• Smart Search: People/Vehicle Search\n• Analytics Integration: Smart VCA, Parking Violation/Restricted Zone Detection\n• Cybersecurity Management Solution'),
-('NVR12800TB', 'H.265/H.264 Compression Technology', 'Up to 128CH Recording, 64CH Display', 'Support HDMI, Display Port & DVI Simultaneous Output', '16 Hot-Swappable HDD Bays', 'Support RAID 0/1/5/6/10 Storage', 'Redundant Power', 'Dual Lan Giga Network Ports', 'Multiple Fisheye Dewarp Support', 'Upto 256TB on-board storage', 'Smart Search: People/Vehicle Search', 'Analytics Integration: Smart VCA, Parking Violation/Restricted Zone Detection', 'Cybersecurity Management Solution', '', '', '', '', '• H.265/H.264 Compression Technology\n• Up to 128CH Recording, 64CH Display\n• Support HDMI, Display Port & DVI Simultaneous Output\n• 16 Hot-Swappable HDD Bays\n• Support RAID 0/1/5/6/10 Storage\n• Redundant Power\n• Dual Lan Giga Network Ports\n• Multiple Fisheye Dewarp Support\n• Upto 256TB on-board storage\n• Smart Search: People/Vehicle Search\n• Analytics Integration: Smart VCA, Parking Violation/Restricted Zone Detection\n• Cybersecurity Management Solution'),
-('SMW00TB', 'H.265/H.264 Compression Technology', '4K Display ', 'Can act as NVR if required', 'Up to 20MP Cameras Supported', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', 'Smart VCA Camera Supported for Event Search & Recording', 'Upto 4 monitor outputs', '', '', 'Built in United Kingdom', 'Upto 32TB on-board storage', 'Slim design', '', '', '', '• H.265/H.264 Compression Technology\n• 4K Display \n• Can act as NVR if required\n• Up to 20MP Cameras Supported\n• 4K Video Output Display for Clear and Detailed Monitoring\n• Deep Search (Attribute Search, Scene Search)\n• Smart VCA Camera Supported for Event Search & Recording\n• Upto 4 monitor outputs\n• Built in United Kingdom\n• Upto 32TB on-board storage\n• Slim design');
 
 -- --------------------------------------------------------
 
@@ -1538,27 +1569,13 @@ CREATE TABLE `nvr_info` (
   `product_code` varchar(10) NOT NULL,
   `product_name` varchar(31) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `image` varchar(10) DEFAULT NULL,
+  `image_2` varchar(255) NOT NULL,
+  `image_3` varchar(255) NOT NULL,
   `technical_image` varchar(10) DEFAULT NULL,
   `technical_image_2` varchar(10) DEFAULT NULL,
   `technical_image_3` varchar(10) DEFAULT NULL,
   `download_link` varchar(10) DEFAULT NULL,
   `description` varchar(896) DEFAULT NULL,
-  `feature_1` varchar(37) DEFAULT NULL,
-  `feature_2` varchar(35) DEFAULT NULL,
-  `feature_3` varchar(52) DEFAULT NULL,
-  `feature_4` varchar(28) DEFAULT NULL,
-  `feature_5` varchar(57) DEFAULT NULL,
-  `feature_6` varchar(44) DEFAULT NULL,
-  `feature_7` varchar(55) DEFAULT NULL,
-  `feature_8` varchar(34) DEFAULT NULL,
-  `feature_9` varchar(58) DEFAULT NULL,
-  `feature_10` varchar(35) DEFAULT NULL,
-  `feature_11` varchar(77) DEFAULT NULL,
-  `feature_12` varchar(33) DEFAULT NULL,
-  `feature_13` varchar(11) DEFAULT NULL,
-  `feature_14` varchar(10) DEFAULT NULL,
-  `feature_15` varchar(10) DEFAULT NULL,
-  `feature_16` varchar(10) DEFAULT NULL,
   `monitor_type` varchar(25) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -1566,14 +1583,14 @@ CREATE TABLE `nvr_info` (
 -- Dumping data for table `nvr_info`
 --
 
-INSERT INTO `nvr_info` (`product_code`, `product_name`, `image`, `technical_image`, `technical_image_2`, `technical_image_3`, `download_link`, `description`, `feature_1`, `feature_2`, `feature_3`, `feature_4`, `feature_5`, `feature_6`, `feature_7`, `feature_8`, `feature_9`, `feature_10`, `feature_11`, `feature_12`, `feature_13`, `feature_14`, `feature_15`, `feature_16`, `monitor_type`) VALUES
-('NVR0400TB', '4-CH PoE NVR with analytics', '', '', '', '', '', 'This is an H265 Linux-based standalone NVR that supports up to 4K IP camera video decoding and local 4K video display. With advanced H265 compression technology, users are able to experience Full HD quality video while expending less HDD capacity than H264.  The NVR features embedded 4x 802.3 at/af PoE ports to provide users easy and convenient IP camera installation, and also supports remote and mobile access via apps for both iOS and Android devices. The viewing app provides instant push notification and direct video playback functions when triggered by an alarm notification and provides users a flexible and intelligent NVR for seamless use in small video surveillance applications.  1 x 14TB disc can be accommodated internally.  On-board smartsearch video analytics and cybersecurity management.', 'H.265/H.264 upto 8MP camera supported', '4K Display ', '4 x PoE Port ', '', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', '', '802.3at/af PoE with PoE Management', '', 'Alarm In *16, Alarm Out *8', 'Made in Taiwan', 'Upto 48TB on-board storage', '', '', '', '', ''),
-('NVR0800TB', '8-CH PoE NVR with analytics', '', '', '', '', '', 'This is an H265 Linux-based standalone NVR that supports up to 4K IP camera video decoding and local 4K video display. With advanced H265 compression technology, users are able to experience Full HD quality video while expending less HDD capacity than H264.  The NVR features embedded 8x 802.3 at/af PoE ports to provide users easy and convenient IP camera installation, and also supports remote and mobile access via apps for both iOS and Android devices. The viewing app provides instant push notification and direct video playback functions when triggered by an alarm notification and provides users a flexible and intelligent NVR for seamless use in small to medium sized video surveillance applications.  Upto 4 x 12TB discs can be accommodated internally giving a maximum on-board capacity of 48TB. On-board smartsearch video analytics and cybersecurity management.\n\n', 'H.265/H.264 upto 8MP camera supported', '4K Display ', '8 x PoE Port ', '', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', '', '802.3at/af PoE with PoE Management', 'RAID 0, 1 supported to Prevent from Recording Data Loss', 'Alarm In *16, Alarm Out *8', 'Made in Taiwan', 'Upto 48TB on-board storage', '', '', '', '', ''),
-('NVR12800TB', '128-CH NVR with analytics', '', '', '', '', '', 'This is an H265 Windows-based standalone NVR that supports up to 4K IP camera video decoding and local 4K video display. With advanced H265 compression technology, users are able to experience Full HD quality video while expending less HDD capacity than H264.  The NVR supports remote and mobile access via apps for both iOS and Android devices. The viewing app provides instant push notification and direct video playback functions when triggered by an alarm notification and provides users a flexible and intelligent NVR for seamless use in arge video surveillance applications.  RAID 0, 1, 5, 6 and 10 is supported.  Upto 16 x 16TB discs can be accommodated internally giving a maximum on-board capacity of 256TB. On-board smartsearch video analytics and cybersecurity management.\n\n', 'H.265/H.264 Compression Technology', 'Up to 128CH Recording, 64CH Display', 'Support HDMI, Display Port & DVI Simultaneous Output', '16 Hot-Swappable HDD Bays', 'Support RAID 0/1/5/6/10 Storage', 'Redundant Power', 'Dual Lan Giga Network Ports', 'Multiple Fisheye Dewarp Support', 'Upto 256TB on-board storage', 'Smart Search: People/Vehicle Search', 'Analytics Integration: Smart VCA, Parking Violation/Restricted Zone Detection', 'Cybersecurity Management Solution', '', '', '', '', ''),
-('NVR1600TB', '16-CH PoE NVR with analytics', '', '', '', '', '', 'This is an H265 Linux-based standalone NVR that supports up to 4K IP camera video decoding and local 4K video display. With advanced H265 compression technology, users are able to experience Full HD quality video while expending less HDD capacity than H264.  The NVR features embedded 16x 802.3 at/af PoE ports to provide users easy and convenient IP camera installation, and also supports remote and mobile access via apps for both iOS and Android devices. The viewing app provides instant push notification and direct video playback functions when triggered by an alarm notification and provides users a flexible and intelligent NVR for seamless use in medium sized video surveillance applications.  RAID 0, 1 and 5 is supported.  Upto 4 x 12TB discs can be accommodated internally giving a maximum on-board capacity of 48TB. On-board smartsearch video analytics and cybersecurity management.\n\n', 'H.265/H.264 Compression Technology', '4K Display ', '16 x PoE Port ', 'Up to 20MP Cameras Supported', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', 'Smart VCA Camera Supported for Event Search & Recording', '802.3at/af PoE with PoE Management', 'RAID 0, 1, 5 Supported to Prevent from Recording Data Loss', 'Alarm In *16, Alarm Out *8', 'Made in Taiwan', 'Upto 48TB on-board storage', '', '', '', '', ''),
-('NVR3200TB', '32-CH PoE NVR with analytics', '', '', '', '', '', 'This is an H265 Linux-based standalone NVR that supports up to 4K IP camera video decoding and local 4K video display. With advanced H265 compression technology, users are able to experience Full HD quality video while expending less HDD capacity than H264.  The NVR features embedded 16x 802.3 at/af PoE ports to provide users easy and convenient IP camera installation, and also supports remote and mobile access via apps for both iOS and Android devices. The viewing app provides instant push notification and direct video playback functions when triggered by an alarm notification and provides users a flexible and intelligent NVR for seamless use in medium sized video surveillance applications.  RAID 0, 1 and 5 is supported.  Upto 4 x 12TB discs can be accommodated internally giving a maximum on-board capacity of 48TB. On-board smartsearch video analytics and cybersecurity management.\n\n', 'H.265/H.264 Compression Technology', '4K Display ', '16 x PoE Port ', 'Up to 20MP Cameras Supported', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', 'Smart VCA Camera Supported for Event Search & Recording', '802.3at/af PoE with PoE Management', 'RAID 0, 1, 5 Supported to Prevent from Recording Data Loss', 'Alarm In *16, Alarm Out *8', 'Made in Taiwan', 'Upto 48TB on-board storage', '', '', '', '', ''),
-('NVR6400TB', '64-CH NVR with analytics', '', '', '', '', '', 'This is an H265 Windows-based standalone NVR that supports up to 4K IP camera video decoding and local 4K video display. With advanced H265 compression technology, users are able to experience Full HD quality video while expending less HDD capacity than H264.  The NVR supports remote and mobile access via apps for both iOS and Android devices. The viewing app provides instant push notification and direct video playback functions when triggered by an alarm notification and provides users a flexible and intelligent NVR for seamless use in medium to large sized video surveillance applications.  RAID 0, 1, 5, 6 and 10 is supported.  Upto 16 x 16TB discs can be accommodated internally giving a maximum on-board capacity of 256TB. On-board smartsearch video analytics and cybersecurity management.\n\n', 'H.265/H.264 Compression Technology', 'Up to 64CH Recording, 64CH Display', 'Support HDMI, Display Port & DVI Simultaneous Output', '16 Hot-Swappable HDD Bays', 'Support RAID 0/1/5/6/10 Storage', 'Redundant Power', 'Dual Lan Giga Network Ports', 'Multiple Fisheye Dewarp Support', 'Upto 256TB on-board storage', 'Smart Search: People/Vehicle Search', 'Analytics Integration: Smart VCA, Parking Violation/Restricted Zone Detection', 'Cybersecurity Management Solution', '', '', '', '', ''),
-('SMW00TB', 'Security Management Workstation', '', '', '', '', '', 'Our Security Management Workstations allow viewing and management of all your CCTV cameras and recordings.  They complement our the range of recorders to enable quick set-up of a surveillance workstation.  The terminal is preloaded with a Security Management Client and preconfigured to minimise installation time and facilitate quick connection to the server/network video recorder.  It has validated hardware and software components for optimal surveillance experience.  It includes everything you need to keep your system updated and maintained - all from one central location.  The base terminal supports two monitors - with option for upgrade to four monitor outputs.  The workstation may also be used as a 32-channel NVR if required with up to 32TB on-board hard disc recording if required.  It is optimised to meet the demands for reliable high-definition surveillance.  ', 'H.265/H.264 Compression Technology', '4K Display ', 'Can act as NVR if required', 'Up to 20MP Cameras Supported', '4K Video Output Display for Clear and Detailed Monitoring', 'Deep Search (Attribute Search, Scene Search)', 'Smart VCA Camera Supported for Event Search & Recording', 'Upto 4 monitor outputs', '', '', 'Built in United Kingdom', 'Upto 32TB on-board storage', 'Slim design', '', '', '', 'station');
+INSERT INTO `nvr_info` (`product_code`, `product_name`, `image`, `image_2`, `image_3`, `technical_image`, `technical_image_2`, `technical_image_3`, `download_link`, `description`, `monitor_type`) VALUES
+('NVR0400TB', '4-CH PoE NVR with analytics', '', '', '', '', '', '', '', 'This is an H265 Linux-based standalone NVR that supports up to 4K IP camera video decoding and local 4K video display. With advanced H265 compression technology, users are able to experience Full HD quality video while expending less HDD capacity than H264.  The NVR features embedded 4x 802.3 at/af PoE ports to provide users easy and convenient IP camera installation, and also supports remote and mobile access via apps for both iOS and Android devices. The viewing app provides instant push notification and direct video playback functions when triggered by an alarm notification and provides users a flexible and intelligent NVR for seamless use in small video surveillance applications.  1 x 14TB disc can be accommodated internally.  On-board smartsearch video analytics and cybersecurity management.', ''),
+('NVR0800TB', '8-CH PoE NVR with analytics', '', '', '', '', '', '', '', 'This is an H265 Linux-based standalone NVR that supports up to 4K IP camera video decoding and local 4K video display. With advanced H265 compression technology, users are able to experience Full HD quality video while expending less HDD capacity than H264.  The NVR features embedded 8x 802.3 at/af PoE ports to provide users easy and convenient IP camera installation, and also supports remote and mobile access via apps for both iOS and Android devices. The viewing app provides instant push notification and direct video playback functions when triggered by an alarm notification and provides users a flexible and intelligent NVR for seamless use in small to medium sized video surveillance applications.  Upto 4 x 12TB discs can be accommodated internally giving a maximum on-board capacity of 48TB. On-board smartsearch video analytics and cybersecurity management.\n\n', ''),
+('NVR12800TB', '128-CH NVR with analytics', '', '', '', '', '', '', '', 'This is an H265 Windows-based standalone NVR that supports up to 4K IP camera video decoding and local 4K video display. With advanced H265 compression technology, users are able to experience Full HD quality video while expending less HDD capacity than H264.  The NVR supports remote and mobile access via apps for both iOS and Android devices. The viewing app provides instant push notification and direct video playback functions when triggered by an alarm notification and provides users a flexible and intelligent NVR for seamless use in arge video surveillance applications.  RAID 0, 1, 5, 6 and 10 is supported.  Upto 16 x 16TB discs can be accommodated internally giving a maximum on-board capacity of 256TB. On-board smartsearch video analytics and cybersecurity management.\n\n', ''),
+('NVR1600TB', '16-CH PoE NVR with analytics', '', '', '', '', '', '', '', 'This is an H265 Linux-based standalone NVR that supports up to 4K IP camera video decoding and local 4K video display. With advanced H265 compression technology, users are able to experience Full HD quality video while expending less HDD capacity than H264.  The NVR features embedded 16x 802.3 at/af PoE ports to provide users easy and convenient IP camera installation, and also supports remote and mobile access via apps for both iOS and Android devices. The viewing app provides instant push notification and direct video playback functions when triggered by an alarm notification and provides users a flexible and intelligent NVR for seamless use in medium sized video surveillance applications.  RAID 0, 1 and 5 is supported.  Upto 4 x 12TB discs can be accommodated internally giving a maximum on-board capacity of 48TB. On-board smartsearch video analytics and cybersecurity management.\n\n', ''),
+('NVR3200TB', '32-CH PoE NVR with analytics', '', '', '', '', '', '', '', 'This is an H265 Linux-based standalone NVR that supports up to 4K IP camera video decoding and local 4K video display. With advanced H265 compression technology, users are able to experience Full HD quality video while expending less HDD capacity than H264.  The NVR features embedded 16x 802.3 at/af PoE ports to provide users easy and convenient IP camera installation, and also supports remote and mobile access via apps for both iOS and Android devices. The viewing app provides instant push notification and direct video playback functions when triggered by an alarm notification and provides users a flexible and intelligent NVR for seamless use in medium sized video surveillance applications.  RAID 0, 1 and 5 is supported.  Upto 4 x 12TB discs can be accommodated internally giving a maximum on-board capacity of 48TB. On-board smartsearch video analytics and cybersecurity management.\n\n', ''),
+('NVR6400TB', '64-CH NVR with analytics', '', '', '', '', '', '', '', 'This is an H265 Windows-based standalone NVR that supports up to 4K IP camera video decoding and local 4K video display. With advanced H265 compression technology, users are able to experience Full HD quality video while expending less HDD capacity than H264.  The NVR supports remote and mobile access via apps for both iOS and Android devices. The viewing app provides instant push notification and direct video playback functions when triggered by an alarm notification and provides users a flexible and intelligent NVR for seamless use in medium to large sized video surveillance applications.  RAID 0, 1, 5, 6 and 10 is supported.  Upto 16 x 16TB discs can be accommodated internally giving a maximum on-board capacity of 256TB. On-board smartsearch video analytics and cybersecurity management.\n\n', ''),
+('SMW00TB', 'Security Management Workstation', '', '', '', '', '', '', '', 'Our Security Management Workstations allow viewing and management of all your CCTV cameras and recordings.  They complement our the range of recorders to enable quick set-up of a surveillance workstation.  The terminal is preloaded with a Security Management Client and preconfigured to minimise installation time and facilitate quick connection to the server/network video recorder.  It has validated hardware and software components for optimal surveillance experience.  It includes everything you need to keep your system updated and maintained - all from one central location.  The base terminal supports two monitors - with option for upgrade to four monitor outputs.  The workstation may also be used as a 32-channel NVR if required with up to 32TB on-board hard disc recording if required.  It is optimised to meet the demands for reliable high-definition surveillance.  ', 'station');
 
 -- --------------------------------------------------------
 
