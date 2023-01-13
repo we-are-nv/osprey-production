@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "Deploying application"
+echo "un deploying application"
+echo "spinning down"
 docker-compose -f docker-compose-dev.yml down -v
 
 
