@@ -1363,13 +1363,14 @@ router.get(
 		} catch (error) {
 			consolee.log(error);
 		}
-
 		res.render('hazardous-areas', {
 			data: data,
 			breadcrumbs: req.breadcrumbs
 		});
 	}
 );
+
+
 
 router.get(
 	'/products/cctv/cameras/thermal-cameras',
