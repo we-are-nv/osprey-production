@@ -965,7 +965,9 @@ router.get('/about', breadcrumbs.Middleware(), (req, res) => {
 // 	res.render('marine', { breadcrumbs: req.breadcrumbs });
 // });
 
-router.get('/marine', breadcrumbs.Middleware(), async (req, res) => {
+// MARKET PAGES
+
+router.get('/markets/marine', breadcrumbs.Middleware(), async (req, res) => {
 	try {
 		var data = {};
 		var sqlQuery = 'SELECT * FROM info WHERE category = "marine" ';
@@ -979,17 +981,18 @@ router.get('/marine', breadcrumbs.Middleware(), async (req, res) => {
 		breadcrumbs: req.breadcrumbs
 	});
 });
-router.get('/marine-onshore', breadcrumbs.Middleware, (req, res) => {
+
+router.get('/markets/marine-onshore', breadcrumbs.Middleware(), (req, res) => {
 	res.render('marine-onshore', { breadcrumbs: req.breadcrumbs });
 });
 
-router.get('/marine-offshore', breadcrumbs.Middleware, (req, res) => {
+router.get('/makets/marine-offshore', breadcrumbs.Middleware(), (req, res) => {
 	res.render('marine-offshore', {
 		breadcrumbs: req.breadcrumbs
 	});
 });
 
-router.get('/oil-and-gas', breadcrumbs.Middleware, (req, res) => {
+router.get('/markets/oil-and-gas', breadcrumbs.Middleware(), (req, res) => {
 	res.render('oil-and-gas', {
 		breadcrumbs: req.breadcrumbs
 	});
@@ -1199,7 +1202,7 @@ router.get('/products/cctv/...', breadcrumbs.Middleware(), async (req, res) => {
 });
 
 router.get(
-	'/products/cctv/cctv-accessories',
+	'/products/cctv/cctv-camera-accessories',
 	breadcrumbs.Middleware(),
 	async (req, res) => {
 		try {
@@ -1502,6 +1505,8 @@ router.get(
 		res.render('wireless-locks', { breadcrumbs: req.breadcrumbs });
 	}
 );
+
+
 
 // router.get('/products/access-control/wireless-locks', (req, res) => {
 // 	res.render('wireless-locks');
