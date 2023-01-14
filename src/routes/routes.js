@@ -979,6 +979,21 @@ router.get('/marine', breadcrumbs.Middleware(), async (req, res) => {
 		breadcrumbs: req.breadcrumbs
 	});
 });
+router.get('/marine-onshore', breadcrumbs.Middleware, (req, res) => {
+	res.render('marine-onshore', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/marine-offshore', breadcrumbs.Middleware, (req, res) => {
+	res.render('marine-offshore', {
+		breadcrumbs: req.breadcrumbs
+	});
+});
+
+router.get('/oil-and-gas', breadcrumbs.Middleware, (req, res) => {
+	res.render('oil-and-gas', {
+		breadcrumbs: req.breadcrumbs
+	});
+});
 
 router.get('/law-enforcement', (req, res) => {
 	res.render('law');
@@ -1253,7 +1268,7 @@ router.get(
 	async (req, res) => {
 		res.render('cctv-ancillaries', {
 			breadcrumbs: req.breadcrumbs
-		})
+		});
 	}
 );
 
