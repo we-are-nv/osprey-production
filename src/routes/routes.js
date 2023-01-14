@@ -1167,10 +1167,6 @@ router.get(
 	}
 );
 
-// router.get('/products/cctv/cctv-analytics', (req, res) => {
-// 	res.render('cctv-analytics');
-// });
-
 router.get('/products/cctv/...', breadcrumbs.Middleware(), async (req, res) => {
 	try {
 		let data = {};
@@ -1248,6 +1244,16 @@ router.get(
 	breadcrumbs.Middleware(),
 	(req, res) => {
 		res.render('management-software', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/cctv/cctv-ancillaries',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		res.render('cctv-ancillaries', {
+			breadcrumbs: req.breadcrumbs
+		})
 	}
 );
 

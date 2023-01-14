@@ -3571,8 +3571,13 @@ td.val-data {
 }
 
 .product-card-holder.cctv-ethernet,
-.product-card-holder.cctv-marine-cable {
+.product-card-holder.cctv-marine-cable,
+.product-card-holder.cctv-monitors {
 	flex-wrap: nowrap;
+}
+
+.product-card-holder.cctv-monitors {
+	padding-top: 2em;
 }
 
 .individual-product {
