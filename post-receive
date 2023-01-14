@@ -7,7 +7,7 @@
 TARGET="/home/wearenv/osprey"
 
 # the location of the .git directory
-GIT_DIR="/home/wearenv/osprey.git"
+GIT_DIR="/home/wearenv/osprey-hook.git"
 
 
 BRANCH="main"
