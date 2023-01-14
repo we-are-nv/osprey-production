@@ -1185,22 +1185,6 @@ router.get(
 	}
 );
 
-router.get('/products/cctv/...', breadcrumbs.Middleware(), async (req, res) => {
-	try {
-		let data = {};
-		let sqlQuery = 'SELECT * FROM ...';
-		data = await dbQuery.genericQuery(sqlQuery);
-		// res.send(data);
-		// return;
-		res.render('...', {
-			data: data,
-			breadcrumbs: req.breadcrumbs
-		});
-	} catch (error) {
-		console.log(error);
-	}
-});
-
 router.get(
 	'/products/cctv/cctv-camera-accessories',
 	breadcrumbs.Middleware(),
@@ -1505,8 +1489,6 @@ router.get(
 		res.render('wireless-locks', { breadcrumbs: req.breadcrumbs });
 	}
 );
-
-
 
 // router.get('/products/access-control/wireless-locks', (req, res) => {
 // 	res.render('wireless-locks');
