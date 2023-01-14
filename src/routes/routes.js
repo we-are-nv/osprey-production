@@ -986,7 +986,7 @@ router.get('/markets/marine-onshore', breadcrumbs.Middleware(), (req, res) => {
 	res.render('marine-onshore', { breadcrumbs: req.breadcrumbs });
 });
 
-router.get('/makets/marine-offshore', breadcrumbs.Middleware(), (req, res) => {
+router.get('/markets/marine-offshore', breadcrumbs.Middleware(), (req, res) => {
 	res.render('marine-offshore', {
 		breadcrumbs: req.breadcrumbs
 	});
