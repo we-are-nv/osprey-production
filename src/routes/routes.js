@@ -33,8 +33,7 @@ router.get('/product-page', async (req, res) => {
 router.get(
 	'/products/cctv/cameras/:product_code',
 	breadcrumbs.Middleware(),
-	async (req, res) => {
-		console.log('DEBUG')
+	async (req, res) => {	
 		try {
 			let camInfo = await dbQuery.getAllInfo(req);
 			let movement = await dbQuery.getMovement(req);
@@ -44,8 +43,6 @@ router.get(
 			let physical = await dbQuery.getPhysical(req);
 			let power = await dbQuery.getPower(req);
 			let certs = await dbQuery.getCerts(req);
-			console.log('features' + allFeatures)
-			console.log('audio video' + audioVideo)
 			camInfo = camInfo[0];
 			movement = movement[0];
 			//camFeatures = camFeatures[0];
@@ -194,7 +191,7 @@ router.get(
 				}
 				return prev;
 			}, []);
-
+			console.log(newInfoKeys)
 			let newInfoVals = [];
 			let newMovementVals = [];
 			let newFeaturesOnlyVals = [];
@@ -397,24 +394,25 @@ router.get(
 
 			// return;
 			// console.log(av.length);
-
-			res.render('product-pages/main-prod-page', {
-				data: finalObj,
-				av: finalAV,
-				movement: finalMovement,
-				physical: finalPhys,
-				power: finalPower,
-				certs: finalCerts,
-				features: featuresArray,
-				breadcrumbs: req.breadcrumbs
-			});
+			console.log(finalObj);
+			res.status(200).json(finalObj)
+			// res.render('product-pages/main-prod-page', {
+			// 	data: finalObj,
+			// 	av: finalAV,
+			// 	movement: finalMovement,
+			// 	physical: finalPhys,
+			// 	power: finalPower,
+			// 	certs: finalCerts,
+			// 	features: featuresArray,
+			// 	breadcrumbs: req.breadcrumbs
+			// });
 		} catch (e) {
 			console.log(e);
 			return res.render('index');
 		}
 	}
 );
-
+ 
 // more product routes
 
 router.get(

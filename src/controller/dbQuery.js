@@ -46,7 +46,6 @@ async function getConcatFeatures(req) {
 }
 
 async function getAV(req) {
-	console.log('AVTRIGGER')
 	try {
 		results = await db.id('SELECT * FROM av WHERE product_code = ?', [
 			req.params.product_code
