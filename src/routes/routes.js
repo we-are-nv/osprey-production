@@ -46,6 +46,7 @@ router.get(
 			camInfo = camInfo[0];
 			movement = movement[0];
 			//camFeatures = camFeatures[0];
+
 			camFeaturesConcat = camFeaturesConcat[0];
 			audioVideo = audioVideo[0];
 			physical = physical[0];
@@ -986,7 +987,7 @@ router.get('/markets/marine-onshore', breadcrumbs.Middleware(), (req, res) => {
 	res.render('marine-onshore', { breadcrumbs: req.breadcrumbs });
 });
 
-router.get('/makets/marine-offshore', breadcrumbs.Middleware(), (req, res) => {
+router.get('/markets/marine-offshore', breadcrumbs.Middleware(), (req, res) => {
 	res.render('marine-offshore', {
 		breadcrumbs: req.breadcrumbs
 	});
@@ -1185,22 +1186,6 @@ router.get(
 	}
 );
 
-router.get('/products/cctv/...', breadcrumbs.Middleware(), async (req, res) => {
-	try {
-		let data = {};
-		let sqlQuery = 'SELECT * FROM ...';
-		data = await dbQuery.genericQuery(sqlQuery);
-		// res.send(data);
-		// return;
-		res.render('...', {
-			data: data,
-			breadcrumbs: req.breadcrumbs
-		});
-	} catch (error) {
-		console.log(error);
-	}
-});
-
 router.get(
 	'/products/cctv/cctv-camera-accessories',
 	breadcrumbs.Middleware(),
@@ -1379,7 +1364,6 @@ router.get(
 		} catch (error) {
 			consolee.log(error);
 		}
-
 		res.render('hazardous-areas', {
 			data: data,
 			breadcrumbs: req.breadcrumbs
@@ -1505,8 +1489,6 @@ router.get(
 		res.render('wireless-locks', { breadcrumbs: req.breadcrumbs });
 	}
 );
-
-
 
 // router.get('/products/access-control/wireless-locks', (req, res) => {
 // 	res.render('wireless-locks');
