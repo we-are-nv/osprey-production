@@ -16,6 +16,7 @@ function removeProdCode(arr) {
 }
 
 function removeFirst(obj) {
+	
 	delete obj[0].product_code;
 	return obj;
 }

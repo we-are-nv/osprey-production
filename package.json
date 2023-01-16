@@ -20,6 +20,7 @@
 		"express-breadcrumbs": "^0.0.2",
 		"express-url-breadcrumb": "^1.0.2",
 		"express-winston": "^4.2.0",
+		"find-config": "^1.0.0",
 		"fs": "^0.0.1-security",
 		"jquery": "^3.6.1",
 		"logform": "^2.4.2",

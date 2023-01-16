@@ -50,6 +50,7 @@ async function getAV(req) {
 		results = await db.id('SELECT * FROM av WHERE product_code = ?', [
 			req.params.product_code
 		]);
+		console.log('getAV'+results)
 		return results;
 	} catch (e) {
 		console.log(e);
