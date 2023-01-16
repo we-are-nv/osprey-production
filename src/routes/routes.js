@@ -46,7 +46,7 @@ router.get(
 
 			camInfo = camInfo[0];
 			movement = movement[0];
-			camFeatures = camFeatures[0];
+			camFeatures = allFeatures[0];
 			camFeaturesConcat = camFeaturesConcat[0];
 			audioVideo = audioVideo[0];
 			physical = physical[0];
@@ -1369,8 +1369,6 @@ router.get(
 		});
 	}
 );
-
-
 
 router.get(
 	'/products/cctv/cameras/thermal-cameras',
