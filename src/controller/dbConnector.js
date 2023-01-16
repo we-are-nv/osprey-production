@@ -17,7 +17,7 @@ let dbResults = {};
 dbResults.all = sqlQuery => {
 	return new Promise((resolve, reject) => {
 		// const sqlQuery = `SELECT * FROM cam_info`;
-	
+
 		pool.query(sqlQuery, (err, results) => {
 			if (err) {
 				return reject(err);
