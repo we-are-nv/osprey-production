@@ -10,7 +10,6 @@ const pool = mysql.createPool({
 	database: 'osprey-all',
 	connectionLimit: 10
 });
-console.log()
 
 let dbResults = {};
 // const sqlQuery = `SELECT * FROM cam_info`;
