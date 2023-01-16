@@ -34,6 +34,7 @@ router.get(
 	'/products/cctv/cameras/:product_code',
 	breadcrumbs.Middleware(),
 	async (req, res) => {
+		console.log('DEBUG')
 		try {
 			let camInfo = await dbQuery.getAllInfo(req);
 			let movement = await dbQuery.getMovement(req);
@@ -43,10 +44,11 @@ router.get(
 			let physical = await dbQuery.getPhysical(req);
 			let power = await dbQuery.getPower(req);
 			let certs = await dbQuery.getCerts(req);
-
+			console.log('features' + allFeatures)
+			console.log('audio video' + audioVideo)
 			camInfo = camInfo[0];
 			movement = movement[0];
-			camFeatures = camFeatures[0];
+			//camFeatures = camFeatures[0];
 			camFeaturesConcat = camFeaturesConcat[0];
 			audioVideo = audioVideo[0];
 			physical = physical[0];
