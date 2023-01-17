@@ -2,6 +2,7 @@ const express = require('express');
 const controllers = require('../controller/controllers');
 const dbQuery = require('../controller/dbQuery');
 var breadcrumbs = require('../controller/breadcrumbs');
+const e = require('express');
 const router = express.Router();
 
 router.use(function timeLog(req, res, next) {
@@ -10,7 +11,8 @@ router.use(function timeLog(req, res, next) {
 });
 
 router.get('/', (req, res) => {
-	res.send(process.env);
+	// res.send(process.env);
+	res.render('index');
 });
 
 router.get('/db-connector-test', async (req, res) => {
@@ -1684,4 +1686,20 @@ router.get(
 	}
 );
 
+router.get(
+	'products/cctv/camera-housings/:product_code',
+	breadcrumbs.Middleware(),
+	async(req, res => {
+
+		try {
+
+			
+
+
+		} catch (e) {
+			console.error(e)
+		}
+
+	})
+);
 module.exports = router;
