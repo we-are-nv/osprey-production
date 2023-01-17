@@ -116,6 +116,143 @@ router.get('/products', breadcrumbs.Middleware(), (req, res) => {
 	});
 });
 
+router.get(
+	'/products/cctv/cameras/',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = await dbQuery.genericQuery('SELECT * FROM `info`; ');
+
+			res.render('cameras', {
+				breadcrumbs: req.breadcrumbs,
+				data: data
+			});
+		} catch (e) {
+			console.log(e);
+		}
+	}
+);
+
+router.get(
+	'/products/cctv/cameras/prison-cell',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('prison-cell', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+// Marine Camera Product Route
+router.get(
+	'/products/cctv/cameras/marine-cameras',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = {};
+
+			data = await dbQuery.genericQuery(
+				'SELECT * FROM `info` WHERE category = "marine" '
+			);
+
+			res.render('marine-cameras', {
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			consolee.log(error);
+		}
+	}
+);
+
+router.get(
+	'/products/cctv/cameras/hazardous-environment',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			var data = {};
+			var sqlQuery = 'SELECT * FROM info WHERE category = "hazardous" ';
+			data = await dbQuery.genericQuery(sqlQuery);
+		} catch (error) {
+			consolee.log(error);
+		}
+		res.render('hazardous-areas', {
+			data: data,
+			breadcrumbs: req.breadcrumbs
+		});
+	}
+);
+
+router.get(
+	'/products/cctv/cameras/PTZ',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = await dbQuery.genericQuery(
+				'SELECT * FROM `info` WHERE `movement` = "PTZ" '
+			);
+			// res.send(data);
+			// return;
+			res.render('cameras-ptz', {
+				breadcrumbs: req.breadcrumbs,
+				data: data
+			});
+		} catch (e) {}
+	}
+);
+
+router.get(
+	'/products/cctv/cameras/fixed',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = await dbQuery.genericQuery(
+				'SELECT * FROM `info` WHERE movement = "fixed" '
+			);
+			// res.send(data);
+			// return;
+			res.render('cameras-fixed', {
+				breadcrumbs: req.breadcrumbs,
+				data: data
+			});
+		} catch (e) {}
+	}
+);
+
+router.get(
+	'/products/cctv/cameras/thermal',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = await dbQuery.genericQuery(
+				'SELECT * FROM `info` WHERE category = "thermal" '
+			);
+			// res.send(data);
+			// return;
+			res.render('thermal-cameras', {
+				breadcrumbs: req.breadcrumbs,
+				data: data
+			});
+		} catch (e) {}
+	}
+);
+
+router.get(
+	'/products/cctv/cameras/commercial',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = await dbQuery.genericQuery(
+				'SELECT * FROM `info` WHERE category = "commercial" '
+			);
+			// res.send(data);
+			// return;
+			res.render('cameras-commercial', {
+				breadcrumbs: req.breadcrumbs,
+				data: data
+			});
+		} catch (e) {}
+	}
+);
+
 // CCTV categories
 //
 //
@@ -419,124 +556,6 @@ router.get('/marine-categories', breadcrumbs.Middleware(), (req, res) => {
 //
 //
 //
-
-router.get(
-	'/products/cctv/cameras/',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = await dbQuery.genericQuery('SELECT * FROM `info`; ');
-
-			res.render('cameras', {
-				breadcrumbs: req.breadcrumbs,
-				data: data
-			});
-		} catch (e) {
-			console.log(e);
-		}
-	}
-);
-
-router.get(
-	'/products/cctv/cameras/prison-cell',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('prison-cell', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-// Marine Camera Product Route
-router.get(
-	'/products/cctv/cameras/marine-cameras',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = {};
-
-			data = await dbQuery.genericQuery(
-				'SELECT * FROM `info` WHERE category = "marine" '
-			);
-
-			res.render('marine-cameras', {
-				data: data,
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			consolee.log(error);
-		}
-	}
-);
-
-router.get(
-	'/products/cctv/cameras/hazardous-environment',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			var data = {};
-			var sqlQuery = 'SELECT *_link FROM info WHERE category = "hazard" ';
-			data = await dbQuery.genericQuery(sqlQuery);
-		} catch (error) {
-			consolee.log(error);
-		}
-		res.render('hazardous-areas', {
-			data: data,
-			breadcrumbs: req.breadcrumbs
-		});
-	}
-);
-
-router.get(
-	'/products/cctv/cameras/PTZ',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = await dbQuery.genericQuery(
-				'SELECT * FROM `info` WHERE movement = PTZ '
-			);
-			req.send(data);
-			return;
-			res.render('cameras-ptz', {
-				breadcrumbs: req.breadcrumbs,
-				data: data
-			});
-		} catch (e) {}
-	}
-);
-
-router.get(
-	'/products/cctv/cameras/fixed',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = await dbQuery.genericQuery(
-				'SELECT * FROM `info` WHERE movement = fixed '
-			);
-			req.send(data);
-			return;
-			res.render('cameras-ptz', {
-				breadcrumbs: req.breadcrumbs,
-				data: data
-			});
-		} catch (e) {}
-	}
-);
-
-router.get(
-	'/products/cctv/cameras/thermal-cameras',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('thermal-cameras', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/cctv/cameras/commercial',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('commercial-cameras', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
 //
 //
 //

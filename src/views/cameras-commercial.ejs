@@ -4,9 +4,9 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Thermal Cameras</title>
-  <meta content="Thermal Cameras" property="og:title">
-  <meta content="Thermal Cameras" property="twitter:title">
+  <title>Cameras</title>
+  <meta content="Cameras" property="og:title">
+  <meta content="Cameras" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="/public/css/normalize.css" rel="stylesheet" type="text/css">
@@ -35,27 +35,36 @@
 <body>
   <%- include('partials/nav-bar') %>
   <%- include('partials/scrolling-nav') %>
-  <%- include('partials/breadcrumbs') %>
-  <%- include('partials/hero-image') %>
-  <div id="CCTV-Categories-Overall" class="category-section section-5 wf-section">
+  <div class="prod-cctv-cameras">
+    <%- include('partials/breadcrumbs') %>
+    <%- include('partials/hero-image') %>
+  </div>
+  <div id="cctv-cameras" class="category-section section-5 wf-section">
     <div class="section-header">
       <div class="upper-head green" data-ix="fade-on-scroll-1">Comprehensive solutions for any security
         requirements </div>
-      <div class="section-title" data-ix="fade-on-scroll-1">Thermal Cameras</div>
-      <div class="section-subhead" data-ix="fade-on-scroll-2">Optical cameras are the most cost-effective option
-        to satisfy identification and evidentiary standards for general surveillance applications. However, when
-        you require a camera that can’t be compromised by inclement weather, has long detection ranges, and
-        performs well with video analytics at night, thermal cameras should be considered.<br><br>Osprey Marine
-        Security can advise on a range of thermal cameras, including “dual” cameras which combine optical and
-        thermal imaging. <br><br> Thermal cameras for measuring temperature are also included in our range.
-        Applications include early warning of fire/fire detection and malfunction of machinery. Thermal cameras
-        are used extensively in waste management and marine markets. <br><br>
-        <div class="linked-products">
-          <%- include('partials/product-category-partials/thermal-camera-partial') %>
-          <%- include('partials/cctv-category-partial.ejs') %>
-        </div>
-        <%- include('partials/get-started-partial.ejs') %>
-      </div>
+      <div class="section-title" data-ix="fade-on-scroll-1">Commercial Cameras</div>
+      <div class="section-subhead" data-ix="fade-on-scroll-2">All Osprey Security’s standard cameras are high
+        resolution IP network devices. However, we also off all cameras as analogue devices with BNC output for
+        transmission over coaxial cable. This allows the use of existing legacy coaxial cable infrastructure. We
+        can also supply IP cameras capable of transmitting IP video over coaxial cables.<br><br>Osprey Security
+        has a range of robust CCTV cameras for a wide variety of environments and applications including: </div>
+      <%- include('partials/product-category-partials/commercial-camera-partial') %>
+    </div>
+    <div class="centred-cta">
+      <div class="section-title smaller" data-ix="fade-on-scroll-1">Please contact us <em>now</em> for a free
+        consultation on your requirements.</div>
+      <div class="section-subhead" data-ix="fade-on-scroll-2">The company offers both commercial grade equipment
+        and a specialist range of rugged products (via Osprey Security’s marine trading arm – Osprey Marine
+        Security Marine). <br><br>These products include pan/tilt/zoom (PTZ) and fixed view:<br>Marine
+        cameras<br>Stainless steel cameras<br>Hazardous area/Explosion-proof cameras<br>Intrinsically safe
+        cameras<br><br>These cameras are offered with a range of ancillary hardware including CCTV camera
+        housings, IR illuminators, power supplies, telemetry keyboards, digital video recorders (DVRs), Network
+        Video Recorders (NVRs), long-range CCTV transmission equipment, workstations, monitors, analytics and
+        video management software.<br><br>Please contact us now for more information, to discuss your specific
+        requirements, to book a call or request a quote.</div>
+      <a href="partners.html" class="cta-2 colour5 bigger w-button" data-ix="fade-on-scroll-2">Get started
+        today</a>
     </div>
   </div>
   <%- include('partials/footer.ejs') %>
