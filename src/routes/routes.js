@@ -24,11 +24,7 @@ router.get('/product-page', async (req, res) => {
 	}
 });
 
-
-
 // Accessing the new database
-
-
 
 router.get(
 	'/products/cctv/cameras/:product_code',
@@ -1319,18 +1315,23 @@ router.get('/marine-categories', breadcrumbs.Middleware(), (req, res) => {
 //
 //
 
-router.get('/products/cctv/cameras/', breadcrumbs.Middleware(),async (req, res) => {
-	try {
-		let data = await dbQuery.genericQuery('SELECT * FROM `info` ');
+router.get(
+	'/products/cctv/cameras/',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = await dbQuery.genericQuery('SELECT * FROM `info` ');
 
-		res.send(data);
-		return
-			res.render('cameras', { breadcrumbs: req.breadcrumbs });
-
-	} catch (e) {
-		console.log(e)
+		
+			res.render('cameras', {
+				breadcrumbs: req.breadcrumbs,
+				data: data
+			});
+		} catch (e) {
+			console.log(e);
+		}
 	}
-});
+);
 
 router.get(
 	'/products/cctv/cameras/prison-cell',
