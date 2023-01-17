@@ -1320,9 +1320,8 @@ router.get(
 	breadcrumbs.Middleware(),
 	async (req, res) => {
 		try {
-			let data = await dbQuery.genericQuery('SELECT * FROM `info` ');
+			let data = await dbQuery.genericQuery('SELECT * FROM `info`; ');
 
-		
 			res.render('cameras', {
 				breadcrumbs: req.breadcrumbs,
 				data: data
