@@ -100,7 +100,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./db:/var/lib/mysql
+      - ./src/sql/mysql:/var/lib/mysql
       - ./src/sql/logs:/var/log/*
     networks:
       backend:
