@@ -1319,9 +1319,17 @@ router.get('/marine-categories', breadcrumbs.Middleware(), (req, res) => {
 //
 //
 
-router.get('/products/cctv/cameras/', breadcrumbs.Middleware(), (req, res) => {
-	
-	res.render('cameras', { breadcrumbs: req.breadcrumbs });
+router.get('/products/cctv/cameras/', breadcrumbs.Middleware(),async (req, res) => {
+	try {
+		let data = await dbQuery.genericQuery('SELECT * FROM `info` ');
+
+		res.send(data);
+		return
+			res.render('cameras', { breadcrumbs: req.breadcrumbs });
+
+	} catch (e) {
+		console.log(e)
+	}
 });
 
 router.get(
