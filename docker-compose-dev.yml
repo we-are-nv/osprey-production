@@ -30,37 +30,6 @@ services:
     volumes:
       - ./src:/app/src:ro
 
-  # caddy:
-  #   image: caddy:latest
-  #   container_name: caddy-service
-  #   restart: unless-stopped
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   volumes:
-  #     - ./Caddyfile:/etc/caddy/Caddyfile
-  #     - caddy_data:/data
-  #     - caddy_config:/config
-
-  # webserver:
-  #   container_name: webserver
-  #   image: httpd:latest
-  #   ports:
-  #     - 8080:80
-
-  #   # Traefik Stuff
-  #   labels:
-  #     - traefik.enable=true
-  #     - traefik.docker.network=traefik-proxy
-  #     - traefik.http.routers.apache.rule=Host(`apache.docker`)
-  #     - traefik.http.routers.apache.entrypoints=web
-  #     - traefik.port=80
-  #   volumes:
-  #     - ./apache/httpd.conf:/conf/httpd.conf
-  #   networks:
-  #     - traefik-proxy
-  #     - backend
-
 # for production
 # make sure traefik.toml IS NOT INSECURE
   traefik:
@@ -107,43 +76,6 @@ services:
       traefik-proxy:
         aliases:
           - test.sql.docker
-
-# nginx:
-#     container_name: nginx
-#     image: nginx
-#     restart: unless-stopped
-#     networks:
-#       - nginx
-#     volumes:
-#       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-#     labels:
-#       - traefik.enable=true
-#       - traefik.port=80
-#       - traefik.http.routers.nginx.rule=Host(`3.11.230.233/`)
-#       - traefik.http.routers.nginx.entrypoints=web
-
-
-
-
-  # # dbadmin:
-  # #   container_name: db_admin
-  # #   image: adminer:latest
-  # #   depends_on:
-  # #     - sql
-  # #   environment:
-  # #     ADMINER_DEFAULT_DB_HOST: sql
-  # #     ADMINER_DEFAULT_DB_NAME: osprey
-
-  # #   networks:
-  # #     - traefik-proxy
-  # #     - backend
-
-  # #   # Traefik Stuff
-  # #   labels:
-  # #     - traefik.enable=true
-  # #     - traefik.docker.network=traefik-proxy
-  # #     - traefik.http.routers.osprey-dba.rule=Host(`dba.3.11.230.233`)
-
 
   # phpmyadmin:
   #   container_name: php_myadmin
