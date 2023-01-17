@@ -9,6 +9,7 @@ node_modules/
 # SQL
 mysql.sock
 src/sql/mysql
+src/sql/mysql/
 # !src/sql/mysql/osprey*
 
 # Scripts
