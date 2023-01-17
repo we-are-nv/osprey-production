@@ -8,7 +8,7 @@ echo "Removing old containers"
 docker rm $(docker ps)
 
 echo "Removing database"
-sudo rm -rf src/sql
+sudo rm -rf src/sql/mysql
 
 echo "Removing old images"
 sudo docker image rm $(docker image ls -a)
