@@ -1,6 +1,7 @@
 const mysql = require('mysql2');
 const path = require('path');
-require('dotenv').config({path:require('find-config')('.env')});
+// require('dotenv').config({ path: require('find-config')('.env') });
+require('dotenv').config();
 // if (!process.env.NODE_ENV === 'development') { };
 // if testing locally on the mac. comment out password line other it forces a password
 const pool = mysql.createPool({

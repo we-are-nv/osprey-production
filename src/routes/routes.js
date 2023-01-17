@@ -9,22 +9,765 @@ router.use(function timeLog(req, res, next) {
 	next();
 });
 
-////////////////////////////////////////////
 router.get('/', (req, res) => {
-	res.render('index', {});
+	res.send(process.env);
 });
 
-router.get('/product-page', async (req, res) => {
+router.get('/db-connector-test', async (req, res) => {
 	try {
-		let results = await controllers.getAll();
-		res.json(results);
+		var data = {};
+		const message = 'Results from camInfo are: ';
+		let results = await dbQuery.genericQuery('SELECT * FROM `info`');
+
+		data = {
+			message: message,
+			results: results
+		};
+		res.send(data);
 	} catch (e) {
-		console.log(e);
-		return res.sendStatus(500);
+		console.error(e);
 	}
 });
 
-// Accessing the new database
+router.get('/contact-us', breadcrumbs.Middleware(), (req, res) => {
+	res.render('contact', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/layout', (req, res) => {
+	res.render('layout');
+});
+
+router.get('/docker-test', (req, res) => {
+	res.send('<h1>WORKING  </h1>');
+});
+
+router.get('/about', breadcrumbs.Middleware(), (req, res) => {
+	res.render('about', { breadcrumbs: req.breadcrumbs });
+});
+
+// router.get('/marine', breadcrumbs.Middleware(), (req, res) => {
+// 	res.render('marine', { breadcrumbs: req.breadcrumbs });
+// });
+
+// MARKET PAGES
+
+router.get('/markets/marine', breadcrumbs.Middleware(), async (req, res) => {
+	try {
+		var data = {};
+		var sqlQuery = 'SELECT * FROM info WHERE category = "marine" ';
+		data = await dbQuery.genericQuery(sqlQuery);
+	} catch (error) {
+		consolee.log(error);
+	}
+
+	res.render('marine', {
+		data: data,
+		breadcrumbs: req.breadcrumbs
+	});
+});
+
+router.get('/markets/marine-onshore', breadcrumbs.Middleware(), (req, res) => {
+	res.render('marine-onshore', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/markets/marine-offshore', breadcrumbs.Middleware(), (req, res) => {
+	res.render('marine-offshore', {
+		breadcrumbs: req.breadcrumbs
+	});
+});
+
+router.get('/markets/oil-and-gas', breadcrumbs.Middleware(), (req, res) => {
+	res.render('oil-and-gas', {
+		breadcrumbs: req.breadcrumbs
+	});
+});
+
+router.get('/law-enforcement', (req, res) => {
+	res.render('law');
+});
+
+router.get('/parking', (req, res) => {
+	res.render('parking');
+});
+
+router.get('/security', breadcrumbs.Middleware(), (req, res) => {
+	res.render('security', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/hazardous-areas', breadcrumbs.Middleware(), async (req, res) => {
+	try {
+		var data = {};
+		var sqlQuery = 'SELECT * FROM info WHERE category = "hazardous" ';
+		data = await dbQuery.genericQuery(sqlQuery);
+	} catch (error) {
+		consolee.log(error);
+	}
+
+	res.render('hazardous-areas', {
+		data: data,
+		breadcrumbs: req.breadcrumbs
+	});
+});
+
+router.get('/products', breadcrumbs.Middleware(), (req, res) => {
+	res.render('product-category', {
+		breadcrumbs: req.breadcrumbs
+	});
+});
+
+// CCTV categories
+//
+//
+//
+
+router.get('/products/cctv', breadcrumbs.Middleware(), (req, res) => {
+	res.render('cctv', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/products/cctv/cameras', breadcrumbs.Middleware(), async (req, res) => {
+	try {
+		// let data = {};
+		// let sqlQuery = 'SELECT * FROM `info`';
+		let data = await dbQuery.genericQuery('SELECT * FROM `info`');
+		// console.log(data);
+		// res.send(data);
+		// return;
+
+		// let names = Object.values(data);
+
+		res.render('cameras', {
+			data: data,
+			breadcrumbs: req.breadcrumbs
+		});
+	} catch (e) {
+		console.error(e);
+	}
+});
+
+//  CAMERA HOUSINGS PAGE
+
+router.get(
+	'/products/cctv/camera-housings',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = {};
+			let sqlQuery = 'SELECT * FROM `housings_info` ';
+			data = await dbQuery.genericQuery(sqlQuery);
+
+			res.render('camera-housings', {
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
+// ////////////////
+
+// ////////////////
+
+// router.get('/products/cctv/cctv-nvr', breadcrumbs.Middleware(), (req, res) => {
+// 	res.render('nvr', { breadcrumbs: req.breadcrumbs });
+// });
+
+router.get(
+	'/products/cctv/cctv-nvr',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = {};
+			let sqlQuery = "SELECT * FROM nvr_info WHERE `monitor_type` != 'station' ";
+			data = await dbQuery.genericQuery(sqlQuery);
+			let diskInfo = await dbQuery.genericQuery(
+				'SELECT `product_code`,`product_name`, `image`, `description` FROM `disk_nvr_info`'
+			);
+			let diskFeatures = await dbQuery.genericQuery(
+				'SELECT * FROM `disk_nvr_features`'
+			);
+			let diskSizes = await dbQuery.genericQuery('SELECT * FROM `disk_nvr_sizes`');
+
+			diskFeatures = controllers.removeFirst(diskFeatures);
+			let constDeadVals = ['*', 'n/a', ''];
+			let featureVals = Object.values(diskFeatures[0]);
+			let newDiskFeaturesOnlyVals = featureVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			// res.send({
+			// 	newDiskFeaturesOnlyVals,
+			// 	diskInfo,
+			// 	data
+			// })
+			// return
+
+			res.render('cctv-recording', {
+				diskFeatures: newDiskFeaturesOnlyVals,
+				diskInfo: diskInfo,
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
+router.get(
+	'/products/cctv/cctv-monitors',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let specQuery = 'SELECT * FROM `monitor_specs` ';
+			let typeQuery =
+				'SELECT `monitor_type`, `type`, `image` FROM `monitor_types` ';
+			let UHD = 'SELECT * FROM `monitor_specs` WHERE `type` = "UHD"; ';
+			let fullHD = 'SELECT * FROM `monitor_specs` WHERE `type` = "Full HD"; ';
+			let HD = 'SELECT * FROM `monitor_specs` WHERE `type` = "HD"; ';
+			let UHDF = 'SELECT * FROM `monitor_features` WHERE `type` = "UHD"; ';
+			let FHDF = 'SELECT * FROM `monitor_features` WHERE `type` = "FHD"; ';
+			let HDF = 'SELECT * FROM `monitor_features` WHERE `type` = "HD"; ';
+			let specs = await dbQuery.genericQuery(specQuery);
+			let types = await dbQuery.genericQuery(typeQuery);
+			let UHDMonitors = await dbQuery.genericQuery(UHD);
+			let fullHDMonitors = await dbQuery.genericQuery(fullHD);
+			let HDMonitors = await dbQuery.genericQuery(HD);
+			let UHDFeat = await dbQuery.genericQuery(UHDF);
+			let FHDFeat = await dbQuery.genericQuery(FHDF);
+			let HDFeat = await dbQuery.genericQuery(HDF);
+
+			UHDFeat = Object.values(UHDFeat[0]);
+			FHDFeat = Object.values(FHDFeat[0]);
+			HDFeat = Object.values(HDFeat[0]);
+
+			let dead = UHDFeat.shift();
+			dead = FHDFeat.shift();
+			dead = HDFeat.shift();
+
+			let UHDSpecs = Object.values(UHDMonitors[0]);
+			let FHDSpecs = Object.values(fullHDMonitors[0]);
+			let HDSpecs = Object.values(HDMonitors[0]);
+
+			// res.send(UHDFeatures)
+			// return
+
+			// res.send(data);
+			// return;
+			res.render('cctv-monitors', {
+				specs: specs,
+				types: types,
+				UHD: UHDMonitors,
+				FHD: fullHDMonitors,
+				HD: HDMonitors,
+				UHDSpecs: UHDSpecs,
+				FHDSpecs: FHDSpecs,
+				HDSpecs: HDSpecs,
+				UHDF: UHDFeat,
+				FHDF: FHDFeat,
+				HDF: HDFeat,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
+router.get(
+	'/products/cctv/cctv-camera-accessories',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = {};
+			let sqlQuery = 'SELECT * FROM acc_info';
+			data = await dbQuery.genericQuery(sqlQuery);
+			// res.send(data);
+			// return;
+			res.render('cctv-accessories', {
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
+router.get('/products/cctv/storage', breadcrumbs.Middleware(), async (req, res) => {
+	try {
+		let data = {};
+		let sqlQuery = 'SELECT * FROM nvr_disk_info';
+		data = await dbQuery.genericQuery(sqlQuery);
+		// res.send(data);
+		// return;
+		res.render('nvr-disk', {
+			data: data,
+			breadcrumbs: req.breadcrumbs
+		});
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+router.get(
+	'/products/cctv/analytics',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = {};
+			// let sqlQuery = 'SELECT * FROM nvr_disk_info';
+			data = await dbQuery.genericQuery(sqlQuery);
+			// res.send(data);
+			// return;
+			res.render('analytics', {
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
+router.get(
+	'/products/cctv/security-management-software',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('management-software', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/cctv/cctv-ancillaries',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		res.render('cctv-ancillaries', {
+			breadcrumbs: req.breadcrumbs
+		});
+	}
+);
+
+router.get(
+	'/products/cctv/cctv-transmission',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let ethData = {};
+			let cableData = {};
+			ethData = await dbQuery.genericQuery('SELECT * FROM eth_info');
+			cableData = await dbQuery.genericQuery('SELECT * FROM cables_all');
+
+			res.render('cctv-transmission', {
+				ethData: ethData,
+				cableData: cableData,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
+// marine cables
+
+router.get(
+	'/products/cctv/marine-grade-cables',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = {};
+			let sqlQuery = 'SELECT * FROM nvr_disk_info';
+			data = await dbQuery.genericQuery(sqlQuery);
+			// res.send(data);
+			// return;
+			res.render('nvr-disk', {
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
+//  Marine Category Route
+
+router.get('/marine-categories', breadcrumbs.Middleware(), (req, res) => {
+	res.render('marine-categories', { breadcrumbs: req.breadcrumbs });
+});
+
+//
+//
+//
+//
+// camera categories routes
+//
+//
+//
+//
+//
+
+router.get(
+	'/products/cctv/cameras/',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = await dbQuery.genericQuery('SELECT * FROM `info`; ');
+
+			res.render('cameras', {
+				breadcrumbs: req.breadcrumbs,
+				data: data
+			});
+		} catch (e) {
+			console.log(e);
+		}
+	}
+);
+
+router.get(
+	'/products/cctv/cameras/prison-cell',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('prison-cell', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+// Marine Camera Product Route
+router.get(
+	'/products/cctv/cameras/marine-cameras',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = {};
+
+			data = await dbQuery.genericQuery(
+				'SELECT * FROM `info` WHERE category = "marine" '
+			);
+
+			res.render('marine-cameras', {
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			consolee.log(error);
+		}
+	}
+);
+
+router.get(
+	'/products/cctv/cameras/hazardous-environment',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			var data = {};
+			var sqlQuery = 'SELECT *_link FROM info WHERE category = "hazard" ';
+			data = await dbQuery.genericQuery(sqlQuery);
+		} catch (error) {
+			consolee.log(error);
+		}
+		res.render('hazardous-areas', {
+			data: data,
+			breadcrumbs: req.breadcrumbs
+		});
+	}
+);
+
+router.get(
+	'/products/cctv/cameras/thermal-cameras',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('thermal-cameras', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/cctv/cameras/commercial',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('commercial-cameras', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+//
+//
+//
+//
+
+router.get('/products/camera-collection', breadcrumbs.Middleware(), (req, res) => {
+	res.render('cameras-collection', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/products/access-control', breadcrumbs.Middleware(), (req, res) => {
+	res.render('access', { breadcrumbs: req.breadcrumbs });
+});
+
+// READERS COLLECTION
+router.get(
+	'/products/access-control/readers',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('readers-collection', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+// READERS CATERGORY PAGES
+router.get(
+	'/products/access-control/readers/proximity-readers',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('proximity-readers', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/readers/qr',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('qr-readers', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/readers/bluetooth-readers',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('bluetooth-readers', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/readers/poe-readers',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('poe-readers', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/readers/fingerprint-readers',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('fingerprint-readers', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/readers/pin-keypad-readers',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('pin-keypad-readers', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/readers/universal-proximity-readers',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('universal-proximity', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/readers/facial-recognition-readers',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('facial-recognition-readers', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/door-controllers',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('door-controllers-collection', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/wireless-locks',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('wireless-locks', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+// router.get('/products/access-control/wireless-locks', (req, res) => {
+// 	res.render('wireless-locks');
+// });
+
+router.get(
+	'/products/access-control/access-control-software',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('access-control-software-collection', {
+			breadcrumbs: req.breadcrumbs
+		});
+	}
+);
+
+router.get(
+	'/products/access-control/anpr',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('anpr', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/anpr/anpr-cameras',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('anpr-cameras', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/anpr/anpr-software',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('anpr-software', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/anpr/anpr-signage',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('anpr-signage', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/access-control/anpr/vehicle-counting',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('vehicle-counting', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/interview-recorders',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('interview-recorders', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get('/products/visitor-management', breadcrumbs.Middleware(), (req, res) => {
+	res.render('visitor-management', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/products/panic-alarms', breadcrumbs.Middleware(), (req, res) => {
+	res.render('panic-alarms', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/contact', breadcrumbs.Middleware(), (req, res) => {
+	res.render('contact', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/frequently-asked', breadcrumbs.Middleware(), (req, res) => {
+	res.render('faq', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/sell', breadcrumbs.Middleware(), (req, res) => {
+	res.render('sell', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/terms-conditions', breadcrumbs.Middleware(), (req, res) => {
+	res.render('terms', { breadcrumbs: req.breadcrumbs });
+});
+
+// SERVICES ROUTES
+
+router.get('/services', breadcrumbs.Middleware(), (req, res) => {
+	res.render('services-collection', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/system-design', breadcrumbs.Middleware(), (req, res) => {
+	res.render('system-design-build', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/service-support', breadcrumbs.Middleware(), (req, res) => {
+	res.render('service-support', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/installations', breadcrumbs.Middleware(), (req, res) => {
+	res.render('installations', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get(
+	'/services/cctv-alarm-monitoring',
+	breadcrumbs.Middleware(),
+	(req, res) => {
+		res.render('cctv-alarm-monitoring', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get('/services/training', breadcrumbs.Middleware(), (req, res) => {
+	res.render('training', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/consultancy', breadcrumbs.Middleware(), (req, res) => {
+	res.render('consultancy', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/risk', breadcrumbs.Middleware(), (req, res) => {
+	res.render('risk-assessment', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/risk/security-risk', breadcrumbs.Middleware(), (req, res) => {
+	res.render('security-risk', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/risk/fire-risk', breadcrumbs.Middleware(), (req, res) => {
+	res.render('fire-risk', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/site-maintenance', breadcrumbs.Middleware(), (req, res) => {
+	res.render('site-maintenance', { breadcrumbs: req.breadcrumbs });
+});
+
+// resources routes
+
+router.get('/resources', breadcrumbs.Middleware(), (req, res) => {
+	res.render('resources', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/resources/datasheets', breadcrumbs.Middleware(), (req, res) => {
+	res.render('datasheets', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/resources/gallery', breadcrumbs.Middleware(), (req, res) => {
+	res.render('gallery', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/resources/knowledge', breadcrumbs.Middleware(), (req, res) => {
+	res.render('knowledge-centre', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/resources/tools', breadcrumbs.Middleware(), (req, res) => {
+	res.render('tools', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/resources/press', breadcrumbs.Middleware(), (req, res) => {
+	res.render('press', { breadcrumbs: req.breadcrumbs });
+});
+
+// PRODUCT PAGES - MUST STAY LAST
+
+// test with    ++++   /products/cctv/cameras/BHOS-4Z4I-I66    ++++
 
 router.get(
 	'/products/cctv/cameras/:product_code',
@@ -403,8 +1146,8 @@ router.get(
 				breadcrumbs: req.breadcrumbs
 			});
 		} catch (e) {
-			console.log(e);
-			return res.render('index');
+			console.error(e);
+			// return res.render('index');
 		}
 	}
 );
@@ -940,724 +1683,5 @@ router.get(
 		}
 	}
 );
-
-router.get('/contact-us', breadcrumbs.Middleware(), (req, res) => {
-	res.render('contact', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/layout', (req, res) => {
-	res.render('layout');
-});
-
-router.get('/docker-test', (req, res) => {
-	res.send('<h1>WORKING  </h1>');
-});
-
-router.get('/about', breadcrumbs.Middleware(), (req, res) => {
-	res.render('about', { breadcrumbs: req.breadcrumbs });
-});
-
-// router.get('/marine', breadcrumbs.Middleware(), (req, res) => {
-// 	res.render('marine', { breadcrumbs: req.breadcrumbs });
-// });
-
-// MARKET PAGES
-
-router.get('/markets/marine', breadcrumbs.Middleware(), async (req, res) => {
-	try {
-		var data = {};
-		var sqlQuery = 'SELECT * FROM info WHERE category = "marine" ';
-		data = await dbQuery.genericQuery(sqlQuery);
-	} catch (error) {
-		consolee.log(error);
-	}
-
-	res.render('marine', {
-		data: data,
-		breadcrumbs: req.breadcrumbs
-	});
-});
-
-router.get('/markets/marine-onshore', breadcrumbs.Middleware(), (req, res) => {
-	res.render('marine-onshore', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/markets/marine-offshore', breadcrumbs.Middleware(), (req, res) => {
-	res.render('marine-offshore', {
-		breadcrumbs: req.breadcrumbs
-	});
-});
-
-router.get('/markets/oil-and-gas', breadcrumbs.Middleware(), (req, res) => {
-	res.render('oil-and-gas', {
-		breadcrumbs: req.breadcrumbs
-	});
-});
-
-router.get('/law-enforcement', (req, res) => {
-	res.render('law');
-});
-
-router.get('/parking', (req, res) => {
-	res.render('parking');
-});
-
-router.get('/security', breadcrumbs.Middleware(), (req, res) => {
-	res.render('security', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/hazardous-areas', breadcrumbs.Middleware(), async (req, res) => {
-	try {
-		var data = {};
-		var sqlQuery = 'SELECT * FROM info WHERE category = "hazardous" ';
-		data = await dbQuery.genericQuery(sqlQuery);
-	} catch (error) {
-		consolee.log(error);
-	}
-
-	res.render('hazardous-areas', {
-		data: data,
-		breadcrumbs: req.breadcrumbs
-	});
-});
-
-router.get('/products', breadcrumbs.Middleware(), (req, res) => {
-	res.render('product-category', {
-		breadcrumbs: req.breadcrumbs
-	});
-});
-
-// CCTV categories
-//
-//
-//
-
-router.get('/products/cctv', breadcrumbs.Middleware(), (req, res) => {
-	res.render('cctv', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/products/cctv/cameras', breadcrumbs.Middleware(), (req, res) => {
-	res.render('cameras', { breadcrumbs: req.breadcrumbs });
-});
-
-//  CAMERA HOUSINGS PAGE
-
-router.get(
-	'/products/cctv/camera-housings',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = {};
-			let sqlQuery = 'SELECT * FROM `housings_info`';
-			data = await dbQuery.genericQuery(sqlQuery);
-
-			res.render('camera-housings', {
-				data: data,
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	}
-);
-
-// ////////////////
-
-// ////////////////
-
-// router.get('/products/cctv/cctv-nvr', breadcrumbs.Middleware(), (req, res) => {
-// 	res.render('nvr', { breadcrumbs: req.breadcrumbs });
-// });
-
-router.get(
-	'/products/cctv/cctv-nvr',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = {};
-			let sqlQuery = "SELECT * FROM nvr_info WHERE `monitor_type` != 'station' ";
-			data = await dbQuery.genericQuery(sqlQuery);
-			let diskInfo = await dbQuery.genericQuery(
-				'SELECT `product_code`,`product_name`, `image`, `description` FROM `disk_nvr_info`'
-			);
-			let diskFeatures = await dbQuery.genericQuery(
-				'SELECT * FROM `disk_nvr_features`'
-			);
-			let diskSizes = await dbQuery.genericQuery('SELECT * FROM `disk_nvr_sizes`');
-
-			diskFeatures = controllers.removeFirst(diskFeatures);
-			let constDeadVals = ['*', 'n/a', ''];
-			let featureVals = Object.values(diskFeatures[0]);
-			let newDiskFeaturesOnlyVals = featureVals.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < constDeadVals.length; i++) {
-					if (value === constDeadVals[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			// res.send({
-			// 	newDiskFeaturesOnlyVals,
-			// 	diskInfo,
-			// 	data
-			// })
-			// return
-
-			res.render('cctv-recording', {
-				diskFeatures: newDiskFeaturesOnlyVals,
-				diskInfo: diskInfo,
-				data: data,
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	}
-);
-
-router.get(
-	'/products/cctv/cctv-monitors',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let specQuery = 'SELECT * FROM `monitor_specs` ';
-			let typeQuery =
-				'SELECT `monitor_type`, `type`, `image` FROM `monitor_types` ';
-			let UHD = 'SELECT * FROM `monitor_specs` WHERE `type` = "UHD"; ';
-			let fullHD = 'SELECT * FROM `monitor_specs` WHERE `type` = "Full HD"; ';
-			let HD = 'SELECT * FROM `monitor_specs` WHERE `type` = "HD"; ';
-			let UHDF = 'SELECT * FROM `monitor_features` WHERE `type` = "UHD"; ';
-			let FHDF = 'SELECT * FROM `monitor_features` WHERE `type` = "FHD"; ';
-			let HDF = 'SELECT * FROM `monitor_features` WHERE `type` = "HD"; ';
-			let specs = await dbQuery.genericQuery(specQuery);
-			let types = await dbQuery.genericQuery(typeQuery);
-			let UHDMonitors = await dbQuery.genericQuery(UHD);
-			let fullHDMonitors = await dbQuery.genericQuery(fullHD);
-			let HDMonitors = await dbQuery.genericQuery(HD);
-			let UHDFeat = await dbQuery.genericQuery(UHDF);
-			let FHDFeat = await dbQuery.genericQuery(FHDF);
-			let HDFeat = await dbQuery.genericQuery(HDF);
-
-			UHDFeat = Object.values(UHDFeat[0]);
-			FHDFeat = Object.values(FHDFeat[0]);
-			HDFeat = Object.values(HDFeat[0]);
-
-			let dead = UHDFeat.shift();
-			dead = FHDFeat.shift();
-			dead = HDFeat.shift();
-
-			let UHDSpecs = Object.values(UHDMonitors[0]);
-			let FHDSpecs = Object.values(fullHDMonitors[0]);
-			let HDSpecs = Object.values(HDMonitors[0]);
-
-			// res.send(UHDFeatures)
-			// return
-
-			// res.send(data);
-			// return;
-			res.render('cctv-monitors', {
-				specs: specs,
-				types: types,
-				UHD: UHDMonitors,
-				FHD: fullHDMonitors,
-				HD: HDMonitors,
-				UHDSpecs: UHDSpecs,
-				FHDSpecs: FHDSpecs,
-				HDSpecs: HDSpecs,
-				UHDF: UHDFeat,
-				FHDF: FHDFeat,
-				HDF: HDFeat,
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	}
-);
-
-router.get(
-	'/products/cctv/cctv-camera-accessories',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = {};
-			let sqlQuery = 'SELECT * FROM acc_info';
-			data = await dbQuery.genericQuery(sqlQuery);
-			// res.send(data);
-			// return;
-			res.render('cctv-accessories', {
-				data: data,
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	}
-);
-
-router.get('/products/cctv/storage', breadcrumbs.Middleware(), async (req, res) => {
-	try {
-		let data = {};
-		let sqlQuery = 'SELECT * FROM nvr_disk_info';
-		data = await dbQuery.genericQuery(sqlQuery);
-		// res.send(data);
-		// return;
-		res.render('nvr-disk', {
-			data: data,
-			breadcrumbs: req.breadcrumbs
-		});
-	} catch (error) {
-		console.log(error);
-	}
-});
-
-router.get(
-	'/products/cctv/analytics',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = {};
-			// let sqlQuery = 'SELECT * FROM nvr_disk_info';
-			data = await dbQuery.genericQuery(sqlQuery);
-			// res.send(data);
-			// return;
-			res.render('analytics', {
-				data: data,
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	}
-);
-
-router.get(
-	'/products/cctv/security-management-software',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('management-software', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/cctv/cctv-ancillaries',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		res.render('cctv-ancillaries', {
-			breadcrumbs: req.breadcrumbs
-		});
-	}
-);
-
-router.get(
-	'/products/cctv/cctv-transmission',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let ethData = {};
-			let cableData = {};
-			ethData = await dbQuery.genericQuery('SELECT * FROM eth_info');
-			cableData = await dbQuery.genericQuery('SELECT * FROM cables_all');
-
-			res.render('cctv-transmission', {
-				ethData: ethData,
-				cableData: cableData,
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	}
-);
-
-// marine cables
-
-router.get(
-	'/products/cctv/marine-grade-cables',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = {};
-			let sqlQuery = 'SELECT * FROM nvr_disk_info';
-			data = await dbQuery.genericQuery(sqlQuery);
-			// res.send(data);
-			// return;
-			res.render('nvr-disk', {
-				data: data,
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	}
-);
-
-//  Marine Category Route
-
-router.get('/marine-categories', breadcrumbs.Middleware(), (req, res) => {
-	res.render('marine-categories', { breadcrumbs: req.breadcrumbs });
-});
-
-//
-//
-//
-//
-// camera categories routes
-//
-//
-//
-//
-//
-
-router.get(
-	'/products/cctv/cameras/',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = await dbQuery.genericQuery('SELECT * FROM `info`; ');
-
-			res.render('cameras', {
-				breadcrumbs: req.breadcrumbs,
-				data: data
-			});
-		} catch (e) {
-			console.log(e);
-		}
-	}
-);
-
-router.get(
-	'/products/cctv/cameras/prison-cell',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('prison-cell', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-// Marine Camera Product Route
-router.get(
-	'/products/cctv/cameras/marine-cameras',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = {};
-			let sqlQuery =
-				'SELECT `product_name`, `product_code`, image FROM info WHERE category = "marine" ';
-			data = await dbQuery.genericQuery(sqlQuery);
-
-			res.render('marine-cameras', {
-				data: data,
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			consolee.log(error);
-		}
-	}
-);
-
-router.get(
-	'/products/cctv/cameras/hazardous-environment',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			var data = {};
-			var sqlQuery = 'SELECT *_link FROM info WHERE category = "hazard" ';
-			data = await dbQuery.genericQuery(sqlQuery);
-		} catch (error) {
-			consolee.log(error);
-		}
-		res.render('hazardous-areas', {
-			data: data,
-			breadcrumbs: req.breadcrumbs
-		});
-	}
-);
-
-router.get(
-	'/products/cctv/cameras/thermal-cameras',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('thermal-cameras', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/cctv/cameras/commercial',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('commercial-cameras', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-//
-//
-//
-//
-
-router.get('/products/camera-collection', breadcrumbs.Middleware(), (req, res) => {
-	res.render('cameras-collection', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/products/access-control', breadcrumbs.Middleware(), (req, res) => {
-	res.render('access', { breadcrumbs: req.breadcrumbs });
-});
-
-// READERS COLLECTION
-router.get(
-	'/products/access-control/readers',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('readers-collection', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-// READERS CATERGORY PAGES
-router.get(
-	'/products/access-control/readers/proximity-readers',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('proximity-readers', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/readers/qr',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('qr-readers', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/readers/bluetooth-readers',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('bluetooth-readers', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/readers/poe-readers',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('poe-readers', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/readers/fingerprint-readers',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('fingerprint-readers', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/readers/pin-keypad-readers',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('pin-keypad-readers', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/readers/universal-proximity-readers',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('universal-proximity', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/readers/facial-recognition-readers',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('facial-recognition-readers', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/door-controllers',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('door-controllers-collection', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/wireless-locks',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('wireless-locks', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-// router.get('/products/access-control/wireless-locks', (req, res) => {
-// 	res.render('wireless-locks');
-// });
-
-router.get(
-	'/products/access-control/access-control-software',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('access-control-software-collection', {
-			breadcrumbs: req.breadcrumbs
-		});
-	}
-);
-
-router.get(
-	'/products/access-control/anpr',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('anpr', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/anpr/anpr-cameras',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('anpr-cameras', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/anpr/anpr-software',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('anpr-software', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/anpr/anpr-signage',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('anpr-signage', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/access-control/anpr/vehicle-counting',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('vehicle-counting', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get(
-	'/products/interview-recorders',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('interview-recorders', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get('/products/visitor-management', breadcrumbs.Middleware(), (req, res) => {
-	res.render('visitor-management', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/products/panic-alarms', breadcrumbs.Middleware(), (req, res) => {
-	res.render('panic-alarms', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/contact', breadcrumbs.Middleware(), (req, res) => {
-	res.render('contact', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/frequently-asked', breadcrumbs.Middleware(), (req, res) => {
-	res.render('faq', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/sell', breadcrumbs.Middleware(), (req, res) => {
-	res.render('sell', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/terms-conditions', breadcrumbs.Middleware(), (req, res) => {
-	res.render('terms', { breadcrumbs: req.breadcrumbs });
-});
-
-// SERVICES ROUTES
-
-router.get('/services', breadcrumbs.Middleware(), (req, res) => {
-	res.render('services-collection', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/services/system-design', breadcrumbs.Middleware(), (req, res) => {
-	res.render('system-design-build', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/services/service-support', breadcrumbs.Middleware(), (req, res) => {
-	res.render('service-support', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/services/installations', breadcrumbs.Middleware(), (req, res) => {
-	res.render('installations', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get(
-	'/services/cctv-alarm-monitoring',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('cctv-alarm-monitoring', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
-router.get('/services/training', breadcrumbs.Middleware(), (req, res) => {
-	res.render('training', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/services/consultancy', breadcrumbs.Middleware(), (req, res) => {
-	res.render('consultancy', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/services/risk', breadcrumbs.Middleware(), (req, res) => {
-	res.render('risk-assessment', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/services/risk/security-risk', breadcrumbs.Middleware(), (req, res) => {
-	res.render('security-risk', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/services/risk/fire-risk', breadcrumbs.Middleware(), (req, res) => {
-	res.render('fire-risk', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/services/site-maintenance', breadcrumbs.Middleware(), (req, res) => {
-	res.render('site-maintenance', { breadcrumbs: req.breadcrumbs });
-});
-
-// resources routes
-
-router.get('/resources', breadcrumbs.Middleware(), (req, res) => {
-	res.render('resources', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/resources/datasheets', breadcrumbs.Middleware(), (req, res) => {
-	res.render('datasheets', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/resources/gallery', breadcrumbs.Middleware(), (req, res) => {
-	res.render('gallery', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/resources/knowledge', breadcrumbs.Middleware(), (req, res) => {
-	res.render('knowledge-centre', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/resources/tools', breadcrumbs.Middleware(), (req, res) => {
-	res.render('tools', { breadcrumbs: req.breadcrumbs });
-});
-
-router.get('/resources/press', breadcrumbs.Middleware(), (req, res) => {
-	res.render('press', { breadcrumbs: req.breadcrumbs });
-});
 
 module.exports = router;

@@ -38,9 +38,10 @@ app.get('/api/status', (req, res) => {
 	});
 });
 
-app.use(middlewareCheck);
-
 app.use('/public', express.static('./src/public'));
+
+app.use(middlewareCheck);
+app.use(morganMiddleware);
 
 app.use(require('./src/routes/routes'));
 
@@ -90,4 +91,5 @@ app.post('/', async (req, res) => {
 
 app.listen(PORT, (req, res) => {
 	console.log(`server running on port ${PORT}`);
+	console.log(process.env.DB_USER);
 });
