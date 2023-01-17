@@ -1320,6 +1320,7 @@ router.get('/marine-categories', breadcrumbs.Middleware(), (req, res) => {
 //
 
 router.get('/products/cctv/cameras/', breadcrumbs.Middleware(), (req, res) => {
+	
 	res.render('cameras', { breadcrumbs: req.breadcrumbs });
 });
 
