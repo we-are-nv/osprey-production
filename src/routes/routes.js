@@ -2,7 +2,6 @@ const express = require('express');
 const controllers = require('../controller/controllers');
 const dbQuery = require('../controller/dbQuery');
 var breadcrumbs = require('../controller/breadcrumbs');
-const e = require('express');
 const router = express.Router();
 
 router.use(function timeLog(req, res, next) {
@@ -1670,6 +1669,7 @@ router.get(
 				display: temp[5],
 				general: temp[6],
 				interface: temp[7],
+
 				network: temp[8],
 				playback: temp[9],
 				recording: temp[0],
@@ -1687,19 +1687,288 @@ router.get(
 );
 
 router.get(
-	'products/cctv/camera-housings/:product_code',
+	'/products/cctv/camera-housings/:product_code',
 	breadcrumbs.Middleware(),
-	async(req, res => {
-
+	async (req, res) => {
 		try {
+			let info = await dbQuery.getData(
+				'SELECT * FROM `housings_info` WHERE `product_code` = ?',
+				[req.params.product_code]
+			);
 
-			
+			let features = await dbQuery.getData(
+				'SELECT * FROM `housings_features` WHERE `product_code` = ?',
+				[req.params.product_code]
+			);
+
+			let movement = await dbQuery.getData(
+				'SELECT * FROM `housings_movement` WHERE `product_code` = ?',
+				[req.params.product_code]
+			);
+
+			let optics = await dbQuery.getData(
+				'SELECT * FROM `housings_optics` WHERE `product_code` = ?',
+				[req.params.product_code]
+			);
+
+			let physical = await dbQuery.getData(
+				'SELECT * FROM `housings_physical` WHERE `product_code` = ?',
+				[req.params.product_code]
+			);
+
+			let power = await dbQuery.getData(
+				'SELECT * FROM `housings_power` WHERE `product_code` = ?',
+				[req.params.product_code]
+			);
+
+			let certs = await dbQuery.getData(
+				'SELECT * FROM `housings_certs` WHERE `product_code` = ?',
+				[req.params.product_code]
+			);
+
+			// test entire data object
+
+			// let data = {};
+			// data = {
+			// 	info: info,
+			// 	features: features,
+			// 	movement: movement,
+			// 	optics: optics,
+			// 	physical: physical,
+			// 	power: power,
+			// 	certs: certs
+			// }
+			// return;
+
+			// remove dead values from features and return only values in new array
+			let constDeadVals = ['*', 'n/a', ''];
+
+			let featuresArray = Object.values(features[0]);
+
+			featuresArray = featuresArray.filter(function (val) {
+				return constDeadVals.indexOf(val) == -1;
+			});
+
+			movement = controllers.removeFirst(movement);
+			optics = controllers.removeFirst(optics);
+			physical = controllers.removeFirst(physical);
+			power = controllers.removeFirst(power);
+			certs = controllers.removeFirst(certs);
+
+			movement = movement[0]
+			optics = optics[0]
+			physical = physical[0]
+			power = power[0]
+			certs = certs[0]
 
 
+
+			let allMovementKeys = controllers.listAllKeys(movement);
+			let allOpticsKeys = controllers.listAllKeys(optics);
+			let allPhysicalKeys = controllers.listAllKeys(physical);
+			let allPowerKeys = controllers.listAllKeys(power);
+			let allCertsKeys = controllers.listAllKeys(certs);
+
+			let deadMovementKeys = controllers.filterDead(movement);
+			let deadOpticsKeys = controllers.filterDead(optics);
+			let deadPhysicalKeys = controllers.filterDead(physical);
+			let deadPowerKeys = controllers.filterDead(power);
+			let deadCertsKeys = controllers.filterDead(certs);
+
+			let newMovementKeys = allMovementKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadMovementKeys.length; i++) {
+					if (value === deadMovementKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newOpticsKeys = allOpticsKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadOpticsKeys.length; i++) {
+					if (value === deadOpticsKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newPhysKeys = allPhysicalKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadPhysicalKeys.length; i++) {
+					if (value === deadPhysicalKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newPowerKeys = allPowerKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadPowerKeys.length; i++) {
+					if (value === deadPowerKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newCertsKeys = allCertsKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadCertsKeys.length; i++) {
+					if (value === deadCertsKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			// vals
+
+			let allMovementVals = controllers.listAllVals(movement);
+			let allOpticsVals = controllers.listAllVals(optics);
+			let allPhysVals = controllers.listAllVals(physical);
+			let allPowerVals = controllers.listAllVals(power);
+			let allCertsVals = controllers.listAllVals(certs);
+
+			// let deadMovementVals = controllers.filterDead(movement);
+			// let deadOpticsVals = controllers.filterDead(optics);
+			// let deadPhysVals = controllers.filterDead(physical);
+			// let deadPowerVals = controllers.filterDead(power);
+			// let deadCertsVals = controllers.filterDead(certs);
+
+			let newMovementVals = allMovementVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newOpticsVals = allOpticsVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newPhysVals = allPhysVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newPowerVals = allPowerVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newCertsVals = allCertsVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+
+
+			let finalMovement = Object.fromEntries(
+				newMovementKeys.map((a, i) => [a, newMovementVals[i]])
+			);
+			let finalOptics = Object.fromEntries(
+				newOpticsKeys.map((a, i) => [a, newOpticsVals[i]])
+			);
+			let finalPhys = Object.fromEntries(
+				newPhysKeys.map((a, i) => [a, newPhysVals[i]])
+			);
+			let finalPower = Object.fromEntries(
+				newPowerKeys.map((a, i) => [a, newPowerVals[i]])
+			);
+			let finalCerts = Object.fromEntries(
+				newCertsKeys.map((a, i) => [a, newCertsVals[i]])
+			);
+
+			// res.send(finalMovement)
+			// return;
+
+			// res.send(optics);
+			// return;
+
+			// console.log(certs);
+			// return;
+			res.render('product-pages/camera-housings', {
+				breadcrumbs: req.breadcrumbs,
+				info: info,
+				features: featuresArray,
+				movement: finalMovement,
+				optics: finalOptics,
+				phys: finalPhys,
+				power: finalPower,
+				certs: finalCerts
+			});
 		} catch (e) {
-			console.error(e)
+			console.error(e);
 		}
-
-	})
+	}
 );
+
 module.exports = router;
