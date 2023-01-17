@@ -7,6 +7,9 @@ ssh-add ~/.ssh/github
 echo "Removing old containers"
 docker rm $(docker ps)
 
+echo "Removing database"
+sudo rm -rf src/sql
+
 echo "Removing old images"
 sudo docker image rm $(docker image ls -a)
 
