@@ -4,29 +4,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const nodemailer = require('nodemailer');
 
-
 const morganMiddleware = require('./src/utils/morgan.middleware');
 const logger = require('./src/utils/logger');
 const app = express();
-
-app.use(morganMiddleware);
-
-
-
-const PORT = process.env.PORT || 3030;
-
-app.set('view engine', 'ejs');
-app.set('views', path.resolve('./src/views'));
-
-app.use(bodyParser.json());
-
-app.get('/api/status', (req, res) => {
-	logger.info('Checking the API status: Everything is OK');
-	res.status(200).send({
-		status: 'UP',
-		message: 'The API is up and running!'
-	});
-});
 
 const middlewareCheck = (req, res, next) => {
 	if (req.method === 'POST') {
@@ -42,6 +22,21 @@ const middlewareCheck = (req, res, next) => {
 		console.log(res);
 	}
 };
+
+const PORT = process.env.PORT || 3030;
+
+app.set('view engine', 'ejs');
+app.set('views', path.resolve('./src/views'));
+
+app.use(bodyParser.json());
+
+app.get('/api/status', (req, res) => {
+	logger.info('Checking the API status: Everything is OK');
+	res.status(200).send({
+		status: 'UP',
+		message: 'The API is up and running!'
+	});
+});
 
 app.use(middlewareCheck);
 

@@ -24,11 +24,11 @@ router.get('/product-page', async (req, res) => {
 	}
 });
 
-//
-//
+
+
 // Accessing the new database
-//
-//
+
+
 
 router.get(
 	'/products/cctv/cameras/:product_code',
