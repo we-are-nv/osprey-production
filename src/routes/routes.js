@@ -486,6 +486,42 @@ router.get(
 );
 
 router.get(
+	'/products/cctv/cameras/PTZ',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = await dbQuery.genericQuery(
+				'SELECT * FROM `info` WHERE movement = PTZ '
+			);
+			req.send(data);
+			return;
+			res.render('cameras-ptz', {
+				breadcrumbs: req.breadcrumbs,
+				data: data
+			});
+		} catch (e) {}
+	}
+);
+
+router.get(
+	'/products/cctv/cameras/fixed',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = await dbQuery.genericQuery(
+				'SELECT * FROM `info` WHERE movement = fixed '
+			);
+			req.send(data);
+			return;
+			res.render('cameras-ptz', {
+				breadcrumbs: req.breadcrumbs,
+				data: data
+			});
+		} catch (e) {}
+	}
+);
+
+router.get(
 	'/products/cctv/cameras/thermal-cameras',
 	breadcrumbs.Middleware(),
 	(req, res) => {
@@ -1755,13 +1791,11 @@ router.get(
 			power = controllers.removeFirst(power);
 			certs = controllers.removeFirst(certs);
 
-			movement = movement[0]
-			optics = optics[0]
-			physical = physical[0]
-			power = power[0]
-			certs = certs[0]
-
-
+			movement = movement[0];
+			optics = optics[0];
+			physical = physical[0];
+			power = power[0];
+			certs = certs[0];
 
 			let allMovementKeys = controllers.listAllKeys(movement);
 			let allOpticsKeys = controllers.listAllKeys(optics);
@@ -1928,8 +1962,6 @@ router.get(
 				}
 				return prev;
 			}, []);
-
-
 
 			let finalMovement = Object.fromEntries(
 				newMovementKeys.map((a, i) => [a, newMovementVals[i]])
