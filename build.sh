@@ -4,9 +4,6 @@ echo "setting git stuff"
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/github
 
-echo "Pulling"
-git pull
-
 echo "Removing old containers"
 docker rm $(docker ps)
 
