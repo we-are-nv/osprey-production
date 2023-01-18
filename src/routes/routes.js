@@ -424,7 +424,7 @@ router.get(
 );
 
 router.get(
-	'/products/cctv/cctv-camera-accessories',
+	'/products/cctv/cameras/camera-accessories',
 	breadcrumbs.Middleware(),
 	async (req, res) => {
 		try {
