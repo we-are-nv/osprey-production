@@ -1,8 +1,12 @@
 const express = require('express');
+const cluster = require('cluster');
+const os = require('os');
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const path = require('path');
 const nodemailer = require('nodemailer');
+
+const clusterWorkerSize = os.cpus().length;
 
 const morganMiddleware = require('./src/utils/morgan.middleware');
 const logger = require('./src/utils/logger');
@@ -89,7 +93,28 @@ app.post('/', async (req, res) => {
 	}
 });
 
-app.listen(PORT, (req, res) => {
-	console.log(`server running on port ${PORT}`);
-	console.log(process.env.DB_USER);
-});
+const start = () => {
+	app.listen(PORT, (req, res) => {
+		console.log(`server listening on port ${PORT} and worker ${process.pid}`);
+	});
+};
+
+if (clusterWorkerSize > 1) {
+	if (cluster.isMaster) {
+		for (let i = 0; i < clusterWorkerSize; i++) {
+			cluster.fork();
+		}
+		cluster.on('exit', function (worker) {
+			console.log('Worker', worker.id, 'has exited.');
+		});
+	} else {
+		start();
+	}
+} else {
+	start();
+}
+
+// app.listen(PORT, (req, res) => {
+// 	console.log(`server running on port ${PORT}`);
+// 	console.log(process.env.DB_USER);
+// });
