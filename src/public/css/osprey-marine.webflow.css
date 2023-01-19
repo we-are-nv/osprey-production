@@ -3544,6 +3544,19 @@ td.val-data {
 	flex-wrap: wrap
 } */
 
+#cctv.categories-holder {
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	padding: 2rem 0
+}
+
+#cctv.categories-holder > div {
+	min-width: 180px;
+}
+
 /* PRODUCT GRIDS */
 
 #cctv-cameras.category-section.section-5 {
