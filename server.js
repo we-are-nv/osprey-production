@@ -42,20 +42,6 @@ app.get('/api/status', (req, res) => {
 	});
 });
 
-// app.use((req, res, next) => {
-// 	const err = new Error('Not Found');
-// 	err.status = 404;
-// 	next(err);
-// });
-
-// app.use((err, req, res, next) => {
-// 	res.locals.error = err;
-// 	const status = err.status || 500;
-// 	res.status(status);
-// 	console.error(err)
-// 	// res.render('error');
-// });
-
 app.use('/public', express.static('./src/public'));
 
 app.use(middlewareCheck);
@@ -127,8 +113,3 @@ if (clusterWorkerSize > 1) {
 } else {
 	start();
 }
-
-// app.listen(PORT, (req, res) => {
-// 	console.log(`server running on port ${PORT}`);
-// 	console.log(process.env.DB_USER);
-// });

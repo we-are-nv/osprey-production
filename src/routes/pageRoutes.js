@@ -116,7 +116,6 @@ router.get('/hazardous-areas', breadcrumbs.Middleware(), async (req, res) => {
 	});
 });
 
-
 // Cameras
 
 router.get(
@@ -151,9 +150,8 @@ router.get(
 
 			res.render('marine-cameras', {
 				data: data,
-				movement: "Fixed",
+				movement: 'Fixed',
 				breadcrumbs: req.breadcrumbs
-
 			});
 		} catch (error) {
 			consolee.log(error);
@@ -174,7 +172,7 @@ router.get(
 
 			res.render('marine-cameras', {
 				data: data,
-				movement: "PTZ",
+				movement: 'PTZ',
 				breadcrumbs: req.breadcrumbs
 			});
 		} catch (error) {
@@ -226,8 +224,6 @@ router.get(
 		}
 	}
 );
-
-
 
 router.get(
 	'/products/cctv/cameras/thermal-cameras',
