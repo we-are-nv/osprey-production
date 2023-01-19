@@ -116,6 +116,7 @@ router.get('/products', breadcrumbs.Middleware(), (req, res) => {
 	});
 });
 
+
 router.get(
 	'/products/cctv/cameras/',
 	breadcrumbs.Middleware(),
@@ -132,6 +133,7 @@ router.get(
 		}
 	}
 );
+
 
 router.get(
 	'/products/cctv/cameras/prison-cell',
@@ -163,23 +165,23 @@ router.get(
 	}
 );
 
-router.get(
-	'/products/cctv/cameras/hazardous-environment',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			var data = {};
-			var sqlQuery = 'SELECT * FROM info WHERE category = "hazardous" ';
-			data = await dbQuery.genericQuery(sqlQuery);
-		} catch (error) {
-			consolee.log(error);
-		}
-		res.render('hazardous-areas', {
-			data: data,
-			breadcrumbs: req.breadcrumbs
-		});
-	}
-);
+// router.get(
+// 	'/products/cctv/cameras/hazardous-environment',
+// 	breadcrumbs.Middleware(),
+// 	async (req, res) => {
+// 		try {
+// 			var data = {};
+// 			var sqlQuery = 'SELECT * FROM info WHERE category = "hazardous" ';
+// 			data = await dbQuery.genericQuery(sqlQuery);
+// 		} catch (error) {
+// 			consolee.log(error);
+// 		}
+// 		res.render('hazardous-areas', {
+// 			data: data,
+// 			breadcrumbs: req.breadcrumbs
+// 		});
+// 	}
+// );
 
 router.get(
 	'/products/cctv/cameras/PTZ',
