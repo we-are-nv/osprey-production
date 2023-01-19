@@ -113,3 +113,7 @@ if (clusterWorkerSize > 1) {
 } else {
 	start();
 }
+
+// app.listen(PORT, (req, res) => {
+// 	console.log(`server listening on port ${PORT}`);
+// });
