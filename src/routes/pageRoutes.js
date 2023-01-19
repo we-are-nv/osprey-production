@@ -367,6 +367,12 @@ router.get(
 	}
 );
 
+
+
+
+
+
+
 // CCTV Storage
 
 router.get(
@@ -937,6 +943,8 @@ router.get(
 				[req.params.product_code]
 			);
 
+			info = info[0];
+
 			// Query nvr features
 			let features = await dbQuery.getData(
 				'SELECT * FROM features_nvr WHERE product_code = ?',
@@ -1019,6 +1027,8 @@ router.get(
 				system,
 				video
 			];
+
+			// info = info[0];
 
 			temp.forEach(element => {
 				controllers.noCode(element);

@@ -128,163 +128,362 @@
               </div>
             </div>
           </div>
-          <div data-w-tab="Specification" class="tab-2 w-tab-pane w--tab-active">
+          <div data-w-tab="Specification" class="tab-pane-tab-2 w-tab-pane">
             <div class="specs-container">
               <table class="spec-table">
                 <tbody>
                   <tr>
-                    <% let intVal=Object.values(interface) %>
-                    <% let intKey=Object.values(interface) %>
-                    <% if (intKey.length < 1) { %>
+                    <% let adv_feat_val=Object.values(adv_features) %>
+                    <% let adv_feat_key=Object.values(adv_features) %>
+                    <% if (adv_feat_key.length < 1) { %>
                     <% } else { %>
                     <th>
-                      <h4 class="specs-subheading">Interface</h4>
+                      <h4 class="specs-subheading">Advanced Features</h4>
                     </th>
                   </tr>
-                  <% for (let i=0; i < intVal.length; i++) { %>
+                  <% for (let i=0; i < adv_feat_val.length; i++) { %>
                   <tr class="spec-row">
                     <td class="key-data">
-                      <%= intKey[i]; %>
+                      <%= adv_feat_key[i]; %>
                     </td>
                     <td class="val-data">
-                      <%= intVal[i]; %>
+                      <%= adv_feat_val[i]; %>
                     </td>
                   </tr>
                   <% } %>
                   <% } %>
+
                   <tr>
-                    <% let ethIntVal=Object.values(ethInt); %>
-                    <% let ethIntKey=Object.keys(ethInt); %>
-                    <% ethIntKey=0; %>
-                    <% if(ethIntKey < 1) { %>
+                    <% let adv_feat_1val=Object.values(adv_features_1); %>
+                    <% let adv_feat_1key=Object.keys(adv_features_1); %>
+                    <% adv_feat_1key=0; %>
+                    <% if(adv_feat_1key < 1) { %>
                     <% }else{ %>
                     <th>
-                      <h4 class="specs-subheading">Ethernet Interface</h4>
+                      <h4 class="specs-subheading">Advanced Features 2</h4>
                     </th>
                   </tr>
                   <tr>
-                    <% for ( let i=0; i < ethIntKey.length; i++ ) { %>
+                    <% for ( let i=0; i < adv_feat_1key.length; i++ ) { %>
                   <tr class="spec-row">
                     <td class="key-data av-keys">
-                      <%= ethIntKey[i] %>
+                      <%= adv_feat_1key[i] %>
                     </td>
                     <td class="val-data av-vals">
-                      <%= ethIntVal[i] %>
+                      <%= adv_feat_1val[i] %>
                     </td>
                   </tr>
                   <% } %>
                   <% } %>
+
                   <tr>
-                    <% let ledVal=Object.values(LED); %>
-                    <% let ledKey=Object.keys(LED); %>
-                    <% if (ledKey < 1) { %>
+                    <% let audioVal=Object.values(audio); %>
+                    <% let audioKey=Object.keys(audio); %>
+                    <% if (audioKey < 1) { %>
                     <% } else { %>
                     <th>
-                      <h4 class="specs-subheading">LED Indicators</h4>
+                      <h4 class="specs-subheading">Audio Specifications</h4>
                     </th>
                   </tr>
                   <tr>
-                    <% for( let i=0; i < ledKey.length; i++ ) { %>
+                    <% for( let i=0; i < audioKey.length; i++ ) { %>
                   <tr class="spec-row">
                     <td class="key-data auto-keys">
-                      <%= ledKey[i] %>
+                      <%= audioKey[i] %>
                     </td>
                     <td class="val-data auto-vals">
-                      <%= ledVal[i] %>
+                      <%= audioVal[i] %>
                     </td>
                   </tr>
                   <% } %>
                   <% } %>
                   <tr>
-                    <% let OBVal=Object.values(OB); %>
-                    <% let OBKey=Object.keys(OB); %>
+                    <% let vidVal=Object.values(video); %>
+                    <% let vidKey=Object.keys(video); %>
                     <th>
-                      <% if (OBKey.length < 1) { %>
+                      <% if (vidKey.length < 1) { %>
                       <% } else { %>
-                      <h4 class="specs-subheading">On Board Specifications</h4>
+                      <h4 class="specs-subheading">Video Specifications</h4>
                     </th>
                   </tr>
                   <tr>
-                    <% for( let i=0; i < OBKey.length; i++ ) { %>
+                    <% for( let i=0; i < vidKey.length; i++ ) { %>
                   <tr>
                     <td>
-                      <%= OBKey[i] %>
+                      <%= vidKey[i] %>
                     </td>
                     <td class="val-data elec-vals">
-                      <%= OBVal[i] %>
+                      <%= vidVal[i] %>
                     </td>
                   </tr>
                   <% } %>
                   <% } %>
+
                   </tr>
                   <tr>
-                    <% let physVal=Object.values(phys); %>
-                    <% let physKey=Object.keys(phys); %>
-                    <% if (physKey < 1) { %>
+                    <% let DSVal=Object.values(deep_search); %>
+                    <% let DSKey=Object.keys(deep_search); %>
+                    <% if (DSKey < 1) { %>
                     <% } else { %>
                     <th>
-                      <h4 class="specs-subheading">Physical Specifications</h4>
+                      <h4 class="specs-subheading">Deep Search</h4>
                     </th>
                   </tr>
                   <tr>
-                    <% for( let i=0; i < physKey.length; i++ ) { %>
+                    <% for( let i=0; i < DSKey.length; i++ ) { %>
                   <tr class="spec-row">
                     <td class="key-data elec-keys">
-                      <%= physKey[i] %>
+                      <%= DSKey[i] %>
                     </td>
                     <td class="val-data elec-vals">
-                      <%= physVal[i] %>
+                      <%= DSVal[i] %>
                     </td>
                   </tr>
                   <% } %>
                   <% } %>
                   </tr>
                   <tr>
-                    <% let powerVal=Object.values(power); %>
-                    <% let powerKey=Object.keys(power); %>
-                    <% if (powerKey.length < 1) { %>
+                    <% let devVal=Object.values(device); %>
+                    <% let devKey=Object.keys(device); %>
+                    <% if (devKey.length < 1) { %>
                     <% } else { %>
                     <th>
-                      <h4 class="specs-subheading">Power Specifications</h4>
+                      <h4 class="specs-subheading">Device Specifications</h4>
                     </th>
                   </tr>
                   <tr>
-                    <% for( let i=0; i < powerKey.length; i++ ) { %>
+                    <% for( let i=0; i < devKey.length; i++ ) { %>
                   <tr class="spec-row">
                     <td class="key-data elec-keys">
-                      <%= powerKey[i] %>
+                      <%= devKey[i] %>
                     </td>
                     <td class="val-data elec-vals">
-                      <%= powerVal[i] %>
+                      <%= devVal[i] %>
                     </td>
                   </tr>
                   <% } %>
                   <% } %>
                   </tr>
+                  <tr>
+                    <% let disVal=Object.values(display); %>
+                    <% let disKey=Object.keys(display); %>
+                    <% if (disKey.length < 1) { %>
+                    <% } else { %>
+                    <th>
+                      <h4 class="specs-subheading">Display Specifications</h4>
+                    </th>
+                  </tr>
+                  <tr>
+                    <% for( let i=0; i < disKey.length; i++ ) { %>
+                  <tr class="spec-row">
+                    <td class="key-data elec-keys">
+                      <%= disKey[i] %>
+                    </td>
+                    <td class="val-data elec-vals">
+                      <%= disVal[i] %>
+                    </td>
+                  </tr>
+                  <% } %>
+                  <% } %>
+                  </tr>
+                  <tr>
+                    <% let genVal=Object.values(general); %>
+                    <% let genKey=Object.keys(general); %>
+                    <% if (genKey.length < 1) { %>
+                    <% } else { %>
+                    <th>
+                      <h4 class="specs-subheading">General Specifications</h4>
+                    </th>
+                  </tr>
+                  <tr>
+                    <% for( let i=0; i < genKey.length; i++ ) { %>
+                  <tr class="spec-row">
+                    <td class="key-data elec-keys">
+                      <%= genKey[i] %>
+                    </td>
+                    <td class="val-data elec-vals">
+                      <%= genVal[i] %>
+                    </td>
+                  </tr>
+                  <% } %>
+                  <% } %>
+                  </tr>
+
+
+                  <tr>
+                    <% let playVal=Object.values(playback); %>
+                    <% let playKey=Object.keys(playback); %>
+                    <% if (playKey.length < 1) { %>
+                    <% } else { %>
+                    <th>
+                      <h4 class="specs-subheading">Playback Specifications</h4>
+                    </th>
+                  </tr>
+                  <tr>
+                    <% for( let i=0; i < playKey.length; i++ ) { %>
+                  <tr class="spec-row">
+                    <td class="key-data elec-keys">
+                      <%= playKey[i] %>
+                    </td>
+                    <td class="val-data elec-vals">
+                      <%= playVal[i] %>
+                    </td>
+                  </tr>
+                  <% } %>
+                  <% } %>
+                  </tr>
+                  <tr>
+                    <% let recVal=Object.values(recording); %>
+                    <% let recKey=Object.keys(recording); %>
+                    <% if (recKey.length < 1) { %>
+                    <% } else { %>
+                    <th>
+                      <h4 class="specs-subheading">Recording Specifications</h4>
+                    </th>
+                  </tr>
+                  <tr>
+                    <% for( let i=0; i < recKey.length; i++ ) { %>
+                  <tr class="spec-row">
+                    <td class="key-data elec-keys">
+                      <%= recKey[i] %>
+                    </td>
+                    <td class="val-data elec-vals">
+                      <%= recVal[i] %>
+                    </td>
+                  </tr>
+                  <% } %>
+                  <% } %>
+                  </tr>
+
+
                 </tbody>
               </table>
             </div>
+            <div class="specs-container">
+              <table>
+
+                <tr>
+                  <% let remVal=Object.values(remote); %>
+                  <% let remKey=Object.keys(remote); %>
+                  <% if (remKey.length < 1) { %>
+                  <% } else { %>
+                  <th>
+                    <h4 class="specs-subheading">Remote Specifications</h4>
+                  </th>
+                </tr>
+                <tr>
+                  <% for( let i=0; i < remKey.length; i++ ) { %>
+                <tr class="spec-row">
+                  <td class="key-data elec-keys">
+                    <%= remKey[i] %>
+                  </td>
+                  <td class="val-data elec-vals">
+                    <%= remVal[i] %>
+                  </td>
+                </tr>
+                <% } %>
+                <% } %>
+                </tr>
+
+
+                <tr>
+                  <% let intVal=Object.values(interface); %>
+                  <% let intKey=Object.keys(interface); %>
+                  <% if (intKey.length < 1) { %>
+                  <% } else { %>
+                  <th>
+                    <h4 class="specs-subheading">Interface Specifications</h4>
+                  </th>
+                </tr>
+                <tr>
+                  <% for( let i=0; i < intKey.length; i++ ) { %>
+                <tr class="spec-row">
+                  <td class="key-data elec-keys">
+                    <%= intKey[i] %>
+                  </td>
+                  <td class="val-data elec-vals">
+                    <%= intVal[i] %>
+                  </td>
+                </tr>
+                <% } %>
+                <% } %>
+                </tr>
+
+
+                <tr>
+                  <% let netVal=Object.values(network); %>
+                  <% let netKey=Object.keys(network); %>
+                  <% if (netKey.length < 1) { %>
+                  <% } else { %>
+                  <th>
+                    <h4 class="specs-subheading">Network Specifications</h4>
+                  </th>
+                </tr>
+                <tr>
+                  <% for( let i=0; i < netKey.length; i++ ) { %>
+                <tr class="spec-row">
+                  <td class="key-data elec-keys">
+                    <%= netKey[i] %>
+                  </td>
+                  <td class="val-data elec-vals">
+                    <%= netVal[i] %>
+                  </td>
+                </tr>
+                <% } %>
+                <% } %>
+                </tr>
+
+
+
+
+
+                <tr>
+                  <% let sysVal=Object.values(system); %>
+                  <% let sysKey=Object.keys(system); %>
+                  <% if (sysKey.length < 1) { %>
+                  <% } else { %>
+                  <th>
+                    <h4 class="specs-subheading">System Specifications</h4>
+                  </th>
+                </tr>
+                <tr>
+                  <% for( let i=0; i < sysKey.length; i++ ) { %>
+                <tr class="spec-row">
+                  <td class="key-data elec-keys">
+                    <%= sysKey[i] %>
+                  </td>
+                  <td class="val-data elec-vals">
+                    <%= sysVal[i] %>
+                  </td>
+                </tr>
+                <% } %>
+                <% } %>
+                </tr>
+              </table>
+
+
+            </div>
           </div>
-          <div data-w-tab="Images" class="tab-pane-tab-2 w-tab-pane">
+          <div data-w-tab="Images" class="tab-pane-tab-3 w-tab-pane">
             <h3 class="heading-11">Images</h3>
             <div class="gallery-wrapper">
               <div id="w-node-bb445dc3-3323-edee-e039-527b8590d68d-d3243517" class="gallery-grid">
-                <% if(data.info.image ) { %>
-                <img src="<%= data.info.image %>" loading="lazy" width="345" height="345" alt="<%= data.info.image %>" class="product-image main-product-img" />
+                <% if(info.image ) { %>
+                <img src="<%= info.image %>" loading="lazy" width="345" height="345" alt="<%= data.info.image %>" class="product-image main-product-img" />
                 <% }%>
-                <% if(data.info.image_2 ) { %>
-                <img src="<%= data.info.image_2 %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
+                <% if(info.image_2 ) { %>
+                <img src="<%= info.image_2 %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
                 <% }%>
-                <% if(data.info.technical_image ) { %>
-                <img src="<%= data.info.technical_image %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
+                <% if(info.technical_image ) { %>
+                <img src="<%= info.technical_image %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
                 <% }%>
               </div>
               <div class="gallery-grid">
-                <% if(data.info.technical_image_2 ) { %>
-                <img src="<%= data.info.technical_image_2 %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
+                <% if(info.technical_image_2 ) { %>
+                <img src="<%= info.technical_image_2 %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
                 <% }%>
-                <% if(data.info.technical_image_3 ) { %>
-                <img src="<%= data.info.technical_image_3 %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
+                <% if(info.technical_image_3 ) { %>
+                <img src="<%= info.technical_image_3 %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
                 <% }%>
               </div>
             </div>

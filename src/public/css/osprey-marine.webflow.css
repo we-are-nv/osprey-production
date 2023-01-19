@@ -1541,6 +1541,14 @@ img.bollard-image {
 	max-width: 400px;
 }
 
+.tab-2.w-tab-pane {
+	display: flex;
+	flex-direction: row;
+	gap: 60px;
+	align-items: baseline;
+
+}
+
 .specs-container {
 	width: 80%;
 	max-width: 99%;
