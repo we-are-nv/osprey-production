@@ -128,7 +128,7 @@
               </div>
             </div>
           </div>
-          <div data-w-tab="Specification" class="tab-pane-tab-2 w-tab-pane">
+          <div data-w-tab="Specification" id="specs-tab" class="tab-pane-tab-2 w-tab-pane">
             <div class="specs-container">
               <table class="spec-table">
                 <tbody>
@@ -242,28 +242,7 @@
                   <% } %>
                   <% } %>
                   </tr>
-                  <tr>
-                    <% let devVal=Object.values(device); %>
-                    <% let devKey=Object.keys(device); %>
-                    <% if (devKey.length < 1) { %>
-                    <% } else { %>
-                    <th>
-                      <h4 class="specs-subheading">Device Specifications</h4>
-                    </th>
-                  </tr>
-                  <tr>
-                    <% for( let i=0; i < devKey.length; i++ ) { %>
-                  <tr class="spec-row">
-                    <td class="key-data elec-keys">
-                      <%= devKey[i] %>
-                    </td>
-                    <td class="val-data elec-vals">
-                      <%= devVal[i] %>
-                    </td>
-                  </tr>
-                  <% } %>
-                  <% } %>
-                  </tr>
+
                   <tr>
                     <% let disVal=Object.values(display); %>
                     <% let disKey=Object.keys(display); %>
@@ -286,28 +265,7 @@
                   <% } %>
                   <% } %>
                   </tr>
-                  <tr>
-                    <% let genVal=Object.values(general); %>
-                    <% let genKey=Object.keys(general); %>
-                    <% if (genKey.length < 1) { %>
-                    <% } else { %>
-                    <th>
-                      <h4 class="specs-subheading">General Specifications</h4>
-                    </th>
-                  </tr>
-                  <tr>
-                    <% for( let i=0; i < genKey.length; i++ ) { %>
-                  <tr class="spec-row">
-                    <td class="key-data elec-keys">
-                      <%= genKey[i] %>
-                    </td>
-                    <td class="val-data elec-vals">
-                      <%= genVal[i] %>
-                    </td>
-                  </tr>
-                  <% } %>
-                  <% } %>
-                  </tr>
+
 
 
                   <tr>
@@ -361,6 +319,52 @@
             </div>
             <div class="specs-container">
               <table>
+
+								<tr>
+								  <% let devVal=Object.values(device); %>
+								  <% let devKey=Object.keys(device); %>
+								  <% if (devKey.length < 1) { %>
+								  <% } else { %>
+								  <th>
+								    <h4 class="specs-subheading">Device Specifications</h4>
+								  </th>
+								</tr>
+								<tr>
+								  <% for( let i=0; i < devKey.length; i++ ) { %>
+								<tr class="spec-row">
+								  <td class="key-data elec-keys">
+								    <%= devKey[i] %>
+								  </td>
+								  <td class="val-data elec-vals">
+								    <%= devVal[i] %>
+								  </td>
+								</tr>
+								<% } %>
+								<% } %>
+								</tr>
+
+                <tr>
+                  <% let genVal=Object.values(general); %>
+                  <% let genKey=Object.keys(general); %>
+                  <% if (genKey.length < 1) { %>
+                  <% } else { %>
+                  <th>
+                    <h4 class="specs-subheading">General Specifications</h4>
+                  </th>
+                </tr>
+                <tr>
+                  <% for( let i=0; i < genKey.length; i++ ) { %>
+                <tr class="spec-row">
+                  <td class="key-data elec-keys">
+                    <%= genKey[i] %>
+                  </td>
+                  <td class="val-data elec-vals">
+                    <%= genVal[i] %>
+                  </td>
+                </tr>
+                <% } %>
+                <% } %>
+                </tr>
 
                 <tr>
                   <% let remVal=Object.values(remote); %>

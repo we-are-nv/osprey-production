@@ -1541,12 +1541,19 @@ img.bollard-image {
 	max-width: 400px;
 }
 
-.tab-2.w-tab-pane {
+div.tab-2.w-tab-pane {
 	display: flex;
 	flex-direction: row;
 	gap: 60px;
 	align-items: baseline;
 
+}
+
+#specs-tab.tab-pane-tab-2.w-tab-pane {
+	display: flex;
+	flex-direction: row;
+	gap: 5vw;
+	align-items: baseline;
 }
 
 .specs-container {
@@ -1561,9 +1568,9 @@ img.bollard-image {
 }
 
 
+
 .w--tab-active {
 	display: flex !important;
-	align-items: center !important;
 	justify-content: center !important;
 }
 
@@ -3561,7 +3568,7 @@ td.val-data {
 	padding: 2rem 0
 }
 
-#cctv.categories-holder > div {
+#cctv.categories-holder>div {
 	min-width: 180px;
 }
 
@@ -8360,6 +8367,13 @@ nav.breadcrumb {
 	font-family: "Avenir";
 	font-size: 18px;
 	color: #fdfdfd;
+}
+.breadcrumb-product-page {
+	color: #093273
+}
+
+.breadcrumb-product-page .breadcrumb-item {
+	color: inherit
 }
 
 

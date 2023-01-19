@@ -273,7 +273,7 @@ router.get(
 // Camera Accessories
 
 router.get(
-	'/products/cctv/cameras/camera-accessories',
+	'/products/cctv/cctv-accessories',
 	breadcrumbs.Middleware(),
 	async (req, res) => {
 		try {
@@ -366,12 +366,6 @@ router.get(
 		}
 	}
 );
-
-
-
-
-
-
 
 // CCTV Storage
 
@@ -521,6 +515,191 @@ router.get(
 );
 
 // Product Page Routes
+
+// CCTV accessories prod page
+
+router.get(
+	'/products/cctv/cctv-accessories/:product_code',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let info = await dbQuery.getData(
+				'SELECT * FROM `acc_info` WHERE product_code = ?',
+				[req.params.product_code]
+			);
+			let physical = await dbQuery.getData(
+				'SELECT * FROM `acc_physical` WHERE product_code = ?',
+				[req.params.product_code]
+			);
+			let certs = await dbQuery.getData(
+				'SELECT * FROM `acc_certs` WHERE product_code = ?',
+				[req.params.product_code]
+			);
+			let power = await dbQuery.getData(
+				'SELECT * FROM `acc_power` WHERE product_code = ?',
+				[req.params.product_code]
+			);
+
+			let features = await dbQuery.getData(
+				'SELECT ' +
+					'`feature_1`, ' +
+					'`feature_2`, ' +
+					'`feature_3`, ' +
+					'`feature_4`, ' +
+					'`feature_5`, ' +
+					'`feature_6`, ' +
+					'`feature_7`, ' +
+					'`feature_8`, ' +
+					'`feature_9`, ' +
+					'`feature_10`, ' +
+					'`feature_11`, ' +
+					'`feature_12`, ' +
+					'`feature_13`, ' +
+					'`feature_14`, ' +
+					'`feature_15`, ' +
+					'`feature_16` FROM `acc_info` WHERE product_code = ? ;',
+				[req.params.product_code]
+			);
+
+			let constDeadVals = ['*', 'n/a', ''];
+
+			featuresArray = Object.values(features[0]);
+
+			featuresArray = featuresArray.filter(function (val) {
+				return constDeadVals.indexOf(val) == -1;
+			});
+
+			info = controllers.removeFirst(info);
+			physical = controllers.removeFirst(physical);
+			certs = controllers.removeFirst(certs);
+			power = controllers.removeFirst(power);
+
+			physical = physical[0];
+			certs = certs[0];
+			power = power[0];
+
+			let allPhysKeys = controllers.listAllKeys(physical);
+			let allCertsKeys = controllers.listAllKeys(certs);
+			let allPowerKeys = controllers.listAllKeys(power);
+
+			let deadPhysKeys = controllers.filterDead(physical);
+			let deadCertsKeys = controllers.filterDead(certs);
+			let deadPowerKeys = controllers.filterDead(power);
+
+			let allPhysVals = controllers.listAllVals(physical);
+			let allCertsVals = controllers.listAllVals(certs);
+			let allPowerVals = controllers.listAllVals(power);
+
+			let newPhysKeys = allPhysKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadPhysKeys.length; i++) {
+					if (value === deadPhysKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newCertsKeys = allCertsKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadCertsKeys.length; i++) {
+					if (value === deadCertsKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newPowerKeys = allPowerKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadPowerKeys.length; i++) {
+					if (value === deadPowerKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newPhysVals = allPhysVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newCertsVals = allCertsVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newPowerVals = allPowerVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let finalPhys = Object.fromEntries(
+				newPhysKeys.map((a, i) => [a, newPhysVals[i]])
+			);
+
+			let finalCerts = Object.fromEntries(
+				newCertsKeys.map((a, i) => [a, newCertsVals[i]])
+			);
+
+			let finalPower = Object.fromEntries(
+				newPowerKeys.map((a, i) => [a, newPowerVals[i]])
+			);
+
+			res.render('product-pages/cctv-accessories', {
+				breadcrumbs: req.breadcrumbs,
+				info: info[0],
+				features: featuresArray,
+				physical: finalPhys,
+				power: power,
+				certs: finalCerts
+
+			});
+		} catch (e) {
+			console.log(e);
+		}
+	}
+);
 
 // transmission-prod-page
 
@@ -1676,6 +1855,7 @@ router.get(
 				power: finalPower,
 				certs: finalCerts,
 				features: featuresArray,
+				info: finalInfo,
 				breadcrumbs: req.breadcrumbs
 			});
 		} catch (e) {

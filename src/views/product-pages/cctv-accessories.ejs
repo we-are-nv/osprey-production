@@ -3,7 +3,7 @@
 <!--  Last Published: Thu Sep 15 2022 09:05:06 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="632216a371204605d3243517" data-wf-site="630f2987edd15c6db1f2ad57">
 <meta content="With over 25 years industry experience, we are a credible and trusted source for effective and leading security systems in the United Kingdom." name="description">
-<meta content="Osprey Security Product Page" property="twitter:title" / <head>
+<meta content="Osprey Security CCTV Accessories Page" property="twitter:title" / <head>
 <meta charset="utf-8" />
 <title>Osprey Security</title>
 <meta content="With over 25 years industry experience, we are a credible and trusted source for effective and leading security systems in the United Kingdom." name="description" />
@@ -71,13 +71,13 @@
             <div role="list" class="w-dyn-items">
               <div role="listitem" class="collection-item w-dyn-item">
                 <h1 class="product-name-h1">
-                  <%= data.info.product_name %>
+                  <%= info.product_name %>
                 </h1>
                 <h4 class="product-code-h4"></h4>
                 <div class="image-bullet-wrapper">
                   <div class="image-frame" id="main-product-image">
                     <span class="helper-frame">
-                      <img src="<%= data.info.image %>" loading="lazy" width="345" height="345" alt="<%= data.info.product_name %>" class="product-image main-product-img" />
+                      <img src="<%= info.image %>" loading="lazy" width="345" height="345" alt="<%= info.product_name %>" class="product-image main-product-img" />
                     </span>
                   </div>
                   <div class="bullet-wrapper">
@@ -115,15 +115,15 @@
           <div data-w-tab="Description" class="tab-pane-tab-1 w-tab-pane">
             <div class="description-heading">
               <h3 class="desc-heading">
-                <%= data.info.product_name %>
+                <%= info.product_name %>
                 <br>
               </h3>
               <h4>
-                <%= data.info.product_code %>
+                <%= info.product_code %>
               </h4>
               <div class="description-content">
                 <p>
-                  <%= data.info.description%>
+                  <%= info.description%>
                 </p>
               </div>
             </div>
@@ -133,110 +133,81 @@
               <table class="spec-table">
                 <tbody>
                   <tr>
-                    <th>
-                      <h4 class="specs-subheading">Audio Video Specifications</h4>
-                    </th>
-                  </tr>
-                  <tr>
-                    <% if (!av) { %>
-                    <h3>No Audio Video Data Available</h3>
+                    <% let physVal=Object.values(physical); %>
+                    <% let physKey=Object.keys(physical); %>
+                    <% if (physKey < 1) { %>
                     <% } else { %>
-                    <% avVal=Object.values(av); %>
-                    <% av=Object.keys(av); %>
-                    <% for( let i=0; i < av.length; i++ ) { %>
-                  <tr class="spec-row">
-                    <td class="key-data spec-keys">
-                      <%= av[i] %>
-                    </td>
-                    <td class="val-data spec-vals">
-                      <%= avVal[i] %>
-                    </td>
-                  </tr>
-                  <% } %>
-                  <% } %>
-                  </tr>
-                  <tr>
                     <th>
-                      <h4 class="specs-subheading">Movement and Control</h4>
+                      <h4 class="specs-subheading">Physical Specifications</h4>
                     </th>
                   </tr>
                   <tr>
-                    <% if (data.info.movement=='fixed' || data.info.movement=='FIXED' ) { %>
-                    <td>
-                      <h5 class="data-error">This camera is fixed</h5>
-                    </td>
-                    <% } else { %>
-                    <% movementVal=Object.values(movement); %>
-                    <% movement=Object.keys(movement); %>
-                    <% for( let i=0; i < movement.length; i++ ) { %>
-                  <tr class="spec-row">
-                    <td class="key-data av-keys">
-                      <%= movement[i] %>
-                    </td>
-                    <td class="val-data av-vals">
-                      <%= movementVal[i] %>
-                    </td>
-                  </tr>
-                  <% } %>
-                  <% } %>
-                  <tr>
-                    <th>
-                      <h4 class="specs-subheading">Physial Specifications</h4>
-                    </th>
-                  </tr>
-                  <tr>
-                    <% physVal=Object.values(physical); %>
-                    <% phys=Object.keys(physical); %>
-                    <% for( let i=0; i < physical.length; i++ ) { %>
+                    <% for( let i=0; i < physKey.length; i++ ) { %>
                   <tr class="spec-row">
                     <td class="key-data auto-keys">
-                      <%= phys[i] %>
+                      <%= physKey[i] %>
                     </td>
                     <td class="val-data auto-vals">
                       <%= physVal[i] %>
                     </td>
                   </tr>
                   <% } %>
-                  <tr>
-                    <th>
-                      <h4 class="specs-subheading">Electrical / Power Specifications</h4>
-                    </th>
-                  </tr>
-                  <tr>
-                    <% powerVal=Object.values(power); %>
-                    <% power=Object.keys(power); %>
-                    <% for( let i=0; i < power.length; i++ ) { %>
-                  <tr class="spec-row">
-                    <td class="key-data elec-keys">
-                      <%= power[i] %>
-                    </td>
-                    <td class="val-data elec-vals">
-                      <%= powerVal[i] %>
-                    </td>
-                  </tr>
                   <% } %>
-                  </tr>
+
+
+                  <% let certVal=Object.values(certs); %>
+                  <% let certKey=Object.keys(certs); %>
+                  <% if (certKey.length < 1) { %>
+                  <th>
+                    <h4 class="specs-subheading"></h4>
+                  </th>
+                  <% } else { %>
+                  <th>
+                    <h4 class="specs-subheading">Certifications</h4>
+                  </th>
                   <tr>
-                    <th>
-                      <h4 class="specs-subheading">Certifications and Regulations</h4>
-                    </th>
-                  </tr>
-                  <tr>
-                    <% certsVal=Object.values(certs); %>
-                    <% certs=Object.keys(certs); %>
                     <% for( let i=0; i < certs.length; i++ ) { %>
-                    <%- console.log(certs) %>
-                  <tr class="spec-row">
-                    <td class="key-data elec-keys">
-                      <%= certs[i] %>
+                  <tr>
+                    <td>
                     </td>
-                    <td class="val-data elec-vals">
-                      <%- console.log(certsVal) %>
-                      <%= certsVal[i] %>
+                  </tr>
+                  <tr class="spec-row">
+                    <td class="key-data av-keys">
+                      <%= certKey[i] %>
+                    </td>
+                    <td class="val-data av-vals">
+                      <%= certVal[i] %>
                     </td>
                   </tr>
                   <% } %>
+                  <% } %>
                   </tr>
+                  <% let powertVal=Object.values(power); %>
+                  <% let powerKey=Object.keys(power); %>
+                  <% if (power.length < 1) { %>
+                  <th>
+                    <h4 class="specs-subheading"></h4>
+                  </th>
+                  <% } else { %>
+                  <th>
+                    <h4 class="specs-subheading">Power Specifications</h4>
+                  </th>
+                  <tr>
+                    <% for( let i=0; i < power.length; i++ ) { %>
+                  <tr>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr class="spec-row">
+                    <td class="key-data av-keys">
+                      <%= powerKey[i] %>
+                    </td>
+                    <td class="val-data av-vals">
+                      <%= powertVal[i] %>
+                    </td>
+                  </tr>
+                  <% } %>
+                  <% } %>
                 </tbody>
               </table>
             </div>
@@ -245,25 +216,25 @@
             <h3 class="heading-11">Images</h3>
             <div class="gallery-wrapper">
               <div id="w-node-bb445dc3-3323-edee-e039-527b8590d68d-d3243517" class="gallery-grid">
-                <% if(data.info.image ) { %>
-                <img src="<%= data.info.image %>" loading="lazy" width="345" height="345" alt="<%= data.info.product_code %>" class="product-image main-product-img" />
+                <% if(info.image ) { %>
+                <img src="<%= info.image %>" loading="lazy" width="345" height="345" alt="<%= info.product_code %>" class="product-image main-product-img" />
                 <% } else { %>
                 Sorry no image available
                 <% }%>
-                <% if(data.info.technical_image ) { %>
-                <img src="<%= data.info.technical_image %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
+                <% if(info.technical_image ) { %>
+                <img src="<%= info.technical_image %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
                 <% } else { %>
                 Sorry no technical image available
                 <% }%>
               </div>
               <div class="gallery-grid">
-                <% if(data.info.technical_image_2 ) { %>
-                <img src="<%= data.info.technical_image_2 %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
+                <% if(info.technical_image_2 ) { %>
+                <img src="<%= info.technical_image_2 %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
                 <% } else { %>
                 Sorry no technical image available
                 <% }%>
-                <% if(data.info.technical_image_3 ) { %>
-                <img src="<%= data.info.technical_image_3 %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
+                <% if(info.technical_image_3 ) { %>
+                <img src="<%= info.technical_image_3 %>" loading="lazy" width="345" height="345" alt="" class="product-image main-product-img" />
                 <% } else { %>
                 Sorry no technical image available
                 <% }%>
