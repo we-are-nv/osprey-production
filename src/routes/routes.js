@@ -218,7 +218,7 @@ router.get(
 );
 
 router.get(
-	'/products/cctv/cameras/thermal',
+	'/products/cctv/cameras/thermal-cameras',
 	breadcrumbs.Middleware(),
 	async (req, res) => {
 		try {
