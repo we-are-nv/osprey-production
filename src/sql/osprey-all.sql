@@ -968,7 +968,7 @@ CREATE TABLE `housings_info` (
   `technical_image_2` varchar(10) DEFAULT NULL,
   `technical_image_3` varchar(10) DEFAULT NULL,
   `download_link` varchar(10) DEFAULT NULL,
-  `description_(as_text)` varchar(1088) DEFAULT NULL,
+  `description` varchar(1088) DEFAULT NULL,
   `feature_1` varchar(82) DEFAULT NULL,
   `feature_2` varchar(55) DEFAULT NULL,
   `feature_3` varchar(76) DEFAULT NULL,

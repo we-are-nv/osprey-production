@@ -166,7 +166,7 @@
                     <h4 class="specs-subheading">Certifications</h4>
                   </th>
                   <tr>
-                    <% for( let i=0; i < certs.length; i++ ) { %>
+                    <% for( let i=0; i < certKey.length; i++ ) { %>
                   <tr>
                     <td>
                     </td>
@@ -182,9 +182,10 @@
                   <% } %>
                   <% } %>
                   </tr>
-                  <% let powertVal=Object.values(power); %>
+                  <% let powerVal=Object.values(power); %>
                   <% let powerKey=Object.keys(power); %>
-                  <% if (power.length < 1) { %>
+									<% console.log("power length is: " + powerKey.length) %>
+                  <% if (powerKey.length < 1) { %>
                   <th>
                     <h4 class="specs-subheading"></h4>
                   </th>
@@ -193,21 +194,21 @@
                     <h4 class="specs-subheading">Power Specifications</h4>
                   </th>
                   <tr>
-                    <% for( let i=0; i < power.length; i++ ) { %>
+                    <% for( let i=0; i < powerKey.length; i++ ) { %>
                   <tr>
-                    <td>
-                    </td>
                   </tr>
                   <tr class="spec-row">
                     <td class="key-data av-keys">
                       <%= powerKey[i] %>
                     </td>
                     <td class="val-data av-vals">
-                      <%= powertVal[i] %>
+                      <%= powerVal[i] %>
                     </td>
                   </tr>
                   <% } %>
                   <% } %>
+
+
                 </tbody>
               </table>
             </div>

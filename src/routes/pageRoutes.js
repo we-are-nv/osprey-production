@@ -42,6 +42,34 @@ router.get('/contact-us', breadcrumbs.Middleware(), (req, res) => {
 	res.render('contact', { breadcrumbs: req.breadcrumbs });
 });
 
+router.get('/services', breadcrumbs.Middleware(), (req, res) => {
+	res.render('services-collection', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/system-design', breadcrumbs.Middleware(), (req, res) => {
+	res.render('system-design-build', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/installations', breadcrumbs.Middleware(), (req, res) => {
+	res.render('installations', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/service-support', breadcrumbs.Middleware(), (req, res) => {
+	res.render('service-support', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/training', breadcrumbs.Middleware(), (req, res) => {
+	res.render('training', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/consultancy', breadcrumbs.Middleware(), (req, res) => {
+	res.render('consultancy', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/services/risk', breadcrumbs.Middleware(), (req, res) => {
+	res.render('risk-assessment', { breadcrumbs: req.breadcrumbs });
+});
+
 // Resources
 
 router.get('/resources', breadcrumbs.Middleware(), (req, res) => {
@@ -693,7 +721,6 @@ router.get(
 				physical: finalPhys,
 				power: power,
 				certs: finalCerts
-
 			});
 		} catch (e) {
 			console.log(e);
@@ -1477,6 +1504,10 @@ router.get(
 			let finalCerts = Object.fromEntries(
 				newCertsKeys.map((a, i) => [a, newCertsVals[i]])
 			);
+
+			info = info[0];
+
+		
 
 			res.render('product-pages/camera-housings', {
 				breadcrumbs: req.breadcrumbs,

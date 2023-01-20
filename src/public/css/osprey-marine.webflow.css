@@ -3492,7 +3492,7 @@ td.val-data {
 }
 
 .categories-holder {
-	margin-top: 80px;
+	margin-top: 80px !important;
 }
 
 .categories-holder.risks {
@@ -3538,7 +3538,7 @@ td.val-data {
 }
 
 .category-section {
-	padding: 40px 10%;
+	/* padding: 40px 10%; */
 	background-color: #fff
 }
 
@@ -3559,10 +3559,10 @@ td.val-data {
 	flex-wrap: wrap
 } */
 
-#cctv.categories-holder {
-
+#cctv-cameras.categories-holder {
+	/* margin-top: 80px; */
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-around;
 	flex-wrap: wrap;
 	padding: 2rem 0
@@ -3572,7 +3572,28 @@ td.val-data {
 	min-width: 180px;
 }
 
+.section-5 {
+	margin-top: 180px;
+	/* padding-right: 5%;
+	padding-left: 5% */
+
+}
+
+/* .section-header {
+	padding: 0 5%;
+} */
+
 /* PRODUCT GRIDS */
+
+#marine.section-subhead {
+	padding: 0;
+	margin-top: 70px
+}
+
+#marine-products.category-section.section-5.bottom-section {
+	padding: 0;
+	margin-top: 0 !important;
+}
 
 #cctv-cameras.category-section.section-5 {
 	padding-left: 0;
@@ -3588,6 +3609,11 @@ td.val-data {
 	align-items: center;
 	background: #c2c2c2
 }
+.categories-holder.services {
+	padding:2rem 2rem ;
+	flex-direction: row;
+	gap: 2%
+}
 
 .categories-holder h2 {
 	font-family: 'Avenir';
@@ -3600,7 +3626,7 @@ td.val-data {
 	grid-template-rows: repeat(2, 1fr);
 	column-gap: 3rem;
 	row-gap: 2em;
-	padding: 40px 0 40px 0;
+	padding: 40px 5%;
 }
 
 
@@ -5540,11 +5566,7 @@ img.product-list-image {
 	padding: 20px
 }
 
-.section-5 {
-	margin-top: 180px;
-	padding-right: 5%;
-	padding-left: 5%
-}
+
 
 .text-span-3 {
 	font-style: italic
@@ -8368,6 +8390,7 @@ nav.breadcrumb {
 	font-size: 18px;
 	color: #fdfdfd;
 }
+
 .breadcrumb-product-page {
 	color: #093273
 }
