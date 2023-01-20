@@ -42,9 +42,19 @@ router.get('/contact-us', breadcrumbs.Middleware(), (req, res) => {
 	res.render('contact', { breadcrumbs: req.breadcrumbs });
 });
 
+router.get('/products', breadcrumbs.Middleware(), (req, res) => {
+	res.render('product-collection', { breadcrumbs: req.breadcrumbs });
+});
+
 router.get('/services', breadcrumbs.Middleware(), (req, res) => {
 	res.render('services-collection', { breadcrumbs: req.breadcrumbs });
 });
+
+router.get('/certifications', breadcrumbs.Middleware(), (req, res) => {
+	res.render('certifications', { breadcrumbs: req.breadcrumbs });
+});
+
+// Services Routes
 
 router.get('/services/system-design', breadcrumbs.Middleware(), (req, res) => {
 	res.render('system-design-build', { breadcrumbs: req.breadcrumbs });
@@ -140,6 +150,14 @@ router.get('/hazardous-areas', breadcrumbs.Middleware(), async (req, res) => {
 
 	res.render('hazardous-areas', {
 		data: data,
+		breadcrumbs: req.breadcrumbs
+	});
+});
+
+// CCTV Collection Page
+
+router.get('/products/cctv', breadcrumbs.Middleware(), (req, res) => {
+	res.render('cctv-collection', {
 		breadcrumbs: req.breadcrumbs
 	});
 });
@@ -1506,8 +1524,6 @@ router.get(
 			);
 
 			info = info[0];
-
-		
 
 			res.render('product-pages/camera-housings', {
 				breadcrumbs: req.breadcrumbs,
