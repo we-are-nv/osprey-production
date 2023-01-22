@@ -34,6 +34,11 @@ router.get('/', (req, res) => {
 	res.render('index');
 });
 
+router.get('/test', (req, res) => {
+	// res.send(process.env);
+	res.render('test');
+});
+
 
 
 router.get('/test', (req, res) => {
