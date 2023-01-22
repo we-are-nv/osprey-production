@@ -54,6 +54,10 @@ router.get('/certifications', breadcrumbs.Middleware(), (req, res) => {
 	res.render('certifications', { breadcrumbs: req.breadcrumbs });
 });
 
+router.get('/news', breadcrumbs.Middleware(), (req, res) => {
+	res.render('news', { breadcrumbs: req.breadcrumbs });
+});
+
 // Services Routes
 
 router.get('/services/system-design', breadcrumbs.Middleware(), (req, res) => {
