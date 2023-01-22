@@ -34,7 +34,12 @@ router.get('/', (req, res) => {
 	res.render('index');
 });
 
-// Other Static
+
+
+router.get('/test', (req, res) => {
+	// res.send(process.env);
+	res.render('test');
+});
 
 router.get('/about', breadcrumbs.Middleware(), (req, res) => {
 	res.render('about', { breadcrumbs: req.breadcrumbs });
@@ -1929,10 +1934,5 @@ router.get(
 		}
 	}
 );
-
-
-
-
-
 
 module.exports = router;
