@@ -9,6 +9,8 @@ router.use(function timeLog(req, res, next) {
 	next();
 });
 
+
+
 // DB Connection Test
 
 router.get('/db-connector-test', async (req, res) => {
@@ -57,7 +59,12 @@ router.get('/resources', breadcrumbs.Middleware(), (req, res) => {
 });
 
 router.get('/certifications', breadcrumbs.Middleware(), (req, res) => {
-	res.render('certifications', { breadcrumbs: req.breadcrumbs,atexmarking:require('../tableData/atexmarkingsystem.json'),ingress:require('../tableData/ingress.json'),nema:require('../tableData/nema.json') });
+	res.render('certifications', {
+		breadcrumbs: req.breadcrumbs,
+		atexmarking: require('../tableData/atexmarkingsystem.json'),
+		ingress: require('../tableData/ingress.json'),
+		nema: require('../tableData/nema.json')
+	});
 });
 
 router.get('/news', breadcrumbs.Middleware(), (req, res) => {
@@ -1929,10 +1936,5 @@ router.get(
 		}
 	}
 );
-
-
-
-
-
 
 module.exports = router;
