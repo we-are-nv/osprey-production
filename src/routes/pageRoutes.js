@@ -52,12 +52,24 @@ router.get('/services', breadcrumbs.Middleware(), (req, res) => {
 	res.render('services-collection', { breadcrumbs: req.breadcrumbs });
 });
 
+router.get('/resources', breadcrumbs.Middleware(), (req, res) => {
+	res.render('resources', { breadcrumbs: req.breadcrumbs });
+});
+
 router.get('/certifications', breadcrumbs.Middleware(), (req, res) => {
 	res.render('certifications', { breadcrumbs: req.breadcrumbs });
 });
 
 router.get('/news', breadcrumbs.Middleware(), (req, res) => {
 	res.render('news', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/privacy', breadcrumbs.Middleware(), (req, res) => {
+	res.render('privacy', { breadcrumbs: req.breadcrumbs });
+});
+
+router.get('/terms-and-conditions', breadcrumbs.Middleware(), (req, res) => {
+	res.render('terms', { breadcrumbs: req.breadcrumbs });
 });
 
 // Services Routes

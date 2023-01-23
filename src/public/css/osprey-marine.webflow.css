@@ -1485,6 +1485,14 @@ ul.nested-features-list-no-style>li {
 
 }
 
+/* NAV BAR */
+
+/* div.div-block-62>div,
+div.div-block-62>a {
+	min-width: 20%
+} */
+
+
 .tabs-content {
 	animation: fadeEffect
 }
@@ -3576,7 +3584,6 @@ td.val-data {
 	margin-top: 180px;
 	padding-right: 5%;
 	padding-left: 5%
-
 }
 
 /* .section-header {
@@ -3609,8 +3616,9 @@ td.val-data {
 	align-items: center;
 	background: #c2c2c2
 }
+
 .categories-holder.services {
-	padding:2rem 2rem ;
+	padding: 2rem 2rem;
 	flex-direction: row;
 	gap: 2%
 }
@@ -6255,6 +6263,11 @@ input.search-input:focus-visible {
 	-webkit-flex-direction: column;
 	-ms-flex-direction: column;
 	flex-direction: column
+}
+
+.nav-link.foot {
+	padding-bottom: 12px;
+	color: #093273
 }
 
 .footer-columns-2 {
