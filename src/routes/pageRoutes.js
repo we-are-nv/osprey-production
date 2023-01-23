@@ -51,7 +51,7 @@ router.get('/services', breadcrumbs.Middleware(), (req, res) => {
 });
 
 router.get('/certifications', breadcrumbs.Middleware(), (req, res) => {
-	res.render('certifications', { breadcrumbs: req.breadcrumbs });
+	res.render('certifications', { breadcrumbs: req.breadcrumbs,atexmarking:require('../tableData/atexmarkingsystem.json'),ingress:require('../tableData/ingress.json'),nema:require('../tableData/nema.json') });
 });
 
 router.get('/news', breadcrumbs.Middleware(), (req, res) => {
@@ -1915,5 +1915,10 @@ router.get(
 		}
 	}
 );
+
+
+
+
+
 
 module.exports = router;

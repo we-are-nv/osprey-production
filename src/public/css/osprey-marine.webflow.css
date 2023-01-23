@@ -3600,6 +3600,10 @@ td.val-data {
 	padding-right: 0;
 }
 
+.categories-holder-sub {
+
+}
+
 .categories-holder {
 	width: 100%;
 	padding: 0 5%;
@@ -3608,6 +3612,9 @@ td.val-data {
 	justify-content: center;
 	align-items: center;
 	background: #c2c2c2
+}
+.categories-holder.cert {
+	padding:2rem 2rem;
 }
 .categories-holder.services {
 	padding:2rem 2rem ;
@@ -3896,7 +3903,61 @@ div.cctv-categories.commercial-cameras {
 	background-position: center;
 }
 
+.atex.certifcation-img {
+	padding-top: 90px;
+	
+	background-image: url(../images/certification-img/atex.png);
 
+	background-size:contain;
+	background-repeat: no-repeat
+
+}
+.dnv.certifcation-img {
+	padding-top: 90px;
+	
+	background-image: url(../images/certification-img/dnv.png);
+
+	background-size:contain;
+	background-repeat: no-repeat
+
+}
+.llyod.certifcation-img {
+	padding-top: 90px;
+	
+	background-image: url(../images/certification-img/llyods.png);
+
+	background-size:contain;
+}
+.cc.certifcation-img {
+	background-image: url(../images/certification-img/cc.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#atex-page img {
+	height: auto;
+	width: 7rem;
+}
+#dnv-page img {
+	height: auto;
+	width: 10rem;
+}
+#llyods-page img {
+	height: auto;
+	width: 10rem;
+}
+
+#iso-page img {
+	height: auto;
+	width: 10rem;
+}
+#ip-page img {
+	height: auto;
+	width: 12rem;
+}
+#nema-page img {
+	height: auto;
+	width: 15rem;
+}
 .markets.category-img {
 	background-image: url();
 }
@@ -8637,4 +8698,102 @@ table.disk-spec td {
 
 h4.section-subheading {
 	padding: 12px 0
+}
+
+#certification-nav a {
+	text-decoration: none;
+	/* border: 1px solid red; */
+	padding: 5px;
+}
+#certification-nav a, a:visited, a:hover, a:active {
+  color: inherit;
+}
+
+#certificationtable.areatable {
+	width: 100%;
+  
+}
+#certificationtable.areatable table {
+		width: 100%;
+	  
+}
+#certificationtable.areatable table tr td{
+	border: solid 1px grey;
+	padding: 0.5rem;
+  
+}
+
+#certificationtable.areatable table tr th{ 
+	padding: 1rem;
+	background-color: darkgrey;
+  
+}
+
+#certificationtable.markingexample {
+	width: 100%;
+  
+}
+#certificationtable.markingexample table {
+		width: 100%;
+	  
+}
+#certificationtable.markingexample table tr td{
+	border: solid 1px grey;
+	font-weight: bold;
+	font-size: xx-large;
+	padding: 0.5rem;
+  
+}
+
+#certificationtable.markingexample table tr th{ 
+	padding: 1rem;
+	background-color: darkgrey;
+  
+}
+
+#certificationtable.markingexample table tr td img{ 
+	width: auto;
+	height: 4rem;
+  
+}
+
+#certificationtable.markingsystem {
+	width: 100%;
+  
+}
+#certificationtable.markingsystem table {
+		width: 100%;
+	  
+}
+#certificationtable.markingsystem table tr td{
+	border: solid 1px grey;
+	padding: 0.5rem;
+  
+}
+
+#certificationtable.markingsystem table tr th{ 
+	padding: 1rem;
+	background-color: darkgrey;
+  
+}
+
+
+#certificationtable.ingress {
+	width: 100%;
+  
+}
+#certificationtable.ingress table {
+		width: 100%;
+	  
+}
+#certificationtable.ingress table tr td{
+	border: solid 1px grey;
+	padding: 0.5rem;
+  
+}
+
+#certificationtable.ingress table tr th{ 
+	padding: 1rem;
+	background-color: darkgrey;
+  
 }
