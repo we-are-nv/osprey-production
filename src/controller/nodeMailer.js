@@ -1,7 +1,6 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
-require('dotenv').config('../../.env');
-const app = express();
+const router = express.Router();
 
 // const transporter = nodemailer.createTransport({
 // 	service: process.env.MAILER_HOST,
@@ -14,19 +13,21 @@ const app = express();
 // 	}
 // });
 
+const mailTransport = {
+	host: process.env.DEV_HOST,
+	port: process.env.DEV_PORT,
+	auth: {
+		user: process.env.TEST_USER,
+		pass: process.env.TEST_PASS
+	}
+};
+
 function sendEmail(req) {
-	let transporter = nodemailer.createTransport({
-		host: process.env.DEV_HOST,
-		port: process.env.DEV_PORT,
-		auth: {
-			user: process.env.TEST_USER,
-			pass: process.env.TEST_PASS
-		}
-	});
-	
+	let transporter = nodemailer.createTransport({ mailTransport });
+
 	const mailOptions = {
 		from: req.body.email,
-		to: 'info@ospreysecurity.co.uk',
+		to: 'email.address@domain.com',
 		subject: `Message from ${req.body.email} about`,
 		text: `Message from: ${req.body.name}.
 		Email: ${req.body.email}.
@@ -37,7 +38,8 @@ function sendEmail(req) {
 	return transporter.sendMail(mailOptions);
 }
 
-app.post('/', async (req, res) => {
+router.post('/mail', async (req, res) => {
+	console.log('post');
 	try {
 		await sendEmail(req);
 		console.log('success with nodemailer');
@@ -48,4 +50,4 @@ app.post('/', async (req, res) => {
 	}
 });
 
-module.exports = nodemailer;
+module.exports = router;

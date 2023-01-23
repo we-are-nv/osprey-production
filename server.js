@@ -4,7 +4,7 @@ const os = require('os');
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const path = require('path');
-
+const mailer = require('./src/controller/nodeMailer');
 
 const clusterWorkerSize = os.cpus().length;
 
@@ -33,6 +33,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.resolve('./src/views'));
 
 app.use(bodyParser.json());
+app.use(middlewareCheck);
+app.use(morganMiddleware);
 
 app.get('/api/status', (req, res) => {
 	logger.info('Checking the API status: Everything is OK');
@@ -43,13 +45,8 @@ app.get('/api/status', (req, res) => {
 });
 
 app.use('/public', express.static('./src/public'));
-
-app.use(middlewareCheck);
-app.use(morganMiddleware);
-
+app.use('/mail', mailer);
 app.use(require('./src/routes/pageRoutes'));
-app.use(require('./src/controller/nodeMailer'))
-
 
 const start = () => {
 	app.listen(PORT, (req, res) => {

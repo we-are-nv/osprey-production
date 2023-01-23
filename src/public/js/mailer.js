@@ -205,7 +205,7 @@ contactForm.addEventListener('submit', async function (e) {
 	};
 
 	try {
-		const Response = await fetch('/', {
+		const Response = await fetch('/mail', {
 			method: 'POST',
 			body: JSON.stringify(formData),
 			headers: {

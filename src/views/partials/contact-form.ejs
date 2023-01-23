@@ -1,48 +1,47 @@
 <div class="form-wrap w-form" id="form-container" data-ix="fade-on-load-2">
-	<form action="/" id="contact-us-form" class="form contact-form">
-		<div class="form-row">
-			<div class="form-name">
-				<label for="name" class="name-label form-label">Name</label>
-				<input type="text" class="form-input name-input" id="name">
-				<small></small>
-			</div>
-		</div>
-		<div class="form-row">
-			<div class="form-telephone">
-				<label for="number" class="tel-label form-label">Contact number</label>
-				<input type="tel" class="form-input telephone-input" id="telephone">
-				<small></small>
-			</div>
-		</div>
-		<div class="form-row">
-			<div class="form-email">
-				<label for="email" class="email-label form-label">Email</label>
-				<input type="text" id="email" class="form-input email-input">
-				<small></small>
-			</div>
-		</div>
-		<label for="Message-body" class="form-label">Your message<span class="description-text"></span>
-		</label>
-		<textarea id="Message-body" name="Message-body" maxlength="5000" required="" placeholder=""
-			class="form-input textarea-input">
+  <form action="/mail" id="contact-us-form" class="form contact-form">
+    <div class="form-row">
+      <div class="form-name">
+        <label for="name" class="name-label form-label">Name</label>
+        <input type="text" class="form-input name-input" id="name">
+        <small></small>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-telephone">
+        <label for="number" class="tel-label form-label">Contact number</label>
+        <input type="tel" class="form-input telephone-input" id="telephone">
+        <small></small>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-email">
+        <label for="email" class="email-label form-label">Email</label>
+        <input type="text" id="email" class="form-input email-input">
+        <small></small>
+      </div>
+    </div>
+    <label for="Message-body" class="form-label">Your message<span class="description-text"></span>
+    </label>
+    <textarea id="Message-body" name="Message-body" maxlength="5000" required="" placeholder="" class="form-input textarea-input">
 		</textarea>
-		<div class="consent-button">
-			<label for="consent-button" class="form-label">I consent to data being stored by Osprey Security for marketing and
-				contact purposes. </label>
-			<input type="checkbox" name="consent-button" id="consent-button" />
-		</div>
-		<div class="centred-submit centered-button">
-			<input type="submit" value="Contact" id="submit" disabled class="submit-btn form-button">
-		</div>
-		<div class="centered-reset centered-button">
-			<input type="reset" class="reset-input form-button" id="reset">
-		</div>
-	</form>
+    <div class="consent-button">
+      <label for="consent-button" class="form-label">I consent to data being stored by Osprey Security for marketing and
+        contact purposes. </label>
+      <input type="checkbox" name="consent-button" id="consent-button" />
+    </div>
+    <div class="centred-submit centered-button">
+      <input type="submit" value="Contact" id="submit" disabled class="submit-btn form-button">
+    </div>
+    <div class="centered-reset centered-button">
+      <input type="reset" class="reset-input form-button" id="reset">
+    </div>
+  </form>
 </div>
 <div class="success-msg w-form-done" id="success-msg">
-	<div>Thank you for contacting us. We&#x27;ll reply as soon as possible.<br></div>
+  <div>Thank you for contacting us. We&#x27;ll reply as soon as possible.<br></div>
 </div>
 <div class="w-form-fail fail-msg" id="fail-msg">
-	<div>Oops! Something went wrong while submitting the form.</div>
+  <div>Oops! Something went wrong while submitting the form.</div>
 </div>
 <script src="/public/js/mailer.js"></script>
