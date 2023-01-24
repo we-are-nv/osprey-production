@@ -1,6 +1,7 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
-const router = express.Router();
+// const router = express.Router();
+const app = express();
 
 // const transporter = nodemailer.createTransport({
 // 	service: process.env.MAILER_HOST,
@@ -19,15 +20,18 @@ const mailTransport = {
 	auth: {
 		user: process.env.TEST_USER,
 		pass: process.env.TEST_PASS
+	},
+	tls: {
+		rejectUnAuthorized: true
 	}
 };
 
 function sendEmail(req) {
-	let transporter = nodemailer.createTransport({ mailTransport });
+	let transporter = nodemailer.createTransport(mailTransport);
 
 	const mailOptions = {
-		from: req.body.email,
-		to: 'email.address@domain.com',
+		from: 'enquiries@osprey-security.com',
+		to: 'info@osprey-security.com',
 		subject: `Message from ${req.body.email} about`,
 		text: `Message from: ${req.body.name}.
 		Email: ${req.body.email}.
@@ -38,7 +42,7 @@ function sendEmail(req) {
 	return transporter.sendMail(mailOptions);
 }
 
-router.post('/mail', async (req, res) => {
+app.post('/send', async (req, res) => {
 	console.log('post');
 	try {
 		await sendEmail(req);
@@ -50,4 +54,4 @@ router.post('/mail', async (req, res) => {
 	}
 });
 
-module.exports = router;
+module.exports = app;

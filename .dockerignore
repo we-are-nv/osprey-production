@@ -1,5 +1,5 @@
 node_modules
-traefik/logs/
+traefik/logs
 
 GIT_ADD.sh
 undeploy.sh

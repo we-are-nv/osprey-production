@@ -45,7 +45,7 @@ app.get('/api/status', (req, res) => {
 });
 
 app.use('/public', express.static('./src/public'));
-app.use('/mail', mailer);
+app.post('/send', mailer);
 app.use(require('./src/routes/pageRoutes'));
 
 const start = () => {
