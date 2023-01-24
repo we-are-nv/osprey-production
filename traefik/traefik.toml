@@ -12,13 +12,14 @@
 		network = "traefik-proxy"
 
 [log]
+	filePath = "/opt/traefik/error.log"
+	format = 'json'
 	level = "DEBUG"
-	filePath = "/opt/traefik/log.log"
+
 
 [accessLog]
 	filePath = "/opt/traefik/logs/access.log"
 	format = "json"
+	bufferingSize = 100
 
-[trafikLog]
-	filePath = "/opt/traefik/logs/traefik.log"
-	format = "json"
+

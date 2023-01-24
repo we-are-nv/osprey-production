@@ -8,7 +8,7 @@ networks:
 services:
 
   node-app:
-    container_name: node-app
+    container_name: node-app-again
     restart: unless-stopped
     build:
       context: .
@@ -33,8 +33,8 @@ services:
 # for production
 # make sure traefik.toml IS NOT INSECURE
   traefik:
-    container_name: traefik
-    image: traefik:v2.4
+    container_name: traefik-again
+    image: traefik:latest
     restart: unless-stopped
     ports:
       - 80:80
@@ -58,7 +58,7 @@ services:
 
   sql:
     build: ./src/sql/
-    container_name: sql
+    container_name: sql-again
     restart: unless-stopped
     command: mysqld --general-log=1 --general-log-file=/var/lib/mysql/general-log.log --max_allowed_packet=1073741824 --lower_case_table_names=1
     environment:
