@@ -3021,6 +3021,16 @@ td.val-data {
 	letter-spacing: -0.05rem
 }
 
+#index.section-title,
+#index .section-title {
+	color: #18394c
+}
+
+#index.upper-head.green,
+#index .upper-head.green {
+	color: #18394c;
+}
+
 
 
 .section-title.smaller {
@@ -3055,6 +3065,8 @@ td.val-data {
 	font-weight: 300;
 	text-align: left
 }
+
+#index .section-subhead {}
 
 
 .section-subhead.narrower {
@@ -4528,9 +4540,13 @@ div.cctv-categories.commercial-cameras {
 	text-align: center
 }
 
-.title-holder {
+/* .title-holder {
 	margin-right: 10%;
 	margin-left: 10%
+} */
+
+.content-wrapper {
+	padding: 0 2rem;
 }
 
 .wide-collage {
@@ -5032,9 +5048,7 @@ nav.breadcrumb-nav>ul>li {
 	-webkit-flex-direction: row;
 	-ms-flex-direction: row;
 	flex-direction: row;
-	-webkit-flex-wrap: wrap;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	-webkit-box-align: start;
 	-webkit-align-items: flex-start;
 	-ms-flex-align: start;
@@ -5043,8 +5057,12 @@ nav.breadcrumb-nav>ul>li {
 }
 
 .imgserv {
-	width: 33%;
+	max-width: 25%;
 	padding: 80px 20px
+}
+
+.imgserv.onshoe {
+	background: url('../images/onshore.jpg'), linear-gradient(180deg, rgba(9, 50, 115, .32), rgba(9, 50, 113, .63));
 }
 
 .imgserv.law,
@@ -5125,6 +5143,13 @@ nav.breadcrumb-nav>ul>li {
 .imgserv.security {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(9, 50, 115, .32)), to(rgba(9, 50, 115, .63))), url(../images/pexels-thomas-windisch-179993.jpg);
 	background-image: linear-gradient(180deg, rgba(9, 50, 115, .32), rgba(9, 50, 115, .63)), url(../images/pexels-thomas-windisch-179993.jpg);
+	background-position: 0 0, 50%0
+}
+
+.imgserv.offshore {
+
+	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(9, 50, 115, .32)), to(rgba(9, 50, 115, .63))), url(../images/pexels-thomas-windisch-179993.jpg);
+	background-image: linear-gradient(180deg, rgba(9, 50, 115, .32), rgba(9, 50, 115, .63)), url(../images/onshore.jpg);
 	background-position: 0 0, 50%0
 }
 
@@ -6556,6 +6581,7 @@ a#link4 {
 	flex-direction: row;
 
 }
+
 /*
 .product-container {
 	display: -webkit-box;
@@ -7732,7 +7758,6 @@ html.w-mod-js [data-ix=display-none] {
 	.section-4 {
 		max-width: 100%;
 		padding-top: 100px
-
 	}
 
 	.list {
@@ -8291,7 +8316,7 @@ nav.breadcrumb {
 	color: #fdfdfd !important;
 }
 
-nav.breadcrumb-product-page > a {
+nav.breadcrumb-product-page>a {
 	color: #093273 !important
 }
 
@@ -8930,4 +8955,3 @@ input.submit-btn {
 	gap: 1rem;
 	padding-top: 1rem;
 }
-
