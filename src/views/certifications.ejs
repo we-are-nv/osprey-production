@@ -35,7 +35,10 @@
 <body>
   <%- include('partials/nav-bar') %>
   <%- include('partials/scrolling-nav') %>
-  
+  <div style="color: #efefef" class="services-collection">
+    <%- include('partials/breadcrumbs') %>
+    <%- include('partials/hero-image') %>
+  </div>
   <div id="services-collection" class="category-section section-5 wf-section">
     <div class="section-header">
       <div class="upper-head green" data-ix="fade-on-scroll-1">Comprehensive solutions for any security
@@ -47,7 +50,7 @@
 
         <div class="categories-holder cert">
           <nav class="nav" id="certification-nav">
-            Jump To:
+            <span style="font-size: larger;">Jump To:</span>
             <a href="#atex-page">ATEX</a>
             <a href="#dnv-page">DNV</a>
             <a href="#llyods-page">LLOYD's Register</a>
@@ -56,136 +59,140 @@
           </nav>
         </div>
         <br>
-        <p>It’s very important to ensure that the equipment you’re proposing to use is suitable for its purpose taking account of the law, applicable standards, quality, safety, security, reliability and environmental.  You will therefore need to consider elements including temperature, vibration, humidity, IP protection, safety, EMC and cybersecurity.  We detail below some of the more common certifications used to ensure the suitability of components and systems to face marine and oil & gas hazards. </p>
+        <p>It’s very important to ensure that the equipment you’re proposing to use is suitable for its purpose taking account of the law, applicable standards, quality, safety, security, reliability and environmental. You will therefore need to consider elements including temperature, vibration, humidity, IP protection, safety, EMC and cybersecurity. We detail below some of the more common certifications used to ensure the suitability of components and systems to face marine and oil & gas hazards. </p>
         <div id="atex-page" data-idx="fade-on-scroll-1" class="categories-holder cert">
-          <img src="../public/images/certification-img/atex.png"> <h2> ATEX</h2>
-          When electronic or electrical equipment of any type is intended for use in a hazardous area, it must be ATEX certified as required by the EU directive 94/9/EC (the ATEX directive (ATmospheres EXplosives).  Products for use in hazardous areas need to comply with ISO/IEC 80079-34:2018 which defines the quality system required to manufacture Ex products in accordance with the relevant certifications. In Europe, ATEX certification of products for use in potentially hazardous atmospheres is compulsory.  Hazardous areas exist where a potentially explosive mix of air and flammable gasses or air and dust or air, dust and gasses may occur. Outside the EU, similar regulations apply under the IECEX certification system (see video https://www.iecex.com/assets/Uploads/Video/IECEx-Introduction-Animation-2021-MP4-1080G.mp4).  In North America, products must be listed by UL as suitable for use in hazardous atmospheres. Whilst ATEX and IECEX certification systems are similar, the North American approach is different (see area classification below).
+          <img src="../public/images/certification-img/atex.png">
+          <h2> ATEX</h2>
+          When electronic or electrical equipment of any type is intended for use in a hazardous area, it must be ATEX certified as required by the EU directive 94/9/EC (the ATEX directive (ATmospheres EXplosives). Products for use in hazardous areas need to comply with ISO/IEC 80079-34:2018 which defines the quality system required to manufacture Ex products in accordance with the relevant certifications. In Europe, ATEX certification of products for use in potentially hazardous atmospheres is compulsory. Hazardous areas exist where a potentially explosive mix of air and flammable gasses or air and dust or air, dust and gasses may occur. Outside the EU, similar regulations apply under the IECEX certification system (see video https://www.iecex.com/assets/Uploads/Video/IECEx-Introduction-Animation-2021-MP4-1080G.mp4). In North America, products must be listed by UL as suitable for use in hazardous atmospheres. Whilst ATEX and IECEX certification systems are similar, the North American approach is different (see area classification below).
           <h3>Classification of Equipment</h3>
           The ATEX directive classifies equipment into groups and categories which is shown on the ATEX product marking table below.
           <h3>Classification of an Area</h3>
           Hazardous areas are divided into Zones (European and IECEX method) or Classes and Divisions (North American method) according to the likelihood of a potentially explosive atmosphere being present.
-        <div id="certificationtable" class="areatable">
-          <br>
-          <table>
-          <thead>
-            <tr>
-              <th>European & IECEX Classification</th>
-              <th>Defintion of Zone or Division</th>
-              <th>North American Classication</th>
-            </tr>
-           </thead>
-           <tbody>
-             <tr>
-               <td>Zone 0 (Gases)</td>
-               <td rowspan="2">An area in which an explosive mixture is continuously present or present for long periods</td>
-               <td>Class I Division 1 (Gases)</td>
-             </tr>
-             <tr>
-               <td>Zone 20 (Dusts)</td>
-               <td>Class II Division 1 (Dusts)</td>
-             </tr>
-             <tr>
-               <td>Zone 1 (Gases)</td>
-               <td rowspan="2">An area in which an explosive mixture is likely to occur in normal operation</td>
-               <td>Class I Division 1 (Gases)</td>
-             </tr>
-             <tr>
-              <td>Zone 21 (Dusts)</td>
-              <td>Class II Division 1 (Dusts)</td>
-            </tr>
-            <tr>
-              <td>Zone 2 (Gases)</td>
-              <td rowspan="2">An area in which an explosive mixture is not likely to occur in normal operation and if it occurs it will exist only for a short time</td>
-              <td>Class I Division 2 (Gases)</td>
-            </tr>
-            <tr>
-              <td>Zone 22 (Dusts)</td>
-              <td>Class II Division 2 (Gases)</td>
-            </tr>
-             <tr>
-             </tr>
-          </tbody>
-        </table>
-      </div>
-      <h3>Product Marking</h3>
-      The ATEX directive requires the product to be marked with the CE mark, the ‘EX’ mark and the equipment coding as per the example below:
-      <h4>ATEX Marking Example</h4>
-      <div id="certificationtable" class="markingexample">
-        <br>
-        <table>
-          <thead>
-            <tr>
-              <th>Complies with EU Directive</th>
-              <th>EX Marking</th>
-              <th>Equipment Group</th>
-              <th>Equipment Category</th>
-              <th>Enviroment</th>
-              <th>Explosion Protection</th>
-              <th>Protection Type</th>
-              <th>Gas Group</th>
-              <th>Gas Sub-Group</th>
-              <th>Temperature Class</th>
+          <div id="certificationtable" class="areatable">
+            <br>
+            <table>
+              <thead>
+                <tr>
+                  <th>European & IECEX Classification</th>
+                  <th>Defintion of Zone or Division</th>
+                  <th>North American Classication</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Zone 0 (Gases)</td>
+                  <td rowspan="2">An area in which an explosive mixture is continuously present or present for long periods</td>
+                  <td>Class I Division 1 (Gases)</td>
+                </tr>
+                <tr>
+                  <td>Zone 20 (Dusts)</td>
+                  <td>Class II Division 1 (Dusts)</td>
+                </tr>
+                <tr>
+                  <td>Zone 1 (Gases)</td>
+                  <td rowspan="2">An area in which an explosive mixture is likely to occur in normal operation</td>
+                  <td>Class I Division 1 (Gases)</td>
+                </tr>
+                <tr>
+                  <td>Zone 21 (Dusts)</td>
+                  <td>Class II Division 1 (Dusts)</td>
+                </tr>
+                <tr>
+                  <td>Zone 2 (Gases)</td>
+                  <td rowspan="2">An area in which an explosive mixture is not likely to occur in normal operation and if it occurs it will exist only for a short time</td>
+                  <td>Class I Division 2 (Gases)</td>
+                </tr>
+                <tr>
+                  <td>Zone 22 (Dusts)</td>
+                  <td>Class II Division 2 (Gases)</td>
+                </tr>
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Product Marking</h3>
+          The ATEX directive requires the product to be marked with the CE mark, the ‘EX’ mark and the equipment coding as per the example below:
+          <h4>ATEX Marking Example</h4>
+          <div id="certificationtable" class="markingexample">
+            <br>
+            <table>
+              <thead>
+                <tr>
+                  <th>Complies with EU Directive</th>
+                  <th>EX Marking</th>
+                  <th>Equipment Group</th>
+                  <th>Equipment Category</th>
+                  <th>Enviroment</th>
+                  <th>Explosion Protection</th>
+                  <th>Protection Type</th>
+                  <th>Gas Group</th>
+                  <th>Gas Sub-Group</th>
+                  <th>Temperature Class</th>
 
-            </tr>
-           </thead>
-           <tbody>
-             <tr>
-               <td><img src="../public/images/certification-img/cc.png"></td>
-               <td><img src="../public/images/certification-img/atex.png"></td>
-               <td>P</td>
-               <td>2</td>
-               <td>G</td>
-               <td>EEx</td>
-               <td>d</td>
-               <td>II</td>
-               <td>B</td>
-               <td>T4</td>
-             </tr>
-             <tr>
-             </tr>
-          </tbody>
-        </table>
-      </div>
-      <br>
-      The marking system is explained in the table below:
-      <div id="certificationtable" class="markingsystem">
-        <br>
-        <table>
-          <thead>
-            <tr>
-              <th>Heading</th>
-              <th>Mark</th>
-              <th>Use</th>
-            </tr>
-           </thead>
-           <tbody>
-            <% for(var i=0; i<atexmarking.length; i++){ %>
-              <tr>
-                <td><%= atexmarking[i].Heading %></td>
-                <td><%= atexmarking[i].Mark %></td>
-                <td><%= atexmarking[i].Use %></td>
-              </tr>
-              <% } %>
-             <tr>
-             </tr>
-          </tbody>
-        </table>
-      </div>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><img src="../public/images/certification-img/cc.png"></td>
+                  <td><img src="../public/images/certification-img/atex.png"></td>
+                  <td>P</td>
+                  <td>2</td>
+                  <td>G</td>
+                  <td>EEx</td>
+                  <td>d</td>
+                  <td>II</td>
+                  <td>B</td>
+                  <td>T4</td>
+                </tr>
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br>
+          The marking system is explained in the table below:
+          <div id="certificationtable" class="markingsystem">
+            <br>
+            <table>
+              <thead>
+                <tr>
+                  <th>Heading</th>
+                  <th>Mark</th>
+                  <th>Use</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(var i=0; i<atexmarking.length; i++){ %>
+                <tr>
+                  <td><%= atexmarking[i].Heading %></td>
+                  <td><%= atexmarking[i].Mark %></td>
+                  <td><%= atexmarking[i].Use %></td>
+                </tr>
+                <% } %>
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
         </div>
         <br>
         <div id="dnv-page" data-idx="fade-on-scroll-1" class="categories-holder cert">
-          <img src="../public/images/certification-img/dnv.png"><h2>DNV</h2>
-          DNV (Det Norske Veritas) is a classification society which is recognised as a leading player in maritime risk assessment and certification.  DNV certification ensures that ships or their components comply with a number of standards. These classes include safety, reliability and environmental impact criteria. Among the certification classes are temperature, vibration, humidity, IP protection, safety and EMC. The certification ensures the reliability of components and systems in the face of marine hazards.
+          <img src="../public/images/certification-img/dnv.png">
+          <h2>DNV</h2>
+          DNV (Det Norske Veritas) is a classification society which is recognised as a leading player in maritime risk assessment and certification. DNV certification ensures that ships or their components comply with a number of standards. These classes include safety, reliability and environmental impact criteria. Among the certification classes are temperature, vibration, humidity, IP protection, safety and EMC. The certification ensures the reliability of components and systems in the face of marine hazards.
         </div>
-        <div id="llyods-page"  data-idx="fade-on-scroll-1" class="categories-holder cert">
-          <img src="../public/images/certification-img/llyods.png"> <h2> Lloyds</h2>
-          <p>  Lloyd’s Register (LR) is a global professional services company specialising in engineering and technology for the maritime industry. They are the world’s first marine classification society, created more than 260 years ago, to improve the safety of ships.  CCTV equipment is tested to 'Test Specification Number 1'.  This specification applies to Lloyd’s Register Type Approval of electrical, control, safety system, instrumentation, internal communication and programmable electronic systems for use in the marine environment.
+        <div id="llyods-page" data-idx="fade-on-scroll-1" class="categories-holder cert">
+          <img src="../public/images/certification-img/llyods.png">
+          <h2> Lloyds</h2>
+          <p> Lloyd’s Register (LR) is a global professional services company specialising in engineering and technology for the maritime industry. They are the world’s first marine classification society, created more than 260 years ago, to improve the safety of ships. CCTV equipment is tested to 'Test Specification Number 1'. This specification applies to Lloyd’s Register Type Approval of electrical, control, safety system, instrumentation, internal communication and programmable electronic systems for use in the marine environment.
           </p>
 
         </div>
-        <div id="iso-page"  data-idx="fade-on-scroll-1" class="categories-holder cert">
-          <img src="../public/images/certification-img/ISO.png"><h2>ISO/EN/BS STANDARDS</h2>
+        <div id="iso-page" data-idx="fade-on-scroll-1" class="categories-holder cert">
+          <img src="../public/images/certification-img/ISO.png">
+          <h2>ISO/EN/BS STANDARDS</h2>
           <h3>ISO9001:2015</h3>
           <p>ISO 9001 is the international standard that specifies requirements for a quality management system (QMS). It describes the fundamental concepts and principles of quality management which may be used be any organisation manufacturing or supplying which has been certified to this quality standard.</p>
           <h3>BS EN 60945:2002</h3>
@@ -194,17 +201,18 @@
           BS IEC 60533 specifies minimum requirements for emission, immunity and performance criteria regarding electromagnetic compatibility (EMC) of electrical and electronic equipment for ships with the metallic hull.
 
         </div>
-        <div id="ip-page"  data-idx="fade-on-scroll-1" class="categories-holder cert">
-          <img src="../public/images/certification-img/ingress.jpg"><h2>Ingress Protection</h2>
+        <div id="ip-page" data-idx="fade-on-scroll-1" class="categories-holder cert">
+          <img src="../public/images/certification-img/ingress.jpg">
+          <h2>Ingress Protection</h2>
           <h3>IP Classification</h3>
-          <p>An IP Rating (also known as Ingress Protection Rating or International Protection Rating) is a way of showing the effectiveness of electrical enclosures in blocking foreign bodies such as dust, moisture, liquids and accidental contact.  Ingress Protection (IP) ratings measure how resistant a device is against solids and water. IP ratings are determined by the international standard EN 60529 (British BS EN 60529:1992 – Degrees of protection provided by enclosures (IP Code) and European IEC 60509: 1989 – Degrees of protection provided by enclosures (IP Code).
-            IP ratings consist of the letters IP (Ingress Protection), followed by two digits. The higher the number after IP, the better the protection against foreign bodies. Sometimes a number is replaced by an X.  This indicates that the enclosure is not yet rated for that specification.
+          <p>An IP Rating (also known as Ingress Protection Rating or International Protection Rating) is a way of showing the effectiveness of electrical enclosures in blocking foreign bodies such as dust, moisture, liquids and accidental contact. Ingress Protection (IP) ratings measure how resistant a device is against solids and water. IP ratings are determined by the international standard EN 60529 (British BS EN 60529:1992 – Degrees of protection provided by enclosures (IP Code) and European IEC 60509: 1989 – Degrees of protection provided by enclosures (IP Code).
+            IP ratings consist of the letters IP (Ingress Protection), followed by two digits. The higher the number after IP, the better the protection against foreign bodies. Sometimes a number is replaced by an X. This indicates that the enclosure is not yet rated for that specification.
             The first digit of the IP rating indicates the level of the enclosure’s protection against the ingress from blocking solid foreign bodies such as dust, tools or fingers that could be hazardous if were to come into contact with electrical components, parts or circuitry within the enclosure.
             The second digit of the IP rating indicates the level of the enclosure’s protection from blocking internal components against various forms of moisture (sprays, drips or submersion etc).
-            </p>
-            <br>
-            <p>The table below give the IP classifications:</p>
-            <div id="certificationtable" class="ingress">
+          </p>
+          <br>
+          <p>The table below give the IP classifications:</p>
+          <div id="certificationtable" class="ingress">
             <table>
               <thead>
                 <tr>
@@ -213,32 +221,33 @@
                   <th>Second Digit</th>
                   <th>Moisture Protection (LIQUIDS)</th>
                 </tr>
-               </thead>
-               <tbody>
+              </thead>
+              <tbody>
                 <% for(var i=0; i<ingress.length; i++){ %>
-                  <tr>
-                    <td><%= ingress[i].first_digit %></td>
-                    <td><%= ingress[i].intru_solid %></td>
-                    <td><%= ingress[i].second_digit %></td>
-                    <td><%= ingress[i].moist_protect %></td>
-                  </tr>
-                  <% } %>
-                 <tr>
-                 </tr>
+                <tr>
+                  <td><%= ingress[i].first_digit %></td>
+                  <td><%= ingress[i].intru_solid %></td>
+                  <td><%= ingress[i].second_digit %></td>
+                  <td><%= ingress[i].moist_protect %></td>
+                </tr>
+                <% } %>
+                <tr>
+                </tr>
               </tbody>
             </table>
-            </div>
-            <br>
-            <p>For CCTV camera housings used in the marine environment, the devices need to be “totally protected against dust” to ensure no salt or sand can enter the enclosure.  For liquid protection, where cameras are exposed, you will normally require a minimum liquids rating of 7.  However, in locations subject to frequent or strong sea-spray a liquids protection of 8 is recommended.  So in practice, cameras used externally on vessels will need to be IP67 or IP68 rated.</p>
+          </div>
+          <br>
+          <p>For CCTV camera housings used in the marine environment, the devices need to be “totally protected against dust” to ensure no salt or sand can enter the enclosure. For liquid protection, where cameras are exposed, you will normally require a minimum liquids rating of 7. However, in locations subject to frequent or strong sea-spray a liquids protection of 8 is recommended. So in practice, cameras used externally on vessels will need to be IP67 or IP68 rated.</p>
         </div>
-        <div id="nema-page"  data-idx="fade-on-scroll-1" class="categories-holder cert">
-          <img src="../public/images/certification-img/nema.png"><h2>Nema</h2>
-          <p>The National Electrical Manufacturers Association (NEMA) defines standards used in North America for various grades of electrical enclosures typically used in industrial applications.  IP ratings cover protection only against the ingress of water and solid objects whilst NEMA includes supplementary protection standards against corrosion resistance and atmospheric gasses. NEMA ratings also include distinctions between hazardous and non-hazardous environments.  The table below shows the NEMA testing approximate equivalent to IP rating.
+        <div id="nema-page" data-idx="fade-on-scroll-1" class="categories-holder cert">
+          <img src="../public/images/certification-img/nema.png">
+          <h2>Nema</h2>
+          <p>The National Electrical Manufacturers Association (NEMA) defines standards used in North America for various grades of electrical enclosures typically used in industrial applications. IP ratings cover protection only against the ingress of water and solid objects whilst NEMA includes supplementary protection standards against corrosion resistance and atmospheric gasses. NEMA ratings also include distinctions between hazardous and non-hazardous environments. The table below shows the NEMA testing approximate equivalent to IP rating.
 
-            </p>
-            <br>
-            <p>The table below give the IP classifications:</p>
-            <div id="certificationtable" class="ingress">
+          </p>
+          <br>
+          <p>The table below give the IP classifications:</p>
+          <div id="certificationtable" class="ingress">
             <table>
               <thead>
                 <tr>
@@ -246,21 +255,21 @@
                   <th>IP Equivalent</th>
                   <th>NEMA Defintion</th>
                 </tr>
-               </thead>
-               <tbody>
+              </thead>
+              <tbody>
                 <% for(var i=0; i<nema.length; i++){ %>
-                  <tr>
-                    <td><%= nema[i].nema_rating %></td>
-                    <td><%= nema[i].ip_eq %></td>
-                    <td><%= nema[i].nema_defin %></td>
-                  </tr>
-                  <% } %>
-                 <tr>
-                 </tr>
+                <tr>
+                  <td><%= nema[i].nema_rating %></td>
+                  <td><%= nema[i].ip_eq %></td>
+                  <td><%= nema[i].nema_defin %></td>
+                </tr>
+                <% } %>
+                <tr>
+                </tr>
               </tbody>
             </table>
-            </div>
-            <br>
+          </div>
+          <br>
         </div>
 
 
