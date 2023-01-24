@@ -5,12 +5,15 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const path = require('path');
 const mailer = require('./src/controller/nodeMailer');
-
-const clusterWorkerSize = os.cpus().length;
-
 const morganMiddleware = require('./src/utils/morgan.middleware');
 const logger = require('./src/utils/logger');
 const app = express();
+
+const PORT = process.env.PORT || 3030;
+const clusterWorkerSize = os.cpus().length;
+
+app.set('view engine', 'ejs');
+app.set('views', path.resolve('./src/views'));
 
 const middlewareCheck = (req, res, next) => {
 	if (req.method === 'POST') {
@@ -26,11 +29,6 @@ const middlewareCheck = (req, res, next) => {
 		console.log(res);
 	}
 };
-
-const PORT = process.env.PORT || 3030;
-
-app.set('view engine', 'ejs');
-app.set('views', path.resolve('./src/views'));
 
 app.use(bodyParser.json());
 app.use(middlewareCheck);
