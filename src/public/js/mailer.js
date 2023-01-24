@@ -170,6 +170,7 @@ consentInput.addEventListener('change', function () {
 	} else {
 		console.log('checked');
 		submitBtn.style.backgroundColor = '#1b70a9';
+		submitBtn.style.color = 'antiqueWhite'
 		submitBtn.style.cursor = 'pointer';
 		submitBtn.disabled = false;
 	}

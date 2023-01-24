@@ -23,7 +23,7 @@
     </div>
     <label for="Message-body" class="form-label">Your message<span class="description-text"></span>
     </label>
-    <textarea id="Message-body" name="Message-body" maxlength="5000" required="" placeholder="" class="form-input textarea-input">
+    <textarea id="Message-body" name="Message-body" maxlength="5000" required="" placeholder="" rows="24" cols="50" class="form-input textarea-input">
 		</textarea>
     <div class="consent-button">
       <label for="consent-button" class="form-label">I consent to data being stored by Osprey Security for marketing and
@@ -39,9 +39,14 @@
   </form>
 </div>
 <div class="success-msg w-form-done" id="success-msg">
-  <div>Thank you for contacting us. We&#x27;ll reply as soon as possible.<br></div>
+  <div>
+    <h3>Thank you for contacting us. We&#x27;ll reply as soon as possible.</h3>
+    <br>
+  </div>
 </div>
 <div class="w-form-fail fail-msg" id="fail-msg">
-  <div>Oops! Something went wrong while submitting the form.</div>
+  <div>
+    <h3>Oops! Something went wrong while submitting the form.</h3>
+  </div>
 </div>
 <script src="/public/js/mailer.js"></script>

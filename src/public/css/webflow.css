@@ -353,9 +353,7 @@ button,
 	-webkit-appearance: button;
 }
 
-.w-form {
-	margin: 0 0 15px;
-}
+
 
 .w-form-done {
 	display: none;
@@ -369,12 +367,6 @@ button,
 	margin-top: 10px;
 	padding: 10px;
 	background-color: #ffdede;
-}
-
-label {
-	display: block;
-	margin-bottom: 5px;
-	font-weight: bold;
 }
 
 .w-input,
@@ -437,7 +429,7 @@ fieldset[disabled]:not(.w-input-disabled) .w-select {
 	background-color: #eeeeee;
 }
 
-textarea.w-input,
+.w-input,
 textarea.w-select {
 	height: auto;
 }
