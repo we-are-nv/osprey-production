@@ -8810,3 +8810,28 @@ h4.section-subheading {
 	background-color: darkgrey;
 
 }
+
+#news.news-section {
+	background: #c2c2c2;
+	padding: 2rem 2rem
+}
+
+#news h3,
+#news h4 {
+	font-weight: 400;
+}
+
+.section-subhead.news {
+	margin-top: 54px;
+}
+
+.section-title {
+	font-family: 'Avenir';
+	font-size: 48px;
+	font-weight: 400;
+}
+.upper-head.green {
+	font-family: 'Avenir';
+	font-size: 24px;
+	font-weight: 400;
+}
