@@ -9,8 +9,6 @@ router.use(function timeLog(req, res, next) {
 	next();
 });
 
-
-
 // DB Connection Test
 
 router.get('/db-connector-test', async (req, res) => {
@@ -29,14 +27,19 @@ router.get('/db-connector-test', async (req, res) => {
 	}
 });
 
-// Home & Static PAges
+// Home & Static Pages
 
 router.get('/', (req, res) => {
 	// res.send(process.env);
 	res.render('index');
 });
 
+// Test pages;
 
+router.get('/testing', (req, res) => {
+	res.render('testing');
+	// res.send()
+});
 
 // Other Static
 
@@ -191,22 +194,18 @@ router.get('/products/cctv', breadcrumbs.Middleware(), (req, res) => {
 
 // Cameras
 
-router.get(
-	'/products/cctv/cameras/',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = await dbQuery.genericQuery('SELECT * FROM `info`; ');
+router.get('/products/cctv/cameras', breadcrumbs.Middleware(), async (req, res) => {
+	try {
+		let data = await dbQuery.genericQuery('SELECT * FROM `info`; ');
 
-			res.render('cameras', {
-				breadcrumbs: req.breadcrumbs,
-				data: data
-			});
-		} catch (e) {
-			console.log(e);
-		}
+		res.render('cameras', {
+			breadcrumbs: req.breadcrumbs,
+			data: data
+		});
+	} catch (e) {
+		console.log(e);
 	}
-);
+});
 
 // Marine Fixed & PTZ
 
@@ -1938,5 +1937,13 @@ router.get(
 		}
 	}
 );
+
+// Catch All Error 404 Page -
+// - placed at the bottom of the routing table to match any path not specified
+// in the standard routes.
+
+router.get('/*', (req, res) => {
+	res.render('404');
+});
 
 module.exports = router;

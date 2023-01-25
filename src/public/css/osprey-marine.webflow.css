@@ -3646,6 +3646,79 @@ td.val-data {
 	color: #093273;
 }
 
+.category-grid-container {
+	display: grid;
+	grid-template-columns: repeat (6, minmax( 160px,  1fr));
+	grid-template-rows: repeat(2, minmax(120px, 1fr));
+	column-gap: 2rem;
+	row-gap: 2rem;
+
+}
+
+.category-grid-cell {
+	border: 2px solid red;
+	width: 100%;
+	min-width: 100%
+}
+
+.category-grid-cell>a {
+	place-self: center;
+}
+
+.category-name {
+	display: flex;
+	flex-wrap: wrap;
+	word-wrap: normal;
+}
+
+.cat-cell-1 {
+	grid-area: 1 / 1 / 2 / 2;
+}
+
+.cat-cell-2 {
+	grid-area: 1 / 2 / 2 / 3;
+}
+
+.cat-cell-3 {
+	grid-area: 1 / 3 / 2 / 4;
+}
+
+.cat-cell-4 {
+	grid-area: 1 / 4 / 2 / 5;
+}
+
+.cat-cell-5 {
+	grid-area: 1 / 5 / 2 / 6;
+}
+
+.cat-cell-6 {
+	grid-area: 1 / 6 / 2 / 7;
+}
+
+.cat-cell-7 {
+	grid-area: 2 / 1 / 3 / 2;
+}
+
+.cat-cell-8 {
+	grid-area: 2 / 2 / 3 / 3;
+}
+
+.cat-cell-9 {
+	grid-area: 2 / 3 / 3 / 4;
+}
+
+.cat-cell-10 {
+	grid-area: 2 / 4 / 3 / 5;
+}
+
+.cat-cell-11 {
+	grid-area: 2 / 5 / 3 / 6;
+}
+
+.cat-cell-12 {
+	grid-area: 2 / 6 / 3 / 7;
+}
+
 .grid-container {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -3654,7 +3727,6 @@ td.val-data {
 	row-gap: 2em;
 	padding: 40px 5%;
 }
-
 
 .grid-cell {
 	width: 100%;
