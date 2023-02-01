@@ -1942,8 +1942,8 @@ router.get(
 // - placed at the bottom of the routing table to match any path not specified
 // in the standard routes.
 
-router.get('/*', (req, res) => {
-	res.render('404');
-});
+// router.get('/*', (req, res) => {
+// 	res.render('404');
+// });
 
 module.exports = router;
