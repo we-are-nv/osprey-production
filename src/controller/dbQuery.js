@@ -50,7 +50,7 @@ async function getAV(req) {
 		results = await db.id('SELECT * FROM av WHERE product_code = ?', [
 			req.params.product_code
 		]);
-		console.log('getAV'+results)
+		console.log('getAV' + results)
 		return results;
 	} catch (e) {
 		console.log(e);
@@ -121,6 +121,41 @@ async function getData(sqlQuery, params) {
 		// return status;
 	}
 }
+async function searchData(params) {
+	try {
+		let searchedTables = [{ tableName: 'info', product_type: 'cameras', displayed_values: ['product_code', 'product_name'] }, { tableName: 'acc_info', product_type: 'cctv-accessories', displayed_values: ['product_code', 'product_name'] }, { tableName: 'eth_info', product_type: 'cctv-transmission', displayed_values: ['product_code', 'product_name'] }, { tableName: 'housings_info', product_type: 'camera_housing', displayed_values: ['product_code', 'product_name'] }, { tableName: 'nvr_info', product_type: 'nvr', displayed_values: ['product_code', 'product_name'] }, { tableName: 'disk_nvr_info', product_type: 'disk', displayed_values: ['product_code', 'product_name'] }];
+		let results = [];
+		for (searchIdx in searchedTables) {
+			var displayed_values = searchedTables[searchIdx].displayed_values;
+			var selectedTable = searchedTables[searchIdx];
+			for (valueIdx in displayed_values) {
+				let result = await db.id(`SELECT ` + displayed_values.join(",") + `,'` + selectedTable.product_type + `' AS product_type from ` + selectedTable.tableName + ` WHERE ` + displayed_values[valueIdx] + ` LIKE ?;`,params);
+				for (resultIdx in result) {
+					results.push(result[resultIdx]);
+				};
+			}
+		};
+
+		return results;
+	} catch (e) {
+		console.log(e);
+		// const status = 500;
+		// return status;
+	}
+}
+
+async function getHeaders(params){
+	try {
+
+		let results = await db.id(`DESC `+params)
+
+		return results;
+	} catch (e) {
+		console.log(e);
+		// const status = 500;
+		// return status;
+	}
+}
 
 async function genericQuery(sqlQuery) {
 	try {
@@ -157,5 +192,7 @@ module.exports = {
 	getPower,
 	getCerts,
 	genericQuery,
-	getData
+	getData,
+	searchData,
+	getHeaders
 };

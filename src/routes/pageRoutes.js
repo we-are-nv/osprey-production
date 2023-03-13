@@ -36,7 +36,10 @@ router.get('/', (req, res) => {
 	res.render('index');
 });
 
-
+// Client Portal Static Pages
+router.get('/client-area', (req,res) => {
+	res.render('client-portal');
+});
 
 // Other Static
 
@@ -317,6 +320,68 @@ router.get(
 	}
 );
 
+router.get(
+	'/api/search',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			//Build Query
+			let query = "";
+			if (req.query.searchTerm){
+				const onlyLettersPattern = /^[A-Za-z ]+$/;
+				const bannedWords = ["SELECT","UPDATE","DELETE","INSERT","INTO","CREATE","ALTER","DROP"];
+				if (!req.query.searchTerm.match(onlyLettersPattern) || req.query.searchTerm.split(" ").includes(bannedWords)){
+					return res.status(400).json({err: "Input not Accepted"});
+				};
+				query = "%"+req.query.searchTerm+"%" 
+			};
+			let data = await dbQuery.searchData(query);
+			//Build Links
+			if (data && data.length > 0){
+				for (dataIdx in data){
+					data[dataIdx].url = "/products/cctv/"+data[dataIdx].product_type+"/"+data[dataIdx].product_code;
+				};
+			}
+			res.send(data)
+			
+		} catch (e) {
+			res.send('ERROR')
+			console.log(e)
+		}
+	}
+);
+let current_product_types = [
+	{
+		name:'camera',
+		table:'info'
+	}
+]
+router.get(
+	'/api/get-current-products',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			
+			res.send(current_product_types)
+		} catch (e) {
+			res.send('ERROR')
+			console.log(e)
+		}
+	} 
+)
+router.get(
+	'/api/get-product-fields',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = await dbQuery.getHeaders(req.query.table);
+			res.send(data)
+		} catch (e) {
+			res.send('ERROR')
+			console.log(e)
+		}
+	} 
+)
 router.get(
 	'/products/cctv/cameras/commercial',
 	breadcrumbs.Middleware(),
@@ -1938,5 +2003,7 @@ router.get(
 		}
 	}
 );
+
+
 
 module.exports = router;
