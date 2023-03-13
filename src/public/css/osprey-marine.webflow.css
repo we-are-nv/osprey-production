@@ -3610,6 +3610,7 @@ td.val-data {
 .categories-holder-sub {}
 
 .categories-holder {
+	border-radius: 25px;
 	width: 100%;
 	padding: 0 5%;
 	display: flex;
@@ -3622,7 +3623,17 @@ td.val-data {
 .categories-holder.cert {
 	padding: 2rem 2rem;
 }
+.categories-holder.jump {
+	width:fit-content !important;
+	display: flex;
+	margin-left: auto;
+    margin-right: auto; 
 
+	justify-content: center;
+	align-items: center;
+	
+	padding:2rem 2rem;
+}
 .categories-holder.services {
 	padding: 2rem 2rem;
 	flex-direction: row;
