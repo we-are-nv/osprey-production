@@ -44,7 +44,7 @@ app.get('/api/status', (req, res) => {
 
 app.use('/public', express.static('./src/public'));
 app.post('/send', mailer);
-app.use(require('./src/routes/pageRoutes'));
+app.use(require('./src/routes/routes'));
 
 const start = () => {
 	app.listen(PORT, (req, res) => {

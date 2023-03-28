@@ -17,4 +17,6 @@ ENV PORT 3030
 
 EXPOSE $PORT
 
-CMD ["nodemon", "server.js"]
+# ENTRYPOINT [ "nodemon", "-L", "./server.js" ]
+
+CMD [ "npm", "run" ,"dev" ]
