@@ -1,0 +1,566 @@
+/* =========================================================================== *
+	TABLE OF CONTENTS
+============================================================================== */
+/*
+
+PRE. 	Imports
+
+1. 	Global
+	1.1.	Variables
+	1.2. 	Colours
+	1.3. 	Fonts, (Not Imported)
+	1.4. 	Common Rules
+
+
+2.	Layout
+	2.1.	Nav Bar/ Header
+	2.2.	Footer
+
+
+3.	Page Specific CSS
+	3.1
+
+
+4
+
+X.	Mobile Responsiveness
+
+/* Global */
+
+/* Global */
+
+/* Global */
+
+/* Global */
+
+/* Footer, Footnote and Legal
+
+/* =========================================================================== *
+END TABLE OF CONTENTS
+============================================================================= */
+
+
+/* End Table of Contents */
+
+
+/* ========================================================================== */
+/* 	PRE. 	Imports
+============================================================================= */
+
+/* @import url("./fonts.css"); */
+
+/**/
+/*  */
+/*  */
+
+
+/* =========================================================================== *
+	F O N T S
+============================================================================= */
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-Roman.eot');
+	src: local('Avenir Roman'), local('Avenir-Roman'),
+		url('../fonts/Avenir-Roman.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Roman.woff2') format('woff2'),
+		url('../fonts/Avenir-Roman.woff') format('woff'),
+		url('../fonts/Avenir-Roman.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-Light.eot');
+	src: local('Avenir Light'), local('Avenir-Light'),
+		url('../fonts/Avenir-Light.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Light.woff2') format('woff2'),
+		url('../fonts/Avenir-Light.woff') format('woff'),
+		url('../fonts/Avenir-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir Book';
+	src: url('../fonts/Avenir-BookOblique.eot');
+	src: local('Avenir Book Oblique'), local('Avenir-BookOblique'),
+		url('../fonts/Avenir-BookOblique.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-BookOblique.woff2') format('woff2'),
+		url('../fonts/Avenir-BookOblique.woff') format('woff'),
+		url('../fonts/Avenir-BookOblique.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Avenir Black Oblique';
+	src: url('../fonts/Avenir-BlackOblique.eot');
+	src: local('Avenir Black Oblique'), local('Avenir-BlackOblique'),
+		url('../fonts/Avenir-BlackOblique.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-BlackOblique.woff2') format('woff2'),
+		url('../fonts/Avenir-BlackOblique.woff') format('woff'),
+		url('../fonts/Avenir-BlackOblique.ttf') format('truetype');
+	font-weight: 900;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-Heavy.eot');
+	src: local('Avenir Heavy'), local('Avenir-Heavy'),
+		url('../fonts/Avenir-Heavy.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Heavy.woff2') format('woff2'),
+		url('../fonts/Avenir-Heavy.woff') format('woff'),
+		url('../fonts/Avenir-Heavy.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-HeavyOblique.eot');
+	src: local('Avenir Heavy Oblique'), local('Avenir-HeavyOblique'),
+		url('../fonts/Avenir-HeavyOblique.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-HeavyOblique.woff2') format('woff2'),
+		url('../fonts/Avenir-HeavyOblique.woff') format('woff'),
+		url('../fonts/Avenir-HeavyOblique.ttf') format('truetype');
+	font-weight: 900;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-MediumOblique.eot');
+	src: local('Avenir Medium Oblique'), local('Avenir-MediumOblique'),
+		url('../fonts/Avenir-MediumOblique.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-MediumOblique.woff2') format('woff2'),
+		url('../fonts/Avenir-MediumOblique.woff') format('woff'),
+		url('../fonts/Avenir-MediumOblique.ttf') format('truetype');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-LightOblique.eot');
+	src: local('Avenir Light Oblique'), local('Avenir-LightOblique'),
+		url('../fonts/Avenir-LightOblique.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-LightOblique.woff2') format('woff2'),
+		url('../fonts/Avenir-LightOblique.woff') format('woff'),
+		url('../fonts/Avenir-LightOblique.ttf') format('truetype');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Avenir Book';
+	src: url('../fonts/Avenir-Book.eot');
+	src: local('Avenir Book'), local('Avenir-Book'),
+		url('../fonts/Avenir-Book.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Book.woff2') format('woff2'),
+		url('../fonts/Avenir-Book.woff') format('woff'),
+		url('../fonts/Avenir-Book.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir Black';
+	src: url('../fonts/Avenir-Black.eot');
+	src: local('Avenir Black'), local('Avenir-Black'),
+		url('../fonts/Avenir-Black.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Black.woff2') format('woff2'),
+		url('../fonts/Avenir-Black.woff') format('woff'),
+		url('../fonts/Avenir-Black.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-Oblique.eot');
+	src: local('Avenir Oblique'), local('Avenir-Oblique'),
+		url('../fonts/Avenir-Oblique.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Oblique.woff2') format('woff2'),
+		url('../fonts/Avenir-Oblique.woff') format('woff'),
+		url('../fonts/Avenir-Oblique.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-Medium.eot');
+	src: local('Avenir Medium'), local('Avenir-Medium'),
+		url('../fonts/Avenir-Medium.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Medium.woff2') format('woff2'),
+		url('../fonts/Avenir-Medium.woff') format('woff'),
+		url('../fonts/Avenir-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Playfair Display";
+	src: url(../fonts/PlayfairDisplay-Black.ttf)format("truetype");
+	font-weight: 900;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Playfair Display";
+	src: url(../fonts/PlayfairDisplay-Bold.ttf)format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Playfair Display";
+	src: url(../fonts/PlayfairDisplay-Regular.ttf)format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Tiempos headline";
+	src: url(../fonts/Tiempos-Headline---Black.otf)format("opentype");
+	font-weight: 900;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Tiempos headline";
+	src: url(../fonts/Tiempos-Headline---Bold.otf)format("opentype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Tiempos headline";
+	src: url(../fonts/Tiempos-Headline---Semibold.otf)format("opentype");
+	font-weight: 600;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Tiempos headline";
+	src: url(../fonts/Tiempos-Headline---Medium.otf)format("opentype");
+	font-weight: 500;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Averta";
+	src: url(../fonts/Averta-Black.otf)format("opentype");
+	font-weight: 900;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Averta";
+	src: url(../fonts/Averta-Bold.otf)format("opentype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Averta";
+	src: url(../fonts/Averta-Semibold.otf)format("opentype");
+	font-weight: 600;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Averta";
+	src: url(../fonts/Averta-Thin.otf)format("opentype"), url(../fonts/Averta-Extrathin.otf)format("opentype");
+	font-weight: 100;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Averta";
+	src: url(../fonts/Averta.otf)format("opentype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Circularstd";
+	src: url(../fonts/CircularStd-Black.otf)format("opentype");
+	font-weight: 900;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Circularstd";
+	src: url(../fonts/CircularStd-Bold.otf)format("opentype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Circularstd";
+	src: url(../fonts/CircularStd-Medium.otf)format("opentype");
+	font-weight: 500;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "Circularstd book";
+	src: url(../fonts/CircularStd-Book.otf)format("opentype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: auto
+}
+
+@font-face {
+	font-family: "neuropol";
+	src: url(../fonts/neuropol_x_rg.otf)format("opentype");
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+
+
+
+
+
+
+
+
+/* ========================================================================== */
+/* 	1. Global
+============================================================================= */
+
+/* 	1.1 Variables
+		1.2 Colors
+----------------------------------------------- */
+
+:root {
+	--error-color: #dc3545;
+	--success-color: #28a745;
+	--warning-color: #ffc107;
+}
+
+
+/* 1.3	Fonts, (Not Imported)
+----------------------------------------------- */
+
+
+/* 1.4	Common Rules
+----------------------------------------------- */
+
+* {
+	font-family: 'Avenir';
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 25.6;
+}
+
+body {
+	width: 100%;
+	height: auto;
+	margin: 0;
+}
+
+h1 {
+	font-family: "Avenir Black";
+	font-size: 76px;
+	line-height: 86px;
+	color: black;
+	/* font-weight: ; */
+}
+
+/* ========================================================================== */
+/* 	2. Layout
+============================================================================= */
+
+/* 2.1	Nav Bar / Header
+----------------------------------------------- */
+
+.nav-bar,
+.scrollable-nav {
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: auto;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	background-color: #fff
+}
+
+.scrollable-nav {
+	position: fixed;
+	padding: 22px 25px;
+	-webkit-box-shadow: 0 1px 3px 0 rgba(39, 46, 53, .14);
+	box-shadow: 0 1px 3px 0 rgba(39, 46, 53, .14)
+}
+
+.nav-bar {
+	position: absolute;
+	padding: 10px 20px;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	grid-column-gap: 0;
+	grid-row-gap: 0;
+	background: rgb(27, 112, 169);
+	background: -webkit-gradient(linear, left bottom, left top, from(rgba(27, 112, 169, 1)), to(rgba(255, 255, 255, 1)));
+	background: -o-linear-gradient(bottom, rgba(27, 112, 169, 1) 0%, rgba(255, 255, 255, 1) 100%);
+	background: linear-gradient(0deg, rgba(27, 112, 169, 1) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.scrolling-nav {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: auto;
+	display: block;
+	padding: 15px 25px;
+	background-image: -webkit-gradient(linear, left bottom, left top, from(#cfdcf1), color-stop(32%, #fff));
+	background-image: -o-linear-gradient(bottom, #cfdcf1, #fff 32%);
+	background-image: linear-gradient(0deg, #cfdcf1, #fff 32%);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(39, 46, 53, .14);
+	box-shadow: 0 1px 3px 0 rgba(39, 46, 53, .14)
+}
+
+
+.brand-div,
+.brand-div.w--current {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-align-self: flex-start;
+	-ms-flex-item-align: start;
+	align-self: flex-start
+}
+
+.brand-div {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin-top: 2px;
+	/* font-family: neuropol, sans-serif; */
+	font-family: Avenir, sans-serif;
+	color: #102c38;
+	font-size: 36px;
+	line-height: 38px;
+	font-weight: 800
+}
+
+
+
+/* ========================================================================== */
+/* 	3. Page Specific CSS
+============================================================================= */
+
+/* 3.1	index / home-page
+----------------------------------------------- */
+
+.main-hero-section {
+	height: 100vh;
+	width: 100%;
+	padding-left: 45px;
+	background: url("../images/hero-jpg1.png");
+	background-attachment: initial;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.hero-content {
+	/* height: 60vh; */
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding-left: 16px;
+}
+
+.main-hero-section h1 {
+	color: white;
+	height: min-content;
+}
+
+.tag-line {
+	/* display: block; */
+	height: 200px;
+	color: white;
+	font-family: "Avenir Black";
+	font-size: 17;
+	line-height: 19.5px;
+
+}
+
+.intro-wrapper {
+	display: inline-block;
+	height: 20px;
+	width: 60%;
+	color: white;
+
+}
+
+
+.hero-content .button-wrapper {
+	width: 600px;
+	/* display: inline-block; */
+	height: fit-content;
+
+}
+
+.hero-content .button-wrapper button {
+	width: 200px;
+	height: 100px;
+	border: 1px solid black;
+}
+
+
+
+
+/* Form Styling */
+
+
+/* .form-field input:focus {
+	outline: none;
+}
+
+.form-field.error input {
+	border-color: var(--error-color);
+}
+
+.form-field.success input {
+	border-color: var(--success-color);
+}
+
+.form-field small {
+	color: var(--error-color);
+} */
+
+
+/*  Nav Bar Styling */

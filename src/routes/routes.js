@@ -9,8 +9,6 @@ router.use(function timeLog(req, res, next) {
 	next();
 });
 
-
-
 // DB Connection Test
 
 router.get('/db-connector-test', async (req, res) => {
@@ -36,7 +34,9 @@ router.get('/', (req, res) => {
 	res.render('index');
 });
 
-
+router.get('/index2', (req, res) => {
+	res.render('index2');
+});
 
 // Other Static
 
