@@ -73,7 +73,6 @@ services:
     volumes:
       - sql:/var/lib/mysql
     networks:
-      backend:
       traefik-proxy:
         aliases:
           - test.sql.docker
