@@ -4,6 +4,9 @@ networks:
   traefik-proxy:
   backend:
 
+volumes:
+  sql:
+
 
 services:
 
@@ -23,7 +26,7 @@ services:
       - traefik.enable=true
       - traefik.docker.network=traefik-proxy
       - traefik.http.routers.node-app.entrypoints=web
-      - traefik.http.routers.node-app.rule=Host(`3.11.230.233`)
+      - traefik.http.routers.node-app.rule=Host(`18.132.35.11`)
       # - traefik.http.services.node-app.loadbalancer.server.port=3030
     networks:
       - traefik-proxy
@@ -50,7 +53,7 @@ services:
       - traefik.http.routers.api.rule=Host(`monitor.docker`)
       - traefik.http.routers.api.entrypoints=web
       - traefik.http.routers.api.service=api@internal
-      - traefik.http.routers.traefik.rule=Host(`3.11.230.233`)
+      - traefik.http.routers.traefik.rule=Host(`18.132.35.11`)
       - traefik.http.routers.traefik.entrypoints=web
       - traefik.port=8080
     networks:
@@ -69,8 +72,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./src/sql/mysql:/var/lib/mysql
-      - ./src/sql/logs:/var/log/*
+      - sql:/var/lib/mysql
     networks:
       backend:
       traefik-proxy:
@@ -94,4 +96,4 @@ services:
   #   labels:
   #     - traefik.enable=true
   #     - traefik.docker.network=traefik-proxy
-  #     - traefik.http.routers.osprey-pma.rule=Host(`pma.3.11.230.233`)
+  #     - traefik.http.routers.osprey-pma.rule=Host(`pma.18.132.35.11`)
