@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/index2', (req, res) => {
-	res.render('index2');
+	res.send('../views/index2.html');
 });
 
 // Other Static
