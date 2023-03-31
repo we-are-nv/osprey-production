@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/index2', (req, res) => {
-	res.send('../views/index2.html');
+	res.sendFile('../views/index2.html');
 });
 
 // Other Static
