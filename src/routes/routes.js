@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new-site', (req, res) => {
-	res.sendFile('/src/views/index2.html');
+	res.send('index3.html');
 });
 
 // Other Static
