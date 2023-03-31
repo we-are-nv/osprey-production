@@ -2,7 +2,6 @@ version: '3.7'
 
 networks:
   traefik-proxy:
-  backend:
 
 volumes:
   sql:
@@ -19,7 +18,7 @@ services:
         NODE_ENV: development
     environment:
       - NODE_ENV="development"
-    command: node server.js
+    command: npm run dev
 
     # Traefik Stuff
     labels:
@@ -50,7 +49,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.api.rule=Host(`monitor.docker`)
+      # - traefik.http.routers.api.rule=Host(`monitor.docker`)
       - traefik.http.routers.api.entrypoints=web
       - traefik.http.routers.api.service=api@internal
       - traefik.http.routers.traefik.rule=Host(`18.132.35.11`)
@@ -79,21 +78,21 @@ services:
         aliases:
           - test.sql.docker
 
-  # phpmyadmin:
-  #   container_name: php_myadmin
-  #   restart: always
-  #   image: phpmyadmin:latest
-  #   depends_on:
-  #     - sql
-  #   environment:
-  #     PMA_ARBITRARY: 1
-  #     PMA_HOST: sql
-  #     PMA_USER: $DB_USER
-  #     PMA_PASSWORD: $DB_PASSWORD
-  #     MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
-  #   networks:
-  #     - traefik-proxy
-  #   labels:
-  #     - traefik.enable=true
-  #     - traefik.docker.network=traefik-proxy
-  #     - traefik.http.routers.osprey-pma.rule=Host(`pma.18.132.35.11`)
+  phpmyadmin:
+    container_name: php_myadmin
+    restart: always
+    image: phpmyadmin:latest
+    depends_on:
+      - sql
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: sql
+      PMA_USER: $DB_USER
+      PMA_PASSWORD: $DB_PASSWORD
+      MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
+    networks:
+      - traefik-proxy
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-proxy
+      - traefik.http.routers.osprey-pma.rule=Host(`pma.18.132.35.11`)
