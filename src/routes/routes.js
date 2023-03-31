@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
 	res.render('index');
 });
 
-router.get('/index2', (req, res) => {
+router.get('/new-site', (req, res) => {
 	res.sendFile('/src/views/index2.html');
 });
 
