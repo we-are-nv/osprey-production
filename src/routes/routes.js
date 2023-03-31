@@ -34,11 +34,8 @@ router.get('/', (req, res) => {
 	res.render('index');
 });
 
-// Test pages;
-
-router.get('/testing', (req, res) => {
-	res.render('testing');
-	// res.send()
+router.get('/index2', (req, res) => {
+	res.send('../views/index2.html');
 });
 
 // Other Static
