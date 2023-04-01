@@ -23,7 +23,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.node-app.rule=Host(`http://18.132.35.11/`)
+      - traefik.http.routers.node-app.rule=Host(`18.132.35.11/`)
     networks:
       - traefik-proxy
     volumes:
@@ -35,7 +35,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.whoami.rule=Host(`whoami.http://18.132.35.11/`)
+      - traefik.http.routers.whoami.rule=Host(`whoami.18.132.35.11/`)
 
 # for production
 # make sure traefik.toml IS NOT INSECURE
@@ -57,7 +57,7 @@ services:
       - traefik.http.routers.api.rule=Host(`monitor.docker.18.132.35.11/`)
       - traefik.http.routers.api.entrypoints=web
       - traefik.http.routers.api.service=api@internal
-      - traefik.http.routers.traefik.rule=Host(`http://18.132.35.11/`)
+      - traefik.http.routers.traefik.rule=Host(`18.132.35.11/`)
       - traefik.http.routers.traefik.entrypoints=web
       - traefik.port=8080
     networks:
@@ -107,7 +107,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.osprey-pma.rule=Host(`http://pma.18.132.35.11/`)
+      - traefik.http.routers.osprey-pma.rule=Host(`pma.18.132.35.11/`)
 
 
 
