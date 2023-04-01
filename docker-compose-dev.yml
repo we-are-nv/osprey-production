@@ -2,7 +2,7 @@ version: '3.7'
 
 networks:
   traefik-proxy:
-    name: traefik-proxy
+    # name: traefik-proxy
   # backend:
 
 volumes:
@@ -29,13 +29,13 @@ services:
     volumes:
       - ./src:/app/src:ro
 
-  whoami:
-    image: containous/whoami:latest
-    restart: unless-stopped
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.whoami.rule=Host(`whoami.35.179.3.118/`)
+  # whoami:
+  #   image: containous/whoami:latest
+  #   restart: unless-stopped
+  #   labels:
+  #     - traefik.enable=true
+  #     - traefik.docker.network=traefik-proxy
+  #     - traefik.http.routers.whoami.rule=Host(`whoami.35.179.3.118`)
 
 # for production
 # make sure traefik.toml IS NOT INSECURE
@@ -54,12 +54,12 @@ services:
       - traefik.enable=true
       - api.insecure=true
       - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.api.rule=Host(`monitor.docker.35.179.3.118`)
+      # - traefik.http.routers.api.rule=Host(`monitor.docker.35.179.3.118`)
       - traefik.http.routers.api.entrypoints=web
       - traefik.http.routers.api.service=api@internal
       - traefik.http.routers.traefik.rule=Host(`35.179.3.118`)
       - traefik.http.routers.traefik.entrypoints=web
-      - traefik.port=8080
+      # - traefik.port=8080
     networks:
       - traefik-proxy
 
@@ -89,25 +89,25 @@ services:
       # - ./src/sql/logs:/var/log/*
 
 
-  phpmyadmin:
-    container_name: php_myadmin-again
-    restart: unless-stopped
-    image: phpmyadmin:latest
-    depends_on:
-      - sql
-    environment:
-      PMA_ARBITRARY: 1
-      PMA_HOST: sql
-      PMA_USER: root
-      PMA_PASSWORD: $SQL_ROOT_PASSWORD
-      MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
-      UPLOAD_LIMIT: 300M
-    networks:
-      - traefik-proxy
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.osprey-pma.rule=Host(`pma.35.179.3.118`)
+  # phpmyadmin:
+  #   container_name: php_myadmin-again
+  #   restart: unless-stopped
+  #   image: phpmyadmin:latest
+  #   depends_on:
+  #     - sql
+  #   environment:
+  #     PMA_ARBITRARY: 1
+  #     PMA_HOST: sql
+  #     PMA_USER: root
+  #     PMA_PASSWORD: $SQL_ROOT_PASSWORD
+  #     MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
+  #     UPLOAD_LIMIT: 300M
+  #   networks:
+  #     - traefik-proxy
+  #   labels:
+  #     - traefik.enable=true
+  #     - traefik.docker.network=traefik-proxy
+  #     - traefik.http.routers.osprey-pma.rule=Host(`pma.35.179.3.118`)
 
 
 
