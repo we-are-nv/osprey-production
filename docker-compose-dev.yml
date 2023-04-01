@@ -107,7 +107,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.osprey-pma.rule=Host(`pma.http://pma.18.132.35.11/`)
+      - traefik.http.routers.osprey-pma.rule=Host(`http://pma.18.132.35.11/`)
 
 
 
