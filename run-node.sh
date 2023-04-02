@@ -1,19 +1,4 @@
 #!/bin/bash
-
-echo "Building container from dockerfile"
-echo "Path = '.' | args = "NODE_ENV: development" "
-
-
-echo "Starting docker run script"
-echo "This will run the container with the following conditions:"
-echo "Container: 'node-app'"
-echo "restart: unless-stopped"
-echo "command: npm run dev"
-echo "label file: ./labelfile"
-echo "attach to network: traefik-proxy"
-echo "volumes: ./src:/app/src:ro - read only"
-echo "resource limits: cpus - 1.0, memory - 4gb"
-
 confirm() {
 
   local _prompt _default _response
@@ -38,11 +23,26 @@ confirm() {
 
 }
 
+
+echo "Building container from dockerfile"
+echo "Path = '.' | args = "NODE_ENV: development" "
+
+
+echo "Starting docker run script"
+echo "This will run the container with the following conditions:"
+echo "Container: 'node-app'"
+echo "restart: unless-stopped"
+echo "command: npm run dev"
+echo "label file: ./labelfile"
+echo "attach to network: traefik-proxy"
+echo "volumes: ./src:/app/src:ro - read only"
+echo "resource limits: cpus - 1.0, memory - 4gb"
+
 confirm
 
 docker build .
 
-docker run \
+docker run -d \
 --name node-app-again \
 
 --network=traefik-proxy \
@@ -56,4 +56,9 @@ docker run \
 node-app
 
 echo "Deploying the container"
+
+confirm (" Would you like to attach to the network 'traefik-proxy' ? ")
+
+docker network connect traefik-proxy
+
 
