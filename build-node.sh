@@ -44,8 +44,8 @@ docker build \
 
 sleep 1
 
-bash ./run-node.sh
-
+bash ./run-node.sh \
+&& \
 return
 
 
