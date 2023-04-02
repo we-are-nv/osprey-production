@@ -28,6 +28,13 @@ services:
       - traefik-proxy
     volumes:
       - ./src:/app/src:ro
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: '4gb'
+          
+
 
   whoami:
     image: containous/whoami:latest
