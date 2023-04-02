@@ -2142,7 +2142,7 @@ input.form__field:focus {
 			rgba(0, 101, 231, 1) 100%
 		);
 	background-blend-mode: multiply;
-} 
+}
 
 /* .landing-blue::before {
 	display: block;
