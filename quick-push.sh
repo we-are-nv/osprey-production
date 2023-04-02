@@ -14,7 +14,7 @@ confirm() {
     case "$_response" in
       [Yy][Ee][Ss]|[Yy]) # Yes or Y (case-insensitive).
 				echo "continuing"
-				sleep 2
+				sleep 1
         return 0
         ;;
       [Nn][Oo]|[Nn])  # No or N.
