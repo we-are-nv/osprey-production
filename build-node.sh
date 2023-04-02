@@ -41,7 +41,6 @@ docker build \
 --file ./Dockerfile \
 --tag node-app:latest \
 .
-
 && \
 sleep 1
 
