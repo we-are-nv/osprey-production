@@ -56,7 +56,16 @@ echo "resource limits: cpus - 1.0, memory - 4gb"
 
 confirm \
 && \
-run
+run \
+&& \
+confirm "Would you like to attach to the network 'traefik-proxy' ?" \
+&& \
+sleep 1
+
+echo "Connecting to network"
+
+docker network connect traefik-proxy node-app-again
+
 return
 
 

@@ -43,13 +43,7 @@ sleep 1
 
 bash ./run-node.sh \
 && \
-confirm "Would you like to attach to the network 'traefik-proxy' ?" \
-&& \
-sleep 1
 
-echo "Connecting to network"
-
-docker network connect traefik-proxy node-app-again
 
 
 
