@@ -61,7 +61,7 @@ docker run -d \
 --cpus 1.0 \
 --memory 4gb \
 --workdir /app \
-node-app
+.
 
 echo "Deploying the container"
 
