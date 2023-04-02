@@ -37,7 +37,11 @@ echo "Path = '.' | args = "NODE_ENV: development" "
 
 confirm \
 && \
-docker build . \
+docker build \
+--file ./Dockerfile \
+--tag node-app:latest \
+.
+
 && \
 sleep 1
 
