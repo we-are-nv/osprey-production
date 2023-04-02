@@ -38,6 +38,8 @@ confirm() {
 
 }
 
+confirm
+
 source ./deploy-2.sh
 
 docker build .
