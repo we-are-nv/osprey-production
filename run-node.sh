@@ -2,8 +2,7 @@
 run() {
 	docker run -d \
 --name node-app-again \
-
--v ./src:/app/src:ro \
+--volume ./src:/app/src:ro \
 --label-file ./labelfile \
 --restart unless-stopped \
 --env-file ./.env \
@@ -46,18 +45,6 @@ confirm() {
 
 }
 
-
-
-
-echo "Building container from dockerfile"
-echo "Path = '.' | args = "NODE_ENV: development" "
-
-confirm \
-&& \
-docker build . \
-&& \
-sleep 1
-
 echo "Starting docker run script"
 echo "This will run the container with the following conditions:"
 echo "Container: 'node-app'"
@@ -70,15 +57,8 @@ echo "resource limits: cpus - 1.0, memory - 4gb"
 
 confirm \
 && \
-run \
-&& \
-confirm "Would you like to attach to the network 'traefik-proxy' ?" \
-&& \
-sleep 1
-
-echo "Connecting to network"
-
-docker network connect traefik-proxy node-app-again
+run
+return
 
 
 
