@@ -64,7 +64,7 @@ services:
       - --log.level=DEBUG
       - --log.filepath=/home/wearenv/osprey/traefik/logs/traefik.log
       - --accesslog=true
-      - --acesslog.filepath=/home/wearenv/osprey/traefik/logs/access.log
+      - --accesslog.filepath=/home/wearenv/osprey/traefik/logs/access.log
       - --accesslog.format=json
       # Provider Settings
       - --providers.docker=true # <== Enabling docker as the provider for traefik
