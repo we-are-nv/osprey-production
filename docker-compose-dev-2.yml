@@ -4,6 +4,7 @@ networks:
   traefik-proxy:
     name: traefik-proxy
   backend:
+    name: backend
 
 volumes:
   sql:
