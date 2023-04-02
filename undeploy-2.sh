@@ -2,7 +2,7 @@
 
 echo "un deploying application"
 echo "spinning down"
-docker-compose -f docker-compose-dev-1.yml down -v
+docker-compose -f docker-compose-dev-2.yml down -v
 
 
 
