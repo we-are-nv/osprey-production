@@ -55,7 +55,6 @@ echo "label file: ./labelfile"
 echo "volumes: ./src:/app/src:ro - read only"
 echo "resource limits: cpus - 1.0, memory - 4gb"
 
-docker container prune && \
 confirm \
 && \
 run \

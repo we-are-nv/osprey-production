@@ -29,9 +29,9 @@ confirm() {
 
 }
 
-
-
-
+echo "Pruning old containers"
+docker container prune \
+&& \
 echo "Building container from dockerfile"
 echo "Path = '.' | args = "NODE_ENV: development" "
 
