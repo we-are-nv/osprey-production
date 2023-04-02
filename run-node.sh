@@ -64,9 +64,7 @@ sleep 1
 
 echo "Connecting to network"
 
-docker network connect traefik-proxy node-app-again \
-&& \
-return
+docker network connect traefik-proxy node-app-again
 
 
 
