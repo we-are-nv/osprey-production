@@ -41,8 +41,7 @@ docker build . \
 && \
 sleep 1
 
-bash ./run-node.sh
-
+bash ./run-node.sh \
 && \
 confirm "Would you like to attach to the network 'traefik-proxy' ?" \
 && \

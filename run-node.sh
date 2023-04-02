@@ -51,7 +51,6 @@ echo "Container: 'node-app'"
 echo "restart: unless-stopped"
 echo "command: npm run dev"
 echo "label file: ./labelfile"
-echo "attach to network: traefik-proxy"
 echo "volumes: ./src:/app/src:ro - read only"
 echo "resource limits: cpus - 1.0, memory - 4gb"
 

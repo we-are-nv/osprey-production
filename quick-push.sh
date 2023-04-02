@@ -30,10 +30,10 @@ confirm() {
 }
 
 
-confirm "Committing all and pushing to 'prod-main'.. Are you sure?"
+confirm "Committing all and pushing to 'prod-main' & 'main'.. Are you sure?"
 
 git add .
-git commit -m "quick save, committed from script"
-git push prod main
+git commit -m "quick save, committed from script, deploying to server"
+git push prod main && git push
 
 
