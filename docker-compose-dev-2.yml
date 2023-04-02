@@ -103,9 +103,9 @@ services:
     ports:
       - 3306:3306
     volumes:
-        - sql:/var/lib/mysql
+      - sql:/var/lib/mysql
     networks:
-      backend
+      - backend
 
   phpmyadmin:
     container_name: php_myadmin-again
