@@ -37,6 +37,9 @@ confirm() {
   done
 
 }
+
+source ./deploy-2.sh
+
 docker build .
 
 docker run \
