@@ -41,7 +41,7 @@ docker build \
 --file ./Dockerfile \
 --tag node-app:latest \
 .
-&& \
+&&
 sleep 1
 
 bash ./run-node.sh \
