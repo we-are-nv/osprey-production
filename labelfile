@@ -1,4 +1,4 @@
 traefik.enable=true
 trafik.docker.network=traefik-proxy
 traefik.http.routers.node-app.rule=Host(`35.179.3.118`)
-traefik.port=3030
+traefik.http.services.node-app-again.loadbalancer.server.port=3030
