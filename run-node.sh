@@ -1,4 +1,22 @@
 #!/bin/bash
+run() {
+	docker run -d \
+--name node-app-again \
+
+-v ./src:/app/src:ro \
+--label-file ./labelfile \
+--restart unless-stopped \
+--env-file ./.env \
+--cpus 1.0 \
+--memory 4gb \
+--workdir /app \
+.
+
+echo "Deploying the container"
+
+}
+
+
 confirm() {
 
 
@@ -19,7 +37,7 @@ confirm() {
       [Nn][Oo]|[Nn])  # No or N.
 
 				echo "cancelled" &&
-        exit 0
+        exit 1
         ;;
       *) # Anything else (including a blank) is invalid.
         ;;
@@ -48,25 +66,26 @@ echo "resource limits: cpus - 1.0, memory - 4gb"
 confirm
 
 docker build .
-
+&&
 sleep 1
 
-docker run -d \
---name node-app-again \
 
--v ./src:/app/src:ro \
---label-file ./labelfile \
---restart unless-stopped \
---env-file ./.env \
---cpus 1.0 \
---memory 4gb \
---workdir /app \
-.
+echo "Starting docker run script"
+echo "This will run the container with the following conditions:"
+echo "Container: 'node-app'"
+echo "restart: unless-stopped"
+echo "command: npm run dev"
+echo "label file: ./labelfile"
+echo "attach to network: traefik-proxy"
+echo "volumes: ./src:/app/src:ro - read only"
+echo "resource limits: cpus - 1.0, memory - 4gb"
 
-echo "Deploying the container"
+confirm
+&&
+run
 
 confirm "Would you like to attach to the network 'traefik-proxy' ?"
-
+&&
 sleep 1
 
 echo "Connecting to network"
