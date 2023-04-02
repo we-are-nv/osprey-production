@@ -2131,7 +2131,7 @@ input.form__field:focus {
 	stroke: currentColor;
 }
 
-.main-contact-form/*
+.main-contact-form
 .landing-blue {
 	height: 1100px;
 	background: linear-gradient(180deg, #0065e7 0%, rgba(101, 181, 48, 0) 100%),
@@ -2142,7 +2142,7 @@ input.form__field:focus {
 			rgba(0, 101, 231, 1) 100%
 		);
 	background-blend-mode: multiply;
-} */
+} 
 
 /* .landing-blue::before {
 	display: block;
@@ -2196,4 +2196,5 @@ input.form__field:focus {
 	color: var(--error-color);
 } */
 
-/*  Nav Bar Styling */;
+/*  Nav Bar Styling */
+
