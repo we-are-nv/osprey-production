@@ -66,7 +66,6 @@ services:
       - --accesslog=true
       - --acesslog.filepath=/home/wearenv/osprey/traefik/logs/access.log
       - --accesslog.format=json
-      -
       # Provider Settings
       - --providers.docker=true # <== Enabling docker as the provider for traefik
       - --providers.docker.exposedbydefault=false # <== Don't expose every container to traefik, only expose enabled ones
