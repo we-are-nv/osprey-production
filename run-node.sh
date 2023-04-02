@@ -3,13 +3,16 @@ run() {
 	docker run -d \
 --name node-app-again \
 --volume /home/wearenv/osprey/src:/app/src:ro \
---label-file ./labelfile \
+-l traefik.enable=true \
+-l trafik.docker.network=traefik-proxy \
+-l traefik.http.routers.node-app.rule=Host(`35.179.3.118`) \
+# -l traefik.http.services.node-app-again.loadbalancer.server.port=3030 \
 --restart unless-stopped \
 --env-file ./.env \
 --cpus 1.0 \
 --memory 4gb \
 --workdir /app \
---publish 3030:3030 \
+# --publish 3030:3030 \
 node-app
 
 echo "Deploying the container"
@@ -65,7 +68,9 @@ sleep 1
 
 echo "Connecting to network"
 
-docker network connect traefik-proxy node-app-again
+docker network connect traefik-proxy node-app-again \
+&& \
+docker network connect nsolid node-app-again
 
 
 
