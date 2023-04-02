@@ -19,7 +19,7 @@ confirm() {
       [Nn][Oo]|[Nn])  # No or N.
 
 				echo "cancelled" &&
-        exit 1
+        exit 0
         ;;
       *) # Anything else (including a blank) is invalid.
         ;;
