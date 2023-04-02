@@ -77,12 +77,12 @@ echo "attach to network: traefik-proxy"
 echo "volumes: ./src:/app/src:ro - read only"
 echo "resource limits: cpus - 1.0, memory - 4gb"
 
-confirm
-&&
+confirm \
+&& \
 run
 
-confirm "Would you like to attach to the network 'traefik-proxy' ?"
-&&
+confirm "Would you like to attach to the network 'traefik-proxy' ?" \
+&& \
 sleep 1
 
 echo "Connecting to network"
