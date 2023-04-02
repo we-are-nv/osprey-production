@@ -57,7 +57,7 @@ node-app
 
 echo "Deploying the container"
 
-confirm (" Would you like to attach to the network 'traefik-proxy' ? ")
+confirm ( Would you like to attach to the network traefik-proxy ? )
 
 docker network connect traefik-proxy
 
