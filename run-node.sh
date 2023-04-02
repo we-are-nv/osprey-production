@@ -1,6 +1,7 @@
 #!/bin/bash
 confirm() {
 
+
   local _prompt _default _response
 
   if [ "$1" ]; then _prompt="$1"; else _prompt="Are you sure"; fi
@@ -11,10 +12,14 @@ confirm() {
     read -r -p "$_prompt " _response
     case "$_response" in
       [Yy][Ee][Ss]|[Yy]) # Yes or Y (case-insensitive).
+				echo "continuing"
+				sleep 2
         return 0
         ;;
       [Nn][Oo]|[Nn])  # No or N.
-        return 1
+
+				echo "cancelled" &&
+        exit 1
         ;;
       *) # Anything else (including a blank) is invalid.
         ;;
@@ -22,6 +27,8 @@ confirm() {
   done
 
 }
+
+
 
 
 echo "Building container from dockerfile"
@@ -42,10 +49,11 @@ confirm
 
 docker build .
 
+sleep 1
+
 docker run -d \
 --name node-app-again \
 
---network=traefik-proxy \
 -v ./src:/app/src:ro \
 --label-file ./labelfile \
 --restart unless-stopped \
@@ -59,6 +67,11 @@ echo "Deploying the container"
 
 confirm "Would you like to attach to the network 'traefik-proxy' ?"
 
-docker network connect traefik-proxy
+sleep 1
+
+echo "Connecting to network"
+
+docker network connect traefik-proxy node-app-again
+
 
 
