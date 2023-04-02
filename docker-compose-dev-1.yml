@@ -23,12 +23,16 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.traefik.entrypoint=web
       - traefik.http.routers.node-app.rule=Host(`35.179.3.118`)
     networks:
       - traefik-proxy
     volumes:
       - ./src:/app/src:ro
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: '4gb'
 
   # whoami:
   #   image: containous/whoami:latest
