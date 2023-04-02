@@ -3,7 +3,7 @@ version: '3.7'
 networks:
   traefik-proxy:
     name: traefik-proxy
-  # nsolid:
+    external: true
   backend:
 
 volumes:
@@ -11,29 +11,26 @@ volumes:
 
 services:
 
-  # node-app:
-  #   container_name: node-app-again
-  #   restart: unless-stopped
-  #   build:
-  #     context: .
-  #     args:
-  #       NODE_ENV: development
-  #   environment:
-  #     - NODE_ENV=development
-  #   command: npm run dev
-  #   labels:
-  #     - traefik.enable=true
-  #     - traefik.docker.network=traefik-proxy
-  #     - traefik.http.routers.node-app.rule=Host(`35.179.3.118`)
-  #   networks:
-  #     - traefik-proxy
-  #   volumes:
-  #     - ./src:/app/src:ro
-  #   deploy:
-  #     resources:
-  #       limits:
-  #         cpus: '1.0'
-  #         memory: '4gb'
+  node-app:
+    container_name: node-app-again
+    restart: unless-stopped
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.node-app.rule=Host(`35.179.3.118`)"
+      - "traefik.http.services.node-app-again.loadBalancer.server.port=3030"
+    networks:
+      - traefik-proxy
+    volumes:
+      - ./src:/app/src:ro
+
 
 
 
@@ -41,15 +38,14 @@ services:
     image: containous/whoami:latest
     restart: unless-stopped
     labels:
-      - traefik.enable=true
-      - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.whoami.rule=Host(`whoami.35.179.3.118`)
-
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.35.179.3.118`)"
 # for production
 # make sure traefik.toml IS NOT INSECURE
   traefik:
     container_name: traefik-again
-    image: traefik:v2.0
+    image: traefik:latest
     restart: unless-stopped
     ports:
       - 80:80
@@ -66,6 +62,11 @@ services:
       - --api.debug=true
       # # Log Settings
       - --log.level=DEBUG
+      - --log.filepath=/home/wearenv/osprey/traefik/logs/traefik.log
+      - --accesslog=true
+      - --acesslog.filepath=/home/wearenv/osprey/traefik/logs/access.log
+      - --accesslog.format=json
+      -
       # Provider Settings
       - --providers.docker=true # <== Enabling docker as the provider for traefik
       - --providers.docker.exposedbydefault=false # <== Don't expose every container to traefik, only expose enabled ones
@@ -78,15 +79,15 @@ services:
       - traefik-proxy
       - backend
     labels:
-      - traefik.enable=true
-      - api.insecure=true
-      - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.api.rule=Host(`monitor.35.179.3.118`)
-      - traefik.http.routers.api.entrypoints=web
-      - traefik.http.routers.api.service=api@internal
-      - traefik.http.routers.traefik.rule=Host(`35.179.3.118`)
-      - traefik.http.routers.traefik.entrypoints=web
-      - traefik.port=8080
+      - "traefik.enable=true"
+      - "api.insecure=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.api.rule=Host(`monitor.35.179.3.118`)"
+      - "traefik.http.routers.api.entrypoints=web"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.traefik.rule=Host(`35.179.3.118`)"
+      - "traefik.http.routers.traefik.entrypoints=web"
+      - "traefik.port=8080"
 
 
   sql:
@@ -105,10 +106,7 @@ services:
     volumes:
         - sql:/var/lib/mysql
     networks:
-      traefik-proxy:
-        aliases:
-          - test.sql.docker
-
+      backend
 
   phpmyadmin:
     container_name: php_myadmin-again
@@ -125,10 +123,11 @@ services:
       UPLOAD_LIMIT: 300M
     networks:
       - traefik-proxy
+      - backend
     labels:
-      - traefik.enable=true
-      - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.osprey-pma.rule=Host(`pma.35.179.3.118`)
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.osprey-pma.rule=Host(`pma.35.179.3.118`)"
 
 
 

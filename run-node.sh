@@ -3,10 +3,11 @@ run() {
 	docker run -d \
 --name node-app-again \
 --volume /home/wearenv/osprey/src:/app/src:ro \
--l traefik.enable=true \
--l trafik.docker.network=traefik-proxy \
--l traefik.http.routers.node-app.rule=Host(`35.179.3.118`) \
-# -l traefik.http.services.node-app-again.loadbalancer.server.port=3030 \
+-label-file ./.labelfile
+# --label traefik.enable=true \
+# --label traefik.http.routers.node-app.rule=Host(`35.179.3.118`) \
+# --label trafik.docker.network=traefik-proxy \
+# --label traefik.http.services.node-app-again.loadbalancer.server.port=3030 \
 --restart unless-stopped \
 --env-file ./.env \
 --cpus 1.0 \
