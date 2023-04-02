@@ -2,7 +2,7 @@
 run() {
 	docker run -d \
 --name node-app-again \
---volume ./src:/app/src:ro \
+--volume /home/wearenv/osprey/src:/app/src:ro \
 --label-file ./labelfile \
 --restart unless-stopped \
 --env-file ./.env \
