@@ -9,6 +9,7 @@ run() {
 --cpus 1.0 \
 --memory 4gb \
 --workdir /app \
+--publish 3030:3030 \
 node-app
 
 echo "Deploying the container"
