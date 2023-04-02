@@ -73,7 +73,7 @@ services:
       - --providers.docker.network=traefik-proxy # <== Operate on the docker network named web
       # # Entrypoints Settings
       - --entrypoints.web.address=:80
-      - --entrypoints.web-secured.address="443"
+      # - --entrypoints.web-secured.address="443"
     networks:
       - traefik-proxy
       - backend
@@ -84,8 +84,6 @@ services:
       - "traefik.http.routers.api.rule=Host(`monitor.35.179.3.118`)"
       - "traefik.http.routers.api.entrypoints=web"
       - "traefik.http.routers.api.service=api@internal"
-      - "traefik.http.routers.traefik.rule=Host(`35.179.3.118`)"
-      - "traefik.http.routers.traefik.entrypoints=web"
       - "traefik.port=8080"
 
 
