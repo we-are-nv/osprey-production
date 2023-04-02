@@ -65,10 +65,7 @@ echo "resource limits: cpus - 1.0, memory - 4gb"
 
 confirm
 
-docker build .
-&&
-sleep 1
-
+docker build . && sleep 1
 
 echo "Starting docker run script"
 echo "This will run the container with the following conditions:"
