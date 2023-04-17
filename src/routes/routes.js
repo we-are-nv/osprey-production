@@ -85,110 +85,110 @@ router.get('/products/cctv', breadcrumbs.Middleware(), (req, res) => {
 	});
 });
 
-// Cameras
+// // Cameras
 
-router.get('/products/cctv/cameras', breadcrumbs.Middleware(), async (req, res) => {
-	try {
-		let data = await dbQuery.genericQuery('SELECT * FROM `info`; ');
+// router.get('/products/cctv/cameras', breadcrumbs.Middleware(), async (req, res) => {
+// 	try {
+// 		let data = await dbQuery.genericQuery('SELECT * FROM `info`; ');
 
-		res.render('cameras', {
-			breadcrumbs: req.breadcrumbs,
-			data: data
-		});
-	} catch (e) {
-		console.log(e);
-	}
-});
+// 		res.render('cameras', {
+// 			breadcrumbs: req.breadcrumbs,
+// 			data: data
+// 		});
+// 	} catch (e) {
+// 		console.log(e);
+// 	}
+// });
 
-// Marine Fixed & PTZ
+// // Marine Fixed & PTZ
+ 103 
+// router.get(
+// 	'/products/cctv/cameras/fixed-marine-cameras',
+// 	breadcrumbs.Middleware(),
+// 	async (req, res) => {
+// 		try {
+// 			let data = {};
 
-router.get(
-	'/products/cctv/cameras/fixed-marine-cameras',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = {};
+// 			data = await dbQuery.genericQuery(
+// 				'SELECT * FROM `info` WHERE category = "marine" AND movement = "FIXED" '
+// 			);
 
-			data = await dbQuery.genericQuery(
-				'SELECT * FROM `info` WHERE category = "marine" AND movement = "FIXED" '
-			);
+// 			res.render('marine-cameras', {
+// 				data: data,
+// 				movement: 'Fixed',
+// 				breadcrumbs: req.breadcrumbs
+// 			});
+// 		} catch (error) {
+// 			consolee.log(error);
+// 		}
+// 	}
+// );
 
-			res.render('marine-cameras', {
-				data: data,
-				movement: 'Fixed',
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			consolee.log(error);
-		}
-	}
-);
+// router.get(
+// 	'/products/cctv/cameras/ptz-marine-cameras',
+// 	breadcrumbs.Middleware(),
+// 	async (req, res) => {
+// 		try {
+// 			let data = {};
 
-router.get(
-	'/products/cctv/cameras/ptz-marine-cameras',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = {};
+// 			data = await dbQuery.genericQuery(
+// 				'SELECT * FROM `info` WHERE category = "marine" AND movement = "PTZ" '
+// 			);
 
-			data = await dbQuery.genericQuery(
-				'SELECT * FROM `info` WHERE category = "marine" AND movement = "PTZ" '
-			);
+// 			res.render('marine-cameras', {
+// 				data: data,
+// 				movement: 'PTZ',
+// 				breadcrumbs: req.breadcrumbs
+// 			});
+// 		} catch (error) {
+// 			consolee.log(error);
+// 		}
+// 	}
+// );
 
-			res.render('marine-cameras', {
-				data: data,
-				movement: 'PTZ',
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			consolee.log(error);
-		}
-	}
-);
+// router.get(
+// 	'/products/cctv/cameras/fixed-hazardous-environment',
+// 	breadcrumbs.Middleware(),
+// 	async (req, res) => {
+// 		try {
+// 			let data = {};
 
-router.get(
-	'/products/cctv/cameras/fixed-hazardous-environment',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = {};
+// 			data = await dbQuery.genericQuery(
+// 				'SELECT * FROM `info` WHERE category = "hazardous" AND movement = "FIXED" '
+// 			);
 
-			data = await dbQuery.genericQuery(
-				'SELECT * FROM `info` WHERE category = "hazardous" AND movement = "FIXED" '
-			);
+// 			res.render('hazardous-areas', {
+// 				data: data,
+// 				movement: 'Fixed',
+// 				breadcrumbs: req.breadcrumbs
+// 			});
+// 		} catch (error) {
+// 			consolee.log(error);
+// 		}
+// 	}
+// );
 
-			res.render('hazardous-areas', {
-				data: data,
-				movement: 'Fixed',
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			consolee.log(error);
-		}
-	}
-);
+// router.get(
+// 	'/products/cctv/cameras/ptz-hazardous-environment',
+// 	breadcrumbs.Middleware(),
+// 	async (req, res) => {
+// 		try {
+// 			let data = {};
 
-router.get(
-	'/products/cctv/cameras/ptz-hazardous-environment',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			let data = {};
+// 			data = await dbQuery.genericQuery(
+// 				'SELECT * FROM `info` WHERE category = "hazardous" AND movement = "PTZ" '
+// 			);
 
-			data = await dbQuery.genericQuery(
-				'SELECT * FROM `info` WHERE category = "hazardous" AND movement = "PTZ" '
-			);
-
-			res.render('marine-cameras', {
-				data: data,
-				movement: 'PTZ',
-				breadcrumbs: req.breadcrumbs
-			});
-		} catch (error) {
-			consolee.log(error);
-		}
-	}
-);
+// 			res.render('marine-cameras', {
+// 				data: data,
+// 				movement: 'PTZ',
+// 				breadcrumbs: req.breadcrumbs
+// 			});
+// 		} catch (error) {
+// 			consolee.log(error);
+// 		}
+// 	}
+// );
 
 router.get(
 	'/products/cctv/cameras/thermal-cameras',

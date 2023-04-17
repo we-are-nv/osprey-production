@@ -4,6 +4,7 @@ const path = require('path');
 require('dotenv').config();
 // if (!process.env.NODE_ENV === 'development') { };
 // if testing locally on the mac. comment out password line other it forces a password
+
 const pool = mysql.createPool({
 	host: process.env.DB_HOST,
 	user: process.env.DB_USER,
@@ -11,14 +12,15 @@ const pool = mysql.createPool({
 	database: 'osprey-all',
 	connectionLimit: 10
 });
-
+ 
 let dbResults = {};
 // const sqlQuery = `SELECT * FROM cam_info`;
 
 dbResults.all = sqlQuery => {
-	return new Promise((resolve, reject) => {
-		// const sqlQuery = `SELECT * FROM cam_info`;
 
+	return new Promise((resolve, reject) => { 
+		// const sqlQuery = `SELECT * FROM cam_info`;
+	
 		pool.query(sqlQuery, (err, results) => {
 			if (err) {
 				return reject(err);

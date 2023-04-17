@@ -29,6 +29,7 @@ const Middleware = function () {
 				urlPath += '/' + breadCrumbs[i + 1];
 			}
 		}
+		res.breadcrumbs1 = breadCrumbs
 		// console.log('url path is ' + urlPath);
 		next();
 	};

@@ -17,7 +17,7 @@ async function getAllInfo(req) {
 		return status;
 	}
 }
-
+ 
 async function getAllFeatures(req) {
 	try {
 		results = await db.id('SELECT * FROM features WHERE product_code = ?', [

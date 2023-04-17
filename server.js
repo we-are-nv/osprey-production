@@ -10,6 +10,7 @@ const morgan = require('morgan')
 const logger = require('./src/utils/logger');
 const app = express();
 
+
 const staticRoutes = require('./src/routes/static');
 const serviceRoute = require('./src/routes/services');
 
