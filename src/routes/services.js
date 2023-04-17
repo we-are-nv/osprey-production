@@ -5,5 +5,26 @@ var breadcrumbs = require('../controller/breadcrumbs');
 
 const router = express.Router();
 
+router.use(function timeLog(req, res, next) {
+	console.log('Time: ', Date.now());
+	next();
+});
+
+
+router.get('/markets/marine', breadcrumbs.Middleware(), async (req, res) => {
+    try {
+		var data = {};
+		var sqlQuery = 'SELECT * FROM info WHERE category = "marine" ';
+		data = await dbQuery.genericQuery(sqlQuery);
+	} catch (error) {
+		consolee.log(error);
+	}
+    console.log(data)
+    res.json({
+        data:data,
+        breadcrumbs:req.breadcrumbs
+    })
+})
+
 
 module.exports = router;

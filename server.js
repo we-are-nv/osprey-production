@@ -11,7 +11,7 @@ const logger = require('./src/utils/logger');
 const app = express();
 
 const staticRoutes = require('./src/routes/static');
-
+const serviceRoute = require('./src/routes/services');
 
 const PORT = process.env.PORT || 3030;
 const clusterWorkerSize = os.cpus().length;
@@ -46,10 +46,12 @@ app.get('/api/status', (req, res) => {
 		message: 'The API is up and running!'
 	});
 });
-
+app.use('/api/service', serviceRoute);
 app.use('/public', express.static('./src/public'));
 app.post('/send', mailer);
-app.use('/', staticRoutes)
+
+//app.use('/', staticRoutes);
+
 
 const start = () => {
 	app.listen(PORT, (req, res) => {
