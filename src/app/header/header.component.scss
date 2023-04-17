@@ -1,0 +1,68 @@
+mat-toolbar{
+    height: 15vh;
+    width: 100vw;
+    display:flex;
+    position: fixed;
+    justify-content: space-between;
+    z-index: 999;
+
+}
+
+// CSS behind toolbar background change
+@keyframes toolbarBackgroundChange {
+    from {background-color: rgba(255, 255, 255, 0);}
+    to {background-color: rgba(34, 34, 34, 0.781)}
+}
+.scrolledToolbar{
+    animation-name: toolbarBackgroundChange;
+    animation-duration: 1.2s;
+    background-color: rgba(34, 34, 34, 0.781);
+    
+}
+.defaultToolbar{
+    background-color: rgba(255, 255, 255, 0);
+}
+
+#navLogo{
+    width: 20vw;
+}
+.navLinks{
+    width: auto;
+    display: flex;
+}
+.navLink{
+    height: 15vh;
+    margin: auto;
+    color: white !important;
+    font-size: 1vw;
+}
+.navLinkIcon{
+    float: right;
+}
+// Search bar Icon
+.searchBar{
+    color: white;
+}
+
+// Contact Details & Icon Formatting
+.contactDetails{
+    margin:auto ;
+    width: auto;
+    display:flex;
+    color: white !important;
+    font-size: 2vh;
+}
+// Styling of Phone Icon
+.contactIconRing{
+    border: solid 1px #0065E7;
+    padding: 1rem;
+    height: 50%;
+    margin: auto;
+    border-radius: 50%;
+}
+.contactIcon{
+    float: left;
+    background-color: #0065E7;
+    padding: 10px;
+    border-radius: 50%;
+}

@@ -1,0 +1,72 @@
+//general
+p{
+    color: #9B9B9B;
+    font-size: 0.75rem;
+}
+a{
+    text-decoration: none;
+}
+
+// Footer Formatting
+.footerMain{
+    height: auto;
+    width: 100%;
+    background-color: #161616;
+    padding: 5vh;
+    padding-left: 0;
+    padding-right: 0;
+    color: white !important;
+    display: flex !important;
+}
+.footerCol{
+    height: 100%;
+    width: auto;
+    margin-right: auto;
+    margin-left:auto;
+    
+    
+}
+
+// Social media Link styling
+.socialIconGroup{
+    display: flex;
+}
+.socialIconGroup a{
+    margin-left:1vw;
+}
+.socialIcon{
+    height: 3vh;
+}
+
+// Contact Detail Styling
+.contactDetail{
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+.contactDetail h1{
+    color: #0065E7;
+}
+.contactIcon{
+    margin-right: 2vw;
+    
+}
+.contactIcon svg{
+    width: 1.2vw;
+}
+
+// Quote Button
+.quoteButton{
+    width: 10vw;
+    height: 3vw;
+    border-radius: 0px;
+    background-color: #0065E7;
+}
+@media (max-width:1000px) { 
+    *{
+        font-size: 80%;
+    }
+    .footerMain{
+        display: flow-root;
+    }
+}

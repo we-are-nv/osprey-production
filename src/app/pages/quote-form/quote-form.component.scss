@@ -1,0 +1,23 @@
+section{
+    width: 100vw;
+    background: linear-gradient(90deg, rgba(0,101,231,1) 0%, rgba(0,101,231,0.1881127450980392) 100%);
+    padding-top:5vh ;
+    padding-bottom: 5vh;
+}
+
+mat-card{
+    width: 70vw;
+    margin: auto;
+    
+}
+form{
+    display: flow-root;
+}
+mat-form-field{
+    margin-left: 2.5%;
+    width: 45%;
+}
+span{
+    color: #9B9B9B;
+    font-family: 'Roboto';
+}

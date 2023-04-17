@@ -1,0 +1,62 @@
+::ng-deep{margin: 0px;}
+.hero{
+    margin: 0px;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(27, 26, 26, 0.74) 0%, rgba(27, 26, 26, 0.753) 29%, rgba(0,212,255,0) 75%), url('../../../assets/images/heroBackgrounds/hero-jpg1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    display: flex;
+}
+.titleGroup{
+    position:absolute;
+    width: 50vw;
+    top:20%;
+    left: 10%;
+}
+.title{
+    font-size: 4vw;
+}
+.titleButton{
+    padding: 2rem;
+    border-radius: 0px;
+    margin-left:1vw;
+    font-weight: bolder;
+}
+
+// Top About
+.about{
+    display: flex;
+    font-family: 'roboto';
+}
+.about h1{
+    font-size: 2vw;
+}
+.about #left, #right{
+    margin: auto;
+    width: 40vw;
+}
+// Service List
+.serviceList{
+    position: relative;
+    width: 90vw;
+    margin: auto;
+    margin-bottom: -2rem;
+}
+.serviceItem{
+    border-radius:0px;
+    width: 25%;
+}
+.serviceItem mat-card-content{
+    display: flex;
+    vertical-align: middle;
+}
+@media (max-width:1000px) { 
+    .titleGroup{
+        width: 80vw;
+        font-size: 120%;
+    }
+    .about h1{
+        font-size: 1rem;
+    }
+}
