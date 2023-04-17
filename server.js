@@ -6,8 +6,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mailer = require('./src/controller/nodeMailer');
 const morganMiddleware = require('./src/utils/morgan.middleware');
+const morgan = require('morgan')
 const logger = require('./src/utils/logger');
 const app = express();
+
+const staticRoutes = require('./src/routes/static');
+
 
 const PORT = process.env.PORT || 3030;
 const clusterWorkerSize = os.cpus().length;
@@ -32,7 +36,8 @@ const middlewareCheck = (req, res, next) => {
 
 app.use(bodyParser.json());
 app.use(middlewareCheck);
-app.use(morganMiddleware);
+app.use(morgan('dev'))
+//app.use(morganMiddleware);
 
 app.get('/api/status', (req, res) => {
 	logger.info('Checking the API status: Everything is OK');
@@ -44,11 +49,11 @@ app.get('/api/status', (req, res) => {
 
 app.use('/public', express.static('./src/public'));
 app.post('/send', mailer);
-app.use(require('./src/routes/routes'));
+app.use('/', staticRoutes)
 
 const start = () => {
 	app.listen(PORT, (req, res) => {
-		console.log(`server listening on port ${PORT} and worker ${process.pid}`);
+		//console.log(`server listening on port ${PORT} and worker ${process.pid}`);
 	});
 };
 
