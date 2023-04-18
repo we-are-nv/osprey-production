@@ -25,14 +25,14 @@
 }
 
 // Top About
-.about{
+.markets{
     display: flex;
     font-family: 'roboto';
 }
-.about h1{
+.markets h1{
     font-size: 2vw;
 }
-.about #left, #right{
+.markets #left, #right{
     margin: auto;
     width: 40vw;
 }
@@ -42,7 +42,7 @@
     position: relative;
     width: 90vw;
     margin: auto;
-    margin-bottom: -2rem;
+
 }
 .serviceItem{
     border-radius:0px;
@@ -53,12 +53,25 @@
     display: flex;
     vertical-align: middle;
 }
+.serviceInfoCard{
+    display: flex;
+    border-radius:0px;
+    width: 90vw;
+    margin:auto;
+    margin-top: 1vh;
+    margin-bottom: -2rem;
+}
+.serviceInfoCard p{
+    width: 50%;
+    font-size: 0.75rem;
+    font-weight: light;
+}
 @media (max-width:1000px) { 
     .titleGroup{
         width: 80vw;
         font-size: 120%;
     }
-    .about h1{
+    .markets h1{
         font-size: 1rem;
     }
 }
