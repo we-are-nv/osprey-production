@@ -11,7 +11,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    width: 60%;
+    width: 75%;
 }
 .productsContainer .productCard{
     width: 23%;
@@ -26,12 +26,19 @@
     margin-left:15px;
 }
 @media screen and (max-width: 1000px) {
-    .productContainer .productCard{
+    .productsContainer .productCard{
         width: 31%;
     }
 }
 @media screen and (max-width: 750px) {
-    .productContainer .productCard{
+    .productsContainer .productCard{
         width: 48%;
     }
+}
+
+// Catagory and info Selector
+.Filter{
+    width:20%;
+    margin-left: auto;
+    display: block;
 }

@@ -6,10 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
+  currentCatagory: string;
+
   products = [
-    {name:"example Product", thumbnail:"https://www.asafetyp.co.uk/wp-content/uploads/2020/06/image-28.png"},
-    {name:"example Product", thumbnail:"https://www.asafetyp.co.uk/wp-content/uploads/2020/06/image-28.png"},
-    {name:"example Product", thumbnail:"https://www.asafetyp.co.uk/wp-content/uploads/2020/06/image-28.png"},
-    {name:"example Product", thumbnail:"https://www.asafetyp.co.uk/wp-content/uploads/2020/06/image-28.png"},
+    {name:"example Product",catagory:"SmokeAlarm" ,thumbnail:"https://www.asafetyp.co.uk/wp-content/uploads/2020/06/image-28.png"},
+    {name:"example Product",catagory:"SmokeAlarm" , thumbnail:"https://www.asafetyp.co.uk/wp-content/uploads/2020/06/image-28.png"},
+    {name:"example Product",catagory:"SmokeAlarmNot" , thumbnail:"https://www.asafetyp.co.uk/wp-content/uploads/2020/06/image-28.png"},
+    {name:"example Product",catagory:"SmokeAlarm", thumbnail:"https://www.asafetyp.co.uk/wp-content/uploads/2020/06/image-28.png"},
   ]
+  changeCatagory(value:string){
+    this.currentCatagory = value;
+    console.log(this.currentCatagory)
+  }
 }
