@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   scrolled = false;
+  productCatagories = ["Example 1", ""] 
 
   // On scroll detected, Set the toolbar class
   onWindowScroll(event:any){

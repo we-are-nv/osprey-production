@@ -1,0 +1,14 @@
+<section class="hero" 
+    [ngStyle]="{'background-image': 'linear-gradient(to bottom, rgba(27, 26, 26, 0.74) 0%, rgba(27, 26, 26, 0.753) 29%, rgba(0,212,255,0) 75%), url('+background+')'}"  
+>   
+    <div class="titleGroup"
+        [ngClass]="{'centredHero': centred == true}"
+    >
+        <h3>{{upperTitle}}</h3>
+        <h1 class="title">{{mainTitle}}</h1>
+        <h4>{{lowerTitle}}</h4>
+        <button *ngIf="isButtons" class="titleButton" color="primary" routerLink="{{button1Data.path}}" mat-raised-button>{{button1Data.text}}</button>
+        <button *ngIf="isButtons" class="titleButton" routerLink="{{button2Data.path}}" mat-raised-button>{{button2Data.text}}</button>
+    </div>
+    
+</section>

@@ -1,0 +1,52 @@
+.hero{
+    margin: 0px;
+    height: 100vh;
+    // 
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    display: flex;
+}
+.titleGroup{
+    position:absolute;
+    width: 50vw;
+    top:20%;
+    left: 10%;
+}
+.centredHero{
+    left: 25vw;
+    margin-left:auto;
+    align-items: center;
+    text-align: center;
+}
+.title{
+    font-size: 4vw;
+}
+h3{
+
+}
+h4{
+    font-size: 2vh;
+}
+.titleButton{
+    padding: 2rem;
+    border-radius: 0px;
+    margin-left:1vw;
+    font-weight: bolder;
+}
+
+@media (max-width:1000px) { 
+    .titleGroup{
+        width: 80vw !important;
+        font-size: 120%;
+    }
+    .markets h1{
+        font-size: 1rem;
+    }
+    .centredHero{
+        left: 10vw;
+        margin-left:auto;
+        align-items: center;
+        text-align: center;
+    }
+}

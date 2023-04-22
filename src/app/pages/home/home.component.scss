@@ -1,28 +1,4 @@
 ::ng-deep{margin: 0px;}
-.hero{
-    margin: 0px;
-    height: 100vh;
-    background-image: linear-gradient(to bottom, rgba(27, 26, 26, 0.74) 0%, rgba(27, 26, 26, 0.753) 29%, rgba(0,212,255,0) 75%), url('../../../assets/images/heroBackgrounds/hero-jpg1.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-    display: flex;
-}
-.titleGroup{
-    position:absolute;
-    width: 50vw;
-    top:20%;
-    left: 10%;
-}
-.title{
-    font-size: 4vw;
-}
-.titleButton{
-    padding: 2rem;
-    border-radius: 0px;
-    margin-left:1vw;
-    font-weight: bolder;
-}
 
 // Top About
 .markets{
@@ -65,13 +41,4 @@
     width: 50%;
     font-size: 0.75rem;
     font-weight: light;
-}
-@media (max-width:1000px) { 
-    .titleGroup{
-        width: 80vw;
-        font-size: 120%;
-    }
-    .markets h1{
-        font-size: 1rem;
-    }
 }

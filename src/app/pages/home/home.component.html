@@ -1,13 +1,14 @@
-<section class="hero">
-    <div class="titleGroup">
-        <h3>So you can relax like you're on a calm sea...</h3>
-        <h1 class="title">Security solutions for peace of mind</h1>
-        <h4>We provide security requirements of residential, commercial and other clients, with the largest assortment of security cameras and alarm systems installation.</h4>
-        <button class="titleButton" color="primary" mat-raised-button>Explore Our Services <mat-icon>keyboard_arrow_right</mat-icon></button>
-        <button class="titleButton" mat-raised-button>More About Us!</button>
-    </div>
-    
-</section>
+<app-hero 
+    upperTitle="So you can relax like you're on a calm sea..." 
+    mainTitle="Security solutions for peace of mind" 
+    lowerTitle="We provide security requirements of residential, commercial and other clients, with the largest assortment of security cameras and alarm systems installation."
+    [isButtons]="true"
+    background="../../assets/images/heroBackgrounds/homeHero.png"
+    [button1Data]="{text:'hello', path:''}"
+    [button2Data]="{text:'hello', path:''}"
+></app-hero>
+
+
 <section class="markets">
     <div id="left">
         <p style="color:#0065E7;">+25 YEARS INDUSTRY EXPERIENCE </p>

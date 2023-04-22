@@ -1,0 +1,26 @@
+<app-hero
+    mainTitle="Products"
+    lowerTitle="As one of the premier providers of smart surveillance technology, we are recognized throughout the industry for our products. Don’t worry about any thing, security experts will install your new system, activate it, and show you how to use it."
+    [isButtons]="true"
+    background="../../assets/images/heroBackgrounds/productsLanding.png"
+    [button1Data]="{text:'See What It Costs', path:''}"
+    [button2Data]="{text:'Protect My Home', path:''}"
+
+    [centred]="true"
+></app-hero>
+
+<section class="ProductsView">
+    <div class="productsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
+        <mat-card class="productCard" *ngFor="let product of products">
+            <img mat-card-image [src]="product.thumbnail">
+            <mat-card-header>
+                <mat-card-title-group></mat-card-title-group>
+                <mat-card-title>{{product.name}}</mat-card-title>
+            </mat-card-header>
+            <p>Explore</p>
+        </mat-card>
+    </div>
+    <section class="catagorySelection">
+
+    </section>
+</section>

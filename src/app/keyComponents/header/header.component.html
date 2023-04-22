@@ -1,23 +1,25 @@
-<mat-toolbar 
+<mat-toolbar
     [ngClass]="scrolled ? 'scrolledToolbar' : 'defaultToolbar'"
     (window:scroll)="onWindowScroll($event)">
     <img id="navLogo" src="../../assets/images/Paragon_V3-white.png" alt="">
     <div class="navLinks" >
         <!-- Home Button-->
-        <a mat-button class="navLink" >Home</a>
+        <a mat-button class="navLink" routerLink="/">Home</a>
 
         <!-- About us Menu -->
         <a mat-button class="navLink" [matMenuTriggerFor]="aboutUsMenu" > About Us <mat-icon >arrow_drop_down</mat-icon> </a>
         <mat-menu #aboutUsMenu="matMenu" class="navLink">
-            <a mat-menu-item>Item 1</a>
-            <a mat-menu-item>Item 2</a>
+            <a mat-menu-item>History</a>
+            <a mat-menu-item>Mission</a>
+            <a mat-menu-item>Values</a>
+            <a mat-menu-item>Jobs</a>
+            <a mat-menu-item>CSR Policy</a>
         </mat-menu>
 
         <!-- Products Menu -->
-        <a mat-button class="navLink" [matMenuTriggerFor]="productsMenu" >Products</a>
+        <a mat-button class="navLink" [matMenuTriggerFor]="productsMenu" routerLink="/products">Products</a>
         <mat-menu #productsMenu="matMenu" class="navLink">
-            <a mat-menu-item>Item 1</a>
-            <a mat-menu-item>Item 2</a>
+            <a mat-menu-item *ngFor="let catagory of productCatagories">{{catagory}}</a>
         </mat-menu>
 
         <!-- Markets Menu -->
@@ -28,7 +30,7 @@
         </mat-menu>
 
         <!-- Servuces Menu -->
-        <a mat-button class="navLink" [matMenuTriggerFor]="servicesMenu" >Services</a>
+        <a mat-button class="navLink" routerLink="/services" [matMenuTriggerFor]="servicesMenu" >Services</a>
         <mat-menu #servicesMenu="matMenu" class="navLink">
             <a mat-menu-item>Item 1</a>
             <a mat-menu-item>Item 2</a>

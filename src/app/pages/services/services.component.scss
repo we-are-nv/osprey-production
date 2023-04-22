@@ -1,0 +1,46 @@
+.serviceInfo{
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+.serviceInfo .serviceInfoHeader{
+    width: 50%;
+    margin: auto;
+}
+.serviceInfo span{
+    font-size: 0.75rem;
+    color: #9B9B9B;
+    width: 50vw;
+}
+.serviceInfo .serviceContainer {
+    margin-top: 1rem;
+    display: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 80vw;
+    margin:auto;
+}
+.serviceContainer .serviceCard{
+    width: 23%;
+    margin: 1%;
+    border-radius:0px ;
+    text-align: start;
+}
+.serviceCard img{
+    width: 100%;
+}
+.serviceCard p{
+    margin-left:15px;
+}
+@media screen and (max-width: 1000px) {
+    .serviceContainer .serviceCard{
+        width: 31%;
+    }
+}
+@media screen and (max-width: 750px) {
+    .serviceContainer .serviceCard{
+        width: 48%;
+    }
+}

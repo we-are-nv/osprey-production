@@ -1,0 +1,26 @@
+<app-hero 
+    mainTitle="Smart Security Systems For The Modern World"
+    lowerTitle="We provide security requirements of residential, commercial and other clients, with the largest assortment of security cameras and alarm systems installation."
+    [isButtons]="true"
+    background="../../assets/images/heroBackgrounds/servicesLanding.png"
+    [button1Data]="{text:'See What It Costs', path:''}"
+    [button2Data]="{text:'Protect My Premise', path:''}"
+    ></app-hero>
+<section class="serviceInfo">
+    <div class="serviceInfoHeader">
+        <h1>Our Services</h1>
+        <span>Whether it’s protecting your possessions while you are on vacation or your family while they sleep, we will give you the peace of mind that should the worst happen.</span>
+    </div>
+    <div class="serviceContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
+        <mat-card class="serviceCard" *ngFor="let service of services">
+            <img mat-card-image [src]="service.thumbnail">
+            <mat-card-header>
+                <mat-card-title-group></mat-card-title-group>
+                <mat-card-title>{{service.name}}</mat-card-title>
+            </mat-card-header>
+            <p>Explore</p>
+        </mat-card>
+    </div>
+    
+</section>
+<app-quote-form></app-quote-form>

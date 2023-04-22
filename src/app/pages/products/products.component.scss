@@ -1,0 +1,37 @@
+// Format Product sections
+.ProductsView{
+    display: flex;
+    width: 90vw;
+    margin:auto;
+}
+// Display and Control Products
+.ProductsView .productsContainer {
+    margin-top: 1rem;
+    display: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 60%;
+}
+.productsContainer .productCard{
+    width: 23%;
+    margin: 1%;
+    border-radius:0px ;
+    text-align: start;
+}
+.productCard img{
+    width: 100%;
+}
+.productCard p{
+    margin-left:15px;
+}
+@media screen and (max-width: 1000px) {
+    .productContainer .productCard{
+        width: 31%;
+    }
+}
+@media screen and (max-width: 750px) {
+    .productContainer .productCard{
+        width: 48%;
+    }
+}
