@@ -36,9 +36,32 @@
     }
 }
 
-// Catagory and info Selector
+// category and info Selector
 .Filter{
     width:20%;
     margin-left: auto;
     display: block;
 }
+.mat-button-toggle-group{
+    flex-direction: column !important;
+    border: 0px;
+}
+.mat-button-toggle-group mat-button-toggle{
+    margin-bottom: 1vh;
+    color: #0065E7;
+    border: 0px;
+    text-align: left;
+    height: 10%;
+}
+.mat-button-toggle-label-content{
+    padding: 0px;
+    margin: 0px;
+    text-align: start;
+
+}
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    line-height: 10px;
+}
+
+
+

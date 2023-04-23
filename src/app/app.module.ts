@@ -13,6 +13,7 @@ import { ServicesComponent } from './pages/services/services.component';
 import { HeroComponent } from './keyComponents/hero/hero.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductsComponent } from './pages/products/products.component';
+import { ProductViewComponent } from './pages/products/product-view/product-view.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProductsComponent } from './pages/products/products.component';
     ServicesComponent,
     HeroComponent,
     ProductsComponent,
+    ProductViewComponent,
   ],
   imports: [
     BrowserModule,

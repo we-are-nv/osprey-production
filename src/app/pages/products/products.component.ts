@@ -1,23 +1,26 @@
 import { Component } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
-  currentCatagory=null;
+  constructor(private productService: ProductService){}
 
-  products = [
-    {name:"example Product", catagory:"SmokeAlarm" ,thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
-    {name:"example Product",catagory:"SmokeAlarm" , thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
-    {name:"example Product",catagory:"SmokeAlarmNot" , thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
-    {name:"example Product",catagory:"SmokeAlarm", thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
-  ]
-  changeCatagory(value:any){
-    this.currentCatagory = value;
-    console.log(this.currentCatagory)
+  currentCategory=null;
+
+  products = this.productService.products;
+  categories = this.productService.categories;
+
+  changeCategory(value:any){
+    this.currentCategory = value;
+    console.log(this.currentCategory)
   }
   filterCheck(value:any){
-    
+
   }
 }
+
+
+// 

@@ -19,7 +19,7 @@
         <!-- Products Menu -->
         <a mat-button class="navLink" [matMenuTriggerFor]="productsMenu" routerLink="/products">Products</a>
         <mat-menu #productsMenu="matMenu" class="navLink">
-            <a mat-menu-item *ngFor="let catagory of productCatagories">{{catagory}}</a>
+            <a mat-menu-item *ngFor="let category of productCatagories">{{category}}</a>
         </mat-menu>
 
         <!-- Markets Menu -->
@@ -30,7 +30,7 @@
         </mat-menu>
 
         <!-- Servuces Menu -->
-        <a mat-button class="navLink" routerLink="/services" [matMenuTriggerFor]="servicesMenu" >Services</a>
+        <a mat-button class="navLink" routerLink="/services" [matMenuTriggerFor]="servicesMenu">Services</a>
         <mat-menu #servicesMenu="matMenu" class="navLink">
             <a mat-menu-item>Item 1</a>
             <a mat-menu-item>Item 2</a>
