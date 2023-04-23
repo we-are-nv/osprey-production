@@ -11,19 +11,22 @@
 
 <section class="ProductsView">
     <div class="productsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-        <mat-card class="productCard" *ngFor="let product of products">
-            <img mat-card-image [src]="product.thumbnail">
-            <mat-card-header>
-                <mat-card-title-group></mat-card-title-group>
-                <mat-card-title>{{product.name}}</mat-card-title>
-            </mat-card-header>
-            <p>Explore</p>
-        </mat-card>
+        <ng-container *ngFor="let product of products">
+            <mat-card class="productCard" >
+                <img mat-card-image [src]="product.thumbnail">
+                <mat-card-header>
+                    <mat-card-title-group></mat-card-title-group>
+                    <mat-card-title>{{product.name}}</mat-card-title>
+                </mat-card-header>
+                <p>Explore</p>
+            </mat-card>
+        </ng-container>
+        
     </div>
     <section class="Filter">
         <div class="Catagories">
             <h1>Catagories</h1>
-            <button mat-button color="primary" (click)="changeCatagory('smokeAlarm')">Example</button>
+            <button mat-button color="primary" (click)="changeCatagory('SmokeAlarm')">Example</button>
         </div>
     </section>
 </section>
