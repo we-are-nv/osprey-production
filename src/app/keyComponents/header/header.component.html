@@ -4,44 +4,16 @@
     <img id="navLogo" src="../../assets/images/Paragon_V3-white.png" alt="">
     <div class="navLinks" >
         <!-- Home Button-->
-        <a mat-button class="navLink" routerLink="/">Home</a>
+        <a mat-button class="navLink" [routerLink]="finalNav.home.path">{{finalNav.home.name}}</a>
 
         <!-- About us Menu -->
-        <a mat-button class="navLink" [matMenuTriggerFor]="aboutUsMenu" > About Us <mat-icon >arrow_drop_down</mat-icon> </a>
-        <mat-menu #aboutUsMenu="matMenu" class="navLink">
-            <a mat-menu-item>History</a>
-            <a mat-menu-item>Mission</a>
-            <a mat-menu-item>Values</a>
-            <a mat-menu-item>Jobs</a>
-            <a mat-menu-item>CSR Policy</a>
-        </mat-menu>
-
-        <!-- Products Menu -->
-        <a mat-button class="navLink" [matMenuTriggerFor]="productsMenu" routerLink="/products">Products</a>
-        <mat-menu #productsMenu="matMenu" class="navLink">
-            <a mat-menu-item *ngFor="let category of productCatagories">{{category}}</a>
-        </mat-menu>
-
-        <!-- Markets Menu -->
-        <a mat-button class="navLink" [matMenuTriggerFor]="marketsMenu" >Markets</a>
-        <mat-menu #marketsMenu="matMenu" class="navLink">
-            <a mat-menu-item>Item 1</a>
-            <a mat-menu-item>Item 2</a>
-        </mat-menu>
-
-        <!-- Servuces Menu -->
-        <a mat-button class="navLink" routerLink="/services" [matMenuTriggerFor]="servicesMenu">Services</a>
-        <mat-menu #servicesMenu="matMenu" class="navLink">
-            <a mat-menu-item>Item 1</a>
-            <a mat-menu-item>Item 2</a>
-        </mat-menu>
-
-        <!-- Recourses Menu -->
-        <a mat-button class="navLink" [matMenuTriggerFor]="recoursesMenu" >Recourses</a>
-        <mat-menu #recoursesMenu="matMenu" class="navLink">
-            <a mat-menu-item>Item 1</a>
-            <a mat-menu-item>Item 2</a>
-        </mat-menu>
+        <ng-template *ngFor="let menu of finalNav.dropDownMenus">
+            <a mat-button class="navLink" [matMenuTriggerFor]='matmenu'  [routerLink]="menu.headpath"> {{menu.name}} <mat-icon >arrow_drop_down</mat-icon> </a>
+            <mat-menu #matmenu="matMenu" class="navLink">
+                <a mat-menu-item *ngFor="let link of menu.childLinks" [routerLink]="link.path">{{link.name}}</a>
+            </mat-menu>
+        </ng-template>
+        
 
         <!-- Contact Button -->
         <a mat-button class="navLink">Contact</a>
