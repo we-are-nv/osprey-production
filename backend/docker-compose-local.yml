@@ -1,0 +1,103 @@
+version: '3.7'
+
+networks:
+  traefik-proxy:
+    name: traefik-proxy
+  backend:
+    name: backend
+
+volumes:
+  sql:
+  mongodb_data_container:
+
+
+services:
+
+  node-app:
+    container_name: node-app-again
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    environment:
+      - NODE_ENV=development
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.node-app.rule=Host(`dev.localhost`)"
+      - "traefik.http.services.node-app-again.loadBalancer.server.port=3030"
+    networks:
+      - traefik-proxy
+      - backend
+    volumes:
+      - ./src:/app/src:ro
+
+
+  # for production
+  # make sure traefik.toml IS NOT INSECURE
+  traefik:
+    container_name: traefik-again
+    image: traefik:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+      - 8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # - ./traefik/:/etc/traefik/
+      - ./traefik/logs:/opt/traefik/logs/
+    command:
+      # # API settings
+      - --api.insecure=true
+      - --api.dashboard=true
+      - --api.debug=true
+      # # Log Settings
+      - --log.level=DEBUG
+      - --log.filepath=/home/wearenv/osprey/traefik/logs/traefik.log
+      - --accesslog=true
+      - --accesslog.filepath=/home/wearenv/osprey/traefik/logs/access.log
+      - --accesslog.format=json
+      # Provider Settings
+      - --providers.docker=true # <== Enabling docker as the provider for traefik
+      - --providers.docker.exposedbydefault=false # <== Don't expose every container to traefik, only expose enabled ones
+      - --providers.file.filename=/dynamic.yaml # <== Referring to a dynamic configuration file
+      - --providers.docker.network=traefik-proxy # <== Operate on the docker network named web
+      # # Entrypoints Settings
+      - --entrypoints.web.address=:80
+      # - --entrypoints.web-secured.address="443"
+    networks:
+      - traefik-proxy
+      - backend
+    labels:
+      - "traefik.enable=true"
+      - "api.insecure=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.api.rule=Host(`monitor.dev.localhost`)"
+      - "traefik.http.routers.api.entrypoints=web"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.port=8080"
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: $DB_PASSWORD
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+    networks:
+      - backend
+
+  whoami:
+    image: containous/whoami:latest
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.dev.localhost`)"
