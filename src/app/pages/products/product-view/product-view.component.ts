@@ -10,9 +10,9 @@ export class ProductViewComponent implements OnInit{
 
   constructor(private _Activatedroute:ActivatedRoute){}
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-     this.id = params['id'];
-     });
-     console.log(this.id);
+    // this.sub = this.route.params.subscribe(params => {
+    //  this.id = params['id'];
+    //  });
+    //  console.log(this.id);
    }
 }
