@@ -1,0 +1,2200 @@
+/* =========================================================================== *
+	TABLE OF CONTENTS
+============================================================================== */
+/*
+
+PRE. 	Imports
+
+1. 	Global
+	1.1.	Variables
+	1.2. 	Colours
+	1.3. 	Fonts, (Not Imported)
+	1.4. 	Common Rules
+
+
+2.	Layout
+	2.1.	Nav Bar/ Header
+	2.2.	Footer
+
+
+3.	Page Specific CSS
+	3.1
+
+
+4
+
+X.	Mobile Responsiveness
+
+
+/* Footer, Footnote and Legal
+
+/* =========================================================================== *
+END TABLE OF CONTENTS
+============================================================================= */
+
+/* End Table of Contents */
+
+/* ========================================================================== */
+/* 	PRE. 	Imports
+============================================================================= */
+
+/* @import url("./fonts.css"); */
+
+/**/
+/*  */
+/*  */
+
+/* =========================================================================== *
+	F O N T S
+============================================================================= */
+
+@font-face {
+	font-family: 'Avenir Roman';
+	src: url('../fonts/Avenir-Roman.eot');
+	src: local('Avenir Roman'), local('Avenir-Roman'),
+		url('../fonts/Avenir-Roman.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Roman.woff2') format('woff2'),
+		url('../fonts/Avenir-Roman.woff') format('woff'),
+		url('../fonts/Avenir-Roman.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-Light.eot');
+	src: local('Avenir Light'), local('Avenir-Light'),
+		url('../fonts/Avenir-Light.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Light.woff2') format('woff2'),
+		url('../fonts/Avenir-Light.woff') format('woff'),
+		url('../fonts/Avenir-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir Book';
+	src: url('../fonts/Avenir-BookOblique.eot');
+	src: local('Avenir Book Oblique'), local('Avenir-BookOblique'),
+		url('../fonts/Avenir-BookOblique.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-BookOblique.woff2') format('woff2'),
+		url('../fonts/Avenir-BookOblique.woff') format('woff'),
+		url('../fonts/Avenir-BookOblique.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Avenir Black Oblique';
+	src: url('../fonts/Avenir-BlackOblique.eot');
+	src: local('Avenir Black Oblique'), local('Avenir-BlackOblique'),
+		url('../fonts/Avenir-BlackOblique.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-BlackOblique.woff2') format('woff2'),
+		url('../fonts/Avenir-BlackOblique.woff') format('woff'),
+		url('../fonts/Avenir-BlackOblique.ttf') format('truetype');
+	font-weight: 900;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-Heavy.eot');
+	src: local('Avenir Heavy'), local('Avenir-Heavy'),
+		url('../fonts/Avenir-Heavy.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Heavy.woff2') format('woff2'),
+		url('../fonts/Avenir-Heavy.woff') format('woff'),
+		url('../fonts/Avenir-Heavy.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-HeavyOblique.eot');
+	src: local('Avenir Heavy Oblique'), local('Avenir-HeavyOblique'),
+		url('../fonts/Avenir-HeavyOblique.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-HeavyOblique.woff2') format('woff2'),
+		url('../fonts/Avenir-HeavyOblique.woff') format('woff'),
+		url('../fonts/Avenir-HeavyOblique.ttf') format('truetype');
+	font-weight: 900;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-MediumOblique.eot');
+	src: local('Avenir Medium Oblique'), local('Avenir-MediumOblique'),
+		url('../fonts/Avenir-MediumOblique.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-MediumOblique.woff2') format('woff2'),
+		url('../fonts/Avenir-MediumOblique.woff') format('woff'),
+		url('../fonts/Avenir-MediumOblique.ttf') format('truetype');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-LightOblique.eot');
+	src: local('Avenir Light Oblique'), local('Avenir-LightOblique'),
+		url('../fonts/Avenir-LightOblique.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-LightOblique.woff2') format('woff2'),
+		url('../fonts/Avenir-LightOblique.woff') format('woff'),
+		url('../fonts/Avenir-LightOblique.ttf') format('truetype');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Avenir Book';
+	src: url('../fonts/Avenir-Book.eot');
+	src: local('Avenir Book'), local('Avenir-Book'),
+		url('../fonts/Avenir-Book.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Book.woff2') format('woff2'),
+		url('../fonts/Avenir-Book.woff') format('woff'),
+		url('../fonts/Avenir-Book.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir Black';
+	src: url('../fonts/Avenir-Black.eot');
+	src: local('Avenir Black'), local('Avenir-Black'),
+		url('../fonts/Avenir-Black.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Black.woff2') format('woff2'),
+		url('../fonts/Avenir-Black.woff') format('woff'),
+		url('../fonts/Avenir-Black.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('../fonts/Avenir-Oblique.eot');
+	src: local('Avenir Oblique'), local('Avenir-Oblique'),
+		url('../fonts/Avenir-Oblique.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Oblique.woff2') format('woff2'),
+		url('../fonts/Avenir-Oblique.woff') format('woff'),
+		url('../fonts/Avenir-Oblique.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Avenir Medium';
+	src: url('../fonts/Avenir-Medium.eot');
+	src: local('Avenir Medium'), local('Avenir-Medium'),
+		url('../fonts/Avenir-Medium.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Avenir-Medium.woff2') format('woff2'),
+		url('../fonts/Avenir-Medium.woff') format('woff'),
+		url('../fonts/Avenir-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Playfair Display';
+	src: url(../fonts/PlayfairDisplay-Black.ttf) format('truetype');
+	font-weight: 900;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Playfair Display';
+	src: url(../fonts/PlayfairDisplay-Bold.ttf) format('truetype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Playfair Display';
+	src: url(../fonts/PlayfairDisplay-Regular.ttf) format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Tiempos headline';
+	src: url(../fonts/Tiempos-Headline---Black.otf) format('opentype');
+	font-weight: 900;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Tiempos headline';
+	src: url(../fonts/Tiempos-Headline---Bold.otf) format('opentype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Tiempos headline';
+	src: url(../fonts/Tiempos-Headline---Semibold.otf) format('opentype');
+	font-weight: 600;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Tiempos headline';
+	src: url(../fonts/Tiempos-Headline---Medium.otf) format('opentype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Averta';
+	src: url(../fonts/Averta-Black.otf) format('opentype');
+	font-weight: 900;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Averta';
+	src: url(../fonts/Averta-Bold.otf) format('opentype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Averta';
+	src: url(../fonts/Averta-Semibold.otf) format('opentype');
+	font-weight: 600;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Averta';
+	src: url(../fonts/Averta-Thin.otf) format('opentype'),
+		url(../fonts/Averta-Extrathin.otf) format('opentype');
+	font-weight: 100;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Averta';
+	src: url(../fonts/Averta.otf) format('opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Circularstd';
+	src: url(../fonts/CircularStd-Black.otf) format('opentype');
+	font-weight: 900;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Circularstd';
+	src: url(../fonts/CircularStd-Bold.otf) format('opentype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Circularstd';
+	src: url(../fonts/CircularStd-Medium.otf) format('opentype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Circularstd book';
+	src: url(../fonts/CircularStd-Book.otf) format('opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'neuropol';
+	src: url(../fonts/neuropol_x_rg.otf) format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* ========================================================================== */
+/* 	1. Global
+============================================================================= */
+
+/* 	1.1 Variables
+----------------------------------------------- */
+
+:root {
+	--error-color: #dc3545;
+	--success-color: #28a745;
+	--warning-color: #ffc107;
+	--global-blue: #0065e7;
+	--dark-blue: #093273;
+	--border-grey: #eaeaea;
+	--text-on-black-grey: #c6c6c6;
+	--text-on-white-grey: #9b9b9b;
+	--form-grey: #eaeaea;
+	--form-control-disabled: #959495;
+}
+
+/* Testing Neons */
+
+:root {
+	--neon-green: #00ff01;
+	--neon-pink: #fd2ea3;
+	--neon-blue: #0feeff;
+	--neon-yellow: #f7e02e;
+	--neon-purple: #fe01ff;
+}
+/* End Testing Neons */
+
+:root {
+	--button-width: 240px;
+	--button-height: 68px;
+	--button-arrow-d: 18px;
+}
+
+/* 1.3	Fonts, (Not Imported)
+----------------------------------------------- */
+
+/* 1.4	Common Rules
+----------------------------------------------- */
+/* head {
+	height: 0
+} */
+
+* {
+	font-size: 16px;
+	line-height: 25.6px;
+	margin: 0;
+	box-sizing: border-box;
+	color: inherit;
+}
+
+body {
+	overflow-x: hidden;
+	scrollbar-gutter: stable both-edges;
+}
+
+/* The margin property removes any faint line
+created by browser---------------------------- */
+section {
+	padding: 0 50px;
+	border-style: none;
+	margin: 0 0 -1px 0;
+}
+
+section.landing-black {
+	background-color: #000;
+}
+
+a {
+	display: inline-block;
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+	text-decoration-color: #0065e7;
+}
+
+.landing-black a {
+	color: #0065e7;
+	font-family: 'Avenir Black';
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 4px;
+}
+
+p {
+	/* all: unset; */
+	display: inline-block;
+	margin: 0;
+	font-family: inherit;
+	font-size: 16px;
+	line-height: 25.6px;
+}
+
+span.animate {
+	height: 48px;
+	width: 48px;
+	border-radius: 50px;
+	background-color: inherit;
+}
+
+.landing-black p {
+	color: #fff;
+	line-height: 20px;
+	font-family: inherit;
+}
+
+h1 {
+	display: inline-block;
+	margin: 0;
+	font-family: 'Avenir Black';
+	font-size: 76px;
+	line-height: 86px;
+	color: black;
+	/* font-weight: ; */
+}
+
+h2 {
+	display: inline-block;
+	margin: 0;
+	font-family: 'Avenir Black';
+	font-size: 36px;
+	line-height: 48px;
+}
+
+h3 {
+	display: inline-block;
+	margin: 0;
+	font-family: 'Avenir Black';
+	font-size: 36px;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+li.publicity-list::before {
+	content: '';
+	display: inline-block;
+	vertical-align: text-bottom;
+	width: 24px;
+	height: 24px;
+	margin-right: 0.4em;
+	background: url('../images/icons/check.svg');
+	background-repeat: no-repeat ;
+	background-size: contain;
+}
+
+button.btn {
+	/* display: inline-block; */
+	font-family: 'Avenir';
+	border-style: none;
+	height: var(--button-height);
+	width: var(--button-width);
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 0.75em;
+	padding: 0 1em;
+}
+
+.btn.white {
+	background-color: #fff;
+	color: #000;
+}
+
+.btn.blue {
+	background-color: var(--global-blue);
+	color: #fff;
+}
+
+.btn.bold {
+	font-family: 'Avenir Black';
+}
+
+/* Reset Checkbox Appearance */
+
+input[type='checkbox'] {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	margin: 0;
+}
+
+svg {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 10px;
+}
+
+i.icon {
+	display: inline-block;
+	width: var(--button-arrow-d);
+	height: var(--button-arrow-d);
+	background-repeat: no-repeat;
+	margin: 0 10px 1px 10px;
+	background-size: contain;
+	background-repeat: no-repeat !important;
+	vertical-align: text-bottom;
+}
+
+i.icon.arrow-white {
+	background-image: url('../images/icons/button-arrow-white.svg');
+}
+
+i.icon.arrow-black {
+	background-image: url('../images/icons/button-arrow-black.svg');
+}
+
+i.icon.arrow-blue {
+	background-image: url('../images/icons/button-arrow-blue.svg');
+}
+
+i.icon.arrow-down {
+	background-image: url('../images/icons/arrowdown2.svg');
+	margin: 0 0.1em;
+}
+
+i.search {
+	background-image: url('../images/icons/searchnormal1.svg');
+}
+
+i.fb {
+	background-image: url('../images/icons/fb.svg');
+}
+i.twitter {
+	background-image: url('../images/icons/twitter.svg');
+}
+i.linkedin {
+	background-image: url('../images/icons/linkedin.svg');
+}
+i.whatsapp {
+	background-image: url('../images/icons/whatsapp.svg');
+}
+i.message {
+	background-image: url('../images/icons/message.svg');
+}
+i.email {
+	background-image: url('../images/icons/checkemail.svg');
+}
+i.phone {
+	background-image: url('../images/icons/call.svg');
+}
+i.header-phone {
+	background-image: url('../images/icons/call-bold.svg');
+	position: relative;
+	z-index: 999;
+}
+
+i.directions {
+	background-image: url('../images/icons/location.svg');
+
+}
+
+.container {
+	display: inline-block;
+	height: auto;
+	width: auto;
+}
+
+span.animate {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+/* Mobile Necessity */
+
+.mobile {
+	display: none;
+}
+
+/* ========================================================================== */
+/* 	2. Layout
+============================================================================= */
+
+/* 2.1	Nav Bar / Header
+----------------------------------------------- */
+
+nav {
+	width: 100%;
+	height: 110px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	top: 0;
+	/* display: grid;
+	place-content: center; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 30px;
+	font-family: 'Avenir Roman';
+	color: #fff;
+	border-bottom: 1px solid var(--form-control-disabled);
+}
+
+nav .container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	/* gap: 4em; */
+}
+
+.logo-wrapper {
+	width: fit-content;
+	height: 100%;
+	display: grid;
+	place-content: center;
+	/* border: 1px solid var(--neon-pink) */
+}
+
+span.brand {
+	width: 200px;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* border: 1px solid var(--neon-green); */
+}
+
+i.brand {
+	display: inline-block;
+	width: 130px;
+	height: 30px;
+	background-image: url('../images/logos/ParagonSecurity-logo-white.svg');
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+nav .header {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: nowrap;
+	gap: 2em;
+}
+
+nav .header a {
+	white-space: nowrap;
+}
+
+nav .header.inner-wrapper.contact {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	margin-left: 1em;
+	gap: 2em;
+}
+
+span.search {
+	height: 48px;
+	width: 48px;
+	display: grid;
+	place-content: center;
+
+}
+
+span.header-icon-wrapper.header {
+	position: relative;
+	/* display: grid;
+	place-content: center; */
+	height: 48px;
+	width: 48px ;
+	border-radius: 40px;
+	background-color: var(--global-blue);
+}
+
+span.header-icon-wrapper.header::before {
+	content: '';
+	position: absolute;
+	width: 66px;
+	height: 66px;
+	border: 2px solid var(--global-blue);
+	border-radius: 9em;
+}
+
+nav .contact-container {
+	width: min-content
+}
+
+.inner-wrapper.contact.header a.contact {
+	font-family: 'Avenir Black';
+}
+
+
+
+/*
+----------------------------------------------- */
+
+.nav-bar,
+.scrollable-nav {
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: auto;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	background-color: #fff;
+}
+
+.scrollable-nav {
+	position: fixed;
+	padding: 22px 25px;
+	-webkit-box-shadow: 0 1px 3px 0 rgba(39, 46, 53, 0.14);
+	box-shadow: 0 1px 3px 0 rgba(39, 46, 53, 0.14);
+}
+
+.nav-bar {
+	position: absolute;
+	padding: 10px 20px;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: distribute;
+	justify-content: center;
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	gap: 0;
+	grid-column-gap: 0;
+	grid-row-gap: 0;
+	background: rgb(27, 112, 169);
+	background: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		from(rgba(27, 112, 169, 1)),
+		to(rgba(255, 255, 255, 1))
+	);
+	background: -o-linear-gradient(
+		bottom,
+		rgba(27, 112, 169, 1) 0%,
+		rgba(255, 255, 255, 1) 100%
+	);
+	background: linear-gradient(
+		0deg,
+		rgba(27, 112, 169, 1) 0%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+
+.scrolling-nav {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: auto;
+	display: block;
+	padding: 15px 25px;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		from(#cfdcf1),
+		color-stop(32%, #fff)
+	);
+	background-image: -o-linear-gradient(bottom, #cfdcf1, #fff 32%);
+	background-image: linear-gradient(0deg, #cfdcf1, #fff 32%);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(39, 46, 53, 0.14);
+	box-shadow: 0 1px 3px 0 rgba(39, 46, 53, 0.14);
+}
+
+.brand-div,
+.brand-div.w--current {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-align-self: flex-start;
+	-ms-flex-item-align: start;
+	align-self: flex-start;
+}
+
+.brand-div {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin-top: 2px;
+	/* font-family: neuropol, sans-serif; */
+	font-family: Avenir, sans-serif;
+	color: #102c38;
+	font-size: 36px;
+	line-height: 38px;
+	font-weight: 800;
+}
+
+/* 2.2	Footer
+----------------------------------------------- */
+
+footer {
+	background-color: #000;
+	padding: 110px 40px;
+}
+
+footer h3 {
+	font-family: 'Avenir Black';
+	color: #fff;
+	font-size: 16px;
+	line-height: 23.4px;
+}
+
+footer p {
+	font-family: 'Avenir Roman';
+	color: var(--text-on-black-grey);
+}
+
+footer a.footer-nav-link {
+	font-family: 'Avenir Roman';
+	color: var(--text-on-black-grey);
+	font-size: 15px;
+	line-height: 24px;
+}
+
+footer a.directions {
+	color: #fff;
+}
+
+footer .link-wrapper {
+	padding: 0;
+}
+
+footer footer span.contact {
+	display: block;
+	height: 40px;
+	width: 40px;
+	/* border: 1px solid var(--neon-pink); */
+}
+
+footer i.contact {
+	display: block;
+	width: 36px;
+	height: 36px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+footer .container {
+	width: 100%;
+	max-width: 1300px;
+	height: fit-content;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+footer .inner-container {
+	width: 100%;
+	height: fit-content;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+footer .title-wrapper {
+	height: fit-content;
+}
+
+footer .footer-links {
+	width: fit-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 2rem;
+	font-family: 'Avenir Roman';
+}
+
+.inner-container.icon {
+	margin: 1em 0;
+	justify-content: flex-start;
+	gap: 1em;
+}
+
+footer .contact .icons {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 0.6em;
+}
+
+footer .footer-links .inner-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1em;
+}
+
+footer .footer-links .inner-wrapper._1,
+footer .footer-links .nav-link.inner-wrapper {
+	margin-bottom: 1em;
+}
+
+/* ========================================================================== */
+/* 	3. Page Specific CSS
+============================================================================= */
+
+/* 3.1	index / home-page
+----------------------------------------------- */
+
+/* Main Hero Section
+----------------------------------------------- */
+
+.main-hero-section {
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-image: url('../images/hero-jpg1.png'),
+		linear-gradient(0deg, rgba(27, 26, 26, 0.01) 0%, rgba(27, 26, 26, 0.7) 100%);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-blend-mode: multiply;
+}
+
+.hero-content {
+	position: relative;
+	z-index: 100;
+	max-width: 900px;
+	padding: 0 60px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+.main-hero-section h1 {
+	color: white;
+	height: min-content;
+	margin-bottom: 2rem;
+}
+
+.tag-line {
+	/* display: block; */
+	display: flex;
+	height: min-content;
+	color: white;
+	font-family: 'Avenir Black';
+	font-size: 17px;
+	line-height: 19.5px;
+}
+
+.intro-wrapper {
+	display: flex;
+	height: fit-content;
+	width: 80%;
+	color: white;
+	margin-bottom: 2em;
+	font-family: 'Avenir';
+}
+
+.hero-content .button-wrapper {
+	width: 600px;
+	display: flex;
+	height: fit-content;
+	justify-content: flex-start;
+	gap: 20px;
+}
+
+.hero-content .button-wrapper button {
+	font-family: 'Avenir Black';
+	font-size: 15px;
+}
+
+button.explore {
+	background-color: #0065e7;
+	color: white;
+	font-family: 'Avenir Black';
+	font-size: 15px;
+}
+.explore > svg {
+	width: var(--button-arrow-d);
+}
+
+.slide-nav {
+	width: 100%;
+	height: 100px;
+	position: absolute;
+	bottom: 20px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.slide-link-wrapper {
+	height: 20px;
+	width: 120px;
+	border: 1px solid red;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2px;
+}
+
+.link-1,
+.link-2 {
+	width: 50px;
+	height: 100%;
+	border: 1px solid pink;
+}
+
+.slide-nav-link.active {
+	background-color: #0065e7;
+}
+
+/* Markets Section
+----------------------------------------------- */
+
+section.markets {
+	position: relative;
+	max-width: 100%;
+	padding-top: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-bottom: -74px;
+}
+
+.markets > .title-split {
+	display: flex;
+	flex-direction: row;
+	justify-content: stretch;
+}
+
+.title-split div {
+	width: 50%;
+}
+
+.title-split .intro {
+	font-family: 'Avenir Book';
+	color: #9b9b9b;
+}
+
+.markets-and-cta {
+	position: relative;
+	left: 0;
+	z-index: 50;
+	width: 100%;
+	max-width: 1300px;
+	height: 460px;
+	margin-top: 2em;
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	justify-content: flex-end;
+}
+
+.grid-container {
+	width: 100%;
+	height: 100%;
+}
+
+.market-grid {
+	position: absolute;
+	bottom: 157px;
+	width: 100%;
+	max-width: 1300px;
+	margin: auto;
+	align-self: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	overflow: hidden;
+	/* flex-wrap: wrap; */
+}
+
+.grid-half {
+	height: auto;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	gap: 10px;
+}
+
+.market-grid-item {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 320px;
+	min-width: 230px;
+	padding-bottom: 20px;
+	/* aspect-ratio: 1/1; */
+	border: 1px solid #eaeaea;
+	background-color: #fff;
+}
+
+.link-image.marine {
+	background-image: url(../images/new-images/marine.jpg);
+}
+.link-image.offshore {
+	background-image: url(../images/new-images/offshore.jpg);
+}
+.link-image.onshore {
+	background-image: url(../images/new-images/onshore.jpg);
+}
+.link-image.oil-gas {
+	background-image: url(../images/new-images/oil-gas.jpg);
+}
+
+.link-image.marine,
+.link-image.offshore,
+.link-image.onshore,
+.link-image.oil-gas {
+	/* position: absolute; */
+	/* top: 0; bottom: 0; left: 0; right: 0; */
+	width: 100%;
+	aspect-ratio: 161/107;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.link-wrapper {
+	padding-left: 6%;
+}
+
+.link-wrapper h4 {
+	font-family: 'Avenir Black';
+	font-size: 24px;
+	line-height: 35px;
+	margin-bottom: 0.25em;
+	white-space: nowrap;
+}
+.explore {
+	font-family: 'Avenir';
+}
+.explore span {
+	display: inline-block;
+	margin-left: 10px;
+	width: 22px;
+	height: 22px;
+	background-color: #023297;
+	border-radius: 11px;
+	vertical-align: text-bottom;
+}
+
+.cta-section {
+	/* position: absolute; */
+	font-family: 'Avenir Black';
+	left: 0;
+	bottom: -132px;
+	width: calc(100% - 100px);
+	max-width: 1300px;
+	height: 148px;
+	padding: 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+	background: #fff;
+	border: 1px solid #eaeaea;
+}
+
+.cta-section .icon-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 68px;
+	height: 68px;
+	aspect-ratio: 1/1;
+	border-radius: 34px;
+	background-color: #eaeaea;
+	margin-right: 20px;
+}
+
+.icon-wrapper > svg {
+	margin: auto;
+}
+
+.cta-section .text-wrapper {
+	max-width: 600px;
+	color: #9b9b9b;
+}
+a.schedule-visit {
+	color: #000;
+	margin-left: 6px;
+	line-height: 20px;
+	text-decoration: underline var(--global-blue);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 4px;
+}
+
+.cta-section .button-wrapper {
+	margin-left: auto;
+}
+
+.cta-section button {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1em;
+	height: var(--button-height);
+	width: var(--button-width);
+	padding: 0 3em;
+	background-color: #fff;
+	border: 1px solid #9b9b9b;
+	vertical-align: middle;
+	font-family: 'Avenir Black';
+	font-size: 15px;
+}
+
+button.get-quote svg {
+	margin: auto;
+}
+
+button.get-quote svg path {
+	display: inline-block;
+	stroke: #000;
+}
+
+/* Landing Black 1 Section
+----------------------------------------------- */
+
+section.landing-black-1 {
+	position: relative;
+	/* height: 400px; */
+	width: 100%;
+	padding-top: 130px;
+	padding-bottom: 60px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 90px;
+	background-color: #000000;
+	color: #fff;
+}
+
+.landing-black-1 p {
+	color: inherit;
+	font-family: 'Avenir';
+}
+
+.landing-black .title-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: #fff;
+	text-align: center;
+}
+.landing-black h3 {
+	line-height: 57px;
+}
+
+.landing-black h4 {
+	font-family: 'Avenir Black';
+	font-size: 35px;
+	line-height: 51px;
+}
+
+.title-wrapper .tag-line {
+	font-family: 'Avenir Black';
+	font-size: 16px;
+	line-height: 25.6px;
+	margin-bottom: 8px;
+	text-align: center;
+}
+
+.main-split {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.split {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	height: auto;
+}
+
+.split-left {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2em;
+	padding-right: 1em;
+}
+
+.split-right {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+
+.split-left .title-wrapper {
+	display: inherit;
+	flex-direction: inherit;
+	align-items: inherit;
+	text-align: left;
+}
+
+.split-left .tag-line {
+	color: #0065e7;
+	font-family: 'Avenir Black';
+	font-size: 1em;
+	text-align: inherit;
+}
+
+.split-left .text-content {
+	color: #c6c6c6;
+}
+
+.landing-black-1 li {
+	font-family: 'Avenir Black';
+	font-size: 16px;
+	line-height: 16px;
+	margin-bottom: 18px;
+}
+
+button.meet-team {
+	background-color: var(--global-blue);
+	margin: 1em 0;
+}
+button.meet-team > i.icon {
+	background: url('../images/icons/button-arrow-white.svg');
+}
+
+.landing-black-1 .container {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+.landing-black-1 .popout {
+	position: absolute;
+	top: 21.5%;
+	left: -124px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1.2em;
+	padding: 1em;
+	background-color: #fff;
+	width: 50%;
+}
+
+.popout .text-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1.2em;
+	margin-left: 1em;
+}
+
+.landing-black-1 .popout p:nth-child(1) {
+	font-family: 'Avenir-Black';
+	font-size: 14px;
+	line-height: 22.4px;
+	color: var(--text-on-white-grey);
+}
+
+.landing-black-1 .popout p:nth-child(2) {
+	font-family: 'Avenir Black';
+	font-size: 20px;
+	line-height: 29px;
+	color: #1b1a1a;
+}
+
+.popout li {
+	color: var(--text-on-white-grey);
+	font-family: 'Avenir Roman';
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.category-grid {
+	width: 100%;
+	max-width: 1300px;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+
+/* ------------------------------------------- */
+
+/* Landing Black 2 Section
+----------------------------------------------- */
+
+.landing-black-2 {
+	height: fit-content;
+	padding-top: 10px;
+	padding-bottom: 90px;
+	font-family: 'Avenir';
+}
+.section-top {
+	text-align: -webkit-right;
+}
+.brochure.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 1em;
+	width: 280px;
+	height: 5em;
+	margin: 0.25em;
+	/* float: right; */
+	text-align: end;
+}
+
+.brochure.container .text-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	text-align: right;
+}
+
+.brochure.container p:nth-child(1) {
+	display: flex;
+	color: var(--text-on-black-grey);
+	font-family: 'Avenir Roman';
+	font-size: 14px;
+	line-height: 22.4px;
+}
+
+.brochure.container p:nth-child(2) {
+	display: flex;
+	color: #ffffff;
+	font-family: 'Avenir Black';
+	font-size: 15px;
+	line-height: 24px;
+}
+
+.brochure.container .container {
+	display: flex;
+	width: fit-content;
+	padding: 4px;
+}
+
+.brochure.container span {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 4.5em;
+	height: 4.5em;
+	background-color: var(--global-blue);
+	border-radius: 50px;
+	align-self: flex-end;
+}
+
+span.icon-wrapper::before {
+	position: absolute;
+	z-index: 0;
+	content: '';
+	width: 110px;
+	height: 110px;
+	background-color: #0065e720;
+	border-radius: calc(100% / 2);
+}
+
+span.icon-wrapper::after {
+	position: absolute;
+	z-index: 0;
+	content: '';
+	width: 140px;
+	height: 140px;
+	background-color: #0065e720;
+	border-radius: calc(100% / 2);
+}
+
+.brochure.container i.icon {
+	background: url('../images/icons/documentdownload.svg');
+	width: 26px;
+	height: 26px;
+	margin: 0;
+}
+
+.category-grid-section {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.2em;
+}
+
+.grid-container {
+	width: 100%;
+	height: 100%;
+}
+
+.category-grid {
+	width: 100%;
+	max-width: 1300px;
+	align-self: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	margin: auto;
+	/* overflow: hidden; */
+}
+
+.grid-half {
+	height: auto;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	gap: 10px;
+}
+
+.category-grid-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 0;
+	width: 100%;
+	max-width: 320px;
+	min-width: 230px;
+	height: 320px;
+	/* padding-bottom: 20px; */
+	border: 1px solid #eaeaea;
+	background-color: #000;
+}
+
+.link-image.cameras {
+	background-image: url(../images/new-images/cameras.png);
+}
+.link-image.housing {
+	background-image: url(../images/new-images/housings.png);
+}
+.link-image.transmission {
+	background-image: url(../images/new-images/transmissions.png);
+}
+.link-image.recording {
+	background-image: url(../images/new-images/recording.png);
+}
+
+.link-image.cameras,
+.link-image.housing,
+.link-image.transmission,
+.link-image.recording {
+	margin-top: -1px;
+	width: 100%;
+	aspect-ratio: 161/107;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.category-grid .link-wrapper {
+	padding-left: 6%;
+	padding-right: 4%;
+	padding-bottom: 6px;
+	padding-top: 6px;
+	height: 32%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.landing-black .link-wrapper h4 {
+	color: #fff;
+	font-family: 'Avenir Black';
+	font-size: 24px;
+	line-height: 35px;
+	margin-bottom: 0;
+}
+
+.category-grid .explore {
+	position: relative;
+	bottom: 12%;
+	color: #fff;
+	align-self: flex-end;
+}
+
+.explore span {
+	display: inline-block;
+	margin-left: 10px;
+	width: 22px;
+	height: 22px;
+	background-color: #023297;
+	border-radius: 11px;
+	vertical-align: text-bottom;
+}
+
+.slider-nav.wrapper {
+	width: 200px;
+	height: 80px;
+	padding: 0.4em;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 0.7em;
+}
+
+.slider-nav span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 60px;
+	width: 60px;
+	background-color: #fff;
+	border-radius: 30px;
+}
+
+.slider-nav i.icon {
+	background-image: url('../images/icons/button-arrow-black.svg');
+	width: 20px;
+	height: 20px;
+	margin: 0;
+}
+
+.slider-nav span.back i.icon {
+	transform: rotate(180deg);
+	margin-right: 10px;
+}
+
+.slider-nav span.forward i.icon {
+	margin-left: 10px;
+}
+
+.landing-black-2 .main-split {
+	margin: 90px 0 120px 0;
+}
+
+.landing-black .solutions-wrapper {
+	width: 100%;
+	height: 100%;
+	/* border: 1px solid fuchsia; */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	gap: 1em;
+	font-family: 'Avenir Black';
+}
+
+.solutions-wrapper .container {
+	/* border: 1px solid lawngreen; */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	gap: 1em;
+	margin: 1.25em 0;
+}
+
+.solutions-wrapper span {
+	color: #000;
+	background-color: #fff;
+	padding: 1.2em 1.6em;
+	border-radius: 10em;
+}
+
+.landing-bottom {
+	height: fit-content;
+}
+
+.cta-section.bottom {
+	display: flex;
+	flex-direction: column;
+	gap: 1.2em;
+	width: 65%;
+	height: fit-content;
+	margin: auto;
+	color: #fff;
+	background-color: #000;
+	border-style: none;
+}
+
+.cta-section.bottom h3,
+.cta-section.bottom p:nth-child(1) {
+	text-align: center;
+}
+
+.cta-section.bottom p {
+	font-family: 'Avenir Medium';
+	font-size: 18px;
+	line-height: 28.8px;
+	margin-bottom: 0.8em;
+}
+
+/* .cta-section.bottom .cta-wrapper {
+	height: auto;
+	width: fit-content;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.btn.jump.form {
+	position: relative;
+	z-index: 299;
+	border-style: none;
+	justify-content: center;
+	padding: 0;
+	border-radius: 40px 0 0 40px;
+	background-image: radial-gradient(
+		circle at 107% 50%,
+		rgba(0, 0, 0, 1) 0,
+		rgba(0, 0, 0, 1) 39px,
+		rgba(0, 101, 231, 1) 41px
+	);
+}
+ */
+
+.cta-section.bottom .button-wrapper {
+	margin: 0;
+}
+
+.cta-section.bottom .cta-wrapper {
+	height: auto;
+	width: fit-content;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+}
+
+.btn.jump.form {
+	position: relative;
+	font-size: 17px;
+	z-index: 299;
+	border-style: none;
+	justify-content: flex-end;
+	gap: 8px;
+	align-items: center;
+	padding: 0 0.5em 0 0;
+}
+
+.cta-wrapper .container {
+	width: 70px;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cta-wrapper .contact {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.8em;
+	width: 100%;
+}
+
+.cta-section .contact span.animate {
+	position: relative;
+	z-index: 299;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 68px;
+	height: 68px;
+	background-color: #000;
+	border: 2px solid var(--global-blue);
+}
+
+.cta-section .contact span.inner {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 250;
+	width: 38px;
+	height: 38px;
+	background-color: rgb(0, 0, 0);
+	border-radius: 99em;
+}
+
+.cta-section .contact span.inner::before {
+	display: block;
+	content: '';
+	position: absolute;
+	z-index: 1;
+	width: 130px;
+	height: 130px;
+	border-radius: 99em;
+	background-color: rgba(255, 255, 255, 0.09);
+}
+
+.cta-section .contact span.animate::before,
+.cta-section .contact span.animate::after {
+	display: block;
+	content: '';
+	position: absolute;
+	z-index: 1;
+
+	border-radius: 99em;
+}
+
+.cta-section .contact span.animate::before {
+	width: 110px;
+	height: 110px;
+	background-color: rgba(255, 255, 255, 0.06);
+}
+.cta-section .contact span.animate::after {
+	position: absolute;
+	z-index: 300;
+	width: 38px;
+	height: 38px;
+	background-color: #fff;
+}
+
+.text-wrapper.details {
+	width: fit-content;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	font-family: 'Avenir';
+}
+.text-wrapper.details p:nth-child(1) {
+	font-family: 'Avenir';
+	line-height: 22.4px;
+	margin-bottom: 0;
+	text-decoration: none;
+}
+.text-wrapper.details p.tel {
+	font-family: 'Avenir Black';
+	line-height: 29.2px;
+	margin-bottom: 0;
+	text-align: left;
+}
+
+/* Section Landing Blue with Form
+---------------------------------------------- */
+
+section.landing-blue {
+	/* position: relative; */
+	padding: 0;
+}
+
+.landing-blue.background {
+	position: relative;
+	z-index: 2;
+	padding: 0;
+	height: 100vh;
+	width: 100%;
+	display: grid;
+	place-content: center;
+	/* background: rgba(0, 101, 231, 0.75); */
+	background: linear-gradient(0deg, #0065e7 15%, rgba(101, 181, 48, 0) 100%),
+		var(--global-blue);
+	background-blend-mode: screen;
+}
+
+.landing-blue.content {
+	position: relative;
+	z-index: 101;
+	width: fit-content;
+	max-width: 1400px;
+	height: fit-content;
+	background-color: rgba(255, 255, 255, 0);
+	padding: 5rem 12rem;
+}
+
+.landing-blue .form-wrapper {
+	position: relative;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.6rem;
+	background-color: #fff;
+	border-radius: 1.25rem;
+	padding: 2rem 5rem;
+}
+
+.landing-blue .text-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1rem;
+}
+
+.landing-blue .text-wrapper h3 {
+	font-family: 'Avenir Black';
+	font-size: 24px;
+	line-height: 36px;
+	color: #000;
+}
+
+.landing-blue .text-wrapper p {
+	font-family: 'Avenir';
+	font-size: 16px;
+	line-height: 24px;
+	color: var(--text-on-white-grey);
+}
+
+.landing-blue .text-wrapper a {
+	font-family: 'Avenir Black';
+	color: #000;
+}
+
+.landing-blue .form-wrapper .container {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.main-contact-form {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	font-family: 'Avenir Roman';
+	font-size: 15px;
+}
+.main-contact-form .form-row.select-row,
+.main-contact-form .form-row.details-row {
+	width: 100%;
+	/* height: 3rem; */ /* this makes it interesting */
+	height: 3.8rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.main-contact-form .form-row .container {
+	width: 100%;
+	height: 100%;
+	padding: 4px 10px 0 10px;
+	font-size: 14px;
+	border: 2px solid var(--form-grey);
+}
+
+.main-contact-form .details-row .container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.main-contact-form .form__label {
+	margin: 0 4px;
+	color: #000;
+}
+
+select.form__field,
+input.form__field {
+	width: 100%;
+	border-style: none;
+	color: var(--text-on-white-grey);
+}
+
+select.form__field:focus,
+input.form__field:focus {
+	outline: none;
+}
+
+.details-row input {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+.main-contact-form .text-wrapper.service {
+	width: 100%;
+	color: #000;
+}
+
+.main-contact-form .text-wrapper.service p {
+	color: inherit;
+}
+
+.main-contact-form .form-section.section.service {
+	width: 100%;
+	height: fit-content;
+	display: inherit;
+	flex-direction: inherit;
+	justify-content: space-between;
+	font-size: 14px;
+}
+
+.main-contact-form .form-row.service-row {
+	height: fit-content;
+	width: 100%;
+	display: inherit;
+	justify-content: space-between;
+	font-size: 14px;
+	gap: 0.2em;
+}
+
+.main-contact-form .mobile-container {
+	height: fit-content;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.main-contact-form .option-wrapper {
+	height: fit-content;
+	width: fit-content;
+}
+
+.main-contact-form .form-row.service-row .container {
+	min-height: 2rem;
+	width: fit-content;
+	border-style: none;
+}
+
+.main-contact-form .form-row.service-row label {
+	font-size: 14px;
+	color: var(--text-on-white-grey);
+	display: grid;
+	grid-template-columns: 1em auto;
+	margin-top: 1em;
+}
+
+.main-contact-form input[type='checkbox'] {
+	font: inherit;
+	color: var(--global-blue);
+	width: 1.2em;
+	height: 1.2em;
+	border: 0.15em solid var(--text-on-white-grey);
+	border-radius: 0;
+	transform: translate(-0.6em, 0.29em);
+	display: grid;
+	place-content: center;
+}
+
+.main-contact-form input[type='checkbox']::before {
+	content: '';
+	width: 0.65em;
+	height: 0.65em;
+	transform: scale(0);
+	transition: 120ms transform ease-in-out;
+	box-shadow: inset 1em 1em var(--global-blue);
+	transform-origin: bottom left;
+	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.main-contact-form input[type='checkbox']:checked:before {
+	transform: scale(1);
+}
+
+.main-contact-form .submit-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 3em;
+	gap: 2em;
+}
+
+.main-contact-form .submit-wrapper button[type='submit'],
+.main-contact-form .submit-wrapper button[type='reset'] {
+	height: var(--button-height);
+	width: var(--button-width);
+	border: 2px solid var(--text-on-white-grey);
+	color: #000;
+	border-radius: 0;
+}
+
+.main-contact-form .btn.submit {
+	background-color: #fff;
+}
+.main-contact-form button.submit i.icon {
+	background-image: url('../images/icons/button-arrow-black.svg');
+}
+.main-contact-form button.reset i.icon {
+	background-image: url('../images/icons/cross.svg');
+}
+
+.main-contact-form button.submit i.icon svg path {
+	stroke: currentColor;
+}
+
+.main-contact-form
+.landing-blue {
+	height: 1100px;
+	background: linear-gradient(180deg, #0065e7 0%, rgba(101, 181, 48, 0) 100%),
+		linear-gradient(
+			180deg,
+			rgba(0, 101, 231, 1) 15%,
+			rgba(255, 255, 255, 0.75) 50%,
+			rgba(0, 101, 231, 1) 100%
+		);
+	background-blend-mode: multiply;
+}
+
+/* .landing-blue::before {
+	display: block;
+	content: '';
+	height: 1100px;
+	width: 100%;
+	background: linear-gradient(
+		180deg,
+		rgba(0, 101, 231, 1) 15%,
+		rgba(255, 255, 255, 75) 50%,
+		rgba(0, 101, 231, 1) 100%
+	);
+} */
+
+/*
+---------------------------------------------- */
+
+/*
+---------------------------------------------- */
+
+/*
+---------------------------------------------- */
+
+/*
+---------------------------------------------- */
+
+/*
+---------------------------------------------- */
+
+/*
+---------------------------------------------- */
+
+/*
+---------------------------------------------- */
+
+/* Form Styling */
+
+/* .form-field input:focus {
+	outline: none;
+}
+
+.form-field.error input {
+	border-color: var(--error-color);
+}
+
+.form-field.success input {
+	border-color: var(--success-color);
+}
+
+.form-field small {
+	color: var(--error-color);
+} */
+
+/*  Nav Bar Styling */
+

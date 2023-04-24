@@ -1,0 +1,22 @@
+<!-- THIS WORKS -->
+<div id="cctv-cameras" class="categories-holder marine-products cctv" data-ix="fade-on-scroll-2">
+  <div class="grid-container">
+    <% let i = data.length %>
+
+    <% data.forEach(function(el){ %>
+    <div class="individual-category marine-prods grid-cell <%=`cell${data[i]}`%>  marine-camera-product main-categories" id="main-categoriesId">
+      <a href="<%= `/products/cctv/cameras/${el.product_code}` %>">
+        <div class="marine">
+          <img class="product-list-image" src="<%=`${el.image}` %>" alt="">
+        </div>
+        <br>
+        <%= el.product_name %>
+        <br> <br>
+        <span class="product_code">
+          <%= el.product_code %>
+        </span>
+      </a>
+    </div>
+    <% }) %>
+  </div>
+</div>

@@ -1,0 +1,148 @@
+version: '3.7'
+
+networks:
+  traefik-proxy:
+    name: traefik-proxy
+  backend:
+    name: backend
+
+volumes:
+  sql:
+
+services:
+
+  node-app:
+    container_name: node-app-again
+    restart: unless-stopped
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.node-app.rule=Host(`35.179.3.118`)"
+      - "traefik.http.services.node-app-again.loadBalancer.server.port=3030"
+    networks:
+      - traefik-proxy
+    volumes:
+      - ./src:/app/src:ro
+
+
+
+
+  whoami:
+    image: containous/whoami:latest
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.35.179.3.118`)"
+# for production
+# make sure traefik.toml IS NOT INSECURE
+  traefik:
+    container_name: traefik-again
+    image: traefik:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+      - 8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # - ./traefik/:/etc/traefik/
+      - ./traefik/logs:/opt/traefik/logs/
+    command:
+      # # API settings
+      - --api.insecure=true
+      - --api.dashboard=true
+      - --api.debug=true
+      # # Log Settings
+      - --log.level=DEBUG
+      - --log.filepath=/home/wearenv/osprey/traefik/logs/traefik.log
+      - --accesslog=true
+      - --accesslog.filepath=/home/wearenv/osprey/traefik/logs/access.log
+      - --accesslog.format=json
+      # Provider Settings
+      - --providers.docker=true # <== Enabling docker as the provider for traefik
+      - --providers.docker.exposedbydefault=false # <== Don't expose every container to traefik, only expose enabled ones
+      - --providers.file.filename=/dynamic.yaml # <== Referring to a dynamic configuration file
+      - --providers.docker.network=traefik-proxy # <== Operate on the docker network named web
+      # # Entrypoints Settings
+      - --entrypoints.web.address=:80
+      # - --entrypoints.web-secured.address="443"
+    networks:
+      - traefik-proxy
+      - backend
+    labels:
+      - "traefik.enable=true"
+      - "api.insecure=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.api.rule=Host(`monitor.35.179.3.118`)"
+      - "traefik.http.routers.api.entrypoints=web"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.port=8080"
+
+
+  sql:
+    container_name: sql-again
+    restart: unless-stopped
+    build:
+      context: ./src/sql/
+    command: mysqld --general-log=1 --general-log-file=/var/lib/mysql/general-log.log --max_allowed_packet=1073741824 --lower_case_table_names=1
+    environment:
+      MYSQL_DATABASE: 'osprey-all'
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASSWORD
+      MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
+    ports:
+      - 3306:3306
+    volumes:
+      - sql:/var/lib/mysql
+    networks:
+      - backend
+
+  phpmyadmin:
+    container_name: php_myadmin-again
+    restart: unless-stopped
+    image: phpmyadmin:latest
+    depends_on:
+      - sql
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: sql
+      PMA_USER: root
+      PMA_PASSWORD: $SQL_ROOT_PASSWORD
+      MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
+      UPLOAD_LIMIT: 300M
+    networks:
+      - traefik-proxy
+      - backend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.osprey-pma.rule=Host(`pma.35.179.3.118`)"
+
+
+
+# console:
+#     image: nodesource/nsolid-console
+#     container_name: nsolid.console
+#     ports:
+#       - 9001:9001
+#       - 9002:9002
+#       - 9003:9003
+#       - 6753:6753
+#     environment:
+#       - NSOLID_CONSOLE_LICENSE_KEY=e2b052b4-874e-480e-9f78-4c35f32f6d1c
+#     volumes:
+#       - ./src/console:/var/lib/nsolid/console
+#     networks:
+#       - nsolid
+#     labels:
+#       - traefik.enble=true
+#       - traefik.docker.network=nsolid
+#       - traefik.http.routers.osprey-nsolid.rule=Host(`solid.35.179.3.118`)

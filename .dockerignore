@@ -1,0 +1,9 @@
+node_modules
+# traefik/logs
+
+GIT_ADD.sh
+undeploy.sh
+image-remove.sh
+build.sh
+deploy.sh
+

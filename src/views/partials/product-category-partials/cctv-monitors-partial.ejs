@@ -1,0 +1,25 @@
+<div id="monitors" class="product-card-holder cctv-monitors" data-ix="fade-on-scroll-2">
+  <% types.forEach(function(el){ %>
+  <div class="individual-product monitors-card product-card" id="main-categoriesId">
+    <h5 class="card-title">
+      <%= el.monitor_type %> CCTV Monitors
+    </h5>
+    <div class="product-image">
+      <img class="product-list-image" src="<%=`${el.image}` %>" alt="">
+    </div>
+    <br>
+    <%= el.product_name %>
+    <%- console.log(el.product_name) %>
+    <br>
+    <%= el.description %>
+    <br>
+  </div>
+  <div class="hidden-content">
+    <div class="feature-list-wrapper">
+      <ul class="feature-list-monitors">
+        <% array.forEach(element=> { %>  <% }) %>
+      </ul>
+    </div>
+  </div>
+  <% }) %>
+</div>
