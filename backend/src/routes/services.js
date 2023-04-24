@@ -3,6 +3,12 @@ const controllers = require('../controller/controllers.js');
 const dbQuery = require('../controller/dbQuery');
 var breadcrumbs = require('../controller/breadcrumbs');
 
+const diskNVR = require('../models/product_types/disk_nvr_prod.js');
+
+var providers = {
+  disk_nvr:diskNVR
+}
+
 
 const router = express.Router();
 
@@ -12,6 +18,20 @@ router.use(function timeLog(req, res, next) {
 });
 
 
+
+router.get('/test', async (req,res) => {
+  var test = new providers.disk_nvr ({
+    addit_info:{
+      manufactuer:'yesy',
+      size_tb:1
+    }
+  })
+  test.save()
+  .then((result)=> {
+    console.log(result)
+  })
+  res.json('opk')
+})
 
 // router.get('/info', breadcrumbs.Middleware(), async (req, res) => {
 //     try {
@@ -23,7 +43,7 @@ router.use(function timeLog(req, res, next) {
 //         console.log(error)
 //     }
 //     var sendArray = []
-//     for (idx in data) {
+//     for (idx in data)
 //         sendArray.push(data[idx].category)
 //     }
 //     res.json({

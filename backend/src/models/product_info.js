@@ -14,7 +14,8 @@ const productInfo = mongoose.Schema({
       currency:{type:String,required:true}
     },
     productType:{
-
+      modelName:{type:String,required:true},
+      id:{type:mongoose.Schema.Types.ObjectId}
     }
 })
 
