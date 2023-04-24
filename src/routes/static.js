@@ -10,7 +10,7 @@ router.get('/db-connector-test', async (req, res) => {
 		var data = {};
 		const message = 'Results from camInfo are: ';
 		let results = await dbQuery.genericQuery('SELECT * FROM `info`');
-
+ 
 		data = {
 			message: message,
 			results: results

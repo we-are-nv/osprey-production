@@ -8,6 +8,7 @@ const mailer = require('./src/controller/nodeMailer');
 const morganMiddleware = require('./src/utils/morgan.middleware');
 const morgan = require('morgan')
 const logger = require('./src/utils/logger');
+const mongoose = require('mongoose');
 const app = express();
 
 
@@ -19,6 +20,18 @@ const clusterWorkerSize = os.cpus().length;
 
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./src/views'));
+
+mongoose.set('strictQuery', true);
+mongoose.connect(process.env.DB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => {
+    console.log('Connected to Database');
+  })
+  .catch((err) => {
+    console.log('Connection Failed' + err);
+  });
 
 const middlewareCheck = (req, res, next) => {
 	if (req.method === 'POST') {

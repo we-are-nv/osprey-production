@@ -105,6 +105,9 @@ services:
     networks:
       - backend
 
+    
+
+  
   phpmyadmin:
     container_name: php_myadmin-again
     restart: unless-stopped

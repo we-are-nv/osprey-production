@@ -8,6 +8,8 @@ networks:
 
 volumes:
   sql:
+  mongodb_data_container:
+
 
 services:
 
@@ -32,9 +34,6 @@ services:
     volumes:
       - ./src:/app/src:ro
 
-
-
-
   whoami:
     image: containous/whoami:latest
     restart: unless-stopped
@@ -42,8 +41,8 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik-proxy"
       - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
-# for production
-# make sure traefik.toml IS NOT INSECURE
+  # for production
+  # make sure traefik.toml IS NOT INSECURE
   traefik:
     container_name: traefik-again
     image: traefik:latest
@@ -87,7 +86,6 @@ services:
       - "traefik.http.routers.api.service=api@internal"
       - "traefik.port=8080"
 
-
   sql:
     container_name: sql-again
     restart: unless-stopped
@@ -126,8 +124,17 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik-proxy"
       - "traefik.http.routers.osprey-pma.rule=Host(`pma.localhost`)"
-
-
+  mongo:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: $DB_PASSWORD
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+    networks:
+      - backend
 
 # console:
 #     image: nodesource/nsolid-console
