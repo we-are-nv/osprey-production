@@ -90,7 +90,6 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - mongodb_data_container:/data/db
       - ./mongod.conf:/etc/mongod.conf
       - ./db:/data/db:rw
     networks:
