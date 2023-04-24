@@ -1,14 +1,21 @@
 const mongoose = require('mongoose');
 
 const productInfo = mongoose.Schema({
-    movement:{type:String,required:true}
+    product_code:{type:String,required:true},
+    product_name:{type:String,required:true},
+    image:{type:String,required:true},
+    technicalImages:{type:Array,required:true},
+    description:{type:String,required:true},
+    features:{type:Array,required:true},
+    feature_deprec:{type:String,required:true},
+    tech_drawing:{type:String,required:false},
+    cost:{
+      amount:{type:Number,required:true},
+      currency:{type:String,required:true}
+    },
+    productType:{
+
+    }
 })
 
-/*
-prodict code
-prodict name
-image
-technical_images
-
-
-*/
+module.exports = mongoose.model('product_info' , productInfo);
