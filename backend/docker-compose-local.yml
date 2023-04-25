@@ -13,27 +13,27 @@ volumes:
 
 services:
 
-  # node-app:
-  #   container_name: node-app-again
-  #   restart: unless-stopped
-  #   depends_on:
-  #     - mongo
-  #   build:
-  #     context: .
-  #     args:
-  #       NODE_ENV: development
-  #   environment:
-  #     - NODE_ENV=development
-  #   labels:
-  #     - "traefik.enable=true"
-  #     - "traefik.docker.network=traefik-proxy"
-  #     - "traefik.http.routers.node-app.rule=Host(`dev.localhost`)"
-  #     - "traefik.http.services.node-app-again.loadBalancer.server.port=3030"
-  #   networks:
-  #     - traefik-proxy
-  #     - backend
-  #   volumes:
-  #     - ./src:/app/src:ro
+  node-app:
+    container_name: node-app-again
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    environment:
+      - NODE_ENV=development
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.node-app.rule=Host(`dev.localhost`)"
+      - "traefik.http.services.node-app-again.loadBalancer.server.port=3030"
+    networks:
+      - traefik-proxy
+      - backend
+    volumes:
+      - ./src:/app/src:ro
 
 
   # for production
