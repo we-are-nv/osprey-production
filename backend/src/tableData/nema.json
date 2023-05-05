@@ -1,0 +1,67 @@
+[
+    {
+     "nema_rating": 1,
+     "ip_eq": "IP10",
+     "nema_defin": "Enclosures constructed for indoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment and to provide a degree of protection against falling dirt"
+    },
+    {
+     "nema_rating": 2,
+     "ip_eq": "IP11",
+     "nema_defin": "Enclosures constructed for indoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt, and to provide a degree of protection against dripping and light splashing of liquids"
+    },
+    {
+     "nema_rating": 3,
+     "ip_eq": "IP54",
+     "nema_defin": "Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt, rain, sleet, snow and windblown dust; and that will be undamaged by external formation of ice on the enclosure"
+    },
+    {
+     "nema_rating": "3R",
+     "ip_eq": "IP14",
+     "nema_defin": "Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt, rain, sleet and snow; and that will be undamaged by external formation of ice on the enclosure"
+    },
+    {
+     "nema_rating": "3S",
+     "ip_eq": "IP54",
+     "nema_defin": "Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt, rain, sleet, snow and windblown dust; and in which the external mechanism(s) remain operable when ice laden"
+    },
+    {
+     "nema_rating": 4,
+     "ip_eq": "IP56",
+     "nema_defin": "Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt, rain, sleet, snow, windblown dust, splashing water and hose-directed water; and that will be undamaged by external formation of ice on the enclosure"
+    },
+    {
+     "nema_rating": "4X",
+     "ip_eq": "IP56",
+     "nema_defin": "Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt, rain, sleet, snow, windblown dust, splashing water and hose-directed water, and corrosion; and that will be undamaged by external formation of ice on the enclosure"
+    },
+    {
+     "nema_rating": 5,
+     "ip_eq": "IP52",
+     "nema_defin": "Enclosures constructed for indoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt; against settling airborne dust, lint, fibers and flyings: and to provide a degree of protection against dripping and light splashing of liquids"
+    },
+    {
+     "nema_rating": 6,
+     "ip_eq": "IP67",
+     "nema_defin": "Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt; against hose-directed water and the entry of water during occasional temporary submersion at a limited depth; and that will be undamaged by external formation of ice on the enclosure"
+    },
+    {
+     "nema_rating": "6P",
+     "ip_eq": "IP68",
+     "nema_defin": "Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt; against hose-directed water and the entry of water during occasional prolonged submersion at a limited depth; and that will be undamaged by external formation of ice on the enclosure"
+    },
+    {
+     "nema_rating": 12,
+     "ip_eq": "IP52",
+     "nema_defin": "Enclosures constructed (without knockouts) for indoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt; against circulating dust, lint, fibers and flyings: and to provide a degree of protection to against dripping and light splashing of liquids"
+    },
+    {
+     "nema_rating": "12K",
+     "ip_eq": "IP52",
+     "nema_defin": "Enclosures constructed with knockout(s) for indoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt; against circulating dust, lint, fibers and flyings: and to provide a degree of protection to against dripping and light splashing of liquids"
+    },
+    {
+     "nema_rating": 13,
+     "ip_eq": "IP54",
+     "nema_defin": "Enclosures constructed for indoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt; against circulating dust, lint, fibers and flyings: and against the spraying, splashing and seepage of water, oil and non-corrosive coolants."
+    }
+   ]

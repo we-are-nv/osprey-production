@@ -1,0 +1,95 @@
+2023-04-17 11:52:20:5220 [35mhttp[39m: [35m::1 GET /ping 404 143 - 4.315 ms[39m
+[35m[39m
+2023-04-17 11:52:26:5226 [32minfo[39m: [32mChecking the API status: Everything is OK[39m
+2023-04-17 11:52:26:5226 [35mhttp[39m: [35m::1 GET /api/status 200 54 - 1.976 ms[39m
+[35m[39m
+2023-04-17 11:52:26:5226 [35mhttp[39m: [35m::1 GET /favicon.ico 404 150 - 2.627 ms[39m
+[35m[39m
+2023-04-17 12:08:09:89 [35mhttp[39m: [35m::1 GET / 404 139 - 2.368 ms[39m
+[35m[39m
+2023-04-17 13:01:11:111 [35mhttp[39m: [35m::1 GET / 200 36933 - 11.448 ms[39m
+[35m[39m
+2023-04-17 13:01:11:111 [35mhttp[39m: [35m::1 GET /public/css/normalize.css 200 8127 - 3.860 ms[39m
+[35m[39m
+2023-04-17 13:01:11:111 [35mhttp[39m: [35m::1 GET /public/css/webflow.css 200 40860 - 4.061 ms[39m
+[35m[39m
+2023-04-17 13:01:11:111 [35mhttp[39m: [35m::1 GET /public/css/osprey-marine.webflow.css 200 164640 - 3.534 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /images/pexels-tim-douglas-6567653.jpg 404 176 - 1.150 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/js/webflow.js 200 188391 - 1.334 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/logos/Osprey/OspreyMarine-V2_Grey.png 200 25830 - 4.728 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/pexels-thomas-windisch-179993.jpg 200 55694 - 2.430 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/pexels-ellie-burgin-5302092.jpg 200 446085 - 1.708 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/DSC01854.jpg 200 207121 - 2.050 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/BS0S-1Z4I-I68.jpg 200 77202 - 7.196 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/ethernet.jpeg 200 121389 - 5.769 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/recordings-small-on-grey-1.jpg 200 19422 - 0.944 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/housings-1.jpg 200 11793 - 4.676 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/hazardous-market.JPG 200 766215 - 5.457 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/ancillary-1.jpg 200 16270 - 3.099 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/CCTV-monitoring.jpg 200 157834 - 4.493 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/imageedit_7_8668715118.png 200 25320 - 1.025 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/imageedit_1_3016345560.png 200 28549 - 2.613 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/fonts/AvenirLTStd-Heavy.otf 200 27640 - 2.051 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/fonts/AvenirLTStd-Medium.otf 200 27264 - 1.739 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/fonts/AvenirLTStd-Light.otf 200 27240 - 2.464 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/fonts/AvenirLTStd-Book.otf 200 27444 - 3.948 ms[39m
+[35m[39m
+2023-04-17 13:01:12:112 [35mhttp[39m: [35m::1 GET /public/images/favicon.jpg 200 13573 - 1.022 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /about 200 28191 - 9.601 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/css/normalize.css 304 - - 0.719 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/css/webflow.css 304 - - 0.337 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/css/osprey-marine.webflow.css 304 - - 0.399 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/images/logos/Osprey/OspreyMarine-V2_Grey.png 304 - - 0.997 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/js/webflow.js 304 - - 0.482 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/images/OW8U8ESiUZyDNCu0kxqTm6TkoA.jpeg 200 26997 - 2.222 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/images/pexels-mart-production-7252259.jpg 200 152923 - 1.309 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /about 304 - - 17.013 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/images/imageedit_1_3016345560.png 304 - - 1.107 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/images/facebook-logo-2019.png 200 50159 - 1.314 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/images/imageedit_7_8668715118.png 304 - - 1.733 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/images/pngwing.com-4.png 200 35237 - 4.898 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/images/pngwing.com-3.png 200 14659 - 5.974 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/images/LinkedIn_icon_circle.svg.png 200 7068 - 3.727 ms[39m
+[35m[39m
+2023-04-17 13:01:16:116 [35mhttp[39m: [35m::1 GET /public/images/hero/sunset-dockyard.jpg 200 4122826 - 4.183 ms[39m
+[35m[39m
+2023-04-17 13:01:29:129 [35mhttp[39m: [35m::1 GET /db-connector-test 200 40 - 2702.393 ms[39m
+[35m[39m
+2023-04-17 13:01:37:137 [35mhttp[39m: [35m::1 GET /db-connector-test 304 - - 2701.293 ms[39m
+[35m[39m
+2023-04-17 13:02:27:227 [35mhttp[39m: [35m::1 GET /db-connector-test 304 - - 2699.368 ms[39m
+[35m[39m
