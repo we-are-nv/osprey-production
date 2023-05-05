@@ -7,12 +7,12 @@
         <a mat-button class="navLink" [routerLink]="finalNav.home.path">{{finalNav.home.name}}</a>
 
         <!-- About us Menu -->
-        <ng-template *ngFor="let menu of finalNav.dropDownMenus">
+        <div *ngFor="let menu of finalNav.dropDownMenus">
             <a mat-button class="navLink" [matMenuTriggerFor]='matmenu'  [routerLink]="menu.headpath"> {{menu.name}} <mat-icon >arrow_drop_down</mat-icon> </a>
             <mat-menu #matmenu="matMenu" class="navLink">
                 <a mat-menu-item *ngFor="let link of menu.childLinks" [routerLink]="link.path">{{link.name}}</a>
             </mat-menu>
-        </ng-template>
+        </div>
         
 
         <!-- Contact Button -->

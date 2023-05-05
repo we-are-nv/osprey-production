@@ -9,10 +9,12 @@ import { ActivatedRoute } from '@angular/router'
 export class ProductViewComponent implements OnInit{
 
   constructor(private _Activatedroute:ActivatedRoute){}
+  sub:any;
+  id:any;
   ngOnInit() {
-    // this.sub = this.route.params.subscribe(params => {
-    //  this.id = params['id'];
-    //  });
-    //  console.log(this.id);
+    this.sub = this._Activatedroute.params.subscribe(params => {
+     this.id = params['id'];
+     });
+     console.log(this.id);
    }
 }
