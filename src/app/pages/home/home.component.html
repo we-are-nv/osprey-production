@@ -4,8 +4,11 @@
     lowerTitle="We provide security requirements of residential, commercial and other clients, with the largest assortment of security cameras and alarm systems installation."
     [isButtons]="true"
     background="../../assets/images/heroBackgrounds/homeHero.png"
-    [button1Data]="{text:'hello', path:''}"
-    [button2Data]="{text:'hello', path:''}"
+    [button1Data]="{text:'Explore Our Products', path:'', type:'blue'}"
+    [button2Data]="{text:'Explore Our Markets', path:'', type:'black'}"
+
+    [isButton3]="true"
+    [button3Data]="{text:'Explore Our Services', path:'', type:'white'}"
 ></app-hero>
 
 
@@ -21,7 +24,7 @@
     </div>
     
 </section>
-<section class="serviceList">
+<div class="serviceList" fxLayout="row wrap" fxLayoutAlign="flex-start">
     <mat-card class="serviceItem" *ngFor="let service of serviceList">
         <img mat-card-image [src]="service.image" alt="">
         <mat-card-header>
@@ -32,10 +35,12 @@
             <mat-icon>fiber_manual_record</mat-icon>
         </mat-card-content>
     </mat-card>
-</section>
-<mat-card class="serviceInfoCard">
-    <mat-icon>report</mat-icon>
+</div>
+<div class="serviceInfoCard">
+    <img src="../../../assets/images/customIcons/warning.svg" alt="">
     <p>As leaders in marine and commercial security, we can help you customize a security system to meet your safety needs.
-        Schedule A Visit</p>
-</mat-card>
+        Schedule A Visit
+    </p>
+    <button mat-raised-button class="quoteButton">Get Your Quote</button>
+</div>
 <app-quote-form></app-quote-form>

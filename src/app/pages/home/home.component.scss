@@ -14,31 +14,70 @@
 }
 // Service List
 .serviceList{
-    display: flex;
-    position: relative;
+    margin-top: 1rem;
+    display: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     width: 90vw;
-    margin: auto;
+    margin:auto;
 
 }
 .serviceItem{
     border-radius:0px;
-    width: 24%;
-    margin:auto;
+    width: 23%;
+    margin: 1%;
 }
 .serviceItem mat-card-content{
     display: flex;
     vertical-align: middle;
 }
+@media screen and (max-width: 1000px) {
+    .serviceList .serviceItem{
+        width: 31%;
+    }
+}
+@media screen and (max-width: 750px) {
+    .serviceList .serviceItem{
+        width: 48%;
+    }
+}
+
+// 
 .serviceInfoCard{
     display: flex;
+    position: relative;
     border-radius:0px;
     width: 90vw;
     margin:auto;
     margin-top: 1vh;
     margin-bottom: -2rem;
+    padding: 1vw;
+    height: auto;
+    background-color: white  ;
+}
+.serviceInfoCard img{
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    margin: auto;
+    background-color: rgba(128, 128, 128, 0.6);
+    padding: 5px;
+    border-radius: 100%;
 }
 .serviceInfoCard p{
+    position: relative;
+    display: flex;
     width: 50%;
     font-size: 0.75rem;
     font-weight: light;
+    margin: auto;
+    padding: 1%;
+}
+.serviceInfoCard .quoteButton{
+    background-color: transparent;
+    border: 2px solid black;
+    width: 30vw;
+    position: relative;
+    margin: auto;
 }

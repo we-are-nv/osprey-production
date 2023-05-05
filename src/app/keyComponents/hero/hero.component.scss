@@ -22,9 +22,6 @@
 .title{
     font-size: 4vw;
 }
-h3{
-
-}
 h4{
     font-size: 2vh;
 }
@@ -33,6 +30,20 @@ h4{
     border-radius: 0px;
     margin-left:1vw;
     font-weight: bolder;
+}
+.outline{
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    filter:drop-shadow(0px 0px 0px #ffff);
+}
+.blue{
+    background-color: #0065E7;
+    color: white;
+}
+.black{
+    background-color: rgb(0, 0, 0);
+    color: white;
 }
 
 @media (max-width:1000px) { 

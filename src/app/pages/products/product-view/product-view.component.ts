@@ -7,14 +7,19 @@ import { ActivatedRoute } from '@angular/router'
   styleUrls: ['./product-view.component.scss']
 })
 export class ProductViewComponent implements OnInit{
+  specs=["4x motorised zoom lens", "Day/Night switching for almost any lighting condition", "H264, MJPEG"];
+  catagories=["hello", "second"];
+  tags=["something cool", "cameras"]
+  description="Example Description";
 
   constructor(private _Activatedroute:ActivatedRoute){}
   sub:any;
   id:any;
   ngOnInit() {
+    sessionStorage.setItem("navStyle", "hello")
     this.sub = this._Activatedroute.params.subscribe(params => {
-     this.id = params['id'];
-     });
-     console.log(this.id);
-   }
+    this.id = params['id'];
+    });
+  }
+  
 }

@@ -1,5 +1,6 @@
 <mat-toolbar
-    [ngClass]="scrolled ? 'scrolledToolbar' : 'defaultToolbar'"
+    [ngClass]="scrolled ? 'scrolledToolbar': 'defaultToolbar'"
+    class="{{navStyle}}"
     (window:scroll)="onWindowScroll($event)">
     <img id="navLogo" src="../../assets/images/Paragon_V3-white.png" alt="">
     <div class="navLinks" >

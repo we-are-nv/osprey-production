@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit{
   scrolled = false;
+  navStyle= "standard"
   finalNav = {
     home:{path:"", name:"Home"},
     contact:{path:"", name:"Contact"},
@@ -51,6 +52,7 @@ export class HeaderComponent implements OnInit{
     
   ngOnInit(): void {
     console.log(this.finalNav)
+    console.log(sessionStorage['navStyle'])
   }
   // On scroll detected, Set the toolbar class
   onWindowScroll(event:any){
