@@ -6,29 +6,28 @@
         <!-- Home Button-->
         <a mat-button class="navLink" [routerLink]="finalNav.home.path">{{finalNav.home.name}}</a>
 
-        <!-- About us Menu -->
         <div *ngFor="let menu of finalNav.dropDownMenus">
             <a mat-button class="navLink" [matMenuTriggerFor]='matmenu'  [routerLink]="menu.headpath"> {{menu.name}} <mat-icon >arrow_drop_down</mat-icon> </a>
             <mat-menu #matmenu="matMenu" class="navLink">
                 <a mat-menu-item *ngFor="let link of menu.childLinks" [routerLink]="link.path">{{link.name}}</a>
             </mat-menu>
         </div>
-        
+
 
         <!-- Contact Button -->
         <a mat-button class="navLink">Contact</a>
     </div>
-    
+
     <div class="searchBar"><mat-icon>search</mat-icon></div>
     <div class="contactDetails">
         <div class="contactIconRing">
             <mat-icon class="contactIcon">phone</mat-icon>
         </div>
-        
+
         <div>
             <p class="mat-headline-3">+44 (0)1245 280 448</p>
             <p class="mat-headline-4">info@paragon-security.com</p>
         </div>
-        
+
     </div>
 </mat-toolbar>
