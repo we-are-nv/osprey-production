@@ -33,21 +33,6 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
-// router.get("/get_items_basic", async (req, res) => {
-//   var query = {};
-//   if (req.query.type) {
-//     var typeSplit = req.query.type.split(",");
-//     var queryArray = [];
-//     for (idx in typeSplit) {
-//       queryArray.push(product_types[typeSplit[idx]]);
-//     }
-//     query = { 'productType.modelName': queryArray };
-//   };
-//   allProducts.find(query)
-//     .then((result) => {
-//       res.json(result)
-//     })
-// });
 
 router.get("/product_info", async (req, res) => {
   if (!req.query.type){
@@ -68,6 +53,12 @@ router.get("/product_info", async (req, res) => {
         path:'productType.id',
         model:product_types[req.query.type],
         select:popuOptions
+      }
+    } else {
+      var popu = {
+        path:'productType.id',
+        model:product_types[req.query.type],
+        select:{}
       }
     }
 
