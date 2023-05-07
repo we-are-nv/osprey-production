@@ -40,7 +40,6 @@ router.get('/about', breadcrumbs.Middleware(), (req, res) => {
 router.get('/contact-us', breadcrumbs.Middleware(), (req, res) => {
 	res.render('contact', { breadcrumbs: req.breadcrumbs });
 });
-
 router.get('/products', breadcrumbs.Middleware(), (req, res) => {
 	res.render('product-collection', { breadcrumbs: req.breadcrumbs });
 });

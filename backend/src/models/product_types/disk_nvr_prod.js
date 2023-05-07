@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 const diskNRVProd = mongoose.Schema({
-  addit_info:{
-    manufactuer:{type:String,required:true},
+  specs:{
     size_tb:{type:Number,required:true}
   }
 })

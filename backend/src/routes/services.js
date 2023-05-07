@@ -3,35 +3,63 @@ const controllers = require('../controller/controllers.js');
 const dbQuery = require('../controller/dbQuery');
 var breadcrumbs = require('../controller/breadcrumbs');
 
+const allProducts = require('../models/product_info.js');
+const etherProd = require('../models/product_types/ethernet_prod.js');
+
+
 const diskNVR = require('../models/product_types/disk_nvr_prod.js');
 
 var providers = {
-  disk_nvr:diskNVR
+  disk_nvr: diskNVR
 }
 
+
+
+var product_types = {
+  camera: 'cam_prod',
+  accessory: 'acc_prod',
+  disk_nvr: 'disk_nvr_prod',
+  ethernet: 'ethernet_prod',
+  housing: 'housing_prod',
+  nvr: 'nvr_prod'
+}
 
 const router = express.Router();
 
 router.use(function timeLog(req, res, next) {
-	console.log('Time: ', Date.now());
-	next();
+  console.log('Time: ', Date.now());
+  next();
 });
 
-
-
-router.get('/test', async (req,res) => {
-  var test = new providers.disk_nvr ({
-    addit_info:{
-      manufactuer:'yesy',
-      size_tb:1
+router.get("/get_items_basic", async (req, res) => {
+  var query = {};
+  if (req.query.type) {
+    var typeSplit = req.query.type.split(",");
+    var queryArray = [];
+    for (idx in typeSplit) {
+      queryArray.push(product_types[typeSplit[idx]]);
     }
-  })
-  test.save()
-  .then((result)=> {
-    console.log(result)
-  })
-  res.json('opk')
+    query = { 'productType.modelName': queryArray };
+  };
+  allProducts.find(query)
+    .then((result) => {
+      res.json(result)
+    })
 })
+
+// router.get('/test', async (req,res) => {
+//   var test = new providers.disk_nvr ({
+//     addit_info:{
+//       manufactuer:'yesy',
+//       size_tb:1
+//     }
+//   })
+//   test.save()
+//   .then((result)=> {
+//     console.log(result)
+//   })
+//   res.json('opk')
+// })
 
 // router.get('/info', breadcrumbs.Middleware(), async (req, res) => {
 //     try {

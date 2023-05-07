@@ -7,10 +7,7 @@ const ethernet = mongoose.Schema({
   rate:{type:String,required:false}
   },
   interface:{
-    connector:{type:String,required:false},
-    cable:{type:String,required:false},
-    notes:{type:String,required:false},
-    rates:{type:Array,required:false}
+
   },
   led:{
     LED_indicator_lights: {type:String,required:false},
@@ -32,15 +29,17 @@ const ethernet = mongoose.Schema({
     mounting_options: {type:String,required:false}
   },
   power:{
-    POWER:  {type:String,required:false},
+    power:  {type:String,required:false},
     unit_power:  {type:String,required:false},
-    POE_in_Base:  {type:String,required:false},
-    POE_out_Camera:  {type:String,required:false},
-    DC_power_in_Base:  {type:String,required:false},
-    power_Method:  {type:String,required:false},
-    ESD_EMP_protection: {type:String,required:false}
+    "poe_in_(base)":  {type:String,required:false},
+    "poe_out_(camera)":  {type:String,required:false},
+    "dc_power_in_(base)":  {type:String,required:false},
+    power_method:  {type:String,required:false},
+    esd_emp_protection: {type:String,required:false}
   }
 })
+
+
 
 module.exports = mongoose.model('ethernet_prod' , ethernet);
 
