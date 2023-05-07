@@ -5,9 +5,11 @@ var breadcrumbs = require('../controller/breadcrumbs');
 
 const allProducts = require('../models/product_info.js');
 const etherProd = require('../models/product_types/ethernet_prod.js');
-
-
+const accProd = require('../models/product_types/accessory_prod.js');
+const camProd = require('../models/product_types/camera_prod.js');
+const housProd = require('../models/product_types/housing_prod.js')
 const diskNVR = require('../models/product_types/disk_nvr_prod.js');
+const nvrProd = require('../models/product_types/nvr_prod.js');
 
 var providers = {
   disk_nvr: diskNVR
@@ -31,139 +33,103 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
-router.get("/get_items_basic", async (req, res) => {
-  var query = {};
-  if (req.query.type) {
-    var typeSplit = req.query.type.split(",");
-    var queryArray = [];
-    for (idx in typeSplit) {
-      queryArray.push(product_types[typeSplit[idx]]);
-    }
-    query = { 'productType.modelName': queryArray };
+// router.get("/get_items_basic", async (req, res) => {
+//   var query = {};
+//   if (req.query.type) {
+//     var typeSplit = req.query.type.split(",");
+//     var queryArray = [];
+//     for (idx in typeSplit) {
+//       queryArray.push(product_types[typeSplit[idx]]);
+//     }
+//     query = { 'productType.modelName': queryArray };
+//   };
+//   allProducts.find(query)
+//     .then((result) => {
+//       res.json(result)
+//     })
+// });
+
+router.get("/product_info", async (req, res) => {
+  if (!req.query.type){
+    res.json({error:'Please Enter a valid product type'});
+    return;
   };
-  allProducts.find(query)
-    .then((result) => {
-      res.json(result)
-    })
-})
 
-// router.get('/test', async (req,res) => {
-//   var test = new providers.disk_nvr ({
-//     addit_info:{
-//       manufactuer:'yesy',
-//       size_tb:1
-//     }
-//   })
-//   test.save()
-//   .then((result)=> {
-//     console.log(result)
-//   })
-//   res.json('opk')
-// })
+  var popu;
+  if (req.query.populate_include){
+    var popuOptions = {}
+    if (req.query.populate_include != "all"){
+      var tempStore = req.query.populate_include.split(",");
+      tempStore.forEach(function(item){
+        popuOptions[item] = 1;
+      });
+      console.log(popuOptions)
+      var popu = {
+        path:'productType.id',
+        model:product_types[req.query.type],
+        select:popuOptions
+      }
+    }
 
-// router.get('/info', breadcrumbs.Middleware(), async (req, res) => {
-//     try {
-//         var data = {}
+  };
 
-//         var sqlQuery  = 'SELECT DISTINCT category FROM info'
-//         data = await dbQuery.genericQuery(sqlQuery)
-//     } catch (error) {
-//         console.log(error)
-//     }
-//     var sendArray = []
-//     for (idx in data)
-//         sendArray.push(data[idx].category)
-//     }
-//     res.json({
-//         data:sendArray,
-//         breadcrumbs:req.breadcrumbs
-//     })
-// })
+  if (req.query.populate_exclude){
+    var popuOptions = {}
+    if (req.query.populate_exclude != "all"){
+      var tempStore = req.query.populate_exclude.split(",");
+      tempStore.forEach(function(item){
 
-// router.get('/info-markets/:category', breadcrumbs.Middleware(), async (req, res) => {
+        popuOptions["-"+item] = 1;
+      });
+      console.log(popuOptions)
+      var popu = {
+        path:'productType.id',
+        model:product_types[req.query.type],
+        select:popuOptions
+      }
+    }
 
-//     try {
-// 		var data = {};
-// 		var sqlQuery = 'SELECT * FROM info WHERE category = "'+req.params.category+'" ';
-// 		data = await dbQuery.genericQuery(sqlQuery);
-// 	} catch (error) {
-// 		consolee.log(error);
-//         errorMessage = {"message":error}
-// 	}
-//     if (data.length == 0){
-//         errorMessage = {"message":"CATNOTFOUND"}
-//     } else {
-//         errorMessage = {}
-//     }
-//     res.json({
-//         error:errorMessage || {},
-//         data:data,
-//         breadcrumbs:req.breadcrumbs
-//     })
-// })
+  };
+  if (req.query.include && req.query.exclude){
+    res.json({error:'Cannot include and exclude in same request!'});
+    return;
+  };
+  var selectOptions = "";
+  if (req.query.include){
+    var selectOptions = "product_code ";
+    var tempStore = req.query.include.split(",");
+    selectOptions += tempStore.join(" ");
+    //console.log(selectOptions);
+  };
+  if (req.query.exclude){
+    console.log('a')
+    var tempStore = req.query.exclude.split(",");
+    tempStore.forEach(function(item){
+      if (item != 'product_code'){
+        selectOptions += "-"+item+" ";
+      };
+    });
+    console.log(selectOptions)
+  };
+  var additQuery = "";
+  if (req.query.documentId){
+    additQuery = {_id:req.query.documentId};
+  } else {
+    additQuery = {'productType.modelName':product_types[req.query.type]}
+  }
+  allProducts.find(additQuery,selectOptions)
+  .populate(popu)
+  .then((result) => {
+    if (req.query.documentId){
+      res.json({product:result[0]})
+    } else {
+      res.json({products:result})
+    }
 
-// router.get('/products/cctv', breadcrumbs.Middleware(), async (req, res) => {
+  })
+});
 
-//     try {
-// 		var data = {};
-//         var queryedChanges = req.query;
-//         var keyArray = new Array();
-//         var paramArray = new Array();
-//         var inOr = false;
-//         console.log(req.query)
-//         for (const [key, value] of Object.entries(req.query)) {
-//             keyArray.push(key)
-//             paramArray.push(value)
 
-//         }
-//         console.log(keyArray)
-//         console.log(paramArray)
-//         if (keyArray.length != 0){
-//             var queryParams = ' WHERE ';
-//         } else {
-//             var queryParams = '';
-//         }
-
-//         for (idx in keyArray){
-//             if (keyArray[idx] == 'orStart') {
-//                 inOr = true;
-
-//                 queryParams += '('
-//             } else if (keyArray[idx] == 'orEnd') {
-//                 inOr =false
-//                 queryParams += ')'
-//             } else {
-//                 queryParams += keyArray[idx] + ' = "' + paramArray[idx] + '"';
-//             }
-//             if (Number(idx) + 1 < keyArray.length && keyArray[idx] != "orStart" && keyArray[Number(idx) + 1] != "orEnd" && inOr){
-//                 queryParams += ' OR ';
-//             }
-//             if (Number(idx) + 1 < keyArray.length && !inOr){
-//                 queryParams += ' AND ';
-//             }
-
-//         };
-//         console.log(queryParams)
-// 		var sqlQuery = 'SELECT * FROM info' + queryParams
-// 		data = await dbQuery.genericQuery(sqlQuery);
-// 	} catch (error) {
-// 		console.log(error);
-
-// 	}
-//     if (!data){
-//         errorMessage = {"message":"ITEMSNOTFOUND","friendly":"Items were not found with the selected parameters"}
-//         data = [];
-//     } else {
-//         errorMessage = {}
-//     }
-//     res.json({
-//         error:errorMessage || {},
-//         amountFound:data.length || 0,
-//         params:req.query,
-//         data:data,
-//         breadcrumbs:req.breadcrumbs
-//     })
-// })
 
 
 
