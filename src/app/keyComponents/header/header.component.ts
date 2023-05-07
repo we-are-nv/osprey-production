@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit{
         name:"Services",
         headpath:"services", 
         childLinks:[
-        {name:"example", path:""}
+        {name:"categories", path:"services/categories"}
         ]
       },
       {

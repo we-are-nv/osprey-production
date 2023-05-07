@@ -4,6 +4,7 @@
     margin: auto;
     margin-top: 0px;
     display: flex;
+    
 }
 .card{
     margin-top: 15vh;
@@ -28,6 +29,10 @@ mat-card-header{
 }
 mat-card-title{
     font-size: 1.5rem;
+    
+}
+mat-card-content{
+    font-family: 'Roboto';
 }
 img{
     width:100%;
@@ -70,18 +75,59 @@ button{
     width: 90vw;
     margin:auto;
 }
+.classifications{
+    margin-top: 70%;
+}
 @media screen and (max-width: 1000px) {
     mat-toolbar{
         color: black;
     }
     .card{
         width: 100% !important;
+        height: auto !important;
         margin: auto;
+    }
+    .classifications{
+        margin-top: auto;
     }
     .card mat-card{
         height: 50%;
     }
 }
-.classifications{
-    margin-top: 70%;
+
+
+// Similar Products
+.similarProductsInfo{
+    justify-content: center;
+    width: 90vw;
+    margin: auto;
+    padding-bottom: 1rem;
+}
+.similarProductsInfo .similarProductsContainer {
+    margin-top: 1rem;
+    display: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    margin:auto;
+}
+.similarProductsContainer .similarProductsCard{
+    width: 23%;
+    margin: 1%;
+    border-radius:0px ;
+    align-items: center;
+}
+.similarProductsCard img{
+    width: 100%;
+}
+@media screen and (max-width: 1000px) {
+    .similarProductsContainer .similarProductsCard{
+        width: 31%;
+    }
+}
+@media screen and (max-width: 750px) {
+    .similarProductsContainer .similarProductsCard{
+        width: 48%;
+    }
 }

@@ -1,0 +1,69 @@
+<app-hero 
+    mainTitle="Smart Security Systems For The Modern World"
+    lowerTitle="We provide security requirements of residential, commercial and other clients, with the largest assortment of security cameras and alarm systems installation."
+    [isButtons]="true"
+    background="../../assets/images/heroBackgrounds/servicesLanding.png"
+    [button1Data]="{text:'See What It Costs', path:'',  type:'outline'}"
+    [button2Data]="{text:'Protect My Premise', path:'', type:'outline'}"
+    
+    ></app-hero>
+<!-- Our Servces Section -->
+<section class="main">
+    <div class="header">
+        <h1>Our Services</h1>
+        <span>Whether it’s protecting your possessions while you are on vacation or your family <br>     while they sleep, we will give you the peace of mind that should the worst happen.</span>
+    </div>
+    <!-- Categories Grabbed from Component Variable -->
+    <div class="serviceContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
+        <mat-card class="serviceCard" *ngFor="let type of categories">
+            
+            <mat-card-header>
+                <mat-card-title>{{type.name}}</mat-card-title>
+            </mat-card-header>
+            <p>Clever security system connects your security, CCTV, lights, locks and more, for true seamless automation and control....</p>
+            <span> <mat-icon > radio_button_unchecked</mat-icon>
+                 Explore More</span>
+            <img mat-card-image [src]="type.thumbnail">
+        </mat-card>
+    </div>
+</section>
+<section class="about">
+    <section class="header"> 
+        <div>
+            <h1>The Right System For Your Home’s Needs.</h1>
+        </div>
+        <div>
+            <p>Because a commercial security camera system has to produce results, we offer what most security camera companies can’t. For CCTV installation companies, it’s important to treat cctv camera installation with a modern approach. Our security camera system installation department is just passionate about security installation and software.</p>
+            <button mat-raised-button>Meet Our Experts</button>
+        </div>
+    </section>
+    <section>
+        <mat-tab-group backgroundColor="primary">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <p class="example-tab-icon">1</p>
+            Choose Your System
+          </ng-template>
+          Content 1
+        </mat-tab>
+      
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+            Second
+          </ng-template>
+          Content 2
+        </mat-tab>
+      
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+            Third
+          </ng-template>
+      
+          Content 3
+        </mat-tab>
+      </mat-tab-group>
+    </section>
+</section>
+

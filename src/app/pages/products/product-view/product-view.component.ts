@@ -12,6 +12,13 @@ export class ProductViewComponent implements OnInit{
   tags=["something cool", "cameras"]
   description="Example Description";
 
+  similarProducts = [
+    {name:"tada", thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
+    {name:"tada", thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
+    {name:"tada", thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
+    {name:"tada", thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
+  ];
+
   constructor(private _Activatedroute:ActivatedRoute){}
   sub:any;
   id:any;
