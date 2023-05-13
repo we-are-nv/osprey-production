@@ -81,19 +81,19 @@ services:
       - "traefik.http.routers.api.service=api@internal"
       - "traefik.port=8080"
 
-  mongo:
-    image: mongo:latest
-    container_name: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: $DB_PASSWORD
-    ports:
-      - 27017:27017
-    volumes:
-      - ./mongod.conf:/etc/mongod.conf
-      - ./db:/data/db:rw
-    networks:
-      - backend
+  # mongo:
+  #   image: mongo:latest
+  #   container_name: mongo
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: $DB_PASSWORD
+  #   ports:
+  #     - 27017:27017
+  #   volumes:
+  #     - ./mongod.conf:/etc/mongod.conf
+  #     - ./db:/data/db:rw
+  #   networks:
+  #     - backend
 
   whoami:
     image: containous/whoami:latest
