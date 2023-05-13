@@ -161,3 +161,97 @@ Output:
   }
 }
 ```
+
+
+
+## Search For Products
+This route allows for the searching of products across the whole catlaogue using any key to search for
+
+```
+GET http://localhost:3030/api/service/search
+```
+
+```
+Query Params
+type: Product Type (Not Required)
+searchFor: key to search for. (Example product_name) Defaults to product_name (Not Required)
+searchQuery: Query to seach for. (Not Required)
+
+Pagination
+page: page number (1)
+limit: items per page (10)
+```
+
+## Example Payload
+
+Here is an example request searching for the term marine
+
+```
+GET http://localhost:3030/api/service/search?page=1&searchQuery=marine
+```
+
+```json
+{
+    "products": [
+        {
+            "_id": "64563432b8dec85f18ffa536",
+            "product_code": "OSWASH",
+            "product_name": "Washer nozzel for marine cameras",
+            "product_link": "/api/product/product_info?documentId=64563432b8dec85f18ffa536"
+        },
+        {
+            "_id": "64563432b8dec85f18ffa546",
+            "product_code": "OSTANKAABB",
+            "product_name": "Washer tank for marine cameras",
+            "product_link": "/api/product/product_info?documentId=64563432b8dec85f18ffa546"
+        },
+        {
+            "_id": "645657ae09716fa207a0ffa3",
+            "product_code": "BSOA0000067",
+            "product_name": "Marine camera housing",
+            "product_link": "/api/product/product_info?documentId=645657ae09716fa207a0ffa3"
+        }
+    ],
+    "totalPages": 8,
+    "currentPage": 1
+}
+```
+
+If we want additional information we can add the paramerter extra.
+
+```
+GET http://localhost:3030/api/service/search?page=1&limit=3&searchQuery=marine&extra=true
+```
+
+```json
+{
+    "products": [
+        {
+            "_id": "64563432b8dec85f18ffa536",
+            "product_code": "OSWASH",
+            "product_name": "Washer nozzel for marine cameras",
+            "image": "",
+            "description": "The Washer bracket/nozzle assembly provides an effective wash facility for marine cameras clamping neatly via camera mounting bracket bolts.\nThe bracket arm provides holes for cable-tying a washer pipe (not included).  To operate, simply set a preset position in the camera as a\ndedicated wash position, then enable the wash function for the camera. Washer tubing is 4mm inside diameter; 6mm outside diameter\nYou will require a washer bottle (OSTANKAABB) and wash relay control.",
+            "product_link": "/api/product/product_info?documentId=64563432b8dec85f18ffa536"
+        },
+        {
+            "_id": "64563432b8dec85f18ffa546",
+            "product_code": "OSTANKAABB",
+            "product_name": "Washer tank for marine cameras",
+            "image": "",
+            "description": "The WPN400 washer series offers a wide range of water reservoir capacities with different pumping height capabilities. The tank is protected by a frame in AISI316 stainless steel.  The washer units are provided with an IP66 rated watertight plastic junction box that contains the power supply for the self-priming submersible pump located inside the tank. The optional float switch prevents the washer unit from running dry and causing damage to the pump. It is wired into the washer power supply unit so when the water level drops to a specific level the power to the pump is cut. The alarm output can be connected to the camera to indicate when the bottle needs refilling.\n",
+            "product_link": "/api/product/product_info?documentId=64563432b8dec85f18ffa546"
+        },
+        {
+            "_id": "645657ae09716fa207a0ffa3",
+            "product_code": "BSOA0000067",
+            "product_name": "Marine camera housing",
+            "image": "",
+            "description": "Fully cable managed Camera Housing, including wall bracket and 12V DC/24V AC heater. Ruggedised marine finish. The BSA0067 is a tough, fixed camera\nhousing which seals against dirt, moisture and dust ingress. It allows a wide range of fixed cameras and lenses to be used in tough, outdoor environments. It is IP67 weather-proof rated and IK10\nshock and vandal-resistant.  It can be pendant or pedestal mounted to ceilings, walls\nand soffits.",
+            "product_link": "/api/product/product_info?documentId=645657ae09716fa207a0ffa3"
+        }
+    ],
+    "totalPages": 8,
+    "currentPage": 1
+}
+```

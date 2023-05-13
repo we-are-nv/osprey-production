@@ -11,6 +11,7 @@ const productInfo = mongoose.Schema({
     category:{type:String,required:false},
     addit_category:{type:String,required:false},
     features:{type:Array,required:false},
+    product_link:{type:String,required:false},
     feature_deprec:{type:String,required:false},
     manufacturer:{type:String,required:false},
     tech_drawing:{type:String,required:false},
