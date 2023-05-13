@@ -2,6 +2,7 @@ const express = require('express');
 const cluster = require('cluster');
 const os = require('os');
 require('dotenv').config();
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const logger = require('./src/utils/logger');
@@ -21,6 +22,18 @@ if (process.env.NODE_ENV == "development") {
 
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./src/views'));
+
+if (process.env.LOCAL) {
+	origin = process.env.CORS_DEV;
+} else {
+	origin = process.env.CORS;
+}
+
+app.use(
+	cors({
+		origin: origin
+	})
+);
 
 mongoose.set('strictQuery', true);
 mongoose
