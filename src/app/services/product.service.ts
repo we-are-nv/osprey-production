@@ -22,7 +22,7 @@ export class ProductService {
   getProducts(filter: any){
     const body = filter;
     this.http
-      .get<any>(this.API_URL+ '/service/product_info')
+      .get<any>(this.API_URL+ '/product/product_info?type=camera')
       .subscribe(response=>{
         console.log(response)
       })
