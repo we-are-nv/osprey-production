@@ -12,14 +12,19 @@ export class ProductsComponent implements OnInit{
   constructor(private productService: ProductService, private router:Router){}
 
   products: any;
+  currentPage:number;
+  totalPages  :number;
   public productsSub : Subscription;
 
   ngOnInit(){
-    this.productService.getProducts({type:"camera"});  
+    this.productService.getProducts({type:"camera", page:1});  
     this.productsSub = this.productService.getProductsUpdateListener()
       .subscribe((data)=>{
         console.log(data)
-        this.products = data;
+        this.products = data.products;
+        this.currentPage = data.currentPage;
+        this.totalPages = data.totalPages
+
     });
   }
 
@@ -34,12 +39,16 @@ export class ProductsComponent implements OnInit{
     this.currentCategory = value;
     console.log(this.currentCategory)
   }
-  filterCheck(value:any){
-
-  }
   loadProduct(id:any){
     this.router.navigate(['product/'+id]);
 
+  }
+
+
+  // On search
+  onSearchChange(searchValue: any): void {  
+    console.log(searchValue.target.value);
+    this.productService.getProducts({page:1,type:"camera",searchQuery:searchValue.target.value});
   }
 }
 

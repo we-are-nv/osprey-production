@@ -12,28 +12,29 @@
 <section class="ProductsView">
     <div class="productsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
             <mat-card class="productCard"  *ngFor="let product of products" (click)="loadProduct(product.id)">
-                <img mat-card-image [src]="product.thumbnail">
+                <img mat-card-image [src]="product.image">
                 <mat-card-header>
                     <mat-card-title-group></mat-card-title-group>
-                    <mat-card-title>{{product.name}}</mat-card-title>
+                    
                 </mat-card-header>
+                <h4>{{product.product_name| slice:0:30}}</h4>
                 <p>Explore</p>
             </mat-card>
             
         
     </div>
     <section class="Filter">
-        <div class="categories">
+        <!-- <div class="categories">
             <h1>Categories</h1>
             <mat-button-toggle-group class="catagoryButtonsContainer">
                 <mat-button-toggle *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-button-toggle>
             </mat-button-toggle-group>
-        </div>
+        </div> -->
         <div class="searchSection">
             <h1>Search</h1>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Search Product">
-              </mat-form-field>
+            <mat-form-field class="example-full-width" >
+                <input matInput placeholder="Search Product" (keypress)="onSearchChange($event)" >
+            </mat-form-field>
         </div>
     </section>
 </section>
