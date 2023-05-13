@@ -1,7 +1,7 @@
 const express = require('express');
 const controllers = require('../controller/controllers.js');
-const dbQuery = require('../controller/dbQuery');
-var breadcrumbs = require('../controller/breadcrumbs');
+const dbQuery = require('../controller/dbQuery.js');
+var breadcrumbs = require('../controller/breadcrumbs.js');
 
 const allProducts = require('../models/product_info.js');
 const etherProd = require('../models/product_types/ethernet_prod.js');
@@ -35,89 +35,95 @@ router.use(function timeLog(req, res, next) {
 
 
 router.get("/product_info", async (req, res) => {
-  if (!req.query.type){
-    res.json({error:'Please Enter a valid product type'});
+  const { page = 1, limit = 10 } = req.query;
+  if (!req.query.type) {
+    res.json({ error: 'Please Enter a valid product type' });
     return;
   };
 
   var popu;
-  if (req.query.populate_include){
+  if (req.query.populate_include) {
     var popuOptions = {}
-    if (req.query.populate_include != "all"){
+    if (req.query.populate_include != "all") {
       var tempStore = req.query.populate_include.split(",");
-      tempStore.forEach(function(item){
+      tempStore.forEach(function (item) {
         popuOptions[item] = 1;
       });
       console.log(popuOptions)
       var popu = {
-        path:'productType.id',
-        model:product_types[req.query.type],
-        select:popuOptions
+        path: 'productType.id',
+        model: product_types[req.query.type],
+        select: popuOptions
       }
     } else {
       var popu = {
-        path:'productType.id',
-        model:product_types[req.query.type],
-        select:{}
+        path: 'productType.id',
+        model: product_types[req.query.type],
+        select: {}
       }
     }
 
   };
 
-  if (req.query.populate_exclude){
+  if (req.query.populate_exclude) {
     var popuOptions = {}
-    if (req.query.populate_exclude != "all"){
+    if (req.query.populate_exclude != "all") {
       var tempStore = req.query.populate_exclude.split(",");
-      tempStore.forEach(function(item){
+      tempStore.forEach(function (item) {
 
-        popuOptions["-"+item] = 1;
+        popuOptions["-" + item] = 1;
       });
       console.log(popuOptions)
       var popu = {
-        path:'productType.id',
-        model:product_types[req.query.type],
-        select:popuOptions
+        path: 'productType.id',
+        model: product_types[req.query.type],
+        select: popuOptions
       }
     }
 
   };
-  if (req.query.include && req.query.exclude){
-    res.json({error:'Cannot include and exclude in same request!'});
+  if (req.query.include && req.query.exclude) {
+    res.json({ error: 'Cannot include and exclude in same request!' });
     return;
   };
   var selectOptions = "";
-  if (req.query.include){
+  if (req.query.include) {
     var selectOptions = "product_code ";
     var tempStore = req.query.include.split(",");
     selectOptions += tempStore.join(" ");
     //console.log(selectOptions);
   };
-  if (req.query.exclude){
+  if (req.query.exclude) {
     console.log('a')
     var tempStore = req.query.exclude.split(",");
-    tempStore.forEach(function(item){
-      if (item != 'product_code'){
-        selectOptions += "-"+item+" ";
+    tempStore.forEach(function (item) {
+      if (item != 'product_code') {
+        selectOptions += "-" + item + " ";
       };
     });
     console.log(selectOptions)
   };
   var additQuery = "";
-  if (req.query.documentId){
-    additQuery = {_id:req.query.documentId};
+  if (req.query.documentId) {
+    additQuery = { _id: req.query.documentId };
   } else {
-    additQuery = {'productType.modelName':product_types[req.query.type]}
+    additQuery = { 'productType.modelName': product_types[req.query.type] }
   }
-  allProducts.find(additQuery,selectOptions)
-  .populate(popu)
-  .then((result) => {
-    if (req.query.documentId){
-      res.json({product:result[0]})
-    } else {
-      res.json({products:result})
-    }
+  const count = await allProducts.count(additQuery,selectOptions);
+  console.log(count)
+  allProducts.find(additQuery, selectOptions)
+    .limit(limit * 1)
+    .skip((page - 1) * limit)
+    .populate(popu)
+    .then((result) => {
+      if (req.query.documentId) {
+        res.json({ product: result[0],page:page, })
+      } else {
+        res.json({ products: result,   totalPages: Math.ceil(count / limit),
+        currentPage: Number(page) })
+      }
 
-  })
+    })
 });
 
 

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+
+
 const productInfo = mongoose.Schema({
     product_code:{type:String,required:false},
     product_name:{type:String,required:false},
@@ -21,5 +23,6 @@ const productInfo = mongoose.Schema({
       id:{type:mongoose.Schema.Types.ObjectId}
     }
 })
+
 
 module.exports = mongoose.model('product_info' , productInfo);
