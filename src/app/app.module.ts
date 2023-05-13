@@ -15,6 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductViewComponent } from './pages/products/product-view/product-view.component';
 import { CategoriesComponent } from './pages/services/categories/categories.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CategoriesComponent } from './pages/services/categories/categories.comp
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

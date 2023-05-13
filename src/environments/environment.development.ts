@@ -1,6 +1,6 @@
 export const environment = {
 
-	API_URL: 'localhost/api',
+	API_URL: 'localhost:3030/api',
 	PRODUCTION: false
 
 };
