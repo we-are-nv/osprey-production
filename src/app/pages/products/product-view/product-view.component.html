@@ -1,1 +1,80 @@
-<p>product-view works!</p>
+<section class="productMain"  fxLayout="row wrap" fxLayoutAlign="flex-start">
+    <div class="card">
+        <mat-card>
+
+        
+            <mat-card-header>
+                <mat-card-title>
+                    Marine Fixed Bullet Stainless Steel Camera
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <img src="../../assets/images/ExampleProducts/cameras.png" alt="">
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="card">
+        <mat-card>
+        <mat-card-header>
+            <button mat-raised-button class="black">Get a Quote</button>
+            <button mat-raised-button class="blue">Send An Email</button>
+            <button mat-raised-button class="outline">Phone Us</button>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                <span *ngFor="let spec of specs">
+                    <span class="dot"></span>
+                    {{spec}} 
+                    <br></span>
+            </p>
+            <div class="classifications">
+                <p>
+                    Part No: <span> 00001 </span><br>
+                    Categories: <span *ngFor="let catagory of catagories"> {{catagory}},</span> <br>
+                    Tags: <span *ngFor="let tag of tags">{{tag}}, </span>
+
+                </p>
+            </div>
+        </mat-card-content>
+        </mat-card>
+    </div>
+
+    
+    
+    
+    
+</section>
+<section class="productTabs">
+    <mat-tab-group  mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab label="Description">
+            {{description}}
+        </mat-tab>
+        <mat-tab label="Specifications">
+            Content 2
+        </mat-tab>
+        <mat-tab label="Drawings">
+            Content 3
+        </mat-tab>
+        <mat-tab label="Gallery">
+            Content 3
+        </mat-tab>
+        <mat-tab label="Downloads">
+            Content 3
+        </mat-tab>
+    </mat-tab-group>
+</section>
+<section class="similarProductsInfo">
+    <div class="similarProductsHeader">
+        <h1>Our Services</h1>
+    </div>
+    <div class="similarProductsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
+        <mat-card class="similarProductsCard" *ngFor="let product of similarProducts">
+            <img mat-card-image [src]="product.thumbnail">
+            <mat-card-header>
+                <mat-card-title-group></mat-card-title-group>
+                <mat-card-title>{{product.name}}</mat-card-title>
+            </mat-card-header>
+        </mat-card>
+    </div>
+    
+</section>

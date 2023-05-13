@@ -1,0 +1,97 @@
+// Main Section
+.main .header{
+    margin: auto;
+    text-align: center;
+}
+.header span{
+    font-family: 'Roboto';
+    color: #9B9B9B;
+}
+.serviceContainer {
+    margin-top: 1rem;
+    display: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 80vw;
+    margin:auto;
+}
+.serviceContainer .serviceCard{
+    width: 31%;
+    margin: 1%;
+    border-radius:0px ;
+    text-align: start;
+}
+mat-card-header{
+    height: 12.5vh;
+    align-items: center;
+    text-align: center;
+}
+
+.serviceCard img{
+    width: 100%;
+}
+.serviceCard p{
+    font-family: 'Roboto';
+    width: 80%;
+    margin: auto;
+    font-size: 1rem;
+    color: #9B9B9B;
+}
+.serviceCard span{
+    padding: 2vh;
+    
+}
+@media screen and (max-width: 1000px) {
+    .serviceContainer .serviceCard{
+        width: 48%;
+    }
+}
+@media screen and (max-width: 750px) {
+    .serviceContainer .serviceCard{
+        width: 98%;
+    }
+}
+
+// About Section
+.about{
+    padding:5vw ;
+    background-color: black;
+    color: white;
+}
+.about .header{
+    width: 100%;
+    display: flex;
+}
+.about .header div{
+    width: 50%;
+    align-items: center;
+}
+.about .header h1{
+    width: 50%;
+
+}
+.about .header p{
+    font-size: 1rem;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.about button{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 0px;
+    padding: 2rem;
+    color: white;
+    filter:drop-shadow(0px 0px 0px #ffff);
+}
+mat-tab-group{
+    background-color: white;
+}
+.example-tab-icon{
+    align-items: center;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid black;
+    font-family:'Roboto';
+    font-weight: bold;
+    margin-right: 1rem;
+}

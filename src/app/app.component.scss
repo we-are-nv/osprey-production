@@ -5,6 +5,20 @@
 body{
     margin:0px;
 }
-section{
-    background-color: red;
+router-outlet{
+    margin: 0px;
+}
+.outline{
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    filter:drop-shadow(0px 0px 0px #ffff);
+}
+.blue{
+    background-color: #0065E7;
+    color: white;
+}
+.black{
+    background-color: rgb(0, 0, 0);
+    color: white;
 }

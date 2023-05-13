@@ -22,9 +22,33 @@ a{
     height: 100%;
     width: auto;
     margin-right: auto;
-    margin-left:auto;
-    
-    
+    margin-left:auto;   
+}
+.footerMain {
+    margin-top: 1rem;
+    display: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin:auto;
+}
+.footerCol{
+    width: 18%;
+    margin: 1%;
+    border-radius:0px ;
+    text-align: start;
+}
+@media screen and (max-width: 1000px) {
+    .footerCol{
+        width: 40%;
+        margin-left: auto;
+    }
+}
+@media screen and (max-width: 750px) {
+    .footerCol{
+        width: 70%;
+        margin:auto;
+    }
 }
 
 // Social media Link styling
@@ -42,7 +66,7 @@ a{
 .contactDetail{
     display: flex;
     align-items: center;
-    font-size: 1rem;
+    font-size: 0.75rem;
 }
 .contactDetail h1{
     color: #0065E7;
@@ -57,16 +81,9 @@ a{
 
 // Quote Button
 .quoteButton{
-    width: 10vw;
-    height: 3vw;
+    padding: 0.35rem;
     border-radius: 0px;
     background-color: #0065E7;
-}
-@media (max-width:1000px) { 
-    *{
-        font-size: 80%;
-    }
-    .footerMain{
-        display: flow-root;
-    }
+    width: 80%;
+    padding: 10%;
 }

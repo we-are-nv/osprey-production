@@ -8,16 +8,26 @@ section{
 mat-card{
     width: 70vw;
     margin: auto;
-    
+    padding: 5vw;
 }
 form{
     display: flow-root;
 }
 mat-form-field{
-    margin-left: 2.5%;
-    width: 45%;
+    width: 100%;
+    background-color: transparent !important;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.mat-form-field-appearance-outline .mat-form-field-infix .mat-input-element { 
+    position: relative; 
+    bottom: .25em; 
 }
 span{
     color: #9B9B9B;
     font-family: 'Roboto';
+}
+.half-width{
+    width: 50%;
 }

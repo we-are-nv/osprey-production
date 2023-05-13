@@ -3,16 +3,15 @@
     lowerTitle="As one of the premier providers of smart surveillance technology, we are recognized throughout the industry for our products. Don’t worry about any thing, security experts will install your new system, activate it, and show you how to use it."
     [isButtons]="true"
     background="../../assets/images/heroBackgrounds/productsLanding.png"
-    [button1Data]="{text:'See What It Costs', path:''}"
-    [button2Data]="{text:'Protect My Home', path:''}"
+    [button1Data]="{text:'See What It Costs', path:'', type:'white'}"
+    [button2Data]="{text:'Protect My Home', path:'', type:'outline'}"
     [centred]="true"
-
+    [button3Data]="{text:'Explore Our Services', path:'', type:'white'}"
 ></app-hero>
 
 <section class="ProductsView">
     <div class="productsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-        <ng-container *ngFor="let product of products">
-            <mat-card class="productCard" >
+            <mat-card class="productCard"  *ngFor="let product of products" (click)="loadProduct(product.id)">
                 <img mat-card-image [src]="product.thumbnail">
                 <mat-card-header>
                     <mat-card-title-group></mat-card-title-group>
@@ -20,7 +19,7 @@
                 </mat-card-header>
                 <p>Explore</p>
             </mat-card>
-        </ng-container>
+            
         
     </div>
     <section class="Filter">
@@ -28,7 +27,7 @@
             <h1>Categories</h1>
             <mat-button-toggle-group class="catagoryButtonsContainer">
                 <mat-button-toggle *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-button-toggle>
-              </mat-button-toggle-group>
+            </mat-button-toggle-group>
         </div>
         <div class="searchSection">
             <h1>Search</h1>

@@ -14,6 +14,7 @@ import { HeroComponent } from './keyComponents/hero/hero.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductViewComponent } from './pages/products/product-view/product-view.component';
+import { CategoriesComponent } from './pages/services/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ProductViewComponent } from './pages/products/product-view/product-view
     HeroComponent,
     ProductsComponent,
     ProductViewComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,
