@@ -1,15 +1,15 @@
-<section class="productMain"  fxLayout="row wrap" fxLayoutAlign="flex-start">
+<section class="productMain"  fxLayout="row wrap" fxLayoutAlign="flex-start" *ngIf="product !== null">
     <div class="card">
         <mat-card>
 
         
             <mat-card-header>
                 <mat-card-title>
-                    Marine Fixed Bullet Stainless Steel Camera
+                    {{product.product_name}}
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <img src="../../assets/images/ExampleProducts/cameras.png" alt="">
+                <img [src]="product.image" alt="">
             </mat-card-content>
         </mat-card>
     </div>
@@ -22,16 +22,16 @@
         </mat-card-header>
         <mat-card-content>
             <p>
-                <span *ngFor="let spec of specs">
+                <span *ngFor="let feature of product.features">
                     <span class="dot"></span>
-                    {{spec}} 
-                    <br></span>
+                    {{feature}} 
+                    <br><br>  </span>
             </p>
             <div class="classifications">
                 <p>
-                    Part No: <span> 00001 </span><br>
-                    Categories: <span *ngFor="let catagory of catagories"> {{catagory}},</span> <br>
-                    Tags: <span *ngFor="let tag of tags">{{tag}}, </span>
+                    Part No: <span> {{product.product_code}} </span><br>
+                    Category: <span>{{product.category}}</span> <br>
+                    <!-- Tags: <span *ngFor="let tag of tags">{{tag}}, </span> -->
 
                 </p>
             </div>
@@ -44,10 +44,10 @@
     
     
 </section>
-<section class="productTabs">
+<section class="productTabs" *ngIf="product !== null">
     <mat-tab-group  mat-stretch-tabs="false" mat-align-tabs="start">
-        <mat-tab label="Description">
-            {{description}}
+        <mat-tab label="Description" >
+            <p>{{product.description}}</p>
         </mat-tab>
         <mat-tab label="Specifications">
             Content 2
@@ -69,11 +69,11 @@
     </div>
     <div class="similarProductsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
         <mat-card class="similarProductsCard" *ngFor="let product of similarProducts">
-            <img mat-card-image [src]="product.thumbnail">
+            <img mat-card-image [src]="product.image">
             <mat-card-header>
                 <mat-card-title-group></mat-card-title-group>
-                <mat-card-title>{{product.name}}</mat-card-title>
             </mat-card-header>
+            <h4>{{product.product_name}}</h4>
         </mat-card>
     </div>
     

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
+import { Subscription } from 'rxjs';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-view',
@@ -12,20 +14,38 @@ export class ProductViewComponent implements OnInit{
   tags=["something cool", "cameras"]
   description="Example Description";
 
-  similarProducts = [
-    {name:"tada", thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
-    {name:"tada", thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
-    {name:"tada", thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
-    {name:"tada", thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
-  ];
 
-  constructor(private _Activatedroute:ActivatedRoute){}
-  sub:any;
+
+  constructor(private _Activatedroute:ActivatedRoute, private productService: ProductService){}
   id:any;
+  productSub: Subscription;
+  similarProductsSub: Subscription;
+
+  similarProducts:any;
+
+  product: any = null;
+
   ngOnInit() {
-    sessionStorage.setItem("navStyle", "hello")
-    this.sub = this._Activatedroute.params.subscribe(params => {
-    this.id = params['id'];
+    this._Activatedroute.params.subscribe(params => {
+      this.id = params['id'];
+      this.productService.getSingleProduct(this.id)
+      this.productSub = this.productService.getSingleProductUpdateListener()
+      .subscribe((data)=>{
+        this.product = data;
+        console.log(this.product)
+
+
+        this.productService.getProducts({type:"camera", page:1, limit:4});  
+        this.similarProductsSub = this.productService.getProductsUpdateListener()
+          .subscribe((data)=>{
+            console.log(data)
+            this.similarProducts = data.products;
+
+
+        });
+
+
+    });
     });
   }
   

@@ -48,7 +48,11 @@ export class ProductsComponent implements OnInit{
   // On search
   onSearchChange(searchValue: any): void {  
     console.log(searchValue.target.value);
-    this.productService.getProducts({page:1,type:"camera",searchQuery:searchValue.target.value});
+    this.productService.searchProducts({
+      page:1,
+      searchQuery:searchValue.target.value,
+      extra: true
+      });
   }
 }
 

@@ -11,9 +11,12 @@ export class ProductService {
   private API_URL = environment.API_URL;
 
   private products = new Subject<any>
+  private singleProduct = new Subject<any>
+
   constructor(private http: HttpClient) { }
 
 
+  // Getting Lists Of Products
   getProductsUpdateListener(){
     return this.products.asObservable();
   }
@@ -35,6 +38,25 @@ export class ProductService {
       .get<any>(this.API_URL+ '/product/search', {params: query})
       .subscribe(response=>{
         this.products.next(response)
+      })
+  }
+
+
+  // Loading Single Product
+
+  getSingleProductUpdateListener(){
+    return this.singleProduct.asObservable();
+  }
+
+  getSingleProduct(id: string){
+    console.log(id)
+    let query = id
+    let product: any;
+    this.http
+      .get<any>(this.API_URL+ '/product/product_info', {params: {documentId: query, populate_exclude:""}})
+      .subscribe(response=>{
+        product = response.product
+        this.singleProduct.next(product)
       })
   }
 

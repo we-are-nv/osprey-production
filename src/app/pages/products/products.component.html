@@ -11,7 +11,7 @@
 
 <section class="ProductsView">
     <div class="productsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-            <mat-card class="productCard"  *ngFor="let product of products" (click)="loadProduct(product.id)">
+            <mat-card class="productCard"  *ngFor="let product of products" (click)="loadProduct(product._id)">
                 <img mat-card-image [src]="product.image">
                 <mat-card-header>
                     <mat-card-title-group></mat-card-title-group>
@@ -33,7 +33,7 @@
         <div class="searchSection">
             <h1>Search</h1>
             <mat-form-field class="example-full-width" >
-                <input matInput placeholder="Search Product" (keypress)="onSearchChange($event)" >
+                <input matInput placeholder="Search Product" (keyup)="onSearchChange($event)" >
             </mat-form-field>
         </div>
     </section>
