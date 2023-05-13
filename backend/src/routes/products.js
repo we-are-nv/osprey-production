@@ -110,7 +110,7 @@ router.get("/product_info", async (req, res) => {
   } else {
     additQuery = { 'productType.modelName': product_types[req.query.type] }
   }
-  const count = await allProducts.count(additQuery,selectOptions);
+  const count = await allProducts.count(additQuery, selectOptions);
   console.log(count)
   allProducts.find(additQuery, selectOptions)
     .limit(limit * 1)
@@ -120,8 +120,10 @@ router.get("/product_info", async (req, res) => {
       if (req.query.documentId) {
         res.json({ product: result[0] })
       } else {
-        res.json({ products: result,   totalPages: Math.ceil(count / limit),
-        currentPage: Number(page) })
+        res.json({
+          products: result, totalPages: Math.ceil(count / limit),
+          currentPage: Number(page)
+        })
       }
 
     })
@@ -132,14 +134,16 @@ Search For Products
 */
 
 router.get("/search", async (req, res) => {
+  // Decleare Default Values
   const { page = 1, limit = 10, searchFor = "product_name", searchQuery = "", extra = false } = req.query;
   var query = {};
+  // If Type is Decalred afdd
   if (req.query.type) {
-    var inject = {"productType.modelName":product_types[req.query.type]};
-    query = {...inject,...query}
+    var inject = { "productType.modelName": product_types[req.query.type] };
+    query = { ...inject, ...query }
   };
-  var inject = {[searchFor]:{$regex:searchQuery,$options: "i"}};
-  query = {...query, ...inject};
+  var inject = { [searchFor]: { $regex: searchQuery, $options: "i" } };
+  query = { ...query, ...inject };
   console.log(query);
   const count = await allProducts.count(query);
   var selectOptions = "product_name product_code ";
@@ -147,23 +151,26 @@ router.get("/search", async (req, res) => {
   if (extra) {
     selectOptions += "image description"
   }
-  allProducts.find(query,selectOptions)
-  .limit(limit * 1)
-  .skip((page - 1) * limit)
-  .then((result) => {
-    var newOutput = [];
-    var escapedResult = result;
-    for (idx in escapedResult){
+  allProducts.find(query, selectOptions)
+    .limit(limit * 1)
+    .skip((page - 1) * limit)
+    .then((result) => {
+      var newOutput = [];
+      var escapedResult = result;
+      for (idx in escapedResult) {
 
-      escapedResult[idx]["product_link"] = `/api/product/product_info?documentId=${escapedResult[idx]._id}`
+        escapedResult[idx]["product_link"] = `/api/product/product_info?documentId=${escapedResult[idx]._id}`
 
-      newOutput.push(escapedResult[idx])
-    };
-    res.json({ products: newOutput,   totalPages: Math.ceil(count / limit),
-    currentPage: Number(page) })
-  })
+        newOutput.push(escapedResult[idx])
+      };
+      res.json({
+        products: newOutput, totalPages: Math.ceil(count / limit),
+        currentPage: Number(page)
+      })
+    })
 
-})
+});
+
 
 
 module.exports = router;
