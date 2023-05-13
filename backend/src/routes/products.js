@@ -109,15 +109,18 @@ router.get("/product_info", async (req, res) => {
   } else {
     additQuery = { 'productType.modelName': product_types[req.query.type] }
   }
+  const count = await allProducts.count(additQuery,selectOptions);
+  console.log(count)
   allProducts.find(additQuery, selectOptions)
     .limit(limit * 1)
     .skip((page - 1) * limit)
     .populate(popu)
     .then((result) => {
       if (req.query.documentId) {
-        res.json({ product: result[0] })
+        res.json({ product: result[0],page:page, })
       } else {
-        res.json({ products: result })
+        res.json({ products: result,   totalPages: Math.ceil(count / limit),
+        currentPage: Number(page) })
       }
 
     })
