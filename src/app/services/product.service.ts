@@ -1,18 +1,32 @@
 import { Injectable } from '@angular/core';
 import { DatabaseService } from './database.service';
+import { environment } from 'src/environments/environment.development';
+import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  
-  constructor(private database: DatabaseService) { }
-  products = [
-    {id:"123", name:"example Product", catagory:42 ,thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
-    {id:"123", name:"example Product",catagory:42 , thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
-    {id:"123", name:"example Product",catagory:41 , thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
-    {id:"123", name:"example Product",catagory:43, thumbnail:"../../assets/images/ExampleProducts/cameras.png"},
-  ]
+  private API_URL = environment.API_URL;
+
+  private products = new Subject<{products:[any]}>
+  constructor(private http: HttpClient) { }
+
+
+  getProductsUpdateListener(){
+    return this.products.asObservable();
+  }
+
+
+  getProducts(filter: any){
+    const body = filter;
+    this.http
+      .get<any>(this.API_URL+ '/product/product_info?type=camera')
+      .subscribe(response=>{
+        console.log(response)
+      })
+  }
 
   categories = [
     {name:"marine", id:42},
