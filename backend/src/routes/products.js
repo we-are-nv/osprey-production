@@ -1,39 +1,50 @@
 const express = require('express');
-const controllers = require('../controller/controllers.js');
-const dbQuery = require('../controller/dbQuery.js');
+
+
 var breadcrumbs = require('../controller/breadcrumbs.js');
 
 const allProducts = require('../models/product_info.js');
 const etherProd = require('../models/product_types/ethernet_prod.js');
+const prodAdiit = require('../models/product_addit_info.js')
 const accProd = require('../models/product_types/accessory_prod.js');
 const camProd = require('../models/product_types/camera_prod.js');
 const housProd = require('../models/product_types/housing_prod.js')
 const diskNVR = require('../models/product_types/disk_nvr_prod.js');
 const nvrProd = require('../models/product_types/nvr_prod.js');
-const { all } = require('../controller/dbConnector.js');
 
-var providers = {
-  camera: camProd,
-  accessory: accProd,
-  disk_nvr: diskNVR,
-  ethernet: etherProd,
-  housing: housProd,
-  nvr: nvrProd,
-  product:allProducts
+
+
+var data_models = {
+  camera:{
+    provider:camProd,
+    type:'cam_prod'
+  },
+  accessory:{
+    provider:accProd,
+    type:'acc_prod'
+  },
+  disk_nvr:{
+    provider:diskNVR,
+    type:'disk_nvr_prod'
+  },
+  ethernet:{
+    provider:etherProd,
+    type:'ethernet_prod'
+  },
+  housing:{
+    provider:housProd,
+    type:'housing_prod'
+  },
+  nvr:{
+    provider:nvrProd,
+    type:'nvr_prod'
+  },
+  product:{
+    provider:allProducts,
+    type:'product_info'
+  },
 }
 
-
-
-var product_types = {
-  camera: 'cam_prod',
-  accessory: 'acc_prod',
-  disk_nvr: 'disk_nvr_prod',
-  ethernet: 'ethernet_prod',
-  housing: 'housing_prod',
-  nvr: 'nvr_prod',
-  product:'product_info'
-
-}
 
 const router = express.Router();
 
@@ -46,7 +57,6 @@ router.use(function timeLog(req, res, next) {
 router.get("/product_info", async (req, res) => {
   // Default Values are Set
   const { page = 1, limit = 10 } = req.query;
-
   // Checks to see if a type is declared. However if a documentId is declared its allowed.
   if (!req.query.type && !req.query.documentId) {
     res.json({ error: 'Please Enter a valid product type' });
@@ -68,7 +78,7 @@ router.get("/product_info", async (req, res) => {
       console.log(popuOptions)
       var popu = {
         path: 'productType.id',
-        model: product_types[req.query.type],
+        model: data_models[req.query.type].type,
         select: popuOptions
       };
 
@@ -76,7 +86,7 @@ router.get("/product_info", async (req, res) => {
       // Else set Popu to display everything.
       var popu = {
         path: 'productType.id',
-        model: product_types[req.query.type],
+        model: data_models[req.query.type].type,
         select: {}
       }
     }
@@ -95,7 +105,7 @@ router.get("/product_info", async (req, res) => {
       console.log(popuOptions)
       var popu = {
         path: 'productType.id',
-        model: product_types[req.query.type],
+        model: data_models[req.query.type].type,
         select: popuOptions
       }
     };
@@ -133,7 +143,7 @@ router.get("/product_info", async (req, res) => {
   if (req.query.documentId) {
     additQuery = { _id: req.query.documentId };
   } else {
-    additQuery = { 'productType.modelName': product_types[req.query.type] }
+    additQuery = { 'productType.modelName': data_models[req.query.type].type }
   }
 
   // Determine count for Pagination
@@ -168,7 +178,7 @@ router.get("/search", async (req, res) => {
   var query = {};
   // If Type is Decalred afdd
   if (req.query.type) {
-    var inject = { "productType.modelName": product_types[req.query.type] };
+    var inject = { "productType.modelName": data_models[req.query.type].type };
     query = { ...inject, ...query }
   };
   var inject = { [searchFor]: { $regex: searchQuery, $options: "i" } };
@@ -201,19 +211,27 @@ router.get("/search", async (req, res) => {
 });
 
 
+router.get("/s", async (req, res) => {
 
+  var test = new prodAdiit({
+    info:{"test":"test"}
+  })
+  test.save();
+  res.send('s')
+
+});
 
   router.get("/get_model_structure", async (req, res) => {
     // Default Values
     const { selectedModel = "product" } = req.query;
 
     // Grab keys from selected database
-    var props = Object.keys(providers[selectedModel].schema.paths);
+    var props = Object.keys(data_models[selectedModel].provider.schema.paths);
     var objectTypes = new Array();
     var otherCats = [];
     for (idx in props){
       // Create split list for nested values
-      var splitList = providers[selectedModel].schema.paths[props[idx]].path.split(".")
+      var splitList = data_models[selectedModel].provider.schema.paths[props[idx]].path.split(".")
 
       if (splitList.length > 1){
         //console.log('more!')
@@ -221,7 +239,7 @@ router.get("/search", async (req, res) => {
 
           var obj = {
             name:splitList[1],
-          type:providers[selectedModel].schema.paths[props[idx]].instance
+          type:data_models[selectedModel].provider.schema.paths[props[idx]].instance
           };
           if (!otherCats[splitList[0]] ){
             otherCats[splitList[0]] = [obj]
@@ -232,11 +250,11 @@ router.get("/search", async (req, res) => {
         //console.log(otherCats[splitList[0]] )
 
 
-      } else if (providers[selectedModel].schema.paths[props[idx]].path != "_id" && providers[selectedModel].schema.paths[props[idx]].path != "__v"){
-        console.log(providers[selectedModel].schema.paths[props[idx]].instance)
+      } else if (data_models[selectedModel].provider.schema.paths[props[idx]].path != "_id" && data_models[selectedModel].provider.schema.paths[props[idx]].path != "__v") {
+        console.log(data_models[selectedModel].provider.schema.paths[props[idx]].instance)
         var obj = {
-          name:providers[selectedModel].schema.paths[props[idx]].path,
-          type:providers[selectedModel].schema.paths[props[idx]].instance
+          name:data_models[selectedModel].provider.schema.paths[props[idx]].path,
+          type:data_models[selectedModel].provider.schema.paths[props[idx]].instance
         };
         objectTypes.push(obj);
       }
@@ -250,7 +268,7 @@ router.get("/search", async (req, res) => {
     }
 
     for (nIdx in otherCatKeys){
-      pushObj = {...pushObj, [otherCatKeys[nIdx]]:otherCats[otherCatKeys[nIdx]]}
+      pushObj = {...pushObj, [otherCatKeys[nIdx]]:otherCats[otherCatKeys[nIdx]]};
     }
   res.json(pushObj)
 });

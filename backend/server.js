@@ -9,7 +9,7 @@ const logger = require('./src/utils/logger');
 const mongoose = require('mongoose');
 const app = express();
 
-const staticRoutes = require('./src/routes/static');
+//const staticRoutes = require('./src/routes/static');
 const serviceRoute = require('./src/routes/products');
 
 const PORT = process.env.PORT || 3030;
