@@ -3,24 +3,24 @@ const mongoose = require('mongoose');
 
 
 const productInfo = mongoose.Schema({
-    product_code:{type:String,required:false},
-    product_name:{type:String,required:false},
-    image:{type:String,required:false},
-    technicalImages:{type:Array,required:false},
-    description:{type:String,required:false},
-    category:{type:String,required:false},
-    addit_category:{type:String,required:false},
-    features:{type:Array,required:false},
-    product_link:{type:String,required:false},
-    feature_deprec:{type:String,required:false},
-    manufacturer:{type:String,required:false},
-    tech_drawing:{type:String,required:false},
+    product_code:{type:String,required:true},
+    product_name:{type:String,required:true},
+    image:{type:String,required:true},
+    technicalImages:{type:Array,required:true},
+    description:{type:String,required:true},
+    category:{type:String,required:true},
+    addit_category:{type:String,required:true},
+    features:{type:Array,required:true},
+    product_link:{type:String,required:true},
+    feature_deprec:{type:String,required:true},
+    manufacturer:{type:String,required:true},
+    tech_drawing:{type:String,required:true},
     cost:{
-      amount:{type:String,required:false},
-      currency:{type:String,required:false}
+      amount:{type:String,required:true},
+      currency:{type:String,required:true}
     },
     productType:{
-      modelName:{type:String,required:false},
+      modelName:{type:String,required:true},
       id:{type:mongoose.Schema.Types.ObjectId}
     }
 })

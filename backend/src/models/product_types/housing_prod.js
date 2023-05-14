@@ -2,45 +2,45 @@ const mongoose = require('mongoose');
 
 const housingProd = mongoose.Schema({
   addit_info:{
-    movement:{type:String,required:false},
+    movement:{type:String,required:true},
   },
   power:{
-    power_supply:{type:String,required:false},
-    power_consumption:{type:String,required:false},
+    power_supply:{type:String,required:true},
+    power_consumption:{type:String,required:true},
   },
   certifications:{
-    impact_protection: {type:String,required:false},
-    salt_fog_resistance: {type:String,required:false},
-    corrosion_testing: {type:String,required:false},
-    vibration_testing: {type:String,required:false},
-    ingress_protection: {type:String,required:false},
-    european_US_EMC: {type:String,required:false},
-    marine: {type:String,required:false},
-    hazardous_area: {type:String,required:false}
+    impact_protection: {type:String,required:true},
+    salt_fog_resistance: {type:String,required:true},
+    corrosion_testing: {type:String,required:true},
+    vibration_testing: {type:String,required:true},
+    ingress_protection: {type:String,required:true},
+    european_US_EMC: {type:String,required:true},
+    marine: {type:String,required:true},
+    hazardous_area: {type:String,required:true}
   },
   movements:{
-    pan_range: {type:String,required:false},
-    dimensions_external_mm: {type:String,required:false},
-    pan_speed: {type:String,required:false},
-    tilt_range: {type:String,required:false},
-    tilt_speed: {type:String,required:false},
-    pre_sets: {type:String,required:false},
-    pre_set_tours: {type:String,required:false},
-    motion_tracking: {type:String,required:false}
+    pan_range: {type:String,required:true},
+    dimensions_external_mm: {type:String,required:true},
+    pan_speed: {type:String,required:true},
+    tilt_range: {type:String,required:true},
+    tilt_speed: {type:String,required:true},
+    pre_sets: {type:String,required:true},
+    pre_set_tours: {type:String,required:true},
+    motion_tracking: {type:String,required:true}
   },
   physical:{
-    dimensions: {type:String,required:false},
-    weight: {type:String,required:false},
-    operating_temperature: {type:String,required:false},
-    relative_humidity: {type:String,required:false},
-    compliance: {type:String,required:false},
-    dimensions_external: {type:String,required:false},
-    dimensions_internal: {type:String,required:false},
-    mounting_options: {type:String,required:false}
+    dimensions: {type:String,required:true},
+    weight: {type:String,required:true},
+    operating_temperature: {type:String,required:true},
+    relative_humidity: {type:String,required:true},
+    compliance: {type:String,required:true},
+    dimensions_external: {type:String,required:true},
+    dimensions_internal: {type:String,required:true},
+    mounting_options: {type:String,required:true}
   },
   optics:{
-    ir_illumination_range:{type:String,required:false},
-    window:{type:String,required:false}
+    ir_illumination_range:{type:String,required:true},
+    window:{type:String,required:true}
   }
 })
 

@@ -2,40 +2,40 @@ const mongoose = require('mongoose');
 
 const ethernet = mongoose.Schema({
   eth_interface:{
-  connector:{type:String,required:false},
-  cable:{type:String,required:false},
-  rate:{type:String,required:false}
+  connector:{type:String,required:true},
+  cable:{type:String,required:true},
+  rate:{type:String,required:true}
   },
   interface:{
 
   },
   led:{
-    LED_indicator_lights: {type:String,required:false},
-    ethernet_status_lights: {type:String,required:false},
-    POE: {type:String,required:false},
-    POE_lights: {type:String,required:false}
+    LED_indicator_lights: {type:String,required:true},
+    ethernet_status_lights: {type:String,required:true},
+    POE: {type:String,required:true},
+    POE_lights: {type:String,required:true}
   },
   onboard:{
-    gain:{type:String,required:false},
-    processor:{type:String,required:false},
-    memory:{type:String,required:false}
+    gain:{type:String,required:true},
+    processor:{type:String,required:true},
+    memory:{type:String,required:true}
   },
   physical:{
-    dimensions: {type:String,required:false},
-    weight: {type:String,required:false},
-    operating_temperature: {type:String,required:false},
-    relative_humidity: {type:String,required:false},
-    compliance: {type:String,required:false},
-    mounting_options: {type:String,required:false}
+    dimensions: {type:String,required:true},
+    weight: {type:String,required:true},
+    operating_temperature: {type:String,required:true},
+    relative_humidity: {type:String,required:true},
+    compliance: {type:String,required:true},
+    mounting_options: {type:String,required:true}
   },
   power:{
-    power:  {type:String,required:false},
-    unit_power:  {type:String,required:false},
-    "poe_in_(base)":  {type:String,required:false},
-    "poe_out_(camera)":  {type:String,required:false},
-    "dc_power_in_(base)":  {type:String,required:false},
-    power_method:  {type:String,required:false},
-    esd_emp_protection: {type:String,required:false}
+    power:  {type:String,required:true},
+    unit_power:  {type:String,required:true},
+    "poe_in_(base)":  {type:String,required:true},
+    "poe_out_(camera)":  {type:String,required:true},
+    "dc_power_in_(base)":  {type:String,required:true},
+    power_method:  {type:String,required:true},
+    esd_emp_protection: {type:String,required:true}
   }
 })
 
