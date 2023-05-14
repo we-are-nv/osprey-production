@@ -10,7 +10,6 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductsComponent implements OnInit{
   constructor(private productService: ProductService, private router:Router){}
-
   products: any;
   currentPage:number;
   totalPages  :number;
@@ -51,8 +50,16 @@ export class ProductsComponent implements OnInit{
     this.productService.searchProducts({
       page:1,
       searchQuery:searchValue.target.value,
-      extra: true
+      extra: true 
       });
+  }
+  changePage(changeType:any){
+    if(changeType== "-"){
+      this.currentPage -= 1
+    }else if (changeType == "+"){
+      this.currentPage += 1
+    }
+    this.productService.getProducts({type:"camera", page:this.currentPage});  
   }
 }
 

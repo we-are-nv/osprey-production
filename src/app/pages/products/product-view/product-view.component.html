@@ -49,15 +49,16 @@
         <mat-tab label="Description" >
             <p>{{product.description}}</p>
         </mat-tab>
+        <mat-tab label="Technical Images">
+            Content 3
+        </mat-tab>
         <mat-tab label="Specifications">
             Content 2
         </mat-tab>
         <mat-tab label="Drawings">
             Content 3
         </mat-tab>
-        <mat-tab label="Gallery">
-            Content 3
-        </mat-tab>
+        
         <mat-tab label="Downloads">
             Content 3
         </mat-tab>
@@ -68,7 +69,7 @@
         <h1>Our Services</h1>
     </div>
     <div class="similarProductsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-        <mat-card class="similarProductsCard" *ngFor="let product of similarProducts">
+        <mat-card class="similarProductsCard" *ngFor="let product of similarProducts" routerLink="/product/{{product._id}}">
             <img mat-card-image [src]="product.image">
             <mat-card-header>
                 <mat-card-title-group></mat-card-title-group>

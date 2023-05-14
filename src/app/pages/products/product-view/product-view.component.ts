@@ -21,6 +21,8 @@ export class ProductViewComponent implements OnInit{
   productSub: Subscription;
   similarProductsSub: Subscription;
 
+  type = "camera"
+
   similarProducts:any;
 
   product: any = null;
@@ -33,9 +35,9 @@ export class ProductViewComponent implements OnInit{
       .subscribe((data)=>{
         this.product = data;
         console.log(this.product)
+        
 
-
-        this.productService.getProducts({type:"camera", page:1, limit:4});  
+        this.productService.getProducts({type:this.type, page:1, limit:4});  
         this.similarProductsSub = this.productService.getProductsUpdateListener()
           .subscribe((data)=>{
             console.log(data)
