@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 
 
 const productInfo = mongoose.Schema({
-  info:{type:Object,requried:true}
+  info:{type:Object,requried:true},
+  block:{type:String,required:true},
 })
 
 

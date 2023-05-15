@@ -12,6 +12,9 @@ const housProd = require('../models/product_types/housing_prod.js')
 const diskNVR = require('../models/product_types/disk_nvr_prod.js');
 const nvrProd = require('../models/product_types/nvr_prod.js');
 
+const masterProd = require('../models/product_addit_info.js');
+const productModels = require('../models/product_models.js')
+const blockList = require('../models/block_list.js')
 
 
 var data_models = {
@@ -43,6 +46,10 @@ var data_models = {
     provider:allProducts,
     type:'product_info'
   },
+  master: {
+    provider:masterProd,
+    type:'product_info_addit'
+  }
 }
 
 
@@ -73,6 +80,10 @@ router.get("/product_info", async (req, res) => {
     if (req.query.populate_include != "all") {
       var tempStore = req.query.populate_include.split(",");
       tempStore.forEach(function (item) {
+        if (req.query.type == "master"){
+          item = "info."+item
+        };
+
         popuOptions[item] = 1;
       });
       console.log(popuOptions)

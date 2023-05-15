@@ -1,0 +1,268 @@
+[
+  {
+    "data": {
+      "physical": [
+        "material",
+        "operating_temperature",
+        "thermostat_heater",
+        "relative_humidity",
+        "atmospheric_pressure",
+        "weight",
+        "dimensions",
+        "cable_entry",
+        "mounting_options"
+      ],
+      "power": ["power_supply", "power_consumption"],
+      "certifications": [
+        "impact_protection",
+        "salt_fog_resistance",
+        "corrosion_testing",
+        "vibration_testing",
+        "ingress_protection",
+        "european_US_EMC",
+        "marine",
+        "hazardous_area"
+      ]
+    },
+    "type_name": "accessory"
+  },
+  {
+    "data": {
+      "av": [
+        "camera",
+        "resolution",
+        "pixels",
+        "frame_rate",
+        "sensitivity",
+        "optical_lens",
+        "digital_zoom",
+        "aperture_range",
+        "angle_of_view",
+        "min-working_distance",
+        "zoom_speed",
+        "shooting_mode",
+        "focusing_mode",
+        "ir_illumination_range",
+        "maxiumum_vehicle_speed",
+        "digital_image_stabilisation",
+        "dori",
+        "on-board_storage",
+        "white_balance",
+        "wide_dynamic_range",
+        "signal_to_noise_ratio",
+        "image_features",
+        "privacy_â_masking",
+        "analytics",
+        "video_compression",
+        "bitrate",
+        "audio_connection",
+        "audio_compression"
+      ],
+      "power": [
+        "ethernet",
+        "rs485",
+        "bnc_output",
+        "alarm_in_out",
+        "audio_in_out_connector",
+        "power_supply",
+        "power_consumption"
+      ],
+      "pan_tilt": [
+        "pan-range",
+        "pan-speed",
+        "tilt-range",
+        "tilt-speed",
+        "pre-sets",
+        "pre-set_tours",
+        "motion_tracking"
+      ],
+      "certifications": [
+        "impact_protection",
+        "salt_fog_resistance",
+        "corrosion_testing",
+        "vibration_testing",
+        "ingress_protection",
+        "european_US_EMC",
+        "marine",
+        "hazardous_area"
+      ],
+      "physical": [
+        "material",
+        "operating_temperature",
+        "thermostat_heater",
+        "relative_humidity",
+        "atmospheric_pressure",
+        "weight",
+        "dimensions",
+        "cable_entry",
+        "mounting_options"
+      ]
+    },
+    "type_name": "camera"
+  },
+  { "data": { "specs": [ "size_tb" ] }, "type_name": "disk_nvr" },
+  {
+    "data": {
+      "eth_interface": [ "connector", "cable", "rate" ],
+      "led": [
+        "LED_indicator_lights",
+        "ethernet_status_lights",
+        "POE",
+        "POE_lights"
+      ],
+      "onboard": [ "gain", "processor", "memory" ],
+      "physical": [
+        "dimensions",
+        "weight",
+        "operating_temperature",
+        "relative_humidity",
+        "compliance",
+        "mounting_options"
+      ],
+      "power": [
+        "power",
+        "unit_power",
+        "poe_in_(base)",
+        "poe_out_(camera)",
+        "dc_power_in_(base)",
+        "power_method",
+        "esd_emp_protection"
+      ],
+      "interface": [ "connector", "cable", "cable_1", "rate", "rate_2", "rate_3" ]
+    },
+    "type_name": "ethernet"
+  },
+  {
+    "data": {
+      "housing_additional_info": [ "movement" ],
+      "power": [ "power_supply", "power_consumption" ],
+      "certifications": [
+        "impact_protection",
+        "salt_fog_resistance",
+        "corrosion_testing",
+        "vibration_testing",
+        "ingress_protection",
+        "european_US_EMC",
+        "marine",
+        "hazardous_area"
+      ],
+      "movements": [
+        "pan_range",
+        "dimensions_external_mm",
+        "pan_speed",
+        "tilt_range",
+        "tilt_speed",
+        "pre_sets",
+        "pre_set_tours",
+        "motion_tracking"
+      ],
+      "physical": [
+        "dimensions",
+        "weight",
+        "operating_temperature",
+        "relative_humidity",
+        "compliance",
+        "dimensions_external",
+        "dimensions_internal",
+        "mounting_options"
+      ],
+      "optics": [ "ir_illumination_range", "window" ]
+    },
+    "type_name": "housing"
+  },
+  {
+    "data": {
+      "nvr_additional_info": [
+        "input",
+        "consumption",
+        "dimensions",
+        "weight",
+        "temp",
+        "humidity",
+        "safety",
+        "mobile_app",
+        "web_browser"
+      ],
+      "adv_features": [
+        "vca_counting_solution",
+        "vca_event_search",
+        "smart_search_ii",
+        "trend_micro_iot_security",
+        "cybersecurity_managment"
+      ],
+      "audio": [ "audio_format", "audio_in", "audio_out" ],
+      "deep_search": [ "object_search", "scence_search", "attribute_search" ],
+      "remote": [ "mobile_tablet_app", "web_browser" ],
+      "device": [ "os", "watchdog", "power_restoration" ],
+      "display": [
+        "live_view_channels",
+        "live_view_specs",
+        "output",
+        "resolution",
+        "dewarp",
+        "warp",
+        "ptz_oper"
+      ],
+      "interface": [
+        "usb_front",
+        "usb_rear",
+        "alarm_in",
+        "alarm_out",
+        "audio_in",
+        "rs485"
+      ],
+      "network": [
+        "ethernet",
+        "network_throughput_input_output_total",
+        "poe",
+        "poe_managment",
+        "protocols"
+      ],
+      "playback": [
+        "playback_display_channels",
+        "display_spec",
+        "playback_control",
+        "video_search",
+        "thumbnail_explorer",
+        "snapshot",
+        "video_clip_export"
+      ],
+      "recording": [
+        "recording_time",
+        "post",
+        "recording_stream",
+        "recording_throughput",
+        "recording_mode",
+        "recording_setting",
+        "watermark"
+      ],
+      "storage": [
+        "hdd_devices",
+        "raid",
+        "disk_management",
+        "hdd_tech",
+        "external_storage",
+        "video_clip_export",
+        "schedule_backup"
+      ],
+      "system": [
+        "camera_integration",
+        "event",
+        "event_action",
+        "user_management",
+        "log",
+        "date",
+        "language"
+      ],
+      "video": [
+        "format",
+        "decoder",
+        "resolution",
+        "capability",
+        "needs_keys",
+        "needs_keys_1"
+      ]
+    },
+    "type_name": "nvr"
+  }
+]

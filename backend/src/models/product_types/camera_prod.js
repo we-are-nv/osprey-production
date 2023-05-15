@@ -59,15 +59,6 @@ const accessoryProduct = mongoose.Schema({
     marine: {type:String,required:true},
     hazardous_area: {type:String,required:true}
   },
-  power_conn: {
-    ethernet: {type:String,required:true},
-    rs485:{type:String,required:true},
-    bnc_output: {type:String,required:true},
-    alarm_in_out: {type:String,required:true},
-    audio_in_out_connector: {type:String,required:true},
-    power_supply: {type:String,required:true},
-    power_consumption: {type:String,required:true}
-  },
   physical:{
     material:{type:String,required:true},
     operating_temp:{type:String,required:true},

@@ -1,0 +1,309 @@
+[
+  {
+    "data": {
+      "impact_protection": { "type": "String" },
+      "salt_fog_resistance": { "type": "String" },
+      "corrosion_testing": { "type": "String" },
+      "vibration_testing": { "type": "String" },
+      "ingress_protection": { "type": "String" },
+      "european_US_EMC": { "type": "String" },
+      "marine": { "type": "String" },
+      "hazardous_area": { "type": "String" }
+    },
+    "type_name":"certifications"
+  },
+  {
+    "data": {
+      "dimensions": { "type": "String" },
+      "weight": { "type": "String" },
+      "operating_temperature": { "type": "String" },
+      "relative_humidity": { "type": "String" },
+      "mounting_options": { "type": "String" },
+      "compliance": { "type": "String" },
+      "dimensions_external": { "type": "String" },
+      "dimensions_internal": { "type": "String" },
+      "material": { "type": "String" },
+      "thermostat_heater": { "type": "String" },
+      "atmospheric_pressure": { "type": "String" },
+      "cable_entry": { "type": "String" }
+    },
+    "type_name":"physical"
+  },
+  {
+    "data": {
+      "pan_range": { "type": "String" },
+      "dimensions_external_mm": { "type": "String" },
+      "pan_speed": { "type": "String" },
+      "tilt_range": { "type": "String" },
+      "tilt_speed": { "type": "String" },
+      "pre_sets": { "type": "String" },
+      "pre_set_tours": { "type": "String" },
+      "motion_tracking": { "type": "String" }
+    },
+    "type_name":"movements"
+  },
+  {
+    "data": {
+      "power_supply": { "type": "String" },
+      "power_consumption": { "type": "String" },
+      "power": { "type": "String" },
+      "unit_power": { "type": "String" },
+      "poe_in_(base)": { "type": "String" },
+      "poe_out_(camera)": { "type": "String" },
+      "dc_power_in_(base)": { "type": "String" },
+      "power_method": { "type": "String" },
+      "esd_emp_protection": { "type": "String" },
+      "ethernet": { "type": "String" },
+      "rs485": { "type": "String" },
+      "bnc_output": { "type": "String" },
+      "alarm_in_out": { "type": "String" },
+      "audio_in_out_connector": { "type": "String" }
+    },
+    "type_name":"power"
+  },
+  {
+    "data": {
+      "connector": { "type": "String" },
+      "cable": { "type": "String" },
+      "rate": { "type": "String" }
+    },
+    "type_name":"eth_interface"
+  },
+  {
+    "data": {
+      "connector": { "type": "String" },
+      "cable": { "type": "String" },
+      "cable_1": { "type": "String" },
+      "rate": { "type": "String" },
+      "rate_2": { "type": "String" },
+      "rate_3": { "type": "String" },
+      "usb_front": { "type": "String" },
+      "usb_rear": { "type": "String" },
+      "alarm_in": { "type": "String" },
+      "alarm_out": { "type": "String" },
+      "audio_in": { "type": "String" },
+      "rs485": { "type": "String" }
+    },
+    "type_name":"interface"
+  },
+  {
+    "data": {
+      "LED_indicator_lights": { "type": "String" },
+      "ethernet_status_lights": { "type": "String" },
+      "POE": { "type": "String" },
+      "POE_lights": { "type": "String" }
+    },
+    "type_name":"led"
+  },
+  {
+    "data": {
+      "gain": { "type": "String" },
+      "processor": { "type": "String" },
+      "memory": { "type": "String" }
+    },
+    "type_name":"onboard"
+  },
+  {
+    "data": {
+      "camera": { "type": "String" },
+      "resolution": { "type": "String" },
+      "pixels": { "type": "String" },
+      "frame_rate": { "type": "String" },
+      "sensitivity": { "type": "String" },
+      "optical_lens": { "type": "String" },
+      "digital_zoom": { "type": "String" },
+      "aperture_range": { "type": "String" },
+      "angle_of_view": { "type": "String" },
+      "min-working_distance": { "type": "String" },
+      "zoom_speed": { "type": "String" },
+      "shooting_mode": { "type": "String" },
+      "focusing_mode": { "type": "String" },
+      "ir_illumination_range": { "type": "String" },
+      "maxiumum_vehicle_speed": { "type": "String" },
+      "digital_image_stabilisation": { "type": "String" },
+      "dori": { "type": "String" },
+      "on-board_storage": { "type": "String" },
+      "white_balance": { "type": "String" },
+      "wide_dynamic_range": { "type": "String" },
+      "signal_to_noise_ratio": { "type": "String" },
+      "image_features": { "type": "String" },
+      "privacy_â_masking": { "type": "String" },
+      "analytics": { "type": "String" },
+      "video_compression": { "type": "String" },
+      "bitrate": { "type": "String" },
+      "audio_connection": { "type": "String" },
+      "audio_compression": { "type": "String" }
+    },
+    "type_name":"av"
+  },
+  {
+    "data": {
+      "pan-range": { "type": "String" },
+      "pan-speed": { "type": "String" },
+      "tilt-range": { "type": "String" },
+      "tilt-speed": { "type": "String" },
+      "pre-sets": { "type": "String" },
+      "pre-set_tours": { "type": "String" },
+      "motion_tracking": { "type": "String" }
+    },
+    "type_name":"pan_tilt"
+  },
+  {
+    "data": {
+      "ethernet": { "type": "String" },
+      "rs485": { "type": "String" },
+      "bnc_output": { "type": "String" },
+      "alarm_in_out": { "type": "String" },
+      "audio_in_out_connector": { "type": "String" },
+      "power_supply": { "type": "String" },
+      "power_consumption": { "type": "String" }
+    },
+    "type_name":"power_conn"
+  },
+  {
+    "data": {
+      "vca_counting_solution": { "type": "String" },
+      "vca_event_search": { "type": "String" },
+      "smart_search_ii": { "type": "String" },
+      "trend_micro_iot_security": { "type": "String" },
+      "cybersecurity_managment": { "type": "String" }
+    },
+    "type_name":"adv_features"
+  },
+  {
+    "data": {
+      "audio_format": { "type": "String" },
+      "audio_in": { "type": "String" },
+      "audio_out": { "type": "String" }
+    },
+    "type_name":"audio"
+  },
+  {
+    "data": {
+      "object_search": { "type": "String" },
+      "scence_search": { "type": "String" },
+      "attribute_search": { "type": "String" }
+    },
+    "type_name":"deep_search"
+  },
+  {
+    "data": {
+      "mobile_tablet_app": { "type": "String" },
+      "web_browser": { "type": "String" }
+    },
+    "type_name":"remote"
+  },
+  {
+    "data": {
+      "os": { "type": "String" },
+      "watchdog": { "type": "String" },
+      "power_restoration": { "type": "String" }
+    },
+    "type_name":"device"
+  },
+  {
+    "data": {
+      "live_view_channels": { "type": "String" },
+      "live_view_specs": { "type": "String" },
+      "output": { "type": "String" },
+      "resolution": { "type": "String" },
+      "dewarp": { "type": "String" },
+      "warp": { "type": "String" },
+      "ptz_oper": { "type": "String" }
+    },
+    "type_name":"display"
+  },
+  {
+    "data": {
+      "ethernet": { "type": "String" },
+      "network_throughput_input_output_total": { "type": "String" },
+      "poe": { "type": "String" },
+      "poe_managment": { "type": "String" },
+      "protocols": { "type": "String" }
+    },
+    "type_name":"network"
+  },
+  {
+    "data": {
+      "playback_display_channels": { "type": "String" },
+      "display_spec": { "type": "String" },
+      "playback_control": { "type": "String" },
+      "video_search": { "type": "String" },
+      "thumbnail_explorer": { "type": "String" },
+      "snapshot": { "type": "String" },
+      "video_clip_export": { "type": "String" }
+    },
+    "type_name":"playback"
+  },
+  {
+    "data": {
+      "recording_time": { "type": "String" },
+      "post": { "type": "String" },
+      "recording_stream": { "type": "String" },
+      "recording_throughput": { "type": "String" },
+      "recording_mode": { "type": "String" },
+      "recording_setting": { "type": "String" },
+      "watermark": { "type": "String" }
+    },
+    "type_name":"recording"
+  },
+  {
+    "data": {
+      "hdd_devices": { "type": "String" },
+      "raid": { "type": "String" },
+      "disk_management": { "type": "String" },
+      "hdd_tech": { "type": "String" },
+      "external_storage": { "type": "String" },
+      "video_clip_export": { "type": "String" },
+      "schedule_backup": { "type": "String" }
+    },
+    "type_name":"storage"
+  },
+  {
+    "data": {
+      "camera_integration": { "type": "String" },
+      "event": { "type": "String" },
+      "event_action": { "type": "String" },
+      "user_management": { "type": "String" },
+      "log": { "type": "String" },
+      "date": { "type": "String" },
+      "language": { "type": "String" }
+    },
+    "type_name":"system"
+  },
+  {
+    "data": {
+      "format": { "type": "String" },
+      "decoder": { "type": "String" },
+      "resolution": { "type": "String" },
+      "capability": { "type": "String" },
+      "needs_keys": { "type": "String" },
+      "needs_keys_1": { "type": "String" }
+    },
+    "type_name":"video"
+  },
+
+  {
+    "data": {
+      "movement": {
+        "type": "String",
+        "required": true
+      }
+    },
+    "type_name":"housing_additional_info"
+  },
+  {
+    "data": {
+      "input":{"type":"String","required":true},
+      "consumption":{"type":"String","required":true},
+      "dimensions":{"type":"String","required":true},
+      "weight":{"type":"String","required":true},
+      "temp":{"type":"String","required":true},
+      "humidity":{"type":"String","required":true},
+      "safety":{"type":"String","required":true},
+      "mobile_app":{"type":"String","required":true},
+      "web_browser":{"type":"String","required":true}
+    },
+    "type_name":"nvr_additional_info"
+  }
+]
