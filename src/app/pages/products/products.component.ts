@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -9,14 +9,22 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit{
-  constructor(private productService: ProductService, private router:Router){}
+  constructor(private productService: ProductService, private router:Router, private _Activatedroute: ActivatedRoute){}
   products: any;
+
+  types: any[];
+  type = "";
   currentPage:number;
   totalPages  :number;
   public productsSub : Subscription;
 
   ngOnInit(){
-    this.productService.getProducts({type:"camera", page:1});  
+    this.types = this.productService.types
+    this._Activatedroute.params.subscribe(params =>{
+      
+      this.type = params['type'];
+      this.productService.getProducts({type:this.type, page:1}); 
+    }) 
     this.productsSub = this.productService.getProductsUpdateListener()
       .subscribe((data)=>{
         console.log(data)
@@ -25,6 +33,8 @@ export class ProductsComponent implements OnInit{
         this.totalPages = data.totalPages
 
     });
+    
+
   }
 
   currentCategory=null;
@@ -34,9 +44,9 @@ export class ProductsComponent implements OnInit{
 
 
 
-  changeCategory(value:any){
-    this.currentCategory = value;
-    console.log(this.currentCategory)
+  changeType(value:any){
+    this.type=value
+    this.productService.getProducts({type:this.type, page:1});
   }
   loadProduct(id:any){
     this.router.navigate(['product/'+id]);

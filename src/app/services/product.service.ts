@@ -64,5 +64,16 @@ export class ProductService {
     {name:"marine", id:42},
     {name:"marine2", id:42},
   ]
+  types= [
+    
+    {name: "Cameras", value:"camera"},
+    {name: "Ethernet", value:"ethernet"},
+    {name: "Housing", value:"housing"},
+    {name: "Accessories", value:"accessory"},
+    {name: "Disks", value: "disk_nvr"},
+    {name: "NVR", value: "nvr"}
+  ]
 
 }
+
+// Types Code

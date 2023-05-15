@@ -1,12 +1,10 @@
 // Format Product sections
 .ProductsView{
     display: flex;
-    width: 90vw;
-    margin:auto;
+    width: 100%;
 }
 // Display and Control Products
 .ProductsView .productsContainer {
-    margin-top: 1rem;
     display: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
@@ -14,35 +12,39 @@
     width: 75%;
 }
 .productsContainer .productCard{
-    width: 23%;
-    margin: 1%;
+    width: 20%;
+    margin: 5%;
     border-radius:0px ;
+    border: 0px;
     text-align: start;
+    box-shadow: none;
+    height: min-content;
 }
 .productCard img{
-    height: 50%;
+    object-fit: fill;
+    
 }
 .productCard h4{
-    margin: 1rem;
+    margin-left: 1rem;
 }
 .productCard p{
     margin-left:15px;
 }
 @media screen and (max-width: 1000px) {
     .productsContainer .productCard{
-        width: 31%;
+        width: 35%;
     }
 }
 @media screen and (max-width: 750px) {
     .productsContainer .productCard{
-        width: 48%;
+        width: 70%;
     }
 }
 
 // category and info Selector
 .Filter{
-    width:20%;
-    margin-left: auto;
+    width:10%;
+
     display: block;
 }
 .mat-button-toggle-group{
@@ -54,25 +56,27 @@
     color: #0065E7;
     border: 0px;
     text-align: left;
-    height: 10%;
+    height: 5%;
 }
-.mat-button-toggle-label-content{
-    padding: 0px;
-    margin: 0px;
-    text-align: start;
-
-}
-.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
-    line-height: 10px;
+.mat-button-toggle-button{
+    width: 0% !important;
 }
 
 
 
 // Pagination Buttons
 .paginationButtons{
-    width: 60vw;
     display: flex;
+    width: 100%;
 }
-.paginationButtons button{
+.paginationButtons .buttons{
     margin: auto;
+}
+.paginationButtons .buttons button{
+    border-radius: 0px;
+    border: 2px solid;
+    margin: 5px;
+}
+.buttons #page{
+    border: 2px solid #093273;
 }
