@@ -1,23 +1,17 @@
 <section>
     <mat-card>
-        <mat-card-header>
-            <mat-card-title>
-                Request A Quote
-            </mat-card-title>
-            <mat-card-subtitle>
-                <span>Please complete the form below, to request a quote, and we’ll be in touch. Or you can call us +44 (0)1245 210 914 and our specialists will provide the necessary help!</span>
-            </mat-card-subtitle>
-        </mat-card-header>
+        <mat-card-header> 
+            <div class="header">
+                <h1>Request A Quote</h1>
+                <p>Please complete the form below, to request a quote, and we’ll be in touch. Or you can call us +44 (0)1245 210 914 and our specialists will provide the necessary help!</p>
+            </div>
+            </mat-card-header>
         <mat-card-content>
             
             <form action="" #ngform>
                 <mat-form-field class="form-input" appearance="outline">
-                    <mat-label>First Name</mat-label>
-                    <input matInput type="text">
-                </mat-form-field>
-                <mat-form-field class="form-input" appearance="outline">
-                    <mat-label>Last Name</mat-label>
-                    <input matInput type="text">
+                    <mat-label>Your Name*</mat-label>
+                    <input style="text-align:center;" matInput type="text">
                 </mat-form-field>
                 <mat-form-field class="form-input" appearance="outline">
                     <mat-label>Email adress</mat-label>
@@ -31,6 +25,19 @@
                     <mat-label>Organisation</mat-label>
                     <input matInput type="text">
                 </mat-form-field>
+                <mat-form-field class="form-input" appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <input matInput type="text">
+                </mat-form-field>
+                <mat-form-field class="form-input" appearance="outline">
+                    <mat-label>Message</mat-label>
+                    <textarea matInput
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="1"
+                            cdkAutosizeMaxRows="5"></textarea>
+                </mat-form-field>
+                <button mat-flat-button>Submit Your Form</button>
             </form>
         </mat-card-content>
         

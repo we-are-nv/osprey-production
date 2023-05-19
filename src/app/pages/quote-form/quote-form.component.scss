@@ -3,15 +3,30 @@ section{
     background: linear-gradient(90deg, rgba(0,101,231,1) 0%, rgba(0,101,231,0.1881127450980392) 100%);
     padding-top:5vh ;
     padding-bottom: 5vh;
+    display: flow-root;
 }
 
 mat-card{
-    width: 70vw;
+    width: 50vw;
     margin: auto;
-    padding: 5vw;
+    padding: 2vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border-radius: 3%;
+}
+.header{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2vh;
 }
 form{
-    display: flow-root;
+    display:block;
+    width: 85%;
+    margin: auto;
+}
+form *{
+    border-radius: 0px !important;
+    
 }
 mat-form-field{
     width: 100%;
@@ -19,15 +34,31 @@ mat-form-field{
     text-align: center;
     justify-content: center;
     align-items: center;
+
 }
-.mat-form-field-appearance-outline .mat-form-field-infix .mat-input-element { 
-    position: relative; 
-    bottom: .25em; 
-}
-span{
+// .mdc-text-field--outlined { 
+//     position: relative; 
+//     bottom: .25em; 
+//     border: 1px solid red !important;
+// }
+p{
     color: #9B9B9B;
     font-family: 'Roboto';
 }
 .half-width{
-    width: 50%;
+    position:relative;
+    width: 49%;
+    margin:0.5%;
+}
+
+// Button Themeing
+
+button{
+    background-color: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.494);
+    color: white;
+    filter:drop-shadow(0px 0px 0px #ffff);
+    width: 30%;
+    height: 30%;
+    margin: auto !important;
 }

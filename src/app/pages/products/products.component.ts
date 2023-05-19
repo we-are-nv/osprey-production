@@ -21,10 +21,13 @@ export class ProductsComponent implements OnInit{
   ngOnInit(){
     this.types = this.productService.types
     this._Activatedroute.params.subscribe(params =>{
-      
-      this.type = params['type'];
+      if(params["type"]== undefined){
+        this.type == this.types["0"].value
+      }else{
+        this.type = params["type"]
+      }
       this.productService.getProducts({type:this.type, page:1}); 
-    }) 
+    })
     this.productsSub = this.productService.getProductsUpdateListener()
       .subscribe((data)=>{
         console.log(data)
@@ -63,13 +66,8 @@ export class ProductsComponent implements OnInit{
       extra: true 
       });
   }
-  changePage(changeType:any){
-    if(changeType== "-"){
-      this.currentPage -= 1
-    }else if (changeType == "+"){
-      this.currentPage += 1
-    }
-    this.productService.getProducts({type:"camera", page:this.currentPage});  
+  changePage(newPage:any){
+    this.productService.getProducts({type:"camera", page:newPage});  
   }
 }
 

@@ -24,9 +24,11 @@
             
             <section class="paginationButtons">
                 <div class="buttons">
-                    <button mat-stroked-button (click)="changePage('-')" *ngIf="currentPage !== 1" >-</button>
-                    <button mat-flat-button color="primary" id="page">{{currentPage}}/{{totalPages}}</button>
-                    <button mat-stroked-button (click)="changePage('+')" *ngIf="currentPage !== totalPages">+</button>
+                    <button mat-flat-button *ngIf="currentPage-2 > 0" (click)="changePage(currentPage-2)" >{{currentPage - 2}}</button>
+                    <button mat-flat-button *ngIf="currentPage-1 > 0" (click)="changePage(currentPage-1)" >{{currentPage - 1}}</button>
+                    <button mat-flat-button color="primary" id="page">{{currentPage}}</button>
+                    <button mat-flat-button *ngIf="currentPage+1 <= totalPages" (click)="changePage(currentPage+1)" >{{currentPage+1}}</button>
+                    <button mat-flat-button *ngIf="currentPage+2 <= totalPages" (click)="changePage(currentPage+2)" >{{currentPage+2}}</button>
                 </div>
             </section>
     </div>
