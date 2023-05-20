@@ -12,6 +12,7 @@ const app = express();
 //const staticRoutes = require('./src/routes/static');
 const serviceRoute = require('./src/routes/products');
 
+
 const PORT = process.env.PORT || 3030;
 
 if (process.env.NODE_ENV == "development") {

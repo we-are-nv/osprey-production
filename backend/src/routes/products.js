@@ -2,9 +2,10 @@ const express = require('express');
 
 
 var breadcrumbs = require('../controller/breadcrumbs.js');
-
+var ObjectId = require('mongoose').Types.ObjectId;
 const allProducts = require('../models/product_info.js');
 const etherProd = require('../models/product_types/ethernet_prod.js');
+const categories = require('../models/categorys.js')
 const prodAdiit = require('../models/product_addit_info.js')
 const accProd = require('../models/product_types/accessory_prod.js');
 const camProd = require('../models/product_types/camera_prod.js');
@@ -63,10 +64,10 @@ router.use(function timeLog(req, res, next) {
 
 router.get("/product_info", async (req, res) => {
   // Default Values are Set
-  const { page = 1, limit = 10 } = req.query;
+  const { page = 1, limit = 10, subCat = "" } = req.query;
   // Checks to see if a type is declared. However if a documentId is declared its allowed.
-  if (!req.query.type && !req.query.documentId) {
-    res.json({ error: 'Please Enter a valid product type' });
+  if (!req.query.category && !req.query.documentId) {
+    res.json({ error: 'Please Enter a valid product category' });
     return;
   };
 
@@ -154,9 +155,13 @@ router.get("/product_info", async (req, res) => {
   if (req.query.documentId) {
     additQuery = { _id: req.query.documentId };
   } else {
-    additQuery = { 'productType.modelName': data_models[req.query.type].type }
+    additQuery = { 'category': new ObjectId(req.query.category) };
+    if (subCat != ""){
+      additQuery['productType.modelName'] = subCat;
+    };
   }
-
+  console.log(additQuery)
+  console.log(selectOptions)
   // Determine count for Pagination
 
   const count = await allProducts.count(additQuery, selectOptions);
@@ -177,6 +182,18 @@ router.get("/product_info", async (req, res) => {
 
     })
 });
+
+/*
+Get Categories
+*/
+
+router.get("/categories", async, (req,res,next) => {
+  categories.find()
+  .then((result) => {
+    res.json({cats:result})
+  })
+});
+
 
 /*
 Search For Products

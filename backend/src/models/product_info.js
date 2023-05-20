@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const categorys = require('./categorys');
 
 
 
@@ -15,6 +16,7 @@ const productInfo = mongoose.Schema({
     feature_deprec:{type:String,required:true},
     manufacturer:{type:String,required:true},
     tech_drawing:{type:String,required:true},
+    category:{type:mongoose.Schema.Types.ObjectId,ref:categorys},
     cost:{
       amount:{type:String,required:true},
       currency:{type:String,required:true}
