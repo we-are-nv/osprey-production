@@ -5,7 +5,7 @@ const product_info = require('./product_info');
 
 const productInfo = mongoose.Schema({
   info:{type:Object,requried:true},
-  productId:{type:mongoose.Schema.Types.ObjectId,ref:product_info},
+  productId:{type:mongoose.Schema.Types.ObjectId},
   modelName:{type:String,required:true},
 })
 

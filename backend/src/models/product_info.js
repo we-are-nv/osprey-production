@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const categorys = require('./categorys');
+const product_addit_info = require('./product_addit_info');
 
 
 
@@ -17,6 +18,7 @@ const productInfo = mongoose.Schema({
     manufacturer:{type:String,required:true},
     tech_drawing:{type:String,required:true},
     category:{type:mongoose.Schema.Types.ObjectId,ref:categorys},
+    additional_information:{type:mongoose.Schema.Types.ObjectId,ref:product_addit_info},
     cost:{
       amount:{type:String,required:true},
       currency:{type:String,required:true}

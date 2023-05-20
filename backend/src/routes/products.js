@@ -81,24 +81,24 @@ router.get("/product_info", async (req, res) => {
     if (req.query.populate_include != "all") {
       var tempStore = req.query.populate_include.split(",");
       tempStore.forEach(function (item) {
-        if (req.query.type == "master"){
+
           item = "info."+item
-        };
+
 
         popuOptions[item] = 1;
       });
       console.log(popuOptions)
       var popu = {
-        path: 'productType.id',
-        model: data_models[req.query.type].type,
+        path: 'additional_information',
+        model: 'product_info_addit',
         select: popuOptions
       };
 
     } else {
       // Else set Popu to display everything.
       var popu = {
-        path: 'productType.id',
-        model: data_models[req.query.type].type,
+        path: 'additional_information',
+        model: 'product_info_addit',
         select: {}
       }
     }
@@ -111,13 +111,13 @@ router.get("/product_info", async (req, res) => {
     if (req.query.populate_exclude != "all") {
       var tempStore = req.query.populate_exclude.split(",");
       tempStore.forEach(function (item) {
-
+        item = "info."+item
         popuOptions["-" + item] = 1;
       });
       console.log(popuOptions)
       var popu = {
-        path: 'productType.id',
-        model: data_models[req.query.type].type,
+        path: 'additional_information',
+        model: 'product_info_addit',
         select: popuOptions
       }
     };
