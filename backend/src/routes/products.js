@@ -4,54 +4,17 @@ const express = require('express');
 var breadcrumbs = require('../controller/breadcrumbs.js');
 var ObjectId = require('mongoose').Types.ObjectId;
 const allProducts = require('../models/product_info.js');
-const etherProd = require('../models/product_types/ethernet_prod.js');
+
 const categories = require('../models/categorys.js')
 const prodAdiit = require('../models/product_addit_info.js')
-const accProd = require('../models/product_types/accessory_prod.js');
-const camProd = require('../models/product_types/camera_prod.js');
-const housProd = require('../models/product_types/housing_prod.js')
-const diskNVR = require('../models/product_types/disk_nvr_prod.js');
-const nvrProd = require('../models/product_types/nvr_prod.js');
+
 
 const masterProd = require('../models/product_addit_info.js');
 const productModels = require('../models/product_models.js')
 const blockList = require('../models/block_list.js')
 
 
-var data_models = {
-  camera:{
-    provider:camProd,
-    type:'cam_prod'
-  },
-  accessory:{
-    provider:accProd,
-    type:'acc_prod'
-  },
-  disk_nvr:{
-    provider:diskNVR,
-    type:'disk_nvr_prod'
-  },
-  ethernet:{
-    provider:etherProd,
-    type:'ethernet_prod'
-  },
-  housing:{
-    provider:housProd,
-    type:'housing_prod'
-  },
-  nvr:{
-    provider:nvrProd,
-    type:'nvr_prod'
-  },
-  product:{
-    provider:allProducts,
-    type:'product_info'
-  },
-  master: {
-    provider:masterProd,
-    type:'product_info_addit'
-  }
-}
+
 
 
 const router = express.Router();
@@ -206,8 +169,8 @@ router.get("/search", async (req, res) => {
   const { page = 1, limit = 10, searchFor = "product_name", searchQuery = "", extra = false } = req.query;
   var query = {};
   // If Type is Decalred afdd
-  if (req.query.type) {
-    var inject = { "productType.modelName": data_models[req.query.type].type };
+  if (req.query.category) {
+    var inject = { "category": req.query.category};
     query = { ...inject, ...query }
   };
   var inject = { [searchFor]: { $regex: searchQuery, $options: "i" } };
@@ -240,67 +203,58 @@ router.get("/search", async (req, res) => {
 });
 
 
-router.get("/s", async (req, res) => {
 
-  var test = new prodAdiit({
-    info:{"test":"test"}
-  })
-  test.save();
-  res.send('s')
+//   router.get("/get_model_structure", async (req, res) => {
+//     // Default Values
+//     const { selectedModel = "product" } = req.query;
 
-});
+//     // Grab keys from selected database
+//     var props = Object.keys(data_models[selectedModel].provider.schema.paths);
+//     var objectTypes = new Array();
+//     var otherCats = [];
+//     for (idx in props){
+//       // Create split list for nested values
+//       var splitList = data_models[selectedModel].provider.schema.paths[props[idx]].path.split(".")
 
-  router.get("/get_model_structure", async (req, res) => {
-    // Default Values
-    const { selectedModel = "product" } = req.query;
+//       if (splitList.length > 1){
+//         //console.log('more!')
+//         //console.log(splitList);
 
-    // Grab keys from selected database
-    var props = Object.keys(data_models[selectedModel].provider.schema.paths);
-    var objectTypes = new Array();
-    var otherCats = [];
-    for (idx in props){
-      // Create split list for nested values
-      var splitList = data_models[selectedModel].provider.schema.paths[props[idx]].path.split(".")
-
-      if (splitList.length > 1){
-        //console.log('more!')
-        //console.log(splitList);
-
-          var obj = {
-            name:splitList[1],
-          type:data_models[selectedModel].provider.schema.paths[props[idx]].instance
-          };
-          if (!otherCats[splitList[0]] ){
-            otherCats[splitList[0]] = [obj]
-          } else {
-            otherCats[splitList[0]].push(obj)
-          }
-          //
-        //console.log(otherCats[splitList[0]] )
+//           var obj = {
+//             name:splitList[1],
+//           type:data_models[selectedModel].provider.schema.paths[props[idx]].instance
+//           };
+//           if (!otherCats[splitList[0]] ){
+//             otherCats[splitList[0]] = [obj]
+//           } else {
+//             otherCats[splitList[0]].push(obj)
+//           }
+//           //
+//         //console.log(otherCats[splitList[0]] )
 
 
-      } else if (data_models[selectedModel].provider.schema.paths[props[idx]].path != "_id" && data_models[selectedModel].provider.schema.paths[props[idx]].path != "__v") {
-        console.log(data_models[selectedModel].provider.schema.paths[props[idx]].instance)
-        var obj = {
-          name:data_models[selectedModel].provider.schema.paths[props[idx]].path,
-          type:data_models[selectedModel].provider.schema.paths[props[idx]].instance
-        };
-        objectTypes.push(obj);
-      }
+//       } else if (data_models[selectedModel].provider.schema.paths[props[idx]].path != "_id" && data_models[selectedModel].provider.schema.paths[props[idx]].path != "__v") {
+//         console.log(data_models[selectedModel].provider.schema.paths[props[idx]].instance)
+//         var obj = {
+//           name:data_models[selectedModel].provider.schema.paths[props[idx]].path,
+//           type:data_models[selectedModel].provider.schema.paths[props[idx]].instance
+//         };
+//         objectTypes.push(obj);
+//       }
 
-    };
-    var otherCatKeys = Object.keys(otherCats);
-    if (objectTypes.length != 0){
-      var pushObj = {rootValues:objectTypes};
-    } else {
-      var pushObj = {};
-    }
+//     };
+//     var otherCatKeys = Object.keys(otherCats);
+//     if (objectTypes.length != 0){
+//       var pushObj = {rootValues:objectTypes};
+//     } else {
+//       var pushObj = {};
+//     }
 
-    for (nIdx in otherCatKeys){
-      pushObj = {...pushObj, [otherCatKeys[nIdx]]:otherCats[otherCatKeys[nIdx]]};
-    }
-  res.json(pushObj)
-});
+//     for (nIdx in otherCatKeys){
+//       pushObj = {...pushObj, [otherCatKeys[nIdx]]:otherCats[otherCatKeys[nIdx]]};
+//     }
+//   res.json(pushObj)
+// });
 
 
 module.exports = router;
