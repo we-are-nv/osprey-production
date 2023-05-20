@@ -49,28 +49,18 @@
         <mat-tab label="Description" >
             <p>{{product.description}}</p>
         </mat-tab>
-        <mat-tab label="Technical Images">
-            Content 3
-        </mat-tab>
-        <mat-tab label="Specifications">
-            Content 2
-        </mat-tab>
-        <mat-tab label="Drawings">
-            Content 3
-        </mat-tab>
-        
-        <mat-tab label="Downloads">
+        <mat-tab *ngIf="(product.technicalImages == [])" label="Technical Images">
             Content 3
         </mat-tab>
     </mat-tab-group>
 </section>
 <section class="similarProductsInfo">
     <div class="similarProductsHeader">
-        <h1>Our Services</h1>
+        <h1>Related Products</h1>
     </div>
     <div class="similarProductsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-        <mat-card class="similarProductsCard" *ngFor="let product of similarProducts" routerLink="/product/{{product._id}}">
-            <img mat-card-image [src]="product.image">
+        <mat-card class="similarProductsCard" *ngFor="let product of similarProducts" routerLink="/product/{{type}}/{{product._id}}">
+            <img mat-card-image *ngIf="product.image !== ''" [src]="product.image">
             <mat-card-header>
                 <mat-card-title-group></mat-card-title-group>
             </mat-card-header>

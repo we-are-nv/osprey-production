@@ -30,7 +30,8 @@ export class ProductViewComponent implements OnInit{
   ngOnInit() {
     this._Activatedroute.params.subscribe(params => {
       this.id = params['id'];
-      this.productService.getSingleProduct(this.id)
+      this.type = params['type'];
+      this.productService.getSingleProduct(this.id, this.type)
       this.productSub = this.productService.getSingleProductUpdateListener()
       .subscribe((data)=>{
         this.product = data;

@@ -48,12 +48,12 @@ export class ProductService {
     return this.singleProduct.asObservable();
   }
 
-  getSingleProduct(id: string){
+  getSingleProduct(id: string, type:string){
     console.log(id)
     let query = id
     let product: any;
     this.http
-      .get<any>(this.API_URL+ '/product/product_info', {params: {documentId: query, populate_exclude:""}})
+      .get<any>(this.API_URL+ '/product/product_info', {params: {documentId: query, type:type, populate_include:"power"}})
       .subscribe(response=>{
         product = response.product
         this.singleProduct.next(product)

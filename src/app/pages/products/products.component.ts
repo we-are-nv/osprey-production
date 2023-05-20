@@ -52,7 +52,7 @@ export class ProductsComponent implements OnInit{
     this.productService.getProducts({type:this.type, page:1});
   }
   loadProduct(id:any){
-    this.router.navigate(['product/'+id]);
+    this.router.navigate(['product/'+this.type+'/'+id]);
 
   }
 
