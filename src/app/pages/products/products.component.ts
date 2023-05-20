@@ -13,15 +13,15 @@ export class ProductsComponent implements OnInit{
   products: any;
 
   types: any[];
-  type = "";
+  category = "";
   currentPage:number;
   totalPages  :number;
   public productsSub : Subscription;
 
   ngOnInit(){
     this._Activatedroute.params.subscribe(params =>{
-      this.type = params["category"]
-      this.productService.getProducts({type:this.type, page:1}); 
+      this.category = params["category"]
+      this.productService.getProducts({category:this.category, page:1}); 
     })
     this.productsSub = this.productService.getProductsUpdateListener()
       .subscribe((data)=>{
@@ -42,11 +42,11 @@ export class ProductsComponent implements OnInit{
 
 
   changeType(value:any){
-    this.type=value
-    this.productService.getProducts({type:this.type, page:1});
+    this.category=value
+    this.productService.getProducts({category:this.category, page:1});
   }
   loadProduct(id:any){
-    this.router.navigate(['product/'+this.type+'/'+id]);
+    this.router.navigate(['product/'+this.category+'/'+id]);
 
   }
 
@@ -61,7 +61,7 @@ export class ProductsComponent implements OnInit{
       });
   }
   changePage(newPage:any){
-    this.productService.getProducts({category:"camera", page:newPage});  
+    this.productService.getProducts({category:this.category, page:newPage});  
   }
 }
 

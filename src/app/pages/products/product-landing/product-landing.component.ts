@@ -1,10 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-landing',
   templateUrl: './product-landing.component.html',
   styleUrls: ['./product-landing.component.scss']
 })
-export class ProductLandingComponent {
+export class ProductLandingComponent implements OnInit {
+  categorySub :any;
+  categories:any = [];
+  constructor(private productService: ProductService){}
+  ngOnInit(): void {
+    this.productService.getCategories()
+    this.categorySub = this.productService.getCategoriesUpdateListener()
+      .subscribe((data)=>{
+        this.categories = data.cats
+    });
+
+  }
 
 }

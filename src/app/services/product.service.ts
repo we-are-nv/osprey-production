@@ -58,6 +58,7 @@ export class ProductService {
     this.http
       .get<any>(this.API_URL+ '/product/categories')
       .subscribe(response=>{
+        console.log(response)
         this.categories.next(response)
       })
   }
@@ -74,7 +75,7 @@ export class ProductService {
     let query = id
     let product: any;
     this.http
-      .get<any>(this.API_URL+ '/product/product_info', {params: {documentId: query, type:type, populate_include:"power"}})
+      .get<any>(this.API_URL+ '/product/product_info', {params: {documentId: query, type:type, populate_include:"all"}})
       .subscribe(response=>{
         product = response.product
         this.singleProduct.next(product)

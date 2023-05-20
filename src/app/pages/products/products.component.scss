@@ -21,8 +21,8 @@
     height: min-content;
 }
 .productCard img{
-    object-fit: fill;
-    
+    // object-fit: fill;
+    width: 100%;
 }
 .productCard h4{
     margin-left: 1rem;

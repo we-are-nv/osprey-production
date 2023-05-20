@@ -1,1 +1,31 @@
-<p>product-landing works!</p>
+<app-hero
+    mainTitle="Unique products for the most demanding
+    applications"
+    lowerTitle="Paragon Security offers a comprehensive range of security products intended to meet the demanding requirements of clients in the United Kingdom, Europe and the World."
+    [isButtons]="true"
+    background="../../assets/images/heroBackgrounds/productsLanding.png"
+    [button1Data]="{text:'See What It Costs', path:'', type:'white'}"
+    [button2Data]="{text:'Protect My Home', path:'', type:'outline'}"
+    [centred]="false"
+    [button3Data]="{text:'Explore Our Services', path:'', type:'white'}"
+></app-hero>
+
+<section class="main">
+    <div class="header">
+        <h1>Our Products</h1>
+        <span>Many of our products have unique features that have been developed to meet specific client requirements not previously <br>
+            available. The company provides unrivalled technical and commercial support for their products and services. Explore our <br>
+            innovative product range below:</span>
+    </div>
+    <!-- Categories Grabbed from Component Variable -->
+    <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
+        <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of categories">
+            <img mat-card-image [src]="category.image">
+            <h1>{{category.name}}</h1>
+            <span>Explore</span>
+            
+        </mat-card>
+    </div>
+</section>
+
+<app-quote-form></app-quote-form>

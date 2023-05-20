@@ -6,6 +6,7 @@ import { QuoteFormComponent } from './pages/quote-form/quote-form.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { ProductViewComponent } from './pages/products/product-view/product-view.component';
 import { CategoriesComponent } from './pages/services/categories/categories.component';
+import { ProductLandingComponent } from './pages/products/product-landing/product-landing.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -14,8 +15,10 @@ const routes: Routes = [
   {path:'services', component:ServicesComponent},
   {path:'services/categories', component:CategoriesComponent},
 
+
+  {path:'products/landing', component:ProductLandingComponent},
   {path:'products/:category', component:ProductsComponent},
-  {path:'product/:type/:id', component:ProductViewComponent}
+  {path:'product/:category/:id', component:ProductViewComponent}
 ];
 
 @NgModule({

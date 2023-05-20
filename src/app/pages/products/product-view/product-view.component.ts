@@ -9,11 +9,6 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-view.component.scss']
 })
 export class ProductViewComponent implements OnInit{
-  specs=["4x motorised zoom lens", "Day/Night switching for almost any lighting condition", "H264, MJPEG"];
-  catagories=["hello", "second"];
-  tags=["something cool", "cameras"]
-  description="Example Description";
-
 
 
   constructor(private _Activatedroute:ActivatedRoute, private productService: ProductService){}
@@ -21,24 +16,27 @@ export class ProductViewComponent implements OnInit{
   productSub: Subscription;
   similarProductsSub: Subscription;
 
-  type = "camera"
+  category = ""
 
   similarProducts:any;
 
   product: any = null;
+  additionalInfo: any = []
 
   ngOnInit() {
     this._Activatedroute.params.subscribe(params => {
       this.id = params['id'];
-      this.type = params['type'];
-      this.productService.getSingleProduct(this.id, this.type)
+      this.category = params['category'];
+      this.productService.getSingleProduct(this.id, this.category)
       this.productSub = this.productService.getSingleProductUpdateListener()
       .subscribe((data)=>{
         this.product = data;
-        console.log(this.product)
+        this.additionalInfo = this.product.additional_information.info
+
+        console.log(this.additionalInfo)
         
 
-        this.productService.getProducts({type:this.type, page:1, limit:4});  
+        this.productService.getProducts({category:this.category, page:1, limit:4});  
         this.similarProductsSub = this.productService.getProductsUpdateListener()
           .subscribe((data)=>{
             console.log(data)
@@ -50,6 +48,9 @@ export class ProductViewComponent implements OnInit{
 
     });
     });
+  }
+  checking(data:any){
+    console.log(data)
   }
   
 }

@@ -18,23 +18,25 @@ export class HeaderComponent implements OnInit{
   navStyle= "standard"
 
     
-  ngOnInit(): void {
+  async ngOnInit() {
     // Get Product Categories
     this.productService.getCategories()
-    this.categorySub = this.productService.getProductsUpdateListener()
+    this.categorySub = this.productService.getCategoriesUpdateListener()
       .subscribe((data)=>{
         this.categories = data.cats
     });
 
+    this.generateNav()
+    
+    
 
-    this.categories.forEach((category: any) => {
-      // For each Category create a Nav diretorys
-      this.categoryTypeNav.push(
-        {name:category.name, path:'products/'+category.value}
-        )
-    });
+    
+  }
 
+  async generateNav(){
+    this.setUpProductNav()
 
+    
     this.finalNav = {
       home:{path:"", name:"Home"},
       contact:{path:"", name:"Contact"},
@@ -48,8 +50,8 @@ export class HeaderComponent implements OnInit{
         },
         {
           name:"Products",
-          headpath:"products/", 
-          childLinks:this.categoryTypeNav
+          headpath:"products/landing", 
+          childLinks:  this.categoryTypeNav
         },
         {
           name:"Markets",
@@ -80,7 +82,18 @@ export class HeaderComponent implements OnInit{
     if(window.pageYOffset > 20){
       this.scrolled=true;
     }else{
-      this.scrolled = false;
+      this.scrolled = true;
     }
+  }
+  
+  
+  async setUpProductNav(){
+    this.categories.forEach((category: any) => {
+      console.log('hello')
+      // For each Category create a Nav diretorys
+      this.categoryTypeNav.push(
+        {name:category.name, path:'products/'+category.id}
+        )
+    });
   }
 }
