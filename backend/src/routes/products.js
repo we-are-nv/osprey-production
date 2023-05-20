@@ -187,7 +187,7 @@ router.get("/product_info", async (req, res) => {
 Get Categories
 */
 
-router.get("/categories", async, (req,res,next) => {
+router.get("/categories", async (req,res,next) => {
   categories.find()
   .then((result) => {
     res.json({cats:result})
