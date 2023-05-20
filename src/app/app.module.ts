@@ -16,6 +16,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { ProductViewComponent } from './pages/products/product-view/product-view.component';
 import { CategoriesComponent } from './pages/services/categories/categories.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductLandingComponent } from './products/product-landing/product-landing.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProductsComponent,
     ProductViewComponent,
     CategoriesComponent,
+    ProductLandingComponent,
   ],
   imports: [
     BrowserModule,

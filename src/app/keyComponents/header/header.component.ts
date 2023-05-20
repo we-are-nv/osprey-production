@@ -8,19 +8,33 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class HeaderComponent implements OnInit{
   constructor(private productService: ProductService){}
-  productTypes = this.productService.types;
-  productTypeNav: any= [];
+  // Category Stored Data
+  categorySub: any;
+  categories: any = [];
+
+  categoryTypeNav: any= [];
   finalNav: any;
   scrolled = false;
   navStyle= "standard"
 
     
   ngOnInit(): void {
-    this.productTypes.forEach((type: any) => {
-      this.productTypeNav.push(
-        {name:type.name, path:'products/'+type.value}
+    // Get Product Categories
+    this.productService.getCategories()
+    this.categorySub = this.productService.getProductsUpdateListener()
+      .subscribe((data)=>{
+        this.categories = data.cats
+    });
+
+
+    this.categories.forEach((category: any) => {
+      // For each Category create a Nav diretorys
+      this.categoryTypeNav.push(
+        {name:category.name, path:'products/'+category.value}
         )
     });
+
+
     this.finalNav = {
       home:{path:"", name:"Home"},
       contact:{path:"", name:"Contact"},
@@ -34,8 +48,8 @@ export class HeaderComponent implements OnInit{
         },
         {
           name:"Products",
-          headpath:"products", 
-          childLinks:this.productTypeNav
+          headpath:"products/", 
+          childLinks:this.categoryTypeNav
         },
         {
           name:"Markets",
@@ -60,8 +74,6 @@ export class HeaderComponent implements OnInit{
         },  
       ]
       }
-    console.log(this.finalNav)
-    console.log(sessionStorage['navStyle'])
   }
   // On scroll detected, Set the toolbar class
   onWindowScroll(event:any){

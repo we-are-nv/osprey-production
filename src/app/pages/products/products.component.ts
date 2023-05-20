@@ -19,13 +19,8 @@ export class ProductsComponent implements OnInit{
   public productsSub : Subscription;
 
   ngOnInit(){
-    this.types = this.productService.types
     this._Activatedroute.params.subscribe(params =>{
-      if(params["type"]== undefined){
-        this.type == this.types["0"].value
-      }else{
-        this.type = params["type"]
-      }
+      this.type = params["category"]
       this.productService.getProducts({type:this.type, page:1}); 
     })
     this.productsSub = this.productService.getProductsUpdateListener()
@@ -42,7 +37,6 @@ export class ProductsComponent implements OnInit{
 
   currentCategory=null;
   
-  categories = this.productService.categories;
 
 
 
@@ -67,7 +61,7 @@ export class ProductsComponent implements OnInit{
       });
   }
   changePage(newPage:any){
-    this.productService.getProducts({type:"camera", page:newPage});  
+    this.productService.getProducts({category:"camera", page:newPage});  
   }
 }
 

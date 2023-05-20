@@ -188,6 +188,7 @@ Get Categories
 */
 
 router.get("/categories", async (req,res,next) => {
+  console.log("test")
   categories.find()
   .then((result) => {
     res.json({cats:result})
