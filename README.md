@@ -317,3 +317,34 @@ GET http://localhost:3030/api/model/get_models
 ```
 category: id of category
 ```
+
+
+## Add Block
+Adds a new block to a categories block list.
+
+```
+POST http://localhost:3030/api/model/block
+```
+### Query Params
+```
+category: id of category
+```
+
+### Body
+This route supports multiple blocks to be added at the same time.
+**Note field type_name needs to be unique! It Will through an error**
+```json
+{
+    "blocks":[
+          {
+            "data" : {
+                "test_obj" : {
+                    "type" : "String"
+                }
+              
+            },
+            "type_name" : "test_block"
+        }
+    ]
+}
+```

@@ -88,13 +88,48 @@ router.get("/get_models", async (req, res) => {
   if (!req.query.category){
     res.json({errorNumber:41,errorMessage:"Category Not Declared"});
     return;
-  }
+  };
   const models = await productModels.find({category:req.query.category});
   var modelList = [];
   for (idx in models){
     modelList.push(models[idx].type_name)
   };
   res.json({models_available:modelList});
+});
+
+
+router.post("/block", async (req,res) => {
+  if (!req.query.category){
+    res.json({errorNumber:41,errorMessage:"Category Not Declared"});
+    return;
+  };
+  const selectedBlock = await blockList.findOne({category:req.query.category});
+  if (!selectedBlock){
+    console.log('Block List does not exist')
+  } else {
+    var existingData =  selectedBlock.data;
+    if (!Array.isArray(req.body.blocks)){
+      res.json({errorNumber:42,errorMessage:"Body is Not Array!"});
+      return;
+    };
+    var existingKeys = [];
+    for (existIdx in existingData){
+      existingKeys.push(existingData[existIdx].type_name);
+    };
+
+    for (idx in req.body.blocks){
+      if (existingKeys.includes(req.body.blocks[idx].type_name)){
+        res.json({errorNumber:43,errorMessage:"Type Name: "+ req.body.blocks[idx].type_name+" is not Unique!"});
+        return;
+      }
+    };
+    var newData = [...req.body.blocks,...existingData];
+    blockList.findOneAndUpdate({category:req.query.category},{data:newData}, {upsert: true})
+    .then((result) => {
+      res.json({message:"Added Block",blocks:req.body.blocks})
+    })
+  }
+
 });
 
 module.exports = router;
