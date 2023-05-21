@@ -105,7 +105,7 @@ router.post("/block", async (req,res) => {
   };
   const selectedBlock = await blockList.findOne({category:req.query.category});
   if (!selectedBlock){
-    console.log('Block List does not exist')
+    console.log('Block List does not exist');
   } else {
     var existingData =  selectedBlock.data;
     if (!Array.isArray(req.body.blocks)){
@@ -130,6 +130,29 @@ router.post("/block", async (req,res) => {
     })
   }
 
+});
+
+router.delete("/block", async (req,res) => {
+  if (!req.query.category){
+    res.json({errorNumber:41,errorMessage:"Category Not Declared"});
+    return;
+  };
+  if (!req.query.block){
+    res.json({errorNumber:44,errorMessage:"Block Not Declared"});
+    return;
+  };
+  const selectedBlock = await blockList.findOne({category:req.query.category});
+  var existingData =  selectedBlock.data;
+  var newData = new Array();
+  for (idx in existingData){
+    if (existingData[idx].type_name != req.query.block){
+      newData.push(existingData[idx]);
+    };
+  };
+  blockList.findOneAndUpdate({category:req.query.category},{data:newData}, {upsert: true})
+  .then((result) => {
+    res.json({message:"Deleted Block",block:req.query.block})
+  })
 });
 
 module.exports = router;
