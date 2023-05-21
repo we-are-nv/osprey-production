@@ -3,10 +3,10 @@ const categorys = require('./categorys');
 
 
 
-const productInfo = mongoose.Schema({
+const blockList = mongoose.Schema({
   category:{type:mongoose.Schema.Types.ObjectId,ref:categorys},
-  data:{type:String,required:true},
+  data:{type:Array,required:true},
 })
 
 
-module.exports = mongoose.model('block_list' , productInfo);
+module.exports = mongoose.model('block_list' , blockList);

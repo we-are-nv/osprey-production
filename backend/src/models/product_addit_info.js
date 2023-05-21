@@ -3,11 +3,11 @@ const product_info = require('./product_info');
 
 
 
-const productInfo = mongoose.Schema({
+const productAdditInfo = mongoose.Schema({
   info:{type:Object,requried:true},
   productId:{type:mongoose.Schema.Types.ObjectId},
   modelName:{type:String,required:true},
 })
 
 
-module.exports = mongoose.model('product_info_addit' , productInfo);
+module.exports = mongoose.model('product_info_addit' , productAdditInfo);

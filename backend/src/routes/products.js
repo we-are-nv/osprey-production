@@ -7,7 +7,9 @@ var breadcrumbs = require('../controller/breadcrumbs.js');
 
 //Import Model Files
 const allProducts = require('../models/product_info.js');
-const categories = require('../models/categorys.js')
+const categories = require('../models/categorys.js');
+const productModels = require('../models/product_models.js');
+const blockList = require('../models/block_list.js');
 
 const router = express.Router();
 
@@ -183,57 +185,60 @@ router.get("/search", async (req, res) => {
 
 
 
-//   router.get("/get_model_structure", async (req, res) => {
-//     // Default Values
-//     const { selectedModel = "product" } = req.query;
+router.get("/get_model_structure", async (req, res) => {
+  // Default Values
+  const { selectedModel = "camera", category = "646896611b216e6dcc0da06a", showTypes = "true", showUnused = "true" } = req.query;
 
-//     // Grab keys from selected database
-//     var props = Object.keys(data_models[selectedModel].provider.schema.paths);
-//     var objectTypes = new Array();
-//     var otherCats = [];
-//     for (idx in props){
-//       // Create split list for nested values
-//       var splitList = data_models[selectedModel].provider.schema.paths[props[idx]].path.split(".")
+  if (!category){
+    res.json({errorNumber:41,errorMessage:"Category Not Declared"});
+    return;
+  }
 
-//       if (splitList.length > 1){
-//         //console.log('more!')
-//         //console.log(splitList);
+  const model = await productModels.findOne({"type_name":selectedModel});
+  const blockRaw = await blockList.findOne({"category":category});
+  var blockArray = blockRaw._doc.data;
+  var returnArray = new Array();
+  var keys = Object.keys(model._doc.data);
+  var usedFieldsArr = [];
+  var unusedFieldsArr = [];
+  for (idx in keys){
+    var relBlock = blockArray.filter(obj => { return obj.type_name === keys[idx] });
+    //console.log(keys[1])
+    var relBlockKeys = Object.keys(relBlock[0].data);
+    var intersection = relBlockKeys.filter(x => !model._doc.data[keys[idx]].includes(x));
 
-//           var obj = {
-//             name:splitList[1],
-//           type:data_models[selectedModel].provider.schema.paths[props[idx]].instance
-//           };
-//           if (!otherCats[splitList[0]] ){
-//             otherCats[splitList[0]] = [obj]
-//           } else {
-//             otherCats[splitList[0]].push(obj)
-//           }
-//           //
-//         //console.log(otherCats[splitList[0]] )
+    if (showTypes == "true"){
+      for (usedIdx in model._doc.data[keys[idx]]){
+        var pushObj = {
+          name:model._doc.data[keys[idx]][usedIdx],
+          type:relBlock[0].data[model._doc.data[keys[idx]][usedIdx]].type
+        };
+       usedFieldsArr.push(pushObj);
+      };
+      for (unUsedIdx in intersection){
+        var pushUnObj = {
+          name:intersection[unUsedIdx],
+          type:relBlock[0].data[intersection[unUsedIdx]].type
+        };
+        unusedFieldsArr.push(pushUnObj)
+      }
+    } else {
+      usedFieldsArr = model._doc.data[keys[idx]];
+      unusedFieldsArr = intersection;
+    };
 
+    var obj = {
+      block_name:keys[1],
+      usedFields:usedFieldsArr,
+    };
+    if (showUnused == "true"){
+      obj['unusedFields'] = unusedFieldsArr;
+    };
+    returnArray.push(obj);
+  };
+  res.json({modelData:returnArray})
 
-//       } else if (data_models[selectedModel].provider.schema.paths[props[idx]].path != "_id" && data_models[selectedModel].provider.schema.paths[props[idx]].path != "__v") {
-//         console.log(data_models[selectedModel].provider.schema.paths[props[idx]].instance)
-//         var obj = {
-//           name:data_models[selectedModel].provider.schema.paths[props[idx]].path,
-//           type:data_models[selectedModel].provider.schema.paths[props[idx]].instance
-//         };
-//         objectTypes.push(obj);
-//       }
-
-//     };
-//     var otherCatKeys = Object.keys(otherCats);
-//     if (objectTypes.length != 0){
-//       var pushObj = {rootValues:objectTypes};
-//     } else {
-//       var pushObj = {};
-//     }
-
-//     for (nIdx in otherCatKeys){
-//       pushObj = {...pushObj, [otherCatKeys[nIdx]]:otherCats[otherCatKeys[nIdx]]};
-//     }
-//   res.json(pushObj)
-// });
+});
 
 
 module.exports = router;
