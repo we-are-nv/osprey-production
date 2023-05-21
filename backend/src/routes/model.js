@@ -155,4 +155,36 @@ router.delete("/block", async (req,res) => {
   })
 });
 
+router.post("/model",async (req,res) => {
+  const { force = "false"} = req.query;
+
+  if (!req.query.category){
+    res.json({errorNumber:41,errorMessage:"Category Not Declared"});
+    return;
+  };
+  const selectedBlock = await blockList.findOne({category:req.query.category});
+  var blockData = selectedBlock.data;
+  var dataKeys = Object.keys(req.body.data);
+  for (idx in dataKeys){
+    var relBlock = Object.keys(blockData.filter(obj => { return obj.type_name === dataKeys[idx] })[0].data);
+    var modelBlock = req.body.data[dataKeys[idx]]
+    var excludedValues = relBlock.filter(x => !modelBlock.includes(x));
+    var newValues = modelBlock.filter(x => !relBlock.includes(x));
+    if (force == "false" && newValues.length > 0){
+      res.json({errorNumber:51,errorMessage:"Undeclared Values are not permitted!",undecalredValue:newValues});
+      return;
+    };
+
+    console.log(newValues);
+
+
+  }
+  var newModel = new productModels({
+    data:req.body.data,
+    type_name:req.body.name,
+    category:req.query.category
+  })
+  newModel.save();
+  res.json({message:"Added Model",model:newModel})
+})
 module.exports = router;
