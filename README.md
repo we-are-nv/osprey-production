@@ -10,8 +10,11 @@ GET /api/service/product_info
 
 ## Query Params
 
+[Click Here For Information on How to get the category id](#get-categories)
+
 ```
-type: Product Type (e.g camera, accessory, disk_nvr)
+category: Product Category ID
+subCat: Product Type (e.g acc_prod)
 ```
 
 You can have multiiple product types in a comma seperated list.
@@ -256,303 +259,38 @@ GET http://localhost:3030/api/service/search?page=1&limit=3&searchQuery=marine&e
 }
 ```
 
-## Grab Model Information
+## Get Categories
 
-This is used to help generate product pages and other needs.
+Basic Route to get category id's
+
+```
+GET http://localhost:3030/api/service/categories
+```
+
+Example Response
+
+```json
+{
+    "cats": [
+        {
+            "_id": "CAT_ID",
+            "name": "CCTV",
+            "image": "IMAGE_URL"
+        }
+    ]
+}
+```
+## Get Model Structure
+
+This route is for getting the structure of products and what "block" it is associated with.
 
 ```
 GET http://localhost:3030/api/service/get_model_structure
 ```
 
+### Query Params
 ```
-Query Params
-selectedModel: Model (Default: Product Main)
-```
-
-
-## Example Request
-
-```
-GET http://localhost:3030/api/service/get_model_structure?selectedModel=camera
-```
-
-```json
-{
-    "av": [
-        {
-            "name": "camera",
-            "type": "String"
-        },
-        {
-            "name": "resolution",
-            "type": "String"
-        },
-        {
-            "name": "pixels",
-            "type": "String"
-        },
-        {
-            "name": "frame_rate",
-            "type": "String"
-        },
-        {
-            "name": "sensitivity",
-            "type": "String"
-        },
-        {
-            "name": "optical_lens",
-            "type": "String"
-        },
-        {
-            "name": "digital_zoom",
-            "type": "String"
-        },
-        {
-            "name": "aperture_range",
-            "type": "String"
-        },
-        {
-            "name": "angle_of_view",
-            "type": "String"
-        },
-        {
-            "name": "min-working_distance",
-            "type": "String"
-        },
-        {
-            "name": "zoom_speed",
-            "type": "String"
-        },
-        {
-            "name": "shooting_mode",
-            "type": "String"
-        },
-        {
-            "name": "focusing_mode",
-            "type": "String"
-        },
-        {
-            "name": "ir_illumination_range",
-            "type": "String"
-        },
-        {
-            "name": "maxiumum_vehicle_speed",
-            "type": "String"
-        },
-        {
-            "name": "digital_image_stabilisation",
-            "type": "String"
-        },
-        {
-            "name": "dori",
-            "type": "String"
-        },
-        {
-            "name": "on-board_storage",
-            "type": "String"
-        },
-        {
-            "name": "white_balance",
-            "type": "String"
-        },
-        {
-            "name": "wide_dynamic_range",
-            "type": "String"
-        },
-        {
-            "name": "signal_to_noise_ratio",
-            "type": "String"
-        },
-        {
-            "name": "image_features",
-            "type": "String"
-        },
-        {
-            "name": "privacy_â_masking",
-            "type": "String"
-        },
-        {
-            "name": "analytics",
-            "type": "String"
-        },
-        {
-            "name": "video_compression",
-            "type": "String"
-        },
-        {
-            "name": "bitrate",
-            "type": "String"
-        },
-        {
-            "name": "audio_connection",
-            "type": "String"
-        },
-        {
-            "name": "audio_compression",
-            "type": "String"
-        }
-    ],
-    "power": [
-        {
-            "name": "ethernet",
-            "type": "String"
-        },
-        {
-            "name": "rs485",
-            "type": "String"
-        },
-        {
-            "name": "bnc_output",
-            "type": "String"
-        },
-        {
-            "name": "alarm_in_out",
-            "type": "String"
-        },
-        {
-            "name": "audio_in_out_connector",
-            "type": "String"
-        },
-        {
-            "name": "power_supply",
-            "type": "String"
-        },
-        {
-            "name": "power_consumption",
-            "type": "String"
-        }
-    ],
-    "pan_tilt": [
-        {
-            "name": "pan-range",
-            "type": "String"
-        },
-        {
-            "name": "pan-speed",
-            "type": "String"
-        },
-        {
-            "name": "tilt-range",
-            "type": "String"
-        },
-        {
-            "name": "tilt-speed",
-            "type": "String"
-        },
-        {
-            "name": "pre-sets",
-            "type": "String"
-        },
-        {
-            "name": "pre-set_tours",
-            "type": "String"
-        },
-        {
-            "name": "motion_tracking",
-            "type": "String"
-        }
-    ],
-    "certifications": [
-        {
-            "name": "impact_protection",
-            "type": "String"
-        },
-        {
-            "name": "salt_fog_resistance",
-            "type": "String"
-        },
-        {
-            "name": "corrosion_testing",
-            "type": "String"
-        },
-        {
-            "name": "vibration_testing",
-            "type": "String"
-        },
-        {
-            "name": "ingress_protection",
-            "type": "String"
-        },
-        {
-            "name": "european_US_EMC",
-            "type": "String"
-        },
-        {
-            "name": "marine",
-            "type": "String"
-        },
-        {
-            "name": "hazardous_area",
-            "type": "String"
-        }
-    ],
-    "power_conn": [
-        {
-            "name": "ethernet",
-            "type": "String"
-        },
-        {
-            "name": "rs485",
-            "type": "String"
-        },
-        {
-            "name": "bnc_output",
-            "type": "String"
-        },
-        {
-            "name": "alarm_in_out",
-            "type": "String"
-        },
-        {
-            "name": "audio_in_out_connector",
-            "type": "String"
-        },
-        {
-            "name": "power_supply",
-            "type": "String"
-        },
-        {
-            "name": "power_consumption",
-            "type": "String"
-        }
-    ],
-    "physical": [
-        {
-            "name": "material",
-            "type": "String"
-        },
-        {
-            "name": "operating_temp",
-            "type": "String"
-        },
-        {
-            "name": "thermostat_heater",
-            "type": "String"
-        },
-        {
-            "name": "relative_humidity",
-            "type": "String"
-        },
-        {
-            "name": "atmospheric_pressure",
-            "type": "String"
-        },
-        {
-            "name": "weight",
-            "type": "String"
-        },
-        {
-            "name": "dimensions",
-            "type": "String"
-        },
-        {
-            "name": "cable_entry",
-            "type": "String"
-        },
-        {
-            "name": "mounting_options",
-            "type": "String"
-        }
-    ]
-}
-```
+selectedModel: product to get model of
+category: id of category
+showTypes: true / false. Shows additonal info such as key type
+showUnsed: true / false. Shows items that are unsused in the model
