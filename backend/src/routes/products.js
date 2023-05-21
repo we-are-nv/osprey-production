@@ -1,21 +1,13 @@
+//Import Packages
 const express = require('express');
-
-
-var breadcrumbs = require('../controller/breadcrumbs.js');
 var ObjectId = require('mongoose').Types.ObjectId;
+
+// Import Controllers
+var breadcrumbs = require('../controller/breadcrumbs.js');
+
+//Import Model Files
 const allProducts = require('../models/product_info.js');
-
 const categories = require('../models/categorys.js')
-const prodAdiit = require('../models/product_addit_info.js')
-
-
-const masterProd = require('../models/product_addit_info.js');
-const productModels = require('../models/product_models.js')
-const blockList = require('../models/block_list.js')
-
-
-
-
 
 const router = express.Router();
 
@@ -28,12 +20,12 @@ router.use(function timeLog(req, res, next) {
 router.get("/product_info", async (req, res) => {
   // Default Values are Set
   const { page = 1, limit = 10, subCat = "" } = req.query;
-  // Checks to see if a type is declared. However if a documentId is declared its allowed.
+
+  // Checks to see if a category  is declared. However if a documentId is declared its allowed.
   if (!req.query.category && !req.query.documentId) {
     res.json({ error: 'Please Enter a valid product category' });
     return;
   };
-
 
   var popu;
   // Checks to see if populate include is present
@@ -44,13 +36,9 @@ router.get("/product_info", async (req, res) => {
     if (req.query.populate_include != "all") {
       var tempStore = req.query.populate_include.split(",");
       tempStore.forEach(function (item) {
-
-          item = "info."+item
-
-
+        item = "info." + item
         popuOptions[item] = 1;
       });
-      console.log(popuOptions)
       var popu = {
         path: 'additional_information',
         model: 'product_info_addit',
@@ -64,25 +52,24 @@ router.get("/product_info", async (req, res) => {
         model: 'product_info_addit',
         select: {}
       }
-    }
+    };
 
   };
   // Checks to see if populate exclude is present
   if (req.query.populate_exclude) {
     var popuOptions = {}
-      // If it does not equal all then read each value and format for mongo
+    // If it does not equal all then read each value and format for mongo
     if (req.query.populate_exclude != "all") {
       var tempStore = req.query.populate_exclude.split(",");
       tempStore.forEach(function (item) {
-        item = "info."+item
+        item = "info." + item
         popuOptions["-" + item] = 1;
       });
-      console.log(popuOptions)
       var popu = {
         path: 'additional_information',
         model: 'product_info_addit',
         select: popuOptions
-      }
+      };
     };
     // Else nothing happens
 
@@ -103,7 +90,7 @@ router.get("/product_info", async (req, res) => {
     selectOptions += tempStore.join(" ");
     //console.log(selectOptions);
   };
-   // If exclude is called pre select product code and then run through each
+  // If exclude is called pre select product code and then run through each
   if (req.query.exclude) {
     console.log('a')
     var tempStore = req.query.exclude.split(",");
@@ -112,23 +99,19 @@ router.get("/product_info", async (req, res) => {
         selectOptions += "-" + item + " ";
       };
     });
-    console.log(selectOptions)
   };
   var additQuery = "";
   if (req.query.documentId) {
     additQuery = { _id: req.query.documentId };
   } else {
     additQuery = { 'category': new ObjectId(req.query.category) };
-    if (subCat != ""){
+    if (subCat != "") {
       additQuery['productType.modelName'] = subCat;
     };
   }
-  console.log(additQuery)
-  console.log(selectOptions)
   // Determine count for Pagination
 
   const count = await allProducts.count(additQuery, selectOptions);
-  console.log(count)
   allProducts.find(additQuery, selectOptions)
     .limit(limit * 1)
     .skip((page - 1) * limit)
@@ -150,12 +133,11 @@ router.get("/product_info", async (req, res) => {
 Get Categories
 */
 
-router.get("/categories", async (req,res,next) => {
-  console.log("test")
+router.get("/categories", async (req, res, next) => {
   categories.find()
-  .then((result) => {
-    res.json({cats:result})
-  })
+    .then((result) => {
+      res.json({ cats: result });
+    });
 });
 
 
@@ -165,17 +147,16 @@ Search For Products
 
 router.get("/search", async (req, res) => {
 
-  // Decleare Default Values
+  // Declare Default Values
   const { page = 1, limit = 10, searchFor = "product_name", searchQuery = "", extra = false } = req.query;
   var query = {};
-  // If Type is Decalred afdd
+  // If Category is Decalred
   if (req.query.category) {
-    var inject = { "category": req.query.category};
-    query = { ...inject, ...query }
+    var inject = { "category": req.query.category };
+    query = { ...inject, ...query };
   };
   var inject = { [searchFor]: { $regex: searchQuery, $options: "i" } };
   query = { ...query, ...inject };
-  console.log(query);
   const count = await allProducts.count(query);
   var selectOptions = "product_name product_code ";
 
@@ -189,16 +170,14 @@ router.get("/search", async (req, res) => {
       var newOutput = [];
       var escapedResult = result;
       for (idx in escapedResult) {
-
-        escapedResult[idx]["product_link"] = `/api/product/product_info?documentId=${escapedResult[idx]._id}`
-
+        escapedResult[idx]["product_link"] = `/api/product/product_info?documentId=${escapedResult[idx]._id}`;
         newOutput.push(escapedResult[idx])
       };
       res.json({
         products: newOutput, totalPages: Math.ceil(count / limit),
         currentPage: Number(page)
-      })
-    })
+      });
+    });
 
 });
 
