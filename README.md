@@ -285,7 +285,7 @@ Example Response
 This route is for getting the structure of products and what "block" it is associated with.
 
 ```
-GET http://localhost:3030/api/service/get_model_structure
+GET http://localhost:3030/api/model/get_model_structure
 ```
 
 ### Query Params

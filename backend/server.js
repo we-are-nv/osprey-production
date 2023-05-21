@@ -11,7 +11,7 @@ const app = express();
 
 //const staticRoutes = require('./src/routes/static');
 const serviceRoute = require('./src/routes/products');
-
+const modelRoute = require('./src/routes/model');
 
 const PORT = process.env.PORT || 3030;
 
@@ -77,6 +77,7 @@ app.get('/api/status', (req, res) => {
 });
 app.use('/api/service', serviceRoute);
 app.use('/api/product',serviceRoute);
+app.use('/api/model',modelRoute)
 
 //app.use('/', staticRoutes);
 
