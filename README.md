@@ -294,3 +294,26 @@ selectedModel: product to get model of
 category: id of category
 showTypes: true / false. Shows additonal info such as key type
 showUnsed: true / false. Shows items that are unsused in the model
+```
+
+## Get Blocks
+Gets list of blocks linked to category
+
+```
+GET http://localhost:3030/api/model/get_blocks
+```
+### Query Params
+```
+category: id of category
+```
+
+## Get Models
+Gets list of models linked to category
+
+```
+GET http://localhost:3030/api/model/get_models
+```
+### Query Params
+```
+category: id of category
+```

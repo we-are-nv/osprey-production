@@ -75,4 +75,26 @@ router.get("/get_model_structure", async (req, res) => {
 });
 
 
+router.get("/get_blocks", async (req, res) => {
+  if (!req.query.category){
+    res.json({errorNumber:41,errorMessage:"Category Not Declared"});
+    return;
+  }
+  const blocks = await blockList.findOne({category:req.query.category});
+  res.json({blocks:blocks.data})
+});
+
+router.get("/get_models", async (req, res) => {
+  if (!req.query.category){
+    res.json({errorNumber:41,errorMessage:"Category Not Declared"});
+    return;
+  }
+  const models = await productModels.find({category:req.query.category});
+  var modelList = [];
+  for (idx in models){
+    modelList.push(models[idx].type_name)
+  };
+  res.json({models_available:modelList});
+});
+
 module.exports = router;
