@@ -1,45 +1,95 @@
-::ng-deep{margin: 0px;}
+
+//General
+::ng-deep{
+    margin: 0px;
+    font-family: 'roboto';
+}
+h1{
+    font-size: 2vw;
+}
 
 // Top About
-.markets{
+.briefAbout{
     display: flex;
     font-family: 'roboto';
 }
-.markets h1{
-    font-size: 2vw;
-}
-.markets #left, #right{
+
+.briefAbout #left, #right{
     margin: auto;
     width: 40vw;
 }
-// Service List
-.serviceList{
+
+
+// Market Section
+.markets{
+    background-color:#161616 ;
+    color: white;
+    padding: 5vw;
+}
+
+
+// Formatting for the Category Cards
+.categoryContainer {
     margin-top: 1rem;
     display: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    width: 90vw;
+    width: 80vw;
     margin:auto;
+}
+
+.categoryContainer .categoryCard{
+    width: 22%;
+    margin: 1%;
+    border-radius:0px ;
+    text-align: start;
 
 }
-.serviceItem{
-    border-radius:0px;
-    width: 23%;
-    margin: 1%;
+mat-card{
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 0%;
 }
-.serviceItem mat-card-content{
-    display: flex;
-    vertical-align: middle;
+mat-card-header{
+    height: 12.5vh;
+    align-items: center;
+    text-align: center;
+}
+
+.categoryCard img{
+    width: 100%;
+    margin: auto;
+}
+.categoryCard h1{
+    padding-left: 2vh;
+    margin-left: 5%;
+    font-size: x-large;
+    width: min-content;
+}
+.categoryCard span{
+    padding-bottom: 2vh;
+    padding-left: 2vh;
+    margin-left: 5%;
+    width: min-content;
 }
 @media screen and (max-width: 1000px) {
-    .serviceList .serviceItem{
+    .categoryContainer .categoryCard{
         width: 31%;
     }
 }
 @media screen and (max-width: 750px) {
-    .serviceList .serviceItem{
+    .categoryContainer .categoryCard{
         width: 48%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .categoryCard img{
+        width: 60%;
+        margin: auto;
+    }
+    .categoryContainer .categoryCard{
+        width: 98%;
+        display: flex;
     }
 }
 

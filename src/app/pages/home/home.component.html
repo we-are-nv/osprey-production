@@ -12,30 +12,29 @@
 ></app-hero>
 
 
-<section class="markets">
+<section class="briefAbout">
     <div id="left">
-        <p style="color:#0065E7;">+25 YEARS INDUSTRY EXPERIENCE </p>
-        <h1>High quality systems made by accredited manufacturers and installers</h1>
+        <p style="color:#0065E7;">+35 YEARS INDUSTRY EXPERIENCE </p>
+        <h1>Professional products for durability</h1>
     </div>
     <div id="right">
-        <p>Paragon Security is a specialist security solutions provider founded on first class customer service and support with decades of experience in the fields of CCTV, access control, visitor management, ANPR, intercoms and alarm systems. 
-            <br><br>
-            Our company has particular expertise and specialist knowledge in markets including:</p>
+        <p>Paragon Security employs a dedicated team of experienced professionals who will provide fire and security products and systems of the highest quality, reliability and durability, for your organisation, vessel or site providing the security and safety you deserve.</p>
     </div>
-    
+
 </section>
-<div class="serviceList" fxLayout="row wrap" fxLayoutAlign="flex-start">
-    <mat-card class="serviceItem" *ngFor="let service of serviceList">
-        <img mat-card-image [src]="service.image" alt="">
-        <mat-card-header>
-            <mat-card-title>{{service.name}}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <p>Explore</p>
-            <mat-icon>fiber_manual_record</mat-icon>
-        </mat-card-content>
+
+<!-- Product Categories -->
+<div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
+    
+    <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
+        <img mat-card-image [src]="category.image">
+        <h1>{{category.name}}</h1>
+        <span>Explore</span>
+        
     </mat-card>
 </div>
+
+
 <div class="serviceInfoCard">
     <img src="../../../assets/images/customIcons/warning.svg" alt="">
     <p>As leaders in marine and commercial security, we can help you customize a security system to meet your safety needs.
@@ -43,4 +42,12 @@
     </p>
     <button mat-raised-button class="quoteButton">Get Your Quote</button>
 </div>
+
+
+<section class="markets">
+    <h1>Specialist market expertise</h1>
+    <p>We are passionate about providing leading-edge and robust solutions, suitable for demanding markets and environments, which are straightforward to operate and maintain, certified for their use-class with ongoing support second to none. We lead the industry in the design, supply and support of harsh environment security systems with many years design & integration experience.</p>
+</section>
+
+
 <app-quote-form></app-quote-form>
