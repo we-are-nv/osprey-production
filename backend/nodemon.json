@@ -1,8 +1,9 @@
 {
 	"restartable": "rs",
-	"watch": ["../backend", "./server.js"],
+	"watch": ["../backend/*", "server.js", "*.js"],
 	"ext": "js,json,css,html",
 	"ignore": ["node_modules/**/node_modules", ".git"],
 	"exec": ["node server.js"],
 	"legacyWatch": true
 }
+

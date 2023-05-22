@@ -18,5 +18,5 @@ ENV PORT 3030
 EXPOSE $PORT
 
 # ENTRYPOINT [ "nodemon", "-L", "./server.js" ]
-
+RUN npm install
 CMD [ "npm", "run" ,"dev" ]

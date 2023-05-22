@@ -3,8 +3,10 @@ version: '3.7'
 networks:
   web:
     name: web
+    external: true
   backend:
     name: backend
+    external: true
 
 volumes:
   sql:
@@ -29,7 +31,7 @@ services:
       - web
       - backend
     volumes:
-      - ./src:/app/src:ro
+      - ./:/app
 
 
   # for production
