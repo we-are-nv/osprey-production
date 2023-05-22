@@ -23,7 +23,8 @@ services:
     environment:
       - NODE_ENV=development
     command: npm run dev
-
+    ports:
+      - 3030:3030
     networks:
       - web
       - backend
