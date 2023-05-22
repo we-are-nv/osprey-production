@@ -5,6 +5,7 @@ require('dotenv').config();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
+const morgan = require('morgan');
 const logger = require('./src/utils/logger');
 const mongoose = require('mongoose');
 const app = express();
@@ -65,6 +66,7 @@ const middlewareCheck = (req, res, next) => {
 };
 
 app.use(bodyParser.json());
+app.use(morgan('dev'))
 app.use(middlewareCheck);
 //app.use(morganMiddleware);
 
