@@ -1,8 +1,8 @@
 version: '3.7'
 
 networks:
-  traefik-proxy:
-    name: traefik-proxy
+  web:
+    name: web
   backend:
     name: backend
 
@@ -26,11 +26,11 @@ services:
     command: npm run dev
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=traefik-proxy"
-      - "traefik.http.routers.node-app.rule=Host(`https://staging.wearenv.co.uk/`)"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.node-app.rule=Host(`https://api.wearenv.co.uk/`)"
       - "traefik.http.services.node-app-again.loadBalancer.server.port=3030"
     networks:
-      - traefik-proxy
+      - web
       - backend
     volumes:
       - ./src:/app/src:ro
@@ -65,18 +65,18 @@ services:
       - --providers.docker=true # <== Enabling docker as the provider for traefik
       - --providers.docker.exposedbydefault=false # <== Don't expose every container to traefik, only expose enabled ones
       - --providers.file.filename=/dynamic.yaml # <== Referring to a dynamic configuration file
-      - --providers.docker.network=traefik-proxy # <== Operate on the docker network named web
+      - --providers.docker.network=web # <== Operate on the docker network named web
       # # Entrypoints Settings
       - --entrypoints.web.address=:80
       # - --entrypoints.web-secured.address="443"
     networks:
-      - traefik-proxy
+      - web
       - backend
     labels:
       - "traefik.enable=true"
       - "api.insecure=true"
-      - "traefik.docker.network=traefik-proxy"
-      - "traefik.http.routers.api.rule=Host(`https://staging.wearenv.co.uk/`)"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.api.rule=Host(`https://api.wearenv.co.uk/`)"
       - "traefik.http.routers.api.entrypoints=web"
       - "traefik.http.routers.api.service=api@internal"
       - "traefik.port=8080"
@@ -99,5 +99,5 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=traefik-proxy"
-      - "traefik.http.routers.whoami.rule=Host(`https://staging.wearenv.co.uk/whoami`)"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.whoami.rule=Host(`https://api.wearenv.co.uk/whoami`)"
