@@ -14,9 +14,9 @@ import { HeroComponent } from './keyComponents/hero/hero.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductViewComponent } from './pages/products/product-view/product-view.component';
-import { CategoriesComponent } from './pages/services/categories/categories.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductLandingComponent } from './pages/products/product-landing/product-landing.component';
+import { MarketsComponent } from './pages/markets/markets.component';
 
 
 @NgModule({
@@ -30,8 +30,8 @@ import { ProductLandingComponent } from './pages/products/product-landing/produc
     HeroComponent,
     ProductsComponent,
     ProductViewComponent,
-    CategoriesComponent,
     ProductLandingComponent,
+    MarketsComponent,
   ],
   imports: [
     BrowserModule,

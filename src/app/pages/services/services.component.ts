@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-services',
@@ -6,10 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./services.component.scss']
 })
 export class ServicesComponent {
-  services = [
-    {name:"tada", thumbnail:"https://www.asafetyp.co.uk/wp-content/uploads/2020/06/image-28.png"},
-    {name:"tada", thumbnail:"https://www.asafetyp.co.uk/wp-content/uploads/2020/06/image-28.png"},
-    {name:"tada", thumbnail:"https://www.asafetyp.co.uk/wp-content/uploads/2020/06/image-28.png"},
-    {name:"tada", thumbnail:"https://www.asafetyp.co.uk/wp-content/uploads/2020/06/image-28.png"},
-  ]
+  categorySub :any;
+  categories:any = [];
+  constructor(private productService: ProductService){}
+  ngOnInit(): void {
+    this.productService.getCategories()
+    this.categorySub = this.productService.getCategoriesUpdateListener()
+      .subscribe((data)=>{
+        this.categories = data.cats
+    });
+
+  }
 }

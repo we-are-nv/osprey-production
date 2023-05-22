@@ -32,9 +32,9 @@ mat-toolbar{
 }
 .navLink{
     height: 15vh;
-    margin: auto;
     color: white !important;
     font-size: 1vw;
+    text-decoration: none;
 }
 .navLinkIcon{
     float: right;
@@ -50,7 +50,7 @@ mat-toolbar{
     width: auto;
     display:flex;
     color: white !important;
-    font-size: 2vh;
+    font-size: 1vw;
 }
 // Styling of Phone Icon
 .contactIconRing{

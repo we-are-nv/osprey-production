@@ -10,6 +10,7 @@ export class HeroComponent implements OnInit{
     sessionStorage.setItem("navStyle", "standard")
   }
   @Input() mainTitle: string;
+  @Input() secondaryTitle: string;
   @Input() upperTitle: string;
   @Input() lowerTitle: string;
   @Input() background: string;

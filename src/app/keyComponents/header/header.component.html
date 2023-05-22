@@ -1,4 +1,4 @@
-<mat-toolbar
+<mat-toolbar *ngIf="this.finalNav !== null"
     [ngClass]="scrolled ? 'scrolledToolbar': 'defaultToolbar'"
     class="{{navStyle}}"
     (window:scroll)="onWindowScroll($event)">
@@ -7,8 +7,18 @@
         <!-- Home Button-->
         <a mat-button class="navLink" [routerLink]="finalNav.home.path">{{finalNav.home.name}}</a>
 
+
+        <!-- For Each Drop Down -->
         <div *ngFor="let menu of finalNav.dropDownMenus">
-            <a mat-button class="navLink" [matMenuTriggerFor]='matmenu'  [routerLink]="menu.headpath"> {{menu.name}} <mat-icon >arrow_drop_down</mat-icon> </a>
+            <a mat-button class="navLink" 
+                [matMenuTriggerFor]='matmenu'  
+                [routerLink]="menu.headpath"
+                #menuTrigger="matMenuTrigger"
+
+                (mouseenter)="menuTrigger.openMenu();"
+                (mouseleave)="menuTrigger.closeMenu()"
+
+                > {{menu.name}}</a>
             <mat-menu #matmenu="matMenu" class="navLink">
                 <a mat-menu-item *ngFor="let link of menu.childLinks" [routerLink]="link.path">{{link.name}}</a>
             </mat-menu>

@@ -2,16 +2,16 @@
     mainTitle="Products"
     lowerTitle="As one of the premier providers of smart surveillance technology, we are recognized throughout the industry for our products. Don’t worry about any thing, security experts will install your new system, activate it, and show you how to use it."
     [isButtons]="true"
-    background="../../assets/images/heroBackgrounds/productsLanding.png"
+    background="../../assets/images/heroBackgrounds/productLanding.png"
     [button1Data]="{text:'See What It Costs', path:'', type:'white'}"
     [button2Data]="{text:'Protect My Home', path:'', type:'outline'}"
     [centred]="true"
     [button3Data]="{text:'Explore Our Services', path:'', type:'white'}"
 ></app-hero>
-    <h5>Showing page: {{currentPage}} of {{totalPages}}</h5>
+    <h5 id="productList">Showing page: {{currentPage}} of {{totalPages}}</h5>
 <section class="ProductsView"> 
 
-    <div class="productsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
+    <div class="productsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start" >
             <mat-card class="productCard"  *ngFor="let product of products" (click)="loadProduct(product._id)">
                 <img mat-card-image *ngIf="product.image !== ''" [src]="product.image">
                 <img mat-card-image *ngIf="product.image == ''" src="../../../../assets/images/ExampleProducts/defaultImage.jpg">

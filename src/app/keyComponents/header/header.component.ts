@@ -12,8 +12,8 @@ export class HeaderComponent implements OnInit{
   categorySub: any;
   categories: any = [];
 
-  categoryTypeNav: any= [];
-  finalNav: any;
+  productNav: any= [];
+  finalNav: any = null;
   scrolled = false;
   navStyle= "standard"
 
@@ -24,9 +24,21 @@ export class HeaderComponent implements OnInit{
     this.categorySub = this.productService.getCategoriesUpdateListener()
       .subscribe((data)=>{
         this.categories = data.cats
+        let tempCategories:any[] = []
+        this.categories.forEach((category: any) => {
+          console.log('hello')
+          // For each Category create a Nav diretorys
+          tempCategories.push(
+            {name:category.name, path:'products/'+category._id}
+            )
+
+        });
+        this.productNav = tempCategories
+        console.log(this.productNav)
+        this.generateNav()
     });
 
-    this.generateNav()
+    
     
     
 
@@ -34,9 +46,6 @@ export class HeaderComponent implements OnInit{
   }
 
   async generateNav(){
-    this.setUpProductNav()
-
-    
     this.finalNav = {
       home:{path:"", name:"Home"},
       contact:{path:"", name:"Contact"},
@@ -51,7 +60,7 @@ export class HeaderComponent implements OnInit{
         {
           name:"Products",
           headpath:"products/landing", 
-          childLinks:  this.categoryTypeNav
+          childLinks:  this.productNav
         },
         {
           name:"Markets",
@@ -86,14 +95,4 @@ export class HeaderComponent implements OnInit{
     }
   }
   
-  
-  async setUpProductNav(){
-    this.categories.forEach((category: any) => {
-      console.log('hello')
-      // For each Category create a Nav diretorys
-      this.categoryTypeNav.push(
-        {name:category.name, path:'products/'+category.id}
-        )
-    });
-  }
 }
