@@ -1,15 +1,22 @@
 //Import Packages
 const express = require('express');
 var ObjectId = require('mongoose').Types.ObjectId;
-
+const path = require('path');
 // Import Controllers
 var breadcrumbs = require('../controller/breadcrumbs.js');
 
+const s3Controller = require('../controller/s3-controller.js')
 //Import Model Files
 const allProducts = require('../models/product_info.js');
 const categories = require('../models/categorys.js');
 const productModels = require('../models/product_models.js');
 const blockList = require('../models/block_list.js');
+
+
+const multer = require('multer');
+const categorys = require('../models/categorys.js');
+
+
 
 const router = express.Router();
 
@@ -141,6 +148,41 @@ router.get("/categories", async (req, res, next) => {
       res.json({ cats: result });
     });
 });
+
+const storageEngine = multer.diskStorage({
+    destination: "./uploads",
+    filename: (req, file, cb) => {
+      cb(null, `uploaded.`+file.originalname.split(".")[1]);
+    },
+  });
+  const upload = multer({
+      storage: storageEngine,
+    });
+
+/*
+Create Category
+*/
+router.post('/category',upload.single('img'), async (req, res, next) =>{
+    var filePath = path.join(__dirname,'../','../uploads','uploaded.'+req.file.originalname.split(".")[1]);
+    var cat = new categorys({
+      name:req.query.name,
+      image:`https://osprey-security.s3.eu-west-2.amazonaws.com/products/categories/images/${req.query.name}.${req.file.originalname.split(".")[1]}`
+    })
+    cat.save().then((result) => {
+      s3Controller.uploadFile(filePath,req.query.name+'.'+req.file.originalname.split(".")[1],'categories',req.file.originalname.split(".")[1]);
+      res.send({message:'Category Added',category:cat})
+    })
+    .catch((error) => {
+      console.log('Existing');
+      s3Controller.uploadFile(filePath,req.query.name+'.'+req.file.originalname.split(".")[1],'categories',req.file.originalname.split(".")[1]);
+      res.json({message:'Imaged Updated'})
+    })
+    console.log(filePath)
+
+
+
+});
+
 
 
 /*
