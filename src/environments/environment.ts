@@ -1,4 +1,4 @@
 export const environment = {
-	API_URL: 'https://staging.wearenv.co.uk/paragon_api',
+	API_URL: 'https://api.wearenv.co.uk/paragon/',
 	PRODUCTION: true
 };
