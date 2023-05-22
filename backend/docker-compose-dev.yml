@@ -13,10 +13,9 @@ volumes:
 services:
 
   node-app:
-    container_name: node-app-again
+    container_name: paragon-server
     restart: unless-stopped
-    depends_on:
-      - mongo
+
     build:
       context: .
       args:
@@ -24,11 +23,7 @@ services:
     environment:
       - NODE_ENV=development
     command: npm run dev
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=web"
-      - "traefik.http.routers.node-app.rule=Host(`https://api.wearenv.co.uk/`)"
-      - "traefik.http.services.node-app-again.loadBalancer.server.port=3030"
+
     networks:
       - web
       - backend
@@ -38,48 +33,48 @@ services:
 
   # for production
   # make sure traefik.toml IS NOT INSECURE
-  traefik:
-    container_name: traefik-again
-    image: traefik:latest
-    restart: unless-stopped
-    ports:
-      - 80:80
-      - 443:443
-      - 8080
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      # - ./traefik/:/etc/traefik/
-      - ./traefik/logs:/opt/traefik/logs/
-    command:
-      # # API settings
-      - --api.insecure=true
-      - --api.dashboard=true
-      - --api.debug=true
-      # # Log Settings
-      - --log.level=DEBUG
-      - --log.filepath=/home/wearenv/osprey/traefik/logs/traefik.log
-      - --accesslog=true
-      - --accesslog.filepath=/home/wearenv/osprey/traefik/logs/access.log
-      - --accesslog.format=json
-      # Provider Settings
-      - --providers.docker=true # <== Enabling docker as the provider for traefik
-      - --providers.docker.exposedbydefault=false # <== Don't expose every container to traefik, only expose enabled ones
-      - --providers.file.filename=/dynamic.yaml # <== Referring to a dynamic configuration file
-      - --providers.docker.network=web # <== Operate on the docker network named web
-      # # Entrypoints Settings
-      - --entrypoints.web.address=:80
-      # - --entrypoints.web-secured.address="443"
-    networks:
-      - web
-      - backend
-    labels:
-      - "traefik.enable=true"
-      - "api.insecure=true"
-      - "traefik.docker.network=web"
-      - "traefik.http.routers.api.rule=Host(`https://api.wearenv.co.uk/`)"
-      - "traefik.http.routers.api.entrypoints=web"
-      - "traefik.http.routers.api.service=api@internal"
-      - "traefik.port=8080"
+  # traefik:
+  #   container_name: traefik-again
+  #   image: traefik:latest
+  #   restart: unless-stopped
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #     - 8080
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #     # - ./traefik/:/etc/traefik/
+  #     - ./traefik/logs:/opt/traefik/logs/
+  #   command:
+  #     # # API settings
+  #     - --api.insecure=true
+  #     - --api.dashboard=true
+  #     - --api.debug=true
+  #     # # Log Settings
+  #     - --log.level=DEBUG
+  #     - --log.filepath=/home/wearenv/osprey/traefik/logs/traefik.log
+  #     - --accesslog=true
+  #     - --accesslog.filepath=/home/wearenv/osprey/traefik/logs/access.log
+  #     - --accesslog.format=json
+  #     # Provider Settings
+  #     - --providers.docker=true # <== Enabling docker as the provider for traefik
+  #     - --providers.docker.exposedbydefault=false # <== Don't expose every container to traefik, only expose enabled ones
+  #     - --providers.file.filename=/dynamic.yaml # <== Referring to a dynamic configuration file
+  #     - --providers.docker.network=web # <== Operate on the docker network named web
+  #     # # Entrypoints Settings
+  #     - --entrypoints.web.address=:80
+  #     # - --entrypoints.web-secured.address="443"
+  #   networks:
+  #     - web
+  #     - backend
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "api.insecure=true"
+  #     - "traefik.docker.network=web"
+  #     - "traefik.http.routers.api.rule=Host(`https://api.wearenv.co.uk/`)"
+  #     - "traefik.http.routers.api.entrypoints=web"
+  #     - "traefik.http.routers.api.service=api@internal"
+  #     - "traefik.port=8080"
 
   # mongo:
   #   image: mongo:latest
