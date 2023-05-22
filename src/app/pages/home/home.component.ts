@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,15 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   // Example List of Services
-  serviceList = [
-    {image:"https://features.boats.com/boat-content/files/2022/12/2023-Pearl-72-Yacht.jpeg?w=450&h=450", name:"Marine", id:"hello"},
-    {image:"https://features.boats.com/boat-content/files/2022/12/2023-Pearl-72-Yacht.jpeg?w=450&h=450", name:"Marine", id:"hello"},
-    {image:"https://features.boats.com/boat-content/files/2022/12/2023-Pearl-72-Yacht.jpeg?w=450&h=450", name:"Marine", id:"hello"},
-    {image:"https://features.boats.com/boat-content/files/2022/12/2023-Pearl-72-Yacht.jpeg?w=450&h=450", name:"Marine", id:"hello"},
-  ]
+  categorySub :any;
+  productCategories:any = [];
+  constructor(private productService: ProductService){}
+  ngOnInit(): void {
+    this.productService.getCategories()
+    this.categorySub = this.productService.getCategoriesUpdateListener()
+      .subscribe((data)=>{
+        this.productCategories = data.cats
+    });
+
+  }
 }

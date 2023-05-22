@@ -1,6 +1,7 @@
 mat-toolbar{
-    height: 15vh;
+    // min-height: 15vh;
     width: 100vw;
+    height: min-content;
     display:flex;
     position: fixed;
     justify-content: space-between;
@@ -20,18 +21,22 @@ mat-toolbar{
     
 }
 .defaultToolbar{
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(34, 34, 34, 0.781);
 }
 
 #navLogo{
-    width: 20vw;
+    width:10vw;
+    height: 10vh;
+    object-fit: cover;
+    
 }
 .navLinks{
+    margin: auto;
     width: auto;
     display: flex;
 }
 .navLink{
-    height: 15vh;
+    height:10vh;
     color: white !important;
     font-size: 1vw;
     text-decoration: none;
@@ -48,21 +53,35 @@ mat-toolbar{
 .contactDetails{
     margin:auto ;
     width: auto;
+    height: min-content;
     display:flex;
     color: white !important;
-    font-size: 1vw;
+    font-size: 0.75rem;
+    // position:inherit;
+    // float: left;
 }
 // Styling of Phone Icon
 .contactIconRing{
     border: solid 1px #0065E7;
-    padding: 1rem;
-    height: 50%;
+    padding: -1rem;
     margin: auto;
     border-radius: 50%;
 }
 .contactIcon{
     float: left;
-    background-color: #0065E7;
-    padding: 10px;
+    // background-color: #0065E7;
     border-radius: 50%;
+    visibility: hidden;
+
+    width: 5vw;
+    object-fit: cover;
+}
+@media (max-width:850px) {
+    .contactDetails{
+        visibility: hidden;
+    }
+    .navLink{
+        font-size: 1.75vw;
+        text-decoration: none;
+    }
 }

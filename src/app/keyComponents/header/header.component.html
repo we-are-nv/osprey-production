@@ -7,7 +7,8 @@
         <!-- Home Button-->
         <a mat-button class="navLink" [routerLink]="finalNav.home.path">{{finalNav.home.name}}</a>
 
-
+        <!-- (mouseenter)="menuTrigger.openMenu();"
+                (mouseleave)="menuTrigger.closeMenu()" -->
         <!-- For Each Drop Down -->
         <div *ngFor="let menu of finalNav.dropDownMenus">
             <a mat-button class="navLink" 
@@ -15,8 +16,7 @@
                 [routerLink]="menu.headpath"
                 #menuTrigger="matMenuTrigger"
 
-                (mouseenter)="menuTrigger.openMenu();"
-                (mouseleave)="menuTrigger.closeMenu()"
+                
 
                 > {{menu.name}}</a>
             <mat-menu #matmenu="matMenu" class="navLink">
@@ -31,9 +31,7 @@
 
     <div class="searchBar"><mat-icon>search</mat-icon></div>
     <div class="contactDetails">
-        <div class="contactIconRing">
-            <mat-icon class="contactIcon">phone</mat-icon>
-        </div>
+            <img class="contactIconRing" src="../../../assets/images/customIcons/contactIcon.svg" alt="">
 
         <div>
             <p class="mat-headline-3">+44 (0)1245 280 448</p>
