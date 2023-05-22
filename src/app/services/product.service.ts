@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DatabaseService } from './database.service';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -17,7 +17,7 @@ export class ProductService {
   private products = new Subject<any>; //List of Products to be observed
   private singleProduct = new Subject<any>; //Single Product
 
-  
+
 
   constructor(private http: HttpClient) { }
 
@@ -87,7 +87,7 @@ export class ProductService {
   //   {name:"marine2", id:42},
   // ]
   types= [
-    
+
     {name: "Cameras", value:"camera"},
     {name: "Ethernet", value:"ethernet"},
     {name: "Housing", value:"housing"},
