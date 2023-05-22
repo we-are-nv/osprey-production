@@ -2,7 +2,7 @@
     <div class="card">
         <mat-card>
 
-        
+
             <mat-card-header>
                 <mat-card-title>
                     {{product.product_name}}
@@ -10,7 +10,7 @@
             </mat-card-header>
             <mat-card-content>
                 <img mat-card-image *ngIf="product.image !== ''" [src]="product.image">
-                <img mat-card-image *ngIf="product.image == ''" src="../../../../assets/images/ExampleProducts/defaultImage.jpg">
+                <img mat-card-image *ngIf="product.image == ''" src="./assets/images/ExampleProducts/defaultImage.jpg">
             </mat-card-content>
         </mat-card>
     </div>
@@ -25,7 +25,7 @@
             <p>
                 <span *ngFor="let feature of product.features">
                     <span class="dot"></span>
-                    {{feature}} 
+                    {{feature}}
                     <br><br>  </span>
             </p>
             <div class="classifications">
@@ -40,10 +40,10 @@
         </mat-card>
     </div>
 
-    
-    
-    
-    
+
+
+
+
 </section>
 <section class="productTabs" *ngIf="product !== null">
     <mat-tab-group  mat-stretch-tabs="false" mat-align-tabs="start">
@@ -56,11 +56,11 @@
         <div *ngFor="let extraInfo of additionalInfo | keyvalue" >
             <mat-tab  label="{{extraInfo.key}}">
                 <mat-list>
-                    <mat-list-item *ngFor="let item of (additionalInfo|keyvalue)" >{{item.value}}</mat-list-item> 
+                    <mat-list-item *ngFor="let item of (additionalInfo|keyvalue)" >{{item.value}}</mat-list-item>
                 </mat-list>
             </mat-tab>
         </div>
-        
+
     </mat-tab-group>
 </section>
 <section class="similarProductsInfo">
@@ -70,12 +70,12 @@
     <div class="similarProductsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
         <mat-card class="similarProductsCard" *ngFor="let product of similarProducts" routerLink="/product/{{category}}/{{product._id}}">
             <img mat-card-image *ngIf="product.image !== ''" [src]="product.image">
-            <img mat-card-image *ngIf="product.image == ''" src="../../../../assets/images/ExampleProducts/defaultImage.jpg">
+            <img mat-card-image *ngIf="product.image == ''" src="./assets/images/ExampleProducts/defaultImage.jpg">
             <mat-card-header>
                 <mat-card-title-group></mat-card-title-group>
             </mat-card-header>
             <h4>{{product.product_name}}</h4>
         </mat-card>
     </div>
-    
+
 </section>

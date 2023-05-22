@@ -1,9 +1,9 @@
-<app-hero 
-    upperTitle="So you can relax like you're on a calm sea..." 
-    mainTitle="Security solutions for peace of mind" 
+<app-hero
+    upperTitle="So you can relax like you're on a calm sea..."
+    mainTitle="Security solutions for peace of mind"
     lowerTitle="We provide security requirements of residential, commercial and other clients, with the largest assortment of security cameras and alarm systems installation."
     [isButtons]="true"
-    background="../../assets/images/heroBackgrounds/homeHero.png"
+    background="./assets/images/heroBackgrounds/homeHero.png"
     [button1Data]="{text:'Explore Our Products', path:'', type:'blue'}"
     [button2Data]="{text:'Explore Our Markets', path:'', type:'black'}"
 
@@ -25,18 +25,18 @@
 
 <!-- Product Categories -->
 <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-    
+
     <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
         <img mat-card-image [src]="category.image">
         <h1>{{category.name}}</h1>
         <span>Explore</span>
-        
+
     </mat-card>
 </div>
 
 
 <div class="serviceInfoCard">
-    <img src="../../../assets/images/customIcons/warning.svg" alt="">
+    <img src="./assets/images/customIcons/warning.svg" alt="">
     <p>As leaders in marine and commercial security, we can help you customize a security system to meet your safety needs.
         Schedule A Visit
     </p>

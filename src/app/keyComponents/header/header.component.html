@@ -2,7 +2,7 @@
     [ngClass]="scrolled ? 'scrolledToolbar': 'defaultToolbar'"
     class="{{navStyle}}"
     (window:scroll)="onWindowScroll($event)">
-    <img id="navLogo" src="../../assets/images/Paragon_V3-white.png" alt="">
+    <img id="navLogo" src="./assets/images/Paragon_V3-white.png" alt="">
     <div class="navLinks" >
         <!-- Home Button-->
         <a mat-button class="navLink" [routerLink]="finalNav.home.path">{{finalNav.home.name}}</a>
@@ -11,12 +11,12 @@
                 (mouseleave)="menuTrigger.closeMenu()" -->
         <!-- For Each Drop Down -->
         <div *ngFor="let menu of finalNav.dropDownMenus">
-            <a mat-button class="navLink" 
-                [matMenuTriggerFor]='matmenu'  
+            <a mat-button class="navLink"
+                [matMenuTriggerFor]='matmenu'
                 [routerLink]="menu.headpath"
                 #menuTrigger="matMenuTrigger"
 
-                
+
 
                 > {{menu.name}}</a>
             <mat-menu #matmenu="matMenu" class="navLink">
@@ -31,7 +31,7 @@
 
     <div class="searchBar"><mat-icon>search</mat-icon></div>
     <div class="contactDetails">
-            <img class="contactIconRing" src="../../../assets/images/customIcons/contactIcon.svg" alt="">
+            <img class="contactIconRing" src="./assets/images/customIcons/contactIcon.svg" alt="">
 
         <div>
             <p class="mat-headline-3">+44 (0)1245 280 448</p>
