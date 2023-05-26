@@ -17,6 +17,7 @@ import { ProductViewComponent } from './pages/products/product-view/product-view
 import { HttpClientModule } from '@angular/common/http';
 import { ProductLandingComponent } from './pages/products/product-landing/product-landing.component';
 import { MarketsComponent } from './pages/markets/markets.component';
+import { NameConverterPipe } from './pipes/name-converter.pipe';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { MarketsComponent } from './pages/markets/markets.component';
     ProductViewComponent,
     ProductLandingComponent,
     MarketsComponent,
+    NameConverterPipe,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ import { MarketsComponent } from './pages/markets/markets.component';
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
