@@ -117,12 +117,16 @@ router.post('/', async (req, res) => {
       res.json(error)
     });
 
-})
+});
+
+router.get('/logout', checkAuth, (req, res, next) => {
+	res.clearCookie('SESSIONID');
+	res.sendStatus(200);
+});
 
 
 
 router.get('/check-logged-in', checkAuth, async (req, res) => {
-
   res.json({ message: 'Hello!' + req.userData.id })
 })
 module.exports = router;
