@@ -19,7 +19,7 @@
     </div>
     <!-- Categories Grabbed from Component Variable -->
     <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-        <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of categories">
+        <mat-card class="categoryCard selectable" routerLink="/products/{{category._id}}" *ngFor="let category of categories">
             <img mat-card-image [src]="category.image">
             <h1>{{category.name}}</h1>
             <span>Explore</span>

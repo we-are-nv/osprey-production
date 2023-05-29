@@ -57,10 +57,11 @@ p{
     flex-wrap: wrap;
     justify-content: flex-start;
     width: 80vw;
-    overflow-x: scroll;
+    // overflow-x: scroll;
     margin:auto;
 }
 
+// Category card styling
 .categoryContainer .categoryCard{
     width: 22%;
     margin: 0.25%;
@@ -68,11 +69,20 @@ p{
     text-align: start;
 
 }
+
+// Categcard look Selectable
+.categoryCard[ng-reflect-router-link] {
+    cursor: pointer;
+}
+
+
+
 mat-card{
     border: 1px solid #31353D;
     border-radius: 0%;
     background:transparent;
 }
+
 mat-card-header{
     height: 12.5vh;
     align-items: center;

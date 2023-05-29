@@ -55,7 +55,7 @@
         </mat-tab>
         <div *ngFor="let extraInfo of additionalInfo" >
             <mat-tab  label="{{extraInfo.name | nameConverter}}">
-                <table mat-table [dataSource]="extraInfo.items" class="mat-elevation-z8">
+                <table class="prodcutSpecTable" mat-table [dataSource]="extraInfo.items" class="mat-elevation-z8">
 
                     <!--- Note that these columns can be defined in any order.
                           The actual rendered columns are set as a property on the row definition" -->
@@ -87,7 +87,7 @@
         <h1>Related Products</h1>
     </div>
     <div class="similarProductsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-        <mat-card class="similarProductsCard" *ngFor="let product of similarProducts" routerLink="/product/{{category}}/{{product._id}}">
+        <mat-card class="similarProductsCard selectable" *ngFor="let product of similarProducts" routerLink="/product/{{category}}/{{product._id}}">
             <img mat-card-image *ngIf="product.image !== ''" [src]="product.image">
             <img mat-card-image *ngIf="product.image == ''" src="./assets/images/ExampleProducts/defaultImage.jpg">
             <mat-card-header>
