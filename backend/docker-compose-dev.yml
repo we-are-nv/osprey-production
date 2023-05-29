@@ -14,7 +14,7 @@ volumes:
 
 services:
 
-  node-app:
+  paragon-server:
     container_name: paragon-server
     restart: unless-stopped
 
