@@ -38,6 +38,48 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
+
+
+router.post('/login', (req, res, next) => {
+  user.findOne({ email: req.body.email }).then(result => {
+    if (!result) {
+      res.status(200).json({ status: 'ERRORNOUSER' });
+      return;
+    }
+
+    if (
+      bcrypt.compareSync(req.body.password, result.password)) {
+      const jwtBearerToken = jwt.sign({}, decrytedKey, {
+        algorithm: 'RS256',
+        expiresIn: '1h',
+        subject: result._id.toString(),
+        allowInsecureKeySizes: true
+      });
+      if (!process.env.ALLOW_LOCAL_STORAGE) {
+        res.cookie('SESSIONID', jwtBearerToken, {
+          httpOnly: true,
+          secure: true,
+          maxAge: 3600000
+        });
+      }
+
+      res.status(200).json({
+        status: 'LOGGEDIN',
+        idToken: jwtBearerToken,
+        expirest: 3600000
+      });
+    } else {
+      res.status(200).json({ status: 'ERRORPASS' });
+    }
+  });
+});
+
+
+
+
+
+
+
 router.post('/', async (req, res) => {
   const newUser = new user({
     full_name: req.body.name,
@@ -79,8 +121,8 @@ router.post('/', async (req, res) => {
 
 
 
-router.get('/check-logged-in',checkAuth, async (req, res) => {
+router.get('/check-logged-in', checkAuth, async (req, res) => {
 
-  res.json({message:'Hello!'+req.userData.id})
+  res.json({ message: 'Hello!' + req.userData.id })
 })
 module.exports = router;
