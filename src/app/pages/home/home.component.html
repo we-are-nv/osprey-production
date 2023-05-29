@@ -26,25 +26,7 @@
 <!-- Product Categories -->
 <div class="categoryContainer" fxLayout="colun wrap" fxLayoutAlign="flex-start">
 
-    <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
-        <img mat-card-image [src]="category.image">
-        <h1>{{category.name}}</h1>
-        <span>Explore</span>
-
-    </mat-card>
-    <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
-        <img mat-card-image [src]="category.image">
-        <h1>{{category.name}}</h1>
-        <span>Explore</span>
-
-    </mat-card>
-    <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
-        <img mat-card-image [src]="category.image">
-        <h1>{{category.name}}</h1>
-        <span>Explore</span>
-
-    </mat-card>
-    <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
+    <mat-card class="categoryCard selectable" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
         <img mat-card-image [src]="category.image">
         <h1>{{category.name}}</h1>
         <span>Explore</span>
@@ -73,7 +55,7 @@
     <!-- Product Categories -->
         <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
 
-            <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
+            <mat-card class="categoryCard selectable" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
                 <img mat-card-image [src]="category.image">
                 <h1>{{category.name}}</h1>
                 <span>Explore</span>
@@ -98,7 +80,7 @@
     <!-- Product Categories -->
         <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
 
-            <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
+            <mat-card class="categoryCard selectable" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
                 <img mat-card-image [src]="category.image">
                 <h1>{{category.name}}</h1>
                 <span>Explore</span>

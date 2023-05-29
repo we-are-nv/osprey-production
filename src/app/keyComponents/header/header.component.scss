@@ -41,9 +41,22 @@ mat-toolbar{
     font-size: 1vw;
     text-decoration: none;
 }
+::ng-deep .navLink{
+    width: min-content + 10%;
+}
 .navLinkIcon{
     float: right;
 }
+// Styling for the dropdown
+.mdc-list-item{
+    border-radius: 0%;
+    border-bottom: solid 1px #EAEAEA;
+    // width: 80%;
+    margin: auto;
+    font-family: 'roboto';
+    text-align: start;
+}
+
 // Search bar Icon
 .searchBar{
     color: white;
