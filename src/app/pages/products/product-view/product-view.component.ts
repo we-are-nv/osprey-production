@@ -54,7 +54,7 @@ export class ProductViewComponent implements OnInit{
         this.productService.getProducts({category:this.category, page:1, limit:4});  
         this.similarProductsSub = this.productService.getProductsUpdateListener()
           .subscribe((data)=>{
-            console.log(data)
+            // console.log(data)
             this.similarProducts = data.products;
         });
 
@@ -72,11 +72,11 @@ export class ProductViewComponent implements OnInit{
       let itemsArray= [];
       for(let item in v){
 
-        if(v[item] !== ""){
-          let itemObj = {
-            name:item,
-            value:v[item],
-          };
+          if(this.specValidation(v[item])){
+            let itemObj = {
+              name:item,
+              value:v[item].toString(),
+            };
 
           itemsArray.push(itemObj);
         }
@@ -94,6 +94,19 @@ export class ProductViewComponent implements OnInit{
       console.log(this.additionalInfo);
     }
     
+  }
+
+  specValidation(data:any) : boolean{
+    if (data !== '' && 
+        data!== null && 
+        data!== undefined &&
+        data !== "n/a" &&
+        data !== "na") {
+          return true;
+        }
+      else{
+        return false;
+      }
   }
 
 

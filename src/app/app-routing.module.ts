@@ -9,8 +9,9 @@ import { ProductLandingComponent } from './pages/products/product-landing/produc
 import { MarketsComponent } from './pages/markets/markets.component';
 
 const routes: Routes = [
+  // General Pages
   {path:'', component:HomeComponent},
-  {path:'quote', component:QuoteFormComponent},
+  {path:'contact', component:QuoteFormComponent},
 
   // Service Pages
   {path:'services', component:ServicesComponent},

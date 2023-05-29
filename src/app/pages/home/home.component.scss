@@ -40,13 +40,7 @@ p{
 }
 
 
-// Market Section
-.darkSection{
-    background-color:#161616 ;
-    color: white;
-    padding: 5vw;
-    padding-bottom: 1vh;
-}
+
 
 
 // Formatting for the Category Cards
@@ -70,10 +64,7 @@ p{
 
 }
 
-// Categcard look Selectable
-.categoryCard[ng-reflect-router-link] {
-    cursor: pointer;
-}
+
 
 
 
@@ -128,15 +119,19 @@ mat-card-header{
     }
 }
 
-// 
+// Info Cards
+.infoCardContainer{
+    margin-top: 1rem;
+    margin-bottom: -10rem;
+}
+
 .serviceInfoCard{
     display: flex;
     position: relative;
     border-radius:0px;
     width: 90vw;
     margin:auto;
-    margin-top: 1vh;
-    margin-bottom: -2rem;
+
     padding: 1vw;
     height: auto;
     background-color: white  ;
@@ -144,7 +139,7 @@ mat-card-header{
 .serviceInfoCard img{
     position: relative;
     width: 2rem;
-    height: 2rem;
+    height: min-content;
     margin: auto;
     background-color: rgba(128, 128, 128, 0.6);
     padding: 5px;
@@ -160,13 +155,27 @@ mat-card-header{
 }
 .serviceInfoCard .quoteButton{
     background-color: transparent;
-    border: 2px solid black;
-    width: 30vw;
+    border: 1px solid #9B9B9B;
+    border-radius: 0px;
+    width: 20%;
     position: relative;
     margin: auto;
 }
+        // blue version of service card
+#blueInfoCard{
+    background-color:#0065E7;
+    color: white;
+    
+    border: solid 3px #EAEAEA;
+    margin-top: 2rem;
+    // margin
+}
+
 
 // Category slide buttons
+.relatedButtons{
+    width: 80vw;
+}
 .slideButtonContainer{
     width: max-content;
     margin: auto;
@@ -181,9 +190,24 @@ mat-card-header{
     background-color: transparent;
 }
 .categoryButton{
-    float:right;
-    position: absolute;
+    left: 80vw;
+    font-size: 1vw;
+    position:absolute ;
+    text-decoration: none;
+    font-family: 'Avenir', sans-serif;;
 }
-.relatedCategoryButtons{
-    display: flex;
+
+
+
+// Home Category Section (Dark Section)
+.darkSection{
+    background-color:#161616 ;
+    color: white;
+    padding: 5vw;
+    padding-bottom: 5vh;
+
+}
+
+#topDarkSection{
+    margin-top: 10rem;
 }

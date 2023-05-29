@@ -31,7 +31,7 @@ export class ProductService {
   getProducts(filter: any){
     // Filter contains Category and any other filters I need to apply
     const query = filter;
-    console.log(query)
+    // console.log(query)
     this.http
       .get<any>(this.API_URL+ '/product/product_info', {params: query})
       .subscribe(response=>{
@@ -41,7 +41,7 @@ export class ProductService {
   // Search List of products based on filter, using the product_name
   searchProducts(filter: any){
     const query = filter;
-    console.log(query)
+    // console.log(query)
     this.http
       .get<any>(this.API_URL+ '/product/search', {params: query})
       .subscribe(response=>{
@@ -58,7 +58,7 @@ export class ProductService {
     this.http
       .get<any>(this.API_URL+ '/product/categories')
       .subscribe(response=>{
-        console.log(response)
+        // console.log(response)
         this.categories.next(response)
       })
   }
@@ -71,7 +71,7 @@ export class ProductService {
   }
 
   getSingleProduct(id: string, type:string){
-    console.log(id)
+    // console.log(id)
     let query = id
     let product: any;
     this.http
