@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit{
     })
     this.productsSub = this.productService.getProductsUpdateListener()
       .subscribe((data)=>{
-        console.log(data)
+        // console.log(data)
         this.products = data.products;
         this.currentPage = data.currentPage;
         this.totalPages = data.totalPages
@@ -53,7 +53,7 @@ export class ProductsComponent implements OnInit{
 
   // On search
   onSearchChange(searchValue: any): void {  
-    console.log(searchValue.target.value);
+    // console.log(searchValue.target.value);
     this.productService.searchProducts({
       page:1,
       searchQuery:searchValue.target.value,

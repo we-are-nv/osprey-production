@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductLandingComponent } from './pages/products/product-landing/product-landing.component';
 import { MarketsComponent } from './pages/markets/markets.component';
 import { NameConverterPipe } from './pipes/name-converter.pipe';
+import { CharacterValidationPipe } from './pipes/character-validation.pipe';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { NameConverterPipe } from './pipes/name-converter.pipe';
     ProductLandingComponent,
     MarketsComponent,
     NameConverterPipe,
+    CharacterValidationPipe,
   ],
   imports: [
     BrowserModule,

@@ -20,13 +20,13 @@
 
                 > {{menu.name}}</a>
             <mat-menu #matmenu="matMenu" class="navLink">
-                <a mat-menu-item *ngFor="let link of menu.childLinks" [routerLink]="link.path">{{link.name}}</a>
+                <a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of menu.childLinks" [routerLink]="link.path">{{link.name}}</a>
             </mat-menu>
         </div>
 
 
         <!-- Contact Button -->
-        <a mat-button class="navLink">Contact</a>
+        <a mat-button [routerLink]="finalNav.contact.path" class="navLink">Contact</a>
     </div>
 
     <div class="searchBar"><mat-icon>search</mat-icon></div>

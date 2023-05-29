@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit{
         this.categories = data.cats
         let tempCategories:any[] = []
         this.categories.forEach((category: any) => {
-          console.log('hello')
+          // console.log('hello')
           // For each Category create a Nav diretorys
           tempCategories.push(
             {name:category.name, path:'products/'+category._id}
@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit{
 
         });
         this.productNav = tempCategories
-        console.log(this.productNav)
+        // console.log(this.productNav)
         this.generateNav()
     });
 
@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit{
   async generateNav(){
     this.finalNav = {
       home:{path:"", name:"Home"},
-      contact:{path:"", name:"Contact"},
+      contact:{path:"contact", name:"Contact"},
       dropDownMenus:[
         {
           name:"About Us",
