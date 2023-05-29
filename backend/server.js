@@ -12,6 +12,7 @@ const app = express();
 
 const serviceRoute = require('./src/routes/products');
 const modelRoute = require('./src/routes/model');
+const authRoute = require('./src/routes/auth');
 
 const PORT = process.env.PORT || 3030;
 
@@ -79,6 +80,7 @@ app.get('/paragon/api/status', (req, res) => {
 
 app.use('/paragon/api/service', serviceRoute);
 app.use('/paragon/api/product', serviceRoute);
+app.use('/paragon/api/auth',authRoute);
 app.use('/api/model', modelRoute);
 
 const start = () => {
