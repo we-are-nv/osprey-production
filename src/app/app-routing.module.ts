@@ -6,14 +6,20 @@ import { QuoteFormComponent } from './pages/quote-form/quote-form.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { ProductViewComponent } from './pages/products/product-view/product-view.component';
 import { ProductLandingComponent } from './pages/products/product-landing/product-landing.component';
+import { MarketsComponent } from './pages/markets/markets.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'quote', component:QuoteFormComponent},
 
+  // Service Pages
   {path:'services', component:ServicesComponent},
 
+  // Market Pages
+  {path:'markets', component:MarketsComponent},
 
+
+  // Product pages
   {path:'products/landing', component:ProductLandingComponent},
   {path:'products/:category', component:ProductsComponent},
   {path:'product/:category/:id', component:ProductViewComponent}

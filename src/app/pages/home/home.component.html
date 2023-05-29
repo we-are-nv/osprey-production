@@ -24,7 +24,7 @@
 </section>
 
 <!-- Product Categories -->
-<div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
+<div class="categoryContainer" fxLayout="colun wrap" fxLayoutAlign="flex-start">
 
     <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
         <img mat-card-image [src]="category.image">
@@ -32,21 +32,88 @@
         <span>Explore</span>
 
     </mat-card>
+    <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
+        <img mat-card-image [src]="category.image">
+        <h1>{{category.name}}</h1>
+        <span>Explore</span>
+
+    </mat-card>
+    <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
+        <img mat-card-image [src]="category.image">
+        <h1>{{category.name}}</h1>
+        <span>Explore</span>
+
+    </mat-card>
+    <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
+        <img mat-card-image [src]="category.image">
+        <h1>{{category.name}}</h1>
+        <span>Explore</span>
+
+    </mat-card>
+</div>
+<div class="slideButtonContainer">
+    <button class="slideButton"><img src="./assets/images/customIcons/prev-slide.svg" alt=""></button>
+    <button class="slideButton"><img src="./assets/images/customIcons/next-slide.svg" alt=""></button>
 </div>
 
 
 <div class="serviceInfoCard">
     <img src="./assets/images/customIcons/warning.svg" alt="">
-    <p>As leaders in marine and commercial security, we can help you customize a security system to meet your safety needs.
-        Schedule A Visit
+    <p>Leaders and fire and security, we can help you customise your system design to meet your exact requirements. Schedule A Call
     </p>
     <button mat-raised-button class="quoteButton">Get Your Quote</button>
 </div>
 
 
-<section class="markets">
+<section class="darkSection">
     <h1>Specialist market expertise</h1>
     <p>We are passionate about providing leading-edge and robust solutions, suitable for demanding markets and environments, which are straightforward to operate and maintain, certified for their use-class with ongoing support second to none. We lead the industry in the design, supply and support of harsh environment security systems with many years design & integration experience.</p>
+
+    <!-- Markets Categories -->
+    <!-- Product Categories -->
+        <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
+
+            <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
+                <img mat-card-image [src]="category.image">
+                <h1>{{category.name}}</h1>
+                <span>Explore</span>
+
+            </mat-card>
+            
+        </div>
+        <div class="relatedCategoryButtons">
+            <div class="slideButtonContainer">
+                <button class="slideButton"><img src="./assets/images/customIcons/prev-slide.svg" alt=""></button>
+                <button class="slideButton"><img src="./assets/images/customIcons/next-slide.svg" alt=""></button>
+            </div>
+            <button class="standardButton blueButton categoryButton" mat-raised-button>Explore The Markets ></button>
+        </div>
+        
+</section>
+<section class="darkSection">
+    <h1>Service support second to none</h1>
+    <p>Excellent customer service and support are the keystone of our business. We guarantee good communications, transparency and honesty in all our interactions with you.</p>
+
+    <!-- Markets Categories -->
+    <!-- Product Categories -->
+        <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
+
+            <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
+                <img mat-card-image [src]="category.image">
+                <h1>{{category.name}}</h1>
+                <span>Explore</span>
+
+            </mat-card>
+            
+        </div>
+        <div class="relatedCategoryButtons">
+            <div class="slideButtonContainer">
+                <button class="slideButton"><img src="./assets/images/customIcons/prev-slide.svg" alt=""></button>
+                <button class="slideButton"><img src="./assets/images/customIcons/next-slide.svg" alt=""></button>
+            </div>
+            <button class="standardButton blueButton categoryButton" mat-raised-button>Explore The Markets ></button>
+        </div>
+        
 </section>
 
 

@@ -5,8 +5,28 @@
     font-family: 'roboto';
 }
 h1{
-    font-size: 2vw;
+    font-size: 2rem;
 }
+p{
+    font-size: 1rem;
+    font-family: 'roboto';
+}
+
+// Standard Buttons
+.standardButton{
+    padding: 2rem;
+    border-radius: 0px;
+    margin-left:1vw;
+    font-weight: bolder;
+}
+
+.blueButton{
+    background-color: #0065E7;
+    color: white;
+}
+
+
+
 
 // Top About
 .briefAbout{
@@ -21,10 +41,11 @@ h1{
 
 
 // Market Section
-.markets{
+.darkSection{
     background-color:#161616 ;
     color: white;
     padding: 5vw;
+    padding-bottom: 1vh;
 }
 
 
@@ -32,23 +53,25 @@ h1{
 .categoryContainer {
     margin-top: 1rem;
     display: flex-start;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-start;
     width: 80vw;
+    overflow-x: scroll;
     margin:auto;
 }
 
 .categoryContainer .categoryCard{
     width: 22%;
-    margin: 1%;
+    margin: 0.25%;
     border-radius:0px ;
     text-align: start;
 
 }
 mat-card{
-    border: 1px solid rgba(0, 0, 0, 0.25);
+    border: 1px solid #31353D;
     border-radius: 0%;
+    background:transparent;
 }
 mat-card-header{
     height: 12.5vh;
@@ -58,7 +81,9 @@ mat-card-header{
 
 .categoryCard img{
     width: 100%;
-    margin: auto;
+
+    // margin: auto;
+    margin-top: 0px;
 }
 .categoryCard h1{
     padding-left: 2vh;
@@ -119,8 +144,7 @@ mat-card-header{
     position: relative;
     display: flex;
     width: 50%;
-    font-size: 0.75rem;
-    font-weight: light;
+    
     margin: auto;
     padding: 1%;
 }
@@ -130,4 +154,26 @@ mat-card-header{
     width: 30vw;
     position: relative;
     margin: auto;
+}
+
+// Category slide buttons
+.slideButtonContainer{
+    width: max-content;
+    margin: auto;
+    display: flex;
+}
+.slideButton{
+    height: min-content;
+    background-color: transparent;
+    border: none;
+}
+.slideButton img{
+    background-color: transparent;
+}
+.categoryButton{
+    float:right;
+    position: absolute;
+}
+.relatedCategoryButtons{
+    display: flex;
 }

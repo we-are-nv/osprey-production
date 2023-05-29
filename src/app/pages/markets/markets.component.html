@@ -1,1 +1,27 @@
-<p>markets works!</p>
+<app-hero
+    mainTitle="Markets"
+    secondaryTitle="Expertise Second to None"
+    lowerTitle="When you need to be sure that systems will perform in demanding environments, you can trust Paragon’s experienced team of engineers, surveyors, designers and project managers to deliver solutions you can trust"
+    [isButtons]="true"
+    background="./assets/images/heroBackgrounds/marketsLanding.png"
+    [button1Data]="{text:'Book a Call', path:'',  type:'white'}"
+    [button2Data]="{text:'Request A Quote', path:'', type:'blue'}"
+
+    ></app-hero>
+    <section class="main">
+        <div class="header">
+            <h1>Our Markets</h1>
+            <span>We have specialist products and experience of a variety of different market sectors - each with their own unique demands.  Whether you need an explosion proof camera for an oil rig, or vandal-resistant equipment for a prison cell - We Can Help.</span>
+        </div>
+        <!-- Categories Grabbed from Component Variable -->
+        <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
+            <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of categories">
+                <img mat-card-image [src]="category.image">
+                <h1>{{category.name}}</h1>
+                <span>Explore</span>
+
+            </mat-card>
+        </div>
+    </section>
+
+<app-quote-form></app-quote-form>
