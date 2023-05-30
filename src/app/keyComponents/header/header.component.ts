@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit{
   scrolled = false;
   navStyle= "standard"
 
-    
+
   async ngOnInit() {
     // Get Product Categories
     this.productService.getCategories()
@@ -38,11 +38,11 @@ export class HeaderComponent implements OnInit{
         this.generateNav()
     });
 
-    
-    
-    
 
-    
+
+
+
+
   }
 
   async generateNav(){
@@ -52,37 +52,37 @@ export class HeaderComponent implements OnInit{
       dropDownMenus:[
         {
           name:"About Us",
-          headpath:"", 
+          headpath:"",
           childLinks:[
             {name:"History", path:""}
           ]
         },
         {
           name:"Products",
-          headpath:"products/landing", 
+          headpath:"products/landing",
           childLinks:  this.productNav
         },
         {
           name:"Markets",
-          headpath:"markets",  
+          headpath:"markets",
           childLinks:[
           {name:"example", path:""}
           ]
         },
         {
           name:"Services",
-          headpath:"services", 
+          headpath:"services",
           childLinks:[
           {name:"categories", path:"services/categories"}
           ]
         },
         {
-          name:"Recourses",
-          headpath:"", 
+          name:"Resourses",
+          headpath:"",
           childLinks:[
           {name:"example", path:""}
           ]
-        },  
+        },
       ]
       }
   }
@@ -94,5 +94,5 @@ export class HeaderComponent implements OnInit{
       this.scrolled = true;
     }
   }
-  
+
 }
