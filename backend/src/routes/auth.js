@@ -31,6 +31,7 @@ const decrytedKey = crypto.createPrivateKey({
   passphrase: keyPass
 });
 
+const MAX_AGE = process.env.AUTH_AGE | 3600000;
 
 
 router.use(function timeLog(req, res, next) {
@@ -38,10 +39,25 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
-//var MAX_AGE = 3600000;
-const MAX_AGE = 43200000;
+
+
+function msToTime(duration) {
+  var milliseconds = parseInt((duration % 1000) / 100),
+    seconds = Math.floor((duration / 1000) % 60),
+    minutes = Math.floor((duration / (1000 * 60)) % 60),
+    hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+  hours = (hours < 10) ? "0" + hours : hours;
+  minutes = (minutes < 10) ? "0" + minutes : minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+  return Number(hours);
+}
+
+
 
 router.post('/login', (req, res, next) => {
+  console.log(msToTime(MAX_AGE))
   user.findOne({ email: req.body.email }).then(result => {
     if (!result) {
       res.status(200).json({ status: 'ERRORNOUSER' });
@@ -52,7 +68,7 @@ router.post('/login', (req, res, next) => {
       bcrypt.compareSync(req.body.password, result.password)) {
       const jwtBearerToken = jwt.sign({}, decrytedKey, {
         algorithm: 'RS256',
-        expiresIn: '1h',
+        expiresIn: `${msToTime(MAX_AGE)}h`,
         subject: result._id.toString(),
         allowInsecureKeySizes: true
       });
@@ -67,7 +83,7 @@ router.post('/login', (req, res, next) => {
       res.status(200).json({
         status: 'LOGGEDIN',
         idToken: jwtBearerToken,
-        expirest: MAX_AGE
+        expires: MAX_AGE
       });
     } else {
       res.status(200).json({ status: 'ERRORPASS' });
