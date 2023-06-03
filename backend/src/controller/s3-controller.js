@@ -1,4 +1,4 @@
-const { PutObjectCommand, S3Client, GetObjectCommand  } = require("@aws-sdk/client-s3");
+const { PutObjectCommand, S3Client, GetObjectCommand, DeleteObjectCommand  } = require("@aws-sdk/client-s3");
 const dotenv = require('dotenv');
 const fs = require('fs-extra');
 const rimraf = require('rimraf');
@@ -31,6 +31,21 @@ const uploadCatImage = async (file,name,fileType) => {
   }
 };
 
+const deleteImage = async (key) => {
+  const command = new DeleteObjectCommand({
+    Bucket: BUCKET_NAME,
+    Key: key,
+  });
+
+  try {
+    const response = await s3.send(command);
+    //console.log(response);
+  } catch (err) {
+    console.error('err'+err);
+  }
+}
+
+
 const uploadBase = async (productType,cat,name,binary) => {
   var buf = Buffer.from(binary.replace(/^data:image\/\w+;base64,/, ""),'base64');
 
@@ -51,4 +66,4 @@ const uploadBase = async (productType,cat,name,binary) => {
   }
 };
 
-module.exports = {uploadCatImage,uploadBase};
+module.exports = {uploadCatImage,uploadBase,deleteImage};

@@ -310,6 +310,35 @@ router.put('/', checkAuth, async (req, res) => {
 
 })
 
+/*
+Delete Product
+*/
+
+router.delete('/', checkAuth, async (req, res) => {
+  if (!req.query.id) {
+    res.json({ error: 'Please enter valid ID' });
+    return;
+  };
+  try {
+    const foundProduct = await product_info.findOne({ _id: req.query.id });
+
+    var imageToDelete = foundProduct.image.split(process.env.S3_BASE+"/")[1];
+    s3Controller.deleteImage(imageToDelete);
+
+    // Delet Prods Additional Info First
+    const deletedAditInfo = await product_addit_info.findByIdAndDelete({_id:foundProduct.additional_information});
+
+    //Delete Main Prod
+    const deletedProd = await product_info.findByIdAndDelete({_id:req.query.id});
+
+    res.json({message:"Deleted Product"})
+  }
+  catch (error) {
+    res.json({ message: 'An error has occured',error:error });
+  };
+
+});
+
 
 
 /*
