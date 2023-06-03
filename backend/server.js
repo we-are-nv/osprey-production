@@ -51,7 +51,7 @@ const middlewareCheck = (req, res, next) => {
 		console.log('REQ HOST: ' + req.get('host'));
 		console.log('REQ ROUTE: ' + req.originalUrl);
 		console.log('REQ BODY:');
-		console.log(req.body);
+		//console.log(req.body);
 	}
 	next();
 };

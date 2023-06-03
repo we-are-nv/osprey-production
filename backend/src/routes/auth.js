@@ -38,7 +38,8 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
-
+//var MAX_AGE = 3600000;
+const MAX_AGE = 43200000;
 
 router.post('/login', (req, res, next) => {
   user.findOne({ email: req.body.email }).then(result => {
@@ -59,14 +60,14 @@ router.post('/login', (req, res, next) => {
         res.cookie('SESSIONID', jwtBearerToken, {
           httpOnly: true,
           secure: true,
-          maxAge: 3600000
+          maxAge: MAX_AGE
         });
       }
 
       res.status(200).json({
         status: 'LOGGEDIN',
         idToken: jwtBearerToken,
-        expirest: 3600000
+        expirest: MAX_AGE
       });
     } else {
       res.status(200).json({ status: 'ERRORPASS' });
