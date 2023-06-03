@@ -14,10 +14,10 @@ const REGION = process.env.REGION;
 
 const s3 = new S3Client({ credentials:{ accessKeyId: ID, secretAccessKey: SECRET, }, region:REGION });
 
-const uploadFile = async (file,name,productType,fileType) => {
+const uploadCatImage = async (file,name,fileType) => {
   const command = new PutObjectCommand({
       Bucket: BUCKET_NAME,
-      Key: `products/${productType}/images/${name}`,
+      Key: `products/categories/images/${name}`,
       ContentType: 'image/'+fileType,
       Body: fs.readFileSync(file),
     });
@@ -51,4 +51,4 @@ const uploadBase = async (productType,cat,name,binary) => {
   }
 };
 
-module.exports = {uploadFile,uploadBase};
+module.exports = {uploadCatImage,uploadBase};

@@ -142,7 +142,7 @@ Get Categories
 
 // edited this route so it doesnt clash with the main path
 
-router.get('/categories', async (req, res, next) => {
+router.get('/categories', checkAuth,async (req, res, next) => {
   categories.find().then(result => {
     console.log('Categories:', result);
     res.json({ cats: result });
@@ -162,42 +162,40 @@ const upload = multer({
 /*
 Create Category
 */
-router.post('/category', upload.single('img'), async (req, res, next) => {
+router.post('/category',checkAuth, upload.single('img'), async (req, res, next) => {
   var filePath = path.join(
     __dirname,
     '../',
     '../uploads',
     'uploaded.' + req.file.originalname.split('.')[1]
   );
-  var cat = new categorys({
-    name: req.query.name,
-    image: `${process.env.S3_BASE}/products/categories/images/${req.query.name
-      }.${req.file.originalname.split('.')[1]}`
-  });
-  cat
-    .save()
-    .then(result => {
-      s3Controller.uploadFile(
-        filePath,
-        req.query.name + '.' + req.file.originalname.split('.')[1],
-        'categories',
-        req.file.originalname.split('.')[1]
-      );
-      res.send({ message: 'Category Added', category: cat });
-    })
-    .catch(error => {
-      console.log('Existing');
-      s3Controller.uploadFile(
-        filePath,
-        req.query.name + '.' + req.file.originalname.split('.')[1],
-        'categories',
-        req.file.originalname.split('.')[1]
-      );
-      res.json({ message: 'Imaged Updated' });
-    });
-  console.log(filePath);
+  var newCatId = new mongoose.Types.ObjectId();
+  s3Controller.uploadCatImage(filePath,newCatId,req.file.originalname.split('.')[1]);
+  var newCat = new categorys({
+    _id:newCatId,
+    name:req.query.name,
+    image:`${process.env.S3_BASE}/products/categories/images/${newCatId}`
+  })
+  newCat.save();
+  res.json({message:'CatSaved'})
 });
 
+/*
+Create Category
+*/
+router.put('/category',checkAuth, upload.single('img'), async (req, res, next) => {
+  var filePath = path.join(
+    __dirname,
+    '../',
+    '../uploads',
+    'uploaded.' + req.file.originalname.split('.')[1]
+  );
+  console.log(req.query.id)
+  s3Controller.uploadCatImage(filePath,req.query.id,req.file.originalname.split('.')[1]);
+  const catUpdated = await categorys.findOneAndUpdate({_id:req.query.id},{name:req.query.newName});
+  console.log(catUpdated)
+  res.json({message:'CatUpdated'})
+});
 
 
 
