@@ -217,8 +217,8 @@ router.post('/', checkAuth, async (req, res, next) => {
   var modelObjectKeys = Object.keys(foundModel.data);
 
   // Soft Check Keys Match
-  if (modelObjectKeys.filter(x => !bodyObjectKeys.includes(x)).length > 0){
-    res.json({ error: "InvalidModel",missing: modelObjectKeys.filter(x => !bodyObjectKeys.includes(x))});
+  if (modelObjectKeys.filter(x => !bodyObjectKeys.includes(x)).length > 0) {
+    res.json({ error: "InvalidModel", missing: modelObjectKeys.filter(x => !bodyObjectKeys.includes(x)) });
     return;
   };
 
@@ -226,8 +226,8 @@ router.post('/', checkAuth, async (req, res, next) => {
 
   //Create and Send AdditInfo and get ObjectKey
   var newAdditInfo = new product_addit_info({
-    info:req.body.additInfo,
-    modelName:req.body.modelName
+    info: req.body.additInfo,
+    modelName: req.body.modelName
   });
   const createdAdditInfo = await newAdditInfo.save();
   var additInfoId = createdAdditInfo._id;
@@ -243,13 +243,14 @@ router.post('/', checkAuth, async (req, res, next) => {
   //Inject Additional Fields Into Main Info
   var finalMainObj = {
     ...req.body.mainInfo,
-    image:predictedImageURL,
-    category:new mongoose.Types.ObjectId(req.body.category),
-    additional_information:new mongoose.Types.ObjectId(additInfoId)
+    image: predictedImageURL,
+    modelUsed: req.body.modelName,
+    category: new mongoose.Types.ObjectId(req.body.category),
+    additional_information: new mongoose.Types.ObjectId(additInfoId)
   };
 
   var newMainObj = new product_info({
-    _id:newProductID,
+    _id: newProductID,
     ...finalMainObj
   });
 
@@ -258,11 +259,59 @@ router.post('/', checkAuth, async (req, res, next) => {
 
   // Upload Image to AWS S3 Bucket
 
-  s3Controller.uploadBase(req.body.modelName,req.body.category,newProductID,req.body.img);
+  s3Controller.uploadBase(req.body.modelName, req.body.category, newProductID, req.body.img);
 
 
-  res.json({message:'Product Added',product:createdNewProd});
+  res.json({ message: 'Product Added', product: createdNewProd });
 });
+
+
+/*
+Update Product
+*/
+
+router.put('/', checkAuth, async (req, res) => {
+  if (!req.query.id) {
+    res.json({ error: 'Please enter valid ID' });
+    return;
+  };
+  try {
+    const foundProduct = await product_info.findOne({ _id: req.query.id });
+
+    if (req.body.main) {
+      console.log('Changes to be made to main Product!');
+      var product_info_keys = new Array();
+      product_info.schema.eachPath(function (path) {
+        product_info_keys.push(path)
+      });
+      var bodyKeys = Object.keys(req.body.main);
+      for (idx in bodyKeys) {
+        if (!product_info_keys.includes(bodyKeys[idx])){
+          res.json({error:"Invalid Body",field:bodyKeys[idx]});
+          return;
+        };
+      };
+
+      if (bodyKeys.includes('image')){
+        s3Controller.uploadBase(foundProduct.modelUsed,foundProduct.category,foundProduct._id,req.body.main.image);
+        req.body.main.image = foundProduct.image;
+      };
+      const updatedProd = await product_info.findOneAndUpdate({ _id: req.query.id },req.body.main);
+
+    };
+
+    if (req.body.adit) {
+      const updatedAdit = await product_addit_info.findOneAndUpdate({ _id: foundProduct.additional_information },{info:req.body.adit});
+    };
+    res.json({message:'Product Updated!',updatedFieldsMain:req.body.main,updatedFieldsAditt:req.body.adit})
+    return;
+  }
+  catch (error) {
+    res.json({ message: 'An error has occured',error:error });
+  };
+
+})
+
 
 
 /*

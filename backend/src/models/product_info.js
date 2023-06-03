@@ -3,15 +3,16 @@ const categorys = require('./categories');
 const product_addit_info = require('./product_addit_info');
 
 const productInfo = mongoose.Schema({
-	product_code: { type: String, required: false },
-	product_name: { type: String, required: false },
-	image: { type: String, required: false },
+	product_code: { type: String, required: true },
+	product_name: { type: String, required: true },
+	image: { type: String, required: true },
 	technicalImages: { type: Array, required: false },
-	description: { type: String, required: false },
+	description: { type: String, required: true },
 	addit_category: { type: String, required: false },
 	features: { type: Array, required: false },
 	product_link: { type: String, required: false },
 	feature_deprec: { type: String, required: false },
+  modelUsed:{type:String,requried:true},
 	manufacturer: { type: String, required: false },
 	tech_drawing: { type: String, required: false },
 	category: { type: mongoose.Schema.Types.ObjectId, ref: categorys },

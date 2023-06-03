@@ -64,7 +64,8 @@ app.get('/paragon/api-test', (req, res) => {
 	res.send('test');
 });
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(morgan('dev'));
 
 app.use(middlewareCheck);
