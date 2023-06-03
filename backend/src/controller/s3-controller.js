@@ -12,7 +12,6 @@ const SECRET = process.env.AWS_SK;
 const BUCKET_NAME = process.env.AWS_BUCKET;
 const REGION = process.env.REGION;
 
-console.log(REGION)
 const s3 = new S3Client({ credentials:{ accessKeyId: ID, secretAccessKey: SECRET, }, region:REGION });
 
 const uploadFile = async (file,name,productType,fileType) => {
@@ -32,5 +31,24 @@ const uploadFile = async (file,name,productType,fileType) => {
   }
 };
 
+const uploadBase = async (productType,name,binary) => {
+  var buf = Buffer.from(binary.replace(/^data:image\/\w+;base64,/, ""),'base64');
 
-module.exports = {uploadFile};
+  const command = new PutObjectCommand({
+    Bucket: BUCKET_NAME,
+    Key: `products/${productType}/images/${name}`,
+    Body: buf,
+    ContentEncoding: 'base64',
+    ContentType: `image/${binary.split(';')[0].split('/')[1]}`
+  });
+
+  try {
+    const response = await s3.send(command);
+   //console.log(response);
+
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+module.exports = {uploadFile,uploadBase};
