@@ -4,6 +4,7 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
+		"start docker": "ng serve --configuration=docker",
 		"build": "ng build",
 		"build2": "ng build --configuration production --base-href /paragon/",
 		"watch": "ng build --watch --configuration development",

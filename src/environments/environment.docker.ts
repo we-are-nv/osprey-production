@@ -1,6 +1,6 @@
 export const environment = {
 
-	API_URL: 'http://localhost:3030/paragon/api',
+	API_URL: 'http://localhost/paragon/api',
 	PRODUCTION: false
 
 };
