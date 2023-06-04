@@ -87,8 +87,8 @@ app.use('/paragon/api/auth',authRoute);
 app.use('/paragon/api/model', modelRoute);
 
 //Category Routes
-app.use('/paragon/api/service/category',catRoute);
-app.use('/paragon/api/service/categories',catRoute);
+app.use('/paragon/api/product/category',catRoute);
+app.use('/paragon/api/product/categories',catRoute);
 
 
 const start = () => {
