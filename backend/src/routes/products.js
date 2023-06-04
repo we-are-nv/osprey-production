@@ -179,16 +179,24 @@ router.post('/', checkAuth, async (req, res, next) => {
   // Create Object ID for new Document
   var newProductID = new mongoose.Types.ObjectId();
 
+
+
   //Predict Image URLs
   var predictedImageURL = `/products/${req.body.category}/${req.body.modelName}/images/main/${newProductID}`;
-  var predictedTechImageURL = `/products/${req.body.category}/${req.body.modelName}/images/tech/${newProductID}`;
+  var predictedTechImageURLs = [];
 
+  // Handle Multiple Technical Images
+  for (imgIdx in req.body.tech_img){
+    s3Controller.uploadBase(req.body.modelName, req.body.category, Number(imgIdx)+1, req.body.tech_img[imgIdx],`tech/${newProductID}`);
+    var tech_img_url = `/products/${req.body.category}/${req.body.modelName}/images/tech/${newProductID}/${Number(imgIdx)+1}`;
+    predictedTechImageURLs.push(tech_img_url);
+  }
 
   //Inject Additional Fields Into Main Info
   var finalMainObj = {
     ...req.body.mainInfo,
     image: predictedImageURL,
-    tech_drawing:predictedTechImageURL,
+    tech_drawings:predictedTechImageURLs,
     modelUsed: req.body.modelName,
     category: new mongoose.Types.ObjectId(req.body.category),
     additional_information: new mongoose.Types.ObjectId(additInfoId)
@@ -205,10 +213,10 @@ router.post('/', checkAuth, async (req, res, next) => {
   // Upload Images to AWS S3 Bucket
 
   s3Controller.uploadBase(req.body.modelName, req.body.category, newProductID, req.body.img,'main');
-  s3Controller.uploadBase(req.body.modelName, req.body.category, newProductID, req.body.tech_img,'tech');
 
 
-  res.json({ message: 'Product Added', product: createdNewProd,adiit:createdAdditInfo });
+
+  res.json({ message: 'Product Added', product: createdNewProd,adiit:createdAdditInfo});
 });
 
 
@@ -273,7 +281,7 @@ router.delete('/', checkAuth, async (req, res) => {
   };
   try {
     const foundProduct = await product_info.findOne({ _id: req.query.id });
-
+    console.log(foundProduct)
     // Find Images
     var mainImageToDeleteArray = foundProduct.image.split("/");
     var techImageToDeleteArray = foundProduct.tech_drawing.split("/");
