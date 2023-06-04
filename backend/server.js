@@ -10,7 +10,7 @@ const logger = require('./src/utils/logger');
 const mongoose = require('mongoose');
 const app = express();
 
-const serviceRoute = require('./src/routes/products');
+const productRoute = require('./src/routes/products');
 const catRoute = require('./src/routes/category');
 const modelRoute = require('./src/routes/model');
 const authRoute = require('./src/routes/auth');
@@ -81,8 +81,7 @@ app.get('/paragon/api/status', (req, res) => {
 	});
 });
 
-app.use('/paragon/api/service', serviceRoute);
-app.use('/paragon/api/product', serviceRoute);
+app.use('/paragon/api/product', productRoute);
 app.use('/paragon/api/auth',authRoute);
 app.use('/paragon/api/model', modelRoute);
 
