@@ -124,6 +124,13 @@ router.get('/product_info', async (req, res) => {
     .skip((page - 1) * limit)
     .populate(popu)
     .then(result => {
+      for (idx in result){
+        // Find Image Strings and Add Base URL
+        if (result[idx].image) {
+          result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
+        };
+      };
+
       if (req.query.documentId) {
         res.json({ product: result[0] });
       } else {
@@ -142,7 +149,7 @@ Get Categories
 
 // edited this route so it doesnt clash with the main path
 
-router.get('/categories', checkAuth,async (req, res, next) => {
+router.get('/categories',async (req, res, next) => {
   categories.find().then(result => {
     console.log('Categories:', result);
     res.json({ cats: result });
@@ -379,6 +386,9 @@ router.get('/search', async (req, res) => {
         escapedResult[idx][
           'product_link'
         ] = `/api/product/product_info?documentId=${escapedResult[idx]._id}`;
+        if (escapedResult[idx].image) {
+          escapedResult[idx].image = `${process.env.S3_BASE}${escapedResult[idx].image}`;
+        };
         newOutput.push(escapedResult[idx]);
       }
       res.json({

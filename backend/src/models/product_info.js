@@ -6,7 +6,6 @@ const productInfo = mongoose.Schema({
 	product_code: { type: String, required: true },
 	product_name: { type: String, required: true },
 	image: { type: String, required: true },
-	technicalImages: { type: Array, required: false },
 	description: { type: String, required: true },
 	addit_category: { type: String, required: false },
 	features: { type: Array, required: false },
