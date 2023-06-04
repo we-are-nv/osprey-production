@@ -46,12 +46,12 @@ const deleteImage = async (key) => {
 }
 
 
-const uploadBase = async (productType,cat,name,binary) => {
+const uploadBase = async (productType,cat,name,binary,imageType) => {
   var buf = Buffer.from(binary.replace(/^data:image\/\w+;base64,/, ""),'base64');
 
   const command = new PutObjectCommand({
     Bucket: BUCKET_NAME,
-    Key: `products/${cat}/${productType}/images/${name}`,
+    Key: `products/${cat}/${productType}/images/${imageType}/${name}`,
     Body: buf,
     ContentEncoding: 'base64',
     ContentType: `image/${binary.split(';')[0].split('/')[1]}`

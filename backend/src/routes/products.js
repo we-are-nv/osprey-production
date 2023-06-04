@@ -179,14 +179,16 @@ router.post('/', checkAuth, async (req, res, next) => {
   // Create Object ID for new Document
   var newProductID = new mongoose.Types.ObjectId();
 
-  //Predict Image URL
-  var predictedImageURL = `/products/${req.body.category}/${req.body.modelName}/images/${newProductID}`;
+  //Predict Image URLs
+  var predictedImageURL = `/products/${req.body.category}/${req.body.modelName}/images/main/${newProductID}`;
+  var predictedTechImageURL = `/products/${req.body.category}/${req.body.modelName}/images/tech/${newProductID}`;
 
 
   //Inject Additional Fields Into Main Info
   var finalMainObj = {
     ...req.body.mainInfo,
     image: predictedImageURL,
+    tech_drawing:predictedTechImageURL,
     modelUsed: req.body.modelName,
     category: new mongoose.Types.ObjectId(req.body.category),
     additional_information: new mongoose.Types.ObjectId(additInfoId)
@@ -198,14 +200,15 @@ router.post('/', checkAuth, async (req, res, next) => {
   });
 
   // Save New Product
-  const createdNewProd = await newMainObj.save();
-
+  //const createdNewProd = await newMainObj.save();
+  const createdNewProd = "TEST"
   // Upload Image to AWS S3 Bucket
 
-  s3Controller.uploadBase(req.body.modelName, req.body.category, newProductID, req.body.img);
+  s3Controller.uploadBase(req.body.modelName, req.body.category, newProductID, req.body.img,'main');
+  s3Controller.uploadBase(req.body.modelName, req.body.category, newProductID, req.body.tech_img,'tech');
 
 
-  res.json({ message: 'Product Added', product: createdNewProd });
+  res.json({ message: 'Product Added', product: finalMainObj });
 });
 
 
