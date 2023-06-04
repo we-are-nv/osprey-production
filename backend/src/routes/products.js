@@ -270,8 +270,21 @@ router.delete('/', checkAuth, async (req, res) => {
   try {
     const foundProduct = await product_info.findOne({ _id: req.query.id });
 
-    var imageToDelete = foundProduct.image.split("/")[1];
-    s3Controller.deleteImage(imageToDelete);
+    // Find Images
+    var mainImageToDeleteArray = foundProduct.image.split("/");
+    var techImageToDeleteArray = foundProduct.tech_drawing.split("/");
+
+    //Remove First Item from Arrays
+    mainImageToDeleteArray.shift();
+    techImageToDeleteArray.shift();
+
+    // Create S3 Readable Paths
+    var mainImageToDelete = mainImageToDeleteArray.join("/");
+    var techImageToDelete = techImageToDeleteArray.join("/");
+
+    // Send Delete Command to S3 Controller
+    s3Controller.deleteImage(mainImageToDelete);
+    s3Controller.deleteImage(techImageToDelete);
 
     // Delet Prods Additional Info First
     const deletedAditInfo = await product_addit_info.findByIdAndDelete({_id:foundProduct.additional_information});
