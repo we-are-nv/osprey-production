@@ -200,15 +200,15 @@ router.post('/', checkAuth, async (req, res, next) => {
   });
 
   // Save New Product
-  //const createdNewProd = await newMainObj.save();
-  const createdNewProd = "TEST"
-  // Upload Image to AWS S3 Bucket
+  const createdNewProd = await newMainObj.save();
+
+  // Upload Images to AWS S3 Bucket
 
   s3Controller.uploadBase(req.body.modelName, req.body.category, newProductID, req.body.img,'main');
   s3Controller.uploadBase(req.body.modelName, req.body.category, newProductID, req.body.tech_img,'tech');
 
 
-  res.json({ message: 'Product Added', product: finalMainObj });
+  res.json({ message: 'Product Added', product: createdNewProd,adiit:createdAdditInfo });
 });
 
 
