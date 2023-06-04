@@ -239,8 +239,12 @@ router.put('/', checkAuth, async (req, res) => {
       };
 
       if (bodyKeys.includes('image')){
-        s3Controller.uploadBase(foundProduct.modelUsed,foundProduct.category,foundProduct._id,req.body.main.image);
+        s3Controller.uploadBase(foundProduct.modelUsed,foundProduct.category,foundProduct._id,req.body.main.image,'main');
         req.body.main.image = foundProduct.image;
+      };
+      if (bodyKeys.includes('tech_drawing')){
+        s3Controller.uploadBase(foundProduct.modelUsed,foundProduct.category,foundProduct._id,req.body.main.tech_drawing,'tech');
+        req.body.main.tech_drawing = foundProduct.tech_drawing;
       };
       const updatedProd = await product_info.findOneAndUpdate({ _id: req.query.id },req.body.main);
 
