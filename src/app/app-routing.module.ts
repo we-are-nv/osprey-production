@@ -7,6 +7,7 @@ import { ServicesComponent } from './pages/services/services.component';
 import { ProductViewComponent } from './pages/products/product-view/product-view.component';
 import { ProductLandingComponent } from './pages/products/product-landing/product-landing.component';
 import { MarketsComponent } from './pages/markets/markets.component';
+import { MarketInfoComponent } from './pages/markets/market-info/market-info.component';
 
 const routes: Routes = [
   // General Pages
@@ -18,6 +19,7 @@ const routes: Routes = [
 
   // Market Pages
   {path:'markets', component:MarketsComponent},
+  {path:'markets/marine', component:MarketInfoComponent},
 
 
   // Product pages

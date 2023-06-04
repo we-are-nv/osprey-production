@@ -17,8 +17,7 @@
         <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
             <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of categories">
                 <img mat-card-image [src]="category.image">
-                <h1>{{category.name}}</h1>
-                <span>Explore</span>
+                <h1>System design, build and test</h1>
 
             </mat-card>
         </div>

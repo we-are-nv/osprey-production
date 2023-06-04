@@ -5,7 +5,7 @@
     [isButtons]="true"
     background="./assets/images/heroBackgrounds/marketsLanding.png"
     [button1Data]="{text:'Book a Call', path:'',  type:'white'}"
-    [button2Data]="{text:'Request A Quote', path:'', type:'blue'}"
+    [button2Data]="{text:'Contact Us', path:'/contact', type:'blue'}"
 
     ></app-hero>
     <section class="main">
@@ -15,9 +15,9 @@
         </div>
         <!-- Categories Grabbed from Component Variable -->
         <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-            <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of categories">
+            <mat-card class="categoryCard" routerLink="/markets/marine" *ngFor="let category of categories">
                 <img mat-card-image [src]="category.image">
-                <h1>{{category.name}}</h1>
+                <h1>Marine</h1>
                 <span>Explore</span>
 
             </mat-card>

@@ -45,6 +45,7 @@ export class ProductViewComponent implements OnInit{
       this.productSub = this.productService.getSingleProductUpdateListener()
       .subscribe((data)=>{
         this.product = data;
+        console.log(this.product)
         let tempAdditionalInfo = this.product.additional_information.info
         this.informationConverter(tempAdditionalInfo)
         

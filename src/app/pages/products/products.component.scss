@@ -13,19 +13,27 @@
 }
 .productsContainer .productCard{
     width: 20%;
+    min-height:30vh ;
     margin: 5%;
     border-radius:0px ;
     border: 0px;
     text-align: start;
     box-shadow: none;
-    height: min-content;
+    // height: max-content;
 }
 .productCard img{
     // object-fit: fill;
     width: 100%;
+    margin: auto;
+}
+.porduct-image-container{
+    width: 100%;
+    margin: auto;
 }
 .productCard h4{
+    margin: auto;
     margin-left: 1rem;
+    
 }
 .productCard p{
     margin-left:15px;

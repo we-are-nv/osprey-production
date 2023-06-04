@@ -19,6 +19,8 @@ import { ProductLandingComponent } from './pages/products/product-landing/produc
 import { MarketsComponent } from './pages/markets/markets.component';
 import { NameConverterPipe } from './pipes/name-converter.pipe';
 import { CharacterValidationPipe } from './pipes/character-validation.pipe';
+import { MarketInfoComponent } from './pages/markets/market-info/market-info.component';
+import { ServicesInfoComponent } from './pages/services/services-info/services-info.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { CharacterValidationPipe } from './pipes/character-validation.pipe';
     MarketsComponent,
     NameConverterPipe,
     CharacterValidationPipe,
+    MarketInfoComponent,
+    ServicesInfoComponent,
   ],
   imports: [
     BrowserModule,
