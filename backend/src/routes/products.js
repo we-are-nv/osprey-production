@@ -152,6 +152,11 @@ Get Categories
 router.get('/categories',async (req, res, next) => {
   categories.find().then(result => {
     console.log('Categories:', result);
+    for (idx in result) {
+      if (result[idx].image){
+        result[idx].image = `${process.env.S3_BASE}${result[idx].image}`
+      };
+    };
     res.json({ cats: result });
   });
 });
@@ -181,7 +186,7 @@ router.post('/category',checkAuth, upload.single('img'), async (req, res, next) 
   var newCat = new categorys({
     _id:newCatId,
     name:req.query.name,
-    image:`${process.env.S3_BASE}/products/categories/images/${newCatId}`
+    image:`/products/categories/images/${newCatId}`
   })
   newCat.save();
   res.json({message:'CatSaved'})
@@ -242,7 +247,7 @@ router.post('/', checkAuth, async (req, res, next) => {
   var newProductID = new mongoose.Types.ObjectId();
 
   //Predict Image URL
-  var predictedImageURL = `${process.env.S3_BASE}/products/${req.body.category}/${req.body.modelName}/images/${newProductID}`;
+  var predictedImageURL = `/products/${req.body.category}/${req.body.modelName}/images/${newProductID}`;
 
 
   //Inject Additional Fields Into Main Info
@@ -329,7 +334,7 @@ router.delete('/', checkAuth, async (req, res) => {
   try {
     const foundProduct = await product_info.findOne({ _id: req.query.id });
 
-    var imageToDelete = foundProduct.image.split(process.env.S3_BASE+"/")[1];
+    var imageToDelete = foundProduct.image.split("/")[1];
     s3Controller.deleteImage(imageToDelete);
 
     // Delet Prods Additional Info First
