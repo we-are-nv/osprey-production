@@ -3,6 +3,7 @@ import { DatabaseService } from './database.service';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class ProductService {
 
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,public router:Router) { }
 
 
   // Getting Lists Of Products
@@ -60,7 +61,11 @@ export class ProductService {
       .subscribe(response=>{
         // console.log(response)
         this.categories.next(response)
-      })
+      }, (error) => {
+        this.router.navigate(['/error'])
+      }
+      )
+
   }
 
 

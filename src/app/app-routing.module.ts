@@ -8,6 +8,7 @@ import { ProductViewComponent } from './pages/products/product-view/product-view
 import { ProductLandingComponent } from './pages/products/product-landing/product-landing.component';
 import { MarketsComponent } from './pages/markets/markets.component';
 import { MarketInfoComponent } from './pages/markets/market-info/market-info.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   // General Pages
@@ -26,7 +27,10 @@ const routes: Routes = [
   // Product pages
   {path:'products/landing', component:ProductLandingComponent},
   {path:'products/:category', component:ProductsComponent},
-  {path:'product/:category/:id', component:ProductViewComponent}
+  {path:'product/:category/:id', component:ProductViewComponent},
+
+  // Error Page
+  {path:'error', component:ErrorPageComponent},
 ];
 
 @NgModule({

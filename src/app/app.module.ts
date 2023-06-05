@@ -21,6 +21,7 @@ import { NameConverterPipe } from './pipes/name-converter.pipe';
 import { CharacterValidationPipe } from './pipes/character-validation.pipe';
 import { MarketInfoComponent } from './pages/markets/market-info/market-info.component';
 import { ServicesInfoComponent } from './pages/services/services-info/services-info.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ServicesInfoComponent } from './pages/services/services-info/services-i
     CharacterValidationPipe,
     MarketInfoComponent,
     ServicesInfoComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
