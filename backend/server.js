@@ -30,8 +30,6 @@ mongoose
 		console.log('Connection Failed' + err);
 	});
 
-
-
 if (process.env.NODE_ENV === 'development') {
 	clusterWorkerSize = 1;
 } else {
@@ -55,8 +53,8 @@ const middlewareCheck = (req, res, next) => {
 };
 
 app.use(cors());
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(morgan('dev'));
 app.use(middlewareCheck);
 
@@ -70,8 +68,6 @@ app.get('/paragon/api-test', (req, res) => {
 	res.send('test');
 });
 
-
-
 app.get('/paragon/api/status', (req, res) => {
 	console.log(origin);
 	logger.info('Checking the API status: Everything is OK');
@@ -81,14 +77,13 @@ app.get('/paragon/api/status', (req, res) => {
 	});
 });
 
-app.use('/paragon/api/product', productRoute);
-app.use('/paragon/api/auth',authRoute);
+app.use('/paragon/api/products', productRoute);
+app.use('/paragon/api/auth', authRoute);
 app.use('/paragon/api/model', modelRoute);
 
 //Category Routes
-app.use('/paragon/api/product/category',catRoute);
-app.use('/paragon/api/product/categories',catRoute);
-
+app.use('/paragon/api/products/category', catRoute);
+app.use('/paragon/api/products/categories', catRoute);
 
 const start = () => {
 	app.listen(PORT, () => {
