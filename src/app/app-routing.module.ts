@@ -16,6 +16,7 @@ const routes: Routes = [
 
   // Service Pages
   {path:'services', component:ServicesComponent},
+  {path:'services/', component:ServicesComponent},
 
   // Market Pages
   {path:'markets', component:MarketsComponent},

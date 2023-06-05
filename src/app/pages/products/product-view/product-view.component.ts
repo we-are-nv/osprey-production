@@ -31,7 +31,7 @@ export class ProductViewComponent implements OnInit{
     this.additionalInfo = [];
 
     this._Activatedroute.params.subscribe(params => {
-
+      
       // Reads parameters from URL
 
       this.id = params['id'];

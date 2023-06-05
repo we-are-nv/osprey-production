@@ -33,7 +33,7 @@ export class ProductService {
     const query = filter;
     // console.log(query)
     this.http
-      .get<any>(this.API_URL+ '/service/product_info', {params: query})
+      .get<any>(this.API_URL+ '/products/product_info', {params: query})
       .subscribe(response=>{
         this.products.next(response)
       })
@@ -43,7 +43,7 @@ export class ProductService {
     const query = filter;
     // console.log(query)
     this.http
-      .get<any>(this.API_URL+ '/service/search', {params: query})
+      .get<any>(this.API_URL+ '/products/search', {params: query})
       .subscribe(response=>{
         this.products.next(response)
       })
@@ -56,7 +56,7 @@ export class ProductService {
 
   getCategories(){
     this.http
-      .get<any>(this.API_URL+ '/service/categories')
+      .get<any>(this.API_URL+ '/products/categories')
       .subscribe(response=>{
         // console.log(response)
         this.categories.next(response)
@@ -75,7 +75,7 @@ export class ProductService {
     let query = id
     let product: any;
     this.http
-      .get<any>(this.API_URL+ '/service/product_info', {params: {documentId: query, type:type, populate_include:"all"}})
+      .get<any>(this.API_URL+ '/products/product_info', {params: {documentId: query, type:type, populate_include:"all"}})
       .subscribe(response=>{
         product = response.product
         this.singleProduct.next(product)
