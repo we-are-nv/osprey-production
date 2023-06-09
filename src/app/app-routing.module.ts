@@ -9,6 +9,7 @@ import { ProductLandingComponent } from './pages/products/product-landing/produc
 import { MarketsComponent } from './pages/markets/markets.component';
 import { MarketInfoComponent } from './pages/markets/market-info/market-info.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { InfoPageComponent } from './pages/markets/market-info/info-page/info-page.component';
 
 const routes: Routes = [
   // General Pages
@@ -21,7 +22,12 @@ const routes: Routes = [
 
   // Market Pages
   {path:'markets', component:MarketsComponent},
-  {path:'markets/marine', component:MarketInfoComponent},
+  {path:'markets/marine', 
+    component:MarketInfoComponent,
+    children:[
+      {path:':id', component:InfoPageComponent}
+    ]
+  },
 
 
   // Product pages

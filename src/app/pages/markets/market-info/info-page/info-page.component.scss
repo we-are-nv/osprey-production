@@ -1,0 +1,28 @@
+*{
+    font-family: 'roboto';
+}
+
+h1{
+    font-size: 1.75rem;
+}
+
+p{
+    color: #9B9B9B;
+}
+
+// Modular Styling Clases
+.image-Section{
+    display: flow-root;
+
+}
+.image-Section .image{
+    margin: 2%;
+    width: 46%;
+}
+
+
+@media screen and (max-width: 750px) {
+    h1{
+        text-align: center;
+    }
+}

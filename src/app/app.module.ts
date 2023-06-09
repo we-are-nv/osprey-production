@@ -22,6 +22,7 @@ import { CharacterValidationPipe } from './pipes/character-validation.pipe';
 import { MarketInfoComponent } from './pages/markets/market-info/market-info.component';
 import { ServicesInfoComponent } from './pages/services/services-info/services-info.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { InfoPageComponent } from './pages/markets/market-info/info-page/info-page.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     MarketInfoComponent,
     ServicesInfoComponent,
     ErrorPageComponent,
+    InfoPageComponent,
   ],
   imports: [
     BrowserModule,
