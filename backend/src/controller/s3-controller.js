@@ -39,7 +39,7 @@ const deleteImage = async (key) => {
 
   try {
     const response = await s3.send(command);
-    //console.log(response);
+    console.log(response);
   } catch (err) {
     console.error('err'+err);
   }

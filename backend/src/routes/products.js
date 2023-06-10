@@ -165,7 +165,7 @@ router.post('/', checkAuth, async (req, res, next) => {
     return;
   };
 
-  // TODO Hard Check Internal Keys
+  // TODO Hard Check Internal Keys (is it needed?)
 
   //Create and Send AdditInfo and get ObjectKey
   var newAdditInfo = new product_addit_info({
@@ -240,7 +240,7 @@ router.put('/', checkAuth, async (req, res) => {
       });
       var bodyKeys = Object.keys(req.body.main);
       for (idx in bodyKeys) {
-        if (!product_info_keys.includes(bodyKeys[idx])){
+        if (!product_info_keys.includes(bodyKeys[idx]) && bodyKeys[idx] != "tech_drawing_add" && bodyKeys[idx] != "tech_drawing_remove"){
           res.json({error:"Invalid Body",field:bodyKeys[idx]});
           return;
         };
@@ -250,11 +250,31 @@ router.put('/', checkAuth, async (req, res) => {
         s3Controller.uploadBase(foundProduct.modelUsed,foundProduct.category,foundProduct._id,req.body.main.image,'main');
         req.body.main.image = foundProduct.image;
       };
-      if (bodyKeys.includes('tech_drawing')){
-        s3Controller.uploadBase(foundProduct.modelUsed,foundProduct.category,foundProduct._id,req.body.main.tech_drawing,'tech');
-        req.body.main.tech_drawing = foundProduct.tech_drawing;
-      };
-      const updatedProd = await product_info.findOneAndUpdate({ _id: req.query.id },req.body.main);
+      if (bodyKeys.includes('tech_drawing_add') || bodyKeys.includes('tech_drawing_remove')) {
+        const originalTechImagesArr = foundProduct.tech_drawings;
+        if (bodyKeys.includes('tech_drawing_add')){
+          var addTech = req.body.main.tech_drawing_add
+          for (addTechIdx in addTech ){
+            var predictedURL = `/products/${foundProduct.category}/${foundProduct.modelUsed}/images/tech/${foundProduct._id}/${Number(originalTechImagesArr.length) + 1}`;
+            s3Controller.uploadBase(foundProduct.modelUsed,foundProduct.category,Number(originalTechImagesArr.length) + 1,addTech[addTechIdx],`tech/${foundProduct._id}`);
+            originalTechImagesArr.push(predictedURL);
+          };
+
+          //req.body.main.tech_drawing = foundProduct.tech_drawing;
+        };
+        if (bodyKeys.includes('tech_drawing_remove')){
+          var remove_tech = req.body.main.tech_drawing_remove
+          for (idx in remove_tech){
+            originalTechImagesArr.splice(Number(remove_tech[idx]) -1);
+            var predictedURL = `products/${foundProduct.category}/${foundProduct.modelUsed}/images/tech/${foundProduct._id}/${remove_tech[idx]}`;
+            console.log(predictedURL)
+            s3Controller.deleteImage(predictedURL);
+          }
+        };
+        req.body.main['tech_drawings'] = originalTechImagesArr;
+      }
+
+      //const updatedProd = await product_info.findOneAndUpdate({ _id: req.query.id },req.body.main);
 
     };
 
