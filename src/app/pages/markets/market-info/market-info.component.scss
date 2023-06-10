@@ -17,11 +17,13 @@ h1{
     font-size: 1.75rem;
 }
 
-h2{
-    color:#093273;
-}
+
 p{
     color: #9B9B9B;
+}
+// General Bonus Card Styling
+.bonus-card-title{
+    margin-bottom: 1rem;
 }
 
 // Navigation Pannel
@@ -29,18 +31,34 @@ p{
     border-radius: 0px;
     padding: 7%;
 }
-
-
-
-// Modular Styling Clases
-.image-Section{
-    display: flow-root;
-
+.nav-button-container{
+    display:contents !important;
+    width: 100%;
+    padding-top: 10%;
 }
-.image-Section .image{
-    margin: 2%;
-    width: 46%;
+.nav-button{
+    padding-left: 7%;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    width: 93%;
+    text-decoration: none;
+    color: white;
+    background-color: #1B1A1A;
+    margin-top: 2%;
+    font-family: 'Roboto';
+    font-size: small;
+    font-style: bold;
 }
+.nav-button-icon{ 
+    float: right;
+    margin-right: 5%;
+    margin-top: inherit;
+}
+.page-active{
+    background-color: #0065E7;
+}
+
+
 
 
 @media screen and (max-width: 750px) {
@@ -50,8 +68,5 @@ p{
     .info-side{
         margin: auto;
         width: 80vw;
-    }
-    .info-side h1{
-        text-align: center;
     }
 }
