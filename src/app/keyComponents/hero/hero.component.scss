@@ -14,9 +14,11 @@
     left: 5%;
 }
 .centredHero{
-    margin-left:auto;
+
     align-items: center;
     text-align: center;
+    position: revert;
+    margin: auto;
 }
 .title{
     font-size: 4vw;
