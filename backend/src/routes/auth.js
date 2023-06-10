@@ -57,7 +57,6 @@ function msToTime(duration) {
 
 
 router.post('/login', (req, res, next) => {
-  console.log(msToTime(MAX_AGE))
   user.findOne({ email: req.body.email }).then(result => {
     if (!result) {
       res.status(200).json({ status: 'ERRORNOUSER' });
@@ -68,7 +67,7 @@ router.post('/login', (req, res, next) => {
       bcrypt.compareSync(req.body.password, result.password)) {
       const jwtBearerToken = jwt.sign({}, decrytedKey, {
         algorithm: 'RS256',
-        expiresIn: `${msToTime(MAX_AGE)}h`,
+        expiresIn: MAX_AGE,
         subject: result._id.toString(),
         allowInsecureKeySizes: true
       });
@@ -97,7 +96,7 @@ router.post('/login', (req, res, next) => {
 
 
 
-router.post('/', async (req, res) => {
+router.post('/', checkAuth, async (req, res) => {
   const newUser = new user({
     full_name: req.body.name,
     email: req.body.email,
@@ -110,7 +109,7 @@ router.post('/', async (req, res) => {
     .then(result => {
       const jwtBearerToken = jwt.sign({}, decrytedKey, {
         algorithm: 'RS256',
-        expiresIn: '1h',
+        expiresIn: MAX_AGE,
         subject: result._id.toString(),
         allowInsecureKeySizes: true
       });
