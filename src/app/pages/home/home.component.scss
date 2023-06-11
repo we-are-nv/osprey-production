@@ -133,33 +133,42 @@ mat-card-header{
     margin:auto;
 
     padding: 1vw;
-    height: auto;
+    min-height: 4rem;
     background-color: white  ;
 }
+// Service info card Icon styling
 .serviceInfoCard img{
+    
+    object-fit: contain;
     position: relative;
-    width: 2rem;
-    height: min-content;
-    margin: auto;
-    background-color: rgba(128, 128, 128, 0.6);
-    padding: 5px;
-    border-radius: 100%;
+    background: radial-gradient(ellipse at center,#ababab 70%,#23bc2b00 70.5%);
+    padding:1cqmax;
+    
+    height: -webkit-fill-available;
+}
+#blueInfoCard img{
+    background: radial-gradient(ellipse at center,#ffffff 70%,#23bc2b00 70.5%);
 }
 .serviceInfoCard p{
     position: relative;
     display: flex;
     width: 50%;
-    
+    float:right;
     margin: auto;
+    margin-left: 5%;
     padding: 1%;
 }
 .serviceInfoCard .quoteButton{
     background-color: transparent;
-    border: 1px solid #9B9B9B;
+    border: 1px solid #9B9B9B !important;
     border-radius: 0px;
     width: 20%;
     position: relative;
     margin: auto;
+}
+.quoteButton-Blue{
+    border: white solid 1px !important;
+    color: white;
 }
         // blue version of service card
 #blueInfoCard{

@@ -7,6 +7,10 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-landing.component.scss']
 })
 export class ProductLandingComponent implements OnInit {
+
+  
+  history: any = [{path:"/", friendly:"Home"}, {path:"/products/landing", friendly:"Products"}];
+
   categorySub :any;
   categories:any = [];
   constructor(private productService: ProductService){}

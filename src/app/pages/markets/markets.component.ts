@@ -9,6 +9,10 @@ import { ProductService } from 'src/app/services/product.service';
 export class MarketsComponent {
   categorySub :any;
   categories:any = [];
+
+  
+  history: [{path:string, friendly:string}] = [{path:"/", friendly:"Markets"}];
+
   constructor(private productService: ProductService){}
   ngOnInit(): void {
     this.productService.getCategories()

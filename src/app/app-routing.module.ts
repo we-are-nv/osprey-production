@@ -37,6 +37,7 @@ const routes: Routes = [
 
   // Error Page
   {path:'error', component:ErrorPageComponent},
+  {path:'**', redirectTo:""}
 ];
 
 @NgModule({

@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./market-info.component.scss']
 })
 export class MarketInfoComponent {
-
+  
+  history: any = [{path:"/markets", friendly:"Markets"}, {path:"/markets/marine", friendly:"Marine"}];
 }

@@ -13,19 +13,30 @@ export class ProductsComponent implements OnInit{
   products: any;
 
   types: any[];
-  type = "";
+  category = "";
   currentPage:number;
   totalPages  :number;
   public productsSub : Subscription;
 
+  history:any;
+  
+  
+
   ngOnInit(){
     this._Activatedroute.params.subscribe(params =>{
-      this.type = params["category"]
-      this.productService.getProducts({category:this.type, page:1}); 
+      this.category = params["category"]
+      this.productService.getProducts({category:this.category, page:1}); 
+
+      // Breadcrumb Setup
+      this.history = [
+        {path:"/", friendly:"Home"},
+        {path:"/products/landing", friendly:"Products"}, 
+        {path:("/products/"+this.category), friendly:this.category}
+      ];
     })
     this.productsSub = this.productService.getProductsUpdateListener()
       .subscribe((data)=>{
-        // console.log(data)
+        console.log(data)
         this.products = data.products;
         this.currentPage = data.currentPage;
         this.totalPages = data.totalPages
@@ -42,11 +53,11 @@ export class ProductsComponent implements OnInit{
 
 
   changeType(value:any){
-    this.type=value
-    this.productService.getProducts({category:this.type, page:1});
+    this.category=value
+    this.productService.getProducts({category:this.category, page:1});
   }
   loadProduct(id:any){
-    this.router.navigate(['product/'+this.type+'/'+id]);
+    this.router.navigate(['product/'+this.category+'/'+id]);
 
   }
 
@@ -61,7 +72,7 @@ export class ProductsComponent implements OnInit{
       });
   }
   changePage(newPage:any){
-    this.productService.getProducts({category:this.type, page:newPage});  
+    this.productService.getProducts({category:this.category, page:newPage});  
     let top = document.getElementById('productList');
     top?.scrollIntoView()
   }

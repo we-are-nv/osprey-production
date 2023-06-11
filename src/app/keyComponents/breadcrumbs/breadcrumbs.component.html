@@ -1,0 +1,7 @@
+<section class="container">
+    <div class="single-route-container" *ngFor="let route of history; let i = index">
+        <p [ngClass]=" {'lastRoute' : isLatest(i+1)}  " [routerLink]="route.path">{{route.friendly}} </p>
+        <mat-icon *ngIf="!isLatest(i+1)" class="material-icon">chevron_right</mat-icon>
+    </div>
+    
+</section>

@@ -11,6 +11,9 @@ export class HomeComponent {
   // Example List of Services
   categorySub :any;
   productCategories:any = [];
+
+  history: [{path:string, friendly:string}] = [{path:"/", friendly:"Home"}];
+
   constructor(private productService: ProductService){}
   ngOnInit(): void {
     // this.location.replaceState("/some/newstate/");

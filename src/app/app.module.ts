@@ -23,6 +23,7 @@ import { MarketInfoComponent } from './pages/markets/market-info/market-info.com
 import { ServicesInfoComponent } from './pages/services/services-info/services-info.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { InfoPageComponent } from './pages/markets/market-info/info-page/info-page.component';
+import { BreadcrumbsComponent } from './keyComponents/breadcrumbs/breadcrumbs.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { InfoPageComponent } from './pages/markets/market-info/info-page/info-pa
     ServicesInfoComponent,
     ErrorPageComponent,
     InfoPageComponent,
+    BreadcrumbsComponent,
   ],
   imports: [
     BrowserModule,
