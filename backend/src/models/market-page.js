@@ -13,4 +13,4 @@ const marketPage = mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('market-info' , marketPage);
+module.exports = mongoose.model('market-pages' , marketPage);

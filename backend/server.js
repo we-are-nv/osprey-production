@@ -8,11 +8,14 @@ const path = require('path');
 const morgan = require('morgan');
 const logger = require('./src/utils/logger');
 const mongoose = require('mongoose');
+var multer = require('multer');
+var forms = multer();
 const app = express();
 
 const productRoute = require('./src/routes/products');
 const catRoute = require('./src/routes/category');
 const modelRoute = require('./src/routes/model');
+const marketRoute = require('./src/routes/markets');
 const authRoute = require('./src/routes/auth');
 
 const PORT = process.env.PORT || 3030;
@@ -80,7 +83,7 @@ app.get('/paragon/api/status', (req, res) => {
 app.use('/paragon/api/products', productRoute);
 app.use('/paragon/api/auth', authRoute);
 app.use('/paragon/api/model', modelRoute);
-
+app.use('/paragon/api/market', marketRoute);
 //Category Routes
 app.use('/paragon/api/products/category', catRoute);
 app.use('/paragon/api/products/categories', catRoute);
