@@ -66,4 +66,41 @@ const uploadBase = async (productType,cat,name,binary,imageType) => {
   }
 };
 
-module.exports = {uploadCatImage,uploadBase,deleteImage};
+const uploadBaseMarket = async (key,binary) => {
+  var buf = Buffer.from(binary.replace(/^data:image\/\w+;base64,/, ""),'base64');
+  const command = new PutObjectCommand({
+    Bucket: BUCKET_NAME,
+    Key: key,
+    Body: buf,
+    ContentEncoding: 'base64',
+    ContentType: `image/${binary.split(';')[0].split('/')[1]}`
+  });
+//
+  try {
+    const response = await s3.send(command);
+   //console.log(response);
+
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const uploadFileMarket = async (key,type,binary) => {
+  const command = new PutObjectCommand({
+    Bucket: BUCKET_NAME,
+    Key: key,
+    Body: binary,
+    ContentType: type
+  });
+//
+  try {
+    const response = await s3.send(command);
+   //console.log(response);
+
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+
+module.exports = {uploadCatImage,uploadBase,deleteImage,uploadBaseMarket,uploadFileMarket};
