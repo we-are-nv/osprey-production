@@ -1,12 +1,12 @@
 import { Location } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
   styleUrls: ['./breadcrumbs.component.scss']
 })
-export class BreadcrumbsComponent implements OnInit {
+export class BreadcrumbsComponent implements OnChanges {
 
   @Input() history:[{path:string, friendly:string}];
 
@@ -14,7 +14,8 @@ export class BreadcrumbsComponent implements OnInit {
   constructor(private location: Location){
     
   }
-  ngOnInit(){
+
+  ngOnChanges(){
     let friendlyUrl = '/'
     this.history.forEach(route => {
       friendlyUrl += (route.friendly +'/')
@@ -23,13 +24,15 @@ export class BreadcrumbsComponent implements OnInit {
 
   }
 
+  
+
   isLatest(i: number): boolean{
-    console.log(i, this.history.length)
     if (i == this.history.length){
       return true;
     }else{
       return false;
     }
   }
+
 
 }

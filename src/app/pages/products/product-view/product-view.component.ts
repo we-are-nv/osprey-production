@@ -22,6 +22,7 @@ export class ProductViewComponent implements OnInit{
 
   product: any = null;
 
+  history: any;
 
   additionalInfo: any = []
   displayedColumns: string[] = ['detail', 'value'];
@@ -46,6 +47,13 @@ export class ProductViewComponent implements OnInit{
       .subscribe((data)=>{
         this.product = data;
         console.log(this.product)
+        
+        this.history = [
+          {path:"/", friendly:"Home"},
+          {path:"/products/landing", friendly:"Products"},
+          // {path:"/products/"+this.product.category, friendly:this.product.category},
+          {path:("/product/" + this.product.category+ '/' + this.product._id), friendly:this.product.product_name}];
+
         let tempAdditionalInfo = this.product.additional_information.info
         this.informationConverter(tempAdditionalInfo)
         

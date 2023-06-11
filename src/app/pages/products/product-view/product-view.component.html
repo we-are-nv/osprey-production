@@ -1,50 +1,59 @@
-<section class="productMain"  fxLayout="row wrap" fxLayoutAlign="flex-start" *ngIf="product !== null">
-    <div class="card">
-        <mat-card>
 
 
+<section>
+    <div class="breadcrumb-bar">
+        <app-breadcrumbs [history]="history"></app-breadcrumbs>
+    </div>
+    <section class="productMain"  fxLayout="row wrap" fxLayoutAlign="flex-start" *ngIf="product !== null">
+
+        <div class="card">
+            <mat-card>
+    
+    
+                <mat-card-header>
+                    <mat-card-title>
+                        {{product.product_name}}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <img mat-card-image *ngIf="product.image !== ''" [src]="product.image">
+                    <img mat-card-image *ngIf="product.image == ''" src="./assets/images/ExampleProducts/defaultImage.jpg">
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="card">
+            <mat-card>
             <mat-card-header>
-                <mat-card-title>
-                    {{product.product_name}}
-                </mat-card-title>
+                <button mat-raised-button class="black">Get a Quote</button>
+                <button mat-raised-button class="blue">Send An Email</button>
+                <button mat-raised-button class="outline">Phone Us</button>
             </mat-card-header>
             <mat-card-content>
-                <img mat-card-image *ngIf="product.image !== ''" [src]="product.image">
-                <img mat-card-image *ngIf="product.image == ''" src="./assets/images/ExampleProducts/defaultImage.jpg">
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <div class="card">
-        <mat-card>
-        <mat-card-header>
-            <button mat-raised-button class="black">Get a Quote</button>
-            <button mat-raised-button class="blue">Send An Email</button>
-            <button mat-raised-button class="outline">Phone Us</button>
-        </mat-card-header>
-        <mat-card-content>
-            <p>
-                <span *ngFor="let feature of product.features">
-                    <span class="dot"></span>
-                    {{feature |characterValidation}}
-                    <br><br>  </span>
-            </p>
-            <div class="classifications">
                 <p>
-                    Part No: <span> {{product.product_code}} </span><br>
-                    Category: <span>{{product.category}}</span> <br>
-                    <!-- Tags: <span *ngFor="let tag of tags">{{tag}}, </span> -->
-
+                    <span *ngFor="let feature of product.features">
+                        <span class="dot"></span>
+                        {{feature |characterValidation}}
+                        <br><br>  </span>
                 </p>
-            </div>
-        </mat-card-content>
-        </mat-card>
-    </div>
-
-
-
-
-
+                <div class="classifications">
+                    <p>
+                        Part No: <span> {{product.product_code}} </span><br>
+                        Category: <span>{{product.category}}</span> <br>
+                        <!-- Tags: <span *ngFor="let tag of tags">{{tag}}, </span> -->
+    
+                    </p>
+                </div>
+            </mat-card-content>
+            </mat-card>
+        </div>
+    
+    
+    
+    
+    
+    </section>
 </section>
+
 <section class="productTabs" *ngIf="product !== null">
     <mat-tab-group  mat-stretch-tabs="false" mat-align-tabs="start">
         <mat-tab label="Description" >
