@@ -13,8 +13,8 @@ volumes:
 
 services:
 
-  node-app:
-    container_name: node-app-again
+  paragon-server:
+    container_name: paragon-server
     restart: unless-stopped
     # depends_on:
     #   - mongo
