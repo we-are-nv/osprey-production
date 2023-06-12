@@ -11,7 +11,7 @@ const marketInfo = mongoose.Schema({
   lower_title:{type:String,required:true},
   banner_image:{type:String,required:false},
   thumbnail_image:{type:String,required:false},
-  bonus_cards: [ {
+  bonus_cards: [{
     id:{type:mongoose.Schema.Types.ObjectId,ref:infoBonus},
     name:{type:String,required:true}
   }],
@@ -25,4 +25,4 @@ const marketInfo = mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('market' , marketInfo);
+module.exports = mongoose.model('info' , marketInfo);

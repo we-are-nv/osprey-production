@@ -16,4 +16,4 @@ const infoBonusInfo = mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('infoBonus' , marketBonusInfo);
+module.exports = mongoose.model('info-Bonus' , infoBonusInfo);
