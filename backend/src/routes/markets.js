@@ -9,8 +9,8 @@ const fs = require('fs')
 // Import Controllers
 var breadcrumbs = require('../controller/breadcrumbs.js');
 const { default: mongoose } = require('mongoose');
-const marketPage = require('../models/market-page.js');
-const market = require('../models/market.js');
+const marketPage = require('../models/information-page.js');
+const market = require('../models/information.js');
 const { uploadBaseMarket, uploadFileMarket } = require('../controller/s3-controller.js');
 const { rimrafSync } = require('rimraf');
 

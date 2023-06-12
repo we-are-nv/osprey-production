@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 
-const marketPage = mongoose.Schema({
+const infoPage = mongoose.Schema({
   name:{type:String,required:true},
   elements:[{
     type:{type:String,required:true},
@@ -13,4 +13,4 @@ const marketPage = mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('market-pages' , marketPage);
+module.exports = mongoose.model('info-pages' , infoPage);
