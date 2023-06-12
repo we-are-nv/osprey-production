@@ -1,0 +1,41 @@
+.container{
+    display: flex;
+    padding-top: 5vh;
+    padding-right: 5vw;
+    padding-left:5vw;
+    font-family: 'roboto';
+}
+.info-side{
+    width: 70vw;
+    padding: auto;
+}
+.bonus-cards{
+    width:15vw;
+    padding-right: 5vw;
+}
+h1{
+    font-size: 1.75rem;
+}
+
+
+p{
+    color: #9B9B9B;
+}
+// General Bonus Card Styling
+.bonus-card-title{
+    margin-bottom: 1rem;
+}
+
+
+
+
+
+@media screen and (max-width: 750px) {
+    .container {
+        display: block;
+    }
+    .info-side{
+        margin: auto;
+        width: 80vw;
+    }
+}

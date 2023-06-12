@@ -10,11 +10,11 @@ import { MarketsComponent } from './pages/markets/markets.component';
 import { MarketInfoComponent } from './pages/markets/market-info/market-info.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { InfoPageComponent } from './pages/markets/market-info/info-page/info-page.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 const routes: Routes = [
   // General Pages
   {path:'', component:HomeComponent},
-  {path:'contact', component:QuoteFormComponent},
 
   // Service Pages
   {path:'services', component:ServicesComponent},
@@ -34,6 +34,12 @@ const routes: Routes = [
   {path:'products/landing', component:ProductLandingComponent},
   {path:'products/:category', component:ProductsComponent},
   {path:'product/:category/:id', component:ProductViewComponent},
+
+
+
+  // Contact Page
+  {path:'contact', component:ContactComponent},
+  {path:'contactFrom', component:QuoteFormComponent},
 
   // Error Page
   {path:'error', component:ErrorPageComponent},

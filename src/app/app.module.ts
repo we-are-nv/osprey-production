@@ -24,6 +24,8 @@ import { ServicesInfoComponent } from './pages/services/services-info/services-i
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { InfoPageComponent } from './pages/markets/market-info/info-page/info-page.component';
 import { BreadcrumbsComponent } from './keyComponents/breadcrumbs/breadcrumbs.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { UrlFormatterPipe } from './pipes/url-formatter.pipe';
 
 
 @NgModule({
@@ -46,6 +48,8 @@ import { BreadcrumbsComponent } from './keyComponents/breadcrumbs/breadcrumbs.co
     ErrorPageComponent,
     InfoPageComponent,
     BreadcrumbsComponent,
+    ContactComponent,
+    UrlFormatterPipe,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,7 @@ import { BreadcrumbsComponent } from './keyComponents/breadcrumbs/breadcrumbs.co
     HttpClientModule,
     
   ],
-  providers: [],
+  providers: [UrlFormatterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
