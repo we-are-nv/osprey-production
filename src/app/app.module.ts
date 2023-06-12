@@ -19,13 +19,13 @@ import { ProductLandingComponent } from './pages/products/product-landing/produc
 import { MarketsComponent } from './pages/markets/markets.component';
 import { NameConverterPipe } from './pipes/name-converter.pipe';
 import { CharacterValidationPipe } from './pipes/character-validation.pipe';
-import { MarketInfoComponent } from './pages/markets/market-info/market-info.component';
 import { ServicesInfoComponent } from './pages/services/services-info/services-info.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { InfoPageComponent } from './pages/markets/market-info/info-page/info-page.component';
 import { BreadcrumbsComponent } from './keyComponents/breadcrumbs/breadcrumbs.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { UrlFormatterPipe } from './pipes/url-formatter.pipe';
+import { GeneralInfoPageComponent } from './pages/general-info-page/general-info-page.component';
+import { SubPageComponent } from './pages/general-info-page/sub-page/sub-page.component';
 
 
 @NgModule({
@@ -43,13 +43,13 @@ import { UrlFormatterPipe } from './pipes/url-formatter.pipe';
     MarketsComponent,
     NameConverterPipe,
     CharacterValidationPipe,
-    MarketInfoComponent,
     ServicesInfoComponent,
     ErrorPageComponent,
-    InfoPageComponent,
     BreadcrumbsComponent,
     ContactComponent,
     UrlFormatterPipe,
+    GeneralInfoPageComponent,
+    SubPageComponent,
   ],
   imports: [
     BrowserModule,

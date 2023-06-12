@@ -78,7 +78,7 @@ export class HeaderComponent implements OnInit{
         },
         {
           name:"Resourses",
-          headpath:"",
+          headpath:"/info-page/recourse/lense field of View",
           childLinks:[
           {name:"example", path:""}
           ]

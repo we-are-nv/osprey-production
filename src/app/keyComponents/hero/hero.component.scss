@@ -8,10 +8,11 @@
     display: flex;
 }
 .titleGroup{
-    position:absolute;
+    position:relative;
     width: 60vw;
-    top:20%;
-    left: 5%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5vw;
 }
 .centredHero{
 
@@ -22,6 +23,7 @@
 }
 .title{
     font-size: 4vw;
+    
 }
 .secondaryTitle{
     font-size:3vw;
@@ -29,6 +31,7 @@
 }
 h4{
     font-size: 2vh;
+    font-family: 'roboto';
 }
 .titleButton{
     padding: 2rem;

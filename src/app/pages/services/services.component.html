@@ -15,10 +15,25 @@
         </div>
         <!-- Categories Grabbed from Component Variable -->
         <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-            <mat-card class="categoryCard" routerLink="/products/{{category._id}}" *ngFor="let category of categories">
-                <img mat-card-image [src]="category.image">
-                <h1>System design, build and test</h1>
-
+            <mat-card class="categoryCard" routerLink="/info-page/service/marine">
+                <img mat-card-image src="./assets/images/exampleServiceImages/serviceExample1.png">
+                <h1>System design</h1>
+                <h3>Explore</h3>
+            </mat-card>
+            <mat-card class="categoryCard" routerLink="/info-page/service/marine">
+                <img mat-card-image src="./assets/images/exampleServiceImages/serviceExample2.png">
+                <h1>Build & Test</h1>
+                <h3>Explore</h3>
+            </mat-card>
+            <mat-card class="categoryCard" routerLink="/info-page/service/marine">
+                <img mat-card-image src="./assets/images/exampleServiceImages/serviceExample3.png">
+                <h1>Service Support</h1>
+                <h3>Explore</h3>
+            </mat-card>
+            <mat-card class="categoryCard" routerLink="/info-page/service/marine">
+                <img mat-card-image src="./assets/images/exampleServiceImages/serviceExample4.png">
+                <h1>Training</h1>
+                <h3>Explore</h3>
             </mat-card>
         </div>
     </section>

@@ -7,10 +7,10 @@ import { ServicesComponent } from './pages/services/services.component';
 import { ProductViewComponent } from './pages/products/product-view/product-view.component';
 import { ProductLandingComponent } from './pages/products/product-landing/product-landing.component';
 import { MarketsComponent } from './pages/markets/markets.component';
-import { MarketInfoComponent } from './pages/markets/market-info/market-info.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { InfoPageComponent } from './pages/markets/market-info/info-page/info-page.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { GeneralInfoPageComponent } from './pages/general-info-page/general-info-page.component';
+import { SubPageComponent } from './pages/general-info-page/sub-page/sub-page.component';
 
 const routes: Routes = [
   // General Pages
@@ -22,12 +22,14 @@ const routes: Routes = [
 
   // Market Pages
   {path:'markets', component:MarketsComponent},
-  {path:'markets/marine', 
-    component:MarketInfoComponent,
-    children:[
-      {path:':id', component:InfoPageComponent}
-    ]
-  },
+
+  // InfoPage
+  {path:'info-page/:type/:id', 
+  component: GeneralInfoPageComponent,
+  children:[
+    {path:':childId', component:SubPageComponent}
+  ]
+},
 
 
   // Product pages
@@ -43,11 +45,11 @@ const routes: Routes = [
 
   // Error Page
   {path:'error', component:ErrorPageComponent},
-  {path:'**', redirectTo:""}
+  // {path:'**', redirectTo:""}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled",useHash:true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
