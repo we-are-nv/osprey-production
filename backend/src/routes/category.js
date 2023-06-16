@@ -62,7 +62,7 @@ router.post('/',checkAuth, upload.single('img'), async (req, res, next) => {
   );
   var newCatId = new mongoose.Types.ObjectId();
   s3Controller.uploadCatImage(filePath,newCatId,req.file.originalname.split('.')[1]);
-  var newCat = new categorys({
+  var newCat = new categories({
     _id:newCatId,
     name:req.query.name,
     image:`/products/categories/images/${newCatId}`
