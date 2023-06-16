@@ -151,14 +151,14 @@ router.post('/page', checkAuth, async (req, res) => {
 
 });
 
-router.get('/', checkAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   const foundInfos = await information.find({})
     .populate({ path: 'bonus_cards.id' })
     .populate({ path: 'pages.id' })
   res.json(foundInfos)
 });
 
-router.get('/thumbnail', checkAuth, async (req, res) => {
+router.get('/thumbnail', async (req, res) => {
   const foundInfos = await information.find({})
     .select({ name: 1, thumbnail_image: 1 })
 
