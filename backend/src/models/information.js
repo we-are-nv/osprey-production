@@ -7,6 +7,7 @@ const informationPage = require('./information-page');
 
 const marketInfo = mongoose.Schema({
   name:{type:String,required:true},
+  type:{type:String,required:true},
   secondry_title:{type:String,required:true},
   lower_title:{type:String,required:true},
   banner_image:{type:String,required:false},

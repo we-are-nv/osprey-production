@@ -82,6 +82,7 @@ router.post('/', checkAuth, async (req, res) => {
   const newMarket = new market({
     _id: newMarketID,
     name: req.body.name,
+    type:req.body.type,
     secondry_title: req.body.secondry,
     lower_title: req.body.lower,
     banner_image: `/${bannerImageURL}`,
@@ -152,11 +153,19 @@ router.post('/page', checkAuth, async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-  const foundInfos = await information.find({})
+  const foundInfos = await information.find({type:req.query.type})
     .populate({ path: 'bonus_cards.id' })
     .populate({ path: 'pages.id' })
   res.json(foundInfos)
 });
+
+router.get('/single', async (req, res) => {
+  const foundInfos = await information.findOne({_id:req.query.id})
+    .populate({ path: 'bonus_cards.id' })
+    .populate({ path: 'pages.id' })
+  res.json(foundInfos)
+});
+
 
 router.get('/thumbnail', async (req, res) => {
   const foundInfos = await information.find({})
