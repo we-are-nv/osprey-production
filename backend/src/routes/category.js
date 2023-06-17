@@ -29,7 +29,9 @@ Get Categories
 // edited this route so it doesnt clash with the main path
 
 router.get('/',async (req, res, next) => {
-  categories.find({parent:undefined}).then(result => {
+
+  var parent = req.query.parent || undefined;
+  categories.find({parent:parent}).then(result => {
     console.log('Categories:', result);
     for (idx in result) {
       if (result[idx].image){
@@ -62,7 +64,7 @@ router.post('/',checkAuth, async (req, res, next) => {
   // );
   var newCatId = new mongoose.Types.ObjectId();
   //s3Controller.uploadCatImage(filePath,newCatId,req.file.originalname.split('.')[1]);
-  var obj = {}
+  var obj = {};
   if (req.body.parent){
     obj['parent'] = req.body.parent;
 
