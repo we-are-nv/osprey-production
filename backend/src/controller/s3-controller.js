@@ -102,5 +102,25 @@ const uploadFileMarket = async (key,type,binary) => {
   }
 };
 
+const test = async (file,name,type) => {
+
+  const command = new PutObjectCommand({
+    Bucket: BUCKET_NAME,
+    Key: `products/categories/images/${name}`,
+    Body: fs.readFileSync(file),
+    ContentType: `image/${type}`
+  });
+//
+  try {
+    const response = await s3.send(command);
+   //console.log(response);
+
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+
+//test('C:\\Users\\jc305\\Pictures\\word\\anc.jpg','648d9bef76f26ad4a05de79d','jpeg')
 
 module.exports = {uploadCatImage,uploadBase,deleteImage,uploadBaseMarket,uploadFileMarket};

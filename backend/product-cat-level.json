@@ -1,0 +1,37 @@
+[{
+    "name" : "CCTV",
+    "id":1,
+    "image" : "/products/cameras/prod-images/DHOS2F4II66+camera.jpg",
+    "child":2,
+    "info" : {
+        "heading" : "Heading Field",
+        "sub_heading" : "sub heading field",
+        "banner_image" : "Banner Image Link"
+    }
+},
+
+{
+    "name" : "Cameras",
+    "id":2,
+    "parent":1,
+    "child":3,
+    "image" : "/products/cameras/prod-images/DHOS2F4II66+camera.jpg",
+    "info" : {
+        "heading" : "Heading Field",
+        "sub_heading" : "sub heading field",
+        "banner_image" : "Banner Image Link"
+    }
+},
+
+{
+    "name" : "Marine",
+    "parent":2,
+    "id":3,
+    "image" : "/products/cameras/prod-images/DHOS2F4II66+camera.jpg",
+    "info" : {
+        "heading" : "Heading Field",
+        "sub_heading" : "sub heading field",
+        "banner_image" : "Banner Image Link"
+    }
+}
+]

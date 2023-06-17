@@ -10,7 +10,8 @@ const categoryInfo = mongoose.Schema({
     sub_heading: { type: String, required: false },
     banner_image: {type: String, required: false}
   },
-  subCats: {type: Array, required: false}
+  parent:{ type: mongoose.Schema.Types.ObjectId,required:false },
+  children:[{ type: mongoose.Schema.Types.ObjectId,required:false }],
 })
 
 

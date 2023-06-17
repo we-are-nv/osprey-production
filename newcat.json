@@ -1,0 +1,14 @@
+[
+  {
+    "_id": {
+      "$oid": "646896611b216e6dcc0da06a"
+    },
+    "name": "CCTV Cameras",
+    "image": "/products/cameras/prod-images/DHOS2F4II66+camera.jpg",
+    "info": {
+      "heading": "Heading Field",
+      "sub_heading": "sub heading field",
+      "banner_image": "Banner Image Link"
+    }
+  }
+]

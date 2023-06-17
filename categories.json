@@ -1,0 +1,103 @@
+[
+  {
+    "_id": {
+      "$oid": "646896611b216e6dcc0da06a"
+    },
+    "name": "CCTV Cameras",
+    "image": "/products/cameras/prod-images/DHOS2F4II66+camera.jpg",
+    "info": {
+      "heading": "Heading Field",
+      "sub_heading": "sub heading field",
+      "banner_image": "Banner Image Link"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6489ca316c3150cdd9e12df3"
+    },
+    "name": "ANPR Cameras",
+    "image": "/products/cameras/images/BSOP-2Z4I-I67+Standard+ANPR+Camera.jpgPR Camera.jpg",
+    "info": {
+      "heading": "Heading Field",
+      "sub_heading": "sub heading field",
+      "banner_image": "Banner Image Link"
+    },
+    "subCats": [
+      "Standard ANPR Cameras",
+      "Bolard ANPR Cameras",
+      "Self Contained ANPR Cameras"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "648b61f7501a0d785ab00475"
+    },
+    "name": "Access Control",
+    "image": "/asset-images/access+control+biomentric+fingerprint+reader.jpg",
+    "info": {
+      "heading": "Heading Field",
+      "sub_heading": "sub heading field",
+      "banner_image": "Banner Image Link"
+    },
+    "subCats": [
+      "Readers",
+      "Door Controllers",
+      "ANPR",
+      "Wireless Locks",
+      "Visitor Management"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "648b62f9501a0d785ab00476"
+    },
+    "name": "Visitor Management",
+    "image": "/asset-images/wireless-locks.jpg",
+    "info": {
+      "heading": "Heading Field",
+      "sub_heading": "sub heading field",
+      "banner_image": "Banner Image Link"
+    },
+    "subCats": [
+      "Standard ANPR Cameras",
+      "Bolard ANPR Cameras",
+      "Self Contained ANPR Cameras"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "648b638b501a0d785ab00477"
+    },
+    "name": "Readers",
+    "image": "/asset-images/access+control+biomentric+fingerprint+reader.jpg",
+    "info": {
+      "heading": "Heading Field",
+      "sub_heading": "sub heading field",
+      "banner_image": "Banner Image Link"
+    },
+    "subCats": [
+      "Proximity Reader",
+      "QR Code Reader",
+      "Bluetooth Reader",
+      "Fingerprint Reader"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "648c1db9991e9195ba04f7c7"
+    },
+    "name": "Panic Alarms",
+    "image": "/asset-images/access+control+biomentric+fingerprint+reader.jpg",
+    "info": {
+      "heading": "Heading Field",
+      "sub_heading": "sub heading field",
+      "banner_image": "Banner Image Link"
+    },
+    "subCats": [
+      "Proximity Reader",
+      "QR Code Reader",
+      "Bluetooth Reader",
+      "Fingerprint Reader"
+    ]
+  }
+]
