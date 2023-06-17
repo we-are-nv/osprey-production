@@ -29,7 +29,7 @@ router.use(function timeLog(req, res, next) {
 
 router.get('/product_info', async (req, res) => {
   // Default Values are Set
-  const { page = 1, limit = 10, subCat = '' } = req.query;
+  const { page = 1, limit = 10, subCat = '', viewChildren = false } = req.query;
 
   // Checks to see if a category  is declared. However if a documentId is declared its allowed.
   if (!req.query.category && !req.query.documentId) {
@@ -105,12 +105,46 @@ router.get('/product_info', async (req, res) => {
         selectOptions += '-' + item + ' ';
       }
     });
+  };
+  var catQuery = [];
+  try {
+    if (JSON.parse(viewChildren)) {
+      catQuery.push(new ObjectId(req.query.category));
+      var solidQuery = [new ObjectId(req.query.category)];
+      var atBottom = false;
+      while (!atBottom) {
+        for (idx in catQuery) {
+          const foundCat = await categories.findOne({ _id: catQuery[idx] });
+          if (foundCat.children.length > 0) {
+            catQuery.shift();
+            solidQuery = [...solidQuery, ...foundCat.children];
+            catQuery = [...catQuery, ...foundCat.children];
+          } else {
+            atBottom = true;
+          };
+
+        };
+      };
+
+      catQuery = solidQuery;
+
+
+    } else {
+      catQuery.push(new ObjectId(req.query.category));
+    };
+
   }
+  catch (err) {
+    console.log('Invalid Input. Assuming False');
+    catQuery.push(new ObjectId(req.query.category));
+  };
+
+
   var additQuery = '';
   if (req.query.documentId) {
     additQuery = { _id: req.query.documentId };
   } else {
-    additQuery = { category: new ObjectId(req.query.category) };
+    additQuery = { category: catQuery };
     if (subCat != '') {
       additQuery['productType.modelName'] = subCat;
     }
@@ -124,7 +158,7 @@ router.get('/product_info', async (req, res) => {
     .skip((page - 1) * limit)
     .populate(popu)
     .then(result => {
-      for (idx in result){
+      for (idx in result) {
         // Find Image Strings and Add Base URL
         if (result[idx].image) {
           result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
@@ -137,6 +171,7 @@ router.get('/product_info', async (req, res) => {
         res.json({
           products: result,
           totalPages: Math.ceil(count / limit),
+          documentCount: count,
           currentPage: Number(page)
         });
       }
@@ -186,9 +221,9 @@ router.post('/', checkAuth, async (req, res, next) => {
   var predictedTechImageURLs = [];
 
   // Handle Multiple Technical Images
-  for (imgIdx in req.body.tech_img){
-    s3Controller.uploadBase(req.body.modelName, req.body.category, Number(imgIdx)+1, req.body.tech_img[imgIdx],`tech/${newProductID}`);
-    var tech_img_url = `/products/${req.body.category}/${req.body.modelName}/images/tech/${newProductID}/${Number(imgIdx)+1}`;
+  for (imgIdx in req.body.tech_img) {
+    s3Controller.uploadBase(req.body.modelName, req.body.category, Number(imgIdx) + 1, req.body.tech_img[imgIdx], `tech/${newProductID}`);
+    var tech_img_url = `/products/${req.body.category}/${req.body.modelName}/images/tech/${newProductID}/${Number(imgIdx) + 1}`;
     predictedTechImageURLs.push(tech_img_url);
   }
 
@@ -196,7 +231,7 @@ router.post('/', checkAuth, async (req, res, next) => {
   var finalMainObj = {
     ...req.body.mainInfo,
     image: predictedImageURL,
-    tech_drawings:predictedTechImageURLs,
+    tech_drawings: predictedTechImageURLs,
     modelUsed: req.body.modelName,
     category: new mongoose.Types.ObjectId(req.body.category),
     additional_information: new mongoose.Types.ObjectId(additInfoId)
@@ -212,11 +247,11 @@ router.post('/', checkAuth, async (req, res, next) => {
 
   // Upload Images to AWS S3 Bucket
 
-  s3Controller.uploadBase(req.body.modelName, req.body.category, newProductID, req.body.img,'main');
+  s3Controller.uploadBase(req.body.modelName, req.body.category, newProductID, req.body.img, 'main');
 
 
 
-  res.json({ message: 'Product Added', product: createdNewProd,adiit:createdAdditInfo});
+  res.json({ message: 'Product Added', product: createdNewProd, adiit: createdAdditInfo });
 });
 
 
@@ -240,32 +275,32 @@ router.put('/', checkAuth, async (req, res) => {
       });
       var bodyKeys = Object.keys(req.body.main);
       for (idx in bodyKeys) {
-        if (!product_info_keys.includes(bodyKeys[idx]) && bodyKeys[idx] != "tech_drawing_add" && bodyKeys[idx] != "tech_drawing_remove"){
-          res.json({error:"Invalid Body",field:bodyKeys[idx]});
+        if (!product_info_keys.includes(bodyKeys[idx]) && bodyKeys[idx] != "tech_drawing_add" && bodyKeys[idx] != "tech_drawing_remove") {
+          res.json({ error: "Invalid Body", field: bodyKeys[idx] });
           return;
         };
       };
 
-      if (bodyKeys.includes('image')){
-        s3Controller.uploadBase(foundProduct.modelUsed,foundProduct.category,foundProduct._id,req.body.main.image,'main');
+      if (bodyKeys.includes('image')) {
+        s3Controller.uploadBase(foundProduct.modelUsed, foundProduct.category, foundProduct._id, req.body.main.image, 'main');
         req.body.main.image = foundProduct.image;
       };
       if (bodyKeys.includes('tech_drawing_add') || bodyKeys.includes('tech_drawing_remove')) {
         const originalTechImagesArr = foundProduct.tech_drawings;
-        if (bodyKeys.includes('tech_drawing_add')){
+        if (bodyKeys.includes('tech_drawing_add')) {
           var addTech = req.body.main.tech_drawing_add
-          for (addTechIdx in addTech ){
+          for (addTechIdx in addTech) {
             var predictedURL = `/products/${foundProduct.category}/${foundProduct.modelUsed}/images/tech/${foundProduct._id}/${Number(originalTechImagesArr.length) + 1}`;
-            s3Controller.uploadBase(foundProduct.modelUsed,foundProduct.category,Number(originalTechImagesArr.length) + 1,addTech[addTechIdx],`tech/${foundProduct._id}`);
+            s3Controller.uploadBase(foundProduct.modelUsed, foundProduct.category, Number(originalTechImagesArr.length) + 1, addTech[addTechIdx], `tech/${foundProduct._id}`);
             originalTechImagesArr.push(predictedURL);
           };
 
           //req.body.main.tech_drawing = foundProduct.tech_drawing;
         };
-        if (bodyKeys.includes('tech_drawing_remove')){
+        if (bodyKeys.includes('tech_drawing_remove')) {
           var remove_tech = req.body.main.tech_drawing_remove
-          for (idx in remove_tech){
-            originalTechImagesArr.splice(Number(remove_tech[idx]) -1);
+          for (idx in remove_tech) {
+            originalTechImagesArr.splice(Number(remove_tech[idx]) - 1);
             var predictedURL = `products/${foundProduct.category}/${foundProduct.modelUsed}/images/tech/${foundProduct._id}/${remove_tech[idx]}`;
             console.log(predictedURL)
             s3Controller.deleteImage(predictedURL);
@@ -279,13 +314,13 @@ router.put('/', checkAuth, async (req, res) => {
     };
 
     if (req.body.adit) {
-      const updatedAdit = await product_addit_info.findOneAndUpdate({ _id: foundProduct.additional_information },{info:req.body.adit});
+      const updatedAdit = await product_addit_info.findOneAndUpdate({ _id: foundProduct.additional_information }, { info: req.body.adit });
     };
-    res.json({message:'Product Updated!',updatedFieldsMain:req.body.main,updatedFieldsAditt:req.body.adit})
+    res.json({ message: 'Product Updated!', updatedFieldsMain: req.body.main, updatedFieldsAditt: req.body.adit })
     return;
   }
   catch (error) {
-    res.json({ message: 'An error has occured',error:error });
+    res.json({ message: 'An error has occured', error: error });
   };
 
 })
@@ -319,15 +354,15 @@ router.delete('/', checkAuth, async (req, res) => {
     s3Controller.deleteImage(techImageToDelete);
 
     // Delet Prods Additional Info First
-    const deletedAditInfo = await product_addit_info.findByIdAndDelete({_id:foundProduct.additional_information});
+    const deletedAditInfo = await product_addit_info.findByIdAndDelete({ _id: foundProduct.additional_information });
 
     //Delete Main Prod
-    const deletedProd = await product_info.findByIdAndDelete({_id:req.query.id});
+    const deletedProd = await product_info.findByIdAndDelete({ _id: req.query.id });
 
-    res.json({message:"Deleted Product"})
+    res.json({ message: "Deleted Product" })
   }
   catch (error) {
-    res.json({ message: 'An error has occured',error:error });
+    res.json({ message: 'An error has occured', error: error });
   };
 
 });

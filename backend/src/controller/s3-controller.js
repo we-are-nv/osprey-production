@@ -121,6 +121,6 @@ const test = async (file,name,type) => {
 }
 
 
-//test('C:\\Users\\jc305\\Pictures\\word\\anc.jpg','648d9bef76f26ad4a05de79d','jpeg')
+//test('C:\\Users\\jc305\\Pictures\\word\\anpr.png','648dad795f038ab01ad76d1d','png')
 
 module.exports = {uploadCatImage,uploadBase,deleteImage,uploadBaseMarket,uploadFileMarket};
