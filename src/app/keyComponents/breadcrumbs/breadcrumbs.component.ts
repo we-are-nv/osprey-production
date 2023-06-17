@@ -9,7 +9,7 @@ import { UrlFormatterPipe } from 'src/app/pipes/url-formatter.pipe';
 })
 export class BreadcrumbsComponent implements OnChanges {
 
-  @Input() history:[{path:string, friendly:string}];
+  @Input() history:[{path:string, friendly:string}] = [{path:'', friendly:"home"} ];
 
   
   constructor(private location: Location, private urlFormatter: UrlFormatterPipe){
@@ -19,11 +19,12 @@ export class BreadcrumbsComponent implements OnChanges {
   ngOnChanges(){
     let friendlyUrl: string = '/'
     if(history !== undefined){
+      console.log(history)
       this.history.forEach(route => {
+        console.log(route)
         friendlyUrl += (route.friendly +'/')
       });
     }
-    console.log(this.history, friendlyUrl)
     this.location.replaceState(this.transformURL(friendlyUrl));
   }
 

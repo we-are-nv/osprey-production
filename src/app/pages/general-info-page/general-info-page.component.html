@@ -1,19 +1,20 @@
 <app-hero
+    *ngIf="pageData !== undefined"
     [mainTitle]="pageData.name"
-    [secondaryTitle]="pageData.secondary_title"
+    [secondaryTitle]="pageData.secondry_title"
     [lowerTitle]="pageData.lower_title"
     [isButtons]="false"
-    background="./assets/images/heroBackgrounds/{{pageData.banner_image}}"
+    [background]="pageData.banner_image"
     ></app-hero>
     <app-breadcrumbs [history]="history"></app-breadcrumbs>
 <section class="container">
     <section class="bonus-cards">
         <mat-card class="navigation-pannel bonus-card-white-accent">
             <mat-card-header>
-                <mat-card-title class="bonus-card-title">{{pageData.name | nameConverter}} {{pageType |nameConverter}}s</mat-card-title>
+                <mat-card-title class="bonus-card-title">{{pageData.name | nameConverter}} {{pageType |nameConverter}}</mat-card-title>
             </mat-card-header>
             <div class="nav-button-container">
-                <a class="nav-button" *ngFor="let page of subPages" [routerLink]="page.id" routerLinkActive="page-active">{{page.name}} <img class="nav-button-icon" src="./assets/images/customIcons/right-arrow-icon.svg" alt=""></a>
+                <a class="nav-button" *ngFor="let page of subPages" [routerLink]="page.id" (click)="selectPage(page.id)"  [ngClass]="{'page-active': page.id == activeSubPageId}">{{page.name}} <img class="nav-button-icon" src="./assets/images/customIcons/right-arrow-icon.svg" alt=""></a>
             </div>
         </mat-card>
     </section>

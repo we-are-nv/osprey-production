@@ -58,12 +58,9 @@ export class ProductService {
   getCategories(){
     this.http
       .get<any>(this.API_URL+ '/products/categories')
-      .subscribe(response=>{
-        // console.log(response)
-        this.categories.next(response)
-      }, (error) => {
-        this.router.navigate(['/error'])
-      }
+      .subscribe({
+        next: (response:any)=>this.categories.next(response),
+        error: (error) => this.router.navigate(['/error'])}
       )
 
   }

@@ -81,10 +81,9 @@ mat-card-header{
 }
 
 .categoryCard img{
-    width: 100%;
-
-    // margin: auto;
-    margin-top: 0px;
+    height: 15vh;
+    object-fit: contain;
+    background-color: white;
 }
 .categoryCard h1{
     padding-left: 2vh;

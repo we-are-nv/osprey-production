@@ -1,6 +1,9 @@
 *{
     font-family: 'roboto';
 }
+#container{
+    padding-bottom: 10vh;
+}
 
 h1{
     font-size: 1.75rem;
@@ -20,6 +23,39 @@ p{
     width: 46%;
 }
 
+// Drop Down Items
+.expansion-image{
+    margin-right: 5vw;
+}
+
+.expanded{
+    
+    animation: openAnimation 0.5s;
+    transform:rotate(90deg); 
+}
+.closed{
+    animation: closeAnimation 0.5s;
+    transform:rotate(0deg); 
+}
+
+
+@keyframes openAnimation{
+    from{
+        transform: rotate(0deg)
+    }
+    to {
+        transform: transform(90deg);
+    }
+}
+
+@keyframes closeAnimation{
+    from{
+        transform: rotate(90deg);
+    }
+    to {
+        transform: transform(0deg)
+    }
+}
 
 @media screen and (max-width: 750px) {
     h1{

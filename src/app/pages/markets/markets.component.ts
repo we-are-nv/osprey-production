@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
+import { InfoPageService } from 'src/app/services/info-page.service';
 
 @Component({
   selector: 'app-markets',
@@ -7,19 +7,17 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./markets.component.scss']
 })
 export class MarketsComponent {
-  categorySub :any;
-  categories:any = [];
+  marketsList: [any];
+  type = "market"
 
   
   history: [{path:string, friendly:string}] = [{path:"/", friendly:"Markets"}];
 
-  constructor(private productService: ProductService){}
+  constructor(private infoPageService: InfoPageService){}
   ngOnInit(): void {
-    this.productService.getCategories()
-    this.categorySub = this.productService.getCategoriesUpdateListener()
-      .subscribe((data)=>{
-        this.categories = data.cats
-    });
+    this.infoPageService.getThumbnails(this.type).subscribe((data:any)=>{
+      this.marketsList = data
+    })
 
   }
 }

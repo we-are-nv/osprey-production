@@ -16,10 +16,8 @@
 
     <div class="productsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start" >
             <mat-card class="productCard selectable"  *ngFor="let product of products" (click)="loadProduct(product._id)">
-                <div class="product-image-container">
                     <img mat-card-image *ngIf="product.image !== ''" [src]="product.image">
                     <img mat-card-image *ngIf="product.image == ''" src="./assets/images/ExampleProducts/defaultImage.jpg">
-                </div>
                 
                 <mat-card-header>
                     <mat-card-title-group></mat-card-title-group>

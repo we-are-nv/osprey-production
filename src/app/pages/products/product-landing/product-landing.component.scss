@@ -32,8 +32,8 @@ mat-card-header{
 }
 
 .categoryCard img{
-    width: 100%;
-    margin: auto;
+    height: 15vh;
+    object-fit: contain;
 }
 .categoryCard h1{
     padding-left: 2vh;

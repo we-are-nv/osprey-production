@@ -22,13 +22,13 @@
     // height: max-content;
 }
 .productCard img{
-    // object-fit: fill;
-    width: 100%;
+    height: 15vh;
+    object-fit: contain;
     margin: auto;
 }
 .porduct-image-container{
-    width: 100%;
-    margin: auto;
+    height: 15vh;
+    object-fit: contain;
 }
 .productCard h4{
     margin: auto;

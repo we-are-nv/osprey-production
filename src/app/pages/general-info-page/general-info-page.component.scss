@@ -2,7 +2,7 @@
     display: flex;
     padding-top: 5vh;
     padding-right: 5vw;
-    padding-left:5vw;
+    padding-left:1vw;
     font-family: 'roboto';
 }
 .info-side{
@@ -10,8 +10,8 @@
     padding: auto;
 }
 .bonus-cards{
-    width:15vw;
-    padding-right: 5vw;
+    width:20vw;
+    padding-right: 2vw;
 }
 h1{
     font-size: 1.75rem;
@@ -68,5 +68,9 @@ p{
     .info-side{
         margin: auto;
         width: 80vw;
+    }
+    .bonus-cards{
+        width: 80vw;
+        margin: auto;
     }
 }
