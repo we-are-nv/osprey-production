@@ -11,7 +11,7 @@ const categoryInfo = mongoose.Schema({
     banner_image: {type: String, required: false}
   },
   parent:{ type: mongoose.Schema.Types.ObjectId,required:false },
-  children:[{ type: mongoose.Schema.Types.ObjectId,required:false }],
+  // children:[{ type: mongoose.Schema.Types.ObjectId,required:false }],
 })
 
 

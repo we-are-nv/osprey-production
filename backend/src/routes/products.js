@@ -27,6 +27,25 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
+
+// var  childArray = new Array();
+
+async function getChildCategories(parentCat, childArray) {
+
+  const childCategories = await categories.find({ parent: parentCat }).select({ _id: 1 });
+
+  for (childIdx in childCategories) {
+    childArray = [...childArray, new ObjectId(childCategories[childIdx]._id.toString())]
+    childArray = await getChildCategories(childCategories[childIdx]._id.toString(), childArray);
+  };
+
+  return childArray;
+
+}
+
+
+
+
 router.get('/product_info', async (req, res) => {
   // Default Values are Set
   const { page = 1, limit = 10, subCat = '', viewChildren = false } = req.query;
@@ -106,38 +125,22 @@ router.get('/product_info', async (req, res) => {
       }
     });
   };
+
   var catQuery = [];
+
   try {
     if (JSON.parse(viewChildren)) {
-      catQuery.push(new ObjectId(req.query.category));
-      var solidQuery = [new ObjectId(req.query.category)];
-      var atBottom = false;
-      while (!atBottom) {
-        for (idx in catQuery) {
-          const foundCat = await categories.findOne({ _id: catQuery[idx] });
-          if (foundCat.children.length > 0) {
-            catQuery.shift();
-            solidQuery = [...solidQuery, ...foundCat.children];
-            catQuery = [...catQuery, ...foundCat.children];
-          } else {
-            atBottom = true;
-          };
-
-        };
-      };
-
-      catQuery = solidQuery;
-
-
+      catQuery = await getChildCategories(req.query.category, [req.query.category])
     } else {
       catQuery.push(new ObjectId(req.query.category));
-    };
-
+    }
   }
+
   catch (err) {
     console.log('Invalid Input. Assuming False');
     catQuery.push(new ObjectId(req.query.category));
-  };
+  }
+
 
 
   var additQuery = '';
@@ -145,6 +148,7 @@ router.get('/product_info', async (req, res) => {
     additQuery = { _id: req.query.documentId };
   } else {
     additQuery = { category: catQuery };
+    //console.log(additQuery)
     if (subCat != '') {
       additQuery['productType.modelName'] = subCat;
     }
