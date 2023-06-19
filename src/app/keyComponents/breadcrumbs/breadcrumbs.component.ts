@@ -19,9 +19,7 @@ export class BreadcrumbsComponent implements OnChanges {
   ngOnChanges(){
     let friendlyUrl: string = '/'
     if(history !== undefined){
-      console.log(history)
       this.history.forEach(route => {
-        console.log(route)
         friendlyUrl += (route.friendly +'/')
       });
     }

@@ -1,0 +1,17 @@
+<mat-card [class]="'bonus-card bonus-card-'+ card.color">
+    <mat-card-header>
+        <mat-card-title class="bonus-card-title">
+            {{card.title}}
+        </mat-card-title>
+    </mat-card-header>
+    <div *ngFor="let element of card.elements">
+        <!-- IF ELEMENT IS JUST TEXT -->
+        <p *ngIf="element.type == 'text'">{{element.source.text}}</p>
+
+        <!-- IF ELEMENT IS LINK/BUTTON -->
+        <section *ngIf="element.type == 'button'" class="nav-button-container">
+            <a [class]="'nav-button nav-color-when-'+card.color" >{{element.source.text}} <img class="nav-button-icon" [src]="element.source.icon" alt=""></a>
+        </section>
+        
+    </div> 
+</mat-card>

@@ -26,6 +26,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { UrlFormatterPipe } from './pipes/url-formatter.pipe';
 import { GeneralInfoPageComponent } from './pages/general-info-page/general-info-page.component';
 import { SubPageComponent } from './pages/general-info-page/sub-page/sub-page.component';
+import { BonusCardComponent } from './pages/general-info-page/bonus-card/bonus-card.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { SubPageComponent } from './pages/general-info-page/sub-page/sub-page.co
     UrlFormatterPipe,
     GeneralInfoPageComponent,
     SubPageComponent,
+    BonusCardComponent,
   ],
   imports: [
     BrowserModule,

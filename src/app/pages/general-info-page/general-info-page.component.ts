@@ -20,6 +20,7 @@ export class GeneralInfoPageComponent implements OnInit{
 
   pageData: any;
   subPages: any[];
+  bonusCards: any[];
 
 
   history: any;
@@ -32,7 +33,9 @@ export class GeneralInfoPageComponent implements OnInit{
       this.infoService.getMainPage(this.pageId)
       this.infoService.getMainUpdateListener().subscribe(data =>{
         this.pageData = data
-        this.subPages = this.pageData.pages;
+        this.subPages = data.pages;
+        this.bonusCards =  data.bonus_cards
+
         if(this._Activatedroute.children.length <= 0){
           this.router.navigate([`/info-page/${this.pageType}/${this.pageId}/${this.subPages[0].id}`]);
           this.breadCrumbUpdate(this.subPages[0].id)
@@ -40,8 +43,6 @@ export class GeneralInfoPageComponent implements OnInit{
           let id = this._Activatedroute.snapshot.params['childId']
           this.breadCrumbUpdate(id)
         }
-        
-        console.log(this.pageData)
       })
       
 
@@ -61,7 +62,6 @@ export class GeneralInfoPageComponent implements OnInit{
 
   selectPage(id : string){
     this.breadCrumbUpdate(id)
-    console.log(id)
   }
 
   breadCrumbUpdate(id: string){

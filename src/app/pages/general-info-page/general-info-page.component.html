@@ -9,6 +9,8 @@
     <app-breadcrumbs [history]="history"></app-breadcrumbs>
 <section class="container">
     <section class="bonus-cards">
+
+        <!-- Navigation -->
         <mat-card class="navigation-pannel bonus-card-white-accent">
             <mat-card-header>
                 <mat-card-title class="bonus-card-title">{{pageData.name | nameConverter}} {{pageType |nameConverter}}</mat-card-title>
@@ -17,7 +19,13 @@
                 <a class="nav-button" *ngFor="let page of subPages" [routerLink]="page.id" (click)="selectPage(page.id)"  [ngClass]="{'page-active': page.id == activeSubPageId}">{{page.name}} <img class="nav-button-icon" src="./assets/images/customIcons/right-arrow-icon.svg" alt=""></a>
             </div>
         </mat-card>
+
+        <app-bonus-card *ngFor="let card of bonusCards" [card]="card.id"></app-bonus-card>
     </section>
+
+
+
+
     <section class="info-side">
         <router-outlet></router-outlet>
     </section>
