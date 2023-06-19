@@ -219,7 +219,13 @@ router.get('/page', async (req,res) => {
 
 
 router.get('/thumbnail', async (req, res) => {
-  const foundInfos = await information.find({})
+  const { type = ""} = req.query;
+  var query = {}
+  if (type != ""){
+    var query = {type:type};
+  };
+
+  const foundInfos = await information.find(query)
     .select({ name: 1, thumbnail_image: 1 })
 
   res.json(foundInfos)
