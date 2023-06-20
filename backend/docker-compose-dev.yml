@@ -16,7 +16,7 @@ services:
 
   paragon-server:
     container_name: paragon-server
-    restart: unless-stopped
+    restart: always
 
     build:
       context: .
@@ -24,7 +24,7 @@ services:
         NODE_ENV: development
     environment:
       - NODE_ENV=development
-    command: npm run prod
+    command: npm run start
     ports:
       - 3030:3030
     networks:
