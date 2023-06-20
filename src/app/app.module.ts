@@ -27,6 +27,7 @@ import { UrlFormatterPipe } from './pipes/url-formatter.pipe';
 import { GeneralInfoPageComponent } from './pages/general-info-page/general-info-page.component';
 import { SubPageComponent } from './pages/general-info-page/sub-page/sub-page.component';
 import { BonusCardComponent } from './pages/general-info-page/bonus-card/bonus-card.component';
+import { CategoryCardComponent } from './keyComponents/category-card/category-card.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { BonusCardComponent } from './pages/general-info-page/bonus-card/bonus-c
     GeneralInfoPageComponent,
     SubPageComponent,
     BonusCardComponent,
+    CategoryCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,7 @@ import { BonusCardComponent } from './pages/general-info-page/bonus-card/bonus-c
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,
-    
+
   ],
   providers: [UrlFormatterPipe],
   bootstrap: [AppComponent]
