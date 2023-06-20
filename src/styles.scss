@@ -45,6 +45,10 @@
     cursor: pointer;
   }
 
+  .noBoxShadow {
+    @include mat.elevation(0)
+  }
+
   // Bonus Cards on General Page
 .bonus-card-dark{
   background-color: #1B1A1A !important;
@@ -57,4 +61,12 @@
 .bonus-card-white-accent{
   background-color: white;
   margin-bottom: 2px solid #0065E7;
+}
+
+// .categoryCard.noElevation {
+//   mat-elevation-z: 0! important;
+// }
+
+.categoryCard.noBoxShadow {
+  box-shadow: none !important;
 }

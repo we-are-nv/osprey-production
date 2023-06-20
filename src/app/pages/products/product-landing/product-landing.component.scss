@@ -21,15 +21,22 @@
     border-radius:0px ;
     text-align: start;
 }
+
+
+
 mat-card{
     border: 1px solid rgba(0, 0, 0, 0.25);
     border-radius: 0%;
+    box-shadow: none !important;
+    // appearance: ;
 }
 mat-card-header{
     height: 12.5vh;
     align-items: center;
     text-align: center;
 }
+
+
 
 .categoryCard img{
     height: 15vh;

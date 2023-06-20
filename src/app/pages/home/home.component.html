@@ -1,111 +1,197 @@
 <app-hero
-    upperTitle="So you can relax like you're on a calm sea..."
-    mainTitle="Security solutions for peace of mind"
-    lowerTitle="We provide security requirements of residential, commercial and other clients, with the largest assortment of security cameras and alarm systems installation."
-    [isButtons]="true"
-    background="./assets/images/heroBackgrounds/homeHero.png"
-    [button1Data]="{text:'Explore Our Products', path:'products/landing', type:'blue'}"
-    [button2Data]="{text:'Explore Our Markets', path:'markets', type:'black'}"
-
-    [isButton3]="true"
-    [button3Data]="{text:'Explore Our Services', path:'services', type:'white'}"
-></app-hero>
+	upperTitle="So you can relax like you're on a calm sea..."
+	mainTitle="Security solutions for peace of mind"
+	lowerTitle="We provide security requirements of residential, commercial and other clients, with the largest assortment of security cameras and alarm systems installation."
+	[isButtons]="true"
+	background="./assets/images/heroBackgrounds/homeHero.png"
+	[button1Data]="{
+		text: 'Explore Our Products',
+		path: 'products/landing',
+		type: 'blue'
+	}"
+	[button2Data]="{ text: 'Explore Our Markets', path: 'markets', type: 'black' }"
+	[isButton3]="true"
+	[button3Data]="{
+		text: 'Explore Our Services',
+		path: 'services',
+		type: 'white'
+	}"></app-hero>
 
 <section class="briefAbout">
-    <div id="left">
-        <p style="color:#0065E7;">+35 YEARS INDUSTRY EXPERIENCE </p>
-        <h1>Professional products for durability</h1>
-    </div>
-    <div id="right">
-        <p>Paragon Security employs a dedicated team of experienced professionals who will provide fire and security products and systems of the highest quality, reliability and durability, for your organisation, vessel or site providing the security and safety you deserve.</p>
-    </div>
-
+	<div id="left">
+		<p style="color: #0065e7">+35 YEARS INDUSTRY EXPERIENCE</p>
+		<h1>Professional products for durability</h1>
+	</div>
+	<div id="right">
+		<p>
+			Paragon Security employs a dedicated team of experienced professionals who
+			will provide fire and security products and systems of the highest quality,
+			reliability and durability, for your organisation, vessel or site providing
+			the security and safety you deserve.
+		</p>
+	</div>
 </section>
 
 <!-- Product Categories -->
-<div class="categoryContainer" fxLayout="colun wrap" fxLayoutAlign="flex-start">
-
-    <mat-card class="categoryCard selectable" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
-        <img mat-card-image [src]="category.image">
-        <h1>{{category.name}}</h1>
-        <span>Explore</span>
-
-    </mat-card>
+<div
+	class="categoryContainer"
+	fxLayout="colun wrap"
+	fxLayoutAlign="flex-start">
+	<mat-card
+		class="categoryCard selectable"
+		routerLink="/products/{{ category._id }}"
+		*ngFor="let category of productCategories">
+		<img
+			mat-card-image
+			[src]="category.image" />
+		<h1>{{ category.name }}</h1>
+		<span>Explore</span>
+	</mat-card>
 </div>
 <div class="slideButtonContainer">
-    <button class="slideButton"><img src="./assets/images/customIcons/prev-slide.svg" alt=""></button>
-    <button class="slideButton"><img src="./assets/images/customIcons/next-slide.svg" alt=""></button>
+	<button class="slideButton">
+		<img
+			src="./assets/images/customIcons/prev-slide.svg"
+			alt="" />
+	</button>
+	<button class="slideButton">
+		<img
+			src="./assets/images/customIcons/next-slide.svg"
+			alt="" />
+	</button>
 </div>
 
 <div class="infoCardContainer">
-    <div class="serviceInfoCard">
-        <img src="./assets/images/customIcons/warning.svg" alt="">
-        <p>Leaders and fire and security, we can help you customise your system design to meet your exact requirements.
-            Schedule A Call
-        </p>
-        <button mat-raised-button class="quoteButton" routerLink="products/landing">See All Products</button>
-    </div>
-    <div class="serviceInfoCard" id="blueInfoCard">
-        <img src="./assets/images/customIcons/homeIconTwo.svg" alt="">
-        <p>Leaders and fire and security, we can help you customise your system design to meet your exact requirements.
-            Schedule A Call
-        </p>
-        <button mat-raised-button class="quoteButton quoteButton-Blue" routerLink="products/landing">See All Products</button>
-    </div>
-
+	<div class="serviceInfoCard">
+		<img
+			src="./assets/images/customIcons/warning.svg"
+			alt="" />
+		<p>
+			Leaders of fire and security, we can help you customise your system design to
+			meet your exact requirements. Schedule A Call
+		</p>
+		<button
+			mat-raised-button
+			class="quoteButton"
+			routerLink="products/landing">
+			See All Products
+			<img class="button-icon"
+				src="./assets/images/customIcons/arrowdown2.svg"
+				alt=""
+				srcset="" />
+		</button>
+	</div>
+	<div
+		class="serviceInfoCard"
+		id="blueInfoCard">
+		<img
+			src="./assets/images/customIcons/homeIconTwo.svg"
+			alt="" />
+		<p>
+			Leaders and fire and security, we can help you customise your system design to
+			meet your exact requirements. Schedule A Call
+		</p>
+		<button
+			mat-raised-button
+			class="quoteButton quoteButton-Blue"
+			routerLink="products/landing">
+			See All Products
+		</button>
+	</div>
 </div>
 
-
 <section class="darkSection">
-    <h1 id="topDarkSection">Specialist market expertise</h1>
-    <p>We are passionate about providing leading-edge and robust solutions, suitable for demanding markets and environments, which are straightforward to operate and maintain, certified for their use-class with ongoing support second to none. We lead the industry in the design, supply and support of harsh environment security systems with many years design & integration experience.</p>
+	<h1 id="topDarkSection">Specialist market expertise</h1>
+	<p>
+		We are passionate about providing leading-edge and robust solutions, suitable
+		for demanding markets and environments, which are straightforward to operate and
+		maintain, certified for their use-class with ongoing support second to none. We
+		lead the industry in the design, supply and support of harsh environment
+		security systems with many years design & integration experience.
+	</p>
 
-    <!-- Markets Categories -->
-        <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-
-            <mat-card class="categoryCard selectable" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
-                <img mat-card-image [src]="category.image">
-                <h1>{{category.name}}</h1>
-                <span>Explore</span>
-
-            </mat-card>
-            
-        </div>
-        <div class="relatedCategoryButtons">
-            <a class="standardButton blueButton categoryButton" routerLink="markets" mat-raised-button>Explore The Markets ></a>
-            <div class="slideButtonContainer">
-                <button class="slideButton"><img src="./assets/images/customIcons/prev-slide.svg" alt=""></button>
-                <button class="slideButton"><img src="./assets/images/customIcons/next-slide.svg" alt=""></button>
-            </div>
-            
-        </div>
-        
+	<!-- Markets Categories -->
+	<div
+		class="categoryContainer"
+		fxLayout="row wrap"
+		fxLayoutAlign="flex-start">
+		<mat-card
+			class="categoryCard selectable"
+			routerLink="/products/{{ category._id }}"
+			*ngFor="let category of productCategories">
+			<img
+				mat-card-image
+				[src]="category.image" />
+			<h1>{{ category.name }}</h1>
+			<span>Explore</span>
+		</mat-card>
+	</div>
+	<div class="relatedCategoryButtons">
+		<a
+			class="standardButton blueButton categoryButton"
+			routerLink="markets"
+			mat-raised-button
+			>Explore The Markets ></a
+		>
+		<div class="slideButtonContainer">
+			<button class="slideButton">
+				<img
+					src="./assets/images/customIcons/prev-slide.svg"
+					alt="" />
+			</button>
+			<button class="slideButton">
+				<img
+					src="./assets/images/customIcons/next-slide.svg"
+					alt="" />
+			</button>
+		</div>
+	</div>
 </section>
 <section class="darkSection">
-    <h1>Service support second to none</h1>
-    <p>Excellent customer service and support are the keystone of our business. We guarantee good communications, transparency and honesty in all our interactions with you.</p>
+	<h1>Service support second to none</h1>
+	<p>
+		Excellent customer service and support are the keystone of our business. We
+		guarantee good communications, transparency and honesty in all our interactions
+		with you.
+	</p>
 
-    <!-- Markets Categories -->
-    <!-- Product Categories -->
-        <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-
-            <mat-card class="categoryCard selectable" routerLink="/products/{{category._id}}" *ngFor="let category of productCategories">
-                <img mat-card-image [src]="category.image">
-                <h1>{{category.name}}</h1>
-                <span>Explore</span>
-
-            </mat-card>
-            
-        </div>
-        <div class="relatedCategoryButtons">
-            <a class="standardButton blueButton categoryButton" routerLink="services" mat-raised-button>Explore Our Services ></a>
-            <div class="slideButtonContainer">
-                <button class="slideButton"><img src="./assets/images/customIcons/prev-slide.svg" alt=""></button>
-                <button class="slideButton"><img src="./assets/images/customIcons/next-slide.svg" alt=""></button>
-            </div>
-        </div>
-        
+	<!-- Markets Categories -->
+	<!-- Product Categories -->
+	<div
+		class="categoryContainer"
+		fxLayout="row wrap"
+		fxLayoutAlign="flex-start">
+		<mat-card
+			class="categoryCard selectable"
+			routerLink="/products/{{ category._id }}"
+			*ngFor="let category of productCategories">
+			<img
+				mat-card-image
+				[src]="category.image" />
+			<h1>{{ category.name }}</h1>
+			<span>Explore</span>
+		</mat-card>
+	</div>
+	<div class="relatedCategoryButtons">
+		<a
+			class="standardButton blueButton categoryButton"
+			routerLink="services"
+			mat-raised-button
+			>Explore Our Services ></a
+		>
+		<div class="slideButtonContainer">
+			<button class="slideButton">
+				<img
+					src="./assets/images/customIcons/prev-slide.svg"
+					alt="" />
+			</button>
+			<button class="slideButton">
+				<img
+					src="./assets/images/customIcons/next-slide.svg"
+					alt="" />
+			</button>
+		</div>
+	</div>
 </section>
-
 
 <app-quote-form></app-quote-form>
