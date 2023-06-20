@@ -4,8 +4,9 @@ WORKDIR /app
 
 COPY package*.json ./
 
+RUN npm i --save -g pm2
+
 RUN npm install
-RUN npm i --save pm2
 ARG NODE_ENV
 RUN if [ "$NODE_ENV" = "development" ]; \
 	then npm install; \
