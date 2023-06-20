@@ -22,7 +22,7 @@ export class HomeComponent {
 		private domSanitizer: DomSanitizer
 	) {
 		matIconRegistry.addSvgIconSet(
-			this.domSanitizer.bypassSecurityTrustResourceUrl(`../../../assets/images/customIcons`)
+			this.domSanitizer.bypassSecurityTrustResourceUrl(`./assets/images/customIcons`)
 		);
 	}
 	ngOnInit(): void {
