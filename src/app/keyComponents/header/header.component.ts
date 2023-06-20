@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InfoPageService } from 'src/app/services/info-page.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit{
-  constructor(private productService: ProductService){}
+  constructor(private productService: ProductService, private infoPageService: InfoPageService){}
   // Category Stored Data
   categorySub: any;
   categories: any = [];
@@ -43,6 +44,12 @@ export class HeaderComponent implements OnInit{
 
 
 
+  }
+  generateSingleInfo(type:string){
+    this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
+      let id = data[0]._id;
+    })
+    
   }
 
   async generateNav(){

@@ -5,7 +5,7 @@
 	<mat-card
 		class="categoryCard mat-elevation-z0 selectable noBoxShadow noElevation"
 		routerLink="/products/{{ category._id }}"
-		*ngFor="let category of categories">
+		*ngFor="let category of cards">
 		<img
 			mat-card-image
 			[src]="category.image" />
