@@ -1,1 +1,15 @@
-<p>category-card works!</p>
+<div
+	class="categoryContainer"
+	fxLayout="row wrap"
+	fxLayoutAlign="flex-start">
+	<mat-card
+		class="categoryCard mat-elevation-z0 selectable noBoxShadow noElevation"
+		routerLink="/products/{{ category._id }}"
+		*ngFor="let category of categories">
+		<img
+			mat-card-image
+			[src]="category.image" />
+		<h1>{{ category.name }}</h1>
+		<span>Explore</span>
+	</mat-card>
+</div>
