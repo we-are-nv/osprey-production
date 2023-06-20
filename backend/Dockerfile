@@ -5,6 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 
 RUN npm install
+RUN npm i --save pm2
 ARG NODE_ENV
 RUN if [ "$NODE_ENV" = "development" ]; \
 	then npm install; \
@@ -19,4 +20,4 @@ EXPOSE $PORT
 
 # ENTRYPOINT [ "nodemon", "-L", "./server.js" ]
 RUN npm install
-CMD [ "npm", "run" ,"start" ]
+CMD [ "npm", "run" ,"prod" ]
