@@ -15,7 +15,7 @@ const app = express();
 const productRoute = require('./src/routes/products');
 const catRoute = require('./src/routes/category');
 const modelRoute = require('./src/routes/model');
-const marketRoute = require('./src/routes/information');
+const infoRoute = require('./src/routes/information');
 const authRoute = require('./src/routes/auth');
 
 const PORT = process.env.PORT || 3030;
@@ -39,12 +39,6 @@ if (process.env.NODE_ENV === 'development') {
 	clusterWorkerSize = os.cpus().length;
 }
 
-if (process.env.LOCAL) {
-	origin = process.env.CORS_DEV;
-} else {
-	origin = process.env.CORS;
-}
-
 const middlewareCheck = (req, res, next) => {
 	if (req.method === 'POST') {
 		console.log('REQ HOST: ' + req.get('host'));
@@ -55,15 +49,40 @@ const middlewareCheck = (req, res, next) => {
 	next();
 };
 
-app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(morgan('dev'));
 app.use(middlewareCheck);
 
-app.get('/', (req, res) => {
-	console.log(origin);
+app.use((req, res, next) => {
+	const origin = req.headers.origin;
+	const allowedOrigins = [
+		'https://staging.wearenv.co.uk',
+		'http://localhost:4200',
+		'https://localhost'
+	];
+	if (allowedOrigins.includes(origin)) {
+		res.setHeader('Access-Control-Allow-Origin', origin);
+	}
+	res.setHeader(
+		'Access-Control-Allow-Headers',
+		'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+	);
+	res.setHeader(
+		'Access-Control-Allow-Methods',
+		'GET, POST, PATCH, DELETE, OPTIONS'
+	);
+	if (req.method === 'OPTIONS') {
+		res.sendStatus(200);
+	} else {
+		next();
+	}
 });
+
+// app.get('/', (req, res, next) => {
+// 	// console.log(constOrigin);
+// 	next();
+// });
 
 app.get('/paragon/api-test', (req, res) => {
 	console.log('Received request to /api-test');
@@ -72,7 +91,7 @@ app.get('/paragon/api-test', (req, res) => {
 });
 
 app.get('/paragon/api/status', (req, res) => {
-	console.log(origin);
+	// console.log(constOrigin);
 	logger.info('Checking the API status: Everything is OK');
 	res.status(200).send({
 		status: 'UP',
@@ -83,13 +102,14 @@ app.get('/paragon/api/status', (req, res) => {
 app.use('/paragon/api/products', productRoute);
 app.use('/paragon/api/auth', authRoute);
 app.use('/paragon/api/model', modelRoute);
-app.use('/paragon/api/info', marketRoute);
+app.use('/paragon/api/info', infoRoute);
 //Category Routes
 app.use('/paragon/api/products/category', catRoute);
 app.use('/paragon/api/products/categories', catRoute);
 
 const start = () => {
 	app.listen(PORT, () => {
+		// console.log('CORS Origin is: ', constOrigin);
 		console.log(
 			`Server listening on port ${PORT} and worker process ${process.pid}`
 		);
