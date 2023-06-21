@@ -19,14 +19,7 @@
             innovative product range below:</span>
     </div>
     <!-- Categories Grabbed from Component Variable -->
-    <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-        <mat-card class="categoryCard mat-elevation-z0 selectable noBoxShadow noElevation" routerLink="/products/{{category._id}}" *ngFor="let category of categories">
-            <img mat-card-image [src]="category.image">
-            <h1>{{category.name}}</h1>
-            <span>Explore</span>
-
-        </mat-card>
-    </div>
+    <app-category-card [cards]="categories"></app-category-card>
 </section>
 
 <app-quote-form></app-quote-form>

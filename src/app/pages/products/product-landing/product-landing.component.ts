@@ -19,6 +19,7 @@ export class ProductLandingComponent implements OnInit {
     this.categorySub = this.productService.getCategoriesUpdateListener()
       .subscribe((data)=>{
         this.categories = data.cats
+        console.log(this.categories)
     });
 
   }

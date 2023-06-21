@@ -9,11 +9,11 @@
 
             <!-- Image Object -->
             <section class="image-Section" *ngIf="element.type == 'image'">
-                <img class="image" *ngFor="let imgScr of element.images" [src]="imgScr" alt="">
+                <img class="image" *ngFor="let imgScr of element.src" [src]="imgScr" alt="">
             </section>
 
             <!-- Dropdown -->
-            <mat-expansion-panel class="dropdown-section" hideToggle  #panel  *ngIf="element.type == 'dropdown'">
+            <mat-expansion-panel class="dropdown-section" hideToggle  #panel  *ngIf="element.type == 'dropDown'">
                 <mat-expansion-panel-header >
                     <mat-panel-title>
                         <img class="expansion-image" [ngClass]="{'expanded' : panel.expanded === true, 'closed' : panel.expanded === false}"  src="./assets/images/customIcons/right.svg" alt="">
@@ -22,7 +22,7 @@
                 </mat-expansion-panel-header>
                 <p>{{element.text}}</p>
             </mat-expansion-panel>
-            <mat-expansion-panel class="dropdown-section" hideToggle  #panel  *ngIf="element.type == 'dropdown'">
+            <mat-expansion-panel class="dropdown-section" hideToggle  #panel  *ngIf="element.type == 'dropDown'">
                 <mat-expansion-panel-header >
                     <mat-panel-title>
                         <img class="expansion-image" [ngClass]="{'expanded' : panel.expanded === true, 'closed' : panel.expanded === false}"  src="./assets/images/customIcons/right.svg" alt="">
@@ -34,4 +34,6 @@
         </div>
 
 </section>
+
+
 

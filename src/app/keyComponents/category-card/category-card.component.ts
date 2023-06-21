@@ -7,19 +7,7 @@ import { ProductService } from 'src/app/services/product.service';
 	styleUrls: ['./category-card.component.scss']
 })
 export class CategoryCardComponent {
-	@Input() history: [{ path: string; friendly: string }] = [
-		{ path: '', friendly: 'home' }
-	];
+	@Input() cards: any = [];
 
-	categorySub: any;
-	categories: any = [];
-	constructor(private productService: ProductService) {}
-	ngOnInit(): void {
-		this.productService.getCategories();
-		this.categorySub = this.productService
-			.getCategoriesUpdateListener()
-			.subscribe(data => {
-				this.categories = data.cats;
-			});
-	}
+
 }
