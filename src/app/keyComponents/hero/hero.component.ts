@@ -7,7 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeroComponent implements OnInit{
   ngOnInit(){
-    sessionStorage.setItem("navStyle", "standard")
+    if (typeof window !== 'undefined'){
+      sessionStorage.setItem("navStyle", "standard")
+    };
   }
   @Input() mainTitle: string;
   @Input() secondaryTitle: string;
