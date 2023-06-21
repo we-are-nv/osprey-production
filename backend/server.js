@@ -59,7 +59,8 @@ app.use((req, res, next) => {
 	const allowedOrigins = [
 		'https://staging.wearenv.co.uk',
 		'http://localhost:4200',
-		'https://localhost'
+		'https://localhost',
+    'http://localhost:4000',
 	];
 	if (allowedOrigins.includes(origin)) {
 		res.setHeader('Access-Control-Allow-Origin', origin);

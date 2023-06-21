@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-hero',
@@ -6,9 +6,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./hero.component.scss']
 })
 export class HeroComponent implements OnInit{
+
   ngOnInit(){
-    sessionStorage.setItem("navStyle", "standard")
-  }
+    if (typeof window !== 'undefined'){
+      sessionStorage.setItem("navStyle", "standard")
+    };
+  };
+
   @Input() mainTitle: string;
   @Input() secondaryTitle: string;
   @Input() upperTitle: string;
