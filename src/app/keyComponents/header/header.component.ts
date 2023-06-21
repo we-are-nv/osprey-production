@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit{
         });
         this.productNav = tempCategories
         // console.log(this.productNav)
+        // this.generateSingleInfo("market")
         this.generateNav()
     });
 
@@ -45,12 +46,17 @@ export class HeaderComponent implements OnInit{
 
 
   }
-  generateSingleInfo(type:string){
-    this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
-      let id = data[0]._id;
-    })
+  // generateSingleInfo(type:string){
+  //   this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
+  //     let id = data[0]._id;
+  //     this.infoPageService.getMainPage(id)
+  //     this.infoPageService.getMainUpdateListener().subscribe(data =>{
+  //       let subPages = data.pages;
+  //       console.log(subPages)
+  //     })
+  //   })
     
-  }
+  // }
 
   async generateNav(){
     this.finalNav = {

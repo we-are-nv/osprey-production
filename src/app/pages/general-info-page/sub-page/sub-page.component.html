@@ -9,7 +9,7 @@
 
             <!-- Image Object -->
             <section class="image-Section" *ngIf="element.type == 'image'">
-                <img class="image" *ngFor="let imgScr of element.images" [src]="imgScr" alt="">
+                <img class="image" *ngFor="let imgScr of element.src" [src]="imgScr" alt="">
             </section>
 
             <!-- Dropdown -->

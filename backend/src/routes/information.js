@@ -137,7 +137,7 @@ router.post('/page', checkAuth, async (req, res) => {
 
   for (idx in req.body.elements) {
     if (req.body.elements[idx].type == 'image') {
-      req.body.elements[idx].images.forEach((element, idx1) => {
+      req.body.elements[idx].src.forEach((element, idx1) => {
         var fileURL = `info/${req.query.id}/pages/${newPageID}/${req.body.name}${idx1}`;
         uploadBaseMarket(fileURL, element);
         element = `/${fileURL}`;
@@ -208,8 +208,8 @@ router.get('/page', async (req,res) => {
   for (idx in pageElements){
     if (pageElements[idx].type == "image"){
 
-      pageElements[idx].images.forEach(function(item,pIdx){
-        pageElements[idx].images[pIdx] = `${process.env.S3_BASE}${pageElements[idx].images[pIdx]}`;
+      pageElements[idx].src.forEach(function(item,pIdx){
+        pageElements[idx].src[pIdx] = `${process.env.S3_BASE}${pageElements[idx].src[pIdx]}`;
       });
     };
   };
