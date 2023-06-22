@@ -70,7 +70,7 @@ app.use((req, res, next) => {
 	);
 	res.setHeader(
 		'Access-Control-Allow-Methods',
-		'GET, POST, PATCH, DELETE, OPTIONS, PUT'
+		'GET, POST, PATCH, DELETE, OPTIONS, PUT, OPTIONS'
 	);
 	if (req.method === 'OPTIONS') {
 		res.sendStatus(200);
