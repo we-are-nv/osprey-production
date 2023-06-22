@@ -8,9 +8,13 @@
             </div>
 
             <!-- Image Object -->
-            <section class="image-Section" *ngIf="element.type == 'image'">
+            <div *ngIf="element.type == 'image'">
+                <h1>{{element.header}}</h1>
+                <section class="image-Section">
                 <img class="image" *ngFor="let imgScr of element.src" [src]="imgScr" alt="">
-            </section>
+                </section>
+            </div>
+            
 
             <!-- Dropdown -->
             <mat-expansion-panel class="dropdown-section" hideToggle  #panel  *ngIf="element.type == 'dropDown'">
@@ -22,15 +26,10 @@
                 </mat-expansion-panel-header>
                 <p>{{element.text}}</p>
             </mat-expansion-panel>
-            <mat-expansion-panel class="dropdown-section" hideToggle  #panel  *ngIf="element.type == 'dropDown'">
-                <mat-expansion-panel-header >
-                    <mat-panel-title>
-                        <img class="expansion-image" [ngClass]="{'expanded' : panel.expanded === true, 'closed' : panel.expanded === false}"  src="./assets/images/customIcons/right.svg" alt="">
-                        {{element.header}}
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <p>{{element.text}}</p>
-            </mat-expansion-panel>
+            <div *ngIf="element.type == 'bulletPoint'">
+                <h1>{{element.header}}</h1>
+                <p *ngFor="let point of element.src">{{point}}</p>
+            </div>
         </div>
 
 </section>
