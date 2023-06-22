@@ -23,7 +23,7 @@ const routes: Routes = [
   {path:'markets', component:MarketsComponent},
 
   // InfoPage
-  {path:'info-page/:type/:id', 
+  {path:'info-page/:type/:id',
   component: GeneralInfoPageComponent,
   children:[
     {path:':childId', component:SubPageComponent}
@@ -35,6 +35,11 @@ const routes: Routes = [
   {path:'products/landing', component:ProductLandingComponent},
   {path:'products/:category', component:ProductsComponent},
   {path:'product/:category/:id', component:ProductViewComponent},
+
+    // Product pages (Friendly)
+    {path:'home/products/landing', component:ProductLandingComponent},
+    {path:'home/products/:category', component:ProductsComponent},
+    {path:'home/product/:category/:id', component:ProductViewComponent},
 
 
 

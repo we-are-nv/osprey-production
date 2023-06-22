@@ -33,6 +33,7 @@ import { CategoryCardComponent } from './keyComponents/category-card/category-ca
 @NgModule({
   declarations: [
     AppComponent,
+    BreadcrumbsComponent,
     HeaderComponent,
     FooterComponent,
     HomeComponent,
@@ -47,7 +48,6 @@ import { CategoryCardComponent } from './keyComponents/category-card/category-ca
     CharacterValidationPipe,
     ServicesInfoComponent,
     ErrorPageComponent,
-    BreadcrumbsComponent,
     ContactComponent,
     UrlFormatterPipe,
     GeneralInfoPageComponent,

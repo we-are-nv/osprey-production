@@ -12,8 +12,10 @@ export class UrlFormatterPipe implements PipeTransform {
 
     spaceTypes.forEach(space => {
       v = v.replace(space, '-')
+      v = v.replace('(','')
+      v = v.replace(')','')
     });
-    
-    return v;
+
+    return value;
   }
 }
