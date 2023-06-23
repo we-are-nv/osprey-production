@@ -11,7 +11,7 @@
     "test": "ng test",
     "dev:ssr": "ng run ospreyProduction:serve-ssr",
     "serve:ssr": "node dist/ospreyProduction/server/main.js",
-    "build:ssr": "ng build --configuration production --base-href /paragon/ && ng run ospreyProduction:server",
+    "build:ssr": "ng build --configuration production --base-href /paragon/ && ng run paragonProduction:server",
     "prerender": "ng run ospreyProduction:prerender"
   },
   "private": true,
