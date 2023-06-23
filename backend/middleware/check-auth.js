@@ -25,6 +25,8 @@ module.exports = (req, res, next) => {
 				token = req.headers.authorization.split(' ')[1];
 			}
 		} else {
+      console.log('IN PROD MODE')
+      console.log(req.cookies)
 			token = req.cookies.SESSIONID;
 		}
 

@@ -61,9 +61,16 @@ app.use((req, res, next) => {
 		'http://localhost:4200',
 		'http://localhost'
 	];
+
 	if (allowedOrigins.includes(origin)) {
+    console.log('ALLOWED CORS')
+    console.log(origin)
 		res.setHeader('Access-Control-Allow-Origin', origin);
-	}
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Headers', origin);
+	} else {
+    console.log('DISALLOWED CORD')
+  }
 
 	res.setHeader(
 		'Access-Control-Allow-Headers',
