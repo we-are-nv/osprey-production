@@ -9,7 +9,7 @@
     [button3Data]="{text:'Explore Our Services', path:'', type:'white'}"
 ></app-hero>
 
-<app-breadcrumbs [history]="history"></app-breadcrumbs>
+<!-- <app-breadcrumbs [history]="history"></app-breadcrumbs> -->
 
     <h5 id="productList">Showing page: {{currentPage}} of {{totalPages}}</h5>
 <section class="ProductsView">
@@ -18,7 +18,7 @@
             <mat-card class="productCard selectable"  *ngFor="let product of products" (click)="loadProduct(product._id)">
                     <img mat-card-image *ngIf="product.image !== ''" [src]="product.image">
                     <img mat-card-image *ngIf="product.image == ''" src="./assets/images/ExampleProducts/defaultImage.jpg">
-                
+
                 <mat-card-header>
                     <mat-card-title-group></mat-card-title-group>
 

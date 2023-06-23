@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit{
 
   async ngOnInit() {
     // Get Product Categories
-    this.productService.getCategories()
+
     this.categorySub = this.productService.getCategoriesUpdateListener()
       .subscribe((data)=>{
         this.categories = data.cats
@@ -39,6 +39,7 @@ export class HeaderComponent implements OnInit{
         // this.generateSingleInfo("market")
         this.generateNav()
     });
+    this.productService.getCategories()
 
 
 
@@ -55,7 +56,7 @@ export class HeaderComponent implements OnInit{
   //       console.log(subPages)
   //     })
   //   })
-    
+
   // }
 
   async generateNav(){

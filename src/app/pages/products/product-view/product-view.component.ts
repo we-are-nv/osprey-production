@@ -32,22 +32,22 @@ export class ProductViewComponent implements OnInit{
     this.additionalInfo = [];
 
     this._Activatedroute.params.subscribe(params => {
-      
+
       // Reads parameters from URL
 
       this.id = params['id'];
-      this.category = params['category'];
+      //this.category = params['category'];
 
 
 
       // Get the product from the URL parameters
 
-      this.productService.getSingleProduct(this.id, this.category)
+
       this.productSub = this.productService.getSingleProductUpdateListener()
       .subscribe((data)=>{
         this.product = data;
         console.log(this.product)
-        
+
         this.history = [
           {path:"/", friendly:"Home"},
           {path:"/products/landing", friendly:"Products"},
@@ -56,19 +56,21 @@ export class ProductViewComponent implements OnInit{
 
         let tempAdditionalInfo = this.product.additional_information.info
         this.informationConverter(tempAdditionalInfo)
-        
 
+        console.log()
         // Gets all the similar products
 
-        this.productService.getProducts({category:this.category, page:1, limit:4});  
+
         this.similarProductsSub = this.productService.getProductsUpdateListener()
           .subscribe((data)=>{
             // console.log(data)
             this.similarProducts = data.products;
         });
+        this.productService.getProducts({category:this.product.category, page:1, limit:4});
 
 
     });
+    this.productService.getSingleProduct(this.id)
     });
   }
 
@@ -89,8 +91,8 @@ export class ProductViewComponent implements OnInit{
 
           itemsArray.push(itemObj);
         }
-        
-        
+
+
       }
       let infoObj = {
         name:k,
@@ -99,15 +101,15 @@ export class ProductViewComponent implements OnInit{
       if(itemsArray.length > 0){
         this.additionalInfo.push(infoObj);
       }
-      
+
       console.log(this.additionalInfo);
     }
-    
+
   }
 
   specValidation(data:any) : boolean{
-    if (data !== '' && 
-        data!== null && 
+    if (data !== '' &&
+        data!== null &&
         data!== undefined &&
         data !== "n/a" &&
         data !== "na") {
@@ -122,5 +124,5 @@ export class ProductViewComponent implements OnInit{
   checking(data:any){
     console.log(data)
   }
-  
+
 }
