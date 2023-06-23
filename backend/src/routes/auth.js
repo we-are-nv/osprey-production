@@ -73,7 +73,7 @@ router.post('/login', (req, res, next) => {
       });
       if (!process.env.ALLOW_LOCAL_STORAGE) {
         res.cookie('SESSIONID', jwtBearerToken, {
-          httpOnly: true,
+          httpOnly: false,
           sameSite:'none',
           secure: true,
           maxAge: MAX_AGE
