@@ -3,7 +3,7 @@
 	"version": 1,
 	"newProjectRoot": "projects",
 	"projects": {
-		"ospreyProduction": {
+		"paragonProduction": {
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
@@ -17,7 +17,7 @@
 				"build": {
 					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
-						"outputPath": "dist/ospreyProduction/browser",
+						"outputPath": "dist/paragonProduction/browser",
 						"index": "src/index.html",
 						"main": "src/main.ts",
 						"polyfills": ["zone.js"],
@@ -78,10 +78,10 @@
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "ospreyProduction:build:production"
+							"browserTarget": "paragonProduction:build:production"
 						},
 						"development": {
-							"browserTarget": "ospreyProduction:build:development"
+							"browserTarget": "paragonProduction:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
@@ -89,7 +89,7 @@
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"browserTarget": "ospreyProduction:build"
+						"browserTarget": "paragonProduction:build"
 					}
 				},
 				"test": {
@@ -106,7 +106,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/ospreyProduction/server",
+            "outputPath": "dist/paragonProduction/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "inlineStyleLanguage": "scss"
@@ -148,12 +148,12 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "ospreyProduction:build:development",
-              "serverTarget": "ospreyProduction:server:development"
+              "browserTarget": "paragonProduction:build:development",
+              "serverTarget": "paragonProduction:server:development"
             },
             "production": {
-              "browserTarget": "ospreyProduction:build:production",
-              "serverTarget": "ospreyProduction:server:production"
+              "browserTarget": "paragonProduction:build:production",
+              "serverTarget": "paragonProduction:server:production"
             }
           },
           "defaultConfiguration": "development"
@@ -167,12 +167,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "ospreyProduction:build:production",
-              "serverTarget": "ospreyProduction:server:production"
+              "browserTarget": "paragonProduction:build:production",
+              "serverTarget": "paragonProduction:server:production"
             },
             "development": {
-              "browserTarget": "ospreyProduction:build:development",
-              "serverTarget": "ospreyProduction:server:development"
+              "browserTarget": "paragonProduction:build:development",
+              "serverTarget": "paragonProduction:server:development"
             }
           },
           "defaultConfiguration": "production"

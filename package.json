@@ -1,5 +1,5 @@
 {
-  "name": "paragon",
+  "name": "paragon1",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -9,10 +9,10 @@
     "build2": "ng build --configuration production --base-href /paragon/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev:ssr": "ng run ospreyProduction:serve-ssr",
-    "serve:ssr": "node dist/ospreyProduction/server/main.js",
+    "dev:ssr": "ng run paragonProduction:serve-ssr",
+    "serve:ssr": "node dist/paragonProduction/server/main.js",
     "build:ssr": "ng build --configuration production --base-href /paragon/ && ng run paragonProduction:server",
-    "prerender": "ng run ospreyProduction:prerender"
+    "prerender": "ng run paragonProduction:prerender"
   },
   "private": true,
   "dependencies": {
