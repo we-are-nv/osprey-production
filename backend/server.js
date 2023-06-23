@@ -67,7 +67,9 @@ app.use((req, res, next) => {
 		res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Headers', origin);
-	}
+	} else {
+    console.log('DISALLOWED CORD')
+  }
 
 	res.setHeader(
 		'Access-Control-Allow-Headers',
