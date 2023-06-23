@@ -33,13 +33,13 @@ const routes: Routes = [
 
   // Product pages
   {path:'products/landing', component:ProductLandingComponent},
-  {path:'products/:category', component:ProductsComponent},
-  {path:'product/:category/:id', component:ProductViewComponent},
+  {path:'search/:category', component:ProductsComponent},
+  {path:'product/:id', component:ProductViewComponent},
 
     // Product pages (Friendly)
     {path:'home/products/landing', component:ProductLandingComponent},
-    {path:'home/products/:category', component:ProductsComponent},
-    {path:'home/product/:category/:id', component:ProductViewComponent},
+    {path:'home/search/:category', component:ProductsComponent},
+    {path:'home/product/:id', component:ProductViewComponent},
 
 
 

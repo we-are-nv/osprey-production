@@ -19,18 +19,18 @@ export class ProductsComponent implements OnInit{
   public productsSub : Subscription;
 
   history:any;
-  
-  
+
+
 
   ngOnInit(){
     this._Activatedroute.params.subscribe(params =>{
       this.category = params["category"]
-      this.productService.getProducts({category:this.category, page:1}); 
+      this.productService.getProducts({category:this.category, page:1});
 
       // Breadcrumb Setup
       this.history = [
         {path:"/", friendly:"Home"},
-        {path:"/products/landing", friendly:"Products"}, 
+        {path:"/products/landing", friendly:"Products"},
         {path:("/products/"+this.category), friendly:this.category}
       ];
     })
@@ -42,12 +42,12 @@ export class ProductsComponent implements OnInit{
         this.totalPages = data.totalPages
 
     });
-    
+
 
   }
 
   currentCategory=null;
-  
+
 
 
 
@@ -57,26 +57,26 @@ export class ProductsComponent implements OnInit{
     this.productService.getProducts({category:this.category, page:1});
   }
   loadProduct(id:any){
-    this.router.navigate(['product/'+this.category+'/'+id]);
+    this.router.navigate([`product/${id}`]);
 
   }
 
 
   // On search
-  onSearchChange(searchValue: any): void {  
+  onSearchChange(searchValue: any): void {
     // console.log(searchValue.target.value);
     this.productService.searchProducts({
       page:1,
       searchQuery:searchValue.target.value,
-      extra: true 
+      extra: true
       });
   }
   changePage(newPage:any){
-    this.productService.getProducts({category:this.category, page:newPage});  
+    this.productService.getProducts({category:this.category, page:newPage});
     let top = document.getElementById('productList');
     top?.scrollIntoView()
   }
 }
 
 
-// 
+//
