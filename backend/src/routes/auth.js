@@ -74,7 +74,7 @@ router.post('/login', (req, res, next) => {
       if (!process.env.ALLOW_LOCAL_STORAGE) {
         res.cookie('SESSIONID', jwtBearerToken, {
           httpOnly: false,
-          secure: true,
+          secure: false,
           maxAge: MAX_AGE
         });
       }
