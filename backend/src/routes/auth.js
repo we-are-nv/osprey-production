@@ -76,7 +76,9 @@ router.post('/login', (req, res, next) => {
           httpOnly: false,
           sameSite:'none',
           secure: true,
-          maxAge: MAX_AGE
+
+          maxAge: MAX_AGE,
+          domain:'wearenv.co.uk'
         });
       }
 
