@@ -17,18 +17,13 @@ dotenv.config();
 //is sync working? yes
 module.exports = (req, res, next) => {
 	try {
-		if (process.env.ALLOW_LOCAL_STORAGE) {
 			if (!req.headers.authorization) {
 				token = req.cookies.SESSIONID;
 			} else {
 				console.log('Allowed Local Storage Token');
 				token = req.headers.authorization.split(' ')[1];
 			}
-		} else {
-      console.log('IN PROD MODE')
-      console.log(req.cookies)
-			token = req.cookies.SESSIONID;
-		}
+
 
 		const decodedToken = jwt.verify(token, decryptedKey);
 		req.userData = {
