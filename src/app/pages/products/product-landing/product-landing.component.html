@@ -19,7 +19,8 @@
             innovative product range below:</span>
     </div>
     <!-- Categories Grabbed from Component Variable -->
-    <app-category-card [cards]="categories" (catRouting)=”parentFun()”></app-category-card>
+    <button class="prod-load-button" mat-flat-button color="primary" *ngIf="activeId !== ''" (click)="loadProds()">Show All Products -></button>
+    <app-category-card [cards]="categories" (catRouting)="getNewCats($event)"></app-category-card>
 </section>
 
 <app-quote-form></app-quote-form>

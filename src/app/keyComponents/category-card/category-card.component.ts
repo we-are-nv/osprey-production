@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input , EventEmitter, Output} from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -7,7 +7,10 @@ import { ProductService } from 'src/app/services/product.service';
 	styleUrls: ['./category-card.component.scss']
 })
 export class CategoryCardComponent {
+	@Output() catRouting: EventEmitter<any> = new EventEmitter<any>();
 	@Input() cards: any = [];
 
-
+	loadCat(id: string){
+		this.catRouting.emit(id)
+	}
 }

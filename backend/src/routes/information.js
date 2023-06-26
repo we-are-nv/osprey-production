@@ -187,11 +187,7 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (thumbnail_image) updateFields.thumbnail_image = thumbnail_image;
 
 		const foundPage = await market.findOneAndUpdate(
-<<<<<<< HEAD
 			{ _id: id},
-=======
-			{ _id: id },
->>>>>>> 4cdfec85ffd6ed87aa03af8f25958e506e24440d
 			{ $set: updateFields },
 			{ new: true }
 		);
@@ -311,6 +307,9 @@ router.get('/single', async (req, res) => {
 
 router.get('/page', async (req, res) => {
 	const foundPage = await informationPage.findOne({ _id: req.query.id });
+	if(!foundPage){
+		return res.status(404).json({message: 'page not found'})
+	}
 
 	if (!foundPage._doc.elements) {
 		return res.status(404).json({ message: 'Page elements not found' });

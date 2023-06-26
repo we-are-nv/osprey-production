@@ -12,6 +12,8 @@ export class ProductLandingComponent implements OnInit {
   
   history: any = [{path:"/", friendly:"Home"}, {path:"/products/landing", friendly:"Products"}];
 
+  activeId = '';
+
   categorySub :any;
   categories:any = [];
   constructor(private productService: ProductService, private router: Router){}
@@ -19,17 +21,21 @@ export class ProductLandingComponent implements OnInit {
     this.productService.getCategories("")
     this.categorySub = this.productService.getCategoriesUpdateListener()
       .subscribe((data)=>{
+        console.log(data)
         this.categories = data.cats
         console.log(this.categories)
+        if(this.categories.length < 1 ) {
+          this.router.navigate(['/search/'+ this.activeId])
+        } 
     });
-
   }
-  getNewCats(id: string){
+  getNewCats(id: any){
     this.productService.getCategories(id);
-    if(this.categories.landing< 0 ) {
-      this.router.navigate(['/search/'+id])
-    
+    console.log(this.categories)
+    this.activeId = id;
   }
-
-}
+  loadProds(){
+    console.log
+    this.router.navigate(['/search/'+ this.activeId])
+  }
 }

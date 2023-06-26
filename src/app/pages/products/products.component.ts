@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit{
 
   types: any[];
   category = "";
+  subCats: any = [];
   currentPage:number;
   totalPages  :number;
   public productsSub : Subscription;
@@ -25,6 +26,13 @@ export class ProductsComponent implements OnInit{
   ngOnInit(){
     this._Activatedroute.params.subscribe(params =>{
       this.category = params["category"]
+
+      this.productService.getCategoriesUpdateListener().subscribe((data:any)=>{
+        this.subCats = data.cats;
+      })
+      
+      this.productService.getCategories(this.category)
+
       this.productService.getProducts({category:this.category, page:1});
 
       // Breadcrumb Setup
