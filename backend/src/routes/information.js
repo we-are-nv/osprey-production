@@ -74,7 +74,7 @@ router.post('/', checkAuth, async (req, res) => {
 			...currentBonus
 		});
 
-		//newBonus.save();
+		// newBonus.save();
 	}
 
 	if (req.body.pages.length > 0) {
@@ -102,7 +102,7 @@ router.post('/', checkAuth, async (req, res) => {
 		bonus_cards: bonusObj
 	});
 
-	//newMarket.save();
+	newMarket.save();
 	res.json({ message: newMarket });
 });
 
