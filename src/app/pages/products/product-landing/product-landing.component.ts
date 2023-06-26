@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -13,9 +14,9 @@ export class ProductLandingComponent implements OnInit {
 
   categorySub :any;
   categories:any = [];
-  constructor(private productService: ProductService){}
+  constructor(private productService: ProductService, private router: Router){}
   ngOnInit(): void {
-    this.productService.getCategories()
+    this.productService.getCategories("")
     this.categorySub = this.productService.getCategoriesUpdateListener()
       .subscribe((data)=>{
         this.categories = data.cats
@@ -23,5 +24,12 @@ export class ProductLandingComponent implements OnInit {
     });
 
   }
+  getNewCats(id: string){
+    this.productService.getCategories(id);
+    if(this.categories.landing< 0 ) {
+      this.router.navigate(['/search/'+id])
+    
+  }
 
+}
 }
