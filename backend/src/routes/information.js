@@ -187,7 +187,11 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (thumbnail_image) updateFields.thumbnail_image = thumbnail_image;
 
 		const foundPage = await market.findOneAndUpdate(
+<<<<<<< HEAD
 			{ _id: id},
+=======
+			{ _id: id },
+>>>>>>> 4cdfec85ffd6ed87aa03af8f25958e506e24440d
 			{ $set: updateFields },
 			{ new: true }
 		);
