@@ -213,27 +213,38 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 		if (!parent_id) {
 			return res.status(400).json({ message: 'no parent ID' });
 		}
-		console.log('child id is:  ', id);
-		console.log('parent id is:  ', parent_id);
+		console.log('child_id is:  ', id);
+		console.log('parent_id is:  ', parent_id);
 
 		const { name, elements } = req.body;
 		if (!name || !elements) {
 			return res.status(400).json({ message: 'Missing name or elements' });
 		}
 
-		const findPage = (pages, name) => {
-			return pages.find(page => page.name === name);
+		const findPage = (pages, id) => {
+			if (!Array.isArray(pages)) {
+				console.log(typeof pages);
+
+				return null;
+			}
+			return pages.find(page => page.id.toString() === id);
 		};
 
-		const foundParent = await market.findOneAndUpdate(
-			{ _id: parent_id },
-			{ $set: { 'pages.$.name': name } },
+		const foundParent = await market.findOne({ _id: parent_id });
+		if (!foundParent) {
+			return res.status(400).json({ message: 'no parent page found' });
+		}
+
+		const pageToUpdate = findPage(foundParent.pages, id);
+		if (!pageToUpdate) {
+			return res.status(400).json({ message: 'child page not found' });
+		}
+
+		const updatedParent = await market.findOneAndUpdate(
+			{ _id: parent_id, 'pages.id': id },
+			{ $set: { 'pages.$.name': name} },
 			{ new: true }
 		);
-
-		if (!foundParent) {
-			return res.status(404).json({ message: 'no parent page found' });
-		}
 
 		const foundChild = await informationPage.findOneAndUpdate(
 			{ _id: id },
@@ -245,7 +256,7 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 			return res.status(404).json({ message: ' Child Page not found' });
 		}
 
-		res.json(foundChild);
+		res.status(200).json({updatedParent});
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({ message: 'Internal Server Error', error: error });
