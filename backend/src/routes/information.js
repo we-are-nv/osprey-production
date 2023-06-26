@@ -140,7 +140,7 @@ router.post('/page', checkAuth, async (req, res) => {
 	for (idx in req.body.elements) {
 		if (req.body.elements[idx].type == 'image') {
 			req.body.elements[idx].src.forEach((element, idx1) => {
-				var fileURL = `info/${req.query.id}/pages/${newPageID}/${req.body.name}${idx1}`;
+				var fileURL = (`info/${req.query.id}/pages/${newPageID}/${req.body.name}${idx1}`).replace(/\s/g, "");;
 				uploadBaseMarket(fileURL, element);
 				element = `/${fileURL}`;
 				req.body.elements[idx].src[idx1] = element;
