@@ -188,7 +188,8 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (!name || !type) {
 			return res.status(400).json({ message: 'Missing name and/ or type' });
 		}
-		const { secondry_title, lower_title, banner_image, thumbnail_image, pages } = req.body;
+		const { secondry_title, lower_title, banner_image, thumbnail_image, pages } =
+			req.body;
 		const updateFields = {};
 		if (name) updateFields.name = name;
 		if (type) updateFields.type = type;
@@ -203,6 +204,7 @@ router.put('/page', checkAuth, async (req, res) => {
 			{ $set: updateFields },
 			{ new: true }
 		);
+
 		if (!foundPage) {
 			return res.status(404).json({ message: 'Page not found' });
 		}
@@ -288,7 +290,11 @@ router.get('/single', async (req, res) => {
 router.get('/page', async (req, res) => {
 	const foundPage = await informationPage.findOne({ _id: req.query.id });
 
-	var pageElements = foundPage._doc.elements;
+	if (!foundPage._doc.elements) {
+		return res.status(404).json({ message: 'Page elements not found' });
+	} else {
+		var pageElements = foundPage._doc.elements;
+	}
 
 	for (idx in pageElements) {
 		if (pageElements[idx].type == 'image') {
