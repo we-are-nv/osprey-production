@@ -1,0 +1,52 @@
+version: '3.7'
+
+networks:
+  web:
+    name: web
+    external:
+      true
+  backend:
+    name: backend
+    external:
+      true
+
+services:
+
+  ####### uncomment out either production for remote or dev for local #######
+  ###########################################################################
+
+
+  paragon-production:
+    container_name: paragon-angular-universal
+    restart: always
+
+    build:
+      context: .
+    command: npm run start
+    ports:
+      - 4000:4000
+    networks:
+      -  web
+      - backend
+    volumes:
+      - ./dist/ospreyProduction:/dist/ospreyProduction/
+
+  # ospreyDev:
+  #   container_name: paragon-angular-universal-dev
+  #   restart: always
+
+  #   build:
+  #     context: .
+  #   command: npm run start
+  #   ports:
+  #     - 4000:4000
+  #   networks:
+  #     - traefik-proxy
+  #     - backend
+  #   volumes:
+  #     - ./dist/ospreyProduction:app
+  #   labels:
+  #   - "traefik.enable=true"
+  #   - "traefik.docker.network=traefik-proxy"
+  #   - "traefik.http.routers.node-app.rule=Host(`localhost`)"
+  #   - "traefik.http.services.node-app-again.loadBalancer.server.port=4000"

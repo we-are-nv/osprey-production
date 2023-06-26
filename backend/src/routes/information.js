@@ -178,6 +178,31 @@ router.post('/page', checkAuth, async (req, res) => {
 // 	});
 // });
 
+router.put('/page', checkAuth, async (req, res) => {
+	try {
+		const { id } = req.query;
+		if (!id) {
+			return res.status(400).json({ message: 'Missing page ID' });
+		}
+		const { name, type } = req.body;
+		if (!name || !type) {
+			return res.status(400).json({ message: 'Missing name and/ or type' });
+		}
+		const foundPage = await marketInfo.findOneAndUpdate(
+			{ _id: id },
+			{ name, secondry_title, lower_title, banner_image, thumbnail_image, pages },
+			{ new: true }
+		);
+		if (!foundPage) {
+			return res.status(404).json({ message: 'Page not found' });
+		}
+		res.json(foundPage);
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({ message: 'Internal Server Error' });
+	}
+});
+
 router.put('/page/sub-page', checkAuth, async (req, res) => {
 	try {
 		const { id } = req.query;
@@ -201,8 +226,8 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 		}
 
 		res.json(foundPage);
-	} catch (error) {
-		console.error(error);
+	} catch (err) {
+		console.error(err);
 		res.status(500).json({ message: 'Internal Server Error' });
 	}
 });
