@@ -25,7 +25,7 @@ export class ProductLandingComponent implements OnInit {
         this.categories = data.cats
         console.log(this.categories)
         if(this.categories.length < 1 ) {
-          this.router.navigate(['/search/'+ this.activeId])
+          this.loadProds()
         } 
     });
   }
@@ -35,7 +35,7 @@ export class ProductLandingComponent implements OnInit {
     this.activeId = id;
   }
   loadProds(){
-    console.log
+    this.categorySub.unsubscribe();
     this.router.navigate(['/search/'+ this.activeId])
   }
 }
