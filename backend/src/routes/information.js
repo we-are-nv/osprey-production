@@ -188,11 +188,23 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (!name || !type) {
 			return res.status(400).json({ message: 'Missing name and/ or type' });
 		}
+		const { secondry_title, lower_title, banner_image, thumbnail_image, pages } =
+			req.body;
+		const updateFields = {};
+		if (name) updateFields.name = name;
+		if (type) updateFields.type = type;
+		if (secondry_title) updateFields.secondry_title = secondry_title;
+		if (lower_title) updateFields.lower_title = lower_title;
+		if (banner_image) updateFields.banner_image = banner_image;
+		if (thumbnail_image) updateFields.thumbnail_image = thumbnail_image;
+		if (pages) updateFields['pages.$'] = pages;
+
 		const foundPage = await marketInfo.findOneAndUpdate(
-			{ _id: id },
-			{ name, secondry_title, lower_title, banner_image, thumbnail_image, pages },
+			{ _id: id, 'pages.id': pages.id },
+			{ $set: updateFields },
 			{ new: true }
 		);
+
 		if (!foundPage) {
 			return res.status(404).json({ message: 'Page not found' });
 		}
@@ -278,7 +290,11 @@ router.get('/single', async (req, res) => {
 router.get('/page', async (req, res) => {
 	const foundPage = await informationPage.findOne({ _id: req.query.id });
 
-	var pageElements = foundPage._doc.elements;
+	if (!foundPage._doc.elements) {
+		return res.status(404).json({ message: 'Page elements not found' });
+	} else {
+		var pageElements = foundPage._doc.elements;
+	}
 
 	for (idx in pageElements) {
 		if (pageElements[idx].type == 'image') {
