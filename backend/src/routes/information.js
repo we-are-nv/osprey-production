@@ -143,7 +143,7 @@ router.post('/page', checkAuth, async (req, res) => {
 				var fileURL = `info/${req.query.id}/pages/${newPageID}/${req.body.name}${idx1}`;
 				uploadBaseMarket(fileURL, element);
 				element = `/${fileURL}`;
-				req.body.elements[idx].images[idx1] = element;
+				req.body.elements[idx].src[idx1] = element;
 			});
 		}
 	}

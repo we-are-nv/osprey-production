@@ -22,12 +22,18 @@ export class GeneralInfoPageComponent implements OnInit{
   subPages: any[];
   bonusCards: any[];
 
+  siblingPages: any[];
+
 
   history: any;
   ngOnInit(){   
     this._Activatedroute.params.subscribe(params =>{
       this.pageType = params["type"];
       this.pageId = params["id"];
+
+      this.infoService.getThumbnails(this.pageType).subscribe((data:any)=>{
+        this.siblingPages = data
+      })
 
       // Get Main Page
       this.infoService.getMainPage(this.pageId)
