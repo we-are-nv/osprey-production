@@ -188,9 +188,19 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (!name || !type) {
 			return res.status(400).json({ message: 'Missing name and/ or type' });
 		}
+		const { secondry_title, lower_title, banner_image, thumbnail_image, pages } = req.body;
+		const updateFields = {};
+		if (name) updateFields.name = name;
+		if (type) updateFields.type = type;
+		if (secondry_title) updateFields.secondry_title = secondry_title;
+		if (lower_title) updateFields.lower_title = lower_title;
+		if (banner_image) updateFields.banner_image = banner_image;
+		if (thumbnail_image) updateFields.thumbnail_image = thumbnail_image;
+		if (pages) updateFields['pages.$'] = pages;
+
 		const foundPage = await marketInfo.findOneAndUpdate(
-			{ _id: id },
-			{ name, secondry_title, lower_title, banner_image, thumbnail_image, pages },
+			{ _id: id, 'pages.id': pages.id },
+			{ $set: updateFields },
 			{ new: true }
 		);
 		if (!foundPage) {
