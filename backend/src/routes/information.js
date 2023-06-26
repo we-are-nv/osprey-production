@@ -185,10 +185,9 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (lower_title) updateFields.lower_title = lower_title;
 		if (banner_image) updateFields.banner_image = banner_image;
 		if (thumbnail_image) updateFields.thumbnail_image = thumbnail_image;
-		if (pages) updateFields['pages.$'] = pages;
 
-		const foundPage = await marketInfo.findOneAndUpdate(
-			{ _id: id, 'pages.id': pages.id },
+		const foundPage = await market.findOneAndUpdate(
+			{ _id: id },
 			{ $set: updateFields },
 			{ new: true }
 		);
