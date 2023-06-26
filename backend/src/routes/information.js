@@ -166,18 +166,6 @@ router.post('/page', checkAuth, async (req, res) => {
 	res.json({ message: 'OK', newPage: newPage });
 });
 
-// router.put('/page/sub-page', checkAuth, async (req, res) => {
-// 	if (!req.query.id) {
-// 		res.json({ message: 'this page does not exist' });
-// 		return;
-// 	}
-// 	const foundPage = await informationPage.findOneAndUpdate({
-// 		_id: req.query.id,
-// 		name: req.body.name,
-// 		elements: req.body.elements
-// 	});
-// });
-
 router.put('/page', checkAuth, async (req, res) => {
 	try {
 		const { id } = req.query;
@@ -225,6 +213,8 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 		if (!parent_id) {
 			return res.status(400).json({ message: 'no parent ID' });
 		}
+		console.log('child id is:  ', id);
+		console.log('parent id is:  ', parent_id);
 
 		const { name, elements } = req.body;
 		if (!name || !elements) {
@@ -235,11 +225,15 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 			return pages.find(page => page.name === name);
 		};
 
-		const foundParent = await marketInfo.findOneAndUpdate(
+		const foundParent = await market.findOneAndUpdate(
 			{ _id: parent_id },
 			{ $set: { 'pages.$.name': name } },
 			{ new: true }
 		);
+
+		if (!foundParent) {
+			return res.status(404).json({ message: 'no parent page found' });
+		}
 
 		const foundChild = await informationPage.findOneAndUpdate(
 			{ _id: id },
@@ -254,7 +248,7 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 		res.json(foundChild);
 	} catch (error) {
 		console.error(error);
-		res.status(500).json({ message: 'Internal Server Error' });
+		res.status(500).json({ message: 'Internal Server Error', error: error });
 	}
 });
 
