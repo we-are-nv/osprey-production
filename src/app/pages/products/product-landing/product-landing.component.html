@@ -19,7 +19,7 @@
             innovative product range below:</span>
     </div>
     <!-- Categories Grabbed from Component Variable -->
-    <app-category-card [cards]="categories"></app-category-card>
+    <app-category-card [cards]="categories" (catRouting)=”parentFun()”></app-category-card>
 </section>
 
 <app-quote-form></app-quote-form>

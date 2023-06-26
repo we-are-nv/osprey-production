@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit{
         // this.generateSingleInfo("market")
         this.generateNav()
     });
-    this.productService.getCategories()
+    this.productService.getCategories("")
 
 
 

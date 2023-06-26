@@ -28,7 +28,7 @@ export class HomeComponent {
 	ngOnInit(): void {
 		// this.location.replaceState("/some/newstate/");
 
-		this.productService.getCategories();
+		this.productService.getCategories("");
 		this.categorySub = this.productService
 			.getCategoriesUpdateListener()
 			.subscribe(data => {

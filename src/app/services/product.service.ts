@@ -55,9 +55,10 @@ export class ProductService {
     return this.categories.asObservable();
   }
 
-  getCategories(){
+  getCategories(id: string){
+
     this.http
-      .get<any>(this.API_URL+ '/products/categories')
+      .get<any>(this.API_URL+ '/products/categories', {params: {parent: id}})
       .subscribe({
         next: (response:any)=>this.categories.next(response),
         error: (error) => this.router.navigate(['/error'])}
