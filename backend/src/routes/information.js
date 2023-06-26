@@ -218,8 +218,12 @@ router.put('/page', checkAuth, async (req, res) => {
 router.put('/page/sub-page', checkAuth, async (req, res) => {
 	try {
 		const { id } = req.query;
+		const { parent_id } = req.query;
 		if (!id) {
 			return res.status(400).json({ message: 'Missing page ID' });
+		}
+		if (!parent_id) {
+			return res.status(400).json({ message: 'no parent ID' });
 		}
 
 		const { name, elements } = req.body;
@@ -227,17 +231,27 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 			return res.status(400).json({ message: 'Missing name or elements' });
 		}
 
-		const foundPage = await informationPage.findOneAndUpdate(
+		const findPage = (pages, name) => {
+			return pages.find(page => page.name === name);
+		};
+
+		const foundParent = await marketInfo.findOneAndUpdate(
+			{ _id: parent_id },
+			{ $set: { 'pages.$.name': name } },
+			{ new: true }
+		);
+
+		const foundChild = await informationPage.findOneAndUpdate(
 			{ _id: id },
 			{ name, elements },
 			{ new: true }
 		);
 
-		if (!foundPage) {
-			return res.status(404).json({ message: 'Page not found' });
+		if (!foundChild) {
+			return res.status(404).json({ message: ' Child Page not found' });
 		}
 
-		res.json(foundPage);
+		res.json(foundChild);
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({ message: 'Internal Server Error' });
