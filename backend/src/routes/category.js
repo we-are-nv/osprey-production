@@ -134,15 +134,26 @@ router.put('/update-category/', checkAuth, async (req, res) => {
 			return res.status(400).json({ message: 'Missing category ID' });
 		}
 
-		if ((!name, image, info)) {
+		if (!name || !image || !info) {
 			return res.status(400).json({ message: 'Missing body' });
 		}
 
-		constUpdateFields = {};
+		const updateFields = {};
+		if (name) updateFields.name = name;
+		if (image) updateFields.image = image;
+		if (info) updateFields.info = info;
 
-		const foundCategory = await categories.findOneAndUpdate({ _id: req.query.id });
-
-		res.json(updatedCategory);
+		const foundCategory = await categories.findOneAndUpdate(
+			{ _id: id },
+			{ $set: updateFields },
+			{ new: true }
+		);
+		if (!foundCategory) {
+			return res
+				.status(404)
+				.json({ message: `No category with id ${req.query.id}` });
+		}
+		res.json(foundCategory);
 	} catch (err) {
 		console.error('Error updating database: ', err);
 		res.status(500).json({ message: 'Internal server error' });
