@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4300",
     "start docker": "ng serve --configuration=docker",
     "build": "ng build",
     "build2": "ng build --configuration production --base-href /paragon/",
