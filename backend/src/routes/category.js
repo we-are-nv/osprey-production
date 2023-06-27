@@ -153,7 +153,7 @@ router.put('/update-category/', checkAuth, async (req, res) => {
 				.status(404)
 				.json({ message: `No category with id ${req.query.id}` });
 		}
-		res.json(foundCategory);
+		res.status(200).json({ foundCategory });
 	} catch (err) {
 		console.error('Error updating database: ', err);
 		res.status(500).json({ message: 'Internal server error' });
