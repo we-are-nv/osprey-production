@@ -21,7 +21,7 @@ services:
       - ./dist/paragonProduction:/app/
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.paragon.rule=Host(`staging.wearenv.co.uk`) && Path(`/paragon-angular)"
+      - "traefik.http.routers.paragon.rule=Host(`staging.wearenv.co.uk`) && Path(`/paragon-angular`)"
       - "traefik.http.routers.paragon.entrypoints=web"
       - "traefik.http.services.paragon.loadbalancer.server.port=4000"
     networks:
