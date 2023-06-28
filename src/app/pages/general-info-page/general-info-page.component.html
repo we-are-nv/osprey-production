@@ -13,7 +13,7 @@
         <!-- Navigation -->
         <mat-card class="navigation-pannel bonus-card-white-accent" *ngIf="subPages.length > 1">
             <mat-card-header>
-                <mat-card-title class="bonus-card-title">{{pageData.name | nameConverter}} {{pageType |nameConverter}}</mat-card-title>
+                <mat-card-title class="bonus-card-title">{{pageData.name | nameConverter}}</mat-card-title>
             </mat-card-header>
             <div class="nav-button-container" > 
                 <a class="nav-button" *ngFor="let page of subPages" [routerLink]="page.id" (click)="selectPage(page.id)"  [ngClass]="{'page-active': page.id == activeSubPageId}">{{page.name}} <img class="nav-button-icon" src="./assets/images/customIcons/right-arrow-icon.svg" alt=""></a>
@@ -24,7 +24,7 @@
                 <mat-card-title class="bonus-card-title">other {{pageType |nameConverter}}'s</mat-card-title>
             </mat-card-header>
             <div class="nav-button-container" > 
-                <a class="nav-button" *ngFor="let page of siblingPages" [routerLink]="'/info-page/'+pageType+'/'+page._id"  [ngClass]="{'page-active': page.id == activeSubPageId}">{{page.name}} <img class="nav-button-icon" src="./assets/images/customIcons/right-arrow-icon.svg" alt=""></a>
+                <a class="nav-button" *ngFor="let page of siblingPages" [routerLink]="'/info-page/'+pageType+'/'+page._id" routerLinkActive="page-active">{{page.name}} <img class="nav-button-icon" src="./assets/images/customIcons/right-arrow-icon.svg" alt=""></a>
             </div>
         </mat-card>
         <app-bonus-card *ngFor="let card of bonusCards" [card]="card.id"></app-bonus-card>

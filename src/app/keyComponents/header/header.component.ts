@@ -70,11 +70,11 @@ export class HeaderComponent implements OnInit{
         },
       ]
       }
-      
+      this.generateSingleInfo("about","About Us")
       this.generateSiblingInfo("market", "Markets")
       this.generateSiblingInfo("service", "Services")
       this.generateSingleInfo("recourse","Recourses")
-      this.generateSingleInfo("about","About Us")
+      
       this.generateSingleInfo("contact","Contact")
   }
   // On scroll detected, Set the toolbar class
