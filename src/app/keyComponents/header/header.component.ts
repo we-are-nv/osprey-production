@@ -68,17 +68,10 @@ export class HeaderComponent implements OnInit{
           headpath:"products/landing",
           childLinks:  []
         },
-        {
-          name:"Markets",
-          headpath:"markets",
-          childLinks:[
-          {name:"example", path:""}
-          ]
-        },
       ]
       }
       
-      this.generateSiblingInfo("market", "markets")
+      this.generateSiblingInfo("market", "Markets")
       this.generateSiblingInfo("service", "Services")
       this.generateSingleInfo("recourse","Recourses")
       this.generateSingleInfo("about","About Us")
@@ -130,7 +123,7 @@ export class HeaderComponent implements OnInit{
 
         let nav = {
           name: name,
-          headpath: type,
+          headpath: '/'+type+'s',
           childLinks:childLinks
         }
         console.log(nav)
