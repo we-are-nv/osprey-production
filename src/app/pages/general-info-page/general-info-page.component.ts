@@ -36,21 +36,15 @@ export class GeneralInfoPageComponent implements OnInit{
       })
 
       // Get Main Page
-      this.infoService.getMainPage(this.pageId)
       this.infoService.getMainUpdateListener().subscribe(data =>{
         this.pageData = data
         this.subPages = data.pages;
         this.bonusCards =  data.bonus_cards
-
-        if(this._Activatedroute.children.length <= 0){
-          this.router.navigate([`/info-page/${this.pageType}/${this.pageId}/${this.subPages[0].id}`]);
-          this.breadCrumbUpdate(this.subPages[0].id)
-        }else{
-          let id = this._Activatedroute.snapshot.params['childId']
-          this.breadCrumbUpdate(id)
-        }
+        this.activeSubPageId = this.subPages[0].id
+        this.router.navigate([`/info-page/${this.pageType}/${this.pageId}/${this.activeSubPageId}`]);
       })
       
+      this.infoService.getMainPage(this.pageId)
 
       
 
@@ -67,17 +61,12 @@ export class GeneralInfoPageComponent implements OnInit{
   }
 
   selectPage(id : string){
-    this.breadCrumbUpdate(id)
+    this.activeSubPageId = id
   }
 
-  breadCrumbUpdate(id: string){
-    this.activeSubPageId = id;
-    this.activeSubPageName = (this.subPages.find(i => i.id === this.activeSubPageId)).name
-    this.history = [
-      {path:"/", friendly:"Home"},
-      {path:`/info-page/${this.pageType}/${this.pageId}`, friendly:this.pageData.name},
-      {path:`/info-page/${this.pageType}/${this.pageId}/${this.activeSubPageId}`, friendly:this.activeSubPageName}
-    ]
+  // breadCrumbUpdate(id: string){
+  //   this.activeSubPageId = id;
+  //   this.activeSubPageName = (this.subPages.find(i => i.id === this.activeSubPageId)).name
 
-  }
+  // }
 }

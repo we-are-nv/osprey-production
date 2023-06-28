@@ -41,6 +41,10 @@ export class InfoPageService {
     })
   }
 
+  navGetPage(id:string){
+    return this.http.get<any>(this.API_URL+ '/info/single', {params: {id: id}})
+  }
+
 
   getPageListener(){
     return this.activeSubPage.asObservable();

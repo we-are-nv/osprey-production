@@ -19,34 +19,34 @@ export class HeaderComponent implements OnInit{
   navStyle= "standard"
 
 
-  async ngOnInit() {
+  ngOnInit() {
     // Get Product Categories
+    
+    // this.productService.getCategories("")
+    // this.categorySub = this.productService.getCategoriesUpdateListener()
+    //   .subscribe((data)=>{
+    //     this.categories = data.cats
+    //     let tempCategories:any[] = []
 
-    this.categorySub = this.productService.getCategoriesUpdateListener()
-      .subscribe((data)=>{
-        this.categories = data.cats
-        let tempCategories:any[] = []
-        this.categories.forEach((category: any) => {
-          // console.log('hello')
-          // For each Category create a Nav diretorys
-          tempCategories.push(
-            {name:category.name, path:'products/'+category._id}
-            )
+        
+    //     // this.categories.forEach((category: any) => {
+    //     //   // console.log('hello')
+    //     //   // For each Category create a Nav diretorys
+    //     //   tempCategories.push(
+    //     //     {name:category.name, path:'products/'+category._id}
+    //     //     )
 
-        });
-        this.productNav = tempCategories
-        // console.log(this.productNav)
-        // this.generateSingleInfo("market")
+    //     });
+        // this.productNav = tempCategories
         this.generateNav()
-    });
-    this.productService.getCategories("")
+        this.categorySub.unsubscribe()
+    };
 
 
 
 
 
 
-  }
   // generateSingleInfo(type:string){
   //   this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
   //     let id = data[0]._id;
@@ -62,13 +62,11 @@ export class HeaderComponent implements OnInit{
   async generateNav(){
     this.finalNav = {
       home:{path:"", name:"Home"},
-      contact:{path:"info-page/contact", name:"Contact"},
       dropDownMenus:[
-       
         {
           name:"Products",
           headpath:"products/landing",
-          childLinks:  this.productNav
+          childLinks:  []
         },
         {
           name:"Markets",
@@ -77,19 +75,14 @@ export class HeaderComponent implements OnInit{
           {name:"example", path:""}
           ]
         },
-        {
-          name:"Services",
-          headpath:"services",
-          childLinks:[
-          {name:"categories", path:"services/categories"}
-          ]
-        },
       ]
       }
       
-      this.generateSingleInfo("about","About Us")
+      this.generateSiblingInfo("market", "markets")
+      this.generateSiblingInfo("service", "Services")
       this.generateSingleInfo("recourse","Recourses")
-      this.generateSingleInfo("contact","Recourses")
+      this.generateSingleInfo("about","About Us")
+      this.generateSingleInfo("contact","Contact")
   }
   // On scroll detected, Set the toolbar class
   onWindowScroll(event:any){
@@ -101,23 +94,50 @@ export class HeaderComponent implements OnInit{
   }
 
   generateSingleInfo(type: string, name:string){
-    this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
-      let page = data[0]
-      let childLinks: any[]= []
+    let tempSub = this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
+      let pageId = data[0]._id;
+      this.infoPageService.navGetPage(pageId).subscribe((data:any)=>{
+        let childLinks: any[]= []
 
-      page.pages.forEach((subPage: any) => {
-        let childLink = {name:subPage.name, path:subPage.id}
-        childLinks.push(childLink)
+        data.pages.forEach((subPage: any) => {
+          let childLink = {name:subPage.name, path:"/info-page/"+type+"/"+pageId+"/"+subPage.id}
+          childLinks.push(childLink)
+        });
+
+        let nav = {
+          name: name,
+          headpath: "/info-page/"+type+"/"+pageId,
+          childLinks:childLinks
+        }
+        console.log(nav)
+        this.finalNav.dropDownMenus.push(nav)
+        tempSub.unsubscribe()
+      })
+      
+
+      
+    })
+  }
+
+  generateSiblingInfo(type: string, name:string){
+    let tempSub = this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
+      
+      let childLinks: any[]= []
+      data.forEach((page:any) => {
+        let childLink = {name:page.name, path:"/info-page/"+type+"/"+page._id}
+          childLinks.push(childLink)
       });
 
-      let nav = {
-        name: name,
-        headpath: "/info-page/"+type+"/"+page._id,
-        childLinks:childLinks
-      }
-
-      this.finalNav.dropDownMenus.push(nav)
-    })
+        let nav = {
+          name: name,
+          headpath: type,
+          childLinks:childLinks
+        }
+        console.log(nav)
+        this.finalNav.dropDownMenus.push(nav)
+        tempSub.unsubscribe()
+      })
+      
   }
 
 }

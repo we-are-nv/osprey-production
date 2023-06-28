@@ -57,9 +57,10 @@ p {
 }
 
 mat-card {
-	border: 1px solid #31353d;
+	border: 1px solid #31353db0;
 	border-radius: 0%;
 	background: transparent;
+	box-shadow: none;
 }
 
 mat-card-header {
