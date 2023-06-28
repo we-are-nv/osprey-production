@@ -6,6 +6,7 @@ COPY package*.json ./
 
 RUN npm install
 RUN npm ci
+RUN npm install --save express
 ARG NODE_ENV
 RUN if [ "$NODE_ENV" = "development" ]; \
 	then npm install; \
