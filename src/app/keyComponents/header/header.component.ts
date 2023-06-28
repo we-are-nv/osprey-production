@@ -62,10 +62,9 @@ export class HeaderComponent implements OnInit{
   async generateNav(){
     this.finalNav = {
       home:{path:"", name:"Home"},
-      contact:{path:"contact", name:"Contact"},
+      contact:{path:"info-page/contact", name:"Contact"},
       dropDownMenus:[
        
-        this.generateSingleInfo("about", "About Us"),
         {
           name:"Products",
           headpath:"products/landing",
@@ -85,9 +84,12 @@ export class HeaderComponent implements OnInit{
           {name:"categories", path:"services/categories"}
           ]
         },
-        this.generateSingleInfo("recourse", "Recourses")
       ]
       }
+      
+      this.generateSingleInfo("about","About Us")
+      this.generateSingleInfo("recourse","Recourses")
+      this.generateSingleInfo("contact","Recourses")
   }
   // On scroll detected, Set the toolbar class
   onWindowScroll(event:any){
@@ -98,7 +100,7 @@ export class HeaderComponent implements OnInit{
     }
   }
 
-  generateSingleInfo(type: string, name:string): any{
+  generateSingleInfo(type: string, name:string){
     this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
       let page = data[0]
       let childLinks: any[]= []
@@ -114,7 +116,7 @@ export class HeaderComponent implements OnInit{
         childLinks:childLinks
       }
 
-      return nav
+      this.finalNav.dropDownMenus.push(nav)
     })
   }
 
