@@ -140,7 +140,11 @@ router.post('/page', checkAuth, async (req, res) => {
 	for (idx in req.body.elements) {
 		if (req.body.elements[idx].type == 'image') {
 			req.body.elements[idx].src.forEach((element, idx1) => {
-				var fileURL = (`info/${req.query.id}/pages/${newPageID}/${req.body.name}${idx1}`).replace(/\s/g, "");;
+				var fileURL =
+					`info/${req.query.id}/pages/${newPageID}/${req.body.name}${idx1}`.replace(
+						/\s/g,
+						''
+					);
 				uploadBaseMarket(fileURL, element);
 				element = `/${fileURL}`;
 				req.body.elements[idx].src[idx1] = element;
@@ -187,7 +191,7 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (thumbnail_image) updateFields.thumbnail_image = thumbnail_image;
 
 		const foundPage = await market.findOneAndUpdate(
-			{ _id: id},
+			{ _id: id },
 			{ $set: updateFields },
 			{ new: true }
 		);
@@ -201,8 +205,6 @@ router.put('/page', checkAuth, async (req, res) => {
 		res.status(500).json({ message: 'Internal Server Error' });
 	}
 });
-
-
 
 router.put('/page/sub-page', checkAuth, async (req, res) => {
 	try {
@@ -243,7 +245,7 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 
 		const updatedParent = await market.findOneAndUpdate(
 			{ _id: parent_id, 'pages.id': id },
-			{ $set: { 'pages.$.name': name} },
+			{ $set: { 'pages.$.name': name } },
 			{ new: true }
 		);
 
@@ -257,7 +259,7 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 			return res.status(404).json({ message: ' Child Page not found' });
 		}
 
-		res.status(200).json({updatedParent});
+		res.status(200).json({ updatedParent });
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({ message: 'Internal Server Error', error: error });
@@ -309,8 +311,8 @@ router.get('/single', async (req, res) => {
 
 router.get('/page', async (req, res) => {
 	const foundPage = await informationPage.findOne({ _id: req.query.id });
-	if(!foundPage){
-		return res.status(404).json({message: 'page not found'})
+	if (!foundPage) {
+		return res.status(404).json({ message: 'page not found' });
 	}
 
 	if (!foundPage._doc.elements) {
