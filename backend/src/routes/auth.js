@@ -71,14 +71,16 @@ router.post('/login', (req, res, next) => {
         subject: result._id.toString(),
         allowInsecureKeySizes: true
       });
-      if (!process.env.ALLOW_LOCAL_STORAGE) {
-        res.cookie('SESSIONID', jwtBearerToken, {
-          httpOnly: false,
-          sameSite:'none',
-          secure: true,
-          maxAge: MAX_AGE
-        });
-      }
+      // if (!process.env.ALLOW_LOCAL_STORAGE) {
+      //   res.cookie('SESSIONID', jwtBearerToken, {
+      //     httpOnly: true,
+      //     sameSite:'none',
+      //     secure: true,
+
+      //     maxAge: MAX_AGE,
+      //     domain:'wearenv.co.uk'
+      //   });
+      // }
 
       res.status(200).json({
         status: 'LOGGEDIN',
