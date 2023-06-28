@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit{
         // this.generateSingleInfo("market")
         this.generateNav()
     });
-    this.productService.getCategories()
+    this.productService.getCategories("")
 
 
 
@@ -64,13 +64,8 @@ export class HeaderComponent implements OnInit{
       home:{path:"", name:"Home"},
       contact:{path:"contact", name:"Contact"},
       dropDownMenus:[
-        {
-          name:"About Us",
-          headpath:"",
-          childLinks:[
-            {name:"History", path:""}
-          ]
-        },
+       
+        this.generateSingleInfo("about", "About Us"),
         {
           name:"Products",
           headpath:"products/landing",
@@ -90,13 +85,7 @@ export class HeaderComponent implements OnInit{
           {name:"categories", path:"services/categories"}
           ]
         },
-        {
-          name:"Resourses",
-          headpath:"/info-page/recourse/lense field of View",
-          childLinks:[
-          {name:"example", path:""}
-          ]
-        },
+        this.generateSingleInfo("recourse", "Recourses")
       ]
       }
   }
@@ -107,6 +96,26 @@ export class HeaderComponent implements OnInit{
     }else{
       this.scrolled = true;
     }
+  }
+
+  generateSingleInfo(type: string, name:string): any{
+    this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
+      let page = data[0]
+      let childLinks: any[]= []
+
+      page.pages.forEach((subPage: any) => {
+        let childLink = {name:subPage.name, path:subPage.id}
+        childLinks.push(childLink)
+      });
+
+      let nav = {
+        name: name,
+        headpath: "/info-page/"+type+"/"+page._id,
+        childLinks:childLinks
+      }
+
+      return nav
+    })
   }
 
 }

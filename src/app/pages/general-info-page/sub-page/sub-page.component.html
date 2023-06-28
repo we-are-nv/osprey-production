@@ -26,9 +26,15 @@
                 </mat-expansion-panel-header>
                 <p>{{element.text}}</p>
             </mat-expansion-panel>
+            
             <div *ngIf="element.type == 'bulletPoint'">
                 <h1>{{element.header}}</h1>
-                <p *ngFor="let point of element.src">{{point}}</p>
+                <ul>
+                    <li class="bulletPoint-text" *ngFor="let point of element.src">
+                        <p>{{point}}</p>
+                    </li>
+                </ul>
+               
             </div>
         </div>
 

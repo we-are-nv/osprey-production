@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 version: '3.7'
+=======
+version: '3'
+>>>>>>> angular-universal-docker
 
 networks:
   web:
     name: web
+<<<<<<< HEAD
     external:
       true
   backend:
@@ -50,3 +55,29 @@ services:
   #   - "traefik.docker.network=traefik-proxy"
   #   - "traefik.http.routers.node-app.rule=Host(`localhost`)"
   #   - "traefik.http.services.node-app-again.loadBalancer.server.port=4000"
+=======
+    external: true
+  backend:
+    name: backend
+    external: true
+
+
+services:
+  paragon-angular-universal:
+    container_name: paragon-angular-universal
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./dist/paragonProduction:/app/
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.paragon.rule=Host(`staging.wearenv.co.uk`) && Path(`/paragon-angular`)"
+    #   - "traefik.http.routers.paragon.entrypoints=web"
+    #   - "traefik.http.services.paragon.loadbalancer.server.port=4000"
+    networks:
+      - web
+      - backend
+>>>>>>> angular-universal-docker

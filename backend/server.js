@@ -56,10 +56,13 @@ app.use(middlewareCheck);
 
 app.use((req, res, next) => {
 	const origin = req.headers.origin;
+
+	// Code to remove Port from localhost addresses - sorry, Paolo
+
 	const allowedOrigins = [
 		'https://staging.wearenv.co.uk',
 		'http://localhost:4200',
-		'http://localhost'
+		'http://localhost:4300'
 	];
 
 	if (allowedOrigins.includes(origin)) {
@@ -69,7 +72,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Headers', origin);
 	} else {
-    console.log('DISALLOWED CORD')
+    console.log('DISALLOWED CORS')
   }
 
 	res.setHeader(

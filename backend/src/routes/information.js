@@ -74,7 +74,7 @@ router.post('/', checkAuth, async (req, res) => {
 			...currentBonus
 		});
 
-		//newBonus.save();
+		// newBonus.save();
 	}
 
 	if (req.body.pages.length > 0) {
@@ -102,7 +102,7 @@ router.post('/', checkAuth, async (req, res) => {
 		bonus_cards: bonusObj
 	});
 
-	//newMarket.save();
+	newMarket.save();
 	res.json({ message: newMarket });
 });
 
@@ -140,10 +140,10 @@ router.post('/page', checkAuth, async (req, res) => {
 	for (idx in req.body.elements) {
 		if (req.body.elements[idx].type == 'image') {
 			req.body.elements[idx].src.forEach((element, idx1) => {
-				var fileURL = `info/${req.query.id}/pages/${newPageID}/${req.body.name}${idx1}`;
+				var fileURL = (`info/${req.query.id}/pages/${newPageID}/${req.body.name}${idx1}`).replace(/\s/g, "");;
 				uploadBaseMarket(fileURL, element);
 				element = `/${fileURL}`;
-				req.body.elements[idx].images[idx1] = element;
+				req.body.elements[idx].src[idx1] = element;
 			});
 		}
 	}
@@ -166,18 +166,6 @@ router.post('/page', checkAuth, async (req, res) => {
 	res.json({ message: 'OK', newPage: newPage });
 });
 
-// router.put('/page/sub-page', checkAuth, async (req, res) => {
-// 	if (!req.query.id) {
-// 		res.json({ message: 'this page does not exist' });
-// 		return;
-// 	}
-// 	const foundPage = await informationPage.findOneAndUpdate({
-// 		_id: req.query.id,
-// 		name: req.body.name,
-// 		elements: req.body.elements
-// 	});
-// });
-
 router.put('/page', checkAuth, async (req, res) => {
 	try {
 		const { id } = req.query;
@@ -188,11 +176,22 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (!name || !type) {
 			return res.status(400).json({ message: 'Missing name and/ or type' });
 		}
-		const foundPage = await marketInfo.findOneAndUpdate(
-			{ _id: id },
-			{ name, secondry_title, lower_title, banner_image, thumbnail_image, pages },
+		const { secondry_title, lower_title, banner_image, thumbnail_image, pages } =
+			req.body;
+		const updateFields = {};
+		if (name) updateFields.name = name;
+		if (type) updateFields.type = type;
+		if (secondry_title) updateFields.secondry_title = secondry_title;
+		if (lower_title) updateFields.lower_title = lower_title;
+		if (banner_image) updateFields.banner_image = banner_image;
+		if (thumbnail_image) updateFields.thumbnail_image = thumbnail_image;
+
+		const foundPage = await market.findOneAndUpdate(
+			{ _id: id},
+			{ $set: updateFields },
 			{ new: true }
 		);
+
 		if (!foundPage) {
 			return res.status(404).json({ message: 'Page not found' });
 		}
@@ -203,32 +202,65 @@ router.put('/page', checkAuth, async (req, res) => {
 	}
 });
 
+
+
 router.put('/page/sub-page', checkAuth, async (req, res) => {
 	try {
 		const { id } = req.query;
+		const { parent_id } = req.query;
 		if (!id) {
 			return res.status(400).json({ message: 'Missing page ID' });
 		}
+		if (!parent_id) {
+			return res.status(400).json({ message: 'no parent ID' });
+		}
+		console.log('child_id is:  ', id);
+		console.log('parent_id is:  ', parent_id);
 
 		const { name, elements } = req.body;
 		if (!name || !elements) {
 			return res.status(400).json({ message: 'Missing name or elements' });
 		}
 
-		const foundPage = await informationPage.findOneAndUpdate(
+		const findPage = (pages, id) => {
+			if (!Array.isArray(pages)) {
+				console.log(typeof pages);
+
+				return null;
+			}
+			return pages.find(page => page.id.toString() === id);
+		};
+
+		const foundParent = await market.findOne({ _id: parent_id });
+		if (!foundParent) {
+			return res.status(400).json({ message: 'no parent page found' });
+		}
+
+		const pageToUpdate = findPage(foundParent.pages, id);
+		if (!pageToUpdate) {
+			return res.status(400).json({ message: 'child page not found' });
+		}
+
+		const updatedParent = await market.findOneAndUpdate(
+			{ _id: parent_id, 'pages.id': id },
+			{ $set: { 'pages.$.name': name} },
+			{ new: true }
+		);
+
+		const foundChild = await informationPage.findOneAndUpdate(
 			{ _id: id },
 			{ name, elements },
 			{ new: true }
 		);
 
-		if (!foundPage) {
-			return res.status(404).json({ message: 'Page not found' });
+		if (!foundChild) {
+			return res.status(404).json({ message: ' Child Page not found' });
 		}
 
-		res.json(foundPage);
-	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
+		res.status(200).json({updatedParent});
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: 'Internal Server Error', error: error });
 	}
 });
 
@@ -277,8 +309,15 @@ router.get('/single', async (req, res) => {
 
 router.get('/page', async (req, res) => {
 	const foundPage = await informationPage.findOne({ _id: req.query.id });
+	if(!foundPage){
+		return res.status(404).json({message: 'page not found'})
+	}
 
-	var pageElements = foundPage._doc.elements;
+	if (!foundPage._doc.elements) {
+		return res.status(404).json({ message: 'Page elements not found' });
+	} else {
+		var pageElements = foundPage._doc.elements;
+	}
 
 	for (idx in pageElements) {
 		if (pageElements[idx].type == 'image') {

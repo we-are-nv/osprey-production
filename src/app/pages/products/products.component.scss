@@ -1,6 +1,6 @@
 // Format Product sections
 .ProductsView{
-    display: flex;
+    display: block;
     width: 100%;
 }
 // Display and Control Products
@@ -23,6 +23,7 @@
 }
 .productCard img{
     height: 15vh;
+    width: 15vw;
     object-fit: contain;
     margin: auto;
 }
@@ -38,12 +39,12 @@
 .productCard p{
     margin-left:15px;
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 850px) {
     .productsContainer .productCard{
         width: 35%;
     }
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 500px) {
     .productsContainer .productCard{
         width: 70%;
     }
@@ -51,23 +52,19 @@
 
 // category and info Selector
 .Filter{
-    width:10%;
-
+    width:20vw;
+    float: right;
     display: block;
 }
-.mat-button-toggle-group{
-    flex-direction: column !important;
-    border: 0px;
-}
-.mat-button-toggle-group mat-button-toggle{
+.categories button{
+    width: 100%;
     margin-bottom: 1vh;
     color: #0065E7;
     border: 0px;
-    text-align: left;
+    justify-content: left;
     height: 5%;
-}
-.mat-button-toggle-button{
-    width: 0% !important;
+    text-align: left;
+    font-size: 1.5vw;
 }
 
 
@@ -87,4 +84,21 @@
 }
 .buttons #page{
     border: 2px solid #093273;
+}
+
+@media (max-width: 1024px) {
+    .categories{
+        visibility: hidden;
+        width: 0px;
+        height: 0px;
+    }
+    .productsContainer{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .Filter{
+        margin-left: auto;
+        margin-right: 10vw;
+    }
 }
