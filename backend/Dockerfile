@@ -5,6 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 
 RUN npm install
+RUN npm ci
 ARG NODE_ENV
 RUN if [ "$NODE_ENV" = "development" ]; \
 	then npm install; \
