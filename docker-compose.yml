@@ -26,3 +26,4 @@ services:
       - "traefik.http.services.paragon.loadbalancer.server.port=4000"
     networks:
       - web
+      - backend
