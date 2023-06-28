@@ -21,4 +21,4 @@ EXPOSE $PORT
 
 # ENTRYPOINT [ "nodemon", "-L", "./server.js" ]
 RUN npm install
-CMD [ "npm", "run" ,"dev" ]
+CMD [ "npm", "run" ,"start" ]
