@@ -130,8 +130,6 @@ mat-card-header {
 .serviceInfoCard img {
 	object-fit: contain;
 	position: relative;
-	background: radial-gradient(ellipse at center, #ababab 70%, #23bc2b00 70.5%);
-	padding: 1cqmax;
 
 	height: -webkit-fill-available;
 }
@@ -156,10 +154,11 @@ mat-card-header {
 	margin: auto;
 	box-shadow: none !important;
 	padding: 24px 34px;
+	font-weight: 700;
 }
 
-.quoteButton .button-icon {
-    background-color: #fff
+.quoteButton .buttonIcon {
+    font-size: 1.25rem;
 }
 
 .quoteButton-Blue {

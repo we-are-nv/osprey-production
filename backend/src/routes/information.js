@@ -176,7 +176,7 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (!name || !type) {
 			return res.status(400).json({ message: 'Missing name and/ or type' });
 		}
-		const { secondry_title, lower_title, banner_image, thumbnail_image, pages } =
+		const { secondry_title, lower_title, banner_image, thumbnail_image, pages, bonus_cards } =
 			req.body;
 		const updateFields = {};
 		if (name) updateFields.name = name;
@@ -185,6 +185,7 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (lower_title) updateFields.lower_title = lower_title;
 		if (banner_image) updateFields.banner_image = banner_image;
 		if (thumbnail_image) updateFields.thumbnail_image = thumbnail_image;
+		if(bonus_cards) updateFields.bonus_cards = bonus_cards;
 
 		const foundPage = await market.findOneAndUpdate(
 			{ _id: id},

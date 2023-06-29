@@ -3,6 +3,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { InfoPageService } from 'src/app/services/info-page.service';
 
 @Component({
 	selector: 'app-home',
@@ -16,10 +17,24 @@ export class HomeComponent {
 
 	history: [{ path: string; friendly: string }] = [{ path: '/', friendly: 'Home' }];
 
+	marketsList : any[]= [];
+	serviceList : any[]= [];
+
+	marketsListPart: any[] = [];
+	serviceListPart: any[] = [];
+	categoryListPart: any[] = [];
+
+	listLength = 4;
+
+	marketListPosition = {first: 0, last:0+this.listLength};
+	serviceListPosition = {first:0, last:0+this.listLength};
+	categoryListPosition = {first:0, last:0+this.listLength};
+
 	constructor(
 		private productService: ProductService,
 		private matIconRegistry: MatIconRegistry,
-		private domSanitizer: DomSanitizer
+		private domSanitizer: DomSanitizer,
+		private infoPageService: InfoPageService,
 	) {
 		matIconRegistry.addSvgIconSet(
 			this.domSanitizer.bypassSecurityTrustResourceUrl(`./assets/images/customIcons`)
@@ -33,6 +48,51 @@ export class HomeComponent {
 			.getCategoriesUpdateListener()
 			.subscribe(data => {
 				this.productCategories = data.cats;
+				this.categoryListPart = this.productCategories.slice(this.categoryListPosition.first, this.categoryListPosition.last);
 			});
+		
+		this.infoPageService.getThumbnails('market').subscribe((data:any)=>{
+			this.marketsList = data
+			this.marketsListPart = this.marketsList.slice(this.marketListPosition.first, this.marketListPosition.last)
+			})
+		this.infoPageService.getThumbnails('service').subscribe((data:any)=>{
+			this.serviceList = data
+			this.serviceListPart = this.serviceList.slice(this.marketListPosition.first, this.marketListPosition.last)
+			})
+	}
+
+	rightMove(type:string){
+		if(type == 'category'){
+			this.categoryListPosition.first += 1;
+			this.categoryListPosition.last += 1;
+			this.categoryListPart = this.productCategories.slice(this.categoryListPosition.first, this.categoryListPosition.last);
+		}
+		if(type == 'market' && this.marketsListPart[this.listLength-1] !== this.marketsList[this.marketsList.length -1] ){
+			this.marketListPosition.first += 1;
+			this.marketListPosition.last += 1;
+			this.marketsListPart = this.marketsList.slice(this.marketListPosition.first, this.marketListPosition.last);
+		}
+		if(type == 'service' && this.serviceListPart[this.listLength-1] !== this.serviceList[this.serviceList.length -1] ){
+			this.serviceListPosition.first += 1;
+			this.serviceListPosition.last += 1;
+			this.serviceListPart = this.serviceList.slice(this.serviceListPosition.first, this.serviceListPosition.last);
+		}
+	}
+	leftMove(type:string){
+		if(type == 'category'){
+			this.categoryListPosition.first -= 1;
+			this.categoryListPosition.last -= 1;
+			this.categoryListPart = this.productCategories.slice(this.categoryListPosition.first, this.categoryListPosition.last);
+		}
+		if(type == 'market' && this.marketsListPart[0] !== this.marketsList[0] ){
+			this.marketListPosition.first -= 1;
+			this.marketListPosition.last -= 1;
+			this.marketsListPart = this.marketsList.slice(this.marketListPosition.first, this.marketListPosition.last);
+		}
+		if(type == 'service' && this.serviceListPart[0] !== this.serviceList[0] ){
+			this.serviceListPosition.first -= 1;
+			this.serviceListPosition.last -= 1;
+			this.serviceListPart = this.serviceList.slice(this.serviceListPosition.first, this.serviceListPosition.last);
+		}
 	}
 }

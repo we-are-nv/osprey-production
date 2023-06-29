@@ -49,12 +49,12 @@
 	</mat-card>
 </div>
 <div class="slideButtonContainer">
-	<button class="slideButton">
+	<button class="slideButton" (click)="leftMove('category')">
 		<img
 			src="./assets/images/customIcons/prev-slide.svg"
 			alt="" />
 	</button>
-	<button class="slideButton">
+	<button class="slideButton" (click)="rightMove('category')">
 		<img
 			src="./assets/images/customIcons/next-slide.svg"
 			alt="" />
@@ -64,7 +64,7 @@
 <div class="infoCardContainer">
 	<div class="serviceInfoCard">
 		<img
-			src="./assets/images/customIcons/warning.svg"
+			src="./assets/images/customIcons/homeIcon1.png"
 			alt="" />
 		<p>
 			Leaders of fire and security, we can help you customise your system design to
@@ -75,17 +75,14 @@
 			class="quoteButton"
 			routerLink="products/landing">
 			See All Products
-			<img class="button-icon"
-				src="./assets/images/customIcons/arrowdown2.svg"
-				alt=""
-				srcset="" />
+			<mat-icon class="buttonIcon" iconPositionEnd>chevron_right</mat-icon>
 		</button>
 	</div>
 	<div
 		class="serviceInfoCard"
 		id="blueInfoCard">
 		<img
-			src="./assets/images/customIcons/homeIconTwo.svg"
+			src="./assets/images/customIcons/homeIcon2.png"
 			alt="" />
 		<p>
 			Leaders and fire and security, we can help you customise your system design to
@@ -96,6 +93,8 @@
 			class="quoteButton quoteButton-Blue"
 			routerLink="products/landing">
 			See All Products
+			
+			<mat-icon class="buttonIcon" iconPositionEnd>chevron_right</mat-icon>
 		</button>
 	</div>
 </div>
@@ -117,8 +116,8 @@
 		fxLayoutAlign="flex-start">
 		<mat-card
 			class="categoryCard selectable"
-			routerLink="/products/{{ category._id }}"
-			*ngFor="let category of productCategories">
+			routerLink="/info-page/market/{{category._id}}"
+			*ngFor="let category of marketsListPart">
 			<img
 				mat-card-image
 				[src]="category.image" />
@@ -134,12 +133,12 @@
 			>Explore The Markets ></a
 		>
 		<div class="slideButtonContainer">
-			<button class="slideButton">
+			<button class="slideButton" (click)="leftMove('market')">
 				<img
 					src="./assets/images/customIcons/prev-slide.svg"
 					alt="" />
 			</button>
-			<button class="slideButton">
+			<button class="slideButton" (click)="rightMove('market')">
 				<img
 					src="./assets/images/customIcons/next-slide.svg"
 					alt="" />
@@ -163,8 +162,8 @@
 		fxLayoutAlign="flex-start">
 		<mat-card
 			class="categoryCard selectable"
-			routerLink="/products/{{ category._id }}"
-			*ngFor="let category of productCategories">
+			routerLink="/info-page/service/{{category._id}}"
+			*ngFor="let category of serviceListPart">
 			<img
 				mat-card-image
 				[src]="category.image" />
@@ -180,12 +179,12 @@
 			>Explore Our Services ></a
 		>
 		<div class="slideButtonContainer">
-			<button class="slideButton">
+			<button class="slideButton" (click)="leftMove('service')">
 				<img
 					src="./assets/images/customIcons/prev-slide.svg"
 					alt="" />
 			</button>
-			<button class="slideButton">
+			<button class="slideButton" (click)="rightMove('service')">
 				<img
 					src="./assets/images/customIcons/next-slide.svg"
 					alt="" />

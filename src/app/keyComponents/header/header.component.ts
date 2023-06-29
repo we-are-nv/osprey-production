@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit{
     //     });
         // this.productNav = tempCategories
         this.generateNav()
-        this.categorySub.unsubscribe()
+        // this.categorySub.unsubscribe()
     };
 
 
