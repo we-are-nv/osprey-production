@@ -45,7 +45,7 @@ router.get('/all-categories', checkAuth, async (req, res) => {
 	try {
 		const allCategories = await categories.find({});
 		if (!allCategories) {
-			res.status(404).json({message:'No categories found'})
+			return res.status(404).json({message:'No categories found'})
 		} else {
 			res.status(200).json({
 				message: 'Successfully llsted all product categories',

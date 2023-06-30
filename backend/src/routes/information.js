@@ -362,11 +362,11 @@ router.delete('/', checkAuth, async (req, res) => {
 	try {
 		const { idToDelete } = req.query;
 		if (!idToDelete) {
-			res.sendStatus(400).json({ message: 'No ID in request' });
+			return res.sendStatus(400).json({ message: 'No ID in request' });
 		} else {
 			const deleted = await information.findByIdAndDelete(idToDelete);
 			if (!deleted) {
-				res.sendStatus(404).json({ message: `ID: ${idToDelete} not found` });
+				return res.sendStatus(404).json({ message: `ID: ${idToDelete} not found` });
 			} else {
 				res.status(200).json({ message: `ID ${idToDelete} deleted` });
 			}
