@@ -77,8 +77,8 @@ mat-card-header {
 .categoryCard h1 {
 	padding-left: 2vh;
 	margin-left: 5%;
-	font-size: x-large;
-	width: min-content;
+	font-size: larger;
+	width:  -webkit-fill-available;
 }
 .categoryCard span {
 	padding-bottom: 2vh;
