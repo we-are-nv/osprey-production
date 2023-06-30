@@ -20,6 +20,8 @@ router.use(function timeLog(req, res, next) {
 	next();
 });
 
+const internalErr = 'Internal Server Error';
+
 /*
 Get Categories
 */
@@ -37,6 +39,23 @@ router.get('/', async (req, res, next) => {
 		}
 		res.json({ cats: result });
 	});
+});
+
+router.get('/all-categories', checkAuth, async (req, res) => {
+	try {
+		const allCategories = await categories.find({});
+		if (!allCategories) {
+			res.status(404).json({message:'No categories found'})
+		} else {
+			res.status(200).json({
+				message: 'Successfully llsted all product categories',
+				data: allCategories
+			});
+		}
+
+	} catch (err) {
+		res.status(500).json({ message: `${internalErr}` });
+	}
 });
 
 const storageEngine = multer.diskStorage({

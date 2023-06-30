@@ -29,6 +29,8 @@ router.use(function timeLog(req, res, next) {
 	next();
 });
 
+const internalErr = 'Internal Server Error';
+
 //
 router.post('/', checkAuth, async (req, res) => {
 	var newMarketID = new mongoose.Types.ObjectId();
@@ -140,7 +142,11 @@ router.post('/page', checkAuth, async (req, res) => {
 	for (idx in req.body.elements) {
 		if (req.body.elements[idx].type == 'image') {
 			req.body.elements[idx].src.forEach((element, idx1) => {
-				var fileURL = (`info/${req.query.id}/pages/${newPageID}/${req.body.name}${idx1}`).replace(/\s/g, "");;
+				var fileURL =
+					`info/${req.query.id}/pages/${newPageID}/${req.body.name}${idx1}`.replace(
+						/\s/g,
+						''
+					);
 				uploadBaseMarket(fileURL, element);
 				element = `/${fileURL}`;
 				req.body.elements[idx].src[idx1] = element;
@@ -176,8 +182,14 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (!name || !type) {
 			return res.status(400).json({ message: 'Missing name and/ or type' });
 		}
-		const { secondry_title, lower_title, banner_image, thumbnail_image, pages, bonus_cards } =
-			req.body;
+		const {
+			secondry_title,
+			lower_title,
+			banner_image,
+			thumbnail_image,
+			pages,
+			bonus_cards
+		} = req.body;
 		const updateFields = {};
 		if (name) updateFields.name = name;
 		if (type) updateFields.type = type;
@@ -185,10 +197,10 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (lower_title) updateFields.lower_title = lower_title;
 		if (banner_image) updateFields.banner_image = banner_image;
 		if (thumbnail_image) updateFields.thumbnail_image = thumbnail_image;
-		if(bonus_cards) updateFields.bonus_cards = bonus_cards;
+		if (bonus_cards) updateFields.bonus_cards = bonus_cards;
 
 		const foundPage = await market.findOneAndUpdate(
-			{ _id: id},
+			{ _id: id },
 			{ $set: updateFields },
 			{ new: true }
 		);
@@ -242,7 +254,7 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 
 		const updatedParent = await market.findOneAndUpdate(
 			{ _id: parent_id, 'pages.id': id },
-			{ $set: { 'pages.$.name': name} },
+			{ $set: { 'pages.$.name': name } },
 			{ new: true }
 		);
 
@@ -256,7 +268,7 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 			return res.status(404).json({ message: ' Child Page not found' });
 		}
 
-		res.status(200).json({updatedParent});
+		res.status(200).json({ updatedParent });
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({ message: 'Internal Server Error', error: error });
@@ -308,8 +320,8 @@ router.get('/single', async (req, res) => {
 
 router.get('/page', async (req, res) => {
 	const foundPage = await informationPage.findOne({ _id: req.query.id });
-	if(!foundPage){
-		return res.status(404).json({message: 'page not found'})
+	if (!foundPage) {
+		return res.status(404).json({ message: 'page not found' });
 	}
 
 	if (!foundPage._doc.elements) {
@@ -343,6 +355,31 @@ router.get('/thumbnail', async (req, res) => {
 		.select({ name: 1, thumbnail_image: 1 });
 
 	res.json(foundInfos);
+});
+
+router.get('/all-categories', checkAuth, async (req, res) => {
+	try {
+		const allCategories = await category
+		res.status(200).json({message: 'Successfully llsted all product categories'})
+	} catch (err) {
+		res.status(500).json({message: `${internalErr}` })
+	}
+})
+
+router.delete('/', checkAuth, async (req, res) => {
+	try {
+		const { idToDelete } = req.query;
+		res.status(200).json({ message: `ID ${idToDelete} deleted` });
+
+
+	} catch (err) {
+		console.log(err);
+		res
+			.status(500)
+			.json({
+				message: `Could not delete ID ${idToDelete}, ${internalErr} ${err}`
+			});
+	}
 });
 
 module.exports = router;
