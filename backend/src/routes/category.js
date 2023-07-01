@@ -138,6 +138,10 @@ router.put('/update-category/', checkAuth, async (req, res) => {
 			return res.status(400).json({ message: 'Missing name' });
 		}
 
+		if (!info) {
+			console.log('missing info, but not an issue');
+		}
+
 		// if (!name || !image || !info) {
 		// 	console.log('Missing Body');
 		// 	return res.status(400).json({ message: 'Missing body' });
