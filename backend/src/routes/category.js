@@ -125,18 +125,23 @@ router.put('/', checkAuth, upload.single('img'), async (req, res, next) => {
 router.put('/update-category/', checkAuth, async (req, res) => {
 	try {
 		const { id } = req.query;
-		const {
-			name,
-			image,
-			info: { banner_image, heading, sub_heading } = {}
-		} = req.body;
+		const { name, image, info } = req.body;
+		const { banner_image, heading, sub_heading } = {};
+
 		if (!id) {
+			console.log('Missing Cat ID');
 			return res.status(400).json({ message: 'Missing category ID' });
 		}
 
-		if (!name || !image || !info) {
-			return res.status(400).json({ message: 'Missing body' });
+		if (!name) {
+			console.loog('missing name');
+			return res.status(400).json({ message: 'Missing name' });
 		}
+
+		// if (!name || !image || !info) {
+		// 	console.log('Missing Body');
+		// 	return res.status(400).json({ message: 'Missing body' });
+		// }
 
 		const updateFields = {};
 		if (name) updateFields.name = name;
@@ -149,9 +154,8 @@ router.put('/update-category/', checkAuth, async (req, res) => {
 			{ new: true }
 		);
 		if (!foundCategory) {
-			return res
-				.status(404)
-				.json({ message: `No category with id ${req.query.id}` });
+			console.log(`No category with ID ${id} found`);
+			return res.status(404).json({ message: `No category with id ${id}` });
 		}
 		res.status(200).json({ foundCategory });
 	} catch (err) {
