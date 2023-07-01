@@ -19,6 +19,7 @@ const { rimrafSync } = require('rimraf');
 const infoBonus = require('../models/info-bonus.js');
 const informationPage = require('../models/information-page.js');
 const information = require('../models/information.js');
+const { info } = require('console');
 
 //Import Model Files
 
@@ -357,28 +358,24 @@ router.get('/thumbnail', async (req, res) => {
 	res.json(foundInfos);
 });
 
-router.get('/all-categories', checkAuth, async (req, res) => {
-	try {
-		const allCategories = await category
-		res.status(200).json({message: 'Successfully llsted all product categories'})
-	} catch (err) {
-		res.status(500).json({message: `${internalErr}` })
-	}
-})
-
 router.delete('/', checkAuth, async (req, res) => {
 	try {
 		const { idToDelete } = req.query;
-		res.status(200).json({ message: `ID ${idToDelete} deleted` });
-
-
+		if (!idToDelete) {
+			return res.sendStatus(400).json({ message: 'No ID in request' });
+		} else {
+			const deleted = await information.findByIdAndDelete(idToDelete);
+			if (!deleted) {
+				return res.sendStatus(404).json({ message: `ID: ${idToDelete} not found` });
+			} else {
+				res.status(200).json({ message: `ID ${idToDelete} deleted` });
+			}
+		}
 	} catch (err) {
 		console.log(err);
-		res
-			.status(500)
-			.json({
-				message: `Could not delete ID ${idToDelete}, ${internalErr} ${err}`
-			});
+		res.status(500).json({
+			message: `Could not delete ID ${idToDelete}, ${internalErr} ${err}`
+		});
 	}
 });
 

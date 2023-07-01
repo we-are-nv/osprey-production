@@ -159,6 +159,14 @@ router.get('/product_info', async (req, res) => {
 		.limit(limit * 1)
 		.skip((page - 1) * limit)
 		.populate(popu)
+		.populate('additional_information')
+		.populate({
+			path: 'category',
+			populate: {
+				path: 'info',
+				model: 'categoryInfo'
+			}
+		})
 		.then(result => {
 			for (idx in result) {
 				// Find Image Strings and Add Base URL
