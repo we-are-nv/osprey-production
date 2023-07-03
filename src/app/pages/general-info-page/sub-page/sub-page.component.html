@@ -37,8 +37,9 @@
                
             </div>
 
-            <div *ngIf="element.type == 'similarProducts'">
-                
+            <!-- similar Products -->
+            <div class="similarProductsContainer" *ngIf="element.type == 'similarProducts'">
+                <app-similar-products [categoryId]="element.text"></app-similar-products>
             </div>
         </div>
 

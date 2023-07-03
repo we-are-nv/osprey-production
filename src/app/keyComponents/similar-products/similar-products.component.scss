@@ -1,0 +1,31 @@
+
+// Similar Products
+
+.similarProductsInfo .similarProductsContainer {
+    margin-top: 1rem;
+    display: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    margin:auto;
+}
+.similarProductsContainer .similarProductsCard{
+    width: 24%;
+    margin: 0.25%;
+    border-radius:0px ;
+    align-items: center;
+    font-size: large;
+}
+.similarProductsCard img{           
+    width: 100%;
+    height: 50%;
+}
+@media screen and (max-width: 1000px) {
+    .similarProductsContainer .similarProductsCard{
+        width: 48%;
+    }
+}
+@media screen and (max-width: 750px) {
+}
+

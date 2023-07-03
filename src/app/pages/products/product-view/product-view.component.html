@@ -50,7 +50,6 @@
 
 
 
-
     </section>
 </section>
 
@@ -62,48 +61,45 @@
         <mat-tab *ngIf="(product.technicalImages == [])" label="Technical Images">
             Content 3
         </mat-tab>
-        <div *ngFor="let extraInfo of additionalInfo" >
-            <mat-tab  label="{{extraInfo.name | nameConverter}}">
-                <table class="prodcutSpecTable" mat-table [dataSource]="extraInfo.items" class="mat-elevation-z8">
-
-                    <!--- Note that these columns can be defined in any order.
-                          The actual rendered columns are set as a property on the row definition" -->
-
-                    <!-- Position Column -->
-                    <ng-container matColumnDef="detail">
-                      <th mat-header-cell *matHeaderCellDef>  </th>
-                      <td mat-cell *matCellDef="let element"> {{element.name | nameConverter}} </td>
-                    </ng-container>
-
-                    <!-- Name Column -->
-                    <ng-container matColumnDef="value">
-                      <th mat-header-cell *matHeaderCellDef>  </th>
-                      <td mat-cell *matCellDef="let element" class="specValue"> {{element.value | characterValidation}} </td>
-                    </ng-container>
-
-                    <!-- Weight Column -->
-
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                  </table>
-            </mat-tab>
-        </div>
+        <mat-tab label="Specs">
+            <mat-tab-group>
+                <div *ngFor="let extraInfo of additionalInfo" >
+                    <mat-tab  label="{{extraInfo.name | nameConverter}}">
+                        <table class="prodcutSpecTable" mat-table [dataSource]="extraInfo.items" class="mat-elevation-z8">
+            
+                                <!--- Note that these columns can be defined in any order.
+                                    The actual rendered columns are set as a property on the row definition" -->
+            
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="detail">
+                                <th mat-header-cell *matHeaderCellDef>  </th>
+                                <td mat-cell *matCellDef="let element"> {{element.name | nameConverter}} </td>
+                                </ng-container>
+            
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="value">
+                                <th mat-header-cell *matHeaderCellDef>  </th>
+                                <td mat-cell *matCellDef="let element" class="specValue"> {{element.value | characterValidation}} </td>
+                                </ng-container>
+            
+                                <!-- Weight Column -->
+            
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                    </mat-tab>
+                </div>
+            </mat-tab-group>
+        </mat-tab>
 
     </mat-tab-group>
 </section>
 <section class="similarProductsInfo">
     <div class="similarProductsHeader">
         <h1>Related Products</h1>
+        
+        
     </div>
-    <div class="similarProductsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-        <mat-card class="similarProductsCard selectable" *ngFor="let product of similarProducts" routerLink="/product/{{category}}/{{product._id}}">
-            <img mat-card-image *ngIf="product.image !== ''" [src]="product.image">
-            <img mat-card-image *ngIf="product.image == ''" src="./assets/images/ExampleProducts/defaultImage.jpg">
-            <mat-card-header>
-                <mat-card-title-group></mat-card-title-group>
-            </mat-card-header>
-            <h4>{{product.product_name}}</h4>
-        </mat-card>
-    </div>
+    <app-similar-products [categoryId]="product.category._id "></app-similar-products>
 
 </section>

@@ -110,45 +110,15 @@ button{
 }
 
 
-// Similar Products
+// Additional Information
+*{
+    overflow-y: hidden;
+}
+
+// similar Products
 .similarProductsInfo{
     justify-content: center;
     width: 80vw;
     padding-bottom: 1rem;
     margin-left: 5vw;
-}
-.similarProductsInfo .similarProductsContainer {
-    margin-top: 1rem;
-    display: flex-start;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 100%;
-    margin:auto;
-}
-.similarProductsContainer .similarProductsCard{
-    width: 23%;
-    margin: 1%;
-    border-radius:0px ;
-    align-items: center;
-}
-.similarProductsCard img{           
-    width: 100%;
-    height: 50%;
-}
-@media screen and (max-width: 1000px) {
-    .similarProductsContainer .similarProductsCard{
-        width: 31%;
-    }
-}
-@media screen and (max-width: 750px) {
-    .similarProductsContainer .similarProductsCard{
-        width: 48%;
-    }
-}
-
-
-// Additional Information
-*{
-    overflow-y: hidden;
 }

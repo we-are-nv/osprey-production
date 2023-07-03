@@ -27,6 +27,7 @@ import { GeneralInfoPageComponent } from './pages/general-info-page/general-info
 import { SubPageComponent } from './pages/general-info-page/sub-page/sub-page.component';
 import { BonusCardComponent } from './pages/general-info-page/bonus-card/bonus-card.component';
 import { CategoryCardComponent } from './keyComponents/category-card/category-card.component';
+import { SimilarProductsComponent } from './keyComponents/similar-products/similar-products.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { CategoryCardComponent } from './keyComponents/category-card/category-ca
     SubPageComponent,
     BonusCardComponent,
     CategoryCardComponent,
+    SimilarProductsComponent
   ],
   imports: [
     BrowserModule,

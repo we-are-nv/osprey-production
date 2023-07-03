@@ -18,7 +18,6 @@ export class ProductViewComponent implements OnInit{
 
   category = ""
 
-  similarProducts:any;
 
   product: any = null;
 
@@ -47,6 +46,7 @@ export class ProductViewComponent implements OnInit{
       .subscribe((data)=>{
         this.product = data;
         console.log(this.product)
+        
 
         this.history = [
           {path:"/", friendly:"Home"},
@@ -61,12 +61,7 @@ export class ProductViewComponent implements OnInit{
         // Gets all the similar products
 
 
-        this.similarProductsSub = this.productService.getProductsUpdateListener()
-          .subscribe((data)=>{
-            // console.log(data)
-            this.similarProducts = data.products;
-        });
-        this.productService.getProducts({category:this.product.category, page:1, limit:4});
+        
 
 
     });
