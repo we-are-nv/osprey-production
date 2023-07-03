@@ -22,7 +22,6 @@ import { CharacterValidationPipe } from './pipes/character-validation.pipe';
 import { ServicesInfoComponent } from './pages/services/services-info/services-info.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { BreadcrumbsComponent } from './keyComponents/breadcrumbs/breadcrumbs.component';
-import { ContactComponent } from './pages/contact/contact.component';
 import { UrlFormatterPipe } from './pipes/url-formatter.pipe';
 import { GeneralInfoPageComponent } from './pages/general-info-page/general-info-page.component';
 import { SubPageComponent } from './pages/general-info-page/sub-page/sub-page.component';
@@ -48,7 +47,6 @@ import { CategoryCardComponent } from './keyComponents/category-card/category-ca
     CharacterValidationPipe,
     ServicesInfoComponent,
     ErrorPageComponent,
-    ContactComponent,
     UrlFormatterPipe,
     GeneralInfoPageComponent,
     SubPageComponent,

@@ -50,7 +50,7 @@ p {
 
 // Category card styling
 .categoryContainer .categoryCard {
-	width: 22%;
+	width: 24%;
 	margin: 0.25%;
 	border-radius: 0px;
 	text-align: start;
@@ -149,7 +149,6 @@ mat-card-header {
 	background-color: transparent;
 	border: 3px solid #9b9b9b !important;
 	border-radius: 0px;
-	width: 20%;
 	position: relative;
 	margin: auto;
 	box-shadow: none !important;
@@ -194,9 +193,9 @@ mat-card-header {
 	background-color: transparent;
 }
 .categoryButton {
-	left: 80vw;
+	float: right;
 	font-size: 1vw;
-	position: absolute;
+	position: relative;
 	text-decoration: none;
 	font-family: 'Avenir', sans-serif;
 }
@@ -208,7 +207,17 @@ mat-card-header {
 	padding: 5vw;
 	padding-bottom: 5vh;
 }
-
+.darkSection{
+	color: #ffffffb8;
+}
 #topDarkSection {
 	margin-top: 10rem;
+}
+
+
+@media only screen and (max-width: 1024px) {
+	.categoryButton{
+		visibility: hidden;
+		width: 0px;
+	}
 }
