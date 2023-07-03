@@ -485,12 +485,14 @@ router.put('/bulk-update', checkAuth, async (req, res) => {
 		}
 		const idArr = ids.split(',');
 
-		const filter = { category: { $in: idArr.map(id => mongoose.Types.ObjectId) } };
+		const filter = {
+			category: { $in: idArr.map(id => mongoose.Types.ObjectId(id)) }
+		};
 		const update = { category: newCatId };
 
 		const toUpdate = await allProducts.updateMany(filter, update);
 
-		const updatedProdArr = { toUpdate };
+		const updatedProdArr = toUpdate;
 		res.status(200).json({ updatedProdArr });
 	} catch (err) {
 		console.error(err);
