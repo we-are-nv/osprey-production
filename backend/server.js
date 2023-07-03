@@ -17,6 +17,7 @@ const catRoute = require('./src/routes/category');
 const modelRoute = require('./src/routes/model');
 const infoRoute = require('./src/routes/information');
 const authRoute = require('./src/routes/auth');
+const mailRoute = require('./src/routes/mail')
 
 const PORT = process.env.PORT || 3030;
 
@@ -66,14 +67,14 @@ app.use((req, res, next) => {
 	];
 
 	if (allowedOrigins.includes(origin)) {
-    console.log('ALLOWED CORS')
-    console.log(origin)
+		console.log('ALLOWED CORS');
+		console.log(origin);
 		res.setHeader('Access-Control-Allow-Origin', origin);
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Headers', origin);
+		res.setHeader('Access-Control-Allow-Credentials', true);
+		res.setHeader('Access-Control-Allow-Headers', origin);
 	} else {
-    console.log('DISALLOWED CORS')
-  }
+		console.log('DISALLOWED CORS');
+	}
 
 	res.setHeader(
 		'Access-Control-Allow-Headers',
@@ -117,6 +118,8 @@ app.use('/paragon/api/info', infoRoute);
 //Category Routes
 app.use('/paragon/api/products/category', catRoute);
 app.use('/paragon/api/products/categories', catRoute);
+// Mail route
+app.use('/paragon/api/mail', mailRoute)
 
 const start = () => {
 	app.listen(PORT, () => {
