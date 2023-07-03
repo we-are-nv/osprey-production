@@ -473,20 +473,64 @@ router.get('/search', async (req, res) => {
 		});
 });
 
+// router.put('/bulk-update', checkAuth, async (req, res) => {
+// 	try {
+// 		const { ids } = req.body;
+// 		const { newCatId } = req.query;
+// 		if (!ids) {
+// 			return res.status(400).json({ message: 'No Id array found ' });
+// 		}
+// 		if (!newCatId) {
+// 			return res.status(400).json({ message: 'No new category Id found' });
+// 		}
+// 		const idArr = ids;
+
+// 		const existingId = allProducts.findOne()
+// 		const filter = {
+// 			category: { $in: idArr.map(id => new mongoose.Types.ObjectId(id)) }
+// 		};
+// 		const update = { category: newCatId };
+
+// 		const toUpdate = await allProducts.updateMany(filter, update);
+
+// 		const updatedProdArr = toUpdate;
+// 		res.status(200).json({ updatedProdArr });
+// 	} catch (err) {
+// 		console.error(err);
+// 		res.status(500).json({ message: 'Internal server error', err });
+// 	}
+// });
+
+
 router.put('/bulk-update', checkAuth, async (req, res) => {
 	try {
 		const { ids } = req.body;
 		const { newCatId } = req.query;
-		if (!ids) {
-			return res.status(400).json({ message: 'No Id array found ' });
+		if (!ids || !Array.isArray(ids) || ids.length === 0) {
+			return res.status(400).json({ message: 'Invalid or empty IDs array' });
 		}
 		if (!newCatId) {
-			return res.status(400).json({ message: 'No new category Id found' });
+			return res.status(400).json({ message: 'No new category ID found' });
 		}
-		const idArr = ids;
+
+		const existingDocs = await allProducts.find({
+			_id: { $in: ids.map(id => new mongoose.Types.ObjectId(id)) }
+		});
+
+		const existingIds = existingDocs.map(doc => doc._id.toString());
+
+		const nonExistingIds = ids.filter(id => !existingIds.includes(id));
+
+		if (nonExistingIds.length > 0) {
+			return res.status(404).json({
+				message: `Documents with the following IDs do not exist: ${nonExistingIds.join(
+					', '
+				)}`
+			});
+		}
 
 		const filter = {
-			category: { $in: idArr.map(id => new mongoose.Types.ObjectId(id)) }
+			_id: { $in: ids.map(id => new mongoose.Types.ObjectId(id)) }
 		};
 		const update = { category: newCatId };
 
@@ -499,5 +543,4 @@ router.put('/bulk-update', checkAuth, async (req, res) => {
 		res.status(500).json({ message: 'Internal server error', err });
 	}
 });
-
 module.exports = router;
