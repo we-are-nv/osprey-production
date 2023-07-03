@@ -5,14 +5,17 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    width: 80vw;
     margin:auto;
 }
 .categoryContainer .categoryCard{
     width: 22%;
-    margin: 1%;
+    margin: 0.5%;
     border-radius:0px ;
     text-align: start;
+}
+.categoryCard h4{
+    margin-left: 5%;
+    font-size: large;
 }
 
 
