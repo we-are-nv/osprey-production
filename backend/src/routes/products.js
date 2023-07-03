@@ -486,7 +486,7 @@ router.put('/bulk-update', checkAuth, async (req, res) => {
 		const idArr = ids;
 
 		const filter = {
-			category: { $in: idArr.map(id => mongoose.Types.ObjectId(id)) }
+			category: { $in: idArr.map(id => new mongoose.Types.ObjectId(id)) }
 		};
 		const update = { category: newCatId };
 
