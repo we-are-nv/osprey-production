@@ -10,5 +10,5 @@ const customerSchema = mongoose.Schema({
 	message: { type: String, required: false }
 });
 
-module.exports = mongoose.model('customer', customerSchema);
+module.exports = mongoose.model('Customer', customerSchema);
 

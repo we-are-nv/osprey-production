@@ -43,6 +43,7 @@
 		"path": "^0.12.7",
 		"redis": "^4.6.6",
 		"rimraf": "^5.0.1",
+		"sib-api-v3-sdk": "^8.5.0",
 		"stdio": "^2.1.1",
 		"winston": "^3.8.2",
 		"winston-console-transport": "^1.1.9",
