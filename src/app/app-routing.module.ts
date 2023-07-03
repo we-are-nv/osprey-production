@@ -8,7 +8,6 @@ import { ProductViewComponent } from './pages/products/product-view/product-view
 import { ProductLandingComponent } from './pages/products/product-landing/product-landing.component';
 import { MarketsComponent } from './pages/markets/markets.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { ContactComponent } from './pages/contact/contact.component';
 import { GeneralInfoPageComponent } from './pages/general-info-page/general-info-page.component';
 import { SubPageComponent } from './pages/general-info-page/sub-page/sub-page.component';
 
@@ -44,7 +43,6 @@ const routes: Routes = [
 
 
   // Contact Page
-  {path:'contact', component:ContactComponent},
   {path:'contactFrom', component:QuoteFormComponent},
 
   // Error Page

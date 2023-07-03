@@ -483,7 +483,7 @@ router.put('/bulk-update', checkAuth, async (req, res) => {
 		if (!newCatId) {
 			return res.status(400).json({ message: 'No new category Id found' });
 		}
-		const idArr = ids.split(',');
+		const idArr = ids;
 
 		const filter = {
 			category: { $in: idArr.map(id => mongoose.Types.ObjectId(id)) }
