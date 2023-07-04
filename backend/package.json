@@ -40,6 +40,7 @@
 		"mysql": "^2.18.1",
 		"mysql2": "^2.3.3",
 		"nodemailer": "^6.8.0",
+		"package.json": "^2.0.1",
 		"path": "^0.12.7",
 		"redis": "^4.6.6",
 		"rimraf": "^5.0.1",
