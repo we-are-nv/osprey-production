@@ -45,14 +45,13 @@ router.get('/all-categories', checkAuth, async (req, res) => {
 	try {
 		const allCategories = await categories.find({});
 		if (!allCategories) {
-			return res.status(404).json({message:'No categories found'})
+			return res.status(404).json({ message: 'No categories found' });
 		} else {
 			res.status(200).json({
 				message: 'Successfully llsted all product categories',
 				data: allCategories
 			});
 		}
-
 	} catch (err) {
 		res.status(500).json({ message: `${internalErr}` });
 	}
@@ -176,6 +175,28 @@ router.put('/update-category/', checkAuth, async (req, res) => {
 	} catch (err) {
 		console.error('Error updating database: ', err);
 		res.status(500).json({ message: 'Internal server error' });
+	}
+});
+
+router.delete('/', checkAuth, async (req, res) => {
+	try {
+		const ids = Array.isArray(req.body.id) ? req.body.id : [req.body.id];
+
+		if (!ids || ids.length === 0) {
+			return res.status(400).json({ message: 'No ID in request' });
+		}
+
+		const result = await categories.deleteMany({ _id: { $id: ids } });
+		const deletedCount = result.deletedCount;
+		if (deletedCount === 0) {
+			return res.status(404).json({ message: 'Categories not found' });
+		}
+		res
+			.status(200)
+			.json({ message: `${deletedCount} categories successfully deleted` });
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({ message: 'Internal Server Error' });
 	}
 });
 
