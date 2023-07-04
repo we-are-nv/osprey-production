@@ -8,26 +8,30 @@
             </mat-card-header>
         <mat-card-content>
             
-            <form action="" #ngform>
-                <mat-form-field class="form-input" appearance="outline">
-                    <mat-label>Your Name*</mat-label>
-                    <input style="text-align:center;" matInput type="text">
+            <form [formGroup]="message" (ngSubmit)="submitForm()">
+                <mat-form-field class="form-input half-width" appearance="outline">
+                    <mat-label>First Name*</mat-label>
+                    <input style="text-align:center;" matInput type="text" formControlName="first_name">
+                </mat-form-field>
+                <mat-form-field class="form-input half-width" appearance="outline">
+                    <mat-label>Last Name*</mat-label> 
+                    <input style="text-align:center;" matInput type="text" formControlName="last_name">
                 </mat-form-field>
                 <mat-form-field class="form-input" appearance="outline">
                     <mat-label>Email Address</mat-label>
-                    <input matInput type="text">
+                    <input matInput type="text" formControlName="email">
                 </mat-form-field>
                 <mat-form-field class="form-input half-width" appearance="outline">
                     <mat-label>Phone Number</mat-label>
-                    <input matInput type="number">
+                    <input matInput type="tel" formControlName="phone_number">
                 </mat-form-field>
                 <mat-form-field class="form-input half-width" appearance="outline">
                     <mat-label>Organisation</mat-label>
-                    <input matInput type="text">
+                    <input matInput type="text" formControlName="organisation">
                 </mat-form-field>
                 <mat-form-field class="form-input" appearance="outline">
                     <mat-label>Address</mat-label>
-                    <input matInput type="text">
+                    <input matInput type="text" formControlName="location">
                 </mat-form-field>
                 <mat-form-field class="form-input" appearance="outline">
                     <mat-label>Message</mat-label>
@@ -35,12 +39,12 @@
                             cdkTextareaAutosize
                             #autosize="cdkTextareaAutosize"
                             cdkAutosizeMinRows="1"
-                            cdkAutosizeMaxRows="5"></textarea>
+                            cdkAutosizeMaxRows="5"
+                            formControlName="message"></textarea>
                 </mat-form-field>
-                <button mat-flat-button>Submit Your Form</button>
+                <button mat-flat-button  type="submit">Submit Your Message</button>
             </form>
         </mat-card-content>
-        
     </mat-card>
 </section>
 

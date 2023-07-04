@@ -9,8 +9,8 @@ export class ContactService {
 	private API_URL = environment.API_URL;
 	constructor(private http: HttpClient) {}
 
-	sendMain(form: any) {
-		this.http.get(this.API_URL + '/mail', form).subscribe((data: any) => {
+	sendMessage(form: any) {
+		this.http.post(this.API_URL + '/mail', form).subscribe((data: any) => {
 			console.log(data);
 		});
 	}

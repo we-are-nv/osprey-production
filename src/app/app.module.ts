@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {provideClientHydration} from '@angular/platform-browser';
+import { provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './keyComponents/header/header.component';
@@ -28,43 +28,44 @@ import { SubPageComponent } from './pages/general-info-page/sub-page/sub-page.co
 import { BonusCardComponent } from './pages/general-info-page/bonus-card/bonus-card.component';
 import { CategoryCardComponent } from './keyComponents/category-card/category-card.component';
 import { SimilarProductsComponent } from './keyComponents/similar-products/similar-products.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    BreadcrumbsComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    QuoteFormComponent,
-    ServicesComponent,
-    HeroComponent,
-    ProductsComponent,
-    ProductViewComponent,
-    ProductLandingComponent,
-    MarketsComponent,
-    NameConverterPipe,
-    CharacterValidationPipe,
-    ServicesInfoComponent,
-    ErrorPageComponent,
-    UrlFormatterPipe,
-    GeneralInfoPageComponent,
-    SubPageComponent,
-    BonusCardComponent,
-    CategoryCardComponent,
-    SimilarProductsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    FlexLayoutModule,
-    HttpClientModule,
-
-  ],
-  providers: [UrlFormatterPipe, provideClientHydration()],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		BreadcrumbsComponent,
+		HeaderComponent,
+		FooterComponent,
+		HomeComponent,
+		QuoteFormComponent,
+		ServicesComponent,
+		HeroComponent,
+		ProductsComponent,
+		ProductViewComponent,
+		ProductLandingComponent,
+		MarketsComponent,
+		NameConverterPipe,
+		CharacterValidationPipe,
+		ServicesInfoComponent,
+		ErrorPageComponent,
+		UrlFormatterPipe,
+		GeneralInfoPageComponent,
+		SubPageComponent,
+		BonusCardComponent,
+		CategoryCardComponent,
+		SimilarProductsComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		MaterialModule,
+		FlexLayoutModule,
+		HttpClientModule,
+		FormsModule,
+		ReactiveFormsModule
+	],
+	providers: [UrlFormatterPipe, provideClientHydration()],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
