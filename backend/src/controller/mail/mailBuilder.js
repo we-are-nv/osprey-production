@@ -14,34 +14,21 @@ const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
 async function buildEmail(params) {
 	try {
-		console.log(params);
+		sendSmtpEmail.emailType = params.emailType;
+		sendSmtpEmail.subject = params.subject;
+		sendSmtpEmail.htmlFilePath = params.htmlFilePath;
+		console.log('sendSMTPEmail object : ', sendSmtpEmail);
 
-		let emailType = params.emailType;
-		let subject = params.subject;
-		let htmlFilePath;
-
-		if (emailType === 'welcome') {
-			subject = 'Welcome to Paragon Security';
-			htmlFilePath = path.join(__dirname, '..', 'mail', 'templates', 'basic_email');
-			// to.email = await createContact.email;
-		} else if (emailType === 'Second type') {
-			subject = 'Second Type';
-			htmlFilePath = '../email/welcome.html';
-		} else {
-			subject = 'Default';
-			htmlFilePath = '../email/welcome.html';
-		}
-
-		return;
-		const htmlContent = (sendSmtpEmail.subject = params.subject);
+		// return;
+		// const htmlContent = (sendSmtpEmail.subject = params.subject);
 		sendSmtpEmail.htmlContent = fs.readFile(
-			params.htmlContent,
+			params.htmlFilePath,
 			'utf8',
 			async (err, template) => {
 				if (err) {
 					return res.status(500).send('Error loading email template');
 				}
-				template = await fs.promises.readFile(htmlFilepath, 'utf8');
+				template = await fs.promises.readFile(params.htmlFilePath, 'utf8');
 				const firstName = params.firstName;
 				const lastName = params.lastName;
 				const email = params.email;
@@ -52,8 +39,6 @@ async function buildEmail(params) {
 		);
 		sendSmtpEmail.sender = params.sender;
 		sendSmtpEmail.to = params.to;
-		// sendSmtpEmail.cc = params.cc;
-		// sendSmtpEmail.bcc = params.bcc;
 		sendSmtpEmail.replyTo = params.replyTo;
 		sendSmtpEmail.headers = params.headers;
 		sendSmtpEmail.params = params.params;

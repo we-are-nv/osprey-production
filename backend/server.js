@@ -17,7 +17,7 @@ const catRoute = require('./src/routes/category');
 const modelRoute = require('./src/routes/model');
 const infoRoute = require('./src/routes/information');
 const authRoute = require('./src/routes/auth');
-const mailRoute = require('./src/routes/mail')
+const mailRoute = require('./src/routes/mail');
 
 const PORT = process.env.PORT || 3030;
 
@@ -54,6 +54,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(morgan('dev'));
 app.use(middlewareCheck);
+app.use(express.json());
 
 app.use((req, res, next) => {
 	const origin = req.headers.origin;
@@ -119,7 +120,7 @@ app.use('/paragon/api/info', infoRoute);
 app.use('/paragon/api/products/category', catRoute);
 app.use('/paragon/api/products/categories', catRoute);
 // Mail route
-app.use('/paragon/api/mail', mailRoute)
+app.use('/paragon/api/mail', mailRoute);
 
 const start = () => {
 	app.listen(PORT, () => {
