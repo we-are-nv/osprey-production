@@ -21,14 +21,14 @@ export class HeaderComponent implements OnInit{
 
   ngOnInit() {
     // Get Product Categories
-    
+
     // this.productService.getCategories("")
     // this.categorySub = this.productService.getCategoriesUpdateListener()
     //   .subscribe((data)=>{
     //     this.categories = data.cats
     //     let tempCategories:any[] = []
 
-        
+
     //     // this.categories.forEach((category: any) => {
     //     //   // console.log('hello')
     //     //   // For each Category create a Nav diretorys
@@ -73,8 +73,8 @@ export class HeaderComponent implements OnInit{
       this.generateSingleInfo("about","About Us")
       this.generateSiblingInfo("market", "Markets")
       this.generateSiblingInfo("service", "Services")
-      this.generateSingleInfo("recourse","Recourses")
-      
+      this.generateSingleInfo("recourse","Resourses")
+
       this.generateSingleInfo("contact","Contact")
   }
   // On scroll detected, Set the toolbar class
@@ -106,15 +106,15 @@ export class HeaderComponent implements OnInit{
         this.finalNav.dropDownMenus.push(nav)
         tempSub.unsubscribe()
       })
-      
 
-      
+
+
     })
   }
 
   generateSiblingInfo(type: string, name:string){
     let tempSub = this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
-      
+
       let childLinks: any[]= []
       data.forEach((page:any) => {
         let childLink = {name:page.name, path:"/info-page/"+type+"/"+page._id}
@@ -130,7 +130,7 @@ export class HeaderComponent implements OnInit{
         this.finalNav.dropDownMenus.push(nav)
         tempSub.unsubscribe()
       })
-      
+
   }
 
 }
