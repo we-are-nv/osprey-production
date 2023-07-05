@@ -277,10 +277,9 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 								/\s/g,
 								''
 							);
+						uploadBaseMarket(fileURL, element);
+						element = `/${fileURL}`;
 					}
-
-					uploadBaseMarket(fileURL, element);
-					element = `/${fileURL}`;
 					req.body.elements[idx].src[idx1] = element;
 				});
 			}
