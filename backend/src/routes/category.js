@@ -181,12 +181,11 @@ router.put('/update-category/', checkAuth, async (req, res) => {
 router.delete('/', checkAuth, async (req, res) => {
 	try {
 		const ids = Array.isArray(req.body.id) ? req.body.id : [req.body.id];
-
 		if (!ids || ids.length === 0) {
 			return res.status(400).json({ message: 'No ID in request' });
 		}
 
-		const result = await categories.deleteMany({ _id: { $id: ids } });
+		const result = await categories.deleteMany({ _id: { $in: ids } });
 		const deletedCount = result.deletedCount;
 		if (deletedCount === 0) {
 			return res.status(404).json({ message: 'Categories not found' });

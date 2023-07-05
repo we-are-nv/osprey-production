@@ -19,7 +19,8 @@ export class QuoteFormComponent {
 			phone_number: ['', Validators.required],
 			organisation: ['', Validators.required],
 			location: ['', Validators.required],
-			message: ['']
+			message: [''],
+			creation_time: new Date().getTime()
 		});
 	}
 	get f() {
