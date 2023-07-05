@@ -13,14 +13,13 @@ export class QuoteFormComponent {
 	message;
 	constructor(private fb: FormBuilder, private mailService: ContactService) {
 		this.message = this.fb.group({
-			first_name: ['', Validators.required],
-			last_name: ['', Validators.required],
+			firstName: ['', Validators.required],
+			lastName: ['', Validators.required],
 			email: ['', Validators.required],
-			phone_number: ['', Validators.required],
+			phoneNumber: ['', Validators.required],
 			organisation: ['', Validators.required],
 			location: ['', Validators.required],
-			message: [''],
-			creation_time: new Date().getTime()
+			message: ['']
 		});
 	}
 	get f() {

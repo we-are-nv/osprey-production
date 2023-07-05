@@ -156,6 +156,14 @@ router.put('/update-category/', checkAuth, async (req, res) => {
 			return res.status(400).json({ message: 'Missing body' });
 		}
 
+		if (image)
+			info.banner_image = s3Controller.processImages(
+				image,
+				'cat-thumbnails',
+				name,
+				id
+			);
+
 		const updateFields = {};
 		if (name) updateFields.name = name;
 		if (image) updateFields.image = image;
