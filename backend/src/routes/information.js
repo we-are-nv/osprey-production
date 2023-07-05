@@ -216,6 +216,8 @@ router.put('/page', checkAuth, async (req, res) => {
 	}
 });
 
+// THIS IS THE ROUTE IMAGES ARE FUCKED ON -- REMOVE WHEN FIXED
+
 router.put('/page/sub-page', checkAuth, async (req, res) => {
 	try {
 		const { id } = req.query;
@@ -258,6 +260,31 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 			{ $set: { 'pages.$.name': name } },
 			{ new: true }
 		);
+
+		for (idx in req.body.elements) {
+			if (req.body.elements[idx].type == 'image') {
+				req.body.elements[idx].src.forEach((element, idx1) => {
+					const s3Base = process.env.S3_BASE;
+					if (element.includes(s3Base)) {
+						// strip s3 base
+						element = element.replace(s3Base, '');
+					} else if (element.startsWith('data:')) {
+						// convert base64 to file
+						const base64Data = element.replace(/^data:image\/\w+;base64,/, '');
+						const buffer = Buffer.from(base64Data, 'base64');
+						var fileURL =
+							`info/${parent_id}/pages/${id}/${req.body.name}${idx1}`.replace(
+								/\s/g,
+								''
+							);
+					}
+
+					uploadBaseMarket(fileURL, element);
+					element = `/${fileURL}`;
+					req.body.elements[idx].src[idx1] = element;
+				});
+			}
+		}
 
 		const foundChild = await informationPage.findOneAndUpdate(
 			{ _id: id },
@@ -346,13 +373,7 @@ router.get('/page', async (req, res) => {
 
 router.get('/all', checkAuth, async (req, res) => {
 	try {
-
-		// const ids = Array.isArray(req.body.id) ? req.body.id : [req.body.id];
-		// if (!ids || ids.length === 0) {
-		// 	return res.status(400).json({message: 'No Ids in request body'})
-		// }
-
-		const result = await informationPage.find()
+		const result = await informationPage.find();
 		res.status(200).json({ message: 'returned data: ' });
 	} catch (err) {
 		console.error(err);
