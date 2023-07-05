@@ -344,6 +344,22 @@ router.get('/page', async (req, res) => {
 	res.json(foundPage);
 });
 
+router.get('/all', checkAuth, async (req, res) => {
+	try {
+
+		// const ids = Array.isArray(req.body.id) ? req.body.id : [req.body.id];
+		// if (!ids || ids.length === 0) {
+		// 	return res.status(400).json({message: 'No Ids in request body'})
+		// }
+
+		const result = await informationPage.find()
+		res.status(200).json({ message: 'returned data: ' });
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({ message: 'Internal Server Error' });
+	}
+});
+
 router.get('/thumbnail', async (req, res) => {
 	const { type = '' } = req.query;
 	var query = {};

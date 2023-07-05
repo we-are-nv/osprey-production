@@ -182,7 +182,7 @@ router.delete('/', checkAuth, async (req, res) => {
 	try {
 		const ids = Array.isArray(req.body.id) ? req.body.id : [req.body.id];
 		if (!ids || ids.length === 0) {
-			return res.status(400).json({ message: 'No ID in request' });
+			return res.status(400).json({ message: 'No ID in request body' });
 		}
 
 		const result = await categories.deleteMany({ _id: { $in: ids } });

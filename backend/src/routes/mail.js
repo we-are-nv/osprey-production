@@ -4,6 +4,7 @@ const multer = require('multer');
 const upload = multer({ dest: './uploads' });
 const fs = require('fs');
 const Customer = require('../models/customer');
+const Message = require('../models/messages');
 // const { sendMail } = require('../controller/mail/mailService');
 // dotenv.config();
 
@@ -17,21 +18,23 @@ router.use(function timeLog(req, res, next) {
 router.post('/', async (req, res) => {
 	try {
 		const {
-			first_name,
-			last_name,
+			firstName,
+			lastName,
 			email,
-			phone_number,
+			phoneNumber,
 			organisation,
 			location,
+			messageSubject,
 			message
 		} = req.body;
 		console.log(req.body);
+
 		// return
 		const mailOptions = {
-			firstName: first_name,
-			lastName: last_name,
+			firstName: firstName,
+			lastName: lastName,
 			email: email,
-			subject: 'Welcome to Paragon Security'
+			mailSubject: 'Welcome to Paragon Security'
 			// let successMessage = 1;
 		};
 		const successMessage = await sendNodeMail(mailOptions);
@@ -39,17 +42,38 @@ router.post('/', async (req, res) => {
 			return res
 				.status(500)
 				.json({ message: 'Internal Server Error. Mail not sent' });
+		}
+		const newMessage = new Message({
+			message_subject: messageSubject,
+			message: message,
+			creation_time: Date.now()
+		});
+
+		let customer = await Customer.findOne({ email: email });
+		if (customer) {
+			console.log(customer);
+
+			customer.messages.push({
+				message_id: newMessage.id,
+				message_subject: newMessage.message_subject
+			});
+			await customer.save();
+			await newMessage.save();
 		} else {
 			const newCustomer = new Customer({
-				first_name,
-				last_name,
-				email,
-				phone_number,
-				organisation,
-				location,
-				message
+				first_name: firstName,
+				last_name: lastName,
+				email: email,
+				phone_number: phoneNumber,
+				organisation: organisation,
+				location: location,
+				messages: [
+					{
+						message_id: newMessage._id,
+						message_subject: newMessage.message_subject
+					}
+				]
 			});
-
 			await newCustomer.save();
 		}
 		res.status(200).json({ message: 'Mail sent to backend successfully' });
@@ -61,14 +85,4 @@ router.post('/', async (req, res) => {
 
 module.exports = router;
 
-// res
-// 	.status(201)
-// 	.json({
-// 		message: `Customer: ${newCustomer.first_name} +${newCustomer.last_name} creation sucessful`
-// 	});
 
-// }
-
-// let mailObj = {};
-// mailObj = req.body;
-// const data = await customer.find;

@@ -1,11 +1,7 @@
-const express = require('express');
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 const path = require('path');
 const fs = require('fs');
-const Customer = require('../../models/customer');
-
-const router = express.Router();
 
 const smtp = {
 	host: 'smtp.gmail.com',
@@ -41,10 +37,11 @@ async function sendNodeMail(contact) {
 		let mailOptions = {
 			from: smtp.auth.user,
 			to: contact.email, // change
-			subject: 'Welcome to Paragon Security',
+			mailSubject: 'Welcome to Paragon Security',
 			html: template
 				.replace('[firstName]', contact.firstName)
 				.replace('[lastName]', contact.lastName)
+				.replace('[messageSubject]', contact.messageSubject)
 		};
 
 		const info = await transport.sendMail(mailOptions);
