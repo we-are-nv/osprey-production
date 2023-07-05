@@ -155,5 +155,6 @@ module.exports = {
 	uploadBase,
 	deleteImage,
 	uploadBaseMarket,
-	uploadFileMarket
+	uploadFileMarket,
+	processImages
 };
