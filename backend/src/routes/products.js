@@ -501,7 +501,6 @@ router.get('/search', async (req, res) => {
 // 	}
 // });
 
-
 router.put('/bulk-update', checkAuth, async (req, res) => {
 	try {
 		const { ids } = req.body;
@@ -543,4 +542,5 @@ router.put('/bulk-update', checkAuth, async (req, res) => {
 		res.status(500).json({ message: 'Internal server error', err });
 	}
 });
+
 module.exports = router;

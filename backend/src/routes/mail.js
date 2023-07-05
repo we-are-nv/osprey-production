@@ -1,10 +1,10 @@
 const express = require('express');
+const { sendNodeMail } = require('../controller/mail/nodemailer');
 const multer = require('multer');
 const upload = multer({ dest: './uploads' });
 const fs = require('fs');
 const Customer = require('../models/customer');
-const { sendMail } = require('../controller/mail/mailService.js');
-
+// const { sendMail } = require('../controller/mail/mailService');
 // dotenv.config();
 
 const router = express.Router();
@@ -23,18 +23,18 @@ router.post('/', async (req, res) => {
 			phone_number,
 			organisation,
 			location,
-			message,
-			subject
+			message
 		} = req.body;
-
-		const contact = {}
-			contact.firstName = first_name
-			contact.lastName = last_name
-			contact.email = email
-			contact.subject = 'Welcome to Paragon Security'
-		// let successMessage = 1;
-
-		const successMessage = await sendMail(contact);
+		console.log(req.body);
+		// return
+		const mailOptions = {
+			firstName: first_name,
+			lastName: last_name,
+			email: email,
+			subject: 'Welcome to Paragon Security'
+			// let successMessage = 1;
+		};
+		const successMessage = await sendNodeMail(mailOptions);
 		if (!successMessage) {
 			return res
 				.status(500)
@@ -47,8 +47,7 @@ router.post('/', async (req, res) => {
 				phone_number,
 				organisation,
 				location,
-				message,
-				subject
+				message
 			});
 
 			await newCustomer.save();
@@ -56,7 +55,7 @@ router.post('/', async (req, res) => {
 		res.status(200).json({ message: 'Mail sent to backend successfully' });
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
+		res.status(500).json({ message: 'Internal Server Error', err });
 	}
 });
 
