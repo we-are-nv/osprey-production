@@ -15,6 +15,9 @@ const router = express.Router();
 //Import Models
 const categories = require('../models/categories.js');
 
+// Image Control
+const s3Controller = require('../controller/s3-controller.js');
+
 router.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());
 	next();
@@ -143,27 +146,27 @@ router.put('/', checkAuth, upload.single('img'), async (req, res, next) => {
 router.put('/update-category/', checkAuth, async (req, res) => {
 	try {
 		const { id } = req.query;
-		const {
-			name,
-			image,
-			info: { banner_image, heading, sub_heading } = {}
-		} = req.body;
+		const { name, image } = req.body;
+		const info = req.body.info;
 		console.log(req.query, req.body);
 
 		if (!id) {
 			return res.status(400).json({ message: 'Missing category ID' });
 		}
 
-		if (!name || !image || !info) {
+		if (!name || !image) {
 			return res.status(400).json({ message: 'Missing body' });
 		}
 
-		if (image)
-			image = s3Controller.processImages(image, 'cat-thumbnails', name, id);
-
 		const updateFields = {};
 		if (name) updateFields.name = name;
-		if (image) updateFields.image = image;
+		if (image)
+			updateFields.image = s3Controller.singleImage(
+				image,
+				'cat-thumbnails',
+				name,
+				id
+			);
 		if (info) updateFields.info = info;
 
 		const foundCategory = await categories.findOneAndUpdate(
