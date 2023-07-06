@@ -12,10 +12,9 @@ import { environment } from 'src/environments/environment';
 export function app(): express.Express {
 	const server = express();
 
+	console.log(environment.LIVE);
 
-  console.log(environment.LIVE);
-
-  const distFolder = environment.LIVE
+	const distFolder = environment.LIVE
 		? '/home/web/apps/paragon-new/browser'
 		: 'dist/paragonProduction/browser';
 
@@ -56,6 +55,10 @@ export function app(): express.Express {
 			req,
 			providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }]
 		});
+	});
+
+	server.all('*', function (req, res) {
+		res.status(200).sendFile('/', { root: distFolder });
 	});
 
 	return server;
