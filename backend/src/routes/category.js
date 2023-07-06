@@ -148,6 +148,8 @@ router.put('/update-category/', checkAuth, async (req, res) => {
 			image,
 			info: { banner_image, heading, sub_heading } = {}
 		} = req.body;
+		console.log(req.query, req.body);
+
 		if (!id) {
 			return res.status(400).json({ message: 'Missing category ID' });
 		}
@@ -157,12 +159,7 @@ router.put('/update-category/', checkAuth, async (req, res) => {
 		}
 
 		if (image)
-			info.banner_image = s3Controller.processImages(
-				image,
-				'cat-thumbnails',
-				name,
-				id
-			);
+			image = s3Controller.processImages(image, 'cat-thumbnails', name, id);
 
 		const updateFields = {};
 		if (name) updateFields.name = name;

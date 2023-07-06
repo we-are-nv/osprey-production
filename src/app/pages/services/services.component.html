@@ -15,7 +15,7 @@
         </div>
         <!-- Categories Grabbed from Component Variable -->
         <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-            <mat-card *ngFor="let service of serviceList" class="categoryCard" routerLink="/info-page/services/{{service._id}}">
+            <mat-card *ngFor="let service of serviceList" class="categoryCard" routerLink="/info-page/service/{{service._id}}">
                 <img mat-card-image [src]="service.thumbnail_image">
                 <h1>{{service.name}}</h1>
                 <span>Explore</span>
