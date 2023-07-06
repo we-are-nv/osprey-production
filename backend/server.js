@@ -64,7 +64,8 @@ app.use((req, res, next) => {
 	const allowedOrigins = [
 		'https://staging.wearenv.co.uk',
 		'http://localhost:4200',
-		'http://localhost:4300'
+		'http://localhost:4300',
+		'http://18.132.33.23:4000'
 	];
 
 	if (allowedOrigins.includes(origin)) {
