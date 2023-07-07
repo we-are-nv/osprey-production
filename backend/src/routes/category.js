@@ -39,6 +39,11 @@ router.get('/', async (req, res, next) => {
 			if (result[idx].image) {
 				result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
 			}
+			if (result[idx].info.banner_image) {
+				result[
+					idx
+				].info.banner_image = `${process.env.S3_BASE}${result[idx].info.banner_image}`;
+			}
 		}
 		res.json({ cats: result });
 	});
@@ -146,15 +151,13 @@ router.put('/', checkAuth, upload.single('img'), async (req, res, next) => {
 router.put('/update-category/', checkAuth, async (req, res) => {
 	try {
 		const { id } = req.query;
-		const { name, image } = req.body;
-		const info = req.body.info;
-		console.log(req.query, req.body);
+		const { name, image, info } = req.body;
 
 		if (!id) {
 			return res.status(400).json({ message: 'Missing category ID' });
 		}
 
-		if (!name || !image) {
+		if (!name || !image || !info) {
 			return res.status(400).json({ message: 'Missing body' });
 		}
 
@@ -167,7 +170,24 @@ router.put('/update-category/', checkAuth, async (req, res) => {
 				name,
 				id
 			);
-		if (info) updateFields.info = info;
+
+		if (info) {
+			console.log('info loaded');
+			let tempInfo = {};
+			if (info.heading) tempInfo.heading = info.heading;
+			if (info.sub_heading) tempInfo.sub_heading = info.sub_heading;
+			if (info.banner_image) {
+				tempInfo.banner_image = s3Controller.singleImage(
+					info.banner_image,
+					'cat-banner',
+					name,
+					id
+				);
+			}
+			console.log(tempInfo);
+
+			updateFields.info = tempInfo;
+		}
 
 		const foundCategory = await categories.findOneAndUpdate(
 			{ _id: id },

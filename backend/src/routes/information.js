@@ -21,6 +21,9 @@ const informationPage = require('../models/information-page.js');
 const information = require('../models/information.js');
 const { info } = require('console');
 
+// Image Control
+const s3Controller = require('../controller/s3-controller.js');
+
 //Import Model Files
 
 const router = express.Router();
@@ -196,8 +199,23 @@ router.put('/page', checkAuth, async (req, res) => {
 		if (type) updateFields.type = type;
 		if (secondry_title) updateFields.secondry_title = secondry_title;
 		if (lower_title) updateFields.lower_title = lower_title;
-		if (banner_image) updateFields.banner_image = banner_image;
-		if (thumbnail_image) updateFields.thumbnail_image = thumbnail_image;
+
+		if (banner_image)
+			updateFields.banner_image = s3Controller.singleImage(
+				banner_image,
+				'info-banner',
+				name,
+				id
+			);
+
+		if (thumbnail_image)
+			updateFields.thumbnail_image = s3Controller.singleImage(
+				thumbnail_image,
+				'info-thumbnail',
+				name,
+				id
+			);
+
 		if (bonus_cards) updateFields.bonus_cards = bonus_cards;
 
 		const foundPage = await market.findOneAndUpdate(
@@ -390,7 +408,9 @@ router.get('/thumbnail', async (req, res) => {
 	const foundInfos = await information
 		.find(query)
 		.select({ name: 1, thumbnail_image: 1 });
-
+	foundInfos.forEach(function (info) {
+		info.thumbnail_image = `${process.env.S3_BASE}${info.thumbnail_image}`;
+	});
 	res.json(foundInfos);
 });
 
