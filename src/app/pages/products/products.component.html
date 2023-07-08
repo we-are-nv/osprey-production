@@ -1,8 +1,8 @@
-<app-hero
-    mainTitle="Products"
-    lowerTitle="As one of the premier providers of smart surveillance technology, we are recognized throughout the industry for our products. Don’t worry about any thing, security experts will install your new system, activate it, and show you how to use it."
+<app-hero *ngIf="category"
+    [mainTitle]="category.info.heading"
+    [lowerTitle]="category.info.sub_heading"
     [isButtons]="true"
-    background="./assets/images/heroBackgrounds/productLanding.png"
+    [background]="category.info.banner_image"
     [button1Data]="{text:'See What It Costs', path:'', type:'white'}"
     [button2Data]="{text:'Protect My Home', path:'', type:'outline'}"
     [centred]="true"
