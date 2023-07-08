@@ -19,6 +19,7 @@ export class QuoteFormComponent {
 			phoneNumber: ['', Validators.required],
 			organisation: ['', Validators.required],
 			location: ['', Validators.required],
+			subject: [''],
 			message: ['']
 		});
 	}

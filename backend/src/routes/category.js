@@ -15,6 +15,9 @@ const router = express.Router();
 //Import Models
 const categories = require('../models/categories.js');
 
+// Image Control
+const s3Controller = require('../controller/s3-controller.js');
+
 router.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());
 	next();
@@ -35,6 +38,11 @@ router.get('/', async (req, res, next) => {
 		for (idx in result) {
 			if (result[idx].image) {
 				result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
+			}
+			if (result[idx].info.banner_image) {
+				result[
+					idx
+				].info.banner_image = `${process.env.S3_BASE}${result[idx].info.banner_image}`;
 			}
 		}
 		res.json({ cats: result });
@@ -143,11 +151,8 @@ router.put('/', checkAuth, upload.single('img'), async (req, res, next) => {
 router.put('/update-category/', checkAuth, async (req, res) => {
 	try {
 		const { id } = req.query;
-		const {
-			name,
-			image,
-			info: { banner_image, heading, sub_heading } = {}
-		} = req.body;
+		const { name, image, info } = req.body;
+
 		if (!id) {
 			return res.status(400).json({ message: 'Missing category ID' });
 		}
@@ -156,18 +161,33 @@ router.put('/update-category/', checkAuth, async (req, res) => {
 			return res.status(400).json({ message: 'Missing body' });
 		}
 
+		const updateFields = {};
+		if (name) updateFields.name = name;
 		if (image)
-			info.banner_image = s3Controller.processImages(
+			updateFields.image = s3Controller.singleImage(
 				image,
 				'cat-thumbnails',
 				name,
 				id
 			);
 
-		const updateFields = {};
-		if (name) updateFields.name = name;
-		if (image) updateFields.image = image;
-		if (info) updateFields.info = info;
+		if (info) {
+			console.log('info loaded');
+			let tempInfo = {};
+			if (info.heading) tempInfo.heading = info.heading;
+			if (info.sub_heading) tempInfo.sub_heading = info.sub_heading;
+			if (info.banner_image) {
+				tempInfo.banner_image = s3Controller.singleImage(
+					info.banner_image,
+					'cat-banner',
+					name,
+					id
+				);
+			}
+			console.log(tempInfo);
+
+			updateFields.info = tempInfo;
+		}
 
 		const foundCategory = await categories.findOneAndUpdate(
 			{ _id: id },
@@ -204,6 +224,37 @@ router.delete('/', checkAuth, async (req, res) => {
 	} catch (err) {
 		console.error(err);
 		res.status(500).json({ message: 'Internal Server Error' });
+	}
+});
+
+// Get Single
+router.get('/single', async (req, res) => {
+	try {
+		const id = req.query.id;
+		if (id == undefined) {
+			return res.status(400).json({ message: 'No ID in Request' });
+		}
+		const foundCat = await categories.findOne({ _id: id });
+		console.log(foundCat);
+		if (!foundCat) {
+			return res.status(404).json({ message: 'no Category found with Id ' + id });
+		}
+		if (foundCat) {
+			const s3Base = process.env.S3_BASE;
+			if (foundCat.image) {
+				foundCat.image = `${s3Base}${foundCat.image}`;
+			}
+			if (foundCat.info.banner_image) {
+				foundCat.info.banner_image = `${s3Base}${foundCat.info.banner_image}`;
+			}
+
+			res
+				.status(200)
+				.json({ message: 'Successfully found category', data: foundCat });
+		}
+	} catch (err) {
+		console.log(err);
+		res.status(500).json({ message: 'internal Server Error' });
 	}
 });
 

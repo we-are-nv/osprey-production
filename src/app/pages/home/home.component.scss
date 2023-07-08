@@ -37,13 +37,15 @@ p {
 }
 
 // Formatting for the Category Cards
+.headCategoryContainer{
+	width:90vw;
+}
 .categoryContainer {
 	margin-top: 1rem;
 	display: flex-start;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: flex-start;
-	width: 80vw;
 	// overflow-x: scroll;
 	margin: auto;
 }
@@ -178,8 +180,8 @@ mat-card-header {
 
 
 // Category slide buttons
-.relatedButtons {
-	width: 80vw;
+.relatedCategoryButtons {
+	width: 87vw;
 }
 .slideButtonContainer {
 	width: max-content;

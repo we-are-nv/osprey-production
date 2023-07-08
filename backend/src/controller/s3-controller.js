@@ -146,20 +146,20 @@ function processImages(elements, parent_id, id, name) {
 	}
 	return elements;
 }
-function singlImage(file, placement, name, id) {
+function singleImage(file, placement, name, id) {
 	const s3Base = process.env.S3_BASE;
-	if (element.includes(s3Base)) {
+	if (file.includes(s3Base)) {
 		// strip s3 base
-		element = element.replace(s3Base, '');
-	} else if (element.startsWith('data:')) {
+		file = file.replace(s3Base, '');
+	} else if (file.startsWith('data:')) {
 		// convert base64 to file
-		const base64Data = element.replace(/^data:image\/\w+;base64,/, '');
+		const base64Data = file.replace(/^data:image\/\w+;base64,/, '');
 		const buffer = Buffer.from(base64Data, 'base64');
 		var fileURL = `${placement}/${name}-${id}`.replace(/\s/g, '');
-		uploadBaseMarket(fileURL, element);
-		element = `/${fileURL}`;
+		uploadBaseMarket(fileURL, file);
+		file = `/${fileURL}`;
 	}
-	return element;
+	return file;
 }
 
 //test('C:\\Users\\jc305\\Pictures\\word\\anpr.png','648dad795f038ab01ad76d1d','png')
@@ -170,5 +170,6 @@ module.exports = {
 	deleteImage,
 	uploadBaseMarket,
 	uploadFileMarket,
-	processImages
+	processImages,
+	singleImage
 };
