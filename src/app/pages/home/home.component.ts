@@ -17,8 +17,8 @@ export class HomeComponent {
 
 	history: [{ path: string; friendly: string }] = [{ path: '/', friendly: 'Home' }];
 
-	marketsList : any[]= [];
-	serviceList : any[]= [];
+	marketsList: any[] = [];
+	serviceList: any[] = [];
 
 	marketsListPart: any[] = [];
 	serviceListPart: any[] = [];
@@ -26,73 +26,111 @@ export class HomeComponent {
 
 	listLength = 4;
 
-	marketListPosition = {first: 0, last:0+this.listLength};
-	serviceListPosition = {first:0, last:0+this.listLength};
-	categoryListPosition = {first:0, last:0+this.listLength};
+	marketListPosition = { first: 0, last: 0 + this.listLength };
+	serviceListPosition = { first: 0, last: 0 + this.listLength };
+	categoryListPosition = { first: 0, last: 0 + this.listLength };
 
 	constructor(
 		private productService: ProductService,
 		private matIconRegistry: MatIconRegistry,
 		private domSanitizer: DomSanitizer,
-		private infoPageService: InfoPageService,
+		private infoPageService: InfoPageService
 	) {
 		matIconRegistry.addSvgIconSet(
-			this.domSanitizer.bypassSecurityTrustResourceUrl(`./assets/images/customIcons`)
+			this.domSanitizer.bypassSecurityTrustResourceUrl(
+				`./assets/images/customIcons`
+			)
 		);
 	}
 	ngOnInit(): void {
 		// this.location.replaceState("/some/newstate/");
 
-		this.productService.getCategories("");
+		this.productService.getCategories('');
 		this.categorySub = this.productService
 			.getCategoriesUpdateListener()
 			.subscribe(data => {
 				this.productCategories = data.cats;
-				this.categoryListPart = this.productCategories.slice(this.categoryListPosition.first, this.categoryListPosition.last);
+				this.categoryListPart = this.productCategories.slice(
+					this.categoryListPosition.first,
+					this.categoryListPosition.last
+				);
 			});
-		
-		this.infoPageService.getThumbnails('market').subscribe((data:any)=>{
-			this.marketsList = data
-			this.marketsListPart = this.marketsList.slice(this.marketListPosition.first, this.marketListPosition.last)
-			})
-		this.infoPageService.getThumbnails('service').subscribe((data:any)=>{
-			this.serviceList = data
-			this.serviceListPart = this.serviceList.slice(this.marketListPosition.first, this.marketListPosition.last)
-			})
+
+		this.infoPageService.getThumbnails('market').subscribe((data: any) => {
+			this.marketsList = data;
+			this.marketsListPart = this.marketsList.slice(
+				this.marketListPosition.first,
+				this.marketListPosition.last
+			);
+			console.log(this.marketsList);
+		});
+		this.infoPageService.getThumbnails('service').subscribe((data: any) => {
+			this.serviceList = data;
+			this.serviceListPart = this.serviceList.slice(
+				this.marketListPosition.first,
+				this.marketListPosition.last
+			);
+		});
 	}
 
-	rightMove(type:string){
-		if(type == 'category'){
+	rightMove(type: string) {
+		if (type == 'category') {
 			this.categoryListPosition.first += 1;
 			this.categoryListPosition.last += 1;
-			this.categoryListPart = this.productCategories.slice(this.categoryListPosition.first, this.categoryListPosition.last);
+			this.categoryListPart = this.productCategories.slice(
+				this.categoryListPosition.first,
+				this.categoryListPosition.last
+			);
 		}
-		if(type == 'market' && this.marketsListPart[this.listLength-1] !== this.marketsList[this.marketsList.length -1] ){
+		if (
+			type == 'market' &&
+			this.marketsListPart[this.listLength - 1] !==
+				this.marketsList[this.marketsList.length - 1]
+		) {
 			this.marketListPosition.first += 1;
 			this.marketListPosition.last += 1;
-			this.marketsListPart = this.marketsList.slice(this.marketListPosition.first, this.marketListPosition.last);
+			this.marketsListPart = this.marketsList.slice(
+				this.marketListPosition.first,
+				this.marketListPosition.last
+			);
 		}
-		if(type == 'service' && this.serviceListPart[this.listLength-1] !== this.serviceList[this.serviceList.length -1] ){
+		if (
+			type == 'service' &&
+			this.serviceListPart[this.listLength - 1] !==
+				this.serviceList[this.serviceList.length - 1]
+		) {
 			this.serviceListPosition.first += 1;
 			this.serviceListPosition.last += 1;
-			this.serviceListPart = this.serviceList.slice(this.serviceListPosition.first, this.serviceListPosition.last);
+			this.serviceListPart = this.serviceList.slice(
+				this.serviceListPosition.first,
+				this.serviceListPosition.last
+			);
 		}
 	}
-	leftMove(type:string){
-		if(type == 'category'){
+	leftMove(type: string) {
+		if (type == 'category') {
 			this.categoryListPosition.first -= 1;
 			this.categoryListPosition.last -= 1;
-			this.categoryListPart = this.productCategories.slice(this.categoryListPosition.first, this.categoryListPosition.last);
+			this.categoryListPart = this.productCategories.slice(
+				this.categoryListPosition.first,
+				this.categoryListPosition.last
+			);
 		}
-		if(type == 'market' && this.marketsListPart[0] !== this.marketsList[0] ){
+		if (type == 'market' && this.marketsListPart[0] !== this.marketsList[0]) {
 			this.marketListPosition.first -= 1;
 			this.marketListPosition.last -= 1;
-			this.marketsListPart = this.marketsList.slice(this.marketListPosition.first, this.marketListPosition.last);
+			this.marketsListPart = this.marketsList.slice(
+				this.marketListPosition.first,
+				this.marketListPosition.last
+			);
 		}
-		if(type == 'service' && this.serviceListPart[0] !== this.serviceList[0] ){
+		if (type == 'service' && this.serviceListPart[0] !== this.serviceList[0]) {
 			this.serviceListPosition.first -= 1;
 			this.serviceListPosition.last -= 1;
-			this.serviceListPart = this.serviceList.slice(this.serviceListPosition.first, this.serviceListPosition.last);
+			this.serviceListPart = this.serviceList.slice(
+				this.serviceListPosition.first,
+				this.serviceListPosition.last
+			);
 		}
 	}
 }

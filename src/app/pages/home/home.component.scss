@@ -182,11 +182,14 @@ mat-card-header {
 // Category slide buttons
 .relatedCategoryButtons {
 	width: 87vw;
+	display: flow-root;
 }
 .slideButtonContainer {
 	width: max-content;
-	margin: auto;
-	display: flex;
+	margin-left: (calc(44vw - 5vw));
+	position: absolute;
+	width: 10vw;
+	
 }
 .slideButton {
 	height: min-content;

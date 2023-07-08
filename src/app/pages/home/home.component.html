@@ -48,18 +48,17 @@
 		<span>Explore</span>
 	</mat-card>
 </div>
-<div class="slideButtonContainer">
-	<button class="slideButton" (click)="leftMove('category')">
-		<img
-			src="./assets/images/customIcons/prev-slide.svg"
-			alt="" />
-	</button>
-	<button class="slideButton" (click)="rightMove('category')">
-		<img
-			src="./assets/images/customIcons/next-slide.svg"
-			alt="" />
-	</button>
-</div>
+<section class="relatedCategoryButtons">
+	<div class="slideButtonContainer">
+		<button class="slideButton" (click)="leftMove('category')">
+			<img src="./assets/images/customIcons/prev-slide.svg" alt="" />
+		</button>
+		<button class="slideButton" (click)="rightMove('category')">
+			<img src="./assets/images/customIcons/next-slide.svg" alt="" />
+		</button>
+	</div>
+</section>
+
 
 <div class="infoCardContainer">
 	<div class="serviceInfoCard">
@@ -119,7 +118,7 @@
 			*ngFor="let category of marketsListPart">
 			<img
 				mat-card-image
-				[src]="category.image" />
+				[src]="category.thumbnail_image" />
 			<h1>{{ category.name }}</h1>
 			<span>Explore</span>
 		</mat-card>
@@ -165,7 +164,7 @@
 			*ngFor="let category of serviceListPart">
 			<img
 				mat-card-image
-				[src]="category.image" />
+				[src]="category.thumbnail_image">
 			<h1>{{ category.name }}</h1>
 			<span>Explore</span>
 		</mat-card>
