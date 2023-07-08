@@ -227,4 +227,24 @@ router.delete('/', checkAuth, async (req, res) => {
 	}
 });
 
+// Get Single
+router.get('/single', async (req, res) => {
+	try {
+		const { id } = req.params.id;
+		if (!id) return res.status(404).json({ message: 'No ID in Request' });
+
+		const foundCat = categories.findOne({ id: id });
+		if (!foundCat)
+			return res.status(404).json({ message: 'no Category found with Id ' + id });
+		if (foundCat) {
+			res
+				.status(200)
+				.json({ message: 'Successfully found category', data: foundCat.info });
+		}
+	} catch (err) {
+		console.log(err);
+		res.status(500).json({ message: 'internal Server Error' });
+	}
+});
+
 module.exports = router;
