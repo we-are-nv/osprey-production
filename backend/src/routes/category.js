@@ -231,18 +231,22 @@ router.delete('/', checkAuth, async (req, res) => {
 router.get('/single', async (req, res) => {
 	try {
 		const id = req.query.id;
-		if (id == undefined)
+		if (id == undefined) {
 			return res.status(400).json({ message: 'No ID in Request' });
-
+		}
 		const foundCat = await categories.findOne({ _id: id });
 		console.log(foundCat);
-		if (!foundCat)
+		if (!foundCat) {
 			return res.status(404).json({ message: 'no Category found with Id ' + id });
+		}
 		if (foundCat) {
 			const s3Base = process.env.S3_BASE;
-			if (foundCat.image) foundCat.image = `${s3Base}${foundCat.image}`;
-			if (foundCat.info.banner_image)
+			if (foundCat.image) {
+				foundCat.image = `${s3Base}${foundCat.image}`;
+			}
+			if (foundCat.info.banner_image) {
 				foundCat.info.banner_image = `${s3Base}${foundCat.info.banner_image}`;
+			}
 
 			res
 				.status(200)
