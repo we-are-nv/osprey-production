@@ -22,6 +22,11 @@ p {
 .blueButton {
 	background-color: #0065e7;
 	color: white;
+	transition: background-color 500ms linear;
+}
+.blueButton:hover{
+	background-color: white ;
+	color: black;
 }
 
 // Top About

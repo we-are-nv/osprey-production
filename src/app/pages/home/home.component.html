@@ -74,7 +74,7 @@
 			class="quoteButton"
 			routerLink="products/landing">
 			See All Products
-			<mat-icon class="buttonIcon" iconPositionEnd>chevron_right</mat-icon>
+			<mat-icon class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
 		</button>
 	</div>
 	<div
@@ -92,10 +92,15 @@
 			routerLink="products/landing">
 			See Our Item Catalogue
 			
-			<mat-icon class="buttonIcon" iconPositionEnd>chevron_right</mat-icon>
+			<mat-icon class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
 		</button>
 	</div>
 </div>
+
+
+
+
+	<!-- Markets Categories -->
 
 <section class="darkSection">
 	<h1 id="topDarkSection">Specialist Market Expertise</h1>
@@ -107,7 +112,6 @@
 		security systems with many years design & integration experience.
 	</p>
 
-	<!-- Markets Categories -->
 	<div
 		class="categoryContainer"
 		fxLayout="row wrap"
@@ -128,7 +132,7 @@
 			class="standardButton blueButton categoryButton"
 			routerLink="markets"
 			mat-raised-button
-			>Explore The Markets ></a
+			>Explore The Markets <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a
 		>
 		<div class="slideButtonContainer">
 			<button class="slideButton" (click)="leftMove('market')">
@@ -144,6 +148,13 @@
 		</div>
 	</div>
 </section>
+
+
+
+<!-- Service Categories -->
+
+
+
 <section class="darkSection">
 	<h1>Service support second to none</h1>
 	<p>
@@ -174,7 +185,7 @@
 			class="standardButton blueButton categoryButton"
 			routerLink="services"
 			mat-raised-button
-			>Explore Our Services ></a
+			>Explore Our Services <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a
 		>
 		<div class="slideButtonContainer">
 			<button class="slideButton" (click)="leftMove('service')">
