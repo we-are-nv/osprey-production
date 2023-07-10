@@ -29,7 +29,6 @@ import { BonusCardComponent } from './pages/general-info-page/bonus-card/bonus-c
 import { CategoryCardComponent } from './keyComponents/category-card/category-card.component';
 import { SimilarProductsComponent } from './keyComponents/similar-products/similar-products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
 	declarations: [
@@ -66,7 +65,7 @@ import { APP_BASE_HREF } from '@angular/common';
 		FormsModule,
 		ReactiveFormsModule
 	],
-	providers: [UrlFormatterPipe, provideClientHydration(), {provide: APP_BASE_HREF, useValue: '/angular-paragon/'}],
+	providers: [UrlFormatterPipe, provideClientHydration()],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
