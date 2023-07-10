@@ -36,20 +36,6 @@ export class HeaderComponent implements OnInit {
 		//     //   tempCategories.push(
 		//     //     {name:category.name, path:'products/'+category._id}
 		//     //     )
-		// Get Product Categories
-
-		// this.productService.getCategories("")
-		// this.categorySub = this.productService.getCategoriesUpdateListener()
-		//   .subscribe((data)=>{
-		//     this.categories = data.cats
-		//     let tempCategories:any[] = []
-
-		//     // this.categories.forEach((category: any) => {
-		//     //   // console.log('hello')
-		//     //   // For each Category create a Nav diretorys
-		//     //   tempCategories.push(
-		//     //     {name:category.name, path:'products/'+category._id}
-		//     //     )
 
 		//     });
 		// this.productNav = tempCategories
