@@ -66,7 +66,7 @@ import { APP_BASE_HREF } from '@angular/common';
 		FormsModule,
 		ReactiveFormsModule
 	],
-	providers: [UrlFormatterPipe, provideClientHydration(), {provide: APP_BASE_HREF, useValue: '/angular-paragon'}],
+	providers: [UrlFormatterPipe, provideClientHydration(), {provide: APP_BASE_HREF, useValue: '/angular-paragon/'}],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
