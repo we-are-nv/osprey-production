@@ -3,8 +3,15 @@
     [mainTitle]="pageData.name"
     [secondaryTitle]="pageData.secondry_title"
     [lowerTitle]="pageData.lower_title"
-    [isButtons]="false"
+    [isButtons]="true"
     [background]="pageData.banner_image"
+
+    [button1Data]="{
+		text: 'Book A Call',
+		path: './contactForm',
+		type: 'white'
+	}"
+
     ></app-hero>
     <!-- <app-breadcrumbs [history]="history"></app-breadcrumbs> -->
 <section class="container" *ngIf="pageData !== undefined">

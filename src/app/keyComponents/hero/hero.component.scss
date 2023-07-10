@@ -27,6 +27,7 @@
 }
 .secondaryTitle{
     font-size:3vw;
+    font-weight: 100;
     font-family:Arial, Helvetica, sans-serif ;
 }
 h4{
@@ -38,8 +39,14 @@ h4{
 // Buttons
 .buttons{
     display: flex;
-    gap: 30px;
+    gap:3%;
 }
+
+.centredHero .buttons{
+    width: 30vw;
+    margin:auto;
+}
+
 
 .titleButton{
     padding: 2rem;

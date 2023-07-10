@@ -1,6 +1,6 @@
 <app-hero
-    mainTitle="Unique products for the most demanding
-    applications"
+    mainTitle="Products"
+    secondaryTitle="For the most demanding applications"
     lowerTitle="Paragon Security offers a comprehensive range of security products intended to meet the demanding requirements of clients in the United Kingdom, Europe and the World."
     [isButtons]="true"
     background="./assets/images/heroBackgrounds/productLanding.png"
@@ -19,7 +19,8 @@
             innovative product range below:</span>
     </div>
     <!-- Categories Grabbed from Component Variable -->
-    <button class="prod-load-button" mat-flat-button color="primary" *ngIf="activeId !== ''" (click)="loadProds()">Show All Products -></button>
+    <button class="prod-load-button" mat-flat-button color="primary" *ngIf="activeId !== ''" (click)="loadProds()">Show All Products <mat-icon class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
+    </button>
     <app-category-card [cards]="categories" (catRouting)="getNewCats($event)"></app-category-card>
 </section>
 
