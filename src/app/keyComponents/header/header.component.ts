@@ -21,23 +21,21 @@ export class HeaderComponent implements OnInit {
 	scrolled = false;
 	navStyle = 'standard';
 
-  ngOnInit() {
-    // Get Product Categories
-
-    // this.productService.getCategories("")
-    // this.categorySub = this.productService.getCategoriesUpdateListener()
-    //   .subscribe((data)=>{
-    //     this.categories = data.cats
-    //     let tempCategories:any[] = []
-
-
-    //     // this.categories.forEach((category: any) => {
-    //     //   // console.log('hello')
-    //     //   // For each Category create a Nav diretorys
-    //     //   tempCategories.push(
-    //     //     {name:category.name, path:'products/'+category._id}
-    //     //     )
 	ngOnInit() {
+		// Get Product Categories
+
+		// this.productService.getCategories("")
+		// this.categorySub = this.productService.getCategoriesUpdateListener()
+		//   .subscribe((data)=>{
+		//     this.categories = data.cats
+		//     let tempCategories:any[] = []
+
+		//     // this.categories.forEach((category: any) => {
+		//     //   // console.log('hello')
+		//     //   // For each Category create a Nav diretorys
+		//     //   tempCategories.push(
+		//     //     {name:category.name, path:'products/'+category._id}
+		//     //     )
 		// Get Product Categories
 
 		// this.productService.getCategories("")
@@ -71,32 +69,32 @@ export class HeaderComponent implements OnInit {
 
 	// }
 
-  async generateNav(){
-    this.finalNav = {
-      home:{path:"", name:"Home"},
-      dropDownMenus:[
-        {
-          name:"Products",
-          headpath:"products/landing",
-          childLinks:  []
-        },
-      ]
-      }
-      this.generateSingleInfo("about","About Us")
-      this.generateSiblingInfo("market", "Markets")
-      this.generateSiblingInfo("service", "Services")
-      this.generateSingleInfo("recourse","Recourses")
+	async generateNav() {
+		this.finalNav = {
+			home: { path: '', name: 'Home' },
+			dropDownMenus: [
+				{
+					name: 'Products',
+					headpath: 'products/landing',
+					childLinks: []
+				}
+			]
+		};
+		this.generateSingleInfo('about', 'About Us');
+		this.generateSiblingInfo('market', 'Markets');
+		this.generateSiblingInfo('service', 'Services');
+		this.generateSingleInfo('recourse', 'Resources');
 
-      this.generateSingleInfo("contact","Contact")
-  }
-  // On scroll detected, Set the toolbar class
-  onWindowScroll(event:any){
-    if(window.pageYOffset > 20){
-      this.scrolled=true;
-    }else{
-      this.scrolled = true;
-    }
-  }
+		this.generateSingleInfo('contact', 'Contact');
+	}
+	// On scroll detected, Set the toolbar class
+	onWindowScroll(event: any) {
+		if (window.pageYOffset > 20) {
+			this.scrolled = true;
+		} else {
+			this.scrolled = true;
+		}
+	}
 
 	generateSingleInfo(type: string, name: string) {
 		let tempSub = this.infoPageService
@@ -114,40 +112,39 @@ export class HeaderComponent implements OnInit {
 						childLinks.push(childLink);
 					});
 
-        let nav = {
-          name: name,
-          headpath: "/info-page/"+type+"/"+pageId,
-          childLinks:childLinks
-        }
-        console.log(nav)
-        this.finalNav.dropDownMenus.push(nav)
-        tempSub.unsubscribe()
-      })
+					let nav = {
+						name: name,
+						headpath: '/info-page/' + type + '/' + pageId,
+						childLinks: childLinks
+					};
+					console.log(nav);
+					this.finalNav.dropDownMenus.push(nav);
+					tempSub.unsubscribe();
+				});
+			});
+	}
 
+	generateSiblingInfo(type: string, name: string) {
+		let tempSub = this.infoPageService
+			.getThumbnails(type)
+			.subscribe((data: any) => {
+				let childLinks: any[] = [];
+				data.forEach((page: any) => {
+					let childLink = {
+						name: page.name,
+						path: '/info-page/' + type + '/' + page._id
+					};
+					childLinks.push(childLink);
+				});
 
-
-    })
-  }
-
-  generateSiblingInfo(type: string, name:string){
-    let tempSub = this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
-
-      let childLinks: any[]= []
-      data.forEach((page:any) => {
-        let childLink = {name:page.name, path:"/info-page/"+type+"/"+page._id}
-          childLinks.push(childLink)
-      });
-
-        let nav = {
-          name: name,
-          headpath: '/'+type+'s',
-          childLinks:childLinks
-        }
-        console.log(nav)
-        this.finalNav.dropDownMenus.push(nav)
-        tempSub.unsubscribe()
-      })
-
-  }
-
+				let nav = {
+					name: name,
+					headpath: '/' + type + 's',
+					childLinks: childLinks
+				};
+				console.log(nav);
+				this.finalNav.dropDownMenus.push(nav);
+				tempSub.unsubscribe();
+			});
+	}
 }
