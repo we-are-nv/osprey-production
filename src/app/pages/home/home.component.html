@@ -1,7 +1,6 @@
 <app-hero
-	upperTitle="So you can relax like you're on a calm sea..."
-	mainTitle="Security solutions for peace of mind"
-	lowerTitle="We provide security requirements of residential, commercial and other clients, with the largest assortment of security cameras and alarm systems installation."
+	mainTitle="Security Solutions you can rely on"
+	lowerTitle="Founded on first class customer service and support - with decades of experience in fire and security systems for some of the world’s most demanding applications - Paragon Security is a UK-based specialist solutions provider you can trust."
 	[isButtons]="true"
 	background="./assets/images/heroBackgrounds/homeHero.png"
 	[button1Data]="{
@@ -37,6 +36,8 @@
 	class="categoryContainer headCategoryContainer"
 	fxLayout="colun wrap"
 	fxLayoutAlign="flex-start">
+
+
 	<mat-card
 		class="categoryCard selectable"
 		routerLink="/search/{{ category._id }}"
@@ -48,18 +49,17 @@
 		<span>Explore</span>
 	</mat-card>
 </div>
-<div class="slideButtonContainer">
-	<button class="slideButton" (click)="leftMove('category')">
-		<img
-			src="./assets/images/customIcons/prev-slide.svg"
-			alt="" />
-	</button>
-	<button class="slideButton" (click)="rightMove('category')">
-		<img
-			src="./assets/images/customIcons/next-slide.svg"
-			alt="" />
-	</button>
-</div>
+<section class="relatedCategoryButtons categoryButtons">
+	<div class="slideButtonContainer">
+		<button class="slideButton" (click)="leftMove('category')">
+			<img src="./assets/images/customIcons/prev-slide.svg" alt="" />
+		</button>
+		<button class="slideButton" (click)="rightMove('category')">
+			<img src="./assets/images/customIcons/next-slide.svg" alt="" />
+		</button>
+	</div>
+</section>
+
 
 <div class="infoCardContainer">
 	<div class="serviceInfoCard">
@@ -75,7 +75,7 @@
 			class="quoteButton"
 			routerLink="products/landing">
 			See All Products
-			<mat-icon class="buttonIcon" iconPositionEnd>chevron_right</mat-icon>
+			<mat-icon class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
 		</button>
 	</div>
 	<div
@@ -93,10 +93,15 @@
 			routerLink="products/landing">
 			See Our Item Catalogue
 			
-			<mat-icon class="buttonIcon" iconPositionEnd>chevron_right</mat-icon>
+			<mat-icon class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
 		</button>
 	</div>
 </div>
+
+
+
+
+	<!-- Markets Categories -->
 
 <section class="darkSection">
 	<h1 id="topDarkSection">Specialist Market Expertise</h1>
@@ -108,7 +113,6 @@
 		security systems with many years design & integration experience.
 	</p>
 
-	<!-- Markets Categories -->
 	<div
 		class="categoryContainer"
 		fxLayout="row wrap"
@@ -119,7 +123,7 @@
 			*ngFor="let category of marketsListPart">
 			<img
 				mat-card-image
-				[src]="category.image" />
+				[src]="category.thumbnail_image" />
 			<h1>{{ category.name }}</h1>
 			<span>Explore</span>
 		</mat-card>
@@ -129,7 +133,7 @@
 			class="standardButton blueButton categoryButton"
 			routerLink="markets"
 			mat-raised-button
-			>Explore The Markets ></a
+			>Explore The Markets <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a
 		>
 		<div class="slideButtonContainer">
 			<button class="slideButton" (click)="leftMove('market')">
@@ -145,6 +149,13 @@
 		</div>
 	</div>
 </section>
+
+
+
+<!-- Service Categories -->
+
+
+
 <section class="darkSection">
 	<h1>Service support second to none</h1>
 	<p>
@@ -165,7 +176,7 @@
 			*ngFor="let category of serviceListPart">
 			<img
 				mat-card-image
-				[src]="category.image" />
+				[src]="category.thumbnail_image">
 			<h1>{{ category.name }}</h1>
 			<span>Explore</span>
 		</mat-card>
@@ -175,7 +186,7 @@
 			class="standardButton blueButton categoryButton"
 			routerLink="services"
 			mat-raised-button
-			>Explore Our Services ></a
+			>Explore Our Services <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a
 		>
 		<div class="slideButtonContainer">
 			<button class="slideButton" (click)="leftMove('service')">

@@ -1,7 +1,7 @@
 .hero{
     margin: 0px;
     height: 100vh;
-    // 
+    background-color: rgba(0, 0, 0, 0.724);
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
@@ -9,7 +9,7 @@
 }
 .titleGroup{
     position:relative;
-    width: 60vw;
+    width: 50%;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 5vw;
@@ -27,17 +27,37 @@
 }
 .secondaryTitle{
     font-size:3vw;
+    font-weight: 100;
     font-family:Arial, Helvetica, sans-serif ;
 }
 h4{
     font-size: 2vh;
     font-family: 'roboto';
+    font-weight: 100;
 }
+
+// Buttons
+.buttons{
+    display: flex;
+    gap:3%;
+}
+
+.centredHero .buttons{
+    width: 30vw;
+    margin:auto;
+}
+
+
 .titleButton{
     padding: 2rem;
     border-radius: 0px;
-    margin-left:1vw;
     font-weight: bolder;
+    transition: background-color 500ms linear;
+}
+.titleButton mat-icon{
+    margin-right: 0.5rem;
+    margin-left: 0.1rem;
+    transition: margin 500ms linear;
 }
 .outline{
     background-color: transparent;
@@ -49,7 +69,7 @@ h4{
     color: white;
 }
 .black{
-    background-color: rgb(0, 0, 0);
+    background-color: #1B1A1A;
     color: white;
 }
 
@@ -73,4 +93,19 @@ h4{
     .secondaryTitle{
         font-size: 5vw;
     }
+}
+
+@media (max-width: 700px) {
+    .buttons{
+        display: grid;
+    }
+}
+
+.titleButton:hover{
+    background-color:#1B1A1A;
+    color: white;
+}
+.titleButton:hover mat-icon{
+    margin-left: 0.5rem;
+    margin-right: 0.1rem;
 }

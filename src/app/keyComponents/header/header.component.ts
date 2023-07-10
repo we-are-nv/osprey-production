@@ -3,21 +3,23 @@ import { InfoPageService } from 'src/app/services/info-page.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+	selector: 'app-header',
+	templateUrl: './header.component.html',
+	styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit{
-  constructor(private productService: ProductService, private infoPageService: InfoPageService){}
-  // Category Stored Data
-  categorySub: any;
-  categories: any = [];
+export class HeaderComponent implements OnInit {
+	constructor(
+		private productService: ProductService,
+		private infoPageService: InfoPageService
+	) {}
+	// Category Stored Data
+	categorySub: any;
+	categories: any = [];
 
-  productNav: any= [];
-  finalNav: any = null;
-  scrolled = false;
-  navStyle= "standard"
-
+	productNav: any = [];
+	finalNav: any = null;
+	scrolled = false;
+	navStyle = 'standard';
 
   ngOnInit() {
     // Get Product Categories
@@ -35,29 +37,39 @@ export class HeaderComponent implements OnInit{
     //     //   tempCategories.push(
     //     //     {name:category.name, path:'products/'+category._id}
     //     //     )
+	ngOnInit() {
+		// Get Product Categories
 
-    //     });
-        // this.productNav = tempCategories
-        this.generateNav()
-        // this.categorySub.unsubscribe()
-    };
+		// this.productService.getCategories("")
+		// this.categorySub = this.productService.getCategoriesUpdateListener()
+		//   .subscribe((data)=>{
+		//     this.categories = data.cats
+		//     let tempCategories:any[] = []
 
+		//     // this.categories.forEach((category: any) => {
+		//     //   // console.log('hello')
+		//     //   // For each Category create a Nav diretorys
+		//     //   tempCategories.push(
+		//     //     {name:category.name, path:'products/'+category._id}
+		//     //     )
 
+		//     });
+		// this.productNav = tempCategories
+		this.generateNav();
+		// this.categorySub.unsubscribe()
+	}
 
+	// generateSingleInfo(type:string){
+	//   this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
+	//     let id = data[0]._id;
+	//     this.infoPageService.getMainPage(id)
+	//     this.infoPageService.getMainUpdateListener().subscribe(data =>{
+	//       let subPages = data.pages;
+	//       console.log(subPages)
+	//     })
+	//   })
 
-
-
-  // generateSingleInfo(type:string){
-  //   this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
-  //     let id = data[0]._id;
-  //     this.infoPageService.getMainPage(id)
-  //     this.infoPageService.getMainUpdateListener().subscribe(data =>{
-  //       let subPages = data.pages;
-  //       console.log(subPages)
-  //     })
-  //   })
-
-  // }
+	// }
 
   async generateNav(){
     this.finalNav = {
@@ -73,7 +85,7 @@ export class HeaderComponent implements OnInit{
       this.generateSingleInfo("about","About Us")
       this.generateSiblingInfo("market", "Markets")
       this.generateSiblingInfo("service", "Services")
-      this.generateSingleInfo("recourse","Resourses")
+      this.generateSingleInfo("recourse","Recourses")
 
       this.generateSingleInfo("contact","Contact")
   }
@@ -86,16 +98,21 @@ export class HeaderComponent implements OnInit{
     }
   }
 
-  generateSingleInfo(type: string, name:string){
-    let tempSub = this.infoPageService.getThumbnails(type).subscribe((data:any)=>{
-      let pageId = data[0]._id;
-      this.infoPageService.navGetPage(pageId).subscribe((data:any)=>{
-        let childLinks: any[]= []
+	generateSingleInfo(type: string, name: string) {
+		let tempSub = this.infoPageService
+			.getThumbnails(type)
+			.subscribe((data: any) => {
+				let pageId = data[0]._id;
+				this.infoPageService.navGetPage(pageId).subscribe((data: any) => {
+					let childLinks: any[] = [];
 
-        data.pages.forEach((subPage: any) => {
-          let childLink = {name:subPage.name, path:"/info-page/"+type+"/"+pageId+"/"+subPage.id}
-          childLinks.push(childLink)
-        });
+					data.pages.forEach((subPage: any) => {
+						let childLink = {
+							name: subPage.name,
+							path: '/info-page/' + type + '/' + pageId + '/' + subPage.id
+						};
+						childLinks.push(childLink);
+					});
 
         let nav = {
           name: name,
