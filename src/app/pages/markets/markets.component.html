@@ -21,7 +21,7 @@
             <mat-card *ngFor="let market of marketsList" class="categoryCard" routerLink="/info-page/markets/{{market._id}}">
                 <img mat-card-image [src]="market.thumbnail_image">
                 <h1>{{market.name}}</h1>
-                <span>Explore</span>
+                <span>Explore <mat-icon>circle</mat-icon> </span>
 
             </mat-card>
         </div>

@@ -8,7 +8,8 @@ section{
     background: linear-gradient(90deg, rgba(0,101,231,1) 0%, rgba(0,101,231,0.1881127450980392) 100%);
     padding-top:5vh ;
     padding-bottom: 5vh;
-    display: flow-root;
+    display: flex;
+    gap: 1%;
 }
 
 mat-card{
@@ -59,8 +60,7 @@ p{
 }
 .half-width{
     position:relative;
-    width: 49%;
-    margin:0.5%;
+    width: 50%;
 }
 
 // Button Themeing
@@ -75,4 +75,10 @@ button{
     display: block;
     height: 30%;
     
+}
+
+@media screen and (max-width: 1000px) {
+    .half-width{
+        width: 100%;
+    }
 }
