@@ -9,7 +9,7 @@
 }
 .titleGroup{
     position:relative;
-    width: 60vw;
+    width: 50%;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 5vw;
@@ -32,11 +32,18 @@
 h4{
     font-size: 2vh;
     font-family: 'roboto';
+    font-weight: 100;
 }
+
+// Buttons
+.buttons{
+    display: flex;
+    gap: 30px;
+}
+
 .titleButton{
     padding: 2rem;
     border-radius: 0px;
-    margin-left:1vw;
     font-weight: bolder;
     transition: background-color 500ms linear;
 }
@@ -78,6 +85,12 @@ h4{
     }
     .secondaryTitle{
         font-size: 5vw;
+    }
+}
+
+@media (max-width: 700px) {
+    .buttons{
+        display: grid;
     }
 }
 

@@ -37,6 +37,8 @@
 	class="categoryContainer headCategoryContainer"
 	fxLayout="colun wrap"
 	fxLayoutAlign="flex-start">
+
+
 	<mat-card
 		class="categoryCard selectable"
 		routerLink="/search/{{ category._id }}"
@@ -48,7 +50,7 @@
 		<span>Explore</span>
 	</mat-card>
 </div>
-<section class="relatedCategoryButtons">
+<section class="relatedCategoryButtons categoryButtons">
 	<div class="slideButtonContainer">
 		<button class="slideButton" (click)="leftMove('category')">
 			<img src="./assets/images/customIcons/prev-slide.svg" alt="" />

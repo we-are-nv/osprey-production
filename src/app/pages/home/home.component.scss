@@ -53,15 +53,19 @@ p {
 	justify-content: flex-start;
 	// overflow-x: scroll;
 	margin: auto;
+	gap: 0.25%;
 }
 
 // Category card styling
 .categoryContainer .categoryCard {
 	width: 24%;
-	margin: 0.25%;
 	border-radius: 0px;
 	text-align: start;
 }
+.relatedCategoryButtons{
+	display: contents;
+}
+
 
 mat-card {
 	border: 1px solid #31353db0;
@@ -191,11 +195,18 @@ mat-card-header {
 }
 .slideButtonContainer {
 	width: max-content;
-	margin-left: (calc(44vw - 5vw));
-	position: absolute;
-	width: 10vw;
-	
+	margin-left:auto;
+	margin-right: auto;
+	position: relative;
 }
+
+
+.categoryButtons{
+	margin-bottom:5rem ;
+	display: contents;
+}
+
+
 .slideButton {
 	height: min-content;
 	background-color: transparent;
@@ -231,5 +242,24 @@ mat-card-header {
 	.categoryButton{
 		visibility: hidden;
 		width: 0px;
+	}
+	.categoryCard:last-child{
+
+		visibility: hidden;
+		height: 0px;
+	}
+
+}
+
+@media only screen and (max-width: 750px) {
+	.categoryCard:nth-last-child(2) {
+			visibility: hidden;
+			height: 0px;
+		}
+}
+@media only screen and (max-width: 500px) {
+	.categoryCard:nth-last-child(3) {
+		visibility: hidden;
+		height: 0px;
 	}
 }
