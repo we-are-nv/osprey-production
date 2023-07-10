@@ -18,7 +18,7 @@
             <mat-card *ngFor="let service of serviceList" class="categoryCard" routerLink="/info-page/service/{{service._id}}">
                 <img mat-card-image [src]="service.thumbnail_image">
                 <h1>{{service.name}}</h1>
-                <span>Explore</span>
+                <span>Explore <mat-icon>circle</mat-icon> </span>
 
             </mat-card>
         </div>

@@ -27,4 +27,6 @@ export class HeroComponent implements OnInit {
 
 	// Styling
 	@Input() centred: boolean;
+
+	@Input() extraStyle: string;
 }

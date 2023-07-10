@@ -87,8 +87,8 @@ mat-card-header {
 }
 
 .categoryCard img {
-	height: 15vh;
-	object-fit: contain;
+		height: 20vh;
+		object-fit: cover;
 	background-color: white;
 }
 .categoryCard h1 {
@@ -102,7 +102,16 @@ mat-card-header {
 	padding-left: 2vh;
 	margin-left: 5%;
 	width: min-content;
+	display: flex;
+	align-items: center;
 }
+
+span mat-icon {
+	color: #093273;
+	margin-left: 3%;
+}
+
+
 @media screen and (max-width: 1000px) {
 	.categoryContainer .categoryCard {
 		width: 31%;
@@ -127,7 +136,7 @@ mat-card-header {
 // Info Cards
 .infoCardContainer {
 	margin-top: 1rem;
-	margin-bottom: -10rem;
+	margin-bottom: -12rem;
 }
 
 .serviceInfoCard {
@@ -137,18 +146,27 @@ mat-card-header {
 	border-radius: 0px;
 	width: 90vw;
 	margin: auto;
-	border: 2px solid #9b9b9b;
+	border: 1px solid #eaeaea;
 	padding: 1vw;
 	min-height: 4rem;
 	background-color: white;
+}
+// blue version of service card
+#blueInfoCard {
+	background-color: #0065e7;
+	color: white;
+
+	border: solid 1px #eaeaea;
+	margin-top: 2rem;
+	// margin
 }
 
 // Service info card Icon styling
 .serviceInfoCard img {
 	object-fit: contain;
 	position: relative;
-
-	height: -webkit-fill-available;
+	width: 3.5rem;
+	margin-left:2%;
 }
 #blueInfoCard img {
 	background: radial-gradient(ellipse at center, #ffffff 70%, #23bc2b00 70.5%);
@@ -164,7 +182,7 @@ mat-card-header {
 }
 .serviceInfoCard .quoteButton {
 	background-color: transparent;
-	border: 3px solid #9b9b9b !important;
+	border: 1px solid #9b9b9b !important;
 	border-radius: 0px;
 	position: relative;
 	margin: auto;
@@ -183,22 +201,16 @@ mat-card-header {
 	border: white solid 1px !important;
 	color: white;
 }
-// blue version of service card
-#blueInfoCard {
-	background-color: #0065e7;
-	color: white;
 
-	border: solid 3px #eaeaea;
-	margin-top: 2rem;
-	// margin
-}
 
 
 // Category slide buttons
 .relatedCategoryButtons {
+	
 	display: flow-root;
 }
 .slideButtonContainer {
+	margin-top: 1vh !important;	
 	width: max-content;
 	margin-left:auto;
 	margin-right: auto;
@@ -260,6 +272,12 @@ mat-card-header {
 	.categoryCard:nth-last-child(2) {
 			visibility: hidden;
 			height: 0px;
+		}
+		.briefAbout{
+			display: grid !important;
+		}
+		.briefAbout *{
+			width: 90vw  !important;
 		}
 }
 @media only screen and (max-width: 500px) {

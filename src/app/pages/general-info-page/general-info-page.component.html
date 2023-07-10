@@ -5,6 +5,8 @@
     [lowerTitle]="pageData.lower_title"
     [isButtons]="true"
     [background]="pageData.banner_image"
+    extraStyle = "shorterHero"
+
 
     [button1Data]="{
 		text: 'Book A Call',
@@ -34,7 +36,7 @@
                 <a class="nav-button" *ngFor="let page of siblingPages" [routerLink]="'/info-page/'+pageType+'/'+page._id" routerLinkActive="page-active">{{page.name}} <img class="nav-button-icon" src="./assets/images/customIcons/right-arrow-icon.svg" alt=""></a>
             </div>
         </mat-card>
-        <app-bonus-card *ngFor="let card of bonusCards" [card]="card.id"></app-bonus-card>
+        <app-bonus-card [card]="pageType"></app-bonus-card>
     </section>
 
 

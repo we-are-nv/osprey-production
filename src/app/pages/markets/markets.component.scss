@@ -15,6 +15,7 @@
     justify-content: flex-start;
     width: 80vw;
     margin:auto;
+    justify-content: space-between !important;
 }
 .categoryContainer .categoryCard{
     width: 22%;
@@ -35,8 +36,8 @@ mat-card-header{
 }
 
 .categoryCard img{
-    height: 15vh;
-    object-fit: contain;
+    height: 20vh;
+    object-fit: cover;
 }
 .categoryCard h1{
     padding-left: 2vh;
@@ -46,7 +47,15 @@ mat-card-header{
     padding-bottom: 2vh;
     padding-left: 2vh;
     margin-left: 5%;
+    display: flex;
+    align-items: center;
 }
+
+span mat-icon {
+    color: #093273;
+    margin-left: 3%;
+}
+
 @media screen and (max-width: 1000px) {
     .categoryContainer .categoryCard{
         width: 31%;

@@ -1,17 +1,37 @@
-<mat-card [class]="'bonus-card bonus-card-'+ card.color">
-    <mat-card-header>
-        <mat-card-title class="bonus-card-title">
-            {{card.title}}
-        </mat-card-title>
-    </mat-card-header>
-    <div *ngFor="let element of card.elements">
-        <!-- IF ELEMENT IS JUST TEXT -->
-        <p *ngIf="element.type == 'text'">{{element.source.text}}</p>
 
-        <!-- IF ELEMENT IS LINK/BUTTON -->
-        <section *ngIf="element.type == 'button'" class="nav-button-container">
-            <a [class]="'nav-button nav-color-when-'+card.color" >{{element.source.text}} <img class="nav-button-icon" [src]="element.source.icon" alt=""></a>
-        </section>
-        
-    </div> 
-</mat-card>
+<div *ngIf="card == 'about'">
+    <mat-card class="bonus-card bonus-card-blue">
+        <mat-card-header>
+            <mat-card-title>
+                Tailored Solutions For
+                Your Security Priorities
+            </mat-card-title>
+        </mat-card-header>
+        <p>We will design, install, and upgrade
+            solutions to meet business specific
+            needs and budgets from large.</p>
+
+        <h4><mat-icon>phone</mat-icon> +44 (0)1245 210 914</h4>
+        <div class="buttons">
+            <div class="nav-button-container">
+                <a class="nav-button">Get Started Now <img class="nav-button-icon"
+                        src="./assets/images/customIcons/right-arrow-icon.svg" alt=""></a>
+            </div>
+        </div>
+    </mat-card>
+    
+
+    <mat-card class="bonus-card">
+        <mat-card-header>
+            <mat-card-title>
+                Download Brochure
+            </mat-card-title>
+        </mat-card-header>
+        <div class="buttons">
+            <div class="nav-button-container">
+                <a class="nav-button nav-color-when-blue"> <img class="nav-button-icon-left" src="./assets/images/customIcons/pdfIcon.svg" alt=""> Our Report 2023</a>
+                <a class="nav-button nav-color-when-black"> <img class="nav-button-icon-left" src="./assets/images/customIcons/pdfIcon.svg" alt="">Get Started Now </a>
+            </div>
+        </div>
+    </mat-card>
+</div>

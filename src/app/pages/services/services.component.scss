@@ -17,8 +17,8 @@
     margin:auto;
 }
 .categoryContainer .categoryCard{
-    width: 22%;
-    margin: 1%;
+    width: 24%;
+    margin:0.3%;
     border-radius:0px ;
     text-align: start;
 }
@@ -35,8 +35,8 @@ mat-card-header{
 }
 
 .categoryCard img{
-    width: 100%;
-    margin: auto;
+    height: 20vh;
+    object-fit: cover;
 }
 .categoryCard h1{
     padding-left: 2vh;
@@ -51,7 +51,15 @@ h3{
     padding-bottom: 2vh;
     padding-left: 2vh;
     margin-left: 5%;
+    display: flex;
+    align-items: center;
 }
+
+span mat-icon {
+    color: #093273;
+    margin-left: 3%;
+}
+
 @media screen and (max-width: 1000px) {
     .categoryContainer .categoryCard{
         width: 31%;

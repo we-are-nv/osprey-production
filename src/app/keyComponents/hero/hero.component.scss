@@ -7,6 +7,9 @@
     color: white;
     display: flex;
 }
+.shorterHero{
+    height: 70vh;
+}
 .titleGroup{
     position:relative;
     width: 50%;
@@ -98,6 +101,7 @@ h4{
 @media (max-width: 700px) {
     .buttons{
         display: grid;
+        gap:20px;
     }
 }
 
