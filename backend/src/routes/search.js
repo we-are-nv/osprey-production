@@ -18,12 +18,6 @@ router.get('/', async (req, res) => {
 
 		for (const collectionName of collectionNames) {
 			const collectionModel = mongoose.model(collectionName);
-			// // let results;
-			// if (collectionName === 'product_models' || 'category' || ) {
-			// 	fieldName = 'name'
-			// } else if (collectionName === 'info') {
-			// 	fieldName === 'name'
-			// }
 
 			let fieldName;
 			let results;
@@ -54,6 +48,7 @@ router.get('/', async (req, res) => {
 					_id: 0,
 					'info.heading': 0,
 					'info.subheading': 0
+					// 'parent': 0
 				};
 			}
 			if (collectionName === 'info') {
@@ -70,7 +65,7 @@ router.get('/', async (req, res) => {
 					elements: 1
 				};
 			}
-			results = await product_info.find(
+			results = await collectionModel.find(
 				{
 					[fieldName]: { $regex: searchQuery, $options: 'i' }
 				},

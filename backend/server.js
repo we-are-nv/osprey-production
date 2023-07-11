@@ -17,7 +17,7 @@ const catRoute = require('./src/routes/category');
 const modelRoute = require('./src/routes/model');
 const infoRoute = require('./src/routes/information');
 const authRoute = require('./src/routes/auth');
-const searchRoute = require('./src/routes/search')
+const searchRoute = require('./src/routes/search');
 const mailRoute = require('./src/routes/mail');
 
 const PORT = process.env.PORT || 3030;
