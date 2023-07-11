@@ -70,6 +70,10 @@ export class ProductService {
 			});
 	}
 
+	getAllCategories() {
+		return this.http.get<any>(this.API_URL + '/products/categories/all-categories');
+	}
+
 	// Loading Single Product
 
 	getSingleProductUpdateListener() {

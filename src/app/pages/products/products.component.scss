@@ -5,16 +5,18 @@
 }
 // Display and Control Products
 .ProductsView .productsContainer {
-    display: flex-start;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
     width: 75%;
+    grid-auto-rows: min-content;
+
 }
-.productsContainer .productCard{
-    width: 20%;
-    min-height:30vh ;
-    margin: 5%;
+.productsContainer > .productCard{
+    width: 28%;
+    margin: 2.5%;
+    height: 35vh;
     border-radius:0px ;
     border: 0px;
     text-align: start;
@@ -24,7 +26,7 @@
 .productCard img{
     height: 20vh;
     object-fit: contain;
-    margin: auto;
+    background: white !important;
 }
 .porduct-image-container{
     height: 15vh;
@@ -38,6 +40,20 @@
 .productCard p{
     margin-left:15px;
 }
+
+.productCard span {
+    padding-bottom: 2vh;
+    margin-left: 5%;
+    width: auto;
+    display: flex;
+    margin-top: auto;
+    gap: 5%;
+}
+
+span mat-icon {
+    color: #093273;
+}
+
 @media screen and (max-width: 850px) {
     .productsContainer .productCard{
         width: 35%;
