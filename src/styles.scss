@@ -70,3 +70,13 @@
 .categoryCard.noBoxShadow {
   box-shadow: none !important;
 }
+
+.categoryCard, .productCard{
+  transition: background-color 500ms linear; 
+}
+.categoryCard:hover, .productCard:hover{
+  
+  background-color: #0064e7ae;
+  color: white;
+  border: 1px solid #eaeaea !important;
+}

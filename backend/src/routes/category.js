@@ -49,12 +49,22 @@ router.get('/', async (req, res, next) => {
 	});
 });
 
-router.get('/all-categories', checkAuth, async (req, res) => {
+router.get('/all-categories', async (req, res) => {
 	try {
 		const allCategories = await categories.find({});
 		if (!allCategories) {
 			return res.status(404).json({ message: 'No categories found' });
 		} else {
+			allCategories.forEach(foundCat => {
+				const s3Base = process.env.S3_BASE;
+				if (foundCat.image) {
+					foundCat.image = `${s3Base}${foundCat.image}`;
+				}
+				if (foundCat.info.banner_image) {
+					foundCat.info.banner_image = `${s3Base}${foundCat.info.banner_image}`;
+				}
+			});
+
 			res.status(200).json({
 				message: 'Successfully llsted all product categories',
 				data: allCategories
