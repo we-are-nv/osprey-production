@@ -78,6 +78,7 @@ mat-card {
 	border-radius: 0%;
 	background: transparent;
 	box-shadow: none;
+	height: 35vh;
 }
 
 mat-card-header {
@@ -101,9 +102,10 @@ mat-card-header {
 	padding-bottom: 2vh;
 	padding-left: 2vh;
 	margin-left: 5%;
-	width: min-content;
+	width: auto;
 	display: flex;
-	align-items: center;
+	margin-top: auto;
+	gap: 5%;
 }
 
 span mat-icon {
@@ -136,7 +138,7 @@ span mat-icon {
 // Info Cards
 .infoCardContainer {
 	margin-top: 1rem;
-	margin-bottom: -12rem;
+	margin-bottom: -20vh;
 }
 
 .serviceInfoCard {
@@ -150,6 +152,7 @@ span mat-icon {
 	padding: 1vw;
 	min-height: 4rem;
 	background-color: white;
+	height: 7.5vh;
 }
 // blue version of service card
 #blueInfoCard {
@@ -206,11 +209,10 @@ span mat-icon {
 
 // Category slide buttons
 .relatedCategoryButtons {
-	
+	margin-top:1.31% ;
 	display: flow-root;
 }
 .slideButtonContainer {
-	margin-top: 1vh !important;	
 	width: max-content;
 	margin-left:auto;
 	margin-right: auto;

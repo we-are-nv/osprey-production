@@ -12,49 +12,42 @@ import { GeneralInfoPageComponent } from './pages/general-info-page/general-info
 import { SubPageComponent } from './pages/general-info-page/sub-page/sub-page.component';
 
 const routes: Routes = [
-  // General Pages
-  {path:'', component:HomeComponent},
+	// General Pages
+	{ path: '', component: HomeComponent },
 
-  // Service Pages
-  {path:'services', component:ServicesComponent},
+	// Service Pages
+	{ path: 'services', component: ServicesComponent },
 
-  // Market Pages
-  {path:'markets', component:MarketsComponent},
+	// Market Pages
+	{ path: 'markets', component: MarketsComponent },
 
-  // InfoPage
-  {path:'info-page/:type/:id',
-  component: GeneralInfoPageComponent,
-  children:[
-    {path:':childId', component:SubPageComponent}
-  ]
-},
+	// InfoPage
+	{
+		path: 'info-page/:type/:id',
+		component: GeneralInfoPageComponent,
+		children: [{ path: ':childId', component: SubPageComponent }]
+	},
 
+	// Product pages
+	{ path: 'products/landing', component: ProductLandingComponent },
+	{ path: 'search/:category', component: ProductsComponent },
+	{ path: 'product/:id', component: ProductViewComponent },
 
-  // Product pages
-  {path:'products/landing', component:ProductLandingComponent},
-  {path:'search/:category', component:ProductsComponent},
-  {path:'product/:id', component:ProductViewComponent},
+	// Product pages (Friendly)
+	{ path: 'home/products/landing', component: ProductLandingComponent },
+	{ path: 'home/search/:category', component: ProductsComponent },
+	{ path: 'home/product/:id', component: ProductViewComponent },
 
-    // Product pages (Friendly)
-    {path:'home/products/landing', component:ProductLandingComponent},
-    {path:'home/search/:category', component:ProductsComponent},
-    {path:'home/product/:id', component:ProductViewComponent},
+	// Contact Page
+	{ path: 'contactFrom', component: QuoteFormComponent },
 
-
-
-  // Contact Page
-  {path:'contactFrom', component:QuoteFormComponent},
-
-  // Error Page
-  {path:'error', component:ErrorPageComponent},
-  // {path:'**', redirectTo:""}
+	// Error Page
+	{ path: 'error', component: ErrorPageComponent }
+	// {path:'**', redirectTo:""}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabledBlocking',
-    scrollPositionRestoration: 'enabled'
-})],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -29,6 +29,7 @@ import { BonusCardComponent } from './pages/general-info-page/bonus-card/bonus-c
 import { CategoryCardComponent } from './keyComponents/category-card/category-card.component';
 import { SimilarProductsComponent } from './keyComponents/similar-products/similar-products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ScrollService } from './services/scrollService/scroll.service';
 
 @NgModule({
 	declarations: [
@@ -65,7 +66,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 		FormsModule,
 		ReactiveFormsModule
 	],
-	providers: [UrlFormatterPipe, provideClientHydration()],
+	providers: [UrlFormatterPipe, provideClientHydration(), ScrollService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
