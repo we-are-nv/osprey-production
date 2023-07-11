@@ -17,6 +17,7 @@ const catRoute = require('./src/routes/category');
 const modelRoute = require('./src/routes/model');
 const infoRoute = require('./src/routes/information');
 const authRoute = require('./src/routes/auth');
+const searchRoute = require('./src/routes/search')
 const mailRoute = require('./src/routes/mail');
 
 const PORT = process.env.PORT || 3030;
@@ -120,6 +121,8 @@ app.use('/paragon/api/info', infoRoute);
 //Category Routes
 app.use('/paragon/api/products/category', catRoute);
 app.use('/paragon/api/products/categories', catRoute);
+// Search route
+app.use('/paragon/api/search', searchRoute);
 // Mail route
 app.use('/paragon/api/mail', mailRoute);
 
