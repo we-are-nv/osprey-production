@@ -28,7 +28,7 @@ mat-toolbar{
     width:10vw;
     height: 10vh;
     object-fit: cover;
-    
+    cursor: click;
 }
 .navLinks{
     margin: auto;
@@ -133,4 +133,22 @@ mat-toolbar{
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
     }
+}
+
+
+// SearchBar
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+}
+
+/* Font color */
+input.mat-input-element {
+    color: white;
+}
+.searchBar{
+    display: flex;
+    gap: 5%;
+}
+.searchBar mat-form-field{
+   
 }
