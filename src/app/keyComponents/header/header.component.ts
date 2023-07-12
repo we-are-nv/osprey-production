@@ -56,22 +56,32 @@ export class HeaderComponent implements OnInit {
 	// }
 
 	async generateNav() {
-		this.finalNav = {
-			home: { path: '', name: 'Home' },
-			dropDownMenus: [
-				{
-					name: 'Products',
-					headpath: 'products/landing',
-					childLinks: []
-				}
-			]
-		};
+		this.finalNav = {};
 		this.generateSingleInfo('about', 'About Us');
 		this.generateSiblingInfo('market', 'Markets');
 		this.generateSiblingInfo('service', 'Services');
-		this.generateSingleInfo('recourse', 'Resources');
+		this.generateSingleInfo('resource', 'Resources');
 
 		this.generateSingleInfo('contact', 'Contact');
+		this.categorySub = this.productService.getAllCategories().subscribe(data => {
+			let childLinks: any[] = [];
+			data.data.forEach((subPage: any) => {
+				let childLink = {
+					name: subPage.name,
+					path: '/search/' + subPage._id
+				};
+				childLinks.push(childLink);
+			});
+			let nav = {
+				name: 'Products',
+				headpath: '/products/landing',
+				childLinks: childLinks
+			};
+			console.log(nav);
+
+			this.finalNav['product'] = nav;
+			this.categorySub.unsubscribe();
+		});
 	}
 	// On scroll detected, Set the toolbar class
 	onWindowScroll(event: any) {
@@ -104,7 +114,8 @@ export class HeaderComponent implements OnInit {
 						childLinks: childLinks
 					};
 					console.log(nav);
-					this.finalNav.dropDownMenus.push(nav);
+
+					this.finalNav[type] = nav;
 					tempSub.unsubscribe();
 				});
 			});
@@ -129,7 +140,10 @@ export class HeaderComponent implements OnInit {
 					childLinks: childLinks
 				};
 				console.log(nav);
-				this.finalNav.dropDownMenus.push(nav);
+				this.finalNav[type] = nav;
+
+				console.log(this.finalNav);
+
 				tempSub.unsubscribe();
 			});
 	}

@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit {
 
 			this.productService.getCategories(this.categoryId);
 
-			this.productService.getProducts({ category: this.categoryId, page: 1 });
+			this.productService.getProducts({ category: this.categoryId, page: 1, limit:10 });
 
 			// Breadcrumb Setup
 			this.history = [
@@ -65,7 +65,7 @@ export class ProductsComponent implements OnInit {
 
 	changeType(value: any) {
 		this.category = value;
-		this.productService.getProducts({ category: this.categoryId, page: 1 });
+		this.productService.getProducts({ category: this.categoryId, page: 1, limit: 10 });
 	}
 	loadProduct(id: any) {
 		this.router.navigate([`product/${id}`]);

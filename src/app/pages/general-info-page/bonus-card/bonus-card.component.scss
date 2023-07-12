@@ -5,7 +5,7 @@
 .bonus-card{
     margin-top: 3vh;
     border-radius: 0px;
-    padding:2vw;
+    padding:1.5rem;
 }
 .bonus-card mat-card-title{
     font-size: large;
@@ -57,6 +57,31 @@
     background-color: #0065E7;
     color: white;
 }
+.nav-color-when-black {
+    background-color: #1B1A1A;
+    color: white;
+}
+
+// File Button
+
+.file-button{
+    text-decoration: none;
+    margin-top: 2%;
+    font-family: "Roboto";
+    font-size: small;
+    font-style: bold;
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+.file-button-icon{
+    width: 15%;
+    padding: 5%;
+    background-color: #ffffff45;
+}
+
+
+
 h4{
     display: flex;
     align-items: center;

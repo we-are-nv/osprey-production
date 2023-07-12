@@ -19,9 +19,11 @@ export class ScrollService {
 				);
 
 				if (!shouldScrollToTop) {
-					window.scrollTo(0, 0);
+					let element = document.getElementById('hero');
+					element?.scrollIntoView({ behavior: 'smooth' });
 				} else {
-					window.scrollTo(0, 500);
+					let element = document.getElementById('main-info');
+					element?.scrollIntoView({ behavior: 'smooth' });
 				}
 			}
 		});

@@ -48,12 +48,6 @@ export class GeneralInfoPageComponent implements OnInit {
 			});
 
 			this.infoService.getMainPage(this.pageId);
-
-			// this._Activatedroute.firstChild?.params.subscribe(params => {
-			//   this.activeSubPageId = params["childId"];
-			//   this.activeSubPageName = this.subPages.find(i => i.id === this.activeSubPageId)
-			//   this.breadCrumbUpdate()
-			// });
 		});
 	}
 
