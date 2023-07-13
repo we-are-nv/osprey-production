@@ -1,6 +1,6 @@
 
 <mat-drawer-container class="example-container" hasBackdrop="true">
-	<mat-drawer mode="over" opened #drawer (click)="drawer.toggle()">
+	<mat-drawer mode="over" closed #drawer (click)="drawer.toggle()">
 		<div class="logo">
 			<img src="./assets/images/Paragon_V3-white.png" alt="">
 		</div>
@@ -8,8 +8,8 @@
 		<div *ngIf="finalNav.about">
 			<a mat-button class="nav-button" [routerLink]="finalNav.about.headpath"> {{finalNav.about.name}}</a>
 		</div>
-		
-		
+
+
 		<!-- Product -->
 		<div *ngIf="finalNav.product">
 			<a mat-button class="nav-button" [matMenuTriggerFor]='matproductmenu'
@@ -19,8 +19,8 @@
 					[routerLink]="link.path">{{link.name}}</a>
 			</mat-menu>
 		</div>
-		
-		
+
+
 		<!-- Markets -->
 		<div *ngIf="finalNav.market">
 			<a mat-button class="nav-button" [matMenuTriggerFor]='matmarketmenu'
@@ -30,7 +30,7 @@
 					[routerLink]="link.path">{{link.name}}</a>
 			</mat-menu>
 		</div>
-		
+
 		<!-- Services -->
 		<div *ngIf="finalNav.service">
 			<a mat-button class="nav-button" [matMenuTriggerFor]='matservicemenu'
@@ -49,15 +49,15 @@
 					[routerLink]="link.path">{{link.name}}</a>
 			</mat-menu>
 		</div>
-		
-		
+
+
 		<!-- About -->
 		<div *ngIf="finalNav.contact">
 			<a mat-button class="nav-button" [routerLink]="finalNav.contact.headpath"> {{finalNav.contact.name}}</a>
 		</div>
 
 
-	
+
 		</mat-drawer>
 		<mat-drawer-content>
 			<app-header [finalNav]="finalNav" (toggleNav)="drawer.toggle()"></app-header>
