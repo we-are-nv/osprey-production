@@ -1,3 +1,68 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+
+<mat-drawer-container class="example-container" hasBackdrop="true">
+	<mat-drawer mode="over" opened #drawer (click)="drawer.toggle()">
+		<div class="logo">
+			<img src="./assets/images/Paragon_V3-white.png" alt="">
+		</div>
+		<!-- About -->
+		<div *ngIf="finalNav.about">
+			<a mat-button class="nav-button" [routerLink]="finalNav.about.headpath"> {{finalNav.about.name}}</a>
+		</div>
+		
+		
+		<!-- Product -->
+		<div *ngIf="finalNav.product">
+			<a mat-button class="nav-button" [matMenuTriggerFor]='matproductmenu'
+				#menuTrigger="matMenuTrigger"> {{finalNav.product.name}}</a>
+			<mat-menu #matproductmenu="matMenu" class="navLink">
+				<a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.product.childLinks"
+					[routerLink]="link.path">{{link.name}}</a>
+			</mat-menu>
+		</div>
+		
+		
+		<!-- Markets -->
+		<div *ngIf="finalNav.market">
+			<a mat-button class="nav-button" [matMenuTriggerFor]='matmarketmenu'
+				#menuTrigger="matMenuTrigger"> {{finalNav.market.name}}</a>
+			<mat-menu #matmarketmenu="matMenu" class="navLink">
+				<a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.market.childLinks"
+					[routerLink]="link.path">{{link.name}}</a>
+			</mat-menu>
+		</div>
+		
+		<!-- Services -->
+		<div *ngIf="finalNav.service">
+			<a mat-button class="nav-button" [matMenuTriggerFor]='matservicemenu'
+				#menuTrigger="matMenuTrigger"> {{finalNav.service.name}}</a>
+			<mat-menu #matservicemenu="matMenu" class="navLink">
+				<a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.market.childLinks"
+					[routerLink]="link.path">{{link.name}}</a>
+			</mat-menu>
+		</div>
+		<!-- Services -->
+		<div *ngIf="finalNav.resource">
+			<a mat-button class="nav-button" [matMenuTriggerFor]='matresourcemenu'
+				#menuTrigger="matMenuTrigger"> {{finalNav.resource.name}}</a>
+			<mat-menu #matresourcemenu="matMenu" class="navLink">
+				<a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.resource.childLinks"
+					[routerLink]="link.path">{{link.name}}</a>
+			</mat-menu>
+		</div>
+		
+		
+		<!-- About -->
+		<div *ngIf="finalNav.contact">
+			<a mat-button class="nav-button" [routerLink]="finalNav.contact.headpath"> {{finalNav.contact.name}}</a>
+		</div>
+
+
+	
+		</mat-drawer>
+		<mat-drawer-content>
+			<app-header [finalNav]="finalNav" (toggleNav)="drawer.toggle()"></app-header>
+			<router-outlet></router-outlet>
+			<app-footer></app-footer>
+		</mat-drawer-content>
+</mat-drawer-container>
+
