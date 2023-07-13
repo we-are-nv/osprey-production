@@ -27,5 +27,74 @@ router-outlet{
 
 
 
+// Side Nav
 
-// Make object look slectable
+.logo {
+
+    margin: 2vh;
+    margin-bottom: 5vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.logo img{
+    width: 60vw;
+    height: 30vh;
+    object-fit: cover;
+    margin-left: 20vw;
+}
+
+mat-drawer {
+    width: 100vw;
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    background: rgb(25, 25, 25);
+}
+
+mat-drawer-content {
+    height: 100vh;
+}
+
+.upper-nav {
+    width: 100%;
+    height: 7.5vh;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+}
+
+.menu-open-button {
+    font-size: 5vh;
+    height: 10vh;
+    width: 10vh;
+    margin-top: 1vh;
+    margin-left: 1vh;
+}
+
+.upper-nav button {
+    margin: auto;
+    margin-right: 5vw;
+    height: 80%;
+}
+
+.nav-button {
+    width: 100%;
+    height: 7.5vh;
+    background-color: rgb(25, 25, 25);
+    color: white !important;
+    border-radius: 0px;
+}
+
+.nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.455);
+}
+
+.nav-button-text {
+    color: white;
+    font-size: 8vw;
+}
+
+.active-nav-button {
+
+    background-color: #0065E7;
+}

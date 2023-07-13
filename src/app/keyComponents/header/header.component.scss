@@ -149,6 +149,25 @@ input.mat-input-element {
     display: flex;
     gap: 5%;
 }
-.searchBar mat-form-field{
-   
+
+
+// Open Side Nav
+.menuOpen{
+    color: white;
+    font-size: 3vw;
+    visibility: hidden;
+}
+@media screen and (max-width: 767px) {
+    .menuOpen{
+        visibility: visible;
+    }
+    .navLinks{
+        visibility: hidden;
+    }
+    #navLogo{
+        width: 15vw;
+    }
+    .searchBar{
+        visibility: hidden;
+    }
 }
