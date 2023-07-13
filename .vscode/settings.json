@@ -11,6 +11,9 @@
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
+	"[html]": {
+		"editor.defaultFormatter": "stringham.angular-template-formatter"
+	},
 	"editor.formatOnPaste": true,
 	"html.format.extraLiners": "",
 	// PRETTIER
@@ -25,5 +28,8 @@
 	"editor.detectIndentation": true,
 	"editor.tabSize": 2,
 	"editor.insertSpaces": false,
-	"prettier.printWidth": 84
+	"prettier.printWidth": 84,
+	// Angular HTML Template Formatter
+	"angular-template-formatter.indentWidth": 2,
+	"angular-template-formatter.useSpaces": false
 }

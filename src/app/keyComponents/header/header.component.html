@@ -1,88 +1,197 @@
-<mat-toolbar *ngIf="this.finalNav !== null"
-    [ngClass]="scrolled ? 'scrolledToolbar': 'defaultToolbar'"
-    class="{{navStyle}}"
-    (window:scroll)="onWindowScroll($event)">
-
-
-    <div class="menuOpen">
-        <mat-icon (click)="toggle()" class="menu-open-button">menu</mat-icon>
-    </div>
-
-    <img id="navLogo" src="./assets/images/Paragon_V3-white.png" alt=""  routerLink="">
-    <div class="navLinks" >
-        <!-- (mouseenter)="menuTrigger.openMenu();"
+<mat-toolbar
+	*ngIf="this.finalNav !== null"
+	[ngClass]="scrolled ? 'scrolledToolbar': 'defaultToolbar'"
+	class="{{navStyle}}"
+	(window:scroll)="onWindowScroll($event)"
+>
+	<div class="menuOpen">
+		<mat-icon
+			(click)="toggle()"
+			class="menu-open-button"
+		>
+			menu
+		</mat-icon>
+	</div>
+	<img
+		id="navLogo"
+		src="./assets/images/Paragon_V3-white.png"
+		alt
+		routerLink
+	>
+	<div class="navLinks">
+		<!-- (mouseenter)="menuTrigger.openMenu();"
                 (mouseleave)="menuTrigger.closeMenu()" -->
-       
-
-            <!-- About -->
-        <div *ngIf="finalNav.about"
+		<!-- About -->
+		<div *ngIf="finalNav.about">
+			<a
+				mat-button
+				class="nav-button"
+				class="navLink"
+				[routerLink]="finalNav.about.headpath"
 			>
-            <a mat-button class="nav-button" class="navLink" [routerLink]="finalNav.about.headpath"> {{finalNav.about.name}}</a>
-        </div>
-
-
-        <!-- Product -->
-        <div *ngIf="finalNav.product"
+				{{finalNav.about.name}}
+			</a>
+		</div>
+		<!-- Product -->
+		<div *ngIf="finalNav.product">
+			<a
+				mat-button
+				class="nav-button"
+				class="navLink"
+				[matMenuTriggerFor]='matproductmenu'
+				[routerLink]="finalNav.product.headpath"
+				#menuTrigger="matMenuTrigger"
 			>
-            <a mat-button class="nav-button" class="navLink" [matMenuTriggerFor]='matproductmenu' [routerLink]="finalNav.product.headpath"
-                #menuTrigger="matMenuTrigger"> {{finalNav.product.name}}</a>
-            <mat-menu #matproductmenu="matMenu" class="navLink">
-                <a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.product.childLinks"
-                    [routerLink]="link.path">{{link.name}}</a>
-            </mat-menu>
-        </div>
-
-
-        <!-- Markets -->
-        <div *ngIf="finalNav.market">
-            <a mat-button class="navLink" class="nav-button" [matMenuTriggerFor]='matmarketmenu' [routerLink]="finalNav.market.headpath"
-                #menuTrigger="matMenuTrigger"> {{finalNav.market.name}}</a>
-            <mat-menu #matmarketmenu="matMenu" class="navLink">
-                <a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.market.childLinks"
-                    [routerLink]="link.path">{{link.name}}</a>
-            </mat-menu>
-        </div>
-
-        <!-- Services -->
-        <div *ngIf="finalNav.service">
-            <a mat-button class="navLink" class="nav-button" [matMenuTriggerFor]='matservicemenu' [routerLink]="finalNav.service.headpath"
-                #menuTrigger="matMenuTrigger"> {{finalNav.service.name}}</a>
-            <mat-menu #matservicemenu="matMenu" class="navLink">
-                <a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.market.childLinks"
-                    [routerLink]="link.path">{{link.name}}</a>
-            </mat-menu>
-        </div>
-        <!-- Services -->
-        <div *ngIf="finalNav.resource"
-			class="nav-button">
-            <a mat-button class="navLink" class="nav-button" [matMenuTriggerFor]='matresourcemenu' [routerLink]="finalNav.resource.headpath"
-                #menuTrigger="matMenuTrigger"> {{finalNav.resource.name}}</a>
-            <mat-menu #matresourcemenu="matMenu" class="navLink">
-                <a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.resource.childLinks"
-                    [routerLink]="link.path">{{link.name}}</a>
-            </mat-menu>
-        </div>
-
-
-        <!-- About -->
-        <div *ngIf="finalNav.contact" 
-			class="nav-button">
-            <a mat-button class="navLink" class="nav-button" [routerLink]="finalNav.contact.headpath"> {{finalNav.contact.name}}</a>
-        </div>
-
-    </div>
-
-    <div class="searchBar">
-
-        <mat-icon>search</mat-icon>
-    </div>
-    <div class="contactDetails">
-            <img class="contactIconRing" src="./assets/images/customIcons/contactIcon.svg" alt="">
-
-        <div>
-            <p class="mat-headline-3">+44 (0)1245 280 448</p>
-            <p class="mat-headline-4">info@paragon-security.com</p>
-        </div>
-
-    </div>
+				{{finalNav.product.name}}
+			</a>
+			<mat-menu
+				#matproductmenu="matMenu"
+				class="navLink"
+			>
+				<a
+					class="navMenuDropdownItem"
+					mat-menu-item
+					*ngFor="let link of finalNav.product.childLinks"
+					[routerLink]="link.path"
+				>
+					{{link.name}}
+				</a>
+			</mat-menu>
+		</div>
+		<!-- Markets -->
+		<div *ngIf="finalNav.market">
+			<a
+				mat-button
+				class="navLink"
+				class="nav-button"
+				[matMenuTriggerFor]='matmarketmenu'
+				[routerLink]="finalNav.market.headpath"
+				#menuTrigger="matMenuTrigger"
+			>
+				{{finalNav.market.name}}
+			</a>
+			<mat-menu
+				#matmarketmenu="matMenu"
+				class="navLink"
+			>
+				<a
+					class="navMenuDropdownItem"
+					mat-menu-item
+					*ngFor="let link of finalNav.market.childLinks"
+					[routerLink]="link.path"
+				>
+					{{link.name}}
+				</a>
+			</mat-menu>
+		</div>
+		<!-- Services -->
+		<div *ngIf="finalNav.service">
+			<a
+				mat-button
+				class="navLink"
+				class="nav-button"
+				[matMenuTriggerFor]='matservicemenu'
+				[routerLink]="finalNav.service.headpath"
+				#menuTrigger="matMenuTrigger"
+			>
+				{{finalNav.service.name}}
+			</a>
+			<mat-menu
+				#matservicemenu="matMenu"
+				class="navLink"
+			>
+				<a
+					class="navMenuDropdownItem"
+					mat-menu-item
+					*ngFor="let link of finalNav.market.childLinks"
+					[routerLink]="link.path"
+				>
+					{{link.name}}
+				</a>
+			</mat-menu>
+		</div>
+		<!-- Services -->
+		<div
+			*ngIf="finalNav.resource"
+			class="nav-button"
+		>
+			<a
+				mat-button
+				class="navLink"
+				class="nav-button"
+				[matMenuTriggerFor]='matresourcemenu'
+				[routerLink]="finalNav.resource.headpath"
+				#menuTrigger="matMenuTrigger"
+			>
+				{{finalNav.resource.name}}
+			</a>
+			<mat-menu
+				#matresourcemenu="matMenu"
+				class="navLink"
+			>
+				<a
+					class="navMenuDropdownItem"
+					mat-menu-item
+					*ngFor="let link of finalNav.resource.childLinks"
+					[routerLink]="link.path"
+				>
+					{{link.name}}
+				</a>
+			</mat-menu>
+		</div>
+		<!-- News -->
+		<div
+			*ngIf="finalNav.News"
+			class="nav-button"
+		>
+			<a
+				mat-button
+				class="navLink"
+				[routerLink]
+			>
+				{{finalNav.news.name}}
+			</a>
+		</div>
+		<!-- Accreditations -->
+		<div
+			*ngIf="finalNav.accreditations"
+			class="nav-button"
+		>
+			<a
+				mat-button
+				class="navLink"
+				[routerLink]
+			>
+				{{finalNav.accreditations.name}}
+			</a>
+		</div>
+		<!-- About -->
+		<div
+			*ngIf="finalNav.contact"
+			class="nav-button"
+		>
+			<a
+				mat-button
+				class="navLink"
+				class="nav-button"
+				[routerLink]="finalNav.contact.headpath"
+			>
+				{{finalNav.contact.name}}
+			</a>
+		</div>
+	</div>
+	<div class="searchBar">
+		<mat-icon>search</mat-icon>
+	</div>
+	<div class="contactDetails">
+		<img
+			class="contactIconRing"
+			src="./assets/images/customIcons/contactIcon.svg"
+			alt
+		>
+		<div>
+			<p class="mat-headline-3">+44 (0)1245 280 448</p>
+			<p class="mat-headline-4">info@paragon-security.com</p>
+		</div>
+	</div>
 </mat-toolbar>

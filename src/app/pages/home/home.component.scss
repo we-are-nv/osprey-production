@@ -54,6 +54,7 @@ p {
 	// overflow-x: scroll;
 	margin: auto;
 	gap: 1.32%;
+	margin-bottom: 1.32%;
 }
 
 // Category card styling
@@ -99,11 +100,12 @@ mat-card-header {
 	width:  -webkit-fill-available;
 }
 .categoryCard span {
-	padding-bottom: 2vh;
+	padding-bottom: 1em;
 	padding-left: 2vh;
 	margin-left: 5%;
 	width: auto;
 	display: flex;
+	align-items: center;
 	margin-top: auto;
 	gap: 5%;
 }

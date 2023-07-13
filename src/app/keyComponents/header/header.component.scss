@@ -18,7 +18,7 @@ mat-toolbar{
     animation-name: toolbarBackgroundChange;
     animation-duration: 1.2s;
     background-color: rgba(34, 34, 34, 0.781);
-    
+
 }
 .defaultToolbar{
     background-color: rgba(34, 34, 34, 0.781);
@@ -35,12 +35,26 @@ mat-toolbar{
     width: auto;
     display: flex;
 }
+
+mat-toolbar .ng-star-inserted {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .navLink{
     height:10vh;
     color: white !important;
     font-size: 1vw;
     text-decoration: none;
 }
+
+span.mdc-button__label {
+    color: white !important;
+    font-size: 1em !important;
+    
+}
+
 ::ng-deep .navLink{
     width: min-content + 10%;
 }

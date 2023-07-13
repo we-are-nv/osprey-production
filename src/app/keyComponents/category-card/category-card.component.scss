@@ -16,7 +16,7 @@
     text-align: start;
 }
 .categoryCard h1{
-    
+
     font-size: large;
 }
 
@@ -45,11 +45,11 @@ mat-card-header{
     margin-left: 5%;
 }
 .categoryCard span{
-    padding-bottom: 2vh;
+    // padding-bottom: 2vh;
     padding-left: 2vh;
     margin-left: 5%;
     display: flex;
-    align-items: center;
+    align-items: center !important;
 }
 span mat-icon{
     color: #093273;

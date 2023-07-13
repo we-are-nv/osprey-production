@@ -1,84 +1,92 @@
-::ng-deep{
-    margin-top: 0px;
+::ng-deep {
+	margin-top: 0px;
 }
 
-
-section{
-    width: 100%;
-    background: linear-gradient(90deg, rgba(0,101,231,1) 0%, rgba(0,101,231,0.1881127450980392) 100%);
-    padding-top:5vh ;
-    padding-bottom: 5vh;
-    display: flex;
-    gap: 1%;
+section {
+	width: 100%;
+	background: linear-gradient(
+		90deg,
+		rgba(0, 101, 231, 1) 0%,
+		rgba(0, 101, 231, 0.1881127450980392) 100%
+	);
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+	display: flex;
+	gap: 1%;
 }
 
-mat-card{
-    width: 70vw;
-    margin: auto;
-    padding: 2vh;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+mat-card {
+	width: 70vw;
+	margin: auto;
+	padding: 2vh;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
-.header{
-    width: 80%;
-    margin: auto;
-    margin-bottom: 2vh;
+.header {
+	width: 80%;
+	margin: auto;
+	margin-bottom: 2vh;
 }
-form{
-    display:block;
-    width: 85%;
-    margin: auto;
+
+mat-card-content {
+	width: 90.5%;
 }
-form *{
-    border-radius: 0px !important;
-    
+form {
+	display: block;
+	width: 85%;
+	margin: auto;
+}
+form * {
+	border-radius: 0px !important;
 }
 .mat-form-field-outline {
-    border-radius: 0px;
+	border-radius: 0px;
 }
-mat-form-field{
-    width: 100%;
-    background-color: transparent !important;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-
+mat-form-field {
+	width: 100%;
+	background-color: transparent !important;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
 }
-// .mdc-text-field--outlined { 
-//     position: relative; 
-//     bottom: .25em; 
+.split-fields {
+    display: flex;
+    gap: 1em;
+}
+// .mdc-text-field--outlined {
+//     position: relative;
+//     bottom: .25em;
 //     border: 1px solid red !important;
 // }
-p{
-    color: #9B9B9B;
-    font-family: 'Roboto';
+p {
+	color: #9b9b9b;
+	font-family: 'Roboto';
 }
-.half-width{
-    position:relative;
-    width: 50%;
+.half-width {
+	position: relative;
+	width: 50%;
 }
 
 // Button Themeing
 
-button{
-    background-color: transparent;
-    border: 2px solid rgba(0, 0, 0, 0.494);
-    color: white;
-    filter:drop-shadow(0px 0px 0px #ffff);
-    width: auto;
-    margin: auto;
-    display: block;
-    height: 30%;
-    
+button {
+	background-color: transparent;
+	border: 2px solid rgba(0, 0, 0, 0.494);
+	color: white;
+	filter: drop-shadow(0px 0px 0px #ffff);
+	width: auto;
+	margin: auto;
+	display: block;
+	height: 30%;
 }
 
 @media screen and (max-width: 1000px) {
-    .half-width{
-        width: 100%;
-    }
+	.half-width {
+		width: 100%;
+	}
 }

@@ -14,7 +14,9 @@
 		text: 'Explore Our Services',
 		path: 'services',
 		type: 'white'
-	}"></app-hero>
+	}"
+></app-hero>
+
 
 <section class="briefAbout">
 	<div id="left">
@@ -31,41 +33,63 @@
 	</div>
 </section>
 
+
 <!-- Product Categories -->
 <div
 	class="categoryContainer headCategoryContainer"
 	fxLayout="colun wrap"
-	fxLayoutAlign="flex-start">
+	fxLayoutAlign="flex-start"
+>
+
 
 
 	<mat-card
 		class="categoryCard selectable"
 		routerLink="/search/{{ category._id }}"
-		*ngFor="let category of categoryListPart">
+		*ngFor="let category of categoryListPart"
+	>
 		<img
 			mat-card-image
-			[src]="category.image" />
+			[src]="category.image"
+		>
 		<h1>{{ category.name }}</h1>
-		<span>Explore <mat-icon>circle</mat-icon> </span>
+		<span>
+			Explore
+			<mat-icon>circle</mat-icon>
+		</span>
 	</mat-card>
 </div>
 <section class="relatedCategoryButtons categoryButtons">
 	<div class="slideButtonContainer">
-		<button class="slideButton" (click)="leftMove('category')">
-			<img src="./assets/images/customIcons/prev-slide.svg" alt="" />
+		<button
+			class="slideButton"
+			(click)="leftMove('category')"
+		>
+			<img
+				src="./assets/images/customIcons/prev-slide.svg"
+				alt
+			>
 		</button>
-		<button class="slideButton" (click)="rightMove('category')">
-			<img src="./assets/images/customIcons/next-slide.svg" alt="" />
+		<button
+			class="slideButton"
+			(click)="rightMove('category')"
+		>
+			<img
+				src="./assets/images/customIcons/next-slide.svg"
+				alt
+			>
 		</button>
 	</div>
 </section>
+
 
 
 <div class="infoCardContainer">
 	<div class="serviceInfoCard">
 		<img
 			src="./assets/images/customIcons/homeIcon1.png"
-			alt="" />
+			alt
+		>
 		<p>
 			Leaders of fire and security, we can help you customise your system design to
 			meet your exact requirements. Schedule A Call
@@ -73,27 +97,40 @@
 		<button
 			mat-raised-button
 			class="quoteButton"
-			routerLink="products/landing">
+			routerLink="products/landing"
+		>
 			See All Products
-			<mat-icon class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
+			<mat-icon
+				class="buttonIcon"
+				iconPositionEnd
+			>
+				arrow_forward_ios
+			</mat-icon>
 		</button>
 	</div>
 	<div
 		class="serviceInfoCard"
-		id="blueInfoCard">
+		id="blueInfoCard"
+	>
 		<img
 			src="./assets/images/customIcons/homeIcon2.png"
-			alt="" />
+			alt
+		>
 		<p>
 			Paragon Security offers a comprehensive range of security products intended to meet the demanding requirements of clients in the United Kingdom, Europe and the World
 		</p>
 		<button
 			mat-raised-button
 			class="quoteButton quoteButton-Blue"
-			routerLink="products/landing">
+			routerLink="products/landing"
+		>
 			See Our Item Catalogue
-			
-			<mat-icon class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
+			<mat-icon
+				class="buttonIcon"
+				iconPositionEnd
+			>
+				arrow_forward_ios
+			</mat-icon>
 		</button>
 	</div>
 </div>
@@ -101,7 +138,9 @@
 
 
 
-	<!-- Markets Categories -->
+
+<!-- Markets Categories -->
+
 
 <section class="darkSection">
 	<h1 id="topDarkSection">Specialist Market Expertise</h1>
@@ -113,19 +152,26 @@
 		security systems with many years design & integration experience.
 	</p>
 
+
 	<div
 		class="categoryContainer"
 		fxLayout="row wrap"
-		fxLayoutAlign="flex-start">
+		fxLayoutAlign="flex-start"
+	>
 		<mat-card
 			class="categoryCard selectable"
 			routerLink="/info-page/market/{{category._id}}"
-			*ngFor="let category of marketsListPart">
+			*ngFor="let category of marketsListPart"
+		>
 			<img
 				mat-card-image
-				[src]="category.thumbnail_image" />
+				[src]="category.thumbnail_image"
+			>
 			<h1>{{ category.name }}</h1>
-			<span>Explore  <mat-icon>circle</mat-icon> </span>
+			<span>
+				Explore
+				<mat-icon>circle</mat-icon>
+			</span>
 		</mat-card>
 	</div>
 	<div class="relatedCategoryButtons">
@@ -133,18 +179,28 @@
 			class="standardButton blueButton categoryButton"
 			routerLink="markets"
 			mat-raised-button
-			>Explore The Markets <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a
 		>
+			Explore The Markets
+			<mat-icon iconPositionEnd>arrow_forward_ios</mat-icon>
+		</a>
 		<div class="slideButtonContainer">
-			<button class="slideButton" (click)="leftMove('market')">
+			<button
+				class="slideButton"
+				(click)="leftMove('market')"
+			>
 				<img
 					src="./assets/images/customIcons/prev-slide.svg"
-					alt="" />
+					alt
+				>
 			</button>
-			<button class="slideButton" (click)="rightMove('market')">
+			<button
+				class="slideButton"
+				(click)="rightMove('market')"
+			>
 				<img
 					src="./assets/images/customIcons/next-slide.svg"
-					alt="" />
+					alt
+				>
 			</button>
 		</div>
 	</div>
@@ -152,7 +208,9 @@
 
 
 
+
 <!-- Service Categories -->
+
 
 
 
@@ -164,21 +222,28 @@
 		with you.
 	</p>
 
+
 	<!-- Markets Categories -->
 	<!-- Product Categories -->
 	<div
 		class="categoryContainer"
 		fxLayout="row wrap"
-		fxLayoutAlign="flex-start">
+		fxLayoutAlign="flex-start"
+	>
 		<mat-card
 			class="categoryCard selectable"
 			routerLink="/info-page/service/{{category._id}}"
-			*ngFor="let category of serviceListPart">
+			*ngFor="let category of serviceListPart"
+		>
 			<img
 				mat-card-image
-				[src]="category.thumbnail_image">
+				[src]="category.thumbnail_image"
+			>
 			<h1>{{ category.name }}</h1>
-			<span>Explore <mat-icon>circle</mat-icon> </span>
+			<span>
+				Explore
+				<mat-icon>circle</mat-icon>
+			</span>
 		</mat-card>
 	</div>
 	<div class="relatedCategoryButtons">
@@ -186,21 +251,32 @@
 			class="standardButton blueButton categoryButton"
 			routerLink="services"
 			mat-raised-button
-			>Explore Our Services <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a
 		>
+			Explore Our Services
+			<mat-icon iconPositionEnd>arrow_forward_ios</mat-icon>
+		</a>
 		<div class="slideButtonContainer">
-			<button class="slideButton" (click)="leftMove('service')">
+			<button
+				class="slideButton"
+				(click)="leftMove('service')"
+			>
 				<img
 					src="./assets/images/customIcons/prev-slide.svg"
-					alt="" />
+					alt
+				>
 			</button>
-			<button class="slideButton" (click)="rightMove('service')">
+			<button
+				class="slideButton"
+				(click)="rightMove('service')"
+			>
 				<img
 					src="./assets/images/customIcons/next-slide.svg"
-					alt="" />
+					alt
+				>
 			</button>
 		</div>
 	</div>
 </section>
+
 
 <app-quote-form></app-quote-form>
