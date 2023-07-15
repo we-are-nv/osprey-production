@@ -35,7 +35,7 @@
 
         <!-- Markets -->
         <div *ngIf="finalNav.market">
-            <a mat-button class="navLink" class="nav-button" [matMenuTriggerFor]='matmarketmenu' [routerLink]="finalNav.market.headpath"
+            <a mat-button class="navLink" [matMenuTriggerFor]='matmarketmenu' [routerLink]="finalNav.market.headpath"
                 #menuTrigger="matMenuTrigger"> {{finalNav.market.name}}</a>
             <mat-menu #matmarketmenu="matMenu" class="navLink">
                 <a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.market.childLinks"
@@ -45,7 +45,7 @@
 
         <!-- Services -->
         <div *ngIf="finalNav.service">
-            <a mat-button class="navLink" class="nav-button" [matMenuTriggerFor]='matservicemenu' [routerLink]="finalNav.service.headpath"
+            <a mat-button class="navLink" [matMenuTriggerFor]='matservicemenu' [routerLink]="finalNav.service.headpath"
                 #menuTrigger="matMenuTrigger"> {{finalNav.service.name}}</a>
             <mat-menu #matservicemenu="matMenu" class="navLink">
                 <a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.market.childLinks"
@@ -55,7 +55,7 @@
         <!-- Services -->
         <div *ngIf="finalNav.resource"
 			class="nav-button">
-            <a mat-button class="navLink" class="nav-button" [matMenuTriggerFor]='matresourcemenu' [routerLink]="finalNav.resource.headpath"
+            <a mat-button class="navLink" [matMenuTriggerFor]='matresourcemenu' [routerLink]="finalNav.resource.headpath"
                 #menuTrigger="matMenuTrigger"> {{finalNav.resource.name}}</a>
             <mat-menu #matresourcemenu="matMenu" class="navLink">
                 <a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.resource.childLinks"
@@ -67,7 +67,7 @@
         <!-- About -->
         <div *ngIf="finalNav.contact" 
 			class="nav-button">
-            <a mat-button class="navLink" class="nav-button" [routerLink]="finalNav.contact.headpath"> {{finalNav.contact.name}}</a>
+            <a mat-button class="navLink" [routerLink]="finalNav.contact.headpath"> {{finalNav.contact.name}}</a>
         </div>
 
     </div>

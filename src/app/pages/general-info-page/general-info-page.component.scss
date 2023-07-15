@@ -74,7 +74,13 @@ p{
 }
 
 
+@media screen and (max-width: 1200px) {
 
+    .bonus-cards {
+        width: 30vw;
+        margin: auto;
+    }
+}
 
 @media screen and (max-width: 750px) {
     .container {
@@ -89,3 +95,4 @@ p{
         margin: auto;
     }
 }
+
