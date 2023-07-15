@@ -30,6 +30,7 @@ import { CategoryCardComponent } from './keyComponents/category-card/category-ca
 import { SimilarProductsComponent } from './keyComponents/similar-products/similar-products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScrollService } from './services/scrollService/scroll.service';
+import { SafePipe } from './pages/services/safe.pipe';
 
 @NgModule({
 	declarations: [
@@ -54,7 +55,8 @@ import { ScrollService } from './services/scrollService/scroll.service';
 		SubPageComponent,
 		BonusCardComponent,
 		CategoryCardComponent,
-		SimilarProductsComponent
+		SimilarProductsComponent,
+		SafePipe
 	],
 	imports: [
 		BrowserModule,

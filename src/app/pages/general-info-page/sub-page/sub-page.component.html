@@ -41,6 +41,11 @@
             <div class="similarProductsContainer" *ngIf="element.type == 'similarProducts'">
                 <app-similar-products [categoryId]="element.text"></app-similar-products>
             </div>
+
+            <div *ngIf="element.type == 'map'">
+                <iframe [src]="element.text | safe" width="600" height="450" style="border:0;" allowfullscreen=""
+                    referrerpolicy="no-referrer-when-downgrade" ></iframe>
+            </div>
         </div>
 
 </section>

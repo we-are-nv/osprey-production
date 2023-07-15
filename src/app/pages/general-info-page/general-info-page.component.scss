@@ -10,7 +10,7 @@
     padding: auto;
 }
 .bonus-cards{
-    width:15vw;
+    width:25vw;
     padding-right: 2vw;
 }
 
@@ -73,14 +73,16 @@ p{
     background-color: #0065E7;
 }
 
+@media screen and (max-width: 1024px) {
 
-@media screen and (max-width: 1200px) {
 
     .bonus-cards {
-        width: 30vw;
+        width: 40vw;
         margin: auto;
     }
 }
+
+
 
 @media screen and (max-width: 750px) {
     .container {
@@ -93,6 +95,10 @@ p{
     .bonus-cards{
         width: 80vw;
         margin: auto;
+    }
+    app-bonus-card{
+        visibility: hidden;
+        display: none;
     }
 }
 
