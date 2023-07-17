@@ -9,8 +9,7 @@
 
 .productMain{
     width: 80vw;
-    margin-left: 5vw;
-    margin-top: 0px;
+    margin:auto;
     display: flex;
     
 }
@@ -29,7 +28,8 @@
 }
 .mat-mdc-card-content{
     height: 100%;
-    font-size: 120%;
+    font-size: 1rem;
+    display: flex;
 }
 mat-card-header{
     height:5rem;
@@ -43,7 +43,10 @@ mat-card-content{
     font-family: 'Roboto';
 }
 img{
-    width:100%;
+    width:66%;
+    height: min-content;
+    margin-left:auto;
+    margin-right: auto;
 }
 span{
     color: #9B9B9B;
@@ -61,7 +64,7 @@ span{
 
 button{
     border: 0px;
-    width: 32.5%;
+    width: 100%;
     margin: auto;
 }
 .outline{
@@ -81,8 +84,7 @@ button{
 
 .productTabs{
     width: 80vw;
-    margin-left: 5vw;
-    margin-right:5vw;
+    margin:auto;
 }
 .productTabs p{
     font-size: 1rem;
@@ -120,5 +122,10 @@ button{
     justify-content: center;
     width: 80vw;
     padding-bottom: 1rem;
-    margin-left: 5vw;
+    margin:auto;
+}
+
+.mat-mdc-table .mdc-data-table__row{
+    height: 30px;
+    font-size: small;
 }
