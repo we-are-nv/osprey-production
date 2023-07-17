@@ -28,7 +28,10 @@ mat-toolbar{
     width:10vw;
     height: 10vh;
     object-fit: cover;
-    cursor: click;
+    cursor: pointer;
+}
+#navLogo:hover{
+    background-color: rgba(34, 34, 34, 0.781);
 }
 .navLinks{
     margin: auto;
@@ -157,9 +160,7 @@ input.mat-input-element {
     font-size: 3vw;
     visibility: hidden;
 }
-.mat-menu-content{
-    padding:0px !important;
-}
+
 
 @media screen and (max-width: 1024px) {
     .menuOpen{

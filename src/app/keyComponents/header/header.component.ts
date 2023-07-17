@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { Router } from '@angular/router';
 import { InfoPageService } from 'src/app/services/info-page.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -11,7 +12,8 @@ import { ProductService } from 'src/app/services/product.service';
 export class HeaderComponent {
 	constructor(
 		private productService: ProductService,
-		private infoPageService: InfoPageService
+		private infoPageService: InfoPageService,
+		public router: Router
 	) {}
 	// Category Stored Data
 

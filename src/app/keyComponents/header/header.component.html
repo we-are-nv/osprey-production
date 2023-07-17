@@ -24,12 +24,13 @@
         <!-- Product -->
         <div *ngIf="finalNav.product"
 			>
-            <a mat-button class="nav-button" class="navLink" [matMenuTriggerFor]='matproductmenu' [routerLink]="finalNav.product.headpath"
+            <a mat-button class="nav-button" class="navLink" [matMenuTriggerFor]='matproductmenu'
                 #menuTrigger="matMenuTrigger"
-                (mouseover)="openMyMenu(menuTrigger)"
+                 
+                (click)="router.navigate([finalNav.product.headpath]);"
                 > {{finalNav.product.name}}</a>
             <mat-menu #matproductmenu="matMenu" class="navLink">
-                <div (mouseleave)="menuTrigger.closeMenu()">
+                <div (click)="menuTrigger.closeMenu();" (mouseleave)="menuTrigger.closeMenu()">
                     <a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.product.childLinks"
                                         [routerLink]="link.path">{{link.name}}</a>
                 </div>
@@ -42,7 +43,7 @@
         <div *ngIf="finalNav.market">
             <a mat-button class="navLink" [matMenuTriggerFor]='matmarketmenu' [routerLink]="finalNav.market.headpath"
                 #menuTrigger="matMenuTrigger"
-                (mouseover)="openMyMenu(menuTrigger)"
+                 
                 > {{finalNav.market.name}}</a>
             <mat-menu #matmarketmenu="matMenu" class="navLink">
                 <div (mouseleave)="menuTrigger.closeMenu()">
@@ -58,7 +59,7 @@
         <div *ngIf="finalNav.service">
             <a mat-button class="navLink" [matMenuTriggerFor]='matservicemenu' 
                 #menuTrigger="matMenuTrigger"
-                (mouseover)="openMyMenu(menuTrigger)"
+                 
                 [routerLink]="finalNav.service.headpath"
                 > {{finalNav.service.name}}</a>
             <mat-menu #matservicemenu="matMenu" class="navLink" >
@@ -74,7 +75,7 @@
 			class="nav-button">
             <a mat-button class="navLink" [matMenuTriggerFor]='matresourcemenu' [routerLink]="finalNav.resource.headpath"
                 #menuTrigger="matMenuTrigger"
-                (mouseover)="openMyMenu(menuTrigger)"
+                 
                 > {{finalNav.resource.name}}</a>
             <mat-menu #matresourcemenu="matMenu" class="navLink">
                 <div (mouseleave)="menuTrigger.closeMenu()">
