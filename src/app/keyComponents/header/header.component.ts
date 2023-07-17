@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { InfoPageService } from 'src/app/services/info-page.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -30,5 +31,12 @@ export class HeaderComponent {
 
 	toggle() {
 		this.toggleNav.emit();
+	}
+
+	openMyMenu(menuTrigger: MatMenuTrigger) {
+		menuTrigger.openMenu();
+	}
+	closeMyMenu(menuTrigger: MatMenuTrigger) {
+		menuTrigger.closeMenu();
 	}
 }

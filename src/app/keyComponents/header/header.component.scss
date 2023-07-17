@@ -157,6 +157,10 @@ input.mat-input-element {
     font-size: 3vw;
     visibility: hidden;
 }
+.mat-menu-content{
+    padding:0px !important;
+}
+
 @media screen and (max-width: 1024px) {
     .menuOpen{
         visibility: visible;
