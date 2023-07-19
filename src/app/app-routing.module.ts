@@ -41,7 +41,7 @@ const routes: Routes = [
 
 	// Contact Page
 	{ path: 'contactFrom', component: QuoteFormComponent },
-	{ path: 'search', component: SearchPageComponent },
+	{ path: 'searchAll', component: SearchPageComponent },
 
 	// Error Page
 	{ path: 'error', component: ErrorPageComponent }
