@@ -176,3 +176,27 @@ input.mat-input-element {
         visibility: hidden;
     }
 }
+
+.searchbar-input{
+    transform: width 500ms linear;
+    height: 2.5vh;
+    width: 10vw;
+    animation-name: slide-out;
+    animation-duration: 1s;
+}
+
+.closedSearch {
+    width: 0vw;
+    // visibility: collapse;
+}
+@keyframes slide-out {
+    0% {
+            width: 0vw;
+        }
+    100% {
+            width: 10vw;
+    }
+}
+a{
+    color: white;
+}

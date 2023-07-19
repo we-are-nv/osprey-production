@@ -13,7 +13,7 @@ section{
 }
 
 mat-card{
-    width: 70vw;
+    width: 80vw;
     margin: auto;
     padding: 2vh;
     padding-top: 2vh;
@@ -29,11 +29,12 @@ mat-card{
     margin: auto;
     margin-bottom: 2vh;
 }
-form{
-    display:block;
-    width: 85%;
+.form{
     margin: auto;
+    display: flex;
+    justify-content: space-between;
 }
+
 form *{
     border-radius: 0px !important;
     
@@ -49,6 +50,10 @@ mat-form-field{
     align-items: center;
 
 }
+mat-card-content{
+    width: -webkit-fill-available;
+    padding: 2vw;
+}
 // .mdc-text-field--outlined { 
 //     position: relative; 
 //     bottom: .25em; 
@@ -60,7 +65,7 @@ p{
 }
 .half-width{
     position:relative;
-    width: 50%;
+    width: 48%;
 }
 
 // Button Themeing
@@ -76,9 +81,17 @@ button{
     height: 30%;
     
 }
+.form-input{
+    border-radius: 0% !important;
+    border: 1px;
+}
 
 @media screen and (max-width: 1000px) {
     .half-width{
         width: 100%;
     }
+    .form{
+        display: block;
+    }
 }
+

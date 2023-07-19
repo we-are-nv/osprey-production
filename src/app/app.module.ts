@@ -31,6 +31,7 @@ import { SimilarProductsComponent } from './keyComponents/similar-products/simil
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScrollService } from './services/scrollService/scroll.service';
 import { SafePipe } from './pages/services/safe.pipe';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 @NgModule({
 	declarations: [
@@ -56,7 +57,8 @@ import { SafePipe } from './pages/services/safe.pipe';
 		BonusCardComponent,
 		CategoryCardComponent,
 		SimilarProductsComponent,
-		SafePipe
+		SafePipe,
+		SearchPageComponent
 	],
 	imports: [
 		BrowserModule,

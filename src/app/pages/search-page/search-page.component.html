@@ -1,0 +1,17 @@
+
+<app-hero mainTitle="Search Paragon" secondaryTitle=""
+	lowerTitle=""
+	[isButtons]="false" background="./assets/images/heroBackgrounds/productLanding.png"
+	[centred]="true"
+	[button3Data]="{text:'Explore Our Services', path:'', type:'white'}" extraStyle = "shorterHero"></app-hero>
+
+
+<section class="container">
+	<mat-form-field class="full-width search-pannel" appearance="outline">
+		<mat-label>Search</mat-label>
+		<input matInput placeholder="Search Product" (keyup)="onSearchChange($event)">
+	</mat-form-field>
+</section>
+<section>
+
+</section>

@@ -20,6 +20,8 @@ export class HeaderComponent {
 	scrolled = false;
 	navStyle = 'standard';
 
+	isSearching = false;
+
 	@Input() finalNav: any;
 	@Output() toggleNav: EventEmitter<any> = new EventEmitter();
 	// On scroll detected, Set the toolbar class
@@ -40,5 +42,14 @@ export class HeaderComponent {
 	}
 	closeMyMenu(menuTrigger: MatMenuTrigger) {
 		menuTrigger.closeMenu();
+	}
+
+	activateSearch() {
+		if (this.isSearching) this.isSearching = false;
+		else this.isSearching = true;
+	}
+
+	onEnter(event: any) {
+		console.log(event);
 	}
 }
