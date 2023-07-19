@@ -36,8 +36,9 @@ export class AppComponent {
 
 		this.generateSingleInfo('contact', 'Contact');
 		this.categorySub = this.productService.getAllCategories().subscribe(data => {
+			console.log(data);
 			let childLinks: any[] = [];
-			data.data.forEach((subPage: any) => {
+			data.cats.forEach((subPage: any) => {
 				let childLink = {
 					name: subPage.name,
 					path: '/search/' + subPage._id

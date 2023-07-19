@@ -71,7 +71,9 @@ export class ProductService {
 	}
 
 	getAllCategories() {
-		return this.http.get<any>(this.API_URL + '/products/categories/all-categories');
+		return this.http.get<any>(this.API_URL + '/products/categories', {
+			params: { parent: '' }
+		});
 	}
 
 	// Loading Single Product
