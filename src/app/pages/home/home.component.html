@@ -1,208 +1,154 @@
-<app-hero
-	mainTitle="Security Solutions you can rely on"
-	lowerTitle="Founded on first class customer service and support - with decades of experience in fire and security systems for some of the world’s most demanding applications - Paragon Security is a UK-based specialist solutions provider you can trust."
-	[isButtons]="true"
-	background="./assets/images/heroBackgrounds/homeHero.png"
-	[button1Data]="{
+<app-hero mainTitle="Security Solutions you can rely on"
+					lowerTitle="Founded on first class customer service and support - with decades of experience in fire and security systems for some of the world’s most demanding applications - Paragon Security is a UK-based specialist solutions provider you can trust."
+					[isButtons]="true"
+					background="./assets/images/heroBackgrounds/homeHero.png"
+					[button1Data]="{
 		text: 'Explore Our Products',
 		path: 'products/landing',
 		type: 'blue'
 	}"
-	[button2Data]="{ text: 'Explore Our Markets', path: 'markets', type: 'black' }"
-	[isButton3]="true"
-	[button3Data]="{
+					[button2Data]="{ text: 'Explore Our Markets', path: 'markets', type: 'black' }"
+					[isButton3]="true"
+					[button3Data]="{
 		text: 'Explore Our Services',
 		path: 'services',
 		type: 'white'
 	}"></app-hero>
-
 <section class="briefAbout">
 	<div id="left">
 		<p style="color: #0065e7">+35 YEARS INDUSTRY EXPERIENCE</p>
 		<h1>Professional products for durability</h1>
 	</div>
 	<div id="right">
-		<p>
-			Paragon Security employs a dedicated team of experienced professionals who
-			will provide fire and security products and systems of the highest quality,
-			reliability and durability, for your organisation, vessel or site providing
-			the security and safety you deserve.
-		</p>
+		<p> Paragon Security employs a dedicated team of experienced professionals who will provide fire and security
+			products and systems of the highest quality, reliability and durability, for your organisation, vessel or site
+			providing the security and safety you deserve. </p>
 	</div>
 </section>
-
 <!-- Product Categories -->
-<div
-	class="categoryContainer headCategoryContainer"
-	fxLayout="colun wrap"
-	fxLayoutAlign="flex-start">
-
-
-	<mat-card
-		class="categoryCard selectable"
-		routerLink="/search/{{ category._id }}"
-		*ngFor="let category of categoryListPart">
-		<img
-			mat-card-image
-			[src]="category.image" />
+<div class="categoryContainer headCategoryContainer"
+		 fxLayout="colun wrap"
+		 fxLayoutAlign="flex-start">
+	<mat-card class="categoryCard selectable"
+						routerLink="/search/{{ category._id }}"
+						*ngFor="let category of categoryListPart">
+		<img mat-card-image
+				 [src]="category.image" />
 		<h1>{{ category.name }}</h1>
 		<span>Explore <mat-icon>circle</mat-icon> </span>
 	</mat-card>
 </div>
 <section class="relatedCategoryButtons">
-	
 	<div class="slideButtonContainer">
-		<button class="slideButton" (click)="leftMove('category')">
-			<img src="./assets/images/customIcons/prev-slide.svg" alt="" />
+		<button class="slideButton"
+						(click)="leftMove('category')">
+			<img src="./assets/images/customIcons/prev-slide.svg"
+					 alt="" />
 		</button>
-		<button class="slideButton" (click)="rightMove('category')">
-			<img src="./assets/images/customIcons/next-slide.svg" alt="" />
+		<button class="slideButton"
+						(click)="rightMove('category')">
+			<img src="./assets/images/customIcons/next-slide.svg"
+					 alt="" />
 		</button>
 	</div>
 </section>
-
-
 <div class="infoCardContainer">
 	<div class="serviceInfoCard">
-		<img
-			src="./assets/images/customIcons/homeIcon1.png"
-			alt="" />
-		<p>
-			Leaders of fire and security, we can help you customise your system design to
-			meet your exact requirements. Schedule A Call
-		</p>
-		<button
-			mat-raised-button
-			class="quoteButton"
-			routerLink="products/landing">
-			See All Products
-			<mat-icon class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
+		<img src="./assets/images/customIcons/homeIcon1.png"
+				 alt="" />
+		<p> Leaders of fire and security, we can help you customise your system design to meet your exact requirements.
+			Schedule A Call </p>
+		<button mat-raised-button
+						class="quoteButton"
+						routerLink="products/landing"> See All Products <mat-icon class="buttonIcon"
+								iconPositionEnd>arrow_forward_ios</mat-icon>
 		</button>
 	</div>
-	<div
-		class="serviceInfoCard"
-		id="blueInfoCard">
-		<img
-			src="./assets/images/customIcons/homeIcon2.png"
-			alt="" />
-		<p>
-			Paragon Security offers a comprehensive range of security products intended to meet the demanding requirements of clients in the United Kingdom, Europe and the World
-		</p>
-		<button
-			mat-raised-button
-			class="quoteButton quoteButton-Blue"
-			routerLink="products/landing">
-			See Our Item Catalogue
-			
-			<mat-icon class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
+	<div class="serviceInfoCard"
+			 id="blueInfoCard">
+		<img src="./assets/images/customIcons/homeIcon2.png"
+				 alt="" />
+		<p> Paragon Security offers a comprehensive range of security products intended to meet the demanding requirements
+			of clients in the United Kingdom, Europe and the World </p>
+		<button mat-raised-button
+						class="quoteButton quoteButton-Blue"
+						routerLink="products/landing"> See Our Item Catalogue <mat-icon class="buttonIcon"
+								iconPositionEnd>arrow_forward_ios</mat-icon>
 		</button>
 	</div>
 </div>
-
-
-
-
-	<!-- Markets Categories -->
-
+<!-- Markets Categories -->
 <section class="darkSection">
 	<h1 id="topDarkSection">Specialist Market Expertise</h1>
-	<p>
-		We are passionate about providing leading-edge and robust solutions, suitable
-		for demanding markets and environments, which are straightforward to operate and
-		maintain, certified for their use-class with ongoing support second to none. We
-		lead the industry in the design, supply and support of harsh environment
-		security systems with many years design & integration experience.
-	</p>
-
-	<div
-		class="categoryContainer"
-		fxLayout="row wrap"
-		fxLayoutAlign="flex-start">
-		<mat-card
-			class="categoryCard selectable"
-			routerLink="/info-page/market/{{category._id}}"
-			*ngFor="let category of marketsListPart">
-			<img
-				mat-card-image
-				[src]="category.thumbnail_image" />
-			<h1>{{ category.name }}</h1>
-			<span>Explore  <mat-icon>circle</mat-icon> </span>
-		</mat-card>
-	</div>
-	<div class="relatedCategoryButtons">
-		<a
-			class="standardButton blueButton categoryButton"
-			routerLink="markets"
-			mat-raised-button
-			>Explore The Markets <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a
-		>
-		
-		<div class="slideButtonContainer">
-			<button class="slideButton" (click)="leftMove('market')">
-				<img
-					src="./assets/images/customIcons/prev-slide.svg"
-					alt="" />
-			</button>
-			<button class="slideButton" (click)="rightMove('market')">
-				<img
-					src="./assets/images/customIcons/next-slide.svg"
-					alt="" />
-			</button>
-		</div>
-	</div>
-</section>
-
-
-
-<!-- Service Categories -->
-
-
-
-<section class="darkSection">
-	<h1>Service support second to none</h1>
-	<p>
-		Excellent customer service and support are the keystone of our business. We
-		guarantee good communications, transparency and honesty in all our interactions
-		with you.
-	</p>
-
-	<!-- Markets Categories -->
-	<!-- Product Categories -->
-	<div
-		class="categoryContainer"
-		fxLayout="row wrap"
-		fxLayoutAlign="flex-start">
-		<mat-card
-			class="categoryCard selectable"
-			routerLink="/info-page/service/{{category._id}}"
-			*ngFor="let category of serviceListPart">
-			<img
-				mat-card-image
-				[src]="category.thumbnail_image">
+	<p> We are passionate about providing leading-edge and robust solutions, suitable for demanding markets and
+		environments, which are straightforward to operate and maintain, certified for their use-class with ongoing support
+		second to none. We lead the industry in the design, supply and support of harsh environment security systems with
+		many years design & integration experience. </p>
+	<div class="categoryContainer"
+			 fxLayout="row wrap"
+			 fxLayoutAlign="flex-start">
+		<mat-card class="categoryCard selectable"
+							routerLink="/info-page/market/{{category._id}}"
+							*ngFor="let category of marketsListPart">
+			<img mat-card-image
+					 [src]="category.thumbnail_image" />
 			<h1>{{ category.name }}</h1>
 			<span>Explore <mat-icon>circle</mat-icon> </span>
 		</mat-card>
 	</div>
 	<div class="relatedCategoryButtons">
-		<a
-			class="standardButton blueButton categoryButton"
-			routerLink="services"
-			mat-raised-button
-			>Explore Our Services <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a
-		>
+		<a class="standardButton blueButton categoryButton"
+			 routerLink="markets"
+			 mat-raised-button>Explore The Markets <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a>
 		<div class="slideButtonContainer">
-			<button class="slideButton" (click)="leftMove('service')">
-				<img
-					src="./assets/images/customIcons/prev-slide.svg"
-					alt="" />
+			<button class="slideButton"
+							(click)="leftMove('market')">
+				<img src="./assets/images/customIcons/prev-slide.svg"
+						 alt="" />
 			</button>
-			<button class="slideButton" (click)="rightMove('service')">
-				<img
-					src="./assets/images/customIcons/next-slide.svg"
-					alt="" />
+			<button class="slideButton"
+							(click)="rightMove('market')">
+				<img src="./assets/images/customIcons/next-slide.svg"
+						 alt="" />
 			</button>
 		</div>
 	</div>
 </section>
-
+<!-- Service Categories -->
+<section class="darkSection">
+	<h1>Service support second to none</h1>
+	<p> Excellent customer service and support are the keystone of our business. We guarantee good communications,
+		transparency and honesty in all our interactions with you. </p>
+	<!-- Markets Categories -->
+	<!-- Product Categories -->
+	<div class="categoryContainer"
+			 fxLayout="row wrap"
+			 fxLayoutAlign="flex-start">
+		<mat-card class="categoryCard selectable"
+							routerLink="/info-page/service/{{category._id}}"
+							*ngFor="let category of serviceListPart">
+			<img mat-card-image
+					 [src]="category.thumbnail_image">
+			<h1>{{ category.name }}</h1>
+			<span>Explore <mat-icon>circle</mat-icon> </span>
+		</mat-card>
+	</div>
+	<div class="relatedCategoryButtons">
+		<a class="standardButton blueButton categoryButton"
+			 routerLink="services"
+			 mat-raised-button>Explore Our Services <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a>
+		<div class="slideButtonContainer">
+			<button class="slideButton"
+							(click)="leftMove('service')">
+				<img src="./assets/images/customIcons/prev-slide.svg"
+						 alt="" />
+			</button>
+			<button class="slideButton"
+							(click)="rightMove('service')">
+				<img src="./assets/images/customIcons/next-slide.svg"
+						 alt="" />
+			</button>
+		</div>
+	</div>
+</section>
 <app-quote-form></app-quote-form>
