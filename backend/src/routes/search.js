@@ -106,19 +106,19 @@ const dbSearch = {
 const dbSelect = {
 
   "product": {
-    standard: 'product_name product_code ',
+    standard: 'product_name product_code searchType ',
     extra: 'image description'
   },
   "page": {
-    standard: "name ",
+    standard: "name searchType ",
     extra: "elements"
   },
   "info": {
-    standard: "name type ",
+    standard: "name type searchType ",
     extra: "banner_image thumbnail_image bonus_cards pages"
   },
   "category": {
-    standard: "name image ",
+    standard: "name image searchType ",
     extra: "info"
   }
 }
@@ -172,5 +172,44 @@ router.get('/', async (req, res) => {
       });
     });
 });
+
+function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
+}
+
+const name_standards = {
+  'product': 'product_name',
+  "page": "name",
+  "info": "name",
+  "category": "name"
+};
+
+router.get('/all', async (req, res) => {
+  const {
+    page = 1,
+    limit = 10,
+    searchQuery = '',
+    extra = false
+  } = req.query;
+  const searchDBs = [allProducts, informationPage, information, categories];
+  var final_result = {}
+
+  for (idx in searchDBs) {
+    var plainDB = getKeyByValue(dbSearch, searchDBs[idx]);
+    var inject = { [name_standards[plainDB]]: { $regex: searchQuery, $options: 'i' } };
+    var selectOptions = dbSelect[plainDB].standard;
+
+    var result_retuned = await dbSearch[plainDB]
+      .find(inject, selectOptions)
+    if (final_result[result_retuned[0].searchType] == undefined) {
+      final_result[result_retuned[0].searchType] = []
+    };
+    final_result[result_retuned[0].searchType] = [...final_result[result_retuned[0].searchType], ...result_retuned];
+
+
+  };
+  console.log(final_result)
+  res.json({ results: final_result })
+})
 
 module.exports = router;
