@@ -5,7 +5,7 @@
 	"editor.formatOnSave": true,
 	"editor.formatOnType": true,
 	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.defaultFormatter": "vscode.typescript-language-features",
 		"diffEditor.codeLens": true
 	},
 	"[typescript]": {
