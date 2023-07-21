@@ -166,7 +166,7 @@ router.get('/', async (req, res) => {
         newOutput.push(escapedResult[idx]);
       }
       res.json({
-        products: newOutput,
+        results: newOutput,
         totalPages: Math.ceil(count / limit),
         currentPage: Number(page)
       });
