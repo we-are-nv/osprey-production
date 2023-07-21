@@ -6,6 +6,8 @@ const allProducts = require('../models/product_info.js');
 const categories = require('../models/categories.js');
 const productModels = require('../models/product_models.js');
 const blockList = require('../models/block_list.js');
+const informationPage = require('../models/information-page');
+const information = require('../models/information');
 require('dotenv').config();
 
 const router = express.Router();
@@ -94,31 +96,58 @@ router.use(function timelog(req, res, next) {
 // 	}
 // });
 
+const dbSearch = {
+  "product": allProducts,
+  "page": informationPage,
+  "info": information,
+  "category": categories
+};
+
+const dbSelect = {
+
+  "product": {
+    standard: 'product_name product_code ',
+    extra: 'image description'
+  },
+  "page": {
+    standard: "name ",
+    extra: "elements"
+  },
+  "info": {
+    standard: "name type ",
+    extra: "banner_image thumbnail_image bonus_cards pages"
+  },
+  "category": {
+    standard: "name image ",
+    extra: "info"
+  }
+}
 
 router.get('/', async (req, res) => {
   // Declare Default Values
   const {
     page = 1,
+    searchDB = 'product',
     limit = 10,
     searchFor = 'product_name',
     searchQuery = '',
     extra = false
   } = req.query;
   var query = {};
-  // If Category is Decalred
+  // If Category is Decalred Defunct
   if (req.query.category) {
     var inject = { category: req.query.category };
     query = { ...inject, ...query };
   }
   var inject = { [searchFor]: { $regex: searchQuery, $options: 'i' } };
   query = { ...query, ...inject };
-  const count = await allProducts.count(query);
-  var selectOptions = 'product_name product_code ';
+  const count = await dbSearch[searchDB].count(query);
+  var selectOptions = dbSelect[searchDB].standard;
 
   if (extra) {
-    selectOptions += 'image description';
+    selectOptions += dbSelect[searchDB].extra;
   }
-  allProducts
+  dbSearch[searchDB]
     .find(query, selectOptions)
     .limit(limit * 1)
     .skip((page - 1) * limit)
