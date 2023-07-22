@@ -11,6 +11,9 @@ export class DatabaseService {
 	constructor(private http: HttpClient) {}
 
 	searchAll(query: any) {
-		return this.http.get<any>(this.API_URL + '/search', { params: query });
+		let finalQuery: any = { searchQuery: query };
+		return this.http.get<any>(this.API_URL + '/search/all', {
+			params: { query: finalQuery }
+		});
 	}
 }

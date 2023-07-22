@@ -7,11 +7,21 @@
 
 
 <section class="container">
+	<form [formGroup]="searchForm">
 	<mat-form-field class="full-width search-pannel" appearance="outline">
 		<mat-label>Search</mat-label>
-		<input matInput placeholder="Search Product" (keyup)="onSearchChange($event)">
+			<input matInput placeholder="Search Product" formControlName="search" (keyup.enter)="onSearchChange($event)">
+		<mat-hint>Press Enter to Search</mat-hint>
+		<mat-error *ngIf=""></mat-error>
 	</mat-form-field>
+</form>
 </section>
 <section class="main-container">
+	<div *ngIf="globalData !== {}">
+		<mat-card *ngFor="let product of globalData.products">
+			<img [src]="product.image" alt="">
+			<h3>{{product.product_name}}</h3>
+		</mat-card>
+	</div>
 
 </section>

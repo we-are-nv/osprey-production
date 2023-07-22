@@ -11,9 +11,10 @@
     padding: 5vh;
 }
 .categoryContainer .categoryCard{
-    width: 24%;
+    width: 31%;
     border-radius:0px ;
     text-align: start;
+    margin-bottom: 1%;
 }
 .categoryCard h1{
     
@@ -57,11 +58,11 @@ span mat-icon{
 }
 @media screen and (max-width: 1000px) {
     .categoryContainer .categoryCard{
-        width: 31%;
+        width: 48%;
     }
 }
 @media screen and (max-width: 750px) {
     .categoryContainer .categoryCard{
-        width: 48%;
+        width: 98%;
     }
 }
