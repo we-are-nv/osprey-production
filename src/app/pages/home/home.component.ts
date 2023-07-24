@@ -48,7 +48,7 @@ export class HomeComponent {
 		this.productService.getCategories('');
 		this.categorySub = this.productService.getAllCategories().subscribe(data => {
 			console.log(data);
-			this.productCategories = data.data;
+			this.productCategories = data.cats;
 			this.categoryListPart = this.productCategories.slice(
 				this.categoryListPosition.first,
 				this.categoryListPosition.last
@@ -73,7 +73,11 @@ export class HomeComponent {
 	}
 
 	rightMove(type: string) {
-		if (type == 'category') {
+		if (
+			type == 'category' &&
+			this.categoryListPart[this.listLength - 1] !==
+				this.productCategories[this.productCategories.length - 1]
+		) {
 			this.categoryListPosition.first += 1;
 			this.categoryListPosition.last += 1;
 			this.categoryListPart = this.productCategories.slice(
@@ -107,7 +111,10 @@ export class HomeComponent {
 		}
 	}
 	leftMove(type: string) {
-		if (type == 'category') {
+		if (
+			type == 'category' &&
+			this.categoryListPart[0] !== this.productCategories[0]
+		) {
 			this.categoryListPosition.first -= 1;
 			this.categoryListPosition.last -= 1;
 			this.categoryListPart = this.productCategories.slice(

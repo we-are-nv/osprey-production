@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ScrollService } from './services/scrollService/scroll.service';
 import { ProductService } from './services/product.service';
 import { InfoPageService } from './services/info-page.service';
@@ -16,7 +16,6 @@ export class AppComponent {
 		private infoPageService: InfoPageService,
 		private scrollService: ScrollService
 	) {}
-
 	categories: any = [];
 	categorySub: any;
 

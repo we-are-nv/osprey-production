@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ScrollService } from 'src/app/services/scrollService/scroll.service';
+import { ScrollComponent } from 'src/app/services/scrollService/scroll/scroll.component';
 
 @Component({
 	selector: 'app-hero',
@@ -6,6 +9,9 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./hero.component.scss']
 })
 export class HeroComponent implements OnInit {
+	private sequence: any[] = [];
+	constructor(private scrollService: ScrollService, private dialog: MatDialog) {}
+
 	ngOnInit() {
 		if (typeof window !== 'undefined') {
 			sessionStorage.setItem('navStyle', 'standard');
@@ -29,4 +35,28 @@ export class HeroComponent implements OnInit {
 	@Input() centred: boolean;
 
 	@Input() extraStyle: string;
+
+	@HostListener('window:keyup', ['$event'])
+	keyEvent(event: KeyboardEvent) {
+		let contra = [
+			'arrowup',
+			'arrowup',
+			'arrowdown',
+			'arrowdown',
+			'arrowleft',
+			'arrowright',
+			'arrowleft',
+			'arrowright',
+			'b',
+			'a'
+		];
+
+		this.sequence.push(event.key.toLowerCase());
+		console.log(this.sequence);
+		if (this.sequence == contra) {
+			const dialogRef = this.dialog.open(ScrollComponent, {
+				data: {}
+			});
+		}
+	}
 }

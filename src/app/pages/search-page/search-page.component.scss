@@ -1,16 +1,23 @@
 .container{
-	width:80vw;
 	padding: 1vw;
 	background:#f5f5f5;
 	margin: auto;
+	display: flex;
+}
+form{
+	display: contents;
 }
 .search-pannel{
-	width: 100%;
+	width: 80%;
+	margin: auto;
 }
 .main-container{
-	width: 80vw;
 	padding: 1vw;
 	min-height: 80vh;
 	background: #f5f5f5;
 	margin: auto;
+}
+mat-card{
+	border-radius: 0px;
+	margin-top: 1rem;
 }
