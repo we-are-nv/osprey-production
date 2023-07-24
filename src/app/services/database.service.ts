@@ -13,7 +13,7 @@ export class DatabaseService {
 	searchAll(query: any) {
 		let finalQuery: any = { searchQuery: query };
 		return this.http.get<any>(this.API_URL + '/search/all', {
-			params: { query: finalQuery }
+			params: { searchQuery: finalQuery }
 		});
 	}
 }
