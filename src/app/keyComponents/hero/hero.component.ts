@@ -52,7 +52,6 @@ export class HeroComponent implements OnInit {
 		];
 
 		this.sequence.push(event.key.toLowerCase());
-		console.log(this.sequence);
 		if (this.sequence == contra) {
 			const dialogRef = this.dialog.open(ScrollComponent, {
 				data: {}

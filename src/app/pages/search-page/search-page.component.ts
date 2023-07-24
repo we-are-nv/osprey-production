@@ -22,7 +22,7 @@ export class SearchPageComponent {
 	onSearchChange(searchValue: any): void {
 		console.log(searchValue.target.value);
 		this.databaseService
-			.searchAll(searchValue.target.value)
+			.searchAll(searchValue.target?.value)
 			.subscribe((data: any) => {
 				this.globalData = data;
 				console.log(this.globalData);

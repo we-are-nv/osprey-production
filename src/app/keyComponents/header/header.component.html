@@ -59,7 +59,6 @@
         <!-- Services -->
         <div *ngIf="finalNav.service">
             <a mat-button class="navLink" [matMenuTriggerFor]='matservicemenu' 
-                #menuTrigger="matMenuTrigger"
                 (mouseenter)="menuTrigger.openMenu()"
                 [routerLink]="finalNav.service.headpath"
                 > {{finalNav.service.name}}</a>

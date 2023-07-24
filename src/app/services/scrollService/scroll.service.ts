@@ -12,19 +12,6 @@ export class ScrollService {
 	private routesToTop: string[] = ['info-page']; // Add the route names that should scroll to top
 
 	@Output() private konami: EventEmitter<void>;
-	private sequence: string[] = [];
-	private konamiCode = [
-		'arrowup',
-		'arrowup',
-		'arrowdown',
-		'arrowdown',
-		'arrowleft',
-		'arrowright',
-		'arrowleft',
-		'arrowright',
-		'b',
-		'a'
-	];
 
 	constructor(private router: Router, public dialog: MatDialog) {
 		this.router.events.subscribe(event => {
@@ -43,23 +30,5 @@ export class ScrollService {
 				}
 			}
 		});
-	}
-
-	Handler(event: KeyboardEvent) {
-		if (this.sequence == this.konamiCode) {
-			console.log('working');
-			const dialogRef = this.dialog.open(ScrollComponent, {
-				data: {}
-			});
-		}
-		this.sequence.push(event.key.toLowerCase());
-
-		console.log(this.sequence, this.konamiCode);
-	}
-
-	isKonamiCode(): boolean {
-		return this.konamiCode.every(
-			(code: string, index: number) => code === this.sequence[index]
-		);
 	}
 }
