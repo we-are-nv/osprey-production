@@ -1,15 +1,8 @@
-<div
-	class="categoryContainer"
-	fxLayout="row wrap"
-	fxLayoutAlign="flex-start">
-	<mat-card
-		class="categoryCard mat-elevation-z0 selectable noBoxShadow noElevation"
-		(click)="loadCat(category._id)"
-		*ngFor="let category of cards">
-		<img
-			mat-card-image
-			[src]="category.image" />
-		<h1>{{ category.name }}</h1>
-		<span>Explore <mat-icon>circle</mat-icon></span>
-	</mat-card>
+<div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
+  <mat-card class="categoryCard mat-elevation-z0 selectable noBoxShadow noElevation" (click)="loadCat(category._id)"
+    *ngFor="let category of cards">
+    <img mat-card-image [src]="category.image" />
+    <h1>{{ category.name }}</h1>
+    <span>Explore <mat-icon>circle</mat-icon></span>
+  </mat-card>
 </div>

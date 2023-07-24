@@ -1,7 +1,7 @@
-import { Component, HostListener } from '@angular/core';
-import { ScrollService } from './services/scrollService/scroll.service';
-import { ProductService } from './services/product.service';
-import { InfoPageService } from './services/info-page.service';
+import {Component, HostListener} from '@angular/core';
+import {ScrollService} from './services/scrollService/scroll.service';
+import {ProductService} from './services/product.service';
+import {InfoPageService} from './services/info-page.service';
 
 @Component({
 	selector: 'app-root',
@@ -46,7 +46,7 @@ export class AppComponent {
 			});
 			let nav = {
 				name: 'Products',
-				headpath: '/products/landing',
+				headpath: '/products/top',
 				childLinks: childLinks
 			};
 			console.log(nav);

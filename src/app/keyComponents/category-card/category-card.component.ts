@@ -1,5 +1,5 @@
-import { Component, Input , EventEmitter, Output} from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
+import {Component, Input, EventEmitter, Output} from '@angular/core';
+import {ProductService} from 'src/app/services/product.service';
 
 @Component({
 	selector: 'app-category-card',
@@ -9,8 +9,12 @@ import { ProductService } from 'src/app/services/product.service';
 export class CategoryCardComponent {
 	@Output() catRouting: EventEmitter<any> = new EventEmitter<any>();
 	@Input() cards: any = [];
-
-	loadCat(id: string){
-		this.catRouting.emit(id)
+	ngOnInit(): void {
+		//Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+		//Add 'implements OnInit' to the class.
+		console.log(this.cards);
+	}
+	loadCat(id: string) {
+		this.catRouting.emit(id);
 	}
 }

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { ProductService } from 'src/app/services/product.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {ProductService} from 'src/app/services/product.service';
 
 @Component({
 	selector: 'app-products',
@@ -38,13 +38,17 @@ export class ProductsComponent implements OnInit {
 
 			this.productService.getCategories(this.categoryId);
 
-			this.productService.getProducts({ category: this.categoryId, page: 1, limit:10 });
+			this.productService.getProducts({
+				category: this.categoryId,
+				page: 1,
+				limit: 10
+			});
 
 			// Breadcrumb Setup
 			this.history = [
-				{ path: '/', friendly: 'Home' },
-				{ path: '/products/landing', friendly: 'Products' },
-				{ path: '/products/' + this.categoryId, friendly: this.categoryId }
+				{path: '/', friendly: 'Home'},
+				{path: '/products/top', friendly: 'Products'},
+				{path: '/products/' + this.categoryId, friendly: this.categoryId}
 			];
 
 			this.productService.getSingleCategory(this.categoryId).subscribe(data => {
@@ -65,7 +69,11 @@ export class ProductsComponent implements OnInit {
 
 	changeType(value: any) {
 		this.category = value;
-		this.productService.getProducts({ category: this.categoryId, page: 1, limit: 10 });
+		this.productService.getProducts({
+			category: this.categoryId,
+			page: 1,
+			limit: 10
+		});
 	}
 	loadProduct(id: any) {
 		this.router.navigate([`product/${id}`]);
@@ -81,7 +89,7 @@ export class ProductsComponent implements OnInit {
 		});
 	}
 	changePage(newPage: any) {
-		this.productService.getProducts({ category: this.categoryId, page: newPage });
+		this.productService.getProducts({category: this.categoryId, page: newPage});
 		let top = document.getElementById('productList');
 		top?.scrollIntoView();
 	}
