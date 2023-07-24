@@ -33,21 +33,37 @@ Get Categories
 // edited this route so it doesnt clash with the main path
 
 router.get('/', async (req, res, next) => {
+
+  console.log('URL')
+  console.log(req.url)
   var parent = req.query.parent || undefined;
+
   const foundCats = await categories.find({ parent: parent });
-  //console.log('Categories:', foundCats);
-  for (idx in foundCats) {
-    if (foundCats[idx].image) {
-
-
-      foundCats[idx].image = `${process.env.S3_BASE}${foundCats[idx].image}`;
-
+  try {
+    //console.log(foundCats)
+    //console.log('Categories:', foundCats);
+    for (idx in foundCats) {
+      const childrenFound = await categories.count({ parent: foundCats[idx]._id });
+      var hasChild = false;
+      //console.log(childrenFound)
+      if (childrenFound > 0) {
+        hasChild = true;
+      };
+      foundCats[idx]['hasChild'] = hasChild;
+      if (foundCats[idx].image) {
+        foundCats[idx].image = `${process.env.S3_BASE}${foundCats[idx].image}`;
+      }
+      if (foundCats[idx].info.banner_image) {
+        foundCats[idx].info.banner_image = `${process.env.S3_BASE}${foundCats[idx].info.banner_image}`;
+      }
     }
-    if (foundCats[idx].info.banner_image) {
-      foundCats[idx].info.banner_image = `${process.env.S3_BASE}${foundCats[idx].info.banner_image}`;
-    }
+    res.json({ cats: foundCats });
   }
-  res.json({ cats: foundCats });
+  catch (err) {
+    console.log(foundCats)
+    res.json({ cats: [], err: err })
+  }
+
 
 });
 

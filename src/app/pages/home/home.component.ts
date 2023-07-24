@@ -1,10 +1,9 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { InfoPageService } from 'src/app/services/info-page.service';
-
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
@@ -46,14 +45,14 @@ export class HomeComponent {
 		// this.location.replaceState("/some/newstate/");
 
 		this.productService.getCategories('');
-		this.categorySub = this.productService.getAllCategories().subscribe(data => {
-			console.log(data);
-			this.productCategories = data.cats;
-			this.categoryListPart = this.productCategories.slice(
-				this.categoryListPosition.first,
-				this.categoryListPosition.last
-			);
-		});
+		// this.categorySub = this.productService.getAllCategories().subscribe(data => {
+		// 	console.log(data);
+		// 	this.productCategories = data.cats;
+		// 	this.categoryListPart = this.productCategories.slice(
+		// 		this.categoryListPosition.first,
+		// 		this.categoryListPosition.last
+		// 	);
+		// });
 
 		this.infoPageService.getThumbnails('market').subscribe((data: any) => {
 			this.marketsList = data;
