@@ -77,7 +77,8 @@ export class HeaderComponent {
 		this.databaseService
 			.searchAll(searchValue.target.value)
 			.subscribe((data: any) => {
-				this.searchData = data;
+				this.searchData = data.results;
+				console.log(this.searchData.product);
 				console.log(this.searchData);
 			});
 	}

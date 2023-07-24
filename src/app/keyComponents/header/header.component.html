@@ -59,6 +59,7 @@
         <!-- Services -->
         <div *ngIf="finalNav.service">
             <a mat-button class="navLink" [matMenuTriggerFor]='matservicemenu' 
+                #menuTrigger="matMenuTrigger"
                 (mouseenter)="menuTrigger.openMenu()"
                 [routerLink]="finalNav.service.headpath"
                 > {{finalNav.service.name}}</a>
@@ -86,15 +87,18 @@
     </div>
 
     <div class="searchBar">
-        <mat-form-field class="example-full-width" [@inputWiden]="inputState" [class]="inputState">
+        <mat-form-field  [@inputWiden]="inputState" [class]="inputState" >
             <mat-label>Search</mat-label>
-            <input matInput placeholder="Ex. Pizza" [matMenuTriggerFor]='searchInput'  #menuTrigger="matMenuTrigger" (keyup.enter)="onSearchChange($event);menuTrigger.openMenu()">
-            <mat-hint>Press Enter to Search</mat-hint>
+            <input class="input" matInput placeholder="Press Enter to Search" [matMenuTriggerFor]='searchInput'  #menuTrigger="matMenuTrigger" (keyup.enter)="onSearchChange($event);menuTrigger.openMenu()">
         </mat-form-field>
         <a  class="searchIcon" (click)="activateSearch()"><mat-icon >search</mat-icon></a>
         <mat-menu #matservicemenu="matMenu" class="navLink"  #searchInput="matMenu" (mouseleave)="menuTrigger.closeMenu()">
-            <div >
-                <a class="navMenuDropdownItem" *ngFor="let item of searchData"></a>
+            <div  >
+                <ng-template *ngIf="searchData?.product">
+                    <div  *ngFor="let product of searchData.product; let i= index"  >
+                        {{product.product_name}}
+                    </div>
+                </ng-template>
             </div>
         
         </mat-menu>

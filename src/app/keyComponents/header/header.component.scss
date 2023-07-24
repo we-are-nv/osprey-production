@@ -149,6 +149,7 @@ input.mat-input-element {
     color: white;
 }
 .searchBar{
+    margin-top: auto;
     margin-left: auto;
     display: flex;
 }
@@ -202,29 +203,11 @@ a{
 }
 
 
-.normal{
-    transition: width 800ms ease-in-out;
-}
 
-.opened-search{
-    transition: width 800ms ease-in-out;
-    width: 40vw;
-}
-
-.widen{
-    margin-left:auto;
-    z-index: 99;
-}
-
-.nav-widen{
-    z-index: 0;
-}
-.nav-normal{
-    
-}
 
 .searchIcon{
-    height: min-content;
+    height: auto;
+    font-size: 1.25rem;
     margin: auto;
     margin-left: 5vw;
 }
