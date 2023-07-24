@@ -34,6 +34,27 @@ export class AppComponent {
 		this.generateSingleInfo('resource', 'Resources');
 
 		this.generateSingleInfo('contact', 'Contact');
+		this.categorySub = this.productService
+			.getCategoriesUpdateListener()
+			.subscribe(data => {
+				let childLinks: any[] = [];
+				data.cats.forEach((subPage: any) => {
+					let childLink = {
+						name: subPage.name,
+						path: '/products/' + subPage._id
+					};
+					childLinks.push(childLink);
+				});
+				let nav = {
+					name: 'Products',
+					headpath: '/products/top',
+					childLinks: childLinks
+				};
+				console.log(nav);
+
+				this.finalNav['product'] = nav;
+				this.categorySub.unsubscribe();
+			});
 		// this.categorySub = this.productService.getAllCategories().subscribe(data => {
 		// 	console.log(data);
 		// 	let childLinks: any[] = [];

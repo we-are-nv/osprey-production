@@ -46,14 +46,16 @@ export class HomeComponent {
 		// this.location.replaceState("/some/newstate/");
 
 		this.productService.getCategories('');
-		// this.categorySub = this.productService.getAllCategories().subscribe(data => {
-		// 	console.log(data);
-		// 	this.productCategories = data.cats;
-		// 	this.categoryListPart = this.productCategories.slice(
-		// 		this.categoryListPosition.first,
-		// 		this.categoryListPosition.last
-		// 	);
-		// });
+		this.categorySub = this.productService
+			.getCategoriesUpdateListener()
+			.subscribe(data => {
+				console.log(data);
+				this.productCategories = data.cats;
+				this.categoryListPart = this.productCategories.slice(
+					this.categoryListPosition.first,
+					this.categoryListPosition.last
+				);
+			});
 
 		this.infoPageService.getThumbnails('market').subscribe((data: any) => {
 			this.marketsList = data;
