@@ -40,19 +40,18 @@ export class ProductLandingComponent implements OnInit {
 					console.log(this.categories);
 
 					if (this.categories.length < 1) {
-						this.loadProds(this.categoryId);
+						//this.loadProds(this.categoryId);
 					}
 				});
 		});
 	}
-	getNewCats(id: any) {
-		this.router.navigate(['/products/' + id]);
-		//this.productService.getCategories(id);
-		console.log(this.categories);
-		//this.activeId = id;
+	getNewCats(data: any) {
+		if (data.hasChild) {
+			this.router.navigate(['/products/' + data.id]);
+		} else {
+			this.categorySub.unsubscribe();
+			this.router.navigate(['/search/' + data.id]);
+		}
 	}
-	loadProds(id: any) {
-		this.categorySub.unsubscribe();
-		this.router.navigate(['/search/' + id]);
-	}
+	loadProds(id: any) {}
 }
