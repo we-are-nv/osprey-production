@@ -201,10 +201,17 @@ router.get('/all', async (req, res) => {
 
     var result_retuned = await dbSearch[plainDB]
       .find(inject, selectOptions)
-    if (final_result[result_retuned[0].searchType] == undefined) {
-      final_result[result_retuned[0].searchType] = []
+    try {
+      console.log(result_retuned)
+      if (final_result[result_retuned[0].searchType] == undefined) {
+        final_result[result_retuned[0].searchType] = []
+      };
+      final_result[result_retuned[0].searchType] = [...final_result[result_retuned[0].searchType], ...result_retuned];
+    }
+    catch (err){
+        final_result = final_result
     };
-    final_result[result_retuned[0].searchType] = [...final_result[result_retuned[0].searchType], ...result_retuned];
+
 
 
   };
