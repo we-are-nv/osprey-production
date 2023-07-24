@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
-import { MatIconModule } from '@angular/material/icon';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
-import { InfoPageService } from 'src/app/services/info-page.service';
+import {Component} from '@angular/core';
+import {ProductService} from 'src/app/services/product.service';
+import {MatIconModule} from '@angular/material/icon';
+import {MatIconRegistry} from '@angular/material/icon';
+import {DomSanitizer} from '@angular/platform-browser';
+import {InfoPageService} from 'src/app/services/info-page.service';
 
 @Component({
 	selector: 'app-home',
@@ -15,7 +15,7 @@ export class HomeComponent {
 	categorySub: any;
 	productCategories: any = [];
 
-	history: [{ path: string; friendly: string }] = [{ path: '/', friendly: 'Home' }];
+	history: [{path: string; friendly: string}] = [{path: '/', friendly: 'Home'}];
 
 	marketsList: any[] = [];
 	serviceList: any[] = [];
@@ -26,9 +26,9 @@ export class HomeComponent {
 
 	listLength = 4;
 
-	marketListPosition = { first: 0, last: 0 + this.listLength };
-	serviceListPosition = { first: 0, last: 0 + this.listLength };
-	categoryListPosition = { first: 0, last: 0 + this.listLength };
+	marketListPosition = {first: 0, last: 0 + this.listLength};
+	serviceListPosition = {first: 0, last: 0 + this.listLength};
+	categoryListPosition = {first: 0, last: 0 + this.listLength};
 
 	constructor(
 		private productService: ProductService,
@@ -46,14 +46,14 @@ export class HomeComponent {
 		// this.location.replaceState("/some/newstate/");
 
 		this.productService.getCategories('');
-		this.categorySub = this.productService.getAllCategories().subscribe(data => {
-			console.log(data);
-			this.productCategories = data.cats;
-			this.categoryListPart = this.productCategories.slice(
-				this.categoryListPosition.first,
-				this.categoryListPosition.last
-			);
-		});
+		// this.categorySub = this.productService.getAllCategories().subscribe(data => {
+		// 	console.log(data);
+		// 	this.productCategories = data.cats;
+		// 	this.categoryListPart = this.productCategories.slice(
+		// 		this.categoryListPosition.first,
+		// 		this.categoryListPosition.last
+		// 	);
+		// });
 
 		this.infoPageService.getThumbnails('market').subscribe((data: any) => {
 			this.marketsList = data;
