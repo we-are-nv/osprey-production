@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+
+import { MaterialModule } from './material-module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './keyComponents/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material-module';
 import { FooterComponent } from './keyComponents/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { QuoteFormComponent } from './pages/quote-form/quote-form.component';
@@ -32,8 +33,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScrollService } from './services/scrollService/scroll.service';
 import { SafePipe } from './pages/services/safe.pipe';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { ScrollComponent } from './services/scrollService/scroll/scroll.component';
 
 @NgModule({
+	imports: [
+		MaterialModule,
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		FlexLayoutModule,
+		HttpClientModule,
+		FormsModule,
+		ReactiveFormsModule
+	],
 	declarations: [
 		AppComponent,
 		BreadcrumbsComponent,
@@ -58,17 +70,8 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 		CategoryCardComponent,
 		SimilarProductsComponent,
 		SafePipe,
-		SearchPageComponent
-	],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		BrowserAnimationsModule,
-		MaterialModule,
-		FlexLayoutModule,
-		HttpClientModule,
-		FormsModule,
-		ReactiveFormsModule
+		SearchPageComponent,
+		ScrollComponent
 	],
 	providers: [UrlFormatterPipe, provideClientHydration(), ScrollService],
 	bootstrap: [AppComponent]

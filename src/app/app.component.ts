@@ -1,7 +1,8 @@
-import {Component, HostListener} from '@angular/core';
-import {ScrollService} from './services/scrollService/scroll.service';
-import {ProductService} from './services/product.service';
-import {InfoPageService} from './services/info-page.service';
+import { Component, HostListener } from '@angular/core';
+import { ScrollService } from './services/scrollService/scroll.service';
+import { ProductService } from './services/product.service';
+import { InfoPageService } from './services/info-page.service';
+import { DatabaseService } from './services/database.service';
 
 @Component({
 	selector: 'app-root',
@@ -11,10 +12,16 @@ import {InfoPageService} from './services/info-page.service';
 export class AppComponent {
 	title = 'ospreyProduction';
 
+	isSearching = false;
+	searchArray: any[] = [];
+	searchData: any = {};
+	searchInput: string = '';
+
 	constructor(
 		private productService: ProductService,
 		private infoPageService: InfoPageService,
-		private scrollService: ScrollService
+		private scrollService: ScrollService,
+		private databaseService: DatabaseService
 	) {}
 	categories: any = [];
 	categorySub: any;
@@ -131,5 +138,14 @@ export class AppComponent {
 
 				tempSub.unsubscribe();
 			});
+	}
+
+	onSearchChange(searchValue: any): void {
+		this.databaseService.searchAll(searchValue).subscribe((data: any) => {
+			this.searchData = data.results;
+			this.searchArray = data.results.product;
+			console.log(this.searchData.product);
+			console.log(this.searchData);
+		});
 	}
 }

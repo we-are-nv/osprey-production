@@ -17,11 +17,49 @@
 </form>
 </section>
 <section class="main-container">
-	<div *ngIf="globalData !== {}">
-		<mat-card *ngFor="let product of globalData.products">
-			<img [src]="product.image" alt="">
-			<h3>{{product.product_name}}</h3>
-		</mat-card>
-	</div>
+	<mat-list>
+		<div *ngIf="searchData?.product">
+			<mat-list-item>
+				<h4>Products</h4>
+			</mat-list-item>
+			<div *ngFor="let product of searchData.product; let i = index">
+				<mat-list-item  [routerLink]="'/product/'+ product._id">
+					<p>{{product.product_name}}</p>
+				</mat-list-item>
+		
+			</div>
+		</div>
+		<div *ngIf="searchData?.category">
+			<mat-list-item>
+				<h4>Categories</h4>
+			</mat-list-item>
+			<div *ngFor="let category of searchData.category; let i = index">
+				<mat-list-item [routerLink]="'/search/'+ category._id">
+					<p>{{category.name}}</p>
+				</mat-list-item>
+		
+			</div>
+		</div>
+		<div *ngIf="searchData?.info">
+			<mat-list-item>
+				<h4>Information</h4>
+			</mat-list-item>
+			<div *ngFor="let info of searchData.info; let i = index">
+				<mat-list-item  [routerLink]="'/info-page/'+ info.type +'/'+ info._id">
+					<p>{{info.name}}</p>
+				</mat-list-item>
+		
+			</div>
+		</div>
+		<div *ngIf="searchData?.page">
+			<div *ngFor="let page of searchData.page; let i = index">
+				<mat-list-item>
+					<p>{{page.name}}</p>
+				</mat-list-item>
+		
+			</div>
+		</div>
+	</mat-list>
+		
 
 </section>

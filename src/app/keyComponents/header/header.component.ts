@@ -1,10 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {trigger, state, style, animate, transition} from '@angular/animations';
-import {MatMenuTrigger} from '@angular/material/menu';
-import {Router} from '@angular/router';
-import {InfoPageService} from 'src/app/services/info-page.service';
-import {ProductService} from 'src/app/services/product.service';
-import {DatabaseService} from 'src/app/services/database.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { Router } from '@angular/router';
+import { InfoPageService } from 'src/app/services/info-page.service';
+import { ProductService } from 'src/app/services/product.service';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
 	selector: 'app-header',
@@ -12,20 +12,20 @@ import {DatabaseService} from 'src/app/services/database.service';
 	styleUrls: ['./header.component.scss'],
 	animations: [
 		trigger('inputWiden', [
-			state('normal', style({width: '1vw', opacity: '0'})), // Initial state
-			state('widen', style({width: '50vw', opacity: '1'})), // Widened state
+			state('normal', style({ width: '1vw', opacity: '0' })), // Initial state
+			state('widen', style({ width: '50vw', opacity: '1' })), // Widened state
 			transition('normal => widen', animate('2000ms ease-in')), // Transition time and easing function
 			transition('widen => normal', animate('2000ms ease-out')) // Transition time and easing function
 		]),
 		trigger('navShrink', [
-			state('normal', style({width: 'auto', opacity: '1'})), // Initial state
-			state('widen', style({width: '0%', opacity: '0'})), // Widened state
+			state('normal', style({ width: 'auto', opacity: '1' })), // Initial state
+			state('widen', style({ width: '0%', opacity: '0' })), // Widened state
 			transition('normal => widen', animate('0500ms ease-in')), // Transition time and easing function
 			transition('widen => normal', animate('3500ms ease-out')) // Transition time and easing function
 		])
 	]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 	inputState = 'normal';
 	constructor(
 		private productService: ProductService,
@@ -33,6 +33,11 @@ export class HeaderComponent {
 		public router: Router,
 		private databaseService: DatabaseService
 	) {}
+
+	ngOnInit(): void {
+		this.searchData = {};
+	}
+
 	// Category Stored Data
 
 	scrolled = false;
@@ -40,7 +45,8 @@ export class HeaderComponent {
 
 	isSearching = false;
 	searchArray: any[] = [];
-	searchData: any;
+	searchData: any = {};
+	searchInput: string = '';
 
 	@Input() finalNav: any;
 	@Output() toggleNav: EventEmitter<any> = new EventEmitter();
@@ -75,15 +81,13 @@ export class HeaderComponent {
 	}
 
 	onSearchChange(searchValue: any): void {
-		console.log('SEARCHCAH');
-		console.log(searchValue.target.value);
-		this.databaseService
-			.searchAll(searchValue.target.value)
-			.subscribe((data: any) => {
-				this.searchData = data.results;
-				this.searchArray = data.results.product;
-				console.log(this.searchData.product);
-				console.log(this.searchData);
-			});
+		console.log(searchValue);
+
+		this.databaseService.searchAll(searchValue).subscribe((data: any) => {
+			this.searchData = data.results;
+			this.searchArray = data.results.product;
+			console.log(this.searchData.product);
+			console.log(this.searchData);
+		});
 	}
 }

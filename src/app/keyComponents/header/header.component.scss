@@ -211,3 +211,18 @@ a{
     margin: auto;
     margin-left: 5vw;
 }
+.SearchList{
+    width: 50vh;
+}
+::ng-deep.mat-menu-panel {
+    max-width: none !important;
+}
+.linkContainer{
+    display: flex;
+}
+.link{
+
+    color: #0065E7;
+    margin-left: auto ;
+    margin-right: 5%;
+}
