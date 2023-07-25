@@ -106,19 +106,19 @@ const dbSearch = {
 const dbSelect = {
 
   "product": {
-    standard: 'product_name product_code searchType ',
-    extra: 'image description'
+    standard: 'product_name product_code searchType image ',
+    extra: 'description'
   },
   "page": {
-    standard: "name searchType ",
+    standard: "name searchType image ",
     extra: "elements"
   },
   "info": {
-    standard: "name type searchType ",
+    standard: "name type searchType image ",
     extra: "banner_image thumbnail_image bonus_cards pages"
   },
   "category": {
-    standard: "name image searchType ",
+    standard: "name image searchType image ",
     extra: "info"
   }
 }
@@ -208,8 +208,8 @@ router.get('/all', async (req, res) => {
       };
       final_result[result_retuned[0].searchType] = [...final_result[result_retuned[0].searchType], ...result_retuned];
     }
-    catch (err){
-        final_result = final_result
+    catch (err) {
+      final_result = final_result
     };
 
 
