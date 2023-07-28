@@ -22,7 +22,7 @@
     <!-- Product -->
     <div *ngIf="finalNav.product">
       <a mat-button class="nav-button" class="navLink" [matMenuTriggerFor]='matproductmenu'
-        #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()"
+        #menuTrigger="matMenuTrigger" (mouseover)="menuTrigger.openMenu()"
         (click)="router.navigate([finalNav.product.headpath]);"> {{finalNav.product.name}}</a>
       <mat-menu #matproductmenu="matMenu" class="navLink">
         <div (click)="menuTrigger.closeMenu();" (mouseleave)="menuTrigger.closeMenu()">
@@ -37,7 +37,7 @@
     <!-- Markets -->
     <div *ngIf="finalNav.market">
       <a mat-button class="navLink" [matMenuTriggerFor]='matmarketmenu' [routerLink]="finalNav.market.headpath"
-        #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()"> {{finalNav.market.name}}</a>
+        #menuTrigger="matMenuTrigger" (mouseover)="menuTrigger.openMenu()"> {{finalNav.market.name}}</a>
       <mat-menu #matmarketmenu="matMenu" class="navLink">
         <div (mouseleave)="menuTrigger.closeMenu()">
           <a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.market.childLinks"
@@ -51,7 +51,8 @@
     <!-- Services -->
     <div *ngIf="finalNav.service">
       <a mat-button class="navLink" [matMenuTriggerFor]='matservicemenu' #menuTrigger="matMenuTrigger"
-        (mouseenter)="menuTrigger.openMenu()" [routerLink]="finalNav.service.headpath"> {{finalNav.service.name}}</a>
+        (mouseover)="menuTrigger.openMenu()" [routerLink]="finalNav.service.headpath">
+        {{finalNav.service.name}}</a>
       <mat-menu #matservicemenu="matMenu" class="navLink">
         <div (mouseleave)="menuTrigger.closeMenu()">
           <a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.service.childLinks"
@@ -77,48 +78,49 @@
     <mat-form-field [@inputWiden]="inputState" [class]="inputState">
       <mat-label>Search</mat-label>
       <input class="input" matInput placeholder="Press Enter to Search" [matMenuTriggerFor]='searchInput'
-        #menuTrigger="matMenuTrigger" (keyup.enter)="onSearchChange(inputString.value);menuTrigger.openMenu()" #inputString >
+        #menuTrigger="matMenuTrigger" (keyup.enter)="onSearchChange(inputString.value);menuTrigger.openMenu()"
+        #inputString>
     </mat-form-field>
     <a class="searchIcon" (click)="activateSearch()"><mat-icon>search</mat-icon></a>
-    <mat-menu #matservicemenu="matMenu" #searchInput="matMenu" (mouseleave)="menuTrigger.closeMenu()" >
+    <mat-menu #matservicemenu="matMenu" #searchInput="matMenu" (mouseleave)="menuTrigger.closeMenu()">
       <div *ngIf="searchData?.product">
         <h4 mat-menu-item>Products</h4>
-        <div *ngFor="let product of searchArray; let i = index" >
-            <a mat-menu-item *ngIf="i < 3" [routerLink]="'/product/'+ product._id" >
-                <p>{{product.product_name}}</p>
-            </a>
-          
+        <div *ngFor="let product of searchArray; let i = index">
+          <a mat-menu-item *ngIf="i < 3" [routerLink]="'/product/'+ product._id">
+            <p>{{product.product_name}}</p>
+          </a>
+
         </div>
       </div>
-        <div *ngIf="searchData?.category">
-            <h4 mat-menu-item>Categories</h4>
-            <div *ngFor="let category of searchData.category; let i = index">
-                <a mat-menu-item *ngIf="i < 3" [routerLink]="'/search/'+ category._id">
-                    <p>{{category.name}}</p>
-                </a>
-        
-            </div>
+      <div *ngIf="searchData?.category">
+        <h4 mat-menu-item>Categories</h4>
+        <div *ngFor="let category of searchData.category; let i = index">
+          <a mat-menu-item *ngIf="i < 3" [routerLink]="'/search/'+ category._id">
+            <p>{{category.name}}</p>
+          </a>
+
         </div>
-        <div *ngIf="searchData?.info">
-            <h4 mat-menu-item>Information</h4>
-            <div *ngFor="let info of searchData.info; let i = index">
-                <a mat-menu-item *ngIf="i < 2" [routerLink]="'/info-page/'+ info.type +'/'+ info._id">
-                    <p>{{info.name}}</p>
-                </a>
-        
-            </div>
+      </div>
+      <div *ngIf="searchData?.info">
+        <h4 mat-menu-item>Information</h4>
+        <div *ngFor="let info of searchData.info; let i = index">
+          <a mat-menu-item *ngIf="i < 2" [routerLink]="'/info-page/'+ info.type +'/'+ info._id">
+            <p>{{info.name}}</p>
+          </a>
+
         </div>
-        <div *ngIf="searchData?.page">
-            <div *ngFor="let page of searchData.page; let i = index">
-                <div mat-menu-item *ngIf="i < 2">
-                    <p>{{page.name}}</p>
-                </div>
-        
-            </div>
+      </div>
+      <div *ngIf="searchData?.page">
+        <div *ngFor="let page of searchData.page; let i = index">
+          <div mat-menu-item *ngIf="i < 2">
+            <p>{{page.name}}</p>
+          </div>
+
         </div>
-        <div class="linkContainer" *ngIf="searchData !== {}" >
-            <a class="link" routerLink="searchAll/{{inputString.value}}">See All</a>
-        </div>
+      </div>
+      <div class="linkContainer" *ngIf="searchData !== {}">
+        <a class="link" routerLink="searchAll/{{inputString.value}}">See All</a>
+      </div>
     </mat-menu>
   </div>
   <div class="contactDetails">
