@@ -152,6 +152,12 @@ router.get('/', async (req, res) => {
     .limit(limit * 1)
     .skip((page - 1) * limit)
     .then(result => {
+      for (idx in result) {
+        // Find Image Strings and Add Base URL
+        if (result[idx].image) {
+          result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
+        }
+      }
       var newOutput = [];
       var escapedResult = result;
       for (idx in escapedResult) {
@@ -203,6 +209,12 @@ router.get('/all', async (req, res) => {
       .find(inject, selectOptions)
     try {
       console.log(result_retuned)
+      for (idx in result_retuned) {
+        // Find Image Strings and Add Base URL
+        if (result_retuned[idx].image) {
+          result_retuned[idx].image = `${process.env.S3_BASE}${result_retuned[idx].image}`;
+        }
+      }
       if (final_result[result_retuned[0].searchType] == undefined) {
         final_result[result_retuned[0].searchType] = []
       };
