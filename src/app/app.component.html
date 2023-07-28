@@ -1,12 +1,66 @@
 
 <mat-drawer-container class="example-container" hasBackdrop="true">
-	<mat-drawer mode="over" closed #drawer (click)="drawer.toggle()">
+	
+
+
+	<mat-drawer mode="over" closed #drawer  >
 		<div class="logo">
-			<img src="./assets/images/Paragon_V3-white.png" alt="" routerLink="/">
+			<img src="./assets/images/Paragon_V3-white.png" alt="" routerLink="/" (click)="drawer.toggle()">
 		</div>
+
+
+		<!-- Search Bar -->
+		<div class="searchBar">
+			<mat-form-field>
+				<mat-label>Search</mat-label>
+				<input class="input" matInput placeholder="Press Enter to Search" #InputString>
+			</mat-form-field>
+			<button mat-raised-button (click)="onSearchChange(InputString.value)"><p><mat-icon>home</mat-icon></p></button>
+			<mat-card >
+				<div *ngIf="searchData?.product">
+					<h4 mat-menu-item>Products</h4>
+					<div *ngFor="let product of searchArray; let i = index">
+						<div mat-menu-item *ngIf="i < 3">
+							<p>{{product.product_name}}</p>
+						</div>
+		
+					</div>
+				</div>
+				<div *ngIf="searchData?.category">
+					<h4 mat-menu-item>Categories</h4>
+					<div *ngFor="let category of searchData.category; let i = index">
+						<div mat-menu-item *ngIf="i < 3">
+							<p>{{category.name}}</p>
+						</div>
+		
+					</div>
+				</div>
+				<div *ngIf="searchData?.info">
+					<h4 mat-menu-item>Information</h4>
+					<div *ngFor="let info of searchData.info; let i = index">
+						<div mat-menu-item *ngIf="i < 2">
+							<p>{{info.name}}</p>
+						</div>
+		
+					</div>
+				</div>
+				<div *ngIf="searchData?.page">
+					<div *ngFor="let page of searchData.page; let i = index">
+						<div mat-menu-item *ngIf="i < 2">
+							<p>{{page.name}}</p>
+						</div>
+		
+					</div>
+				</div>
+				<div class="linkContainer" *ngIf="searchData !== {}">
+					<a class="link" routerLink="searchAll/{{InputString.value}}">See All</a>
+				</div>
+			</mat-card>
+		</div>
+
 		<!-- About -->
 		<div *ngIf="finalNav.about">
-			<a mat-button class="nav-button" [routerLink]="finalNav.about.headpath"> {{finalNav.about.name}}</a>
+			<a mat-button class="nav-button" [routerLink]="finalNav.about.headpath" (click)="drawer.toggle()"> {{finalNav.about.name}}</a>
 		</div>
 
 
@@ -16,7 +70,7 @@
 				#menuTrigger="matMenuTrigger"> {{finalNav.product.name}}</a>
 			<mat-menu #matproductmenu="matMenu" class="navLink">
 				<a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.product.childLinks"
-					[routerLink]="link.path">{{link.name}}</a>
+					[routerLink]="link.path" (click)="drawer.toggle()">{{link.name}}</a>
 			</mat-menu>
 		</div>
 
@@ -37,30 +91,26 @@
 				#menuTrigger="matMenuTrigger"> {{finalNav.service.name}}</a>
 			<mat-menu #matservicemenu="matMenu" class="navLink">
 				<a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.market.childLinks"
-					[routerLink]="link.path">{{link.name}}</a>
+					[routerLink]="link.path" (click)="drawer.toggle()">{{link.name}}</a>
 			</mat-menu>
 		</div>
 		<!-- Services -->
 		<div *ngIf="finalNav.resource">
-			<a mat-button class="nav-button" [matMenuTriggerFor]='matresourcemenu'
-				#menuTrigger="matMenuTrigger"> {{finalNav.resource.name}}</a>
-			<mat-menu #matresourcemenu="matMenu" class="navLink">
-				<a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.resource.childLinks"
-					[routerLink]="link.path">{{link.name}}</a>
-			</mat-menu>
+			<a mat-button class="nav-button" [routerLink]="finalNav.resource.headpath" (click)="drawer.toggle()"> {{finalNav.resource.name}}</a>
+
 		</div>
 
 
 		<!-- About -->
 		<div *ngIf="finalNav.contact">
-			<a mat-button class="nav-button" [routerLink]="finalNav.contact.headpath"> {{finalNav.contact.name}}</a>
+			<a mat-button class="nav-button" [routerLink]="finalNav.contact.headpath" (click)="drawer.toggle()"> {{finalNav.contact.name}}</a>
 		</div>
 
 
 
 		</mat-drawer>
 		<mat-drawer-content>
-			<app-header [finalNav]="finalNav" (toggleNav)="drawer.toggle()"></app-header>
+			<app-header [finalNav]="finalNav" (toggleNav)="drawer.toggle()" 	></app-header>
 			<router-outlet></router-outlet>
 			<app-footer></app-footer>
 		</mat-drawer-content>
