@@ -22,7 +22,7 @@
     <!-- Product -->
     <div *ngIf="finalNav.product">
       <a mat-button class="nav-button" class="navLink" [matMenuTriggerFor]='matproductmenu'
-        #menuTrigger="matMenuTrigger" (mouseover)="menuTrigger.openMenu()"
+        #menuTrigger="matMenuTrigger" (mousedown)="menuTrigger.openMenu()"
         (click)="router.navigate([finalNav.product.headpath]);"> {{finalNav.product.name}}</a>
       <mat-menu #matproductmenu="matMenu" class="navLink">
         <div (click)="menuTrigger.closeMenu();" (mouseleave)="menuTrigger.closeMenu()">
@@ -37,7 +37,7 @@
     <!-- Markets -->
     <div *ngIf="finalNav.market">
       <a mat-button class="navLink" [matMenuTriggerFor]='matmarketmenu' [routerLink]="finalNav.market.headpath"
-        #menuTrigger="matMenuTrigger" (mouseover)="menuTrigger.openMenu()"> {{finalNav.market.name}}</a>
+        #menuTrigger="matMenuTrigger" (mousedown)="menuTrigger.openMenu()"> {{finalNav.market.name}}</a>
       <mat-menu #matmarketmenu="matMenu" class="navLink">
         <div (mouseleave)="menuTrigger.closeMenu()">
           <a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.market.childLinks"
@@ -51,7 +51,7 @@
     <!-- Services -->
     <div *ngIf="finalNav.service">
       <a mat-button class="navLink" [matMenuTriggerFor]='matservicemenu' #menuTrigger="matMenuTrigger"
-        (mouseover)="menuTrigger.openMenu()" [routerLink]="finalNav.service.headpath">
+        (mousedown)="menuTrigger.openMenu()" [routerLink]="finalNav.service.headpath">
         {{finalNav.service.name}}</a>
       <mat-menu #matservicemenu="matMenu" class="navLink">
         <div (mouseleave)="menuTrigger.closeMenu()">

@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {InfoPageService} from 'src/app/services/info-page.service';
 import {ProductService} from 'src/app/services/product.service';
 import {DatabaseService} from 'src/app/services/database.service';
+import {Observable} from 'rxjs';
 
 @Component({
 	selector: 'app-header',
@@ -45,6 +46,7 @@ export class HeaderComponent implements OnInit {
 
 	isSearching = false;
 	searchArray: any[] = [];
+	filteredOptions: Observable<string[]>;
 	searchData: any = {};
 	searchInput: string = '';
 
