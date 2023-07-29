@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-import { MatMenuTrigger } from '@angular/material/menu';
-import { Router } from '@angular/router';
-import { InfoPageService } from 'src/app/services/info-page.service';
-import { ProductService } from 'src/app/services/product.service';
-import { DatabaseService } from 'src/app/services/database.service';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {trigger, state, style, animate, transition} from '@angular/animations';
+import {MatMenuTrigger} from '@angular/material/menu';
+import {Router} from '@angular/router';
+import {InfoPageService} from 'src/app/services/info-page.service';
+import {ProductService} from 'src/app/services/product.service';
+import {DatabaseService} from 'src/app/services/database.service';
+import {Observable} from 'rxjs';
 
 @Component({
 	selector: 'app-header',
@@ -48,6 +49,7 @@ export class HeaderComponent implements OnInit {
 
 	isSearching = false;
 	searchArray: any[] = [];
+	filteredOptions: Observable<string[]>;
 	searchData: any = {};
 	searchInput: string = '';
 
@@ -72,7 +74,9 @@ export class HeaderComponent implements OnInit {
 	closeMyMenu(menuTrigger: MatMenuTrigger) {
 		menuTrigger.closeMenu();
 	}
-
+	testFunction() {
+		alert('FUCKs');
+	}
 	activateSearch() {
 		if (this.inputState == 'normal') this.inputState = 'widen';
 		else this.inputState = 'normal';
