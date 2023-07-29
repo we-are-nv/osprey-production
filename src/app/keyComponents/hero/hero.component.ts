@@ -27,6 +27,8 @@ export class HeroComponent implements OnInit {
 	@Input() isButtons: boolean;
 	@Input() isButton3: boolean;
 
+	@Input() whatsApp: boolean;
+
 	@Input() button1Data: { text: string; path: string; type: string };
 	@Input() button2Data: { text: string; path: string; type: string };
 	@Input() button3Data: { text: string; path: string; type: string };

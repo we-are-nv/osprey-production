@@ -22,7 +22,7 @@
 </section>
 <!-- Product Categories -->
 <div class="categoryContainer headCategoryContainer" fxLayout="colun wrap" fxLayoutAlign="flex-start">
-  <mat-card class="categoryCard selectable" routerLink="/search/{{ category._id }}"
+  <mat-card class="categoryCard selectable" routerLink="/products/{{ category._id }}"
     *ngFor="let category of categoryListPart">
     <img mat-card-image [src]="category.image" />
     <h1>{{ category.name }}</h1>

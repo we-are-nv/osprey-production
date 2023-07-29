@@ -12,13 +12,16 @@ import { DatabaseService } from 'src/app/services/database.service';
 	styleUrls: ['./header.component.scss'],
 	animations: [
 		trigger('inputWiden', [
-			state('normal', style({ width: '1vw', opacity: '0' })), // Initial state
-			state('widen', style({ width: '50vw', opacity: '1' })), // Widened state
+			state('normal', style({ opacity: '0' })), // Initial state
+			state('widen', style({ opacity: '1', delay: '3s' })), // Widened state
 			transition('normal => widen', animate('2000ms ease-in')), // Transition time and easing function
 			transition('widen => normal', animate('2000ms ease-out')) // Transition time and easing function
 		]),
 		trigger('navShrink', [
-			state('normal', style({ width: 'auto', opacity: '1' })), // Initial state
+			state(
+				'normal',
+				style({ width: 'auto', opacity: '1', transitionDelay: '3s' })
+			), // Initial state
 			state('widen', style({ width: '0%', opacity: '0' })), // Widened state
 			transition('normal => widen', animate('0500ms ease-in')), // Transition time and easing function
 			transition('widen => normal', animate('3500ms ease-out')) // Transition time and easing function
