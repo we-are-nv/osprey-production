@@ -17,6 +17,7 @@ const multer = require('multer');
 const categorys = require('../models/categories.js');
 const checkAuth = require('../../middleware/check-auth.js');
 const product_addit_info = require('../models/product_addit_info.js');
+const product_model = require('../models/product_models.js')
 const user = require('../models/user.js');
 const product_info = require('../models/product_info.js');
 
@@ -154,12 +155,12 @@ router.get('/product_info', async (req, res) => {
   // Determine count for Pagination
 
   const count = await allProducts.count(additQuery, selectOptions);
-  allProducts
+  const result = await allProducts
     .find(additQuery, selectOptions)
     .limit(limit * 1)
     .skip((page - 1) * limit)
     .populate(popu)
-    .populate('additional_information')
+    //.populate('additional_information')
     .populate('product_varients')
     .populate({
       path: 'category',
@@ -168,25 +169,62 @@ router.get('/product_info', async (req, res) => {
         model: 'categoryInfo'
       }
     })
-    .then(result => {
-      for (idx in result) {
-        // Find Image Strings and Add Base URL
-        if (result[idx].image) {
-          result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
-        }
-      }
+  for (idx in result) {
+    // Find Image Strings and Add Base URL
+    if (result[idx].image) {
+      result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
+    }
 
-      if (req.query.documentId) {
-        res.json({ product: result[0] });
-      } else {
-        res.json({
-          products: result,
-          totalPages: Math.ceil(count / limit),
-          documentCount: count,
-          currentPage: Number(page)
-        });
+    if (req.query.populate_include) {
+      //console.log(result[idx])
+      const usedModel = await productModels.findOne({ "type_name": result[idx].additional_information.modelName });
+      var fields = Object.keys(result[idx].additional_information.info);
+      var usedFields = [];
+      var modelKeys = Object.keys(usedModel.data);
+      var newInfo = {};
+      for (mIdx in modelKeys) {
+        var currentKey = usedModel.data[modelKeys[mIdx]];
+        for (cKey in currentKey) {
+          if (!newInfo[modelKeys[mIdx]]) {
+            newInfo[modelKeys[mIdx]] = {}
+          };
+          newInfo[modelKeys[mIdx]][currentKey[cKey]] = result[idx].additional_information.info[currentKey[cKey]];
+          if (result[idx].additional_information.info[currentKey[cKey]]) {
+
+
+            usedFields.push(currentKey[cKey]);
+          }
+
+        }
+        //console.log(currentKey)
       }
+      let difference = fields
+        .filter(x => !usedFields.includes(x))
+        .concat(usedFields.filter(x => !fields.includes(x)));
+      console.log(difference)
+      for (d in difference) {
+        if (!newInfo['other']) {
+          newInfo['other'] = {}
+        };
+        newInfo['other'][difference[d]] = result[idx].additional_information.info[difference[d]]
+      }
+      result[idx].additional_information.info = newInfo;
+
+    }
+  }
+
+
+  if (req.query.documentId) {
+    res.json({ product: result[0] });
+  } else {
+    res.json({
+      products: result,
+      totalPages: Math.ceil(count / limit),
+      documentCount: count,
+      currentPage: Number(page)
     });
+  }
+
 });
 
 /*
