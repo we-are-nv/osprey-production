@@ -1,85 +1,181 @@
 //general
-p{
-    color: #9B9B9B;
+p {
+    color: #9b9b9b;
     font-size: 0.75rem;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
 // Footer Formatting
-.footerMain{
+.footerMain {
     height: auto;
     background-color: #161616;
-    padding: 5vh;
+    padding: 2vh;
     color: white !important;
+    display: flex !important;
+    // justify-content: space-between !important;
+}
+
+.column-wrapper {
+    height: auto;
+    background-color: #161616;
+    width: 100%;
+    // padding: 5vh;
+    color: inherit;
     display: flex !important;
     justify-content: space-between !important;
 }
-.footerCol{
+
+.footerCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     height: 100%;
     width: auto;
+    margin: 1%;
+    border-radius: 0px;
+    text-align: start;
 }
+
+.footerCol.contact-col {
+    width: fit-content
+}
+
+.footerCol.link-col p {
+    margin: 0.4em 0
+}
+
+.outer-middle-col {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2em;
+}
+
 .footerMain {
     margin-top: 1rem;
-    display: flex-start;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    margin:auto;
+    margin: auto;
 }
-.footerCol{
-    width: 18%;
-    margin: 1%;
-    border-radius:0px ;
-    text-align: start;
-}
-@media screen and (max-width: 1000px) {
-    .footerCol{
-        width: 40%;
-        margin-left: auto;
-    }
-}
-@media screen and (max-width: 750px) {
-    .footerCol{
-        width: 70%;
-        margin:auto;
-    }
+
+
+
+.quote-col {
+    align-items: flex-start;
 }
 
 // Social media Link styling
-.socialIconGroup{
+.socialIconGroup {
     display: flex;
+    justify-content: space-between;
+    width: 80%;
 }
-.socialIconGroup a{
-    margin-left:1vw;
+
+.socialIconGroup a {
+    display: grid;
+    place-content: center;
 }
-.socialIcon{
+
+.socialIcon {
     height: 3vh;
 }
 
 // Contact Detail Styling
-.contactDetail{
+.contactDetail {
     display: flex;
     align-items: center;
     font-size: 0.75rem;
 }
-.contactDetail h1{
-    color: #0065E7;
+
+.contactDetail h3,
+.contactDetail h2 {
+    color: #0065e7;
 }
-.contactIcon{
+
+.contactDetail h2 {
+    font-size: 1.2em;
+}
+
+.contactIcon {
     margin-right: 2vw;
-    
 }
-.contactIcon svg{
+
+.contactIcon svg {
     width: 1.2vw;
 }
 
 // Quote Button
-.quoteButton{
+.quoteButton {
     padding: 0.35rem;
     border-radius: 0px;
-    background-color: #0065E7;
+    background-color: #0065e7;
     width: 80%;
     padding: 10%;
+}
+
+p.address {
+    margin: 1%
+}
+
+@media screen and (max-width: 1000px) {
+    .footerCol {
+        width: 40%;
+        margin-left: auto;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .footerMain {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .column-wrapper {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .footerCol {
+        width: 70%;
+        margin: auto;
+        align-items: center;
+    }
+
+    .contact-col {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .link-col {
+        display: none;
+    }
+
+    .quote-col {
+        width: 100%
+    }
+
+    .contact-col>h1 {
+        margin-bottom: 0.2em
+    }
+
+    .socialIconGroup {
+        width: 50%;
+        justify-content: flex-start;
+        gap: 0.8em;
+        margin: 0.8em 0;
+    }
+
+    .quoteButton {
+        width: 60%;
+        height: 2em;
+        padding: 5%
+    }
 }
