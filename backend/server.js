@@ -26,7 +26,7 @@ const authRoute = require('./src/routes/auth');
 const searchRoute = require('./src/routes/search')
 const mailRoute = require('./src/routes/mail');
 
-
+const s3Controller = require('./src/controller/s3-controller')
 // Declare Ports
 const PORT = process.env.PORT || 3030;
 

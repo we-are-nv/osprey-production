@@ -434,6 +434,15 @@ router.delete('/', checkAuth, async (req, res) => {
   }
 });
 
+router.get('/files', async (req, res) => {
+  const files = await s3Controller.getFiles();
+  files.shift();
+  for (idx in files) {
+    files[idx].Key = `${process.env.S3_BASE}/${files[idx].Key}`
+  }
+  res.json(files)
+})
+
 router.get('/accreditations', async (req, res) => {
   const {
     type = "all",

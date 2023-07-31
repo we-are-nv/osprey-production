@@ -211,7 +211,7 @@ router.get('/product_info', async (req, res) => {
       }
       result[idx].additional_information.info = newInfo;
 
-    }
+    };
   }
 
 
@@ -239,7 +239,7 @@ router.post('/', checkAuth, async (req, res, next) => {
   if (foundModel == null) {
     res.json({ error: 'ModelDosentExist' });
     return;
-  }
+  };
 
   //Ensure Additional Info Model Matches Given Model
   var bodyObjectKeys = Object.keys(req.body.additInfo);
