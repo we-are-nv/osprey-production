@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Subscription} from 'rxjs';
-import {ProductService} from 'src/app/services/product.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
 	selector: 'app-product-view',
@@ -20,6 +20,7 @@ export class ProductViewComponent implements OnInit {
 	category = '';
 
 	product: any = null;
+	productVarients: any;
 
 	history: any;
 
@@ -44,14 +45,17 @@ export class ProductViewComponent implements OnInit {
 					console.log(this.product);
 
 					this.history = [
-						{path: '/', friendly: 'Home'},
-						{path: '/products/top', friendly: 'Products'},
+						{ path: '/', friendly: 'Home' },
+						{ path: '/products/top', friendly: 'Products' },
 						// {path:"/products/"+this.product.category, friendly:this.product.category},
 						{
 							path: '/product/' + this.product.category + '/' + this.product._id,
 							friendly: this.product.product_name
 						}
 					];
+
+					if (this.product.product_varients)
+						this.productVarients = this.product.product_varients.data;
 
 					let tempAdditionalInfo = this.product.additional_information.info;
 					this.informationConverter(tempAdditionalInfo);

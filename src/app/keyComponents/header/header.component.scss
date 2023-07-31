@@ -99,15 +99,6 @@ mat-toolbar{
     width: 5vw;
     object-fit: cover;
 }
-@media (max-width:850px) {
-    .contactDetails{
-        visibility: hidden;
-    }
-    .navLink{
-        font-size: 1.75vw;
-        text-decoration: none;
-    }
-}
 
 
 
@@ -163,20 +154,7 @@ input.mat-input-element {
 }
 
 
-@media screen and (max-width: 1024px) {
-    .menuOpen{
-        visibility: visible;
-    }
-    .navLinks{
-        visibility: hidden;
-    }
-    #navLogo{
-        width: 15vw;
-    }
-    .searchBar{
-        visibility: hidden;
-    }
-}
+
 
 .searchbar-input{
     transform: width 500ms linear;
@@ -190,14 +168,7 @@ input.mat-input-element {
     width: 0vw;
     // visibility: collapse;
 }
-@keyframes slide-out {
-    0% {
-            width: 0vw;
-        }
-    100% {
-            width: 10vw;
-    }
-}
+
 a{
     color: white;
 }
@@ -225,4 +196,45 @@ a{
     color: #0065E7;
     margin-left: auto ;
     margin-right: 5%;
+}
+
+.normal{
+    display: none;
+}
+
+// WhatsApp Icon
+#whatsapp{
+    margin-right: auto;
+    padding: 1.5vh;
+    transform: scale(1.75);
+
+}
+#whatsapp:hover{
+    background-color: rgba(34, 34, 34, 0.781);
+}
+
+@media (max-width:1150px) {
+    .contactDetails{
+        visibility: hidden;
+    }
+    .navLink{
+        font-size: 1.75vw;
+        text-decoration: none;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .menuOpen{
+        visibility: visible;
+    }
+    .navLinks{
+        visibility: hidden;
+    }
+    #navLogo{
+        width: 15vw;
+    }
+    .searchBar{
+        visibility: hidden;
+    }
 }

@@ -33,9 +33,19 @@
                         {{feature |characterValidation}}
                         <br><br>  </span>
                         Part No: <span> {{product.product_code}} </span><br>
-                        Category: <span>{{product.category}}</span> <br>
+                        Category: <span>{{product.category._id}}</span> <br>
+                        
                 </p>
-
+                <div *ngIf="productVarients">
+                    <h2>{{product.product_varients.friendly}}</h2>
+                    <mat-chip-listbox aria-label="Fish selection">
+                        <div *ngFor="let option of productVarients">
+                            <mat-chip-option >{{option.model_no}}</mat-chip-option>
+                        </div>
+                    </mat-chip-listbox>
+                
+                </div>
+                
             </mat-card-content>
             </mat-card>
         </div>
@@ -103,7 +113,7 @@
 
     </mat-tab-group>
 </section>
-<section class="similarProductsInfo">
+<section class="similarProductsInfo" *ngIf="product">
     <div class="similarProductsHeader">
         <h1>Related Products</h1>
         
