@@ -175,7 +175,7 @@ router.get('/product_info', async (req, res) => {
       result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
     }
 
-    if (req.query.populate_include) {
+    if (req.query.populate_include && result[idx].additional_information) {
       //console.log(result[idx])
       const usedModel = await productModels.findOne({ "type_name": result[idx].additional_information.modelName });
       var fields = Object.keys(result[idx].additional_information.info);
@@ -183,6 +183,7 @@ router.get('/product_info', async (req, res) => {
       var modelKeys = Object.keys(usedModel.data);
       var newInfo = {};
       for (mIdx in modelKeys) {
+
         var currentKey = usedModel.data[modelKeys[mIdx]];
         for (cKey in currentKey) {
           if (!newInfo[modelKeys[mIdx]]) {
