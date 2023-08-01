@@ -16,7 +16,7 @@
 				<input class="input" matInput placeholder="Press Enter to Search" #InputString>
 			</mat-form-field>
 			<button mat-raised-button (click)="onSearchChange(InputString.value)"><p><mat-icon>home</mat-icon></p></button>
-			<mat-card >
+			<mat-card *ngIf="InputString.value !== ''">
 				<div *ngIf="searchData?.product">
 					<h4 mat-menu-item>Products</h4>
 					<div *ngFor="let product of searchArray; let i = index">

@@ -24,7 +24,7 @@ const product_info = require('../models/product_info.js');
 const router = express.Router();
 
 router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
+  //console.log('Time: ', Date.now());
   next();
 });
 
@@ -174,10 +174,16 @@ router.get('/product_info', async (req, res) => {
     if (result[idx].image) {
       result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
     }
+    var formattedName = result[idx].product_name.replace(/[^a-zA-Z ]/g, "").replace(/  +/g, ' ').split(" ").join("-").toLowerCase();
+    var url = `/product/${result[idx].product_code}/${formattedName}`;
+    result[idx].product_url = url;
+
 
     if (req.query.populate_include && result[idx].additional_information) {
-      //console.log(result[idx])
-      const usedModel = await productModels.findOne({ "type_name": result[idx].additional_information.modelName });
+      console.log('HELLO')
+      var test = result[idx].additional_information.modelName
+      console.log(result[idx].additional_information.modelName)
+      const usedModel = await productModels.findOne({ "type_name": test });
       var fields = Object.keys(result[idx].additional_information.info);
       var usedFields = [];
       var modelKeys = Object.keys(usedModel.data);
@@ -579,5 +585,25 @@ router.put('/bulk-update', checkAuth, async (req, res) => {
     res.status(500).json({ message: 'Internal server error', err });
   }
 });
+
+
+router.get('/convert-route', async (req, res) => {
+  if (req.query.code) {
+    const foundProduct = await product_info.findOne({ "product_code": req.query.code});
+    if (foundProduct) {
+      res.json({ _id: foundProduct._id })
+    } else {
+      res.json({ err: 'prod not found' })
+    }
+  } else if (req.query.id) {
+    const foundProduct = await product_info.findOne({ "_id": req.query.id });
+    var convertedName = foundProduct.product_name.split(" ").join("-").toLowerCase();
+    res.json({ code: foundProduct.product_code, name: convertedName });
+
+  } else {
+    res.json({ 'err': 'invalid params' });
+  }
+
+})
 
 module.exports = router;

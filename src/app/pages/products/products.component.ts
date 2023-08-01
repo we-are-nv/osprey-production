@@ -76,7 +76,7 @@ export class ProductsComponent implements OnInit {
 		});
 	}
 	loadProduct(id: any) {
-		this.router.navigate([`product/${id}`]);
+		this.router.navigate([`${id}`]);
 	}
 
 	// On search
