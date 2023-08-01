@@ -25,6 +25,7 @@ const infoRoute = require('./src/routes/information');
 const authRoute = require('./src/routes/auth');
 const searchRoute = require('./src/routes/search')
 const mailRoute = require('./src/routes/mail');
+const newsRoute = require('./src/routes/news.js')
 
 const s3Controller = require('./src/controller/s3-controller')
 // Declare Ports
@@ -132,6 +133,8 @@ app.use('/paragon/api/products/category', catRoute);
 app.use('/paragon/api/products/categories', catRoute);
 // Search route
 app.use('/paragon/api/search', searchRoute);
+// News route
+app.use('/paragon/api/news', newsRoute)
 // Mail route
 app.use('/paragon/api/mail', mailRoute);
 

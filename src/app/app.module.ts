@@ -37,6 +37,8 @@ import { ScrollComponent } from './services/scrollService/scroll/scroll.componen
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
+import { NewsComponent } from './pages/news/news.component';
+import { NewsDialogComponent } from './keyComponents/news-dialog/news-dialog.component';
 
 @NgModule({
 	imports: [
@@ -64,9 +66,9 @@ import { CarouselModule } from 'primeng/carousel';
 		ProductViewComponent,
 		ProductLandingComponent,
 		MarketsComponent,
+		NewsComponent,
 		NameConverterPipe,
 		CharacterValidationPipe,
-
 		ServicesInfoComponent,
 		ErrorPageComponent,
 		UrlFormatterPipe,
@@ -77,7 +79,8 @@ import { CarouselModule } from 'primeng/carousel';
 		SimilarProductsComponent,
 		SafePipe,
 		SearchPageComponent,
-		ScrollComponent
+		ScrollComponent,
+		NewsDialogComponent
 	],
 	providers: [UrlFormatterPipe, provideClientHydration(), ScrollService],
 	bootstrap: [AppComponent]

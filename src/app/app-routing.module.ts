@@ -11,6 +11,7 @@ import {ErrorPageComponent} from './error-page/error-page.component';
 import {GeneralInfoPageComponent} from './pages/general-info-page/general-info-page.component';
 import {SubPageComponent} from './pages/general-info-page/sub-page/sub-page.component';
 import {SearchPageComponent} from './pages/search-page/search-page.component';
+import { NewsComponent } from './pages/news/news.component';
 
 const routes: Routes = [
 	// General Pages
@@ -48,6 +49,9 @@ const routes: Routes = [
 	// Contact Page
 	{path: 'contactFrom', component: QuoteFormComponent},
 	{path: 'searchAll/:p1', component: SearchPageComponent},
+
+	// News Page
+	{path: 'news', component: NewsComponent},
 
 	// Error Page
 	{path: 'error', component: ErrorPageComponent}

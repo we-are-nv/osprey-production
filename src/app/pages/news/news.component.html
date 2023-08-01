@@ -1,0 +1,15 @@
+<mat-card
+	*ngFor="let article of articles"
+	(click)="openDialog(article)">
+	<mat-card-header>
+		<mat-card-title>{{ article.title }}</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		{{ article.excerpt }}
+		<mat-card-footer>
+			Please <a routerLink="contact">contact</a> us now for more information, to
+			discuss your specific requirements,
+			<a href="00441245280448">book a call</a> or request a quotation.
+		</mat-card-footer>
+	</mat-card-content>
+</mat-card>
