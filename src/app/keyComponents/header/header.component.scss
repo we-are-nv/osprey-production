@@ -1,10 +1,11 @@
 mat-toolbar{
     // min-height: 15vh;
-    width: 100vw;
+    width: 100%;
+    
+    justify-content: space-evenly;
     height: min-content;
     display:flex;
     position: fixed;
-    justify-content: space-between;
     z-index: 999;
 
 }
@@ -143,8 +144,11 @@ input.mat-input-element {
     margin-top: auto;
     margin-left: auto;
     display: flex;
+    height:10vh;
 }
-
+mat-hint{
+    display: none;
+}
 
 // Open Side Nav
 .menuOpen{
@@ -158,10 +162,11 @@ input.mat-input-element {
 
 .searchbar-input{
     transform: width 500ms linear;
-    height: 2.5vh;
     width: 10vw;
     animation-name: slide-out;
     animation-duration: 1s;
+    height: 70%;
+    margin-top: 5%;
 }
 
 .closedSearch {
@@ -230,11 +235,13 @@ a{
     }
     .navLinks{
         visibility: hidden;
+        display: none;
     }
     #navLogo{
         width: 15vw;
     }
     .searchBar{
         visibility: hidden;
+        display: none;
     }
 }

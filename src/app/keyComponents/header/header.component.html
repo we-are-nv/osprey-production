@@ -126,7 +126,7 @@
 			>
 		</div>
 
-		<!-- About -->
+		<!-- Contact -->
 		<div
 			*ngIf="finalNav.contact"
 			class="nav-button">
@@ -135,6 +135,17 @@
 				class="navLink"
 				[routerLink]="finalNav.contact.headpath">
 				{{ finalNav.contact.name }}</a
+			>
+		</div>
+
+		<!-- News -->
+		<div
+			class="nav-button">
+			<a
+				mat-button
+				class="navLink"
+				routerLink="news">
+				News</a
 			>
 		</div>
 	</div>

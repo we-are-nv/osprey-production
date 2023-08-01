@@ -100,9 +100,14 @@
 		</div>
 
 
-		<!-- About -->
+		<!-- Contact -->
 		<div *ngIf="finalNav.contact">
 			<a mat-button class="nav-button" [routerLink]="finalNav.contact.headpath" (click)="drawer.toggle()"> {{finalNav.contact.name}}</a>
+		</div>
+
+		<!-- News -->
+		<div>
+			<a mat-button class="nav-button" routerLink="news" (click)="drawer.toggle()"> News</a>
 		</div>
 
 

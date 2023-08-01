@@ -13,8 +13,8 @@ import { Observable } from 'rxjs';
 	styleUrls: ['./header.component.scss'],
 	animations: [
 		trigger('inputWiden', [
-			state('normal', style({ opacity: '0' })), // Initial state
-			state('widen', style({ opacity: '1', delay: '3s' })), // Widened state
+			state('normal', style({ opacity: '0', height:'80%', marginTop:'5%', })), // Initial state
+			state('widen', style({ opacity: '1', height:'80%', marginTop:'5%', delay: '3s' })), // Widened state
 			transition('normal => widen', animate('2000ms ease-in')), // Transition time and easing function
 			transition('widen => normal', animate('2000ms ease-out')) // Transition time and easing function
 		]),

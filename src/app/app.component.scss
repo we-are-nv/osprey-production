@@ -118,10 +118,13 @@ mat-drawer-content {
     padding: 0px !important;
 }
 .searchBar{
+    display:grid;
     justify-content: center;
 }
 
 .searchInput{
-    width: 80vw;
-    margin-left: 10vw;
+    width: 80%;
+}
+a{
+    text-decoration: none;
 }
