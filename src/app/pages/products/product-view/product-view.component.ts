@@ -67,7 +67,7 @@ export class ProductViewComponent implements OnInit {
                             });
                         this.productService.getSingleProduct(this.id);
                     });
-            }
+				}
 
 
             // this.id = params['id'];
@@ -84,13 +84,7 @@ export class ProductViewComponent implements OnInit {
             //         if (this.product.product_varients)
             //             this.productVarients = this.product.product_varients.data;
 
-<<<<<<< HEAD
-	checking(data: any) {
-		console.log(data);
-	}
-
-	selectVarient(i: number) {}
-=======
+	
             //         let tempAdditionalInfo = this.product.additional_information.info;
             //         this.informationConverter(tempAdditionalInfo);
 
@@ -101,6 +95,7 @@ export class ProductViewComponent implements OnInit {
         });
     }
 
+	selectVarient(i: number) {}
     // Converts additional information to readable format
 
     informationConverter(info: any) {
@@ -137,5 +132,4 @@ export class ProductViewComponent implements OnInit {
     checking(data: any) {
         console.log(data);
     }
->>>>>>> 1198d2e2c5514687eae12a50da27926a7f671240
 }
