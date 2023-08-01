@@ -20,18 +20,24 @@
       providing the security and safety you deserve. </p>
   </div>
 </section>
+
+<!-- Product Catrogies Test -->
+
+
 <!-- Product Categories -->
-<div class="categoryContainer headCategoryContainer" fxLayout="colun wrap" fxLayoutAlign="flex-start">
-  <mat-card class="categoryCard selectable" routerLink="/products/{{ category._id }}"
-    *ngFor="let category of categoryListPart">
-    <img mat-card-image [src]="category.image" />
-    <h1>{{ category.name }}</h1>
-    <span>Explore <mat-icon>circle</mat-icon> </span>
-  </mat-card>
-</div>
+  <p-carousel class="categoryContainer" [value]="productCategories" [numVisible]="4" [numScroll]="1" [circular]="false"
+    [responsiveOptions]="responsiveOptions">
+    <ng-template let-product pTemplate="item">
+      <mat-card class="categoryCard selectable" routerLink="/products/{{ product._id }}">
+        <img mat-card-image [src]="product.image" />
+        <h1>{{ product.name }}</h1>
+        <span>Explore <mat-icon>circle</mat-icon> </span>
+      </mat-card>
+    </ng-template>
+  </p-carousel>
 <section class="relatedCategoryButtons">
   <div class="slideButtonContainer">
-    <button class="slideButton" (click)="leftMove('category')">
+    <button class="slideButton" (click)="leftMove('categocaroury')">
       <img src="./assets/images/customIcons/prev-slide.svg" alt="" />
     </button>
     <button class="slideButton" (click)="rightMove('category')">
@@ -39,6 +45,10 @@
     </button>
   </div>
 </section>
+
+
+
+
 <div class="infoCardContainer">
   <div class="serviceInfoCard">
     <img src="./assets/images/customIcons/homeIcon1.png" alt="" />

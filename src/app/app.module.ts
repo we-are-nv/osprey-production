@@ -36,6 +36,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { ScrollComponent } from './services/scrollService/scroll/scroll.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CommonModule } from '@angular/common';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
 	imports: [
@@ -47,7 +48,8 @@ import { CommonModule } from '@angular/common';
 		HttpClientModule,
 		FormsModule,
 		ReactiveFormsModule,
-		CommonModule
+		CommonModule,
+		CarouselModule
 	],
 	declarations: [
 		AppComponent,

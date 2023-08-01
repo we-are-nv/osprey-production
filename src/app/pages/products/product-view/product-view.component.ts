@@ -103,4 +103,6 @@ export class ProductViewComponent implements OnInit {
 	checking(data: any) {
 		console.log(data);
 	}
+
+	selectVarient(i: number) {}
 }

@@ -57,11 +57,7 @@ p {
 }
 
 // Category card styling
-.categoryContainer .categoryCard {
-	width: 24%;
-	border-radius: 0px;
-	text-align: start;
-	}
+
 .headCategoryContainer .categoryCard{
 	border: 1px solid #eaeaea;
 }
@@ -114,24 +110,10 @@ span mat-icon {
 }
 
 
-@media screen and (max-width: 1000px) {
-	.categoryContainer .categoryCard {
-		width: 31%;
-	}
-}
-@media screen and (max-width: 750px) {
-	.categoryContainer .categoryCard {
-		width: 48%;
-	}
-}
 @media screen and (max-width: 500px) {
 	.categoryCard img {
 		width: 60%;
 		margin: auto;
-	}
-	.categoryContainer .categoryCard {
-		width: 98%;
-		display: flex;
 	}
 }
 
@@ -286,25 +268,15 @@ span mat-icon {
 	margin-top: 10rem;
 }
 
-
 @media only screen and (max-width: 1024px) {
 	.categoryButton{
 		visibility: hidden;
 		width: 0px;
 	}
-	.categoryCard:last-child{
-
-		visibility: hidden;
-		height: 0px;
-	}
 
 }
 
 @media only screen and (max-width: 750px) {
-	.categoryCard:nth-last-child(2) {
-			visibility: hidden;
-			height: 0px;
-		}
 		.briefAbout{
 			display: grid !important;
 		}
@@ -312,9 +284,8 @@ span mat-icon {
 			width: 90vw  !important;
 		}
 }
-@media only screen and (max-width: 500px) {
-	.categoryCard:nth-last-child(3) {
-		visibility: hidden;
-		height: 0px;
-	}
+:host ::ng-deep .p-carousel-indicators,
+:host ::ng-deep .p-carousel-prev,
+:host ::ng-deep .p-carousel-next {
+	display: none;
 }

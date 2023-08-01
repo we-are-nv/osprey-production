@@ -1,18 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { InfoPageService } from 'src/app/services/info-page.service';
+import { Carousel } from 'primeng/carousel';
+
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+	@ViewChild('carousel') carousel: any;
 	// Example List of Services
 	categorySub: any;
 	productCategories: any = [];
+	responsiveOptions: any[];
 
 	history: [{ path: string; friendly: string }] = [{ path: '/', friendly: 'Home' }];
 
@@ -40,6 +44,24 @@ export class HomeComponent {
 				`./assets/images/customIcons`
 			)
 		);
+
+		this.responsiveOptions = [
+			{
+				breakpoint: '1024px',
+				numVisible: 3,
+				numScroll: 3
+			},
+			{
+				breakpoint: '768px',
+				numVisible: 2,
+				numScroll: 2
+			},
+			{
+				breakpoint: '560px',
+				numVisible: 1,
+				numScroll: 1
+			}
+		];
 	}
 	ngOnInit(): void {
 		// this.location.replaceState("/some/newstate/");
@@ -139,5 +161,10 @@ export class HomeComponent {
 				this.serviceListPosition.last
 			);
 		}
+	}
+
+	onCustomPrevClick() {
+		// Call the PrimeNG carousel's prev() method to go to the previous item
+		this.carousel.prev();
 	}
 }
