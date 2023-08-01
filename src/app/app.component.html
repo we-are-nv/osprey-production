@@ -1,6 +1,6 @@
 
 <mat-drawer-container class="example-container" hasBackdrop="true">
-	
+
 
 
 	<mat-drawer mode="over" closed #drawer  >
@@ -22,7 +22,7 @@
 						<div mat-menu-item *ngIf="i < 3">
 							<p>{{product.product_name}}</p>
 						</div>
-		
+
 					</div>
 				</div>
 				<div *ngIf="searchData?.category">
@@ -31,7 +31,7 @@
 						<div mat-menu-item *ngIf="i < 3">
 							<p>{{category.name}}</p>
 						</div>
-		
+
 					</div>
 				</div>
 				<div *ngIf="searchData?.info">
@@ -40,7 +40,7 @@
 						<div mat-menu-item *ngIf="i < 2">
 							<p>{{info.name}}</p>
 						</div>
-		
+
 					</div>
 				</div>
 				<div *ngIf="searchData?.page">
@@ -48,7 +48,7 @@
 						<div mat-menu-item *ngIf="i < 2">
 							<p>{{page.name}}</p>
 						</div>
-		
+
 					</div>
 				</div>
 				<div class="linkContainer" *ngIf="searchData !== {}">

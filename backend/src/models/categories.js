@@ -13,6 +13,7 @@ const categoryInfo = mongoose.Schema({
   parent: { type: mongoose.Schema.Types.ObjectId, required: false },
   breadcrumb: { type: String, required: false },
   hasChild: { type: Boolean, required: false },
+  cat_url : {type:String, required: false},
   searchType: { type: String, required: false },
 
   // children:[{ type: mongoose.Schema.Types.ObjectId,required:false }],
