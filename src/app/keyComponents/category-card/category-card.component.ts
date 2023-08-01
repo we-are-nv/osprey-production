@@ -14,10 +14,11 @@ export class CategoryCardComponent {
 		//Add 'implements OnInit' to the class.
 		console.log(this.cards);
 	}
-	loadCat(id: string, hasChild: boolean) {
+	loadCat(id: string, hasChild: boolean, cat_url:any) {
 		let obj = {
 			id: id,
-			hasChild: hasChild
+			hasChild: hasChild,
+      cat_url:cat_url
 		};
 		this.catRouting.emit(obj);
 	}

@@ -1,6 +1,6 @@
 
 <mat-drawer-container class="example-container" hasBackdrop="true">
-	
+
 
 
 	<mat-drawer mode="over" closed #drawer  >
@@ -11,11 +11,10 @@
 
 		<!-- Search Bar -->
 		<div class="searchBar">
-			<mat-form-field>
+			<mat-form-field class="searchInput">
 				<mat-label>Search</mat-label>
-				<input class="input" matInput placeholder="Press Enter to Search" #InputString>
+				<input class="input" matInput placeholder="Press Enter to Search" (keyup.enter)="onSearchChange(InputString.value);" #InputString>
 			</mat-form-field>
-			<button mat-raised-button (click)="onSearchChange(InputString.value)"><p><mat-icon>home</mat-icon></p></button>
 			<mat-card *ngIf="InputString.value !== ''">
 				<div *ngIf="searchData?.product">
 					<h4 mat-menu-item>Products</h4>
@@ -23,7 +22,7 @@
 						<div mat-menu-item *ngIf="i < 3">
 							<p>{{product.product_name}}</p>
 						</div>
-		
+
 					</div>
 				</div>
 				<div *ngIf="searchData?.category">
@@ -32,7 +31,7 @@
 						<div mat-menu-item *ngIf="i < 3">
 							<p>{{category.name}}</p>
 						</div>
-		
+
 					</div>
 				</div>
 				<div *ngIf="searchData?.info">
@@ -41,7 +40,7 @@
 						<div mat-menu-item *ngIf="i < 2">
 							<p>{{info.name}}</p>
 						</div>
-		
+
 					</div>
 				</div>
 				<div *ngIf="searchData?.page">
@@ -49,7 +48,7 @@
 						<div mat-menu-item *ngIf="i < 2">
 							<p>{{page.name}}</p>
 						</div>
-		
+
 					</div>
 				</div>
 				<div class="linkContainer" *ngIf="searchData !== {}">
