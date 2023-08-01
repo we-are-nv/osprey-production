@@ -12,6 +12,7 @@ export class NewsComponent implements OnInit {
 	constructor(private newsService: NewsService, private dialog: MatDialog) {}
 
 	articles: any[] = [];
+	image: any;
 
 	ngOnInit(): void {
 		this.loadNews();
@@ -22,7 +23,8 @@ export class NewsComponent implements OnInit {
 			console.log(data);
 			this.articles = data.articles.map((article: any) => ({
 				...article,
-				excerpt: this.createExcerpt(article.content)
+				excerpt: this.createExcerpt(article.content),
+				images: this.getImages(article)
 			}));
 		});
 	}
@@ -32,9 +34,13 @@ export class NewsComponent implements OnInit {
 		const words = content.trim().split(' ');
 		const excerptWords = words.slice(0, wordCount);
 
-		return excerptWords.join(' ') + (words.length > wordCount ? '...' : '');
+		return excerptWords.join(' ') + (words.length > wordCount ? '...see more' : '');
 	}
 
+	getImages(article: any): string[] {
+		// Assuming the images field is an array of image URLs, return the images array
+		return article.images || [];
+	}
 	openDialog(article: any) {
 		this.dialog.open(NewsDialogComponent, {
 			width: '60%',
