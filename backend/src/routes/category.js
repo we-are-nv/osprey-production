@@ -37,12 +37,13 @@ router.get('/', async (req, res, next) => {
   console.log('URL')
   console.log(req.url)
   var parent = req.query.parent || undefined;
-
-  const foundCats = await categories.find({ parent: parent });
   try {
-    //console.log(foundCats)
+  const foundCats = await categories.find({ parent: parent });
+    if (foundCats) {
+          //console.log(foundCats)
     //console.log('Categories:', foundCats);
     for (idx in foundCats) {
+
       const childrenFound = await categories.count({ parent: foundCats[idx]._id });
       var hasChild = false;
       //console.log(childrenFound)
@@ -56,11 +57,20 @@ router.get('/', async (req, res, next) => {
       if (foundCats[idx].info.banner_image) {
         foundCats[idx].info.banner_image = `${process.env.S3_BASE}${foundCats[idx].info.banner_image}`;
       }
+      if (hasChild){
+        var cat_url = '/products/'+foundCats[idx].name.split(" ").join("-").toLowerCase();
+      } else {
+        var cat_url = '/search/'+foundCats[idx].name.split(" ").join("-").toLowerCase();
+      }
+
+      foundCats[idx].cat_url = cat_url
     }
     res.json({ cats: foundCats });
+    }
+
   }
   catch (err) {
-    console.log(foundCats)
+    //console.log(foundCats)
     res.json({ cats: [], err: err })
   }
 
@@ -296,5 +306,26 @@ router.get('/single', async (req, res) => {
     res.status(500).json({ message: 'internal Server Error' });
   }
 });
+
+router.get('/convert-route', async (req, res) => {
+  if (req.query.name) {
+    if (req.query.name == 'top'){
+      res.json({_id:''});
+      return;
+    };
+    //Prison Cell
+    //prison-cell
+    var conv = req.query.name.split("-").join(" ")
+    const foundProduct = await categories.findOne({ ['name']: { $regex: conv, $options: 'i' } });
+    if (foundProduct) {
+      res.json({ _id: foundProduct._id })
+    } else {
+      res.json({ err: 'prod not found' })
+    }
+  } else {
+    res.json({ 'err': 'invalid params' });
+  }
+
+})
 
 module.exports = router;
