@@ -7,13 +7,14 @@
 
 h1{
     font-size: 1.75rem;
+    margin-block-start: 0;
 }
 
 p{
     color: #9B9B9B;
 }
 .bulletPoint-text{
-    
+
   list-style-type: disc;
 }
 
@@ -37,13 +38,13 @@ p{
 }
 
 .expanded{
-    
+
     animation: openAnimation 0.5s;
-    transform:rotate(90deg); 
+    transform:rotate(90deg);
 }
 .closed{
     animation: closeAnimation 0.5s;
-    transform:rotate(0deg); 
+    transform:rotate(0deg);
 }
 
 // Similar Products

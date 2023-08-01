@@ -75,7 +75,8 @@ a {
 // Social media Link styling
 .socialIconGroup {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 1em;
     width: 80%;
 }
 
