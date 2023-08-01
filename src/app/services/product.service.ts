@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { DatabaseService } from './database.service';
-import { environment } from 'src/environments/environment';
-import { Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {DatabaseService} from './database.service';
+import {environment} from 'src/environments/environment';
+import {Subject} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {response} from 'express';
 
 @Injectable({
 	providedIn: 'root'
@@ -30,7 +31,7 @@ export class ProductService {
 		const query = filter;
 		// console.log(query)
 		this.http
-			.get<any>(this.API_URL + '/products/product_info', { params: query })
+			.get<any>(this.API_URL + '/products/product_info', {params: query})
 			.subscribe(response => {
 				this.products.next(response);
 			});
@@ -41,16 +42,18 @@ export class ProductService {
 		const query = filter;
 		// console.log(query)
 		this.http
-			.get<any>(this.API_URL + '/products/search', { params: query })
+			.get<any>(this.API_URL + '/products/search', {params: query})
 			.subscribe(response => {
 				this.products.next(response);
 			});
 	}
+	async convertToId(name: String, code: String) {
 
+	}
 	// Delete Products
 	deleteProduct(id: string) {
 		this.http
-			.delete(this.API_URL + '/product', { params: { id: id } })
+			.delete(this.API_URL + '/product', {params: {id: id}})
 			.subscribe(response => {
 				console.log(response);
 			});
@@ -63,7 +66,7 @@ export class ProductService {
 
 	getCategories(id: string) {
 		this.http
-			.get<any>(this.API_URL + '/products/categories', { params: { parent: id } })
+			.get<any>(this.API_URL + '/products/categories', {params: {parent: id}})
 			.subscribe({
 				next: (response: any) => this.categories.next(response),
 				error: error => this.router.navigate(['/error'])
@@ -89,7 +92,7 @@ export class ProductService {
 		let product: any;
 		this.http
 			.get<any>(this.API_URL + '/products/product_info', {
-				params: { documentId: query, populate_include: 'all' }
+				params: {documentId: query, populate_include: 'all'}
 			})
 			.subscribe(response => {
 				product = response.product;
@@ -100,7 +103,7 @@ export class ProductService {
 	getSingleCategory(id: string) {
 		console.log('SINGLE?');
 		return this.http.get<any>(this.API_URL + '/products/categories/single', {
-			params: { id: id }
+			params: {id: id}
 		});
 	}
 }
