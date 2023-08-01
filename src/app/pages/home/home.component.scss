@@ -46,16 +46,32 @@ p {
 	width:90vw;
 }
 .categoryContainer {
+	width: 90vw;
 	margin-top: 1rem;
-	display: flex-start;
-	flex-direction: column;
+	display: flex;
+	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	// overflow-x: scroll;
 	margin: auto;
-	gap: 1.32%;
+	gap: 1.25%;
+}
+.categoryCard{
+	width: 23%;
+	margin: auto;
+	margin-bottom: 1.2%;
 }
 
+@media screen and (max-width: 1024px) {
+	.categoryCard{
+		width: 48%;
+	}
+}
+@media screen and (max-width: 750px) {
+	.categoryCard{
+		width: 98%;
+	}
+}
 // Category card styling
 
 .headCategoryContainer .categoryCard{

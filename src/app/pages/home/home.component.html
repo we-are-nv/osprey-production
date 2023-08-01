@@ -25,25 +25,12 @@
 
 
 <!-- Product Categories -->
-  <p-carousel class="categoryContainer" [value]="productCategories" [numVisible]="4" [numScroll]="1" [circular]="false"
-    [responsiveOptions]="responsiveOptions">
-    <ng-template let-product pTemplate="item">
-      <mat-card class="categoryCard selectable" routerLink="/products/{{ product._id }}">
-        <img mat-card-image [src]="product.image" />
-        <h1>{{ product.name }}</h1>
-        <span>Explore <mat-icon>circle</mat-icon> </span>
-      </mat-card>
-    </ng-template>
-  </p-carousel>
-<section class="relatedCategoryButtons">
-  <div class="slideButtonContainer">
-    <button class="slideButton" (click)="leftMove('categocaroury')">
-      <img src="./assets/images/customIcons/prev-slide.svg" alt="" />
-    </button>
-    <button class="slideButton" (click)="rightMove('category')">
-      <img src="./assets/images/customIcons/next-slide.svg" alt="" />
-    </button>
-  </div>
+<section class="categoryContainer">
+  <mat-card *ngFor="let product of productCategories" class="categoryCard selectable" routerLink="/products/{{ product._id }}">
+    <img mat-card-image [src]="product.image" />
+    <h1>{{ product.name }}</h1>
+    <span>Explore <mat-icon>circle</mat-icon> </span>
+  </mat-card>
 </section>
 
 
@@ -85,14 +72,6 @@
   <div class="relatedCategoryButtons">
     <a class="standardButton blueButton categoryButton" routerLink="markets" mat-raised-button>Explore The Markets
       <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a>
-    <div class="slideButtonContainer">
-      <button class="slideButton" (click)="leftMove('market')">
-        <img src="./assets/images/customIcons/prev-slide.svg" alt="" />
-      </button>
-      <button class="slideButton" (click)="rightMove('market')">
-        <img src="./assets/images/customIcons/next-slide.svg" alt="" />
-      </button>
-    </div>
   </div>
 </section>
 <!-- Service Categories -->
@@ -113,14 +92,7 @@
   <div class="relatedCategoryButtons">
     <a class="standardButton blueButton categoryButton" routerLink="services" mat-raised-button>Explore Our Services
       <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a>
-    <div class="slideButtonContainer">
-      <button class="slideButton" (click)="leftMove('service')">
-        <img src="./assets/images/customIcons/prev-slide.svg" alt="" />
-      </button>
-      <button class="slideButton" (click)="rightMove('service')">
-        <img src="./assets/images/customIcons/next-slide.svg" alt="" />
-      </button>
-    </div>
+
   </div>
 </section>
 <app-quote-form></app-quote-form>

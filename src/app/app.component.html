@@ -11,11 +11,10 @@
 
 		<!-- Search Bar -->
 		<div class="searchBar">
-			<mat-form-field>
+			<mat-form-field class="searchInput">
 				<mat-label>Search</mat-label>
-				<input class="input" matInput placeholder="Press Enter to Search" #InputString>
+				<input class="input" matInput placeholder="Press Enter to Search" (keyup.enter)="onSearchChange(InputString.value);" #InputString>
 			</mat-form-field>
-			<button mat-raised-button (click)="onSearchChange(InputString.value)"><p><mat-icon>home</mat-icon></p></button>
 			<mat-card *ngIf="InputString.value !== ''">
 				<div *ngIf="searchData?.product">
 					<h4 mat-menu-item>Products</h4>
