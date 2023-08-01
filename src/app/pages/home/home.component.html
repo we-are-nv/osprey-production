@@ -28,7 +28,7 @@
   <p-carousel class="categoryContainer" [value]="productCategories" [numVisible]="4" [numScroll]="1" [circular]="false"
     [responsiveOptions]="responsiveOptions">
     <ng-template let-product pTemplate="item">
-      <mat-card class="categoryCard selectable" routerLink="/products/{{ product._id }}">
+      <mat-card class="categoryCard selectable" routerLink="{{product.cat_url}}">
         <img mat-card-image [src]="product.image" />
         <h1>{{ product.name }}</h1>
         <span>Explore <mat-icon>circle</mat-icon> </span>
