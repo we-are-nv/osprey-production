@@ -179,7 +179,7 @@ router.get('/product_info', async (req, res) => {
     result[idx].product_url = url;
 
 
-    if (req.query.populate_include && result[idx].additional_information) {
+    if (req.query.populate_include && result[idx].additional_information && result[idx].additional_information.info) {
       console.log('HELLO')
       var test = result[idx].additional_information.modelName
       console.log(result[idx].additional_information.modelName)
