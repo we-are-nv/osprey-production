@@ -49,9 +49,11 @@ p{
 
 // Navigation Pannel
 .navigation-pannel{
+    background: #232323;
     border-radius: 0px;
     padding: 7%;
     border-bottom: solid 3px #0065E7;
+    color: white;
 }
 .nav-button-container{
     display:contents !important;
@@ -64,8 +66,8 @@ p{
     padding-bottom: 0.75rem;
     width: 93%;
     text-decoration: none;
-    color: white;
-    background-color: #1B1A1A;
+    color: black;
+    background-color: #ffffff;
     margin-top: 2%;
     font-family: 'Roboto';
     font-size: small;
@@ -77,6 +79,7 @@ p{
     margin-top: inherit;
 }
 .page-active{
+    color:white;
     background-color: #0065E7;
 }
 

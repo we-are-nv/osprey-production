@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { FilesService } from 'src/app/services/files.service';
 
 @Component({
   selector: 'app-bonus-card',
@@ -6,9 +7,13 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
   styleUrls: ['./bonus-card.component.scss']
 })
 export class BonusCardComponent implements OnInit{
+  constructor(private fileService: FilesService){}
   @Input() card: any;
   ngOnInit(){
-    console.log(this.card)
+    this.fileService.getFilesObservable().subscribe(data =>{
+      console.log(data)
+    })
+    this.fileService.getFiles()
   }
   
 }

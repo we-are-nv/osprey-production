@@ -46,9 +46,9 @@
 				(click)="router.navigate([finalNav.product.headpath])">
 				{{ finalNav.product.name }}</a
 			>
-			<mat-menu
-				#matproductmenu="matMenu"
-				class="navLink">
+			<mat-menu class="dropdown"
+
+				#matproductmenu="matMenu">
 				<div
 					(click)="menuTrigger.closeMenu()"
 					(mouseleave)="menuTrigger.closeMenu()">
@@ -74,13 +74,14 @@
 				(mousedown)="menuTrigger.openMenu()">
 				{{ finalNav.market.name }}</a
 			>
-			<mat-menu
-				#matmarketmenu="matMenu"
-				class="navLink">
+			<mat-menu class="dropdown"
+
+				#matmarketmenu="matMenu">
 				<div (mouseleave)="menuTrigger.closeMenu()">
 					<a
+					mat-menu-item
 						class="navMenuDropdownItem"
-						mat-menu-item
+						
 						*ngFor="let link of finalNav.market.childLinks"
 						[routerLink]="link.path"
 						>{{ link.name }}</a
@@ -100,9 +101,9 @@
 				[routerLink]="finalNav.service.headpath">
 				{{ finalNav.service.name }}</a
 			>
-			<mat-menu
-				#matservicemenu="matMenu"
-				class="navLink">
+			<mat-menu class="dropdown"
+
+				#matservicemenu="matMenu">
 				<div (mouseleave)="menuTrigger.closeMenu()">
 					<a
 						class="navMenuDropdownItem"
@@ -169,7 +170,8 @@
 			(click)="activateSearch()"
 			><mat-icon>search</mat-icon></a
 		>
-		<mat-menu
+		<mat-menu class="dropdown"
+
 			#matservicemenu="matMenu"
 			#searchInput="matMenu"
 			(mouseleave)="menuTrigger.closeMenu()">

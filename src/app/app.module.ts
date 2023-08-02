@@ -39,6 +39,7 @@ import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
 import { NewsComponent } from './pages/news/news.component';
 import { NewsDialogComponent } from './keyComponents/news-dialog/news-dialog.component';
+import { AccreditationsComponent } from './pages/accreditations/accreditations.component';
 
 @NgModule({
 	imports: [
@@ -80,7 +81,8 @@ import { NewsDialogComponent } from './keyComponents/news-dialog/news-dialog.com
 		SafePipe,
 		SearchPageComponent,
 		ScrollComponent,
-		NewsDialogComponent
+		NewsDialogComponent,
+		AccreditationsComponent
 	],
 	providers: [UrlFormatterPipe, provideClientHydration(), ScrollService],
 	bootstrap: [AppComponent]

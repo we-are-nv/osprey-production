@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
 	constructor(
 		private databaseService: DatabaseService,
-		private navbarService: NavloadService
+		private navbarService: NavloadService,
 	) {}
 	categories: any = [];
 	categorySub: any;
@@ -30,7 +30,6 @@ export class AppComponent implements OnInit {
 
 	ngOnInit() {
 		this.navbarService.generateNav();
-
 		this.finalNav = this.navbarService.finalNav;
 	}
 

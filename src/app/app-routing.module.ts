@@ -12,6 +12,7 @@ import {GeneralInfoPageComponent} from './pages/general-info-page/general-info-p
 import {SubPageComponent} from './pages/general-info-page/sub-page/sub-page.component';
 import {SearchPageComponent} from './pages/search-page/search-page.component';
 import { NewsComponent } from './pages/news/news.component';
+import { AccreditationsComponent } from './pages/accreditations/accreditations.component';
 
 const routes: Routes = [
 	// General Pages
@@ -52,6 +53,9 @@ const routes: Routes = [
 
 	// News Page
 	{path: 'news', component: NewsComponent},
+
+	// Accreditations
+	{path:'accreditation', component: AccreditationsComponent},
 
 	// Error Page
 	{path: 'error', component: ErrorPageComponent}
