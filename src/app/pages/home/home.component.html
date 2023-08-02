@@ -1,4 +1,5 @@
-<app-hero mainTitle="Security Solutions you can rely on"
+<app-hero 
+  mainTitle="Security Solutions you can rely on"
   lowerTitle="Founded on first class customer service and support - with decades of experience in fire and security systems for some of the world’s most demanding applications - Paragon Security is a UK-based specialist solutions provider you can trust."
   [isButtons]="true" background="./assets/images/heroBackgrounds/homeHero.png" [button1Data]="{
 		text: 'Explore Our Products',
@@ -61,14 +62,20 @@
     environments, which are straightforward to operate and maintain, certified for their use-class with ongoing support
     second to none. We lead the industry in the design, supply and support of harsh environment security systems with
     many years design & integration experience. </p>
-  <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-    <mat-card class="categoryCard selectable" routerLink="/info-page/market/{{category._id}}"
-      *ngFor="let category of marketsListPart">
-      <img mat-card-image [src]="category.thumbnail_image" />
-      <h1>{{ category.name }}</h1>
-      <span>Explore <mat-icon>circle</mat-icon> </span>
-    </mat-card>
-  </div>
+
+
+  <p-carousel widgetVar="rnd" [value]="marketsList" [numVisible]="4" [numScroll]="1" [circular]="true"  [responsiveOptions]="responsiveOptions" #carousel>
+    <ng-template let-product pTemplate="item"> 
+      <mat-card class="paginatedCard selectable" routerLink="/info-page/service/{{product._id}}">
+        <img mat-card-image [src]="product.thumbnail_image">
+        <h1>{{ product.name }}</h1>
+        <span>Explore <mat-icon>circle</mat-icon> </span>
+      </mat-card>
+    </ng-template>
+</p-carousel>
+
+
+
   <div class="relatedCategoryButtons">
     <a class="standardButton blueButton categoryButton" routerLink="markets" mat-raised-button>Explore The Markets
       <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a>
