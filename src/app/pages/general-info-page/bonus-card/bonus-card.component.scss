@@ -87,6 +87,22 @@
 }
 
 
+// Social media Link styling
+.socialIconGroup {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em;
+}
+
+.socialIconGroup a {
+    display: grid;
+    place-content: center;
+}
+
+.socialIcon {
+    height: 3vh;
+}
+
 
 h4{
     display: flex;
