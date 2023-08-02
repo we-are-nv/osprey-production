@@ -8,8 +8,10 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class AccreditationsComponent implements OnInit{
   constructor(private accreditationsService: DatabaseService){}
-  atext: string;
+  atex: string;
   ngOnInit(){
-    
+    this.accreditationsService.getCredits('atex').subscribe(data=>{
+      console.log(data)
+    })
   }
 }

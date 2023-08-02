@@ -1,1 +1,15 @@
-<p>accreditations works!</p>
+<app-hero 
+  mainTitle="Certifications"
+  lowerTitle="comprehensive Solutions for any security requirements"
+  [isButtons]="true" background="./assets/images/heroBackgrounds/homeHero.png" [button1Data]="{
+		text: 'Explore Our Products',
+		path: 'products/top',
+		type: 'blue'
+	}" [button2Data]="{ text: 'Explore Our Markets', path: 'markets', type: 'black' }" [isButton3]="true" [button3Data]="{
+		text: 'Explore Our Services',
+		path: 'services',
+		type: 'white'
+	}"
+    [centred]="true"
+    extraStyle="shorterHero"
+    ></app-hero>

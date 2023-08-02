@@ -303,6 +303,7 @@ span mat-icon {
 
 .paginatedCard{
 	margin-bottom: 1.2%;
+	margin: 5%;
 }
 .paginatedCard img {
 	height: 20vh;
@@ -324,8 +325,6 @@ display: flex;
 margin-top: auto;
 gap: 5%;
 }
-:host ::ng-deep .p-carousel-indicators,
-:host ::ng-deep .p-carousel-prev,
-:host ::ng-deep .p-carousel-next {
+:host ::ng-deep .p-carousel-indicators{
 	display: none;
 }
