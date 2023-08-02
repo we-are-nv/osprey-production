@@ -1,29 +1,32 @@
-<mat-dialog-content>
-	<mat-card-title
-		><h2>{{ data.title }}</h2></mat-card-title
-	>
-	<mat-card-content>{{ data.content }}</mat-card-content>
-	<div
-		class="images-wrapper"
-		*ngIf="data.images && data.images.length"></div>
-	<div
-		*ngFor="let image of data.images"
-		class="image">
-		<img
-			[src]="image"
-			alt="Article Image"
-			style="max-width: 100%" />
+<h2 mat-dialog-title>{{ data.title }}</h2>
+<div mat-dialog-content>
+	<!-- Display the article content here -->
+	<p>{{ data.content }}</p>
+
+	<!-- Display the images if available -->
+	<div *ngIf="data.images.length">
+		<div *ngIf="data.images.length" class="images-wrapper">
+			<div
+				*ngFor="let image of data.images"
+				class="image">
+				<img
+					*ngIf="image"
+					[src]="image"
+					style="max-width: 100%" />
+			</div>
+		</div>
 	</div>
+
 	<mat-card-footer>
 		Please <a routerLink="contact">contact</a> us now for more information, to
 		discuss your specific requirements, <a href="00441245280448">book a call</a> or
 		request a quotation.
 	</mat-card-footer>
-	<div mat-dialog-actions>
-		<button
-			mat-button
-			mat-dialog-close>
-			Close
-		</button>
-	</div>
-</mat-dialog-content>
+</div>
+<div mat-dialog-actions>
+	<button
+		mat-button
+		mat-dialog-close>
+		Close
+	</button>
+</div>
