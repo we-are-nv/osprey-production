@@ -28,7 +28,7 @@ export class NavloadService {
 				data.cats.forEach((subPage: any) => {
 					let childLink = {
 						name: subPage.name,
-						path: '/products/' + subPage._id
+						path: subPage.cat_url
 					};
 					childLinks.push(childLink);
 				});

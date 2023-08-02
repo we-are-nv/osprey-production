@@ -38,16 +38,8 @@ mat-toolbar{
     margin: auto;
     width: auto;
     display: flex;
-    
-    background-color: rgba(34, 34, 34, 0.781);
 }
-::ng-deep .dropdown {
-    color: white !important;
-    background: rgb(34, 34, 34);
-}
-:nga.mat-menu-item{
-    color:white !important;
-}
+
 .navLink{
     height:10vh;
     color: white !important;

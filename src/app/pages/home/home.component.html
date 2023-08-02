@@ -26,7 +26,7 @@
 
 <!-- Product Categories -->
 <section class="categoryContainer">
-  <mat-card *ngFor="let product of productCategories" class="categoryCard selectable" routerLink="/products/{{ product._id }}">
+  <mat-card *ngFor="let product of productCategories" class="categoryCard selectable" [routerLink]="product.cat_url">
     <img mat-card-image [src]="product.image" />
     <h1>{{ product.name }}</h1>
     <span>Explore <mat-icon>circle</mat-icon> </span>

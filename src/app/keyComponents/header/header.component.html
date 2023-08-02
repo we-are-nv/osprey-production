@@ -79,7 +79,7 @@
 				#matmarketmenu="matMenu">
 				<div (mouseleave)="menuTrigger.closeMenu()">
 					<a
-					mat-menu-item
+						mat-menu-item
 						class="navMenuDropdownItem"
 						
 						*ngFor="let link of finalNav.market.childLinks"
@@ -192,7 +192,7 @@
 					<a
 						mat-menu-item
 						*ngIf="i < 3"
-						[routerLink]="'/search/' + category._id">
+						[routerLink]="category.cat_url">
 						<p>{{ category.name }}</p>
 					</a>
 				</div>

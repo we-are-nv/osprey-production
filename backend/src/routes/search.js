@@ -214,6 +214,9 @@ router.get('/all', async (req, res) => {
         if (result_retuned[idx].image) {
           result_retuned[idx].image = `${process.env.S3_BASE}${result_retuned[idx].image}`;
         }
+        if (result_retuned[idx].cat_url) {
+          result_retuned[idx].cat_url = result_retuned[idx].cat_url;
+        }
       }
       if (final_result[result_retuned[0].searchType] == undefined) {
         final_result[result_retuned[0].searchType] = []

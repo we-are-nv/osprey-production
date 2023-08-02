@@ -13,14 +13,15 @@ h2.title {
 }
 
 .dialog-container{
+	
 	margin: 2%;
 	border-radius: 0;
 	padding: 2%;
 	display: flex;
 	flex-direction: column;
 	overflow-y: visible;
-	height: max-content
 }
+
 
 mat-card-header {
 	padding: 0
@@ -29,8 +30,19 @@ mat-card-header {
 mat-card-content {
 	padding: 0
 }
-
+.date-wrapper{
+	font-family: 'roboto';
+}
 mat-card-footer {
 	margin-top: 2em;
 	// padding: 2%
+}
+
+@media screen and (max-width: 750px){
+	.dialog-container{
+			
+		width: 80vw;
+		height: 100vh;
+	}
+
 }

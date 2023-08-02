@@ -10,14 +10,13 @@
 		<p>{{ data.content }}</p>
 
 		<!-- Display the images if available -->
-		<div *ngIf="data.images.length">
+		<div *ngIf="data.images">
 			<div class="images-wrapper">
 				<div
 					*ngFor="let image of data.images"
 					class="image">
 					<img
-						*ngIf="image"
-						í
+						*ngIf="image !== ''"
 						[src]="image"
 						style="max-width: 100%" />
 				</div>

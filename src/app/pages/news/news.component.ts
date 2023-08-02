@@ -46,9 +46,12 @@ export class NewsComponent implements OnInit {
 
 	convertDate(string: any) {
 		const date = new Date(Number(string))
+		let monthNames = ["January", "February", "March", "April", "May", "June",
+		"July", "August", "September", "October", "November", "December"
+		];
 		console.log(date);
 		const year = date.getFullYear();
-		let month = date.getMonth() + 1;
+		let month = date.getMonth();
 		let dt = date.getDate();
 		let dayTime;
 		let stringMonth;
@@ -57,10 +60,8 @@ export class NewsComponent implements OnInit {
 		if (dt < 10) {
 			(dayTime = '0' + dt).toString();
 		}
-		if (month < 10) {
-			(stringMonth = ' 0' + month).toString();
-		}
-		finshedDate = `${year} - ${stringMonth} - ${dayTime}`;
+		stringMonth = monthNames[month];
+		finshedDate = `${dayTime} ${stringMonth}, ${year} `;
 		console.log(finshedDate);
 		return finshedDate;
 	}
@@ -94,8 +95,10 @@ export class NewsComponent implements OnInit {
 
 	openDialog(article: any) {
 		this.dialog.open(NewsDialogComponent, {
-			width: '60%',
-			data: article
+			width: '80%',
+			maxWidth: '100%',
+			data: article,
+			panelClass: 'fullscreen-dialog'
 		});
 	}
 }
