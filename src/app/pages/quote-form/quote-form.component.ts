@@ -16,9 +16,9 @@ export class QuoteFormComponent {
 			firstName: ['', Validators.required],
 			lastName: ['', Validators.required],
 			email: ['', Validators.required],
-			phoneNumber: ['', Validators.required],
+			phoneNumber: [''],
 			organisation: ['', Validators.required],
-			location: ['', Validators.required],
+			location: [''],
 			subject: [''],
 			message: ['']
 		});
