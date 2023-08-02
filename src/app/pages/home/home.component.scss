@@ -300,8 +300,31 @@ span mat-icon {
 			width: 90vw  !important;
 		}
 }
-:host ::ng-deep .p-carousel-indicators,
-:host ::ng-deep .p-carousel-prev,
-:host ::ng-deep .p-carousel-next {
+
+.paginatedCard{
+	margin-bottom: 1.2%;
+	margin: 12.5%;
+}
+.paginatedCard img {
+	height: 20vh;
+	object-fit: cover;
+background-color: white;
+}
+.paginatedCard h1 {
+padding-left: 2vh;
+margin-left: 5%;
+font-size: larger;
+width:  -webkit-fill-available;
+}
+.paginatedCard span {
+padding-bottom: 2vh;
+padding-left: 2vh;
+margin-left: 5%;
+width: auto;
+display: flex;
+margin-top: auto;
+gap: 5%;
+}
+:host ::ng-deep .p-carousel-indicators{
 	display: none;
 }

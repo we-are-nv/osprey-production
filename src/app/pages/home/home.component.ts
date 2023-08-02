@@ -167,4 +167,7 @@ export class HomeComponent {
 		// Call the PrimeNG carousel's prev() method to go to the previous item
 		this.carousel.prev();
 	}
+	checking(thing: any){
+		console.log(thing)
+	}
 }

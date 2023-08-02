@@ -81,18 +81,34 @@
     transparency and honesty in all our interactions with you. </p>
   <!-- Markets Categories -->
   <!-- Product Categories -->
-  <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-    <mat-card class="categoryCard selectable" routerLink="/info-page/service/{{category._id}}"
-      *ngFor="let category of serviceListPart">
-      <img mat-card-image [src]="category.thumbnail_image">
-      <h1>{{ category.name }}</h1>
-      <span>Explore <mat-icon>circle</mat-icon> </span>
-    </mat-card>
-  </div>
+
+
+  <p-carousel [value]="serviceList" [numVisible]="4" [numScroll]="1" [circular]="false" [responsiveOptions]="responsiveOptions" #carousel>
+    <ng-template let-product pTemplate="item">
+      <mat-card class="paginatedCard selectable" routerLink="/info-page/service/{{product._id}}">
+        <img mat-card-image [src]="product.thumbnail_image">
+        <h1>{{ product.name }}</h1>
+        <span>Explore <mat-icon>circle</mat-icon> </span>
+      </mat-card>
+    </ng-template>
+</p-carousel>
   <div class="relatedCategoryButtons">
+    
     <a class="standardButton blueButton categoryButton" routerLink="services" mat-raised-button>Explore Our Services
       <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a>
-
+      <div class="slideButtonContainer">
+        <button class="slideButton">
+    <img
+          (click)="checking(carousel)"
+      src="./assets/images/customIcons/prev-slide.svg"
+      alt="" />
+  </button>
+  <button class="slideButton">
+    <img
+      src="./assets/images/customIcons/next-slide.svg"
+      alt="" />
+  </button>
+</div>
   </div>
 </section>
 <app-quote-form></app-quote-form>
