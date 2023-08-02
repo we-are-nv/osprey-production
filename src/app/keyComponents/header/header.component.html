@@ -46,8 +46,8 @@
 				(click)="router.navigate([finalNav.product.headpath])">
 				{{ finalNav.product.name }}</a
 			>
-			<mat-menu class="dropdown"
-
+			<mat-menu
+				class="dropdown"
 				#matproductmenu="matMenu">
 				<div
 					(click)="menuTrigger.closeMenu()"
@@ -74,14 +74,13 @@
 				(mousedown)="menuTrigger.openMenu()">
 				{{ finalNav.market.name }}</a
 			>
-			<mat-menu class="dropdown"
-
+			<mat-menu
+				class="dropdown"
 				#matmarketmenu="matMenu">
 				<div (mouseleave)="menuTrigger.closeMenu()">
 					<a
 						mat-menu-item
 						class="navMenuDropdownItem"
-						
 						*ngFor="let link of finalNav.market.childLinks"
 						[routerLink]="link.path"
 						>{{ link.name }}</a
@@ -101,8 +100,8 @@
 				[routerLink]="finalNav.service.headpath">
 				{{ finalNav.service.name }}</a
 			>
-			<mat-menu class="dropdown"
-
+			<mat-menu
+				class="dropdown"
 				#matservicemenu="matMenu">
 				<div (mouseleave)="menuTrigger.closeMenu()">
 					<a
@@ -128,6 +127,25 @@
 		</div>
 
 		<!-- Contact -->
+
+		<!-- News -->
+		<div class="nav-button">
+			<a
+				mat-button
+				class="navLink"
+				routerLink="news">
+				News</a
+			>
+		</div>
+		<!-- Certifications -->
+		<div class="nav-button">
+			<a
+				mat-button
+				class="navLink"
+				routerLink="accreditation">
+				Certifications</a
+			>
+		</div>
 		<div
 			*ngIf="finalNav.contact"
 			class="nav-button">
@@ -138,30 +156,7 @@
 				{{ finalNav.contact.name }}</a
 			>
 		</div>
-
-		<!-- News -->
-		<div
-			class="nav-button">
-			<a
-				mat-button
-				class="navLink"
-				routerLink="news">
-				News</a
-			>
-		</div>
-		<!-- Certifications -->
-		<div
-		class="nav-button">
-		<a
-			mat-button
-			class="navLink"
-			routerLink="accreditation">
-			Certifications</a
-		>
 	</div>
-	</div>
-
-	
 
 	<div class="searchBar">
 		<mat-form-field
@@ -182,8 +177,8 @@
 			(click)="activateSearch()"
 			><mat-icon>search</mat-icon></a
 		>
-		<mat-menu class="dropdown"
-
+		<mat-menu
+			class="dropdown"
 			#matservicemenu="matMenu"
 			#searchInput="matMenu"
 			(mouseleave)="menuTrigger.closeMenu()">
