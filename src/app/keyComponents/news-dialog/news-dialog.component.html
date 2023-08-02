@@ -1,32 +1,40 @@
-<h2 mat-dialog-title>{{ data.title }}</h2>
-<div mat-dialog-content>
-	<!-- Display the article content here -->
-	<p>{{ data.content }}</p>
+<div class="dialog-container">
+	<div class="date-wrapper">{{ data.formatDate }}</div>
+	<h2
+		mat-dialog-title
+		class="title">
+		{{ data.title }}
+	</h2>
+	<div mat-dialog-content>
+		<!-- Display the article content here -->
+		<p>{{ data.content }}</p>
 
-	<!-- Display the images if available -->
-	<div *ngIf="data.images.length">
-		<div *ngIf="data.images.length" class="images-wrapper">
-			<div
-				*ngFor="let image of data.images"
-				class="image">
-				<img
-					*ngIf="image"
-					[src]="image"
-					style="max-width: 100%" />
+		<!-- Display the images if available -->
+		<div *ngIf="data.images.length">
+			<div class="images-wrapper">
+				<div
+					*ngFor="let image of data.images"
+					class="image">
+					<img
+						*ngIf="image"
+						í
+						[src]="image"
+						style="max-width: 100%" />
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<mat-card-footer>
-		Please <a routerLink="contact">contact</a> us now for more information, to
-		discuss your specific requirements, <a href="00441245280448">book a call</a> or
-		request a quotation.
-	</mat-card-footer>
-</div>
-<div mat-dialog-actions>
-	<button
-		mat-button
-		mat-dialog-close>
-		Close
-	</button>
+		<mat-card-footer>
+			Please <a routerLink="contact">contact</a> us now for more information, to
+			discuss your specific requirements,
+			<a href="00441245280448">book a call</a> or request a quotation.
+		</mat-card-footer>
+	</div>
+	<div mat-dialog-actions>
+		<button
+			mat-button
+			mat-dialog-close>
+			Close
+		</button>
+	</div>
 </div>

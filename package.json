@@ -31,6 +31,7 @@
 		"@nguniversal/express-engine": "^16.1.0",
 		"angular-carousel": "^1.1.0",
 		"express": "^4.15.2",
+		"moment": "^2.29.4",
 		"primeng": "^16.1.0",
 		"rxjs": "~7.8.0",
 		"uninstall": "^0.0.0",
