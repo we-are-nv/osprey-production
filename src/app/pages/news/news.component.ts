@@ -26,7 +26,7 @@ export class NewsComponent implements OnInit {
 				...article,
 				excerpt: this.createExcerpt(article.content),
 				images: this.getImages(article),
-				formatDate: this.convertDate(article.date)
+				formatDate: this.convertDate(article.publish_date)
 			}));
 		});
 	}
@@ -45,7 +45,7 @@ export class NewsComponent implements OnInit {
 	}
 
 	convertDate(string: any) {
-		const date = new Date(string).getTime();
+		const date = new Date(Number(string))
 		console.log(date);
 		const year = date.getFullYear();
 		let month = date.getMonth() + 1;
