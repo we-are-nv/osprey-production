@@ -15,4 +15,9 @@ export class DatabaseService {
 			params: { searchQuery: query }
 		});
 	}
+
+
+	getCredits(type:any){
+		return this.http.get<any>(this.API_URL+ '/info/accreditations', {params: {page: 1, type:type}});
+	}
 }

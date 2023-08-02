@@ -12,7 +12,7 @@ import { Carousel } from 'primeng/carousel';
 	styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-	@ViewChild('carousel') carousel: any;
+	@ViewChild('carousel') carousel: Carousel;
 	// Example List of Services
 	categorySub: any;
 	productCategories: any = [];
@@ -165,7 +165,7 @@ export class HomeComponent {
 
 	onCustomPrevClick() {
 		// Call the PrimeNG carousel's prev() method to go to the previous item
-		this.carousel.prev();
+		// this.carousel.prev();
 	}
 	checking(thing: any){
 		console.log(thing)

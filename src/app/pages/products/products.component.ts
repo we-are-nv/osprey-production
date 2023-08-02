@@ -92,11 +92,21 @@ export class ProductsComponent implements OnInit {
 	// On search
 	onSearchChange(searchValue: any): void {
 		// console.log(searchValue.target.value);
-		this.productService.searchProducts({
-			page: 1,
-			searchQuery: searchValue.target.value,
-			extra: true
-		});
+
+		if(searchValue.target.value.length > 0){
+			this.productService.searchProducts({
+				page: 1,
+				searchQuery: searchValue.target.value,
+				extra: true
+			});
+		}
+		else{
+			this.productService.getProducts({
+				category: this.categoryId,
+				page: 1,
+				limit: 10
+			  });
+		}
 	}
 	changePage(newPage: any) {
 		this.productService.getProducts({category: this.categoryId, page: newPage});

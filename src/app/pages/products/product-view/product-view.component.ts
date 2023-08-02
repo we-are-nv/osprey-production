@@ -56,8 +56,7 @@ export class ProductViewComponent implements OnInit {
                                 this.product = data;
                                 console.log(this.product);
 
-                                if (this.product.product_varients)
-                                    this.productVarients = this.product.product_varients.data;
+                                if (this.product.product_varients) this.productVarients = this.product.product_varients.data;
 
                                 let tempAdditionalInfo = this.product.additional_information.info;
                                 this.informationConverter(tempAdditionalInfo);

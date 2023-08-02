@@ -83,8 +83,8 @@
   <!-- Product Categories -->
 
 
-  <p-carousel [value]="serviceList" [numVisible]="4" [numScroll]="1" [circular]="false" [responsiveOptions]="responsiveOptions" #carousel>
-    <ng-template let-product pTemplate="item">
+  <p-carousel widgetVar="rnd" [value]="serviceList" [numVisible]="4" [numScroll]="1" [circular]="true"  [responsiveOptions]="responsiveOptions" #carousel>
+    <ng-template let-product pTemplate="item"> 
       <mat-card class="paginatedCard selectable" routerLink="/info-page/service/{{product._id}}">
         <img mat-card-image [src]="product.thumbnail_image">
         <h1>{{ product.name }}</h1>
@@ -92,14 +92,17 @@
       </mat-card>
     </ng-template>
 </p-carousel>
+
+
+
   <div class="relatedCategoryButtons">
     
-    <a class="standardButton blueButton categoryButton" routerLink="services" mat-raised-button>Explore Our Services
+    <a class="standardButton blueButton categoryButton" routerLink="services" mat-raised-button >Explore Our Services
       <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a>
       <div class="slideButtonContainer">
-        <button class="slideButton">
+        <!-- <button  class="slideButton">
     <img
-          (click)="checking(carousel)"
+          
       src="./assets/images/customIcons/prev-slide.svg"
       alt="" />
   </button>
@@ -107,7 +110,7 @@
     <img
       src="./assets/images/customIcons/next-slide.svg"
       alt="" />
-  </button>
+  </button> -->
 </div>
   </div>
 </section>
