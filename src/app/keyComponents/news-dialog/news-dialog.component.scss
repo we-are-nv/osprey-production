@@ -5,8 +5,14 @@
 	gap: 2em;
 
 }
+h2.title {
+	font-size: 1.5em;
+	font-weight: 700;
+	font-family: roboto;
+	margin-bottom: 1.5em;
+}
 
-mat-dialog-content {
+.dialog-container{
 	margin: 2%;
 	border-radius: 0;
 	padding: 2%;
