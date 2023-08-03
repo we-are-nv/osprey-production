@@ -12,7 +12,7 @@ export class NewsComponent implements OnInit {
 	constructor(private newsService: NewsService, private dialog: MatDialog) {}
 
 	articles: any[] = [];
-	image: any;
+	images: any[];
 	datePublished: any;
 
 	ngOnInit(): void {
@@ -65,33 +65,6 @@ export class NewsComponent implements OnInit {
 		console.log(finshedDate);
 		return finshedDate;
 	}
-
-	// parseDate(date: any): any {
-	// 	// Regular expression to check for ISO 8601 format (YYYY-MM-DDTHH:mm:ss.sssZ)
-	// 	const isoRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/;
-
-	// 	// Regular expression to check for common date format (YYYY-MM-DD)
-	// 	const commonDateFormatRegex = /^\d{4}-\d{2}-\d{2}$/;
-
-	// 	if (!isoRegex.test(date) && !commonDateFormatRegex.test(date)) {
-	// 		throw new Error('Invalid date format');
-	// 	}
-
-	// 	const isoDate = new Date(date);
-
-	// 	if (isNaN(isoDate.getTime())) {
-	// 		throw new Error('Invalid date format');
-	// 	}
-
-	// 	const options: Intl.DateTimeFormatOptions = {
-	// 		day: 'numeric',
-	// 		month: 'short',
-	// 		year: 'numeric'
-	// 	};
-	// 	const formattedDate = isoDate.toLocaleDateString('en-US', options);
-	// 	this.datePublished = formattedDate
-	// 	return formattedDate;
-	// }
 
 	openDialog(article: any) {
 		this.dialog.open(NewsDialogComponent, {

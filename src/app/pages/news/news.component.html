@@ -1,16 +1,12 @@
-<app-hero mainTitle="Latest News & Articles"
-  lowerTitle=""
-  [isButtons]="false" 
-  [centred]="true"
-  background="./assets/images/heroBackgrounds/homeHero.png" 
-  
-  extraStyle = "shorterHero"
-></app-hero>
+<app-hero
+	mainTitle="Latest News & Articles"
+	lowerTitle=""
+	[isButtons]="false"
+	[centred]="true"
+	background="./assets/images/heroBackgrounds/homeHero.png"
+	extraStyle="shorterHero"></app-hero>
 <section class="container">
-
-
 	<section class="bonus-cards">
-		
 		<app-bonus-card card="news"></app-bonus-card>
 	</section>
 
@@ -20,12 +16,25 @@
 				*ngFor="let article of articles"
 				(click)="openDialog(article)">
 				<mat-card-header>
-					<mat-card-title><h2>{{ article.title }}</h2></mat-card-title>
+					<mat-card-title
+						><h2>{{ article.title }}</h2></mat-card-title
+					>
 				</mat-card-header>
 				<mat-card-content>
-					{{ article.excerpt }}
+					<div class="columns">
+						<div
+							class="img-wrapper"
+							*ngIf="article.images">
+							<img
+								*ngIf="article.images !== ''"
+								[src]="article.images"
+								alt=""
+								style="max-width: 120px" />
+						</div>
+						{{ article.excerpt }}
+					</div>
 				</mat-card-content>
-				
+
 				<mat-card-footer>
 					Please <a routerLink="contact">contact</a> us now for more information, to
 					discuss your specific requirements,
@@ -34,7 +43,4 @@
 			</mat-card>
 		</div>
 	</section>
-
-	
 </section>
-
