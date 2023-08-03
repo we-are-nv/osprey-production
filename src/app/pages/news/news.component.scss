@@ -14,10 +14,10 @@ mat-card {
 	display: flex;
 	flex-direction: column;
     box-shadow: 0px 0px 0px 0px #0065E7;
-    transition: box-shadow 0.4s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out;
 }
 mat-card:hover {
-    box-shadow: 0px 0px 0px 3px #0065E7
+    box-shadow: 0px 0px 10px 3px #0065E7
 }
 
 mat-card-header {
