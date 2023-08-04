@@ -1,10 +1,10 @@
-mat-toolbar{
+mat-toolbar {
     // min-height: 15vh;
     width: 100%;
-    
+
     justify-content: space-evenly;
     height: min-content;
-    display:flex;
+    display: flex;
     position: fixed;
     z-index: 999;
 
@@ -12,48 +12,60 @@ mat-toolbar{
 
 // CSS behind toolbar background change
 @keyframes toolbarBackgroundChange {
-    from {background-color: rgba(255, 255, 255, 0);}
-    to {background-color: rgba(34, 34, 34, 0.781)}
+    from {
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    to {
+        background-color: rgba(34, 34, 34, 0.781)
+    }
 }
-.scrolledToolbar{
+
+.scrolledToolbar {
     animation-name: toolbarBackgroundChange;
     animation-duration: 1.2s;
     background-color: rgba(34, 34, 34, 0.781);
-    
+
 }
-.defaultToolbar{
+
+.defaultToolbar {
     background-color: rgba(34, 34, 34, 0.781);
 }
 
-#navLogo{
-    width:10vw;
+#navLogo {
+    width: 10vw;
     height: 10vh;
     object-fit: cover;
     cursor: pointer;
 }
-#navLogo:hover{
+
+#navLogo:hover {
     background-color: rgba(34, 34, 34, 0.781);
 }
-.navLinks{
+
+.navLinks {
     margin: auto;
     width: auto;
     display: flex;
 }
 
-.navLink{
-    height:10vh;
+.navLink {
+    height: 10vh;
     color: white !important;
     font-size: 1vw;
     text-decoration: none;
 }
-::ng-deep .navLink{
+
+::ng-deep .navLink {
     width: min-content + 10%;
 }
-.navLinkIcon{
+
+.navLinkIcon {
     float: right;
 }
+
 // Styling for the dropdown
-.mdc-list-item{
+.mdc-list-item {
     border-radius: 0%;
     border-bottom: solid 1px #EAEAEA;
     // width: 80%;
@@ -63,36 +75,38 @@ mat-toolbar{
 }
 
 // Search bar Icon
-.searchBar{
+.searchBar {
     color: white;
 }
 
 // Contact Details & Icon Formatting
-.contactDetails{
-    margin:auto ;
+.contactDetails {
+    margin: auto;
     width: auto;
     height: min-content;
-    display:flex;
+    display: flex;
     color: white !important;
     font-size: 0.75rem;
     // position:inherit;
     // float: left;
 
 }
-.contactDetails div{
+
+.contactDetails div {
     height: min-content;
     margin-top: auto;
     margin-bottom: auto;
 }
 
 // Styling of Phone Icon
-.contactIconRing{
+.contactIconRing {
     border: solid 1px #0065E7;
     padding: -1rem;
     margin: auto;
     border-radius: 50%;
 }
-.contactIcon{
+
+.contactIcon {
     float: left;
     // background-color: #0065E7;
     border-radius: 50%;
@@ -141,18 +155,20 @@ mat-toolbar{
 input.mat-input-element {
     color: white;
 }
-.searchBar{
+
+.searchBar {
     margin-top: auto;
     margin-left: auto;
     display: flex;
-    height:10vh;
+    height: 10vh;
 }
-mat-hint{
+
+mat-hint {
     display: none;
 }
 
 // Open Side Nav
-.menuOpen{
+.menuOpen {
     color: white;
     font-size: 3vw;
     visibility: hidden;
@@ -161,7 +177,7 @@ mat-hint{
 
 
 
-.searchbar-input{
+.searchbar-input {
     transform: width 500ms linear;
     width: 10vw;
     animation-name: slide-out;
@@ -173,55 +189,66 @@ mat-hint{
     // visibility: collapse;
 }
 
-a{
+a {
     color: white !important;
 }
 
 
 
 
-.searchIcon{
+.searchIcon {
     height: auto;
     font-size: 1.25rem;
     margin: auto;
     margin-left: 5vw;
 }
-.SearchList{
+
+.SearchList {
     width: 50vh;
 }
+
 ::ng-deep.mat-menu-panel {
     max-width: none !important;
 }
-.linkContainer{
+
+.linkContainer {
     display: flex;
 }
-.link{
+
+.link {
 
     color: #0065E7;
-    margin-left: auto ;
+    margin-left: auto;
     margin-right: 5%;
 }
 
-.normal{
+.normal {
     display: none;
 }
 
 // WhatsApp Icon
-#whatsapp{
+#whatsapp {
     margin-right: auto;
     padding: 1.5vh;
-    transform: scale(1.75);
-
+    transform: scale(1.25);
 }
-#whatsapp:hover{
+
+#whatsapp:hover {
     background-color: rgba(34, 34, 34, 0.781);
 }
 
+// Messenger Icon
+#messenger {
+    margin-right: 1em;
+    transform: scale(1.25);
+}
+
 @media (max-width:1150px) {
-    .contactDetails{
+    .contactDetails {
         visibility: hidden;
     }
-    .navLink{
+
+    .navLink {
         font-size: 1.75vw;
         text-decoration: none;
     }
@@ -229,17 +256,20 @@ a{
 
 
 @media screen and (max-width: 1024px) {
-    .menuOpen{
+    .menuOpen {
         visibility: visible;
     }
-    .navLinks{
+
+    .navLinks {
         visibility: hidden;
         display: none;
     }
-    #navLogo{
+
+    #navLogo {
         width: 15vw;
     }
-    .searchBar{
+
+    .searchBar {
         visibility: hidden;
         display: none;
     }

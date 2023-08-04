@@ -5,6 +5,7 @@
 	gap: 2em;
 
 }
+
 h2.title {
 	font-size: 1.5em;
 	font-weight: 700;
@@ -12,8 +13,8 @@ h2.title {
 	margin-bottom: 1.5em;
 }
 
-.dialog-container{
-	
+.dialog-container {
+
 	margin: 2%;
 	border-radius: 0;
 	padding: 2%;
@@ -30,17 +31,28 @@ mat-card-header {
 mat-card-content {
 	padding: 0
 }
-.date-wrapper{
+
+.date-wrapper {
+	width: 100%;
 	font-family: 'roboto';
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
+
 mat-card-footer {
 	margin-top: 2em;
 	// padding: 2%
 }
 
-@media screen and (max-width: 750px){
-	.dialog-container{
-			
+.mat-mdc-mini-fab.mat-accent {
+	--mdc-fab-container-color: #0065E7;
+	box-shadow: unset;
+}
+
+@media screen and (max-width: 750px) {
+	.dialog-container {
+
 		width: 80vw;
 		height: 100vh;
 	}

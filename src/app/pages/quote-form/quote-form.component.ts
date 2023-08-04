@@ -3,6 +3,8 @@ import { ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { ContactService } from 'src/app/services/contact.service';
+import { IconRegisterService } from 'src/app/services/icon-register.service';
+
 
 @Component({
 	selector: 'app-quote-form',
@@ -11,7 +13,12 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class QuoteFormComponent {
 	message;
-	constructor(private fb: FormBuilder, private mailService: ContactService) {
+	constructor(
+		private fb: FormBuilder,
+		private mailService: ContactService,
+		private iconRegistry: IconRegisterService
+	) {
+		this;
 		this.message = this.fb.group({
 			firstName: ['', Validators.required],
 			lastName: ['', Validators.required],
@@ -23,6 +30,7 @@ export class QuoteFormComponent {
 			message: ['']
 		});
 	}
+
 	get f() {
 		return this.message.controls;
 	}

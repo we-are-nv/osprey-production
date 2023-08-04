@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { InfoPageService } from 'src/app/services/info-page.service';
 import { ProductService } from 'src/app/services/product.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { IconRegisterService } from 'src/app/services/icon-register.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -32,8 +33,11 @@ export class HeaderComponent implements OnInit {
 		private productService: ProductService,
 		private infoPageService: InfoPageService,
 		public router: Router,
-		private databaseService: DatabaseService
-	) {}
+		private databaseService: DatabaseService,
+		private iconRegistry: IconRegisterService
+	) {
+
+	}
 
 	ngOnInit(): void {
 		this.searchData = {};

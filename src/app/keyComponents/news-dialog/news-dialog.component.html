@@ -1,5 +1,14 @@
 <div class="dialog-container">
-	<div class="date-wrapper">{{ data.formatDate }}</div>
+	<div class="date-wrapper">
+		{{ data.formatDate }}
+		<div mat-dialog-actions>
+			<button
+				mat-mini-fab
+				mat-dialog-close>
+				<mat-icon>close</mat-icon>
+			</button>
+		</div>
+	</div>
 	<h2
 		mat-dialog-title
 		class="title">
@@ -28,12 +37,5 @@
 			discuss your specific requirements,
 			<a href="00441245280448">book a call</a> or request a quotation.
 		</mat-card-footer>
-	</div>
-	<div mat-dialog-actions>
-		<button
-			mat-button
-			mat-dialog-close>
-			Close
-		</button>
 	</div>
 </div>
