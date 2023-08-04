@@ -98,9 +98,13 @@
     display: grid;
     place-content: center;
 }
+.icon-link{
+    width: 12%; 
+}
 
 .socialIcon {
-    height: 3vh;
+    object-fit: contain;
+    width: 100%;
 }
 
 

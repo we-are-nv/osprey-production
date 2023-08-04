@@ -25,7 +25,7 @@ export class ScrollService {
 					let element = document.getElementById('hero');
 					element?.scrollIntoView({ behavior: 'smooth' });
 				} else {
-					let element = document.getElementById('hero');
+					let element = document.getElementById('main-info');
 					element?.scrollIntoView({ behavior: 'smooth' });
 				}
 			}
