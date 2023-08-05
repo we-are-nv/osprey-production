@@ -16,7 +16,7 @@
       innovative product range below:</span>
   </div>
   <!-- Categories Grabbed from Component Variable -->
-  <button class="prod-load-button" mat-flat-button color="primary" *ngIf="activeId !== ''" (click)="loadProds('')">Show
+  <button class="prod-load-button" mat-flat-button color="primary" *ngIf="categoryId !== ''" routerLink="/search/{{categoryId}}">Show
     All Products <mat-icon class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
   </button>
   <app-category-card [cards]="categories" (catRouting)="getNewCats($event)"></app-category-card>

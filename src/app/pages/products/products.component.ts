@@ -50,8 +50,9 @@ export class ProductsComponent implements OnInit {
 
           this.productService.getProducts({
             category: this.categoryId,
+			viewChildren: true,
             page: 1,
-            limit: 10
+            limit: 12
           });
 
           this.productService.getSingleCategory(this.categoryId).subscribe(data => {
@@ -82,7 +83,7 @@ export class ProductsComponent implements OnInit {
 		this.productService.getProducts({
 			category: this.categoryId,
 			page: 1,
-			limit: 10
+			limit: 12
 		});
 	}
 	loadProduct(id: any) {
@@ -104,7 +105,8 @@ export class ProductsComponent implements OnInit {
 			this.productService.getProducts({
 				category: this.categoryId,
 				page: 1,
-				limit: 10
+				limit: 12,
+				viewChildren: true,
 			  });
 		}
 	}

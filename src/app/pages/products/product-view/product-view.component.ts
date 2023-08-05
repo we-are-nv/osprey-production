@@ -42,7 +42,7 @@ export class ProductViewComponent implements OnInit {
             let renderInfo: any = this._Activatedroute.snapshot.data;
             let renderType = renderInfo.type;
             if (renderType == 'friendly') {
-                let paramsa = {code: 'BHOS2Z180I66M' };
+                let params = {code: 'BHOS2Z180I66M' };
                 this.http
                     .get<any>(
                         this.API_URL + '/products/convert-route?code=' + params['code']
