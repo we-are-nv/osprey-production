@@ -45,12 +45,17 @@ router.get('/', async (req, res, next) => {
 		console.log('found cats array: ', foundCats);
 		// foundCats.sort((a, b) => (a.order > b.order ? 1 : -1));
 		const orderedArray = [...foundCats].sort((a, b) => a.order - b.order);
-		const mappedCats = orderedArray.map(cat => {
+		const mappedCats = [];
+		orderedArray.map(cat => {
 			return {
 				name: cat.name,
 				order: Number(cat.order)
 			};
 		});
+		mappedCats.forEach(cat => {
+			console.log('mappedCat order :', cat.order);
+		});
+
 		console.log(mappedCats);
 		if (foundCats) {
 			//console.log(foundCats)
