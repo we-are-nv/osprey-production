@@ -5,7 +5,7 @@ const cache = new NodeCache();
 function dataCache(req, res, next) {
 	const cacheKey = req.originalUrl + JSON.stringify(req.query);
 
-	cache.set(cacheKey, data, 3600);
+	cache.ttl(cacheKey, 3600);
 
 	const cachedData = cache.get(cacheKey);
 	if (cachedData) {
