@@ -1,26 +1,37 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, Inject } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { platform } from 'os';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class IconRegisterService {
+export class IconRegisterService implements OnInit {
 	constructor(
-		private matIconRegistry: MatIconRegistry,
-		private domSanitizer: DomSanitizer
+		private _matIconRegistry: MatIconRegistry,
+		private _domSanitizer: DomSanitizer,
+		@Inject(PLATFORM_ID) private platformId: string
 	) {
-		this.matIconRegistry.addSvgIcon(
+		const svgUrlBase = 'assets/images/socialMedias/';
+		const domain = isPlatformServer(platformId) ? 'https://localhost:4000/' : '';
+
+		this._matIconRegistry.addSvgIcon(
 			`whatsapp-colour`,
-			this.domSanitizer.bypassSecurityTrustResourceUrl(
-				'../../assets/images/customIcons/whatsapp-color-icon.svg'
+			// `../../assets/images/socialMedias/whatsapp-color-icon.svg`
+			this._domSanitizer.bypassSecurityTrustResourceUrl(
+				domain + svgUrlBase + 'whatsapp-color-icon.svg'
 			)
 		);
-		this.matIconRegistry.addSvgIcon(
+
+		this._matIconRegistry.addSvgIcon(
 			`fb-messenger`,
-			this.domSanitizer.bypassSecurityTrustResourceUrl(
-				'../../assets/images/customIcons/facebook-messenger-icon.svg'
+			// `../../assets/images/socialMedias/facebook-messenger-icon.svg`
+			this._domSanitizer.bypassSecurityTrustResourceUrl(
+				domain + svgUrlBase + 'facebook-messenger-icon.svg'
 			)
 		);
 	}
+	ngOnInit(): void {}
 }

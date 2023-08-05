@@ -1,18 +1,18 @@
-::ng-deep{
+::ng-deep {
     margin-top: 0px;
 }
 
 
-section{
+section {
     width: 100%;
-    background: linear-gradient(90deg, rgba(0,101,231,1) 0%, rgba(0,101,231,0.1881127450980392) 100%);
-    padding-top:5vh ;
+    background: linear-gradient(90deg, rgba(0, 101, 231, 1) 0%, rgba(0, 101, 231, 0.1881127450980392) 100%);
+    padding-top: 5vh;
     padding-bottom: 5vh;
     display: flex;
     gap: 1%;
 }
 
-mat-card{
+mat-card {
     width: 80vw;
     margin: auto;
     padding: 2vh;
@@ -24,32 +24,38 @@ mat-card{
     align-items: center;
     flex-direction: column;
 }
-.whatsapp-icon {
+
+.whatsapp-icon,
+.fb-messenger {
     margin-left: 0.2em;
 }
+
 .whatsapp-icon svg {
     fill: #25d366
 }
 
-.header{
+.header {
     width: 80%;
     margin: auto;
     margin-bottom: 2vh;
 }
-.form{
+
+.form {
     margin: auto;
     display: flex;
     justify-content: space-between;
 }
 
-form *{
+form * {
     border-radius: 0px !important;
 
 }
+
 .mat-form-field-outline {
     border-radius: 0px;
 }
-mat-form-field{
+
+mat-form-field {
     width: 100%;
     background-color: transparent !important;
     text-align: center;
@@ -57,48 +63,52 @@ mat-form-field{
     align-items: center;
 
 }
-mat-card-content{
+
+mat-card-content {
     width: -webkit-fill-available;
     padding: 2vw;
 }
+
 // .mdc-text-field--outlined {
 //     position: relative;
 //     bottom: .25em;
 //     border: 1px solid red !important;
 // }
-p{
+p {
     color: #9B9B9B;
     font-family: 'Roboto';
 }
-.half-width{
-    position:relative;
+
+.half-width {
+    position: relative;
     width: 48%;
 }
 
 // Button Themeing
 
-button{
+button {
     background-color: transparent;
     border: 2px solid rgba(0, 0, 0, 0.494);
     color: white;
-    filter:drop-shadow(0px 0px 0px #ffff);
+    filter: drop-shadow(0px 0px 0px #ffff);
     width: auto;
     margin: auto;
     display: block;
     height: 30%;
 
 }
-.form-input{
+
+.form-input {
     border-radius: 0% !important;
     border: 1px;
 }
 
 @media screen and (max-width: 1000px) {
-    .half-width{
+    .half-width {
         width: 100%;
     }
-    .form{
+
+    .form {
         display: block;
     }
 }
-
