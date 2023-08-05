@@ -13,6 +13,10 @@ var multer = require('multer');
 var forms = multer();
 const app = express();
 
+// Import cacheMiddleware
+
+const cacheMiddleware = require('./middleware/cache');
+
 //Import Scripts
 const logger = require('./src/utils/logger');
 
@@ -25,6 +29,7 @@ const authRoute = require('./src/routes/auth');
 const searchRoute = require('./src/routes/search');
 const mailRoute = require('./src/routes/mail');
 const newsRoute = require('./src/routes/news.js');
+const invalidateCache = require('./src/routes/invalidateCache');
 
 const s3Controller = require('./src/controller/s3-controller');
 // Declare Ports
@@ -35,7 +40,9 @@ mongoose.set('strictQuery', true);
 mongoose
 	.connect(process.env.DB_URI, {
 		useNewUrlParser: true,
-		useUnifiedTopology: true
+		useUnifiedTopology: true,
+		minPoolSize: 5,
+		maxPoolSize: 140
 	})
 	.then(() => {
 		console.log('Connected to Database');
@@ -60,6 +67,7 @@ const middlewareCheck = (req, res, next) => {
 	next();
 };
 
+app.use(cacheMiddleware.dataCache);
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(morgan('dev'));
@@ -134,6 +142,8 @@ app.get('/paragon/api/status', (req, res) => {
 	});
 });
 
+// Invalidate Cache Route
+
 app.use('/paragon/api/products', productRoute);
 app.use('/paragon/api/auth', authRoute);
 app.use('/paragon/api/model', modelRoute);
@@ -147,7 +157,8 @@ app.use('/paragon/api/search', searchRoute);
 app.use('/paragon/api/news', newsRoute);
 // Mail route
 app.use('/paragon/api/mail', mailRoute);
-
+// Flush Cache
+app.use('/paragon/api/flush-cache', invalidateCache);
 const start = () => {
 	app.listen(PORT, () => {
 		// console.log('CORS Origin is: ', constOrigin);
