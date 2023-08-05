@@ -37,26 +37,10 @@ router.get('/', async (req, res, next) => {
 	console.log(req.url);
 	var parent = req.query.parent || undefined;
 	try {
-		const foundCats = await categories.find({ parent: parent });
-		foundCats.forEach(cat => {
-			console.log('typeof cat.order: ' + typeof cat.order, cat.order);
-		});
+		let foundCats;
+		foundCats = await categories.find({ parent: parent });
+		foundCats = [...foundCats].sort((a,b)=> a.order - b.order)
 
-		console.log('found cats array: ', foundCats);
-		// foundCats.sort((a, b) => (a.order > b.order ? 1 : -1));
-		const orderedArray = [...foundCats].sort((a, b) => a.order - b.order);
-		const mappedCats = [];
-		orderedArray.map(cat => {
-			return {
-				name: cat.name,
-				order: Number(cat.order)
-			};
-		});
-		mappedCats.forEach(cat => {
-			console.log('mappedCat order :', cat.order);
-		});
-
-		console.log(mappedCats);
 		if (foundCats) {
 			//console.log(foundCats)
 			//console.log('Categories:', foundCats);
@@ -88,7 +72,7 @@ router.get('/', async (req, res, next) => {
 
 				foundCats[idx].cat_url = cat_url;
 			}
-			res.json({ cats: foundCats, test: mappedCats });
+			res.json({ cats: foundCats });
 		}
 	} catch (err) {
 		//console.log(foundCats)

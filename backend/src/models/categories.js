@@ -3,21 +3,27 @@ const mongoose = require('mongoose');
 // For prod, change required: true
 
 const categoryInfo = mongoose.Schema({
-  name: { type: String, requried: true, unique: true },
-  image: { type: String, required: true },
-  info: {
-    heading: { type: String, required: false },
-    sub_heading: { type: String, required: false },
-    banner_image: { type: String, required: false }
-  },
-  parent: { type: mongoose.Schema.Types.ObjectId, required: false },
-  breadcrumb: { type: String, required: false },
-  hasChild: { type: Boolean, required: false },
-  cat_url : {type:String, required: false},
-  searchType: { type: String, required: false },
+	order: { type: Number, required: false },
+	name: { type: String, requried: true, unique: true },
+	sub_text: { type: String, required: false },
+	image: { type: String, required: true },
+	info: {
+		heading: { type: String, required: false },
+		sub_heading: { type: String, required: false },
+		banner_image: { type: String, required: false },
+		sub_text: {type: String, required: false}
+	},
+	parent: { type: mongoose.Schema.Types.ObjectId, required: false },
+	breadcrumb: { type: String, required: false },
+	hasChild: { type: Boolean, required: false },
+	cat_url: { type: String, required: false },
+	searchType: { type: String, required: false }
 
-  // children:[{ type: mongoose.Schema.Types.ObjectId,required:false }],
-})
+	// children:[{ type: mongoose.Schema.Types.ObjectId,required:false }],
+});
 
+// Test
+// module.exports = mongoose.model('cat-test', categoryInfo, 'cat-test');
 
+// Live
 module.exports = mongoose.model('category', categoryInfo);
