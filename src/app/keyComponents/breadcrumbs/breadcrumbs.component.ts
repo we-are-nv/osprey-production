@@ -23,12 +23,9 @@ export class BreadcrumbsComponent implements OnChanges {
         friendlyUrl += (route.friendly +'/')
       });
     }
-    this.location.replaceState(this.transformURL(friendlyUrl));
   }
 
-  transformURL(text:string): string{
-    return new UrlFormatterPipe().transform(text)
-  }
+
 
   isLatest(i: number): boolean{
     if (i == this.history.length){
