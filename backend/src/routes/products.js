@@ -139,7 +139,11 @@ router.get('/product_info', async (req, res) => {
     }
   } catch (err) {
     console.log('Invalid Input. Assuming False');
-    catQuery.push(new ObjectId(req.query.category));
+    console.log(req.query.category)
+    if (req.query.category.length > 12){
+      catQuery.push(new ObjectId(req.query.category));
+    }
+
   }
 
   var additQuery = '';
