@@ -39,6 +39,8 @@ import { CarouselModule } from 'primeng/carousel';
 import { NewsComponent } from './pages/news/news.component';
 import { NewsDialogComponent } from './keyComponents/news-dialog/news-dialog.component';
 import { AccreditationsComponent } from './pages/accreditations/accreditations.component';
+import { CarouselSliderComponent } from './keyComponents/carousel-slider/carousel-slider.component';
+import { CarouselDemoComponent } from './pages/carousel-demo/carousel-demo.component';
 
 @NgModule({
 	imports: [
@@ -81,7 +83,9 @@ import { AccreditationsComponent } from './pages/accreditations/accreditations.c
 		SearchPageComponent,
 		ScrollComponent,
 		NewsDialogComponent,
-		AccreditationsComponent
+		AccreditationsComponent,
+		CarouselSliderComponent,
+		CarouselDemoComponent,
 	],
 	providers: [UrlFormatterPipe, provideClientHydration(), ScrollService],
 	bootstrap: [AppComponent]

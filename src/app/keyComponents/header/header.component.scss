@@ -226,22 +226,19 @@ a {
     display: none;
 }
 
-// WhatsApp Icon
-#whatsapp {
-    margin-right: auto;
+// WhatsApp, Messenger Icon
+#whatsapp,
+#messenger {
+    margin-right: 1em;
     padding: 1.5vh;
     transform: scale(1.25);
 }
 
-#whatsapp:hover {
+#whatsapp:hover,
+#messenger:hover {
     background-color: rgba(34, 34, 34, 0.781);
 }
 
-// Messenger Icon
-#messenger {
-    margin-right: 1em;
-    transform: scale(1.25);
-}
 
 @media (max-width:1150px) {
     .contactDetails {
