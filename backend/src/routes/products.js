@@ -189,7 +189,8 @@ router.get('/product_info', async (req, res) => {
     var formattedName = result[idx].product_name.replace(/[^a-zA-Z ]/g, "").replace(/  +/g, ' ').split(" ").join("-").toLowerCase();
     var url = `/product/${result[idx].product_code}/${formattedName}`;
     result[idx].product_url = url;
-
+    var catURL = `/products/${result[idx].category.name.split(' ').join('-').toLowerCase()}`;
+    result[idx].category.cat_url = catURL
 
     if (req.query.populate_include && result[idx].additional_information && result[idx].additional_information.info) {
       console.log('HELLO')
