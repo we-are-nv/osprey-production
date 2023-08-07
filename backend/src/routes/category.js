@@ -319,11 +319,15 @@ router.get('/convert-route', async (req, res) => {
 		//Prison Cell
 		//prison-cell
 		var conv = req.query.name.split('-').join(' ');
-		const foundProduct = await categories.findOne({
+		const foundProduct = await categories.find({
 			['name']: { $regex: conv, $options: 'i' }
 		});
 		if (foundProduct) {
-			res.json({ _id: foundProduct._id });
+      for (idx in foundProduct){
+        if (foundProduct[idx].name.toLowerCase() == conv){
+          res.json({ _id: foundProduct[idx]._id });
+        };
+      };
 		} else {
 			res.json({ err: 'prod not found' });
 		}
