@@ -51,13 +51,19 @@ async function getChildCategories(parentCat, childArray) {
 
 router.get('/product_info', async (req, res) => {
   // Default Values are Set
-  const { page = 1, limit = 10, subCat = '', viewChildren = false } = req.query;
+  const { page = 1, limit = 10, subCat = '', viewChildren = false, sort = 'az' } = req.query;
 
   // Checks to see if a category  is declared. However if a documentId is declared its allowed.
   if (!req.query.category && !req.query.documentId) {
     res.json({ error: 'Please Enter a valid product category' });
     return;
-  }
+  };
+
+  // Configure Sort
+  var sortValue = 1;
+  if (sort == 'za'){
+    sortValue = -1;
+  };
 
   var popu;
   // Checks to see if populate include is present
@@ -161,6 +167,8 @@ router.get('/product_info', async (req, res) => {
   const count = await allProducts.count(additQuery, selectOptions);
   const result = await allProducts
     .find(additQuery, selectOptions)
+    .sort({ product_name: sortValue })
+    .collation({ locale: "en", caseLevel: true })
     .limit(limit * 1)
     .skip((page - 1) * limit)
     .populate(popu)
