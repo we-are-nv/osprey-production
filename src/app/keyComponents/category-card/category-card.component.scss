@@ -39,7 +39,10 @@ mat-card-header{
 
 .categoryCard img{
     height: 20vh;
-    object-fit: cover;
+    object-fit: contain;
+}
+.top{
+    object-fit: cover !important;
 }
 .categoryCard h1{
     padding-left: 2vh;

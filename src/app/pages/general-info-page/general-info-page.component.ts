@@ -28,16 +28,26 @@ export class GeneralInfoPageComponent implements OnInit {
 
 	history: any;
 	ngOnInit() {
+		this.pageData = undefined;
+		this.pageId = '';
+		this.siblingPages = [];
+
+		this.subPages = [];
+		
+		
+
 		this._Activatedroute.params.subscribe(params => {
 			this.pageType = params['type'];
 			this.pageId = params['id'];
 
-			this.infoService.getThumbnails(this.pageType).subscribe((data: any) => {
+			let siblingSub = this.infoService.getThumbnails(this.pageType).subscribe((data: any) => {
 				this.siblingPages = data;
+
+				siblingSub.unsubscribe();
 			});
 
 			// Get Main Page
-			this.infoService.getMainUpdateListener().subscribe(data => {
+			let pageSub = this.infoService.getMainUpdateListener().subscribe(data => {
 				this.pageData = data;
 				this.subPages = data.pages;
 				this.bonusCards = data.bonus_cards;
@@ -45,6 +55,8 @@ export class GeneralInfoPageComponent implements OnInit {
 				this.router.navigate([
 					`/info-page/${this.pageType}/${this.pageId}/${this.activeSubPageId}`
 				]);
+
+				pageSub.unsubscribe();
 			});
 
 			this.infoService.getMainPage(this.pageId);

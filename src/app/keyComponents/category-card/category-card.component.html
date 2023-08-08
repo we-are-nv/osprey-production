@@ -1,7 +1,7 @@
 <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-  <mat-card class="categoryCard mat-elevation-z0 selectable noBoxShadow noElevation"
-    (click)="loadCat(category._id,category.hasChild,category.cat_url)" *ngFor="let category of cards">
-    <img mat-card-image [src]="category.image" />
+  <mat-card class="categoryCard mat-elevation-z0 selectable noBoxShadow noElevation "
+    (click)="loadCat(category._id,category.hasChild,category.cat_url)" *ngFor="let category of cards" >
+    <img mat-card-image [src]="category.image" [ngClass]="category.parent == undefined ? 'top' :'null'"  />
     <h1>{{ category.name}}</h1>
     <span>Explore <mat-icon>circle</mat-icon></span>
   </mat-card>
