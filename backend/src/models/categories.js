@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const seo_meta = require('./SEO')
 
 // For prod, change required: true
 
@@ -17,7 +18,12 @@ const categoryInfo = mongoose.Schema({
 	breadcrumb: { type: String, required: false },
 	hasChild: { type: Boolean, required: false },
 	cat_url: { type: String, required: false },
-	searchType: { type: String, required: false }
+	searchType: { type: String, required: false },
+  seo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref:seo_meta,
+    required:false
+  }
 
 	// children:[{ type: mongoose.Schema.Types.ObjectId,required:false }],
 });
