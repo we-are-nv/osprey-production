@@ -27,6 +27,7 @@ const modelRoute = require('./src/routes/model');
 const infoRoute = require('./src/routes/information');
 const authRoute = require('./src/routes/auth');
 const searchRoute = require('./src/routes/search');
+const seoRoute = require('./src/routes/seo');
 const mailRoute = require('./src/routes/mail');
 const newsRoute = require('./src/routes/news.js');
 const invalidateCache = require('./src/routes/invalidateCache');
@@ -147,6 +148,7 @@ app.get('/paragon/api/status', (req, res) => {
 app.use('/paragon/api/products', productRoute);
 app.use('/paragon/api/auth', authRoute);
 app.use('/paragon/api/model', modelRoute);
+app.use('/paragon/api/manage-seo',seoRoute);
 app.use('/paragon/api/info', infoRoute);
 //Category Routes
 app.use('/paragon/api/products/category', catRoute);
