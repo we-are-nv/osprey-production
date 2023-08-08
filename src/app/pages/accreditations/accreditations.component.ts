@@ -7,11 +7,15 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./accreditations.component.scss']
 })
 export class AccreditationsComponent implements OnInit{
+  
+  displayedColumns: string[] = ['Header', 'Mark', 'Use'];
   constructor(private accreditationsService: DatabaseService){}
-  atex: string;
+  atex: any = [];
   ngOnInit(){
     this.accreditationsService.getCredits('atex').subscribe(data=>{
-      console.log(data)
+      this.atex = data.data;
+      console.log(this.atex)
     })
+
   }
 }

@@ -15,5 +15,26 @@
     ></app-hero>
 
 <section class="container">
-    
+    <table mat-table [dataSource]="atex" class="mat-elevation-z8">
+
+		<!--- Note that these columns can be defined in any order.
+			  The actual rendered columns are set as a property on the row definition" -->
+	  
+		<!-- Position Column -->
+		<ng-container matColumnDef="Header">
+		  <th mat-header-cell *matHeaderCellDef> Header </th>
+		  <td mat-cell *matCellDef="let element"> {{element.data?.header}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="Mark">
+			<th mat-header-cell *matHeaderCellDef> Mark </th>
+			<td mat-cell *matCellDef="let element"> {{element.data?.mark}} </td>
+		  </ng-container>
+
+		  <ng-container matColumnDef="Use">
+			<th mat-header-cell *matHeaderCellDef> Use </th>
+			<td mat-cell *matCellDef="let element"> {{element.data?.use}} </td>
+		  </ng-container>
+	  
+	  </table>
 </section>

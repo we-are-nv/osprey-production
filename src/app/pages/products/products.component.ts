@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {Subscription} from 'rxjs';
+import { InfoPageService } from 'src/app/services/info-page.service';
 import {ProductService} from 'src/app/services/product.service';
 import { environment } from 'src/environments/environment';
 
@@ -16,7 +17,8 @@ export class ProductsComponent implements OnInit {
 		private productService: ProductService,
 		private router: Router,
     private http: HttpClient,
-		private _Activatedroute: ActivatedRoute
+		private _Activatedroute: ActivatedRoute,
+		private infoPageService: InfoPageService
 	) {}
 	products: any;
 
@@ -75,8 +77,22 @@ export class ProductsComponent implements OnInit {
 					{path:'/search/'+this.category._id, friendly: this.category.name}
 				];
 
-				if(this.products.length < 0){
+				if(this.products.length <= 0){
+					console.log(this.category._id)
 					
+   					this.infoPageService.getThumbnails(this.category._id).subscribe((data:any)=>{
+							let firstPage = data[0];
+	
+							console.log(firstPage)
+							this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
+
+					})
+					// this.infoPageService.navGetPage(this.category._id).subscribe((data: any) => {
+					// 	let firstPage = data.pages[0];
+
+					// 	console.log(firstPage)
+					// 	// this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
+					// })
 				}
 			});
 

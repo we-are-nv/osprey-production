@@ -26,7 +26,7 @@ export class NewsComponent implements OnInit {
 				...article,
 				excerpt: this.createExcerpt(article.content),
 				images: this.getImages(article),
-				formatDate: this.convertDate(article.publish_date)
+				formatDate: this.readableDate(article.publish_date)
 			}));
 		});
 	}
@@ -44,10 +44,32 @@ export class NewsComponent implements OnInit {
 		return article.images || [];
 	}
 
+	readableDate(string: any) {
+		const originalDate = new Date(string);
+		const options: Intl.DateTimeFormatOptions = {
+			day: '2-digit',
+			month: 'short',
+			year: 'numeric'
+		};
+		const formattedDate = originalDate.toLocaleDateString('en-US', options);
+		return formattedDate;
+	}
+
 	convertDate(string: any) {
-		const date = new Date(Number(string))
-		let monthNames = ["January", "February", "March", "April", "May", "June",
-		"July", "August", "September", "October", "November", "December"
+		const date = new Date(Number(string));
+		let monthNames = [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'August',
+			'September',
+			'October',
+			'November',
+			'December'
 		];
 		console.log(date);
 		const year = date.getFullYear();
