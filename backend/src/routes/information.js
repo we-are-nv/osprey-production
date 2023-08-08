@@ -140,6 +140,8 @@ router.post('/page', checkAuth, async (req, res) => {
 		res.json({ error: 'marketNotDecleared' });
 		return;
 	}
+
+	console.log(req.query.id, 'hello', req.body)
 	var newPageID = new mongoose.Types.ObjectId();
 	const marketInfo = await market.findOne({ _id: req.query.id });
 
@@ -160,7 +162,7 @@ router.post('/page', checkAuth, async (req, res) => {
 		}
 	}
 
-	var newPage = new informationPage({
+	var newPage = new informationPage({	
 		_id: newPageID,
 		name: req.body.name,
 		elements: req.body.elements
