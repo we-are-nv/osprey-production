@@ -90,8 +90,10 @@ app.use((req, res, next) => {
 		'https://staging.wearenv.co.uk',
 		'http://localhost:4200',
 		'http://localhost:4300',
-		'http://18.132.33.23:4000'
+		'http://18.132.33.23:4000',
+		'http://localhost:55232'
 	];
+	
 
 	if (allowedOrigins.includes(origin)) {
 		//console.log('ALLOWED CORS');

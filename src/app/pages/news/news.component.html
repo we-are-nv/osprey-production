@@ -19,12 +19,13 @@
 					<mat-card-title
 						><h2>{{ article.title }}</h2></mat-card-title
 					>
+					<h4 class="date">{{article.formatDate}}</h4>
 				</mat-card-header>
 				<mat-card-content>
 					<div class="columns">
 						<div
 							class="img-wrapper"
-							*ngIf="article.images">
+							*ngIf="article.images.length > 0">
 							<img
 								*ngIf="article.images !== ''"
 								[src]="article.images"

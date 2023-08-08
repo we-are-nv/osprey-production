@@ -56,7 +56,7 @@ const routes: Routes = [
 	{ path: 'news', component: NewsComponent },
 
 	// Accreditations
-	{ path: 'accreditation', component: AccreditationsComponent },
+	{ path: 'certifications', component: AccreditationsComponent },
 
 	// Demo Carousel
 	{ path: 'demo-carousel', component: CarouselDemoComponent },

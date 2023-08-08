@@ -63,6 +63,7 @@
         <mat-tab label="Description" >
             <p>{{product.description}}</p>
         </mat-tab>
+        
         <mat-tab *ngIf="(product.technicalImages == [])" label="Technical Images">
             Content 3
         </mat-tab>
@@ -86,9 +87,9 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
         </mat-tab>
-        <mat-tab>Gallery</mat-tab>
-        <mat-tab>Drawings</mat-tab>
-        <mat-tab>Downloads</mat-tab>
+        <mat-tab label="Gallery">Gallery</mat-tab>
+        <mat-tab label="Drawings">Drawings</mat-tab>
+        <mat-tab label="Downloads">Downloads</mat-tab>
 
     </mat-tab-group>
 </section>

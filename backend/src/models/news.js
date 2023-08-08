@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const seo_meta = require('./SEO')
 
 const articles = mongoose.Schema(
 	{
@@ -6,8 +7,14 @@ const articles = mongoose.Schema(
 		content: { type: String, required: true },
 		author: { type: String, required: false },
 		publish_date: { type: String, required: false },
-		images: [{ type: String, unique: true }]
+		images: [{ type: String}],
+    seo: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref:seo_meta,
+      required:false
+    },
 	},
+
 	{ collection: 'articles' }
 );
 
