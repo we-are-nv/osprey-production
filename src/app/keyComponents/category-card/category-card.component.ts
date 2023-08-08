@@ -18,7 +18,7 @@ export class CategoryCardComponent {
 		let obj = {
 			id: id,
 			hasChild: hasChild,
-      cat_url:cat_url
+      cat_url:cat_url,
 		};
 		this.catRouting.emit(obj);
 	}

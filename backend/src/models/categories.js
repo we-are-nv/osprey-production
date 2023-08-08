@@ -19,7 +19,7 @@ const categoryInfo = mongoose.Schema({
 	hasChild: { type: Boolean, required: false },
 	cat_url: { type: String, required: false },
 	searchType: { type: String, required: false },
-  frontPage: { type: Boolean, required: false },
+  excluded: { type: Boolean, required: false },
   seo: {
     type: mongoose.Schema.Types.ObjectId,
     ref:seo_meta,

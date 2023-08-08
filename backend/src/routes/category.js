@@ -42,7 +42,7 @@ router.get('/', async (req, res, next) => {
     .find({ parent: parent })
     .populate('seo')
 		foundCats = [...foundCats].sort((a,b)=> a.order - b.order)
-
+		console.log(foundCats)
 		if (foundCats) {
 			//console.log(foundCats)
 			//console.log('Categories:', foundCats);

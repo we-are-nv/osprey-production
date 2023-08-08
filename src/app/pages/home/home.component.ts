@@ -70,7 +70,7 @@ export class HomeComponent {
 		this.categorySub = this.productService
 			.getCategoriesUpdateListener()
 			.subscribe(data => {
-				console.log(data);
+				console.log('getCategories() data is: ',data);
 				this.productCategories = data.cats;
 				this.categoryListPart = this.productCategories.slice(
 					this.categoryListPosition.first,
