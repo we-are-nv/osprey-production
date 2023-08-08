@@ -253,8 +253,7 @@ Create Product
 */
 router.post('/', checkAuth, async (req, res, next) => {
   const foundModel = await productModels.findOne({
-    type_name: req.body.modelName,
-    category: req.body.category
+    type_name: req.body.modelName
   });
   if (foundModel == null) {
     res.json({ error: 'ModelDosentExist' });
@@ -288,7 +287,7 @@ router.post('/', checkAuth, async (req, res, next) => {
   var newProductID = new mongoose.Types.ObjectId();
 
   //Predict Image URLs
-  var predictedImageURL = `/products/${req.body.category}/${req.body.modelName}/images/main/${newProductID}`;
+  var predictedImageURL = `/products/${req.body.category}/images/main/${newProductID}`;
   var predictedTechImageURLs = [];
 
   // Handle Multiple Technical Images
@@ -300,8 +299,7 @@ router.post('/', checkAuth, async (req, res, next) => {
       req.body.tech_img[imgIdx],
       `tech/${newProductID}`
     );
-    var tech_img_url = `/products/${req.body.category}/${req.body.modelName
-      }/images/tech/${newProductID}/${Number(imgIdx) + 1}`;
+    var tech_img_url = `/products/${req.body.category}/images/tech/${newProductID}/${Number(imgIdx) + 1}`;
     predictedTechImageURLs.push(tech_img_url);
   }
 
@@ -310,7 +308,7 @@ router.post('/', checkAuth, async (req, res, next) => {
     ...req.body.mainInfo,
     image: predictedImageURL,
     tech_drawings: predictedTechImageURLs,
-    modelUsed: req.body.modelName,
+
     category: new mongoose.Types.ObjectId(req.body.category),
     additional_information: new mongoose.Types.ObjectId(additInfoId)
   };

@@ -99,7 +99,7 @@ router.post('/login', (req, res, next) => {
 
 
 
-router.post('/', checkAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   const newUser = new user({
     full_name: req.body.name,
     email: req.body.email,
