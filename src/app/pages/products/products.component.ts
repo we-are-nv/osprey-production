@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {ProductService} from 'src/app/services/product.service';
 import { environment } from 'src/environments/environment';
@@ -50,8 +50,9 @@ export class ProductsComponent implements OnInit {
 
           this.productService.getProducts({
             category: this.categoryId,
+			viewChildren: true,
             page: 1,
-            limit: 10
+            limit: 12
           });
 
           this.productService.getSingleCategory(this.categoryId).subscribe(data => {
@@ -68,6 +69,15 @@ export class ProductsComponent implements OnInit {
 				this.products = data.products;
 				this.currentPage = data.currentPage;
 				this.totalPages = data.totalPages;
+				this.history= [
+					{path: '/', friendly: 'Home'},
+					{path: '/products/top', friendly: 'Products'},
+					{path:'/search/'+this.category._id, friendly: this.category.name}
+				];
+
+				if(this.products.length < 0){
+					
+				}
 			});
 
 
@@ -80,9 +90,11 @@ export class ProductsComponent implements OnInit {
 	changeType(value: any) {
 		this.category = value;
 		this.productService.getProducts({
+			
+			viewChildren: true,
 			category: this.categoryId,
 			page: 1,
-			limit: 10
+			limit: 12
 		});
 	}
 	loadProduct(id: any) {
@@ -104,12 +116,13 @@ export class ProductsComponent implements OnInit {
 			this.productService.getProducts({
 				category: this.categoryId,
 				page: 1,
-				limit: 10
+				limit: 12,
+				viewChildren: true,
 			  });
 		}
 	}
 	changePage(newPage: any) {
-		this.productService.getProducts({category: this.categoryId, page: newPage});
+		this.productService.getProducts({category: this.categoryId, page: newPage, viewChildren:true});
 		let top = document.getElementById('productList');
 		top?.scrollIntoView();
 	}

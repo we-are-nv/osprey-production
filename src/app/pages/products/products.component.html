@@ -10,16 +10,18 @@
     extraStyle = "shorterHero"
 ></app-hero>
 
-<!-- <app-breadcrumbs [history]="history"></app-breadcrumbs> -->
+<app-breadcrumbs [history]="history"></app-breadcrumbs>
 
     <h5 id="productList">Showing page: {{currentPage}} of {{totalPages}}</h5>
 
 <section class="ProductsView">
     <section class="Filter">
+
         <div class="categories" *ngIf="subCats?.length >= 1">
             <h1>Categories</h1>
-            <button mat-button color="primary" *ngFor="let cat of subCats"  [routerLink]="'/search/'+ cat._id">{{cat.name}}</button>
+            <button mat-button color="primary" *ngFor="let cat of subCats"  [routerLink]="cat.cat_url">{{cat.name}}</button>
         </div>
+
         <div class="searchSection">
             <h1>Search</h1>
             <mat-form-field class="example-full-width" >

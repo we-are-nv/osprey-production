@@ -51,13 +51,19 @@ async function getChildCategories(parentCat, childArray) {
 
 router.get('/product_info', async (req, res) => {
   // Default Values are Set
-  const { page = 1, limit = 10, subCat = '', viewChildren = false } = req.query;
+  const { page = 1, limit = 10, subCat = '', viewChildren = false, sort = 'az' } = req.query;
 
   // Checks to see if a category  is declared. However if a documentId is declared its allowed.
   if (!req.query.category && !req.query.documentId) {
     res.json({ error: 'Please Enter a valid product category' });
     return;
-  }
+  };
+
+  // Configure Sort
+  var sortValue = 1;
+  if (sort == 'za'){
+    sortValue = -1;
+  };
 
   var popu;
   // Checks to see if populate include is present
@@ -139,7 +145,11 @@ router.get('/product_info', async (req, res) => {
     }
   } catch (err) {
     console.log('Invalid Input. Assuming False');
-    catQuery.push(new ObjectId(req.query.category));
+    console.log(req.query.category)
+    if (req.query.category.length > 12){
+      catQuery.push(new ObjectId(req.query.category));
+    }
+
   }
 
   var additQuery = '';
@@ -157,6 +167,8 @@ router.get('/product_info', async (req, res) => {
   const count = await allProducts.count(additQuery, selectOptions);
   const result = await allProducts
     .find(additQuery, selectOptions)
+    .sort({ product_name: sortValue })
+    .collation({ locale: "en", caseLevel: true })
     .limit(limit * 1)
     .skip((page - 1) * limit)
     .populate(popu)
@@ -177,7 +189,8 @@ router.get('/product_info', async (req, res) => {
     var formattedName = result[idx].product_name.replace(/[^a-zA-Z ]/g, "").replace(/  +/g, ' ').split(" ").join("-").toLowerCase();
     var url = `/product/${result[idx].product_code}/${formattedName}`;
     result[idx].product_url = url;
-
+    var catURL = `/products/${result[idx].category.name.split(' ').join('-').toLowerCase()}`;
+    result[idx].category.cat_url = catURL
 
     if (req.query.populate_include && result[idx].additional_information && result[idx].additional_information.info) {
       console.log('HELLO')
