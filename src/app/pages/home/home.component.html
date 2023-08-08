@@ -34,16 +34,11 @@
 
 <!-- Product Categories -->
 <section class="categoryContainer">
-	<mat-card
-		*ngFor="let product of productCategories"
-		class="categoryCard selectable"
-		[routerLink]="product.cat_url">
-		<img
-			mat-card-image
-			[src]="product.image" />
-		<h1>{{ product.name }}</h1>
-		<span>Explore <mat-icon>circle</mat-icon> </span>
-	</mat-card>
+  <mat-card *ngFor="let product of productCategories" class="categoryCard selectable dontShow-{{product.frontPage}}" [routerLink]="product.cat_url">
+    <img mat-card-image [src]="product.image" />
+    <h1>{{ product.name }}</h1>
+    <span>Explore <mat-icon>circle</mat-icon> </span>
+  </mat-card>
 </section>
 
 <div class="infoCardContainer">
@@ -146,28 +141,18 @@
 	<!-- Markets Categories -->
 	<!-- Product Categories -->
 
-	<p-carousel
-		widgetVar="rnd"
-		[value]="serviceList"
-		[numVisible]="4"
-		[numScroll]="1"
-		[circular]="true"
-		[responsiveOptions]="responsiveOptions"
-		#carousel>
-		<ng-template
-			let-product
-			pTemplate="item">
-			<mat-card
-				class="paginatedCard selectable"
-				routerLink="/info-page/service/{{ product._id }}">
-				<img
-					mat-card-image
-					[src]="product.thumbnail_image" />
-				<h1>{{ product.name }}</h1>
-				<span>Explore <mat-icon>circle</mat-icon> </span>
-			</mat-card>
-		</ng-template>
-	</p-carousel>
+
+  <p-carousel widgetVar="rnd" [value]="serviceList" [numVisible]="4" [numScroll]="1" [circular]="true"  [responsiveOptions]="responsiveOptions" #carousel>
+    <ng-template let-product pTemplate="item">
+      <mat-card class="paginatedCard selectable" routerLink="/info-page/service/{{product._id}}">
+        <img mat-card-image [src]="product.thumbnail_image">
+        <h1>{{ product.name }}</h1>
+        <span>Explore <mat-icon>circle</mat-icon> </span>
+      </mat-card>
+    </ng-template>
+</p-carousel>
+
+
 
 	<div class="relatedCategoryButtons">
 		<a
