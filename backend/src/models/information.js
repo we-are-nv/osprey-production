@@ -7,8 +7,8 @@ const marketInfo = mongoose.Schema({
 	order: { type: Number, required: false },
 	name: { type: String, required: true },
 	type: { type: String, required: true },
-	secondry_title: { type: String, required: true },
-	lower_title: { type: String, required: true },
+	secondry_title: { type: String, required: false },
+	lower_title: { type: String, required: false },
 	banner_image: { type: String, required: false },
 	thumbnail_image: { type: String, required: false },
 	bonus_cards: [
