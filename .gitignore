@@ -52,3 +52,6 @@ backend/cert
 backend/keys
 backend/uploads
 .vscode
+
+# Utils
+backend/add_news
