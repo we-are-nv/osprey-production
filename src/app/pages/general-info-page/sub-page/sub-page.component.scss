@@ -21,12 +21,14 @@ p{
 
 // Modular Styling Clases
 .image-Section{
-    display: flow-root;
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
 
 }
 .image-Section .image{
-    margin: 2%;
-    width: 46%;
+    max-width: 30%;
+    max-height: 30vh;
 }
 
 // Drop Down Items
