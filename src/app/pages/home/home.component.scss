@@ -3,9 +3,11 @@
 	margin: 0px;
 	font-family: 'roboto';
 }
+
 h1 {
 	font-size: 2rem;
 }
+
 p {
 	font-size: 1rem;
 	font-family: 'roboto';
@@ -24,8 +26,9 @@ p {
 	color: white;
 	transition: background-color 500ms linear;
 }
-.blueButton:hover{
-	background-color: white ;
+
+.blueButton:hover {
+	background-color: white;
 	color: black;
 }
 
@@ -42,9 +45,10 @@ p {
 }
 
 // Formatting for the Category Cards
-.headCategoryContainer{
-	width:90vw;
+.headCategoryContainer {
+	width: 90vw;
 }
+
 .categoryContainer {
 	width: 80vw;
 	margin-top: 1rem;
@@ -56,31 +60,34 @@ p {
 	margin: auto;
 	gap: 1.25%;
 }
-.categoryCard{
+
+.categoryCard {
 	width: 31%;
 	margin: auto;
 	margin-bottom: 1.2%;
 }
 
 @media screen and (max-width: 1024px) {
-	.categoryCard{
+	.categoryCard {
 		width: 48%;
 	}
 }
+
 @media screen and (max-width: 750px) {
-	.categoryCard{
+	.categoryCard {
 		width: 98%;
 	}
 }
+
 // Category card styling
 
-.headCategoryContainer .categoryCard{
+.headCategoryContainer .categoryCard {
 	border: 1px solid #eaeaea;
 }
 
 
 
-.relatedCategoryButtons{
+.relatedCategoryButtons {
 	display: contents;
 }
 
@@ -90,7 +97,8 @@ mat-card {
 	border-radius: 0%;
 	background: transparent;
 	box-shadow: none;
-	height: 35vh;
+	height: 30vh;
+	justify-content: space-between;
 }
 
 mat-card-header {
@@ -100,24 +108,28 @@ mat-card-header {
 }
 
 .categoryCard img {
-		height: 20vh;
-		object-fit: cover;
+	height: 20vh;
+	object-fit: cover;
 	background-color: white;
 }
+
 .categoryCard h1 {
 	padding-left: 2vh;
 	margin-left: 5%;
 	font-size: larger;
-	width:  -webkit-fill-available;
+	width: -webkit-fill-available;
+	// margin-top: 0.2em;
 }
+
 .categoryCard span {
 	padding-bottom: 2vh;
 	padding-left: 2vh;
 	margin-left: 5%;
 	width: auto;
 	display: flex;
-	margin-top: auto;
+	margin-top: 1%;
 	gap: 5%;
+	align-items: center;
 }
 
 .dontShow-true{
@@ -156,6 +168,7 @@ span mat-icon {
 	background-color: white;
 	margin-bottom: 1rem;
 }
+
 // blue version of service card
 #blueInfoCard {
 	background-color: #0065e7;
@@ -171,11 +184,13 @@ span mat-icon {
 	object-fit: contain;
 	position: relative;
 	width: 3.5rem;
-	margin-left:2%;
+	margin-left: 2%;
 }
+
 #blueInfoCard img {
 	background: radial-gradient(ellipse at center, #ffffff 70%, #23bc2b00 70.5%);
 }
+
 .serviceInfoCard p {
 	position: relative;
 	display: flex;
@@ -185,6 +200,7 @@ span mat-icon {
 	margin-left: 5%;
 	padding: 1%;
 }
+
 .serviceInfoCard .quoteButton {
 	background-color: transparent;
 	border: 1px solid #9b9b9b !important;
@@ -199,7 +215,7 @@ span mat-icon {
 }
 
 .quoteButton .buttonIcon {
-    font-size: 1.25rem;
+	font-size: 1.25rem;
 }
 
 .quoteButton-Blue {
@@ -211,19 +227,20 @@ span mat-icon {
 
 // Category slide buttons
 .relatedCategoryButtons {
-	margin-top:1.31% ;
+	margin-top: 1.31%;
 	display: flow-root;
 }
+
 .slideButtonContainer {
 	width: max-content;
-	margin-left:auto;
+	margin-left: auto;
 	margin-right: auto;
 	position: relative;
 }
 
 
-.categoryButtons{
-	margin-bottom:5rem ;
+.categoryButtons {
+	margin-bottom: 5rem;
 	display: contents;
 }
 
@@ -233,39 +250,42 @@ span mat-icon {
 	background-color: transparent;
 	border: none;
 }
-.slideButton img:hover{
+
+.slideButton img:hover {
 	box-shadow: 0 0 0 0 rgb(156, 156, 156);
 	transform: scale(1);
 	animation: pulse 2s infinite;
 }
+
 @keyframes pulse {
 	0% {
 		transform: scale(0.95);
 		box-shadow: 0 0 0 0 rgba(156,
-			156,
-			156, 0.7);
+				156,
+				156, 0.7);
 	}
 
 	70% {
 		transform: scale(1);
 		box-shadow: 0 0 0 10px rgba(156,
-			156,
-			156, 0);
+				156,
+				156, 0);
 	}
 
 	100% {
 		transform: scale(0.95);
 		box-shadow: 0 0 0 0 rgba(156,
-			156,
-			156, 0);
+				156,
+				156, 0);
 	}
 }
 
 .slideButton img {
 	background-color: transparent;
 	border-radius: 50%;
-		
+
 }
+
 .categoryButton {
 	float: right;
 	font-size: 1vw;
@@ -281,15 +301,17 @@ span mat-icon {
 	padding: 5vw;
 	padding-bottom: 5vh;
 }
-.darkSection{
+
+.darkSection {
 	color: #ffffffb8;
 }
+
 #topDarkSection {
 	margin-top: 10rem;
 }
 
 @media only screen and (max-width: 1024px) {
-	.categoryButton{
+	.categoryButton {
 		visibility: hidden;
 		width: 0px;
 	}
@@ -297,38 +319,43 @@ span mat-icon {
 }
 
 @media only screen and (max-width: 750px) {
-		.briefAbout{
-			display: grid !important;
-		}
-		.briefAbout *{
-			width: 90vw  !important;
-		}
+	.briefAbout {
+		display: grid !important;
+	}
+
+	.briefAbout * {
+		width: 90vw !important;
+	}
 }
 
-.paginatedCard{
+.paginatedCard {
 	margin-bottom: 1.2%;
 	margin: 5%;
 }
+
 .paginatedCard img {
 	height: 20vh;
 	object-fit: cover;
-background-color: white;
+	background-color: white;
 }
+
 .paginatedCard h1 {
-padding-left: 2vh;
-margin-left: 5%;
-font-size: larger;
-width:  -webkit-fill-available;
+	padding-left: 2vh;
+	margin-left: 5%;
+	font-size: larger;
+	width: -webkit-fill-available;
 }
+
 .paginatedCard span {
-padding-bottom: 2vh;
-padding-left: 2vh;
-margin-left: 5%;
-width: auto;
-display: flex;
-margin-top: auto;
-gap: 5%;
+	padding-bottom: 2vh;
+	padding-left: 2vh;
+	margin-left: 5%;
+	width: auto;
+	display: flex;
+	margin-top: auto;
+	gap: 5%;
 }
-:host ::ng-deep .p-carousel-indicators{
+
+:host ::ng-deep .p-carousel-indicators {
 	display: none;
 }
