@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const categorys = require('./categories');
 const product_addit_info = require('./product_addit_info');
 const product_varients = require('./product_varients');
+const seo_meta = require('./SEO')
 
 const productInfo = mongoose.Schema({
   product_code: { type: String, required: true },
@@ -30,6 +31,11 @@ const productInfo = mongoose.Schema({
   cost: {
     amount: { type: String, required: false },
     currency: { type: String, required: false }
+  },
+  seo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref:seo_meta,
+    required:false
   }
 });
 

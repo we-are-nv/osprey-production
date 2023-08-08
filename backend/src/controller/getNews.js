@@ -2,10 +2,10 @@ const articles = require('../models/news');
 
 async function getAllNews(req, res) {
 	try {
-		const result = await articles.find();
+		const result = await articles.find().populate('seo');
 		// console.log('result is',result);
 		const articleArray = [];
-		
+
 
 		if (result.length === 0) {
 			return res.status(404).json({ message: 'No Articles Found' });
