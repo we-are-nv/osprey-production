@@ -32,7 +32,7 @@
         </mat-card>
         <mat-card class="navigation-pannel bonus-card-white-accent" *ngIf="subPages.length <= 1  && siblingPages.length > 1">
             <mat-card-header>
-                <mat-card-title class="bonus-card-title">All {{pageType |nameConverter}}s</mat-card-title>
+                <mat-card-title class="bonus-card-title" *ngIf="pageType.length < 13">All {{pageType |nameConverter}}s</mat-card-title>
             </mat-card-header>
             <div class="nav-button-container" >
                 <a class="nav-button" *ngFor="let page of siblingPages" [routerLink]="'/info-page/'+pageType+'/'+page._id" routerLinkActive="page-active">{{page.name}} <img class="nav-button-icon" src="./assets/images/customIcons/right-arrow-icon.svg" alt=""></a>
