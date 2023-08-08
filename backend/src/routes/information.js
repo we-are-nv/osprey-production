@@ -10,7 +10,7 @@ const fs = require('fs');
 var breadcrumbs = require('../controller/breadcrumbs.js');
 const { default: mongoose } = require('mongoose');
 const marketPage = require('../models/information-page.js');
-const newsModel = require('../models/news.js');
+
 const market = require('../models/information.js');
 const {
 	uploadBaseMarket,
@@ -470,22 +470,5 @@ router.get('/accreditations', async (req, res) => {
 	});
 });
 
-router.get('/news', async (req, res) => {
-	const foundNews = await newsModel.find();
-	res.json({ news: foundNews });
-});
-
-router.post('/news', async (req, res) => {
-	const newNews = new newsModel({
-		title: req.body.title,
-		content: req.body.content,
-		image_array: [`${process.env.S3_BASE}/news/images/${req.body.title}`],
-		author: req.body.author,
-		date: new Date().toString()
-	});
-	newNews.save();
-
-	res.json({ message: 'saved' });
-});
 
 module.exports = router;
