@@ -295,7 +295,7 @@ router.put('/page/sub-page', checkAuth, async (req, res) => {
 						const base64Data = element.replace(/^data:image\/\w+;base64,/, '');
 						const buffer = Buffer.from(base64Data, 'base64');
 						var fileURL =
-							`info/${parent_id}/pages/${id}/${req.body.name}${idx1}`.replace(
+							`info/${parent_id}/pages/${id}/${req.body.name}-${idx}-${idx1}`.replace(
 								/\s/g,
 								''
 							);
