@@ -214,11 +214,12 @@ span mat-icon {
 	font-size: 1.25rem;
 }
 
-.quoteButton-Blue {
+.serviceInfoCard .quoteButton.quoteButton-Blue {
 	border: white solid 1px !important;
 	color: white;
+	// width: auto;
+	// margin: 0 auto;
 }
-
 
 
 // Category slide buttons
