@@ -38,7 +38,9 @@ router.get('/', async (req, res, next) => {
 	var parent = req.query.parent || undefined;
 	try {
 		let foundCats;
-		foundCats = await categories.find({ parent: parent });
+		foundCats = await categories
+    .find({ parent: parent })
+    .populate('seo')
 		foundCats = [...foundCats].sort((a,b)=> a.order - b.order)
 
 		if (foundCats) {

@@ -162,7 +162,7 @@ router.post('/page', checkAuth, async (req, res) => {
 		}
 	}
 
-	var newPage = new informationPage({	
+	var newPage = new informationPage({
 		_id: newPageID,
 		name: req.body.name,
 		elements: req.body.elements
@@ -329,6 +329,7 @@ router.get('/', async (req, res) => {
 	foundInfos = await information
 		.find({ type: req.query.type })
 		.populate({ path: 'bonus_cards.id' })
+    .populate('seo')
 		.populate({ path: 'pages.id' });
 	console.log(foundInfos);
 	res.json(foundInfos);

@@ -174,6 +174,7 @@ router.get('/product_info', async (req, res) => {
     .populate(popu)
     //.populate('additional_information')
     .populate('product_varients')
+    .populate('seo')
     .populate({
       path: 'category',
       populate: {
