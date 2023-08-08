@@ -24,10 +24,10 @@ import { Slide } from 'src/app/interfaces/slide.interface';
 const CarouselAnimationTrigger: AnimationTriggerMetadata = trigger(
 	'carouselAnimation',
 	[
-		state('start', style({ transform: 'translateX(0%)' })),
-		state('left', style({ transform: 'translateX(-100%)' })),
-		state('right', style({ transform: 'translateX(100%)' })),
-		transition('* => left, * => right', animate('2000ms ease-out'))
+		state('start', style({ transform: `translateX(0)` })),
+		state('left', style({ transform: `translateX(-100vw)` })),
+		state('right', style({ transform: `translateX(0vw)` })),
+		transition('* => left, * => right', animate('1000ms ease-out'))
 	]
 );
 
@@ -46,6 +46,10 @@ export class CarouselSliderComponent implements OnInit, OnChanges, AfterViewInit
 	currentVisibleGroupIndex = 0;
 	nextVisibleGroupIndex = 0;
 	prevHiddenSlides: Slide[] = [];
+
+	slideChange: number = 0;
+
+	slideCurrent: number= 0;
 
 	timeOut: number = 2000;
 	visibleSlides: Slide[] = [];
@@ -107,7 +111,7 @@ export class CarouselSliderComponent implements OnInit, OnChanges, AfterViewInit
 		if (this.currentVisibleGroupIndex > 0) {
 			this.containerTransitionState = 'right';
 			console.log('slideOffset before change: ', this.slideOffset);
-			this.slideOffset += 100;
+			this.slideOffset += 0;
 			console.log('slideOffset after change: ', this.slideOffset);
 
 			this.nextVisibleGroupIndex--;
@@ -143,5 +147,9 @@ export class CarouselSliderComponent implements OnInit, OnChanges, AfterViewInit
 
 	toggleBool(value: boolean): boolean {
 		return !value;
+	}
+
+	calcSlideChange(){
+		this.slideChange = 100/ (this.slides.length/4)
 	}
 }

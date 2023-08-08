@@ -27,7 +27,7 @@
 
 <!-- Product Categories -->
 <section class="categoryContainer">
-  <mat-card *ngFor="let product of productCategories" class="categoryCard selectable" [routerLink]="product.cat_url">
+  <mat-card *ngFor="let product of productCategories" class="categoryCard selectable dontShow-{{product.frontPage}}" [routerLink]="product.cat_url">
     <img mat-card-image [src]="product.image" />
     <h1>{{ product.name }}</h1>
     <span>Explore <mat-icon>circle</mat-icon> </span>
@@ -99,7 +99,7 @@
       </mat-card>
     </ng-template>
 </p-carousel>
-
+  <app-carousel-slider [slides]="serviceList"></app-carousel-slider>
 
 
   <div class="relatedCategoryButtons">
