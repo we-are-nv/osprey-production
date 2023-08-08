@@ -10,7 +10,7 @@ const fs = require('fs');
 var breadcrumbs = require('../controller/breadcrumbs.js');
 const { default: mongoose } = require('mongoose');
 const marketPage = require('../models/information-page.js');
-const newsModel = require('../models/new.js');
+const newsModel = require('../models/news.js');
 const market = require('../models/information.js');
 const {
 	uploadBaseMarket,
