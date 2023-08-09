@@ -12,7 +12,9 @@
 					<img
 						[src]="slide.thumbnail_image"
 						[alt]="slide.name" />
-					<h1>{{ slide.name }}</h1>
+					<h1>{{ slide.name }}
+						
+					</h1>
 					<span>Explore </span>
 				</div>
 			</div>
@@ -22,7 +24,7 @@
 		<div class="slideButtonContainer">
 			<button (click)="onPrev()"  class="slideButton">
 		<img
-			  
+
 		  src="./assets/images/customIcons/prev-slide.svg"
 		  alt="" />
 	  </button>
@@ -32,4 +34,3 @@
 		  alt="" />
 	  </button>
 </div>
-

@@ -100,10 +100,19 @@ body {
   transition: background-color 500ms linear;
 }
 .categoryCard:hover, .productCard:hover, .slide:hover{
-  
-  background-color: #0064e7ae;
+
+  // background-color: #0064e7ae;
   color: white;
   border: 1px solid #eaeaea !important;
+}
+.productCard:hover {
+  background-color: #0065E7;
+}
+
+.categoryCard h2:hover, .productCard h2:hover, .categoryCard span:hover {
+  background-color: #0065E7;
+  color: white;
+
 }
 
 ::ng-deep {
