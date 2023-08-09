@@ -20,6 +20,7 @@ const categories = require('../models/categories.js');
 const s3Controller = require('../controller/s3-controller.js');
 const product_info = require('../models/product_info.js');
 const information = require('../models/information.js');
+const informationPage = require('../models/information-page.js');
 
 router.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());
@@ -61,18 +62,25 @@ router.get('/', async (req, res, next) => {
         var hasProducts = false;
         var routeTo = 'default';
         if (!hasChild){
-          const productsFound = await product_info.count({_id:foundCats[idx]._id});
+          var productsFound = await product_info.count({category:foundCats[idx]._id});
+          console.log(productsFound)
           if (productsFound > 0){
             hasProducts = true;
           } else {
-            const foundRedirect = await information.findOne({name:foundCats[idx].name});
+            var foundRedirect = await information.findOne({name:foundCats[idx].name});
 
             if (foundRedirect){
               console.log(foundRedirect.name)
               routeTo = `/info-page/${foundRedirect.type}/${foundRedirect._id}`
             } else {
-              console.log('err')
-              console.log(foundCats[idx].name)
+              var foundRedirect = await informationPage.findOne({name:foundCats[idx].name});
+              if (foundRedirect) {
+                routeTo = `/info-page/${foundRedirect.type}/${foundRedirect._id}`;
+              } else {
+                console.log('err')
+                console.log(foundCats[idx].name)
+              }
+
             }
 
           }
