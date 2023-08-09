@@ -82,7 +82,7 @@ router.post('/', checkAuth, async (req, res) => {
 			...currentBonus
 		});
 
-		// newBonus.save();
+		 newBonus.save();
 	}
 
 	if (req.body.pages.length > 0) {
@@ -141,15 +141,18 @@ router.post('/page', checkAuth, async (req, res) => {
 		return;
 	}
 
-	console.log(req.query.id, 'hello', req.body)
+	//console.log(req.query.id, 'hello', req.body)
 	var newPageID = new mongoose.Types.ObjectId();
 	const marketInfo = await market.findOne({ _id: req.query.id });
 
 	var currentPages = marketInfo.pages;
 
 	for (idx in req.body.elements) {
+    if (!req.body.elements[idx]['src']){
+      req.body.elements[idx]['src'] = []
+    }
 		if (req.body.elements[idx].type == 'image') {
-			req.body.elements[idx].src.forEach((element, idx1) => {
+			req.body.elements[idx].images.forEach((element, idx1) => {
 				var fileURL =
 					`info/${req.query.id}/pages/${newPageID}/${req.body.name}${idx1}`.replace(
 						/\s/g,
@@ -157,7 +160,8 @@ router.post('/page', checkAuth, async (req, res) => {
 					);
 				uploadBaseMarket(fileURL, element);
 				element = `/${fileURL}`;
-				req.body.elements[idx].src[idx1] = element;
+        console.log(req.body.elements[idx].images[idx1])
+				req.body.elements[idx]['src'].push(element)
 			});
 		}
 	}
@@ -171,10 +175,10 @@ router.post('/page', checkAuth, async (req, res) => {
 	currentPages.push({ name: req.body.name, id: newPageID });
 
 	marketInfo.pages = currentPages;
-	const changesPage = await market.findOneAndUpdate(
-		{ _id: req.query.id },
-		marketInfo
-	);
+	 const changesPage = await market.findOneAndUpdate(
+	 	{ _id: req.query.id },
+	 	marketInfo
+	 );
 
 	newPage.save();
 	res.json({ message: 'OK', newPage: newPage });

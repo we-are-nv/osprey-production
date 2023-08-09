@@ -18,6 +18,8 @@ const categories = require('../models/categories.js');
 
 // Image Control
 const s3Controller = require('../controller/s3-controller.js');
+const product_info = require('../models/product_info.js');
+const information = require('../models/information.js');
 
 router.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());
@@ -38,11 +40,11 @@ router.get('/', async (req, res, next) => {
 	var parent = req.query.parent || undefined;
 	try {
 		let foundCats;
-		foundCats = await categories
-    .find({ parent: parent })
-    .populate('seo')
-		foundCats = [...foundCats].sort((a,b)=> a.order - b.order)
-		console.log(foundCats)
+		foundCats = await categories.find({ parent: parent }).populate('seo');
+		foundCats = [...foundCats].sort((a, b) => a.order - b.order);
+		foundCats.forEach(cat => {
+			console.log({ name: cat.name, index: cat.order });
+		});
 		if (foundCats) {
 			//console.log(foundCats)
 			//console.log('Categories:', foundCats);
@@ -50,12 +52,36 @@ router.get('/', async (req, res, next) => {
 				const childrenFound = await categories.count({
 					parent: foundCats[idx]._id
 				});
+
 				var hasChild = false;
 				//console.log(childrenFound)
 				if (childrenFound > 0) {
 					hasChild = true;
-				}
+				};
+        var hasProducts = false;
+        var routeTo = 'default';
+        if (!hasChild){
+          const productsFound = await product_info.count({_id:foundCats[idx]._id});
+          if (productsFound > 0){
+            hasProducts = true;
+          } else {
+            const foundRedirect = await information.findOne({name:foundCats[idx].name});
+
+            if (foundRedirect){
+              console.log(foundRedirect.name)
+              routeTo = `/info-page/${foundRedirect.type}/${foundRedirect._id}`
+            } else {
+              console.log('err')
+              console.log(foundCats[idx].name)
+            }
+
+          }
+
+        };
+        foundCats[idx]['hasProducts'] = hasProducts;
+        foundCats[idx]['routeTo'] = routeTo;
 				foundCats[idx]['hasChild'] = hasChild;
+
 				if (foundCats[idx].image) {
 					foundCats[idx].image = `${process.env.S3_BASE}${foundCats[idx].image}`;
 				}
@@ -84,10 +110,11 @@ router.get('/', async (req, res, next) => {
 
 router.get('/all-categories', async (req, res) => {
 	try {
-		const allCategories = await categories.find({});
+		const allCategories = await categories.find({}).sort({name: 1});
 		if (!allCategories) {
 			return res.status(404).json({ message: 'No categories found' });
 		} else {
+
 			allCategories.forEach(foundCat => {
 				const s3Base = process.env.S3_BASE;
 				if (foundCat.image) {
@@ -145,7 +172,7 @@ router.post('/', checkAuth, async (req, res, next) => {
 			{ _id: req.body.parent },
 			foundItem
 		);
-		console.log(foundItem);
+		// console.log(foundItem);
 	}
 
 	if (req.body.child) {
@@ -187,7 +214,7 @@ router.put('/', checkAuth, upload.single('img'), async (req, res, next) => {
 		{ _id: req.query.id },
 		{ name: req.query.newName }
 	);
-	console.log(catUpdated);
+	// console.log(catUpdated);
 	res.json({ message: 'CatUpdated' });
 });
 
@@ -239,7 +266,7 @@ router.put('/update-category/', checkAuth, async (req, res) => {
 					id
 				);
 			}
-			console.log(tempInfo);
+			// console.log(tempInfo);
 
 			updateFields.info = tempInfo;
 		}
@@ -289,7 +316,7 @@ router.get('/single', async (req, res) => {
 			return res.status(400).json({ message: 'No ID in Request' });
 		}
 		const foundCat = await categories.findOne({ _id: id });
-		console.log(foundCat);
+		// console.log(foundCat);
 		if (!foundCat) {
 			return res.status(404).json({ message: 'no Category found with Id ' + id });
 		}
@@ -325,11 +352,11 @@ router.get('/convert-route', async (req, res) => {
 			['name']: { $regex: conv, $options: 'i' }
 		});
 		if (foundProduct) {
-      for (idx in foundProduct){
-        if (foundProduct[idx].name.toLowerCase() == conv){
-          res.json({ _id: foundProduct[idx]._id });
-        };
-      };
+			for (idx in foundProduct) {
+				if (foundProduct[idx].name.toLowerCase() == conv) {
+					res.json({ _id: foundProduct[idx]._id });
+				}
+			}
 		} else {
 			res.json({ err: 'prod not found' });
 		}

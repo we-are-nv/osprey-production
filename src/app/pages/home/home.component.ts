@@ -1,10 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Renderer2 } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { InfoPageService } from 'src/app/services/info-page.service';
 import { Carousel } from 'primeng/carousel';
+
+declare var Calendly: any;
 
 @Component({
 	selector: 'app-home',
@@ -37,7 +39,8 @@ export class HomeComponent {
 		private productService: ProductService,
 		private matIconRegistry: MatIconRegistry,
 		private domSanitizer: DomSanitizer,
-		private infoPageService: InfoPageService
+		private infoPageService: InfoPageService,
+		private renderer: Renderer2
 	) {
 		matIconRegistry.addSvgIconSet(
 			this.domSanitizer.bypassSecurityTrustResourceUrl(
@@ -70,7 +73,7 @@ export class HomeComponent {
 		this.categorySub = this.productService
 			.getCategoriesUpdateListener()
 			.subscribe(data => {
-				console.log('getCategories() data is: ',data);
+				console.log('getCategories() data is: ', data);
 				this.productCategories = data.cats;
 				this.categoryListPart = this.productCategories.slice(
 					this.categoryListPosition.first,
@@ -167,7 +170,14 @@ export class HomeComponent {
 		// Call the PrimeNG carousel's prev() method to go to the previous item
 		// this.carousel.prev();
 	}
-	checking(thing: any){
-		console.log(thing)
+	checking(thing: any) {
+		console.log(thing);
+	}
+
+	openCalendlyPopup() {
+		Calendly.initPopupWidget({
+			url: 'https://calendly.com/paragon-security/30min'
+		});
+		return false; // Prevent default anchor link behavior
 	}
 }

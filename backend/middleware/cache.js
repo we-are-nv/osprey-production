@@ -16,7 +16,12 @@ function dataCache(req, res, next) {
 }
 
 function flushCache(req, res) {
-	cache.flushAll();
+	try {
+		cache.flushAll();
+		res.status(200).json({ message: 'Cache Emptied Sucessfully' });
+	} catch (err) {
+		res.status(500).json({ message: 'Internal Server Error' });
+	}
 }
 
 module.exports = { dataCache, flushCache };

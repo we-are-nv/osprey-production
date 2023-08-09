@@ -1,29 +1,36 @@
-<app-hero 
-  mainTitle="Security Solutions you can trust"
-  lowerTitle="Founded on first class customer service and support - with decades of experience in fire and security systems for some of the world’s most demanding applications - Paragon Security is a UK-based specialist solutions provider you can trust."
-  [isButtons]="true" background="./assets/images/heroBackgrounds/homeHero.png" [button1Data]="{
+<app-hero
+	mainTitle="Security Solutions you can trust"
+	lowerTitle="Founded on first class customer service and support - with decades of experience in fire and security systems for some of the world’s most demanding applications - Paragon Security is a UK-based specialist solutions provider you can trust."
+	[isButtons]="true"
+	background="./assets/images/heroBackgrounds/homeHero.png"
+	[button1Data]="{
 		text: 'Explore Our Products',
 		path: 'products/top',
 		type: 'blue'
-	}" [button2Data]="{ text: 'Explore Our Markets', path: 'markets', type: 'black' }" [isButton3]="true" [button3Data]="{
+	}"
+	[button2Data]="{ text: 'Explore Our Markets', path: 'markets', type: 'black' }"
+	[isButton3]="true"
+	[button3Data]="{
 		text: 'Explore Our Services',
 		path: 'services',
 		type: 'white'
 	}"></app-hero>
 <section class="briefAbout">
-  <div id="left">
-    <p style="color: #0065e7">+35 YEARS INDUSTRY EXPERIENCE</p>
-    <h1>Professional products for durability</h1>
-  </div>
-  <div id="right">
-    <p> Paragon Security employs a dedicated team of experienced professionals who will provide fire and security
-      products and systems of the highest quality, reliability and durability, for your organisation, vessel or site
-      providing the security and safety you deserve. </p>
-  </div>
+	<div id="left">
+		<p style="color: #0065e7">+35 YEARS INDUSTRY EXPERIENCE</p>
+		<h1>Professional products for durability</h1>
+	</div>
+	<div id="right">
+		<p>
+			Paragon Security employs a dedicated team of experienced professionals who
+			will provide fire and security products and systems of the highest quality,
+			reliability and durability, for your organisation, vessel or site providing
+			the security and safety you deserve.
+		</p>
+	</div>
 </section>
 
 <!-- Product Catrogies Test -->
-
 
 <!-- Product Categories -->
 <section class="categoryContainer">
@@ -34,35 +41,62 @@
   </mat-card>
 </section>
 
-
-
-
 <div class="infoCardContainer">
-  <div class="serviceInfoCard">
-    <img src="./assets/images/customIcons/homeIcon1.png" alt="" />
-    <p> Leaders of fire and security, we can help you customise your system design to meet your exact requirements.
-      Schedule A Call </p>
-    <button mat-raised-button class="quoteButton" routerLink="products/top"> See All Products <mat-icon
-        class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
-    </button>
-  </div>
-  <div class="serviceInfoCard" id="blueInfoCard">
-    <img src="./assets/images/customIcons/homeIcon2.png" alt="" />
-    <p> Paragon Security offers a comprehensive range of security products intended to meet the demanding requirements
-      of clients in the United Kingdom, Europe and the World </p>
-    <button mat-raised-button class="quoteButton quoteButton-Blue" routerLink="products/top"> See Our Item Catalogue
-      <mat-icon class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
-    </button>
-  </div>
+	<div class="serviceInfoCard">
+		<img
+			src="./assets/images/customIcons/homeIcon1.png"
+			alt="" />
+		<p>
+			Paragon Security offers a comprehensive range of security products intended to
+			meet the demanding requirements of clients in the United Kingdom, Europe and
+			the World
+		</p>
+		<button
+			mat-raised-button
+			class="quoteButton"
+			routerLink="products/top">
+			See All Products
+			<mat-icon
+				class="buttonIcon"
+				iconPositionEnd
+				>arrow_forward_ios</mat-icon
+			>
+		</button>
+	</div>
+	<div
+		class="serviceInfoCard"
+		id="blueInfoCard">
+		<img
+			src="./assets/images/customIcons/homeIcon2.png"
+			alt="" />
+		<p>
+			Leaders of fire and security, we can help you customise your system design to
+			meet your exact requirements.
+		</p>
+		<!-- Calendly Button -->
+		<button
+			mat-raised-button
+			class="quoteButton quoteButton-Blue"
+			onclick="Calendly.initPopupWidget({url: 'https://calendly.com/paragon-security/30min'});return false;">
+			Schedule a Call
+			<mat-icon
+				class="buttonIcon"
+				iconPositionEnd
+				>arrow_forward_ios</mat-icon
+			>
+		</button>
+	</div>
 </div>
 <!-- Markets Categories -->
 <section class="darkSection">
-  <h1 id="topDarkSection">Specialist Market Expertise</h1>
-  <p> We are passionate about providing leading-edge and robust solutions, suitable for demanding markets and
-    environments, which are straightforward to operate and maintain, certified for their use-class with ongoing support
-    second to none. We lead the industry in the design, supply and support of harsh environment security systems with
-    many years design & integration experience. </p>
-
+	<h1 id="topDarkSection">Specialist Market Expertise</h1>
+	<p>
+		We are passionate about providing leading-edge and robust solutions, suitable
+		for demanding markets and environments, which are straightforward to operate and
+		maintain, certified for their use-class with ongoing support second to none. We
+		lead the industry in the design, supply and support of harsh environment
+		security systems with many years design & integration experience.
+	</p>
 
     <app-carousel-slider [slides]="marketsList"></app-carousel-slider>
 
@@ -75,11 +109,14 @@
 </section>
 <!-- Service Categories -->
 <section class="darkSection">
-  <h1>Service support second to none</h1>
-  <p> Excellent customer service and support are the keystone of our business. We guarantee good communications,
-    transparency and honesty in all our interactions with you. </p>
-  <!-- Markets Categories -->
-  <!-- Product Categories -->
+	<h1>Service support second to none</h1>
+	<p>
+		Excellent customer service and support are the keystone of our business. We
+		guarantee good communications, transparency and honesty in all our interactions
+		with you.
+	</p>
+	<!-- Markets Categories -->
+	<!-- Product Categories -->
 
   <app-carousel-slider [slides]="serviceList"></app-carousel-slider>
 
