@@ -21,6 +21,7 @@ const categoryInfo = mongoose.Schema({
 	searchType: { type: String, required: false },
   excluded: { type: Boolean, required: false },
   hasProducts: { type: Boolean, required: false },
+  children : {type:Array, required: false },
   routeTo:{type:String,required:false},
   seo: {
     type: mongoose.Schema.Types.ObjectId,

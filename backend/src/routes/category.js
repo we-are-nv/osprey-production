@@ -20,6 +20,7 @@ const categories = require('../models/categories.js');
 const s3Controller = require('../controller/s3-controller.js');
 const product_info = require('../models/product_info.js');
 const information = require('../models/information.js');
+const informationPage = require('../models/information-page.js');
 
 router.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());
@@ -61,18 +62,25 @@ router.get('/', async (req, res, next) => {
         var hasProducts = false;
         var routeTo = 'default';
         if (!hasChild){
-          const productsFound = await product_info.count({_id:foundCats[idx]._id});
+          var productsFound = await product_info.count({category:foundCats[idx]._id});
+          console.log(productsFound)
           if (productsFound > 0){
             hasProducts = true;
           } else {
-            const foundRedirect = await information.findOne({name:foundCats[idx].name});
+            var foundRedirect = await information.findOne({name:foundCats[idx].name});
 
             if (foundRedirect){
               console.log(foundRedirect.name)
               routeTo = `/info-page/${foundRedirect.type}/${foundRedirect._id}`
             } else {
-              console.log('err')
-              console.log(foundCats[idx].name)
+              var foundRedirect = await informationPage.findOne({name:foundCats[idx].name});
+              if (foundRedirect) {
+                routeTo = `/info-page/${foundRedirect.type}/${foundRedirect._id}`;
+              } else {
+                console.log('err')
+                console.log(foundCats[idx].name)
+              }
+
             }
 
           }
@@ -110,27 +118,38 @@ router.get('/', async (req, res, next) => {
 
 router.get('/all-categories', async (req, res) => {
 	try {
-		const allCategories = await categories.find({}).sort({name: 1});
+		const allCategories = await categories.find({}).populate('parent')
 		if (!allCategories) {
 			return res.status(404).json({ message: 'No categories found' });
 		} else {
+      var topLevel = [];
+      var everythingElse = [];
+      for (idx in allCategories) {
+        if (allCategories[idx].parent == undefined){
+          topLevel.push(allCategories[idx]);
+        } else {
+          everythingElse.push(allCategories[idx]);
+        };
+      };
 
-			allCategories.forEach(foundCat => {
-				const s3Base = process.env.S3_BASE;
-				if (foundCat.image) {
-					foundCat.image = `${s3Base}${foundCat.image}`;
-				}
-				if (foundCat.info.banner_image) {
-					foundCat.info.banner_image = `${s3Base}${foundCat.info.banner_image}`;
-				}
-			});
+      for (tIdx in topLevel){
+        var atIdx = topLevel[tIdx]._id.toString();
+          for (cIdx in everythingElse){
+            if (everythingElse[cIdx].parent == atIdx){
+              topLevel[tIdx].children.push(everythingElse[cIdx])
+              for (scIdx in everythingElse){
+                if (everythingElse[scIdx].parent.toString() == everythingElse[cIdx]._id){
+                  everythingElse[cIdx].children.push(everythingElse[scIdx]);
+                };
+              };
+            };
+          };
+      };
 
-			res.status(200).json({
-				message: 'Successfully llsted all product categories',
-				data: allCategories
-			});
-		}
+      res.json({categories:topLevel});
+		};
 	} catch (err) {
+    console.log(err)
 		res.status(500).json({ message: `${internalErr}` });
 	}
 });
