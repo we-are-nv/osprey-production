@@ -61,7 +61,9 @@ export class ProductLandingComponent implements OnInit {
 		if (data.hasChild) {
       console.log(data)
 			this.router.navigate([data.cat_url]);
-		} else {
+		} else if (!data.hasChild && !data.hasProducts){
+      this.router.navigate([data.redirectTo])
+    } else if (!data.hasChild) {
 			this.categorySub.unsubscribe();
 			this.router.navigate([data.cat_url]);
 		}

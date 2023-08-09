@@ -18,6 +18,8 @@ const categories = require('../models/categories.js');
 
 // Image Control
 const s3Controller = require('../controller/s3-controller.js');
+const product_info = require('../models/product_info.js');
+const information = require('../models/information.js');
 
 router.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());
@@ -42,7 +44,7 @@ router.get('/', async (req, res, next) => {
     .find({ parent: parent })
     .populate('seo')
 		foundCats = [...foundCats].sort((a,b)=> a.order - b.order)
-		console.log(foundCats)
+		//console.log(foundCats)
 		if (foundCats) {
 			//console.log(foundCats)
 			//console.log('Categories:', foundCats);
@@ -50,12 +52,36 @@ router.get('/', async (req, res, next) => {
 				const childrenFound = await categories.count({
 					parent: foundCats[idx]._id
 				});
+
 				var hasChild = false;
 				//console.log(childrenFound)
 				if (childrenFound > 0) {
 					hasChild = true;
-				}
+				};
+        var hasProducts = false;
+        var routeTo = 'default';
+        if (!hasChild){
+          const productsFound = await product_info.count({_id:foundCats[idx]._id});
+          if (productsFound > 0){
+            hasProducts = true;
+          } else {
+            const foundRedirect = await information.findOne({name:foundCats[idx].name});
+
+            if (foundRedirect){
+              console.log(foundRedirect.name)
+              routeTo = `/info-page/${foundRedirect.type}/${foundRedirect._id}`
+            } else {
+              console.log('err')
+              console.log(foundCats[idx].name)
+            }
+
+          }
+
+        };
+        foundCats[idx]['hasProducts'] = hasProducts;
+        foundCats[idx]['routeTo'] = routeTo;
 				foundCats[idx]['hasChild'] = hasChild;
+
 				if (foundCats[idx].image) {
 					foundCats[idx].image = `${process.env.S3_BASE}${foundCats[idx].image}`;
 				}
