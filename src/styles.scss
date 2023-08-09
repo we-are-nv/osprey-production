@@ -95,25 +95,30 @@ body {
   box-shadow: none !important;
 }
 
-.categoryCard,
-.productCard {
+.productCard,
+.card-bottom {
   transition: background-color 500ms linear;
 }
-.categoryCard:hover, .productCard:hover, .slide:hover{
 
-  // background-color: #0064e7ae;
+.productCard:hover,
+.slide:hover {
+
+  background-color: #0064e7ae;
   color: white;
   border: 1px solid #eaeaea !important;
 }
-.productCard:hover {
-  background-color: #0065E7;
+
+.categoryCard:hover {
+  border: 1px solid #eaeaea !important
 }
 
-.categoryCard h2:hover, .productCard h2:hover, .categoryCard span:hover {
+.productCard:hover,
+.card-bottom:hover {
   background-color: #0065E7;
   color: white;
-
 }
+
+
 
 ::ng-deep {
   .mat-menu-panel.searchList {
