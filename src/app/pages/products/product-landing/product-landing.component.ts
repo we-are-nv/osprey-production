@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import {ProductService} from 'src/app/services/product.service';
+import { ProductService } from 'src/app/services/product.service';
 import { environment } from 'src/environments/environment';
 @Component({
 	selector: 'app-product-landing',
@@ -9,14 +9,19 @@ import { environment } from 'src/environments/environment';
 	styleUrls: ['./product-landing.component.scss']
 })
 export class ProductLandingComponent implements OnInit {
-  private API_URL = environment.API_URL;
+	private API_URL = environment.API_URL;
 	history: any = [
-		{path: '/', friendly: 'Home'},
-		{path: '/products/top', friendly: 'Products'}
+		{ path: '/', friendly: 'Home' },
+		{ path: '/products/top', friendly: 'Products' }
 	];
 	//rivate _Activatedroute: ActivatedRoute;
 	categoryId: any = '';
-
+	customPageInfo: any = '';
+	default : string = `Many of our products have unique features that have been developed to meet specific client requirements not
+	previously <br>
+	available. The company provides unrivalled technical and commercial support for their products and services.
+	Explore our <br>
+	innovative product range below:`
 	activeId = '';
 
 	categorySub: any;
@@ -25,7 +30,7 @@ export class ProductLandingComponent implements OnInit {
 		private productService: ProductService,
 		private router: Router,
 		private _Activatedroute: ActivatedRoute,
-    private http: HttpClient
+		private http: HttpClient
 	) {}
 	ngOnInit(): void {
 		this._Activatedroute.paramMap.subscribe(params => {
@@ -34,36 +39,47 @@ export class ProductLandingComponent implements OnInit {
 			// if (this.categoryId == 'top') {
 			// 	this.categoryId = '';
 			// }
-      this.http
-      .get<any>(
-          this.API_URL + '/products/categories/convert-route?name=' + this.categoryId
-      )
-      .subscribe(response => {
-          console.log(response);
-          this.productService.getCategories(response._id);
-          this.categorySub = this.productService
-            .getCategoriesUpdateListener()
-            .subscribe(data => {
-              console.log(data);
-              this.categories = data.cats;
-              console.log(this.categories);
-
-              if (this.categories.length < 1) {
-                //this.loadProds(this.categoryId);
-              }
-            });
-
-      });
-
+			console.log('categoryId before convert-route: ', this.categoryId);
+			this.http
+				.get<any>(
+					this.API_URL +
+						'/products/categories/convert-route?name=' +
+						this.categoryId
+				)
+				.subscribe(response => {
+					console.log('product landing response data: ', response);
+					this.productService.getCategories(response._id);
+					// get single data for customPageInfo
+					this.productService
+						.getSingleCategory(response._id)
+						.subscribe(singleData => {
+							if (singleData){
+								this.customPageInfo = singleData
+							}
+							this.customPageInfo = singleData;
+							console.log('singleData: ', singleData);
+						});
+					this.categorySub = this.productService
+						.getCategoriesUpdateListener()
+						.subscribe(data => {
+							console.log(data);
+							this.categories = data.cats;
+							console.log(this.categories);
+							console.log('product Landing data: ', data);
+							if (this.categories.length < 1) {
+								//this.loadProds(this.categoryId);
+							}
+						});
+				});
 		});
 	}
 	getNewCats(data: any) {
 		if (data.hasChild) {
-      console.log(data)
+			console.log(data);
 			this.router.navigate([data.cat_url]);
-		} else if (!data.hasChild && !data.hasProducts){
-      this.router.navigate([data.redirectTo])
-    } else if (!data.hasChild) {
+		} else if (!data.hasChild && !data.hasProducts) {
+			this.router.navigate([data.redirectTo]);
+		} else if (!data.hasChild) {
 			this.categorySub.unsubscribe();
 			this.router.navigate([data.cat_url]);
 		}

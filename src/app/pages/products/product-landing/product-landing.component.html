@@ -1,25 +1,62 @@
-<app-hero mainTitle="Products" secondaryTitle="For the most demanding applications"
-  lowerTitle="Paragon Security offers a comprehensive range of security products intended to meet the demanding requirements of clients in the United Kingdom, Europe and the World."
-  [isButtons]="true" background="./assets/images/heroBackgrounds/productLanding.png"
-  [button1Data]="{text:'See What It Costs', path:'', type:'white'}"
-  [button2Data]="{text:'Protect My Home', path:'', type:'outline'}" [centred]="false"
-  [button3Data]="{text:'Explore Our Services', path:'', type:'white'}"></app-hero>
+<app-hero
+	mainTitle="Products"
+	secondaryTitle="For the most demanding applications"
+	lowerTitle="Paragon Security offers a comprehensive range of security products intended to meet the demanding requirements of clients in the United Kingdom, Europe and the World."
+	[isButtons]="true"
+	background="./assets/images/heroBackgrounds/productLanding.png"
+	[button1Data]="{ text: 'See What It Costs', path: '', type: 'white' }"
+	[button2Data]="{ text: 'Protect My Home', path: '', type: 'outline' }"
+	[centred]="false"
+	[button3Data]="{
+		text: 'Explore Our Services',
+		path: '',
+		type: 'white'
+	}"></app-hero>
 
 <app-breadcrumbs [history]="history"></app-breadcrumbs>
 <section class="main">
-  <div class="header">
-    <h1>Our Products</h1>
-    <span>Many of our products have unique features that have been developed to meet specific client requirements not
-      previously <br>
-      available. The company provides unrivalled technical and commercial support for their products and services.
-      Explore our <br>
-      innovative product range below:</span>
-  </div>
-  <!-- Categories Grabbed from Component Variable -->
-  <button class="prod-load-button" mat-flat-button color="primary" *ngIf="categoryId !==  'top'" routerLink="/search/{{categoryId}}">Show
-    All Products <mat-icon class="buttonIcon" iconPositionEnd>arrow_forward_ios</mat-icon>
-  </button>
-  <app-category-card [cards]="categories" (catRouting)="getNewCats($event)"></app-category-card>
+	<div class="header">
+		<h1>Our Products</h1>
+		<ng-container *ngIf="customPageInfo && customPageInfo !== ''">
+			<p>
+				<span>{{ customPageInfo?.data?.page_text }}</span>
+			</p>
+      <p><span>Explore all our {{customPageInfo?.data?.name}} products below</span></p>
+		</ng-container>
+		<ng-container *ngIf="!customPageInfo || customPageInfo == ''"
+			><span
+				>Many of our products have unique features that have been developed to meet
+				specific client requirements not previously <br />
+				available. The company provides unrivalled technical and commercial support
+				for their products and services. Explore our <br />
+				innovative product range below:</span
+			></ng-container
+		>
+		<!-- <span
+			>Many of our products have unique features that have been developed to meet
+			specific client requirements not previously <br />
+			available. The company provides unrivalled technical and commercial support
+			for their products and services. Explore our <br />
+			innovative product range below:</span
+		> -->
+	</div>
+	<!-- Categories Grabbed from Component Variable -->
+	<button
+		class="prod-load-button"
+		mat-flat-button
+		color="primary"
+		*ngIf="categoryId !== 'top'"
+		routerLink="/search/{{ categoryId }}">
+		Show All Products
+		<mat-icon
+			class="buttonIcon"
+			iconPositionEnd
+			>arrow_forward_ios</mat-icon
+		>
+	</button>
+	<app-category-card
+		[cards]="categories"
+		(catRouting)="getNewCats($event)"></app-category-card>
 </section>
 
 <app-quote-form></app-quote-form>
