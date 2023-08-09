@@ -17,7 +17,7 @@
 .productsContainer > .productCard{
     width: 28%;
     margin: 2.5%;
-    height: 35vh;
+    height: 30vh;
     border-radius:0px ;
     border: 0px;
     text-align: start;
@@ -34,9 +34,9 @@
     object-fit: contain;
 }
 .productCard h4{
-    margin: auto;
-    margin-left: 1rem;
-    
+    // margin: auto;
+    margin: 0.2rem auto 0.2rem 1rem;
+    // margin-top: 0.2rem;
 }
 .productCard p{
     margin-left:15px;
@@ -47,7 +47,8 @@
     margin-left: 5%;
     width: auto;
     display: flex;
-    margin-top: auto;
+    align-items: center;
+    margin-top: 1rem;
     gap: 5%;
 }
 

@@ -90,21 +90,46 @@ body {
 // .categoryCard.noElevation {
 //   mat-elevation-z: 0! important;
 // }
-
+mat-card {
+  overflow: hidden;
+}
 .categoryCard.noBoxShadow {
   box-shadow: none !important;
 }
 
-.categoryCard,
-.productCard {
-  transition: background-color 500ms linear;
+.card-bottom {
+  // max-height: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: 2vh;
+  padding-bottom: 1vh;
 }
-.categoryCard:hover, .productCard:hover, .slide:hover{
-  
+
+.productCard,
+.card-bottom {
+  transition: background-color 300ms linear;
+}
+
+.productCard:hover,
+.slide:hover {
+
   background-color: #0064e7ae;
   color: white;
   border: 1px solid #eaeaea !important;
 }
+
+.categoryCard:hover {
+  border: 1px solid #eaeaea !important
+}
+
+.productCard:hover,
+.card-bottom:hover {
+  background-color: #0065E7;
+  color: white;
+}
+
+
 
 ::ng-deep {
   .mat-menu-panel.searchList {

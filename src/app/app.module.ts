@@ -57,7 +57,6 @@ import { CarouselDemoComponent } from './pages/carousel-demo/carousel-demo.compo
 		CarouselModule
 	],
 	declarations: [
-		CarouselSliderComponent,
 		CarouselDemoComponent,
 		AppComponent,
 		BreadcrumbsComponent,
@@ -87,6 +86,7 @@ import { CarouselDemoComponent } from './pages/carousel-demo/carousel-demo.compo
 		ScrollComponent,
 		NewsDialogComponent,
 		AccreditationsComponent,
+		CarouselSliderComponent
 	],
 	providers: [UrlFormatterPipe, provideClientHydration(), ScrollService],
 	bootstrap: [AppComponent]
