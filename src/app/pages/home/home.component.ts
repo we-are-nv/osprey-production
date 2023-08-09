@@ -73,7 +73,7 @@ export class HomeComponent {
 		this.categorySub = this.productService
 			.getCategoriesUpdateListener()
 			.subscribe(data => {
-				console.log('getCategories() data is: ',data);
+				console.log('getCategories() data is: ', data);
 				this.productCategories = data.cats;
 				this.categoryListPart = this.productCategories.slice(
 					this.categoryListPosition.first,
@@ -170,13 +170,14 @@ export class HomeComponent {
 		// Call the PrimeNG carousel's prev() method to go to the previous item
 		// this.carousel.prev();
 	}
-	checking(thing: any){
-		console.log(thing)
+	checking(thing: any) {
+		console.log(thing);
 	}
 
 	openCalendlyPopup() {
-    Calendly.initPopupWidget({ url: 'https://calendly.com/paragon-security/30min' });
-    return false; // Prevent default anchor link behavior
-  }
-
+		Calendly.initPopupWidget({
+			url: 'https://calendly.com/paragon-security/30min'
+		});
+		return false; // Prevent default anchor link behavior
+	}
 }

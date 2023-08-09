@@ -1,9 +1,9 @@
 <app-hero
-	mainTitle="Latest News & Articles"
+	mainTitle="News"
 	lowerTitle=""
 	[isButtons]="false"
 	[centred]="true"
-	background="./assets/images/heroBackgrounds/homeHero.png"
+	background="./assets/images/heroBackgrounds/news-hero-image.jpg"
 	extraStyle="shorterHero"></app-hero>
 <section class="container">
 	<section class="bonus-cards">
@@ -19,7 +19,7 @@
 					<mat-card-title
 						><h2>{{ article.title }}</h2></mat-card-title
 					>
-					<h4 class="date">{{article.formatDate}}</h4>
+					<h4 class="date">{{ article.formatDate }}</h4>
 				</mat-card-header>
 				<mat-card-content>
 					<div class="columns">
