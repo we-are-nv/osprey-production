@@ -20,6 +20,8 @@ const categoryInfo = mongoose.Schema({
 	cat_url: { type: String, required: false },
 	searchType: { type: String, required: false },
   excluded: { type: Boolean, required: false },
+  hasProducts: { type: Boolean, required: false },
+  routeTo:{type:String,required:false},
   seo: {
     type: mongoose.Schema.Types.ObjectId,
     ref:seo_meta,
