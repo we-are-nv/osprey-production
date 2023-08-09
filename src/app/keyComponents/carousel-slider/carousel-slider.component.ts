@@ -19,14 +19,15 @@ import {
 	transition,
 	AnimationTriggerMetadata
 } from '@angular/animations';
+
 import { Slide } from 'src/app/interfaces/slide.interface';
 
 const CarouselAnimationTrigger: AnimationTriggerMetadata = trigger(
 	'carouselAnimation',
 	[
 		state('start', style({ transform: `translateX(0)` })),
-		state('left', style({ transform: `translateX(-100vw)` })),
-		state('right', style({ transform: `translateX(0vw)` })),
+		state('left', style({ transform: `translateX(-100%)` })),
+		state('right', style({ transform: `translateX(0)` })),
 		transition('* => left, * => right', animate('1000ms ease-out'))
 	]
 );

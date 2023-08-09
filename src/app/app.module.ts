@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -43,6 +43,7 @@ import { CarouselSliderComponent } from './keyComponents/carousel-slider/carouse
 import { CarouselDemoComponent } from './pages/carousel-demo/carousel-demo.component';
 
 @NgModule({
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	imports: [
 		MaterialModule,
 		BrowserModule,
@@ -56,6 +57,8 @@ import { CarouselDemoComponent } from './pages/carousel-demo/carousel-demo.compo
 		CarouselModule
 	],
 	declarations: [
+		CarouselSliderComponent,
+		CarouselDemoComponent,
 		AppComponent,
 		BreadcrumbsComponent,
 		HeaderComponent,
@@ -84,8 +87,6 @@ import { CarouselDemoComponent } from './pages/carousel-demo/carousel-demo.compo
 		ScrollComponent,
 		NewsDialogComponent,
 		AccreditationsComponent,
-		CarouselSliderComponent,
-		CarouselDemoComponent,
 	],
 	providers: [UrlFormatterPipe, provideClientHydration(), ScrollService],
 	bootstrap: [AppComponent]

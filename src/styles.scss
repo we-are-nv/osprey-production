@@ -75,7 +75,7 @@
 .categoryCard, .productCard{
   transition: background-color 500ms linear; 
 }
-.categoryCard:hover, .productCard:hover{
+.categoryCard:hover, .productCard:hover, .slide:hover{
   
   background-color: #0064e7ae;
   color: white;

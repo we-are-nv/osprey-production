@@ -3,23 +3,33 @@
 		class="carousel-track"
 		[@carouselAnimation]="containerTransitionState"
 		#carouseltrack>
-		<ng-container *ngFor="let slideGroup of visibleSlidesGroups">
-			<div class="slide-group">
+		<ng-container *ngFor="let slideGroup of visibleSlidesGroups;">
+			<div class="slide-group" >
 				<div
 					class="slide"
-					*ngFor="let slide of slideGroup">
+					*ngFor="let slide of slideGroup" >
 					<!-- Add your slide content here, e.g., slide.thumbnail_image and slide.name -->
 					<img
 						[src]="slide.thumbnail_image"
 						[alt]="slide.name" />
-					<h3>{{ slide.name }}</h3>
+					<h1>{{ slide.name }}</h1>
+					<span>Explore </span>
 				</div>
 			</div>
 		</ng-container>
 	</div>
 	<div class="button-wrapper">
-		<button (click)="onPrev()">Back</button>
-		<button (click)="onNext()">Forward</button>
-	</div>
+		<div class="slideButtonContainer">
+			<button (click)="onPrev()"  class="slideButton">
+		<img
+			  
+		  src="./assets/images/customIcons/prev-slide.svg"
+		  alt="" />
+	  </button>
+	  <button  (click)="onNext()" class="slideButton">
+		<img
+		  src="./assets/images/customIcons/next-slide.svg"
+		  alt="" />
+	  </button>
 </div>
 
