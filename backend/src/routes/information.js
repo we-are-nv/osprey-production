@@ -151,14 +151,14 @@ router.post('/page', checkAuth, async (req, res) => {
     if (!req.body.elements[idx]['src']){
       req.body.elements[idx]['src'] = []
     }
-		if (req.body.elements[idx].type == 'image') {
+		if (req.body.elements[idx].type == 'image' && req.body.elements[idx].images > 1) {
 			req.body.elements[idx].images.forEach((element, idx1) => {
 				var fileURL =
 					`info/${req.query.id}/pages/${newPageID}/${req.body.name}${idx1}`.replace(
 						/\s/g,
 						''
 					);
-				uploadBaseMarket(fileURL, element);
+				uploadBaseMarket(fileURL, element); 
 				element = `/${fileURL}`;
         console.log(req.body.elements[idx].images[idx1])
 				req.body.elements[idx]['src'].push(element)

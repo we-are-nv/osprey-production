@@ -1,57 +1,77 @@
 <app-hero
-    *ngIf="pageData !== undefined"
-    [mainTitle]="pageData.name"
-    [secondaryTitle]="pageData.secondry_title"
-    [lowerTitle]="pageData.lower_title"
-    [isButtons]="true"
-    [background]="pageData.banner_image"
-    extraStyle = "shorterHero"
-
-
-    [button1Data]="{
-		text: 'Book A Caall',
+	*ngIf="pageData !== undefined"
+	[mainTitle]="pageData.name"
+	[secondaryTitle]="pageData.secondry_title"
+	[lowerTitle]="pageData.lower_title"
+	[isButtons]="true"
+	[background]="pageData.banner_image"
+	extraStyle="shorterHero"
+	[button1Data]="{
+		text: 'Book A Call',
 		path: './contactForm',
 		type: 'black'
-	}"
+	}"></app-hero>
+<!-- <app-breadcrumbs [history]="history"></app-breadcrumbs> -->
+<section
+	class="container"
+	*ngIf="pageData !== undefined"
+	id="main-info">
+	<section class="bonus-cards">
+		<!-- Navigation -->
+		<mat-card
+			class="navigation-pannel bonus-card-white-accent"
+			*ngIf="subPages.length > 1">
+			<mat-card-header>
+				<mat-card-title class="bonus-card-title"
+					>{{ pageData.name | nameConverter }}
+				</mat-card-title>
+			</mat-card-header>
+			<div class="nav-button-container">
+				<a
+					class="nav-button"
+					*ngFor="let page of subPages"
+					[routerLink]="page.id"
+					(click)="selectPage(page.id)"
+					[ngClass]="{ 'page-active': page.id == activeSubPageId }"
+					>{{ page.name }}
+					<img
+						class="nav-button-icon"
+						src="./assets/images/customIcons/right-arrow-icon.svg"
+						alt=""
+				/></a>
+			</div>
+		</mat-card>
+		<mat-card
+			class="navigation-pannel bonus-card-white-accent"
+			*ngIf="subPages.length <= 1 && siblingPages.length > 1">
+			<mat-card-header>
+				<mat-card-title
+					class="bonus-card-title"
+					*ngIf="pageType.length < 13"
+					>All {{ pageType | nameConverter }}s</mat-card-title
+				>
+			</mat-card-header>
+			<div class="nav-button-container">
+				<a
+					class="nav-button"
+					*ngFor="let page of siblingPages"
+					[routerLink]="'/info-page/' + pageType + '/' + page._id"
+					routerLinkActive="page-active"
+					>{{ page.name }}
+					<img
+						class="nav-button-icon"
+						src="./assets/images/customIcons/right-arrow-icon.svg"
+						alt=""
+				/></a>
+			</div>
+		</mat-card>
+		<app-bonus-card [card]="pageType"></app-bonus-card>
+	</section>
 
-
-    ></app-hero>
-    <!-- <app-breadcrumbs [history]="history"></app-breadcrumbs> -->
-<section class="container" *ngIf="pageData !== undefined" id="main-info">
-    <section class="bonus-cards">
-
-        <!-- Navigation -->
-        <mat-card class="navigation-pannel bonus-card-white-accent" *ngIf="subPages.length > 1">
-            <mat-card-header>
-                <mat-card-title class="bonus-card-title">{{pageData.name | nameConverter}}
-                </mat-card-title>
-            </mat-card-header>
-            <div class="nav-button-container" >
-                <a class="nav-button" *ngFor="let page of subPages" [routerLink]="page.id" (click)="selectPage(page.id)"  [ngClass]="{'page-active': page.id == activeSubPageId}">{{page.name}} <img class="nav-button-icon" src="./assets/images/customIcons/right-arrow-icon.svg" alt=""></a>
-
-              </div>
-        </mat-card>
-        <mat-card class="navigation-pannel bonus-card-white-accent" *ngIf="subPages.length <= 1  && siblingPages.length > 1">
-            <mat-card-header>
-                <mat-card-title class="bonus-card-title" *ngIf="pageType.length < 13">All {{pageType |nameConverter}}s</mat-card-title>
-            </mat-card-header>
-            <div class="nav-button-container" >
-                <a class="nav-button" *ngFor="let page of siblingPages" [routerLink]="'/info-page/'+pageType+'/'+page._id" routerLinkActive="page-active">{{page.name}} <img class="nav-button-icon" src="./assets/images/customIcons/right-arrow-icon.svg" alt=""></a>
-            </div>
-        </mat-card>
-        <app-bonus-card [card]="pageType"></app-bonus-card>
-    </section>
-
-
-
-
-    <section class="info-side">
-
-
-        <router-outlet  ></router-outlet>
-        <app-similar-products [categoryId]="suggestedProducts"></app-similar-products>
-    </section>
-
+	<section class="info-side">
+		<router-outlet></router-outlet>
+		<app-similar-products [categoryId]="suggestedProducts"></app-similar-products>
+	</section>
 </section>
 
 <app-quote-form></app-quote-form>

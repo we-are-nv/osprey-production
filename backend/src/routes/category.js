@@ -43,9 +43,9 @@ router.get('/', async (req, res, next) => {
 		let foundCats;
 		foundCats = await categories.find({ parent: parent }).populate('seo');
 		foundCats = [...foundCats].sort((a, b) => a.order - b.order);
-		foundCats.forEach(cat => {
-			console.log({ name: cat.name, index: cat.order });
-		});
+		// foundCats.forEach(cat => {
+		// 	console.log({ name: cat.name, index: cat.order });
+		// });
 		if (foundCats) {
 			//console.log(foundCats)
 			//console.log('Categories:', foundCats);

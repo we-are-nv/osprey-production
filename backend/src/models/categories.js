@@ -15,6 +15,7 @@ const categoryInfo = mongoose.Schema({
 		banner_image: { type: String, required: false },
 		sub_text: { type: String, required: false }
 	},
+	page_info_text: {type: String, required: false},
 	parent: { type: mongoose.Schema.Types.ObjectId, required: false },
 	breadcrumb: { type: String, required: false },
 	hasChild: { type: Boolean, required: false },
