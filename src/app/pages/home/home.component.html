@@ -34,18 +34,11 @@
 
 <!-- Product Categories -->
 <section class="categoryContainer">
-	<mat-card
-		*ngFor="let product of productCategories"
-		class="categoryCard selectable dontShow-{{ product.frontPage }}"
-		[routerLink]="product.cat_url">
-		<img
-			mat-card-image
-			[src]="product.image" />
-		<div class="card-bottom">
-			<h2>{{ product.name }}</h2>
-			<span>Explore <mat-icon>circle</mat-icon> </span>
-		</div>
-	</mat-card>
+  <mat-card *ngFor="let product of productCategories" class="categoryCard selectable dontShow-{{product.frontPage}}" [routerLink]="product.cat_url">
+    <img mat-card-image [src]="product.image" />
+    <h1>{{ product.name }}</h1>
+    <span>Explore <mat-icon>circle</mat-icon> </span>
+  </mat-card>
 </section>
 
 <div class="infoCardContainer">
@@ -104,17 +97,20 @@
 		lead the industry in the design, supply and support of harsh environment
 		security systems with many years design & integration experience.
 	</p>
+	
+<section class="categoryContainer">
+	<mat-card *ngFor="let product of marketsList" class="categoryCard selectable dontShow-{{product.frontPage}}" routerLink="/info-page/{{product.type}}/{{product._id}}">
+		<img mat-card-image [src]="product.thumbnail_image" />
+		<h1>{{ product.name }}</h1>
+		<span>Explore <mat-icon>circle</mat-icon> </span>
+	  </mat-card>
+</section>
 
-	<app-carousel-slider [slides]="marketsList"></app-carousel-slider>
 
-	<div class="relatedCategoryButtons">
-		<a
-			class="standardButton blueButton categoryButton"
-			routerLink="markets"
-			mat-raised-button
-			>Explore The Markets <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a
-		>
-	</div>
+  <div class="relatedCategoryButtons">
+    <a class="standardButton blueButton categoryButton" routerLink="markets" mat-raised-button>Explore The Markets
+      <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></a>
+  </div>
 </section>
 <!-- Service Categories -->
 <section class="darkSection">

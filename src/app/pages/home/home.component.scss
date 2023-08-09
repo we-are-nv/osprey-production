@@ -4,10 +4,6 @@
 	font-family: 'roboto';
 }
 
-h1 {
-	font-size: 2rem;
-}
-
 p {
 	font-size: 1rem;
 	font-family: 'roboto';
@@ -65,6 +61,8 @@ p {
 	width: 31%;
 	margin: auto;
 	margin-bottom: 1.2%;
+	
+	transition: background-color 500ms linear;
 }
 
 @media screen and (max-width: 1024px) {
@@ -107,12 +105,7 @@ mat-card-header {
 	text-align: center;
 }
 
-.categoryCard img {
-	height: 18vh;
-	max-height: 20vh;
-	object-fit: cover;
-	background-color: white;
-}
+
 
 .categoryCard h2 {
 	// padding-left: 2vh;
@@ -330,25 +323,21 @@ span mat-icon {
 	}
 }
 
-.paginatedCard {
-	margin-bottom: 1.2%;
-	margin: 5%;
-}
 
-.paginatedCard img {
-	height: 20vh;
+
+.categoryCard img {
+	height: 50%;
 	object-fit: cover;
 	background-color: white;
 }
 
-.paginatedCard h2 {
+.categoryCard h1 {
 	padding-left: 2vh;
 	margin-left: 5%;
-	font-size: larger;
 	width: -webkit-fill-available;
 }
 
-.paginatedCard span {
+.categoryCard span {
 	padding-bottom: 2vh;
 	padding-left: 2vh;
 	margin-left: 5%;

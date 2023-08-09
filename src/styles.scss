@@ -124,7 +124,8 @@ mat-card {
 }
 
 .productCard:hover,
-.card-bottom:hover {
+.card-bottom:hover ,
+.categoryCard:hover{
   background-color: #0065E7;
   color: white;
 }
