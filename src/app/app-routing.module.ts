@@ -13,7 +13,6 @@ import { SubPageComponent } from './pages/general-info-page/sub-page/sub-page.co
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { NewsComponent } from './pages/news/news.component';
 import { AccreditationsComponent } from './pages/accreditations/accreditations.component';
-import { CarouselDemoComponent } from './pages/carousel-demo/carousel-demo.component';
 
 const routes: Routes = [
 	// General Pages
@@ -58,8 +57,7 @@ const routes: Routes = [
 	// Accreditations
 	{ path: 'certifications', component: AccreditationsComponent },
 
-	// Demo Carousel
-	{ path: 'demo-carousel', component: CarouselDemoComponent },
+	// Demo Carousel 
 
 	// Error Page
 	{ path: 'error', component: ErrorPageComponent }
