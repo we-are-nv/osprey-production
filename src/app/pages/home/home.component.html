@@ -34,12 +34,12 @@
 
 <!-- Product Categories -->
 <section class="categoryContainer">
-  <mat-card *ngFor="let product of productCategories" class="categoryCard selectable dontShow-{{product.frontPage}}" [routerLink]="product.cat_url">
-    <img mat-card-image [src]="product.image" />
-    <h1>{{ product.name }}</h1>
-    <span>Explore <mat-icon>circle</mat-icon> </span>
-  </mat-card>
-</section>
+	<mat-card *ngFor="let product of productCategories" class="categoryCard selectable dontShow-{{product.frontPage}}" [routerLink]="product.cat_url">
+	  <img mat-card-image [src]="product.image" />
+	  <h1>{{ product.name }}</h1>
+	  <span>Explore <mat-icon>circle</mat-icon> </span>
+	</mat-card>
+  </section>
 
 <div class="infoCardContainer">
 	<div class="serviceInfoCard">
@@ -97,8 +97,13 @@
 		lead the industry in the design, supply and support of harsh environment
 		security systems with many years design & integration experience.
 	</p>
-
-    <app-carousel-slider [slides]="marketsList"></app-carousel-slider>
+	<section class="categoryContainer">
+		<mat-card *ngFor="let product of marketsList" class="categoryCard selectable" routerLink="/info-page/{{product.type}}/{{product._id}}">
+		  <img mat-card-image [src]="product.thumbnail_image"/>
+		  <h1>{{ product.name }}</h1>
+		  <span>Explore <mat-icon>circle</mat-icon> </span>
+		</mat-card>
+	  </section>
 
 
 
