@@ -90,14 +90,25 @@ body {
 // .categoryCard.noElevation {
 //   mat-elevation-z: 0! important;
 // }
-
+mat-card {
+  overflow: hidden;
+}
 .categoryCard.noBoxShadow {
   box-shadow: none !important;
 }
 
+.card-bottom {
+  // max-height: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: 2vh;
+  padding-bottom: 1vh;
+}
+
 .productCard,
 .card-bottom {
-  transition: background-color 500ms linear;
+  transition: background-color 300ms linear;
 }
 
 .productCard:hover,

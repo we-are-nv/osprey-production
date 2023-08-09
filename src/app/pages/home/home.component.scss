@@ -97,7 +97,7 @@ mat-card {
 	border-radius: 0%;
 	background: transparent;
 	box-shadow: none;
-	height: 30vh;
+	height: 27.8vh;
 	justify-content: space-between;
 }
 
@@ -108,23 +108,24 @@ mat-card-header {
 }
 
 .categoryCard img {
-	height: 20vh;
+	height: 18vh;
+	max-height: 20vh;
 	object-fit: cover;
 	background-color: white;
 }
 
-.categoryCard h1 {
-	padding-left: 2vh;
-	margin-left: 5%;
+.categoryCard h2 {
+	// padding-left: 2vh;
+	// margin-left: 5%;
 	font-size: larger;
 	width: -webkit-fill-available;
 	// margin-top: 0.2em;
 }
 
 .categoryCard span {
-	padding-bottom: 2vh;
-	padding-left: 2vh;
-	margin-left: 5%;
+	// padding-bottom: 2vh;
+	// padding-left: 2vh;
+	// margin-left: 5%;
 	width: auto;
 	display: flex;
 	margin-top: 1%;
@@ -340,7 +341,7 @@ span mat-icon {
 	background-color: white;
 }
 
-.paginatedCard h1 {
+.paginatedCard h2 {
 	padding-left: 2vh;
 	margin-left: 5%;
 	font-size: larger;
