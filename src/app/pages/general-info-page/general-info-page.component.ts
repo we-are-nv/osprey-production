@@ -19,7 +19,7 @@ export class GeneralInfoPageComponent implements OnInit {
 	// SubPage Surface Info
 	activeSubPageId: string;
 	activeSubPageName: string;
-
+  suggestedProducts:any
 	pageData: any;
 	subPages: any[];
 	bonusCards: any[];
@@ -30,11 +30,12 @@ export class GeneralInfoPageComponent implements OnInit {
 	ngOnInit() {
 		this.pageData = undefined;
 		this.pageId = '';
+    this.suggestedProducts = ""
 		this.siblingPages = [];
 
 		this.subPages = [];
-		
-		
+
+
 
 		this._Activatedroute.params.subscribe(params => {
 			this.pageType = params['type'];
@@ -52,6 +53,10 @@ export class GeneralInfoPageComponent implements OnInit {
 				this.subPages = data.pages;
 				this.bonusCards = data.bonus_cards;
 				this.activeSubPageId = this.subPages[0].id;
+        console.log(data)
+        if (data.suggestProducts){
+          this.suggestedProducts = `info-${data._id}`
+        }
 				this.router.navigate([
 					`/info-page/${this.pageType}/${this.pageId}/${this.activeSubPageId}`
 				]);

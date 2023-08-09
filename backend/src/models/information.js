@@ -10,6 +10,7 @@ const marketInfo = mongoose.Schema({
 	type: { type: String, required: true },
 	secondry_title: { type: String, required: false },
 	lower_title: { type: String, required: false },
+  suggestProducts :{type: Array, required:false},
 	banner_image: { type: String, required: false },
 	thumbnail_image: { type: String, required: false },
 	bonus_cards: [

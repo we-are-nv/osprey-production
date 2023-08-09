@@ -20,6 +20,7 @@ const product_addit_info = require('../models/product_addit_info.js');
 const product_model = require('../models/product_models.js')
 const user = require('../models/user.js');
 const product_info = require('../models/product_info.js');
+const information = require('../models/information.js');
 
 const router = express.Router();
 
@@ -58,7 +59,20 @@ router.get('/product_info', async (req, res) => {
     res.json({ error: 'Please Enter a valid product category' });
     return;
   };
+  if (req.query.category.includes('info-')){
+    console.log(req.query.category.split("-")[1]);
+    const foundInfo = await information.findOne({_id:req.query.category.split("-")[1]})
+    console.log()
+    const result = await product_info.find().where('_id').in(foundInfo.suggestProducts).exec();
+    for (idx in result){
+      if (result[idx].image) {
+        result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
+      }
+    }
 
+    res.json({products:result})
+    return;
+  }
   // Configure Sort
   var sortValue = 1;
   if (sort == 'za'){
