@@ -5,9 +5,10 @@
 		#carouseltrack>
 		<ng-container *ngFor="let slideGroup of visibleSlidesGroups;">
 			<div class="slide-group" >
-				<div
-					class="slide"
-					*ngFor="let slide of slideGroup" >
+				<mat-card
+					class="slide selectable"
+					*ngFor="let slide of slideGroup" 
+					routerLink="/info-page/{{slide.type}}/{{slide._id}}">
 					<!-- Add your slide content here, e.g., slide.thumbnail_image and slide.name -->
 					<img
 						[src]="slide.thumbnail_image"
@@ -16,7 +17,7 @@
 						
 					</h1>
 					<span>Explore </span>
-				</div>
+				</mat-card>
 			</div>
 		</ng-container>
 	</div>
