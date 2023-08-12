@@ -170,8 +170,15 @@ router.get('/product_info', async (req, res) => {
   if (req.query.documentId) {
     additQuery = { _id: req.query.documentId };
   } else {
-    additQuery = { category: catQuery };
-    //console.log(additQuery)
+    if (catQuery.length == 1){
+      additQuery = { category: new mongoose.Types.ObjectId(catQuery[0]) };
+      console.log(catQuery)
+    } else {
+      additQuery = {category : []};
+      for (cIdx in catQuery) {
+        additQuery.category.push(new mongoose.Types.ObjectId(catQuery[cIdx]));
+      };
+    }
     if (subCat != '') {
       additQuery['productType.modelName'] = subCat;
     }
@@ -189,13 +196,14 @@ router.get('/product_info', async (req, res) => {
     //.populate('additional_information')
     .populate('product_varients')
     .populate('seo')
-    .populate({
-      path: 'category',
-      populate: {
-        path: 'info',
-        model: 'categoryInfo'
-      }
-    })
+    // .populate({
+    //   path: 'category',
+    //   populate: {
+    //     path: 'info',
+    //     model: 'categoryInfo'
+    //   }
+    // })
+    .populate('category')
   for (idx in result) {
     // Find Image Strings and Add Base URL
     if (result[idx].image) {
@@ -204,8 +212,13 @@ router.get('/product_info', async (req, res) => {
     var formattedName = result[idx].product_name.replace(/[^a-zA-Z ]/g, "").replace(/  +/g, ' ').split(" ").join("-").toLowerCase();
     var url = `/product/${result[idx].product_code}/${formattedName}`;
     result[idx].product_url = url;
-    var catURL = `/products/${result[idx].category.name.split(' ').join('-').toLowerCase()}`;
-    result[idx].category.cat_url = catURL
+    // Needs Fixing. Hard Coded Fix
+    var catURL = '/hardcoded';
+    for (eIdx in result[idx].category){
+       var catURL = `/products/${result[idx].category[eIdx].name.split(' ').join('-').toLowerCase()}`;
+      result[idx].category[eIdx].cat_url = catURL
+    }
+
 
     if (req.query.populate_include && result[idx].additional_information && result[idx].additional_information.info) {
       console.log('HELLO')

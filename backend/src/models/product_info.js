@@ -19,7 +19,7 @@ const productInfo = mongoose.Schema({
   searchType: { type: String, required: false },
   tech_drawing: { type: String, required: false },
   tech_drawings: { type: Array, required: false },
-  category: { type: mongoose.Schema.Types.ObjectId, ref: categorys },
+  category: [{ type: mongoose.Schema.Types.ObjectId, ref: categorys }],
   additional_information: {
     type: mongoose.Schema.Types.ObjectId,
     ref: product_addit_info
