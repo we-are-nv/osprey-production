@@ -38,7 +38,8 @@ export class ProductLandingComponent implements OnInit {
 		private infoService: InfoPageService
 	) {}
 	ngOnInit(): void {
-		this.customPageInfo = ''
+		this.customPageInfo = '';
+		this.activeSubPageId = undefined;
 		this._Activatedroute.paramMap.subscribe(params => {
 			//console.log();
 			this.categoryId = params.get('category');
@@ -61,10 +62,8 @@ export class ProductLandingComponent implements OnInit {
 						.subscribe(singleData => {
 							if (singleData){
 								this.customPageInfo = singleData
-								console.log(this.customPageInfo)
 							}
 							this.customPageInfo = singleData;
-							console.log('singleData: ', singleData);
 						});
 					this.categorySub = this.productService
 						.getCategoriesUpdateListener()
@@ -72,16 +71,16 @@ export class ProductLandingComponent implements OnInit {
 							console.log(data);
 							this.categories = data.cats;
 							console.log(this.categories);
-							console.log('product Landing data: ', data);
-							this.infoService.getThumbnails(response._id).subscribe((data:any)=>{
+							let tempInfoSub = this.infoService.getThumbnails(response._id).subscribe((data:any)=>{
 								this.infoPage = data[0];
-								this.infoService.getMainUpdateListener().subscribe(data => {
-									console.log(data , 'hello')
+								let tempSubInfoSub = this.infoService.getMainUpdateListener().subscribe(data => {
 									this.activeSubPageId = data.pages[0].id;
+									tempSubInfoSub.unsubscribe();
+									
+									tempInfoSub.unsubscribe()
 								})
 								this.infoService.getMainPage(this.infoPage._id)
 								// this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
-	
 						})
 						});
 				});

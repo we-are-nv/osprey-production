@@ -21,15 +21,15 @@ export class SubPageComponent implements OnInit {
 	elements: any;
 
 	ngOnInit(): void {
-		console.log('pageData');
+		this.pageData = undefined;
 		this._Activatedroute.params.subscribe(params => {
 			if(this.subPage == undefined) this.pageId = params['childId'];
 			else this.pageId = this.subPage;
 			this.infoService.getSubPage(this.pageId);
-			this.infoService.getPageListener().subscribe(data => {
+			let pagelisten = this.infoService.getPageListener().subscribe(data => {
 				this.pageData = data;
 				this.elements = this.pageData.elements;
-				console.log(this.elements);
+				pagelisten.unsubscribe();
 			});
 		});
 	}
