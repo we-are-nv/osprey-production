@@ -93,7 +93,7 @@ export class GeneralInfoPageComponent implements OnInit {
 
           pageSub.unsubscribe();
         });
-
+      })
         this.infoService.getMainPage(this.pageId);
       } else {
         this.http
@@ -125,6 +125,8 @@ export class GeneralInfoPageComponent implements OnInit {
           this.infoService.getMainPage(response._id);
         })
       }
+
+
 
     });
 
