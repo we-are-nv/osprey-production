@@ -6,7 +6,7 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './similar-products.component.html',
   styleUrls: ['./similar-products.component.scss']
 })
-export class SimilarProductsComponent implements OnChanges, OnInit{
+export class SimilarProductsComponent implements  OnInit{
   
   
   @Input() categoryId: any;
@@ -22,12 +22,12 @@ export class SimilarProductsComponent implements OnChanges, OnInit{
             console.log(data)
       });
   }
-  ngOnChanges(){
-    console.log(this.categoryId)
+  // ngOnChanges(){
+  //   console.log(this.categoryId)
     
       
-        this.productService.getProducts({category:this.categoryId, page:1, limit:4});
-  }
+  //       this.productService.getProducts({category:this.categoryId, page:1, limit:4});
+  // }
 
   onResize() {
     console.log("hello")

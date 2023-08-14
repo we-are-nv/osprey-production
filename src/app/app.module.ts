@@ -40,6 +40,7 @@ import { NewsComponent } from './pages/news/news.component';
 import { NewsDialogComponent } from './keyComponents/news-dialog/news-dialog.component';
 import { AccreditationsComponent } from './pages/accreditations/accreditations.component';
 import { CarouselSliderComponent } from './keyComponents/carousel-slider/carousel-slider.component';
+import { TableComponent } from './pages/accreditations/table/table.component';
 
 @NgModule({
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -85,6 +86,7 @@ import { CarouselSliderComponent } from './keyComponents/carousel-slider/carouse
 		NewsDialogComponent,
 		AccreditationsComponent,
 		CarouselSliderComponent,
+		TableComponent
 	],
 	providers: [UrlFormatterPipe, provideClientHydration(), ScrollService],
 	bootstrap: [AppComponent]

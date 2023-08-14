@@ -33,6 +33,7 @@ export class ProductLandingComponent implements OnInit {
 		private http: HttpClient
 	) {}
 	ngOnInit(): void {
+		this.customPageInfo = ''
 		this._Activatedroute.paramMap.subscribe(params => {
 			//console.log();
 			this.categoryId = params.get('category');
@@ -55,6 +56,7 @@ export class ProductLandingComponent implements OnInit {
 						.subscribe(singleData => {
 							if (singleData){
 								this.customPageInfo = singleData
+								console.log(this.customPageInfo)
 							}
 							this.customPageInfo = singleData;
 							console.log('singleData: ', singleData);
