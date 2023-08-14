@@ -1,6 +1,7 @@
-<app-hero *ngIf="customPageInfo && customPageInfo !== ''"
-	[mainTitle]="customPageInfo?.data?.info?.heading"
-	[secondaryTitle]="customPageInfo?.data?.info?.sub_heading"
+<app-hero *ngIf="customPageInfo && categoryId !== 'top'"
+	[mainTitle]="customPageInfo?.data?.name"
+	[secondaryTitle]="customPageInfo?.data?.info?.heading"
+	[lowerTitle]="customPageInfo?.data?.info?.sub_heading"
 	[isButtons]="true"
 	[background]="customPageInfo?.data?.info?.banner_image"
 	[button1Data]="{ text: 'See What It Costs', path: '', type: 'white' }"
@@ -12,7 +13,7 @@
 		type: 'white'
 	}"></app-hero>
 
-	<app-hero *ngIf="!customPageInfo && customPageInfo == ''"
+	<app-hero *ngIf="categoryId == 'top'"
 	mainTitle="Products"
 	secondaryTitle="For the most demanding applications"
 	lowerTitle="Paragon Security offers a comprehensive range of security products intended to meet the demanding requirements of clients in the United Kingdom, Europe and the World."
