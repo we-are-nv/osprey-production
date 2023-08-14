@@ -20,14 +20,21 @@ export class SubPageComponent implements OnInit {
 	ngOnInit(): void {
 		console.log('pageData');
 		this._Activatedroute.params.subscribe(params => {
-			this.pageId = params['childId'];
-			console.log(this.pageId);
-			this.infoService.getSubPage(this.pageId);
-			this.infoService.getPageListener().subscribe(data => {
-				this.pageData = data;
-				this.elements = this.pageData.elements;
-				console.log(this.elements);
-			});
+      let renderInfo: any = this._Activatedroute.snapshot.data;
+      let renderType = renderInfo.type;
+      if (renderType == "id") {
+        this.pageId = params['childId'];
+        console.log(this.pageId);
+        this.infoService.getSubPage(this.pageId);
+        this.infoService.getPageListener().subscribe(data => {
+          this.pageData = data;
+          this.elements = this.pageData.elements;
+          console.log(this.elements);
+        });
+      } else {
+
+      }
+
 		});
 	}
 }
