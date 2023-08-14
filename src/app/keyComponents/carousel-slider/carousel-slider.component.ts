@@ -111,9 +111,9 @@ export class CarouselSliderComponent implements OnInit, OnChanges, AfterViewInit
 	onPrev(): void {
 		if (this.currentVisibleGroupIndex > 0) {
 			this.containerTransitionState = 'right';
-			console.log('slideOffset before change: ', this.slideOffset);
+			// console.log('slideOffset before change: ', this.slideOffset);
 			this.slideOffset += 0;
-			console.log('slideOffset after change: ', this.slideOffset);
+			// console.log('slideOffset after change: ', this.slideOffset);
 
 			this.nextVisibleGroupIndex--;
 

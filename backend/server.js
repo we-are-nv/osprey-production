@@ -43,7 +43,7 @@ mongoose
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		minPoolSize: 5,
-		maxPoolSize: 140
+		maxPoolSize: 240
 	})
 	.then(() => {
 		console.log('Connected to Database');

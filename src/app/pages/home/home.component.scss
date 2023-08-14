@@ -61,7 +61,7 @@ p {
 	width: 31%;
 	margin: auto;
 	margin-bottom: 1.2%;
-	
+
 	transition: background-color 500ms linear;
 }
 
@@ -331,10 +331,12 @@ span mat-icon {
 	background-color: white;
 }
 
-.categoryCard h1 {
+.categoryCard h2 {
 	padding-left: 2vh;
 	margin-left: 5%;
 	width: -webkit-fill-available;
+	margin-block-end: 0.2em;
+	margin-block-start: 0.2em;
 }
 
 .categoryCard span {
@@ -343,7 +345,7 @@ span mat-icon {
 	margin-left: 5%;
 	width: auto;
 	display: flex;
-	margin-top: auto;
+	margin-top: 0.4rem;
 	gap: 5%;
 }
 
