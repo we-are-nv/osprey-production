@@ -83,92 +83,14 @@ export class HomeComponent {
 
 		this.infoPageService.getThumbnails('market').subscribe((data: any) => {
 			this.marketsList = data;
-			this.marketsListPart = this.marketsList.slice(
-				this.marketListPosition.first,
-				this.marketListPosition.last
-			);
-			console.log(this.marketsList);
+
 		});
 		this.infoPageService.getThumbnails('service').subscribe((data: any) => {
 			this.serviceList = data;
-			this.serviceListPart = this.serviceList.slice(
-				this.marketListPosition.first,
-				this.marketListPosition.last
-			);
+			this.serviceList.forEach((item)=>[
+				item["type"] = "service"
+			])
 		});
-	}
-
-	rightMove(type: string) {
-		if (
-			type == 'category' &&
-			this.categoryListPart[this.listLength - 1] !==
-				this.productCategories[this.productCategories.length - 1]
-		) {
-			this.categoryListPosition.first += 1;
-			this.categoryListPosition.last += 1;
-			this.categoryListPart = this.productCategories.slice(
-				this.categoryListPosition.first,
-				this.categoryListPosition.last
-			);
-		}
-		if (
-			type == 'market' &&
-			this.marketsListPart[this.listLength - 1] !==
-				this.marketsList[this.marketsList.length - 1]
-		) {
-			this.marketListPosition.first += 1;
-			this.marketListPosition.last += 1;
-			this.marketsListPart = this.marketsList.slice(
-				this.marketListPosition.first,
-				this.marketListPosition.last
-			);
-		}
-		if (
-			type == 'service' &&
-			this.serviceListPart[this.listLength - 1] !==
-				this.serviceList[this.serviceList.length - 1]
-		) {
-			this.serviceListPosition.first += 1;
-			this.serviceListPosition.last += 1;
-			this.serviceListPart = this.serviceList.slice(
-				this.serviceListPosition.first,
-				this.serviceListPosition.last
-			);
-		}
-	}
-	leftMove(type: string) {
-		if (
-			type == 'category' &&
-			this.categoryListPart[0] !== this.productCategories[0]
-		) {
-			this.categoryListPosition.first -= 1;
-			this.categoryListPosition.last -= 1;
-			this.categoryListPart = this.productCategories.slice(
-				this.categoryListPosition.first,
-				this.categoryListPosition.last
-			);
-		}
-		if (type == 'market' && this.marketsListPart[0] !== this.marketsList[0]) {
-			this.marketListPosition.first -= 1;
-			this.marketListPosition.last -= 1;
-			this.marketsListPart = this.marketsList.slice(
-				this.marketListPosition.first,
-				this.marketListPosition.last
-			);
-		}
-		if (type == 'service' && this.serviceListPart[0] !== this.serviceList[0]) {
-			this.serviceListPosition.first -= 1;
-			this.serviceListPosition.last -= 1;
-			this.serviceListPart = this.serviceList.slice(
-				this.serviceListPosition.first,
-				this.serviceListPosition.last
-			);
-		}
-	}
-
-	onCustomPrevClick() {
-		// Call the PrimeNG carousel's prev() method to go to the previous item
-		// this.carousel.prev();
 	}
 	checking(thing: any) {
 		console.log(thing);

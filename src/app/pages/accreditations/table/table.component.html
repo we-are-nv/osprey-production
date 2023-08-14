@@ -1,0 +1,17 @@
+<h1>hello</h1>
+<table>
+    <tr>
+        <th>Header</th>
+        <th >Mark</th>
+        <th >Use</th>
+    </tr>
+
+        <tr *ngFor="let item of tableData" >
+            <ng-container *ngFor="let obj of item.data">
+                <td >{{ obj.Heading }}</td>
+                <td >{{ obj.Mark }}</td>
+                <td>{{ obj.Use }}</td>
+            </ng-container>
+                
+        </tr>
+</table>

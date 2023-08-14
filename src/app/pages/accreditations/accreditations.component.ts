@@ -8,7 +8,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class AccreditationsComponent implements OnInit{
   
-  displayedColumns: string[] = ['Header', 'Mark', 'Use'];
+  displayedColumns: string[] = ['header', 'mark', 'use'];
   constructor(private accreditationsService: DatabaseService){}
   atex: any = [];
   ngOnInit(){

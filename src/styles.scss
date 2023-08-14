@@ -122,11 +122,14 @@ mat-card {
 .categoryCard:hover {
   border: 1px solid #eaeaea !important
 }
-
+.slide{
+  background-color: transparent!important;
+}
 .productCard:hover,
 .card-bottom:hover ,
-.categoryCard:hover{
-  background-color: #0065E7;
+.categoryCard:hover,
+.slide:hover{
+  background-color: #0065E7 !important;
   color: white;
 }
 
