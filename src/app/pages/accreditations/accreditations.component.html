@@ -14,27 +14,16 @@
     extraStyle="shorterHero"
     ></app-hero>
 
-<section class="container">
-	<mat-card class="table">
-		<table>
-			<tr>
-				<th>Header</th>
-				<th >Mark</th>
-				<th >Use</th>
-			</tr>
+	
+	<section class="bonus-cards">
+		<app-bonus-card card="news"></app-bonus-card>
+	</section>
 
-				<tr *ngFor="let item of atex" >
-					<ng-container *ngFor="let obj of item.data">
-						<td >{{ obj.Heading }}</td>
-						<td >{{ obj.Mark }}</td>
-						<td>{{ obj.Use }}</td>
-					</ng-container>
+	<section class="info-side">
+		<div class="news-card-wrapper">
+			<mat-card class="table">
+				<app-table></app-table>
 						
-				</tr>
-		</table>
-				
-	</mat-card>
-	
-	
-	
-</section>
+			</mat-card>
+		</div>
+	</section>

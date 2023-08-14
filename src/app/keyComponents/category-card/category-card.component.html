@@ -3,7 +3,7 @@
 	fxLayout="row wrap"
 	fxLayoutAlign="flex-start">
 	<mat-card
-		class="categoryCard mat-elevation-z0 selectable noBoxShadow noElevation"
+		class="categoryCard mat-elevation-z0 selectable noBoxShadow noElevation dontShow-{{category.frontPage}}"
 		(click)="
 			loadCat(
 				category._id,
