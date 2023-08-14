@@ -113,7 +113,7 @@ export class GeneralInfoPageComponent implements OnInit {
             this.activeSubPageId = this.subPages[0].id;
             console.log(data)
             if (data.suggestProducts) {
-              this.suggestedProducts = `info-${data._id}`
+              //this.suggestedProducts = `info-${data._id}`
             }
             this.router.navigate([
               `/info/${this.pageType}/${this.pageId}/${response.activeSub}`

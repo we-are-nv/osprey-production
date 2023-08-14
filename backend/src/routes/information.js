@@ -375,28 +375,34 @@ router.get('/single', async (req, res) => {
 });
 
 router.get('/page', async (req, res) => {
-	const foundPage = await informationPage.findOne({ _id: req.query.id });
-	if (!foundPage) {
-		return res.status(404).json({ message: 'page not found' });
-	}
+  try {
+    const foundPage = await informationPage.findOne({ _id: req.query.id });
+    if (!foundPage) {
+      return res.status(404).json({ message: 'page not found' });
+    }
 
-	if (!foundPage._doc.elements) {
-		return res.status(404).json({ message: 'Page elements not found' });
-	} else {
-		var pageElements = foundPage._doc.elements;
-	}
+    if (!foundPage._doc.elements) {
+      return res.status(404).json({ message: 'Page elements not found' });
+    } else {
+      var pageElements = foundPage._doc.elements;
+    }
 
-	for (idx in pageElements) {
-		if (pageElements[idx].type == 'image') {
-			pageElements[idx].src.forEach(function (item, pIdx) {
-				pageElements[idx].src[
-					pIdx
-				] = `${process.env.S3_BASE}${pageElements[idx].src[pIdx]}`;
-			});
-		}
-	}
+    for (idx in pageElements) {
+      if (pageElements[idx].type == 'image') {
+        pageElements[idx].src.forEach(function (item, pIdx) {
+          pageElements[idx].src[
+            pIdx
+          ] = `${process.env.S3_BASE}${pageElements[idx].src[pIdx]}`;
+        });
+      }
+    }
 
-	res.json(foundPage);
+    res.json(foundPage);
+  } catch (err){
+    res.sendStatus(500);
+    console.log(err)
+  }
+
 });
 
 router.get('/all', checkAuth, async (req, res) => {
@@ -483,10 +489,9 @@ router.get('/convert-route', async (req, res) => {
         $regex: new RegExp("^" + splitName.toLowerCase(), "i")
       },"type":req.query.type});
       if (foundInfo) {
-        var convertedActuveIdRaw = foundInfo.pages[0].id;
-        var convertedActuveId = convertedActuveIdRaw.substr(foundInfo.pages[0].id.length - 4);
-
-        res.json({ _id: foundInfo._id,activeSub:convertedActuveId })
+        var convertedActuveIdRaw = foundInfo.pages[0].id.toString();
+        var convertedActuveId = convertedActuveIdRaw.substr(foundInfo.pages[0].id.toString().length - 4);
+        res.json({ _id: foundInfo._id,activeSub:`${convertedActuveId}-${foundInfo.pages[0].name.toLowerCase()}` })
       } else {
         res.json({ err: 'prod not found' })
       }
@@ -495,7 +500,19 @@ router.get('/convert-route', async (req, res) => {
       var convertedName = foundProduct.name.split(" ").join("-").toLowerCase();
       res.json({ name: convertedName });
 
-    } else {
+    } else if (req.query.activeSub) {
+      const allPages = await informationPage.find({ ['name']: { $regex: req.query.activeSub.split("-")[1], $options: 'i' } });
+      for (idx in allPages){
+        var convertedId = allPages[idx]._id.toString();
+        var converted = convertedId.substr(convertedId.length - 4);
+
+        if (converted == req.query.activeSub.split("-")[0]){
+          res.json({_id:allPages[idx]._id})
+        }
+      };
+    }
+
+    else {
       res.json({ 'err': 'invalid params' });
     }
   } catch (error) {
