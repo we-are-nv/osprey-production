@@ -279,229 +279,229 @@ router.get('/product_info', async (req, res) => {
 /*
 Create Product
 */
-router.post('/', checkAuth, async (req, res, next) => {
-  const foundModel = await productModels.findOne({
-    type_name: req.body.modelName
-  });
-  if (foundModel == null) {
-    res.json({ error: 'ModelDosentExist' });
-    return;
-  };
+// router.post('/', checkAuth, async (req, res, next) => {
+//   const foundModel = await productModels.findOne({
+//     type_name: req.body.modelName
+//   });
+//   if (foundModel == null) {
+//     res.json({ error: 'ModelDosentExist' });
+//     return;
+//   };
 
-  //Ensure Additional Info Model Matches Given Model
-  var bodyObjectKeys = Object.keys(req.body.additInfo);
-  var modelObjectKeys = Object.keys(foundModel.data);
+//   //Ensure Additional Info Model Matches Given Model
+//   var bodyObjectKeys = Object.keys(req.body.additInfo);
+//   var modelObjectKeys = Object.keys(foundModel.data);
 
-  // Soft Check Keys Match
-  if (modelObjectKeys.filter(x => !bodyObjectKeys.includes(x)).length > 0) {
-    res.json({
-      error: 'InvalidModel',
-      missing: modelObjectKeys.filter(x => !bodyObjectKeys.includes(x))
-    });
-    return;
-  }
+//   // Soft Check Keys Match
+//   if (modelObjectKeys.filter(x => !bodyObjectKeys.includes(x)).length > 0) {
+//     res.json({
+//       error: 'InvalidModel',
+//       missing: modelObjectKeys.filter(x => !bodyObjectKeys.includes(x))
+//     });
+//     return;
+//   }
 
-  // TODO Hard Check Internal Keys (is it needed?)
+//   // TODO Hard Check Internal Keys (is it needed?)
 
-  //Create and Send AdditInfo and get ObjectKey
-  var newAdditInfo = new product_addit_info({
-    info: req.body.additInfo,
-    modelName: req.body.modelName
-  });
-  const createdAdditInfo = await newAdditInfo.save();
-  var additInfoId = createdAdditInfo._id;
+//   //Create and Send AdditInfo and get ObjectKey
+//   var newAdditInfo = new product_addit_info({
+//     info: req.body.additInfo,
+//     modelName: req.body.modelName
+//   });
+//   const createdAdditInfo = await newAdditInfo.save();
+//   var additInfoId = createdAdditInfo._id;
 
-  // Create Object ID for new Document
-  var newProductID = new mongoose.Types.ObjectId();
+//   // Create Object ID for new Document
+//   var newProductID = new mongoose.Types.ObjectId();
 
-  //Predict Image URLs
-  var predictedImageURL = `/products/${req.body.category}/images/main/${newProductID}`;
-  var predictedTechImageURLs = [];
+//   //Predict Image URLs
+//   var predictedImageURL = `/products/${req.body.category}/images/main/${newProductID}`;
+//   var predictedTechImageURLs = [];
 
-  // Handle Multiple Technical Images
-  for (imgIdx in req.body.tech_img) {
-    s3Controller.uploadBase(
-      req.body.modelName,
-      req.body.category,
-      Number(imgIdx) + 1,
-      req.body.tech_img[imgIdx],
-      `tech/${newProductID}`
-    );
-    var tech_img_url = `/products/${req.body.category}/images/tech/${newProductID}/${Number(imgIdx) + 1}`;
-    predictedTechImageURLs.push(tech_img_url);
-  }
+//   // Handle Multiple Technical Images
+//   for (imgIdx in req.body.tech_img) {
+//     s3Controller.uploadBase(
+//       req.body.modelName,
+//       req.body.category,
+//       Number(imgIdx) + 1,
+//       req.body.tech_img[imgIdx],
+//       `tech/${newProductID}`
+//     );
+//     var tech_img_url = `/products/${req.body.category}/images/tech/${newProductID}/${Number(imgIdx) + 1}`;
+//     predictedTechImageURLs.push(tech_img_url);
+//   }
 
-  //Inject Additional Fields Into Main Info
-  var finalMainObj = {
-    ...req.body.mainInfo,
-    image: predictedImageURL,
-    tech_drawings: predictedTechImageURLs,
+//   //Inject Additional Fields Into Main Info
+//   var finalMainObj = {
+//     ...req.body.mainInfo,
+//     image: predictedImageURL,
+//     tech_drawings: predictedTechImageURLs,
 
-    category: new mongoose.Types.ObjectId(req.body.category),
-    additional_information: new mongoose.Types.ObjectId(additInfoId)
-  };
+//     category: new mongoose.Types.ObjectId(req.body.category),
+//     additional_information: new mongoose.Types.ObjectId(additInfoId)
+//   };
 
-  var newMainObj = new product_info({
-    _id: newProductID,
-    ...finalMainObj
-  });
+//   var newMainObj = new product_info({
+//     _id: newProductID,
+//     ...finalMainObj
+//   });
 
-  // Save New Product
-  const createdNewProd = await newMainObj.save();
+//   // Save New Product
+//   const createdNewProd = await newMainObj.save();
 
-  // Upload Images to AWS S3 Bucket
+//   // Upload Images to AWS S3 Bucket
 
-  s3Controller.uploadBase(
-    req.body.modelName,
-    req.body.category,
-    newProductID,
-    req.body.img,
-    'main'
-  );
+//   s3Controller.uploadBase(
+//     req.body.modelName,
+//     req.body.category,
+//     newProductID,
+//     req.body.img,
+//     'main'
+//   );
 
-  res.json({
-    message: 'Product Added',
-    product: createdNewProd,
-    adiit: createdAdditInfo
-  });
-});
+//   res.json({
+//     message: 'Product Added',
+//     product: createdNewProd,
+//     adiit: createdAdditInfo
+//   });
+// });
 
-/*
-Update Product
-*/
+// /*
+// Update Product
+// */
 
-router.put('/', checkAuth, async (req, res) => {
-  if (!req.query.id) {
-    res.json({ error: 'Please enter valid ID' });
-    return;
-  }
-  try {
-    const foundProduct = await product_info.findOne({ _id: req.query.id });
+// router.put('/', checkAuth, async (req, res) => {
+//   if (!req.query.id) {
+//     res.json({ error: 'Please enter valid ID' });
+//     return;
+//   }
+//   try {
+//     const foundProduct = await product_info.findOne({ _id: req.query.id });
 
-    if (req.body.main) {
-      console.log('Changes to be made to main Product!');
-      var product_info_keys = new Array();
-      product_info.schema.eachPath(function (path) {
-        product_info_keys.push(path);
-      });
-      var bodyKeys = Object.keys(req.body.main);
-      for (idx in bodyKeys) {
-        if (
-          !product_info_keys.includes(bodyKeys[idx]) &&
-          bodyKeys[idx] != 'tech_drawing_add' &&
-          bodyKeys[idx] != 'tech_drawing_remove'
-        ) {
-          res.json({ error: 'Invalid Body', field: bodyKeys[idx] });
-          return;
-        }
-      }
+//     if (req.body.main) {
+//       console.log('Changes to be made to main Product!');
+//       var product_info_keys = new Array();
+//       product_info.schema.eachPath(function (path) {
+//         product_info_keys.push(path);
+//       });
+//       var bodyKeys = Object.keys(req.body.main);
+//       for (idx in bodyKeys) {
+//         if (
+//           !product_info_keys.includes(bodyKeys[idx]) &&
+//           bodyKeys[idx] != 'tech_drawing_add' &&
+//           bodyKeys[idx] != 'tech_drawing_remove'
+//         ) {
+//           res.json({ error: 'Invalid Body', field: bodyKeys[idx] });
+//           return;
+//         }
+//       }
 
-      if (bodyKeys.includes('image')) {
-        s3Controller.uploadBase(
-          foundProduct.modelUsed,
-          foundProduct.category,
-          foundProduct._id,
-          req.body.main.image,
-          'main'
-        );
-        req.body.main.image = foundProduct.image;
-      }
-      if (
-        bodyKeys.includes('tech_drawing_add') ||
-        bodyKeys.includes('tech_drawing_remove')
-      ) {
-        const originalTechImagesArr = foundProduct.tech_drawings;
-        if (bodyKeys.includes('tech_drawing_add')) {
-          var addTech = req.body.main.tech_drawing_add;
-          for (addTechIdx in addTech) {
-            var predictedURL = `/products/${foundProduct.category}/${foundProduct.modelUsed
-              }/images/tech/${foundProduct._id}/${Number(originalTechImagesArr.length) + 1
-              }`;
-            s3Controller.uploadBase(
-              foundProduct.modelUsed,
-              foundProduct.category,
-              Number(originalTechImagesArr.length) + 1,
-              addTech[addTechIdx],
-              `tech/${foundProduct._id}`
-            );
-            originalTechImagesArr.push(predictedURL);
-          }
+//       if (bodyKeys.includes('image')) {
+//         s3Controller.uploadBase(
+//           foundProduct.modelUsed,
+//           foundProduct.category,
+//           foundProduct._id,
+//           req.body.main.image,
+//           'main'
+//         );
+//         req.body.main.image = foundProduct.image;
+//       }
+//       if (
+//         bodyKeys.includes('tech_drawing_add') ||
+//         bodyKeys.includes('tech_drawing_remove')
+//       ) {
+//         const originalTechImagesArr = foundProduct.tech_drawings;
+//         if (bodyKeys.includes('tech_drawing_add')) {
+//           var addTech = req.body.main.tech_drawing_add;
+//           for (addTechIdx in addTech) {
+//             var predictedURL = `/products/${foundProduct.category}/${foundProduct.modelUsed
+//               }/images/tech/${foundProduct._id}/${Number(originalTechImagesArr.length) + 1
+//               }`;
+//             s3Controller.uploadBase(
+//               foundProduct.modelUsed,
+//               foundProduct.category,
+//               Number(originalTechImagesArr.length) + 1,
+//               addTech[addTechIdx],
+//               `tech/${foundProduct._id}`
+//             );
+//             originalTechImagesArr.push(predictedURL);
+//           }
 
-          //req.body.main.tech_drawing = foundProduct.tech_drawing;
-        }
-        if (bodyKeys.includes('tech_drawing_remove')) {
-          var remove_tech = req.body.main.tech_drawing_remove;
-          for (idx in remove_tech) {
-            originalTechImagesArr.splice(Number(remove_tech[idx]) - 1);
-            var predictedURL = `products/${foundProduct.category}/${foundProduct.modelUsed}/images/tech/${foundProduct._id}/${remove_tech[idx]}`;
-            console.log(predictedURL);
-            s3Controller.deleteImage(predictedURL);
-          }
-        }
-        req.body.main['tech_drawings'] = originalTechImagesArr;
-      }
+//           //req.body.main.tech_drawing = foundProduct.tech_drawing;
+//         }
+//         if (bodyKeys.includes('tech_drawing_remove')) {
+//           var remove_tech = req.body.main.tech_drawing_remove;
+//           for (idx in remove_tech) {
+//             originalTechImagesArr.splice(Number(remove_tech[idx]) - 1);
+//             var predictedURL = `products/${foundProduct.category}/${foundProduct.modelUsed}/images/tech/${foundProduct._id}/${remove_tech[idx]}`;
+//             console.log(predictedURL);
+//             s3Controller.deleteImage(predictedURL);
+//           }
+//         }
+//         req.body.main['tech_drawings'] = originalTechImagesArr;
+//       }
 
-      //const updatedProd = await product_info.findOneAndUpdate({ _id: req.query.id },req.body.main);
-    }
+//       //const updatedProd = await product_info.findOneAndUpdate({ _id: req.query.id },req.body.main);
+//     }
 
-    if (req.body.adit) {
-      const updatedAdit = await product_addit_info.findOneAndUpdate(
-        { _id: foundProduct.additional_information },
-        { info: req.body.adit }
-      );
-    }
-    res.json({
-      message: 'Product Updated!',
-      updatedFieldsMain: req.body.main,
-      updatedFieldsAditt: req.body.adit
-    });
-    return;
-  } catch (error) {
-    res.json({ message: 'An error has occured', error: error });
-  }
-});
+//     if (req.body.adit) {
+//       const updatedAdit = await product_addit_info.findOneAndUpdate(
+//         { _id: foundProduct.additional_information },
+//         { info: req.body.adit }
+//       );
+//     }
+//     res.json({
+//       message: 'Product Updated!',
+//       updatedFieldsMain: req.body.main,
+//       updatedFieldsAditt: req.body.adit
+//     });
+//     return;
+//   } catch (error) {
+//     res.json({ message: 'An error has occured', error: error });
+//   }
+// });
 
-/*
-Delete Product
-*/
+// /*
+// Delete Product
+// */
 
-router.delete('/', checkAuth, async (req, res) => {
-  if (!req.query.id) {
-    res.json({ error: 'Please enter valid ID' });
-    return;
-  }
-  try {
-    const foundProduct = await product_info.findOne({ _id: req.query.id });
-    console.log(foundProduct);
-    // Find Images
-    var mainImageToDeleteArray = foundProduct.image.split('/');
-    var techImageToDeleteArray = foundProduct.tech_drawing.split('/');
+// router.delete('/', checkAuth, async (req, res) => {
+//   if (!req.query.id) {
+//     res.json({ error: 'Please enter valid ID' });
+//     return;
+//   }
+//   try {
+//     const foundProduct = await product_info.findOne({ _id: req.query.id });
+//     console.log(foundProduct);
+//     // Find Images
+//     var mainImageToDeleteArray = foundProduct.image.split('/');
+//     var techImageToDeleteArray = foundProduct.tech_drawing.split('/');
 
-    //Remove First Item from Arrays
-    mainImageToDeleteArray.shift();
-    techImageToDeleteArray.shift();
+//     //Remove First Item from Arrays
+//     mainImageToDeleteArray.shift();
+//     techImageToDeleteArray.shift();
 
-    // Create S3 Readable Paths
-    var mainImageToDelete = mainImageToDeleteArray.join('/');
-    var techImageToDelete = techImageToDeleteArray.join('/');
+//     // Create S3 Readable Paths
+//     var mainImageToDelete = mainImageToDeleteArray.join('/');
+//     var techImageToDelete = techImageToDeleteArray.join('/');
 
-    // Send Delete Command to S3 Controller
-    s3Controller.deleteImage(mainImageToDelete);
-    s3Controller.deleteImage(techImageToDelete);
+//     // Send Delete Command to S3 Controller
+//     s3Controller.deleteImage(mainImageToDelete);
+//     s3Controller.deleteImage(techImageToDelete);
 
-    // Delet Prods Additional Info First
-    const deletedAditInfo = await product_addit_info.findByIdAndDelete({
-      _id: foundProduct.additional_information
-    });
+//     // Delet Prods Additional Info First
+//     const deletedAditInfo = await product_addit_info.findByIdAndDelete({
+//       _id: foundProduct.additional_information
+//     });
 
-    //Delete Main Prod
-    const deletedProd = await product_info.findByIdAndDelete({ _id: req.query.id });
+//     //Delete Main Prod
+//     const deletedProd = await product_info.findByIdAndDelete({ _id: req.query.id });
 
-    res.json({ message: 'Deleted Product' });
-  } catch (error) {
-    res.json({ message: 'An error has occured', error: error });
-  }
-});
+//     res.json({ message: 'Deleted Product' });
+//   } catch (error) {
+//     res.json({ message: 'An error has occured', error: error });
+//   }
+// });
 
 /*
 Search For Products
