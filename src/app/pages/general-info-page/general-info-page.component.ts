@@ -19,6 +19,7 @@ export class GeneralInfoPageComponent implements OnInit {
 	@Input() isHero: boolean = true;
 	@Input() type: string;
 	@Input() page: string;
+	@Input() subPage: string
 	pageType: string;
 	pageId: string;
 
@@ -45,7 +46,7 @@ export class GeneralInfoPageComponent implements OnInit {
     this._Activatedroute.params.subscribe(params => {
       let renderInfo: any = this._Activatedroute.snapshot.data;
       let renderType = renderInfo.type;
-      if(this.type == undefined){
+      if ((this.type == undefined) || (this.pageId == undefined)){
 				this.pageType = params['type'];
 				this.pageId = params['id'];
 			}else{
@@ -60,6 +61,21 @@ export class GeneralInfoPageComponent implements OnInit {
 
           siblingSub.unsubscribe();
         });
+			// Get Main Page
+			let pageSub = this.infoService.getMainUpdateListener().subscribe(data => {
+				this.pageData = data;
+				this.subPages = data.pages;
+				this.bonusCards = data.bonus_cards;
+				if (this.subPage !== undefined) this.activeSubPageId = this.subPages[0].id;
+				else this.activeSubPageId = this.subPage
+
+        console.log(data)
+        if (data.suggestProducts){
+          this.suggestedProducts = `info-${data._id}`
+        }
+				this.router.navigate([
+					`${this.activeSubPageId}`
+				]);
 
         // Get Main Page
         let pageSub = this.infoService.getMainUpdateListener().subscribe(data => {

@@ -4,8 +4,8 @@
 	[lowerTitle]="customPageInfo?.data?.info?.sub_heading"
 	[isButtons]="true"
 	[background]="customPageInfo?.data?.info?.banner_image"
-	[button1Data]="{ text: 'See What It Costs', path: '', type: 'white' }"
-	[button2Data]="{ text: 'Protect My Home', path: '', type: 'outline' }"
+	[button1Data]="{ text: 'See What It Costs', path: 'contactForm', type: 'white' }"
+	[button2Data]="{ text: 'Protect My Home', path: 'https://stackoverflow.com/questions/45581336/how-can-i-use-relativeto-property-in-html-template-along-with-routeractive', type: 'outline' }"
 	[centred]="false"
 	[button3Data]="{
 		text: 'Explore Our Services',
@@ -63,7 +63,7 @@
 		*ngIf="categoryId !== 'top'"
 		routerLink="/search/{{ categoryId }}">
 		Show All Products
-		<mat-icon
+		<mat-icon	
 			class="buttonIcon"
 			iconPositionEnd
 			>arrow_forward_ios</mat-icon
@@ -73,7 +73,10 @@
 		[cards]="categories"
 		(catRouting)="getNewCats($event)"></app-category-card>
 </section>
-<app-general-info-page *ngIf="categoryId !== '' && infoPage !== undefined" [isHero]="false" [type]='categoryId' [page]="infoPage">
+<section class="subPage">
+	<app-sub-page *ngIf="categoryId !== 'top' && activeSubPageId !== undefined"  [subPage]="activeSubPageId">
 
-</app-general-info-page>
+	</app-sub-page>
+</section>
+
 <app-quote-form></app-quote-form>
