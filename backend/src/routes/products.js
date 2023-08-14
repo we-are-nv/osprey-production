@@ -59,7 +59,7 @@ router.get('/product_info', async (req, res) => {
     res.json({ error: 'Please Enter a valid product category' });
     return;
   };
-  if (req.query.category.includes('info-')){
+  if (req.query.category && req.query.category.includes('info-')){
     console.log(req.query.category.split("-")[1]);
     const foundInfo = await information.findOne({_id:req.query.category.split("-")[1]})
     console.log()
