@@ -13,3 +13,91 @@
     background: #0065E7;
     border-radius: 0px;
 }
+.subPage{
+    width: 80vw;
+    margin: auto;
+    margin-top: 5vh;
+}
+*{
+    font-family: 'roboto';
+}
+#container{
+    padding-bottom: 10vh;
+}
+
+h1{
+    margin-top:5vh;
+    font-size: 1.75rem;
+    margin-block-start: 0;
+}
+
+p{
+    color: #9B9B9B;
+}
+.bulletPoint-text{
+
+  list-style-type: disc;
+}
+
+// Modular Styling Clases
+.image-Section{
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
+
+}
+.image-Section .image{
+    max-width: 30%;
+    max-height: 30vh;
+}
+
+// Drop Down Items
+.dropdown-section{
+    border-top: 3px solid #EAEAEA;
+    box-shadow: none;
+}
+.expansion-image{
+    margin-right: 5vw;
+}
+
+.expanded{
+
+    animation: openAnimation 0.5s;
+    transform:rotate(90deg);
+}
+.closed{
+    animation: closeAnimation 0.5s;
+    transform:rotate(0deg);
+}
+
+// Similar Products
+.similarProductsContainer{
+    width: 90%;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+
+@keyframes openAnimation{
+    from{
+        transform: rotate(0deg)
+    }
+    to {
+        transform: transform(90deg);
+    }
+}
+
+@keyframes closeAnimation{
+    from{
+        transform: rotate(90deg);
+    }
+    to {
+        transform: transform(0deg)
+    }
+}
+
+@media screen and (max-width: 750px) {
+    h1{
+        text-align: center;
+    }
+}

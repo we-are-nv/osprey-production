@@ -1,5 +1,5 @@
 <app-hero
-	*ngIf="pageData !== undefined"
+	*ngIf="pageData !== undefined && isHero == true"
 	[mainTitle]="pageData.name"
 	[secondaryTitle]="pageData.secondry_title"
 	[lowerTitle]="pageData.lower_title"

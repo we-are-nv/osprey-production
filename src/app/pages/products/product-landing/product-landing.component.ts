@@ -28,6 +28,7 @@ export class ProductLandingComponent implements OnInit {
 	categorySub: any;
 	categories: any = [];
 	infoPage: any;
+	activeSubPageId: any;
 
 	constructor(
 		private productService: ProductService,
@@ -74,7 +75,11 @@ export class ProductLandingComponent implements OnInit {
 							console.log('product Landing data: ', data);
 							this.infoService.getThumbnails(response._id).subscribe((data:any)=>{
 								this.infoPage = data[0];
-								console.log(this.infoPage)
+								this.infoService.getMainUpdateListener().subscribe(data => {
+									console.log(data , 'hello')
+									this.activeSubPageId = data.pages[0].id;
+								})
+								this.infoService.getMainPage(this.infoPage._id)
 								// this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
 	
 						})

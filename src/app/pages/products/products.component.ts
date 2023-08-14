@@ -86,7 +86,7 @@ export class ProductsComponent implements OnInit {
 							let firstPage = data[0];
 	
 							console.log(firstPage)
-							// this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
+							this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
 
 					})
 					// this.infoPageService.navGetPage(this.category._id).subscribe((data: any) => {

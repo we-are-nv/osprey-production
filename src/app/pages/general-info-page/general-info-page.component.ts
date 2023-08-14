@@ -17,6 +17,7 @@ export class GeneralInfoPageComponent implements OnInit {
 	@Input() isHero: boolean = true;
 	@Input() type: string;
 	@Input() page: string;
+	@Input() subPage: string
 	pageType: string;
 	pageId: string;
 
@@ -42,7 +43,7 @@ export class GeneralInfoPageComponent implements OnInit {
 
 
 		this._Activatedroute.params.subscribe(params => {
-			if(this.type == undefined){
+			if ((this.type == undefined) || (this.pageId == undefined)){
 				this.pageType = params['type'];
 				this.pageId = params['id'];
 			}else{
@@ -62,13 +63,15 @@ export class GeneralInfoPageComponent implements OnInit {
 				this.pageData = data;
 				this.subPages = data.pages;
 				this.bonusCards = data.bonus_cards;
-				this.activeSubPageId = this.subPages[0].id;
+				if (this.subPage !== undefined) this.activeSubPageId = this.subPages[0].id;
+				else this.activeSubPageId = this.subPage
+				
         console.log(data)
         if (data.suggestProducts){
           this.suggestedProducts = `info-${data._id}`
         }
 				this.router.navigate([
-					`/info-page/${this.pageType}/${this.pageId}/${this.activeSubPageId}`
+					`${this.activeSubPageId}`
 				]);
 
 				pageSub.unsubscribe();
