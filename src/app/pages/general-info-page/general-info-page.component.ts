@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InfoPageService } from 'src/app/services/info-page.service';
 
@@ -13,6 +13,10 @@ export class GeneralInfoPageComponent implements OnInit {
 		private infoService: InfoPageService,
 		private router: Router
 	) {}
+
+	@Input() isHero: boolean = true;
+	@Input() type: string;
+	@Input() page: string;
 	pageType: string;
 	pageId: string;
 
@@ -38,8 +42,14 @@ export class GeneralInfoPageComponent implements OnInit {
 
 
 		this._Activatedroute.params.subscribe(params => {
-			this.pageType = params['type'];
-			this.pageId = params['id'];
+			if(this.type == undefined){
+				this.pageType = params['type'];
+				this.pageId = params['id'];
+			}else{
+				this.pageType = this.type
+				this.pageId = this.page;
+			}
+			
 
 			let siblingSub = this.infoService.getThumbnails(this.pageType).subscribe((data: any) => {
 				this.siblingPages = data;

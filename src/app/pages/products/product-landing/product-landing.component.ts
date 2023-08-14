@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ProductService } from 'src/app/services/product.service';
 import { environment } from 'src/environments/environment';
+import { InfoPageService } from 'src/app/services/info-page.service';
 @Component({
 	selector: 'app-product-landing',
 	templateUrl: './product-landing.component.html',
@@ -26,11 +27,14 @@ export class ProductLandingComponent implements OnInit {
 
 	categorySub: any;
 	categories: any = [];
+	infoPage: any;
+
 	constructor(
 		private productService: ProductService,
 		private router: Router,
 		private _Activatedroute: ActivatedRoute,
-		private http: HttpClient
+		private http: HttpClient,
+		private infoService: InfoPageService
 	) {}
 	ngOnInit(): void {
 		this.customPageInfo = ''
@@ -68,9 +72,12 @@ export class ProductLandingComponent implements OnInit {
 							this.categories = data.cats;
 							console.log(this.categories);
 							console.log('product Landing data: ', data);
-							if (this.categories.length < 1) {
-								//this.loadProds(this.categoryId);
-							}
+							this.infoService.getThumbnails(response._id).subscribe((data:any)=>{
+								this.infoPage = data[0];
+								console.log(this.infoPage)
+								// this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
+	
+						})
 						});
 				});
 		});

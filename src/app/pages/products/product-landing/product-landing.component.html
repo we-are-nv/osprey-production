@@ -73,5 +73,7 @@
 		[cards]="categories"
 		(catRouting)="getNewCats($event)"></app-category-card>
 </section>
+<app-general-info-page *ngIf="categoryId !== '' && infoPage !== undefined" [isHero]="false" [type]='categoryId' [page]="infoPage">
 
+</app-general-info-page>
 <app-quote-form></app-quote-form>
