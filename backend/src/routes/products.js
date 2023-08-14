@@ -58,7 +58,8 @@ router.get('/product_info', async (req, res) => {
     res.json({ error: 'Please Enter a valid product category', query: [req.query, req.originalUrl],  });
     return;
   };
-  if (req.query.category.includes('info-')){
+  if (req.query.category && req.query.category.includes('info-')){
+    console.log('TRIGGERED ALT')
     console.log(req.query.category.split("-")[1]);
     const foundInfo = await information.findOne({_id:req.query.category.split("-")[1]})
     console.log()
@@ -173,9 +174,9 @@ router.get('/product_info', async (req, res) => {
       additQuery = { category: new mongoose.Types.ObjectId(catQuery[0]) };
       console.log(catQuery)
     } else {
-      additQuery = {category : []};
+      additQuery = {category : { $in:[]}};
       for (cIdx in catQuery) {
-        additQuery.category.push(new mongoose.Types.ObjectId(catQuery[cIdx]));
+        additQuery.category['$in'].push(new mongoose.Types.ObjectId(catQuery[cIdx]));
       };
     }
     if (subCat != '') {
@@ -183,7 +184,8 @@ router.get('/product_info', async (req, res) => {
     }
   }
   // Determine count for Pagination
-
+  console.log('ADDIT')
+  console.log(additQuery)
   const count = await allProducts.count(additQuery, selectOptions);
   const result = await allProducts
     .find(additQuery, selectOptions)
