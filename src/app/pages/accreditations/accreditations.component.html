@@ -15,27 +15,26 @@
     ></app-hero>
 
 <section class="container">
-    <table *ngFor="let item of atex" mat-table [dataSource]="item.data" class="mat-elevation-z8">
+	<mat-card class="table">
+		<table>
+			<tr>
+				<th>Header</th>
+				<th >Mark</th>
+				<th >Use</th>
+			</tr>
 
-		<!--- Note that these columns can be defined in any order.
-			  The actual rendered columns are set as a property on the row definition" -->
-	  
-		<!-- Position Column -->
-		<ng-container matColumnDef="Header">
-		  <th mat-header-cell *matHeaderCellDef> Header </th>
-		  <td mat-cell *matCellDef="let element"> {{element.Heading}} </td>
-		</ng-container>
-
-		<ng-container matColumnDef="Mark">
-			<th mat-header-cell *matHeaderCellDef> Mark </th>
-			<td mat-cell *matCellDef="let element"> {{element.Mark}} </td>
-		  </ng-container>
-
-		  <ng-container matColumnDef="Use">
-			<th mat-header-cell *matHeaderCellDef> Use </th>
-			<td mat-cell *matCellDef="let element"> {{element.Use}} </td>
-		  </ng-container>
-		  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
- 		 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-	  </table>
+				<tr *ngFor="let item of atex" >
+					<ng-container *ngFor="let obj of item.data">
+						<td >{{ obj.Heading }}</td>
+						<td >{{ obj.Mark }}</td>
+						<td>{{ obj.Use }}</td>
+					</ng-container>
+						
+				</tr>
+		</table>
+				
+	</mat-card>
+	
+	
+	
 </section>
