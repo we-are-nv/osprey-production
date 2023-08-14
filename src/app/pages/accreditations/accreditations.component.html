@@ -13,17 +13,43 @@
     [centred]="true"
     extraStyle="shorterHero"
     ></app-hero>
+	<!-- <app-table [tableData]="atex"></app-table> -->
+			<mat-card class="table">
+				<mat-card-header>
+					<mat-card-title>
+						<h1>Atex</h1>
+					</mat-card-title>
+				</mat-card-header>
+				<p>When electronic or electrical equipment of any type is intended for use in a hazardous area, it must be ATEX certified as required by the EU directive 94/9/EC (the ATEX directive (ATmospheres EXplosives).  Products for use in hazardous areas need to comply with ISO/IEC 80079-34:2018 which defines the quality system required to manufacture Ex products in accordance with the relevant certifications. In Europe, ATEX certification of products for use in potentially hazardous atmospheres is compulsory.  Hazardous areas exist where a potentially explosive mix of air and flammable gasses or air and dust or air, dust and gasses may occur. Outside the EU, similar regulations apply under the IECEX certification syste, <a href="https://www.iecex.com/assets/Uploads/Video/IECEx-Introduction-Animation-2021-MP4-1080G.mp4">see video here</a>.  In North America, products must be listed by UL as suitable for use in hazardous atmospheres. Whilst ATEX and IECEX certification systems are similar, the North American approach is different (see area classification below).</p>
+				
+
+				<h3>Classification of equipment</h3>
+					<p>The ATEX directive classifies equipment into groups and categories which is shown on the ATEX product marking table below.</p>
+			</mat-card>
+
+			<mat-card>
+				<mat-card-header>
+					<mat-card-title>
+						<h3>Classification of an area</h3>
+					</mat-card-title>
+				</mat-card-header>
+				<p>Hazardous areas are divided into Zones (European and IECEX method) or Classes and Divisions (North American method) according to the likelihood of a potentially explosive atmosphere being present.</p>
+				<table>
+					<tr>
+						<th >Header</th>
+						<th >Mark</th>
+						<th >Use</th>
+					</tr>
+				
+						<tr >
+								<td >Zone 0 (gases)</td>
+								<td>Zone 20 (dusts) </td>
+								<td >An area in which an explosive mixture is continuously present or present for long periods</td>
+								<td>Class I Division 1 (gases)</td>
+								
+						</tr>
+				</table>
+			</mat-card>
 
 	
-	<section class="bonus-cards">
-		<app-bonus-card card="news"></app-bonus-card>
-	</section>
 
-	<section class="info-side">
-		<div class="news-card-wrapper">
-			<mat-card class="table">
-				<app-table></app-table>
-						
-			</mat-card>
-		</div>
-	</section>

@@ -42,23 +42,26 @@ export class ProductsComponent implements OnInit {
           this.API_URL + '/products/categories/convert-route?name=' + this.categoryId
       )
       .subscribe(response => {
-          console.log(response);
-          this.categoryId = response._id;
+          let res = response._id;
+          this.categoryId = res;
+		 
           this.productService.getCategoriesUpdateListener().subscribe((data: any) => {
             this.subCats = data.cats;
           });
 
           this.productService.getCategories(this.categoryId);
 
-          this.productService.getProducts({
-            category: this.categoryId,
-			viewChildren: true,
-            page: 1,
-            limit: 12
-          });
+          
 
           this.productService.getSingleCategory(this.categoryId).subscribe(data => {
             this.category = data.data;
+          });
+
+		  this.productService.getProducts({
+            category: [this.categoryId],
+			viewChildren: true,
+            page: 1,
+            limit: 12
           });
 
       });
@@ -78,13 +81,12 @@ export class ProductsComponent implements OnInit {
 				];
 
 				if(this.products.length <= 0){
-					console.log(this.category._id)
 					
    					this.infoPageService.getThumbnails(this.category._id).subscribe((data:any)=>{
 							let firstPage = data[0];
 	
 							console.log(firstPage)
-							this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
+							// this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
 
 					})
 					// this.infoPageService.navGetPage(this.category._id).subscribe((data: any) => {
@@ -138,6 +140,7 @@ export class ProductsComponent implements OnInit {
 		}
 	}
 	changePage(newPage: any) {
+		console.log("change")
 		this.productService.getProducts({category: this.categoryId, page: newPage, viewChildren:true});
 		let top = document.getElementById('productList');
 		top?.scrollIntoView();

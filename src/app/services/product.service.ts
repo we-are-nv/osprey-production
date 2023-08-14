@@ -29,6 +29,7 @@ export class ProductService {
 	getProducts(filter: any) {
 		// Filter contains Category and any other filters I need to apply
 		const query = filter;
+		console.log(filter)
 		// console.log(query)
 		this.http
 			.get<any>(this.API_URL + '/products/product_info', {params: query})

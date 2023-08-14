@@ -11,11 +11,16 @@ export class AccreditationsComponent implements OnInit{
   displayedColumns: string[] = ['header', 'mark', 'use'];
   constructor(private accreditationsService: DatabaseService){}
   atex: any = [];
+  ingress: any = [];
+
   ngOnInit(){
     this.accreditationsService.getCredits('atex').subscribe(data=>{
       this.atex = data.data;
       console.log(this.atex)
     })
-
+    this.accreditationsService.getCredits('ingress').subscribe(data=>{
+      this.ingress = data.data;
+      console.log(this.ingress)
+    })
   }
 }
