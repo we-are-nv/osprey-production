@@ -19,8 +19,8 @@ const categories = require('../models/categories.js');
 // Image Control
 const s3Controller = require('../controller/s3-controller.js');
 const product_info = require('../models/product_info.js');
-const information = require('../models/information.js');
-const informationPage = require('../models/information-page.js');
+//const information = require('../models/information.js');
+//const informationPage = require('../models/information-page.js');
 
 router.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());

@@ -1,10 +1,10 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const SEO = require('../models/SEO');
+//const SEO = require('../models/SEO');
 const { Model, default: mongoose } = require('mongoose');
 const product_info = require('../models/product_info');
 const categories = require('../models/categories');
-const information = require('../models/information');
+//const information = require('../models/information');
 const news = require('../models/news');
 
 dotenv.config();
@@ -22,12 +22,12 @@ router.get('/', async (req, res) => {
   res.json({ seo: gatheredSEO });
 });
 
-var types = {
-  'product': product_info,
-  'category': categories,
-  'info':information,
-  'news':news
-}
+// var types = {
+//   'product': product_info,
+//   'category': categories,
+//   'info':information,
+//   'news':news
+// }
 
 router.post('/', async (req, res) => {
   const { type = 'product', id = "" } = req.query;

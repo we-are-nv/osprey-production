@@ -9,18 +9,18 @@ const fs = require('fs');
 // Import Controllers
 var breadcrumbs = require('../controller/breadcrumbs.js');
 const { default: mongoose } = require('mongoose');
-const marketPage = require('../models/information-page.js');
+//const marketPage = require('../models/information-page.js');
 
-const market = require('../models/information.js');
+//const market = require('../models/information.js');
 const {
 	uploadBaseMarket,
 	uploadFileMarket
 } = require('../controller/s3-controller.js');
 const { rimrafSync } = require('rimraf');
-const infoBonus = require('../models/info-bonus.js');
-const informationPage = require('../models/information-page.js');
+//const infoBonus = require('../models/info-bonus.js');
+//const informationPage = require('../models/information-page.js');
 const acreds = require('../models/acreds.js');
-const information = require('../models/information.js');
+//const information = require('../models/information.js');
 const { info } = require('console');
 
 // Image Control
