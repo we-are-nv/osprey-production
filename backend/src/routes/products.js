@@ -20,7 +20,7 @@ const product_addit_info = require('../models/product_addit_info.js');
 const product_model = require('../models/product_models.js')
 const user = require('../models/user.js');
 const product_info = require('../models/product_info.js');
-const information = require('../models/information.js');
+//const information = require('../models/information.js');
 
 const router = express.Router();
 

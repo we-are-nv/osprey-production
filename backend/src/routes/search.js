@@ -6,8 +6,8 @@ const allProducts = require('../models/product_info.js');
 const categories = require('../models/categories.js');
 const productModels = require('../models/product_models.js');
 const blockList = require('../models/block_list.js');
-const informationPage = require('../models/information-page');
-const information = require('../models/information');
+//const informationPage = require('../models/information-page');
+//const information = require('../models/information');
 require('dotenv').config();
 
 const router = express.Router();
@@ -96,12 +96,12 @@ router.use(function timelog(req, res, next) {
 // 	}
 // });
 
-const dbSearch = {
-  "product": allProducts,
-  "page": informationPage,
-  "info": information,
-  "category": categories
-};
+// const dbSearch = {
+//   "product": allProducts,
+//   "page": informationPage,
+//   "info": information,
+//   "category": categories
+// };
 
 const dbSelect = {
 
