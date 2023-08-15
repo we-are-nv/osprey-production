@@ -14,8 +14,11 @@ import { Observable } from 'rxjs';
 	styleUrls: ['./header.component.scss'],
 	animations: [
 		trigger('inputWiden', [
-			state('normal', style({ opacity: '0', height:'80%', marginTop:'5%', })), // Initial state
-			state('widen', style({ opacity: '1', height:'80%', marginTop:'5%', delay: '3s' })), // Widened state
+			state('normal', style({ opacity: '0', height: '80%', marginTop: '5%' })), // Initial state
+			state(
+				'widen',
+				style({ opacity: '1', height: '80%', marginTop: '5%', delay: '3s' })
+			), // Widened state
 			transition('normal => widen', animate('2000ms ease-in')), // Transition time and easing function
 			transition('widen => normal', animate('2000ms ease-out')) // Transition time and easing function
 		]),
@@ -28,6 +31,9 @@ import { Observable } from 'rxjs';
 	]
 })
 export class HeaderComponent implements OnInit {
+	// New input for the top level entries retrieved in the app.component.ts file
+	@Input() topLevelEntries: any;
+
 	inputState = 'normal';
 	constructor(
 		private productService: ProductService,
@@ -35,9 +41,7 @@ export class HeaderComponent implements OnInit {
 		public router: Router,
 		private databaseService: DatabaseService,
 		private iconRegistry: IconRegisterService
-	) {
-
-	}
+	) {}
 
 	ngOnInit(): void {
 		this.searchData = {};
