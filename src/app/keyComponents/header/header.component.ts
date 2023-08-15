@@ -7,6 +7,8 @@ import { ProductService } from 'src/app/services/product.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import { IconRegisterService } from 'src/app/services/icon-register.service';
 import { Observable } from 'rxjs';
+import { CacheService } from 'src/app/newServices/cache.service';
+import { IntialiseService } from 'src/app/newServices/intialise.service';
 
 @Component({
 	selector: 'app-header',
@@ -35,16 +37,29 @@ export class HeaderComponent implements OnInit {
 	@Input() topLevelEntries: any;
 
 	inputState = 'normal';
+	cachedData: any;
 	constructor(
 		private productService: ProductService,
 		private infoPageService: InfoPageService,
 		public router: Router,
 		private databaseService: DatabaseService,
-		private iconRegistry: IconRegisterService
+		private iconRegistry: IconRegisterService,
+		private initialiseService: IntialiseService,
+		private cacheService: CacheService
 	) {}
 
 	ngOnInit(): void {
 		this.searchData = {};
+
+		// get cached data or run initialise Service if not present
+		// use cachedData variable to populate header component
+
+		this.cachedData = this.cacheService.getCachedData();
+		if (!this.cachedData) {
+			this.initialiseService.getAllTopLevel().subscribe(data => {
+				this.cachedData = data;
+			});
+		}
 	}
 
 	// Category Stored Data
