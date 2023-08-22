@@ -65,8 +65,11 @@ span mat-icon{
     }
 }
 @media screen and (max-width: 750px) {
+    .categoryContainer{
+        width: 85vw;
+    }
     .categoryContainer .categoryCard{
-        width: 98%;
+        width: 100%;
     }
 }
 
