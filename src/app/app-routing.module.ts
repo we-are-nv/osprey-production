@@ -30,8 +30,16 @@ const routes: Routes = [
 	// InfoPage
 	{
 		path: 'info-page/:type/:id',
+    data:{type:'id'},
 		component: GeneralInfoPageComponent,
-		children: [{ path: ':childId', component: SubPageComponent }]
+		children: [{ path: ':childId', component: SubPageComponent,data:{type:'id'}, }]
+	},
+
+  {
+		path: 'info/:type/:name',
+    data:{type:'friendly'},
+		component: GeneralInfoPageComponent,
+		children: [{ path: ':childId', component: SubPageComponent, data:{type:'friendly'} }]
 	},
 
 	// Product pages
@@ -59,7 +67,7 @@ const routes: Routes = [
 	// Accreditations
 	{ path: 'certifications', component: AccreditationsComponent },
 
-	// Demo Carousel 
+	// Demo Carousel
 
 	// Error Page
 	{ path: 'error', component: ErrorPageComponent }

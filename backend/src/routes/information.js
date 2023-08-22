@@ -474,5 +474,37 @@ router.get('/accreditations', async (req, res) => {
 	});
 });
 
+router.get('/convert-route', async (req, res) => {
+  try {
+    if (req.query.name && req.query.type) {
+      var splitName = req.query.name.split("-").join(" ")
+      console.log(splitName)
+      const foundInfo = await information.findOne({"name":{
+        $regex: new RegExp("^" + splitName.toLowerCase(), "i")
+      },"type":req.query.type});
+      if (foundInfo) {
+        var convertedActuveIdRaw = foundInfo.pages[0].id;
+        var convertedActuveId = convertedActuveIdRaw.substr(foundInfo.pages[0].id.length - 4);
+
+        res.json({ _id: foundInfo._id,activeSub:convertedActuveId })
+      } else {
+        res.json({ err: 'prod not found' })
+      }
+    } else if (req.query.id) {
+      const foundProduct = await information.findOne({ "_id": req.query.id });
+      var convertedName = foundProduct.name.split(" ").join("-").toLowerCase();
+      res.json({ name: convertedName });
+
+    } else {
+      res.json({ 'err': 'invalid params' });
+    }
+  } catch (error) {
+    console.log(error)
+    res.sendStatus(500)
+  }
+
+
+})
+
 
 module.exports = router;
