@@ -156,24 +156,25 @@ mat-card{
   box-shadow: none;
 }
 
-.table{
-  width: 80vw;
+mat-card{
+    width: 80vw;
+    margin:auto;
 }
 
 table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 80%;
-  margin: auto;
-  font-size: small;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(odd) {
-  background-color: #dddddd;
-}
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    font-size: small;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #dddddd;
+  }

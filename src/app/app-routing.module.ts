@@ -24,6 +24,9 @@ const routes: Routes = [
 	// Market Pages
 	{ path: 'markets', component: MarketsComponent },
 
+	
+	{ path: 'contactForm', component: QuoteFormComponent },
+
 	// InfoPage
 	{
 		path: 'info-page/:type/:id',
@@ -48,7 +51,6 @@ const routes: Routes = [
 	{ path: 'home/product/:id', component: ProductViewComponent },
 
 	// Contact Page
-	{ path: 'contactFrom', component: QuoteFormComponent },
 	{ path: 'searchAll/:p1', component: SearchPageComponent },
 
 	// News Page
