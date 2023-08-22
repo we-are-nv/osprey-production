@@ -17,21 +17,10 @@ export class SimilarProductsComponent implements  OnInit{
   ngOnInit(): void {
     this.similarProductsSub = this.productService.getProductsUpdateListener()
           .subscribe((data)=>{
-            // console.log(data)
             this.similarProducts = data.products;
-            console.log(data)
       });
   }
-  // ngOnChanges(){
-  //   console.log(this.categoryId)
-    
-      
-  //       this.productService.getProducts({category:this.categoryId, page:1, limit:4});
-  // }
 
-  onResize() {
-    console.log("hello")
-    
-  }
+
   
 }

@@ -37,8 +37,6 @@ export class AppComponent implements OnInit {
 		this.databaseService.searchAll(searchValue).subscribe((data: any) => {
 			this.searchData = data.results;
 			this.searchArray = data.results.product;
-			console.log(this.searchData.product);
-			console.log(this.searchData);
 		});
 	}
 }

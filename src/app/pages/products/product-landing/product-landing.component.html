@@ -11,7 +11,10 @@
 		text: 'Explore Our Services',
 		path: '',
 		type: 'white'
-	}"></app-hero>
+	}"
+	
+	extraStyle="shorterHero"
+	></app-hero>
 
 	<app-hero *ngIf="categoryId == 'top'"
 	mainTitle="Products"
@@ -72,11 +75,6 @@
 	<app-category-card
 		[cards]="categories"
 		(catRouting)="getNewCats($event)"></app-category-card>
-</section>
-<section class="subPage">
-	<app-sub-page *ngIf="categoryId !== 'top' && activeSubPageId !== undefined"  [subPage]="activeSubPageId">
-
-	</app-sub-page>
 </section>
 
 <app-quote-form></app-quote-form>

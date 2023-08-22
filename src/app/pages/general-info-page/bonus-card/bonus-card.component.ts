@@ -11,7 +11,6 @@ export class BonusCardComponent implements OnInit{
   @Input() card: any;
   ngOnInit(){
     this.fileService.getFilesObservable().subscribe(data =>{
-      console.log(data)
     })
     this.fileService.getFiles()
   }

@@ -83,19 +83,13 @@ export class HeaderComponent implements OnInit {
 		else this.inputState = 'normal';
 	}
 
-	onEnter(event: any) {
-		console.log('ENTER');
-		console.log(event);
-	}
+
 
 	onSearchChange(searchValue: any): void {
-		console.log(searchValue);
 
 		this.databaseService.searchAll(searchValue).subscribe((data: any) => {
 			this.searchData = data.results;
 			this.searchArray = data.results.product;
-			console.log(this.searchData.product);
-			console.log(this.searchData);
 		});
 	}
 }

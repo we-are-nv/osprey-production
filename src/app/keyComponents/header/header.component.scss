@@ -31,6 +31,9 @@ mat-toolbar {
 .defaultToolbar {
     background-color: rgba(34, 34, 34, 0.781);
 }
+.menu-open-button{
+    margin:0.25rem;
+}
 
 #navLogo {
     width: 10vw;
@@ -243,12 +246,11 @@ a {
 @media (max-width:1150px) {
     .contactDetails {
         visibility: hidden;
+        width:0%;
+        margin-right:0%;
     }
 
-    .navLink {
-        font-size: 1.75vw;
-        text-decoration: none;
-    }
+    
 }
 
 
@@ -261,9 +263,13 @@ a {
         visibility: hidden;
         display: none;
     }
+    .navLink {
+        font-size: 1.75vw;
+        text-decoration: none;
+    }
 
     #navLogo {
-        width: 15vw;
+        width: 20vw;
     }
 
     .searchBar {

@@ -7,8 +7,5 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit{
   @Input() tableData: any;
-  ngOnInit(){
-    console.log(this.tableData)
-
-}
+  ngOnInit(){}
 }

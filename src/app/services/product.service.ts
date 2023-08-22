@@ -29,8 +29,6 @@ export class ProductService {
 	getProducts(filter: any) {
 		// Filter contains Category and any other filters I need to apply
 		const query = filter;
-		console.log(filter)
-		// console.log(query)
 		this.http
 			.get<any>(this.API_URL + '/products/product_info', {params: query})
 			.subscribe(response => {
@@ -41,7 +39,6 @@ export class ProductService {
 	// Search List of products based on filter, using the product_name
 	searchProducts(filter: any) {
 		const query = filter;
-		// console.log(query)
 		this.http
 			.get<any>(this.API_URL + '/products/search', {params: query})
 			.subscribe(response => {
@@ -51,14 +48,7 @@ export class ProductService {
 	async convertToId(name: String, code: String) {
 
 	}
-	// Delete Products
-	deleteProduct(id: string) {
-		this.http
-			.delete(this.API_URL + '/product', {params: {id: id}})
-			.subscribe(response => {
-				console.log(response);
-			});
-	}
+
 
 	// Category API connection
 	getCategoriesUpdateListener() {
@@ -74,12 +64,7 @@ export class ProductService {
 			});
 	}
 
-	getAllCategories() {
-		// console.log('ALL CATS GOT');
-		// return this.http.get<any>(this.API_URL + '/products/categories', {
-		// 	params: {parent: ''}
-		// });
-	}
+
 
 	// Loading Single Product
 
@@ -88,7 +73,6 @@ export class ProductService {
 	}
 
 	getSingleProduct(id: string) {
-		// console.log(id)
 		let query = id;
 		let product: any;
 		this.http
@@ -102,7 +86,6 @@ export class ProductService {
 	}
 
 	getSingleCategory(id: string) {
-		console.log('SINGLE?');
 		return this.http.get<any>(this.API_URL + '/products/categories/single', {
 			params: {id: id}
 		});

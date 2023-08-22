@@ -21,7 +21,6 @@ export class NewsComponent implements OnInit {
 
 	loadNews() {
 		this.newsService.getNews().subscribe(data => {
-			console.log(data);
 			this.articles = data.articles.map((article: any) => ({
 				...article,
 				excerpt: this.createExcerpt(article.content),
@@ -71,7 +70,6 @@ export class NewsComponent implements OnInit {
 			'November',
 			'December'
 		];
-		console.log(date);
 		const year = date.getFullYear();
 		let month = date.getMonth();
 		let dt = date.getDate();
@@ -84,7 +82,6 @@ export class NewsComponent implements OnInit {
 		}
 		stringMonth = monthNames[month];
 		finshedDate = `${dayTime} ${stringMonth}, ${year} `;
-		console.log(finshedDate);
 		return finshedDate;
 	}
 

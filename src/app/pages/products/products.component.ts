@@ -70,7 +70,6 @@ export class ProductsComponent implements OnInit {
 		this.productsSub = this.productService
 			.getProductsUpdateListener()
 			.subscribe(data => {
-				console.log(data);
 				this.products = data.products;
 				this.currentPage = data.currentPage;
 				this.totalPages = data.totalPages;
@@ -84,8 +83,6 @@ export class ProductsComponent implements OnInit {
 					
    					this.infoPageService.getThumbnails(this.category._id).subscribe((data:any)=>{
 							let firstPage = data[0];
-	
-							console.log(firstPage)
 							this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
 
 					})
@@ -116,7 +113,6 @@ export class ProductsComponent implements OnInit {
 
 	// On search
 	onSearchChange(searchValue: any): void {
-		// console.log(searchValue.target.value);
 
 		if(searchValue.target.value.length > 0){
 			this.productService.searchProducts({
@@ -135,7 +131,6 @@ export class ProductsComponent implements OnInit {
 		}
 	}
 	changePage(newPage: any) {
-		console.log("change")
 		this.productService.getProducts({category: this.categoryId, page: newPage, viewChildren:true});
 		let top = document.getElementById('productList');
 		top?.scrollIntoView();

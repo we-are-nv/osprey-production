@@ -49,7 +49,6 @@ export class ProductViewComponent implements OnInit {
 							.getSingleProductUpdateListener()
 							.subscribe(data => {
 								this.product = data;
-								console.log(this.product);
 								this.history= [
 									{path: '/', friendly: 'Home'},
 									{path: '/products/top', friendly: 'Products'},
@@ -63,7 +62,6 @@ export class ProductViewComponent implements OnInit {
 								let tempAdditionalInfo = this.product.additional_information.info;
 								this.informationConverter(tempAdditionalInfo);
 
-								console.log();
 								// Gets all the similar products
 							});
 						this.productService.getSingleProduct(this.id);
@@ -128,7 +126,5 @@ export class ProductViewComponent implements OnInit {
 		}
 	}
 
-	checking(data: any) {
-		console.log(data);
-	}
+
 }

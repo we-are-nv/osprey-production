@@ -18,7 +18,6 @@ export class ServicesComponent {
   ngOnInit(): void {
     this.infoPageService.getThumbnails(this.type).subscribe((data:any)=>{
       this.serviceList = data
-      console.log(this.type)
     })
 
   }

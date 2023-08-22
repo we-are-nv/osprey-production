@@ -19,7 +19,6 @@ export class FilesService {
 	getFiles(){
 		this.http.get<any>(this.API_URL+ '/info/files').subscribe((data:any)=>{
 		  this.files.next(data)
-		  console.log(data)
 		})
 	}
 	getFilesObservable(){

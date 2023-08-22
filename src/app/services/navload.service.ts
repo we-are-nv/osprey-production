@@ -14,34 +14,24 @@ export class NavloadService {
 
 	finalNav: any = {};
 	async generateNav() {
-		this.finalNav = {};
+		this.finalNav = {
+			market:{
+				headpath:"/markets",
+				name: "Markets"
+			},
+			service:{
+				headpath:"/services",
+				name:"Services"
+			},
+			product:{
+				headpath:"/products/top",
+				name:"Products"
+			},
+
+		};
 		await this.generateSingleInfo('about', 'About Us');
-		await this.generateSiblingInfo('market', 'Markets');
-		await this.generateSiblingInfo('service', 'Services');
 		await this.generateSingleInfo('resource', 'Resources');
 		await this.generateSingleInfo('contact', 'Contact');
-
-		let categorySub = this.http
-			.get<any>(this.API_URL + '/products/categories', { params: { parent: '' } })
-			.subscribe(data => {
-				let childLinks: any[] = [];
-				data.cats.forEach((subPage: any) => {
-					let childLink = {
-						name: subPage.name,
-						path: subPage.cat_url
-					};
-					childLinks.push(childLink);
-				});
-				let nav = {
-					name: 'Products',
-					headpath: '/products/top',
-					childLinks: childLinks
-				};
-				console.log(nav);
-
-				this.finalNav['product'] = nav;
-				categorySub.unsubscribe();
-			});
 	}
 
 	generateSingleInfo(type: string, name: string) {
@@ -72,28 +62,4 @@ export class NavloadService {
 			});
 	}
 
-	generateSiblingInfo(type: string, name: string) {
-		let tempSub = this.infoPageService
-			.getThumbnails(type)
-			.subscribe((data: any) => {
-				let childLinks: any[] = [];
-				data.forEach((page: any) => {
-					let childLink = {
-						name: page.name,
-						path: '/info-page/' + type + '/' + page._id
-					};
-					childLinks.push(childLink);
-				});
-
-				let nav = {
-					name: name,
-					headpath: '/' + type + 's',
-					childLinks: childLinks
-				};
-				console.log(nav);
-				this.finalNav[type] = nav;
-
-				tempSub.unsubscribe();
-			});
-	}
 }

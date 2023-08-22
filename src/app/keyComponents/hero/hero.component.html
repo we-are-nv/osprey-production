@@ -6,8 +6,8 @@
         [ngClass]="{'centredHero': centred == true}"
     >
         <h3>{{upperTitle}}</h3>
-        <h1 class="title">{{mainTitle}}</h1>
-        <h1 class="secondaryTitle">{{secondaryTitle}}</h1>
+        <h1 class="title" id="main-info">{{mainTitle}}</h1>
+        <h1 class="secondaryTitle" >{{secondaryTitle}}</h1>
         <h4>{{lowerTitle}}</h4>
         <div  class="buttons">
             <button *ngIf="button1Data" class="titleButton {{button1Data.type}}" routerLink="{{button1Data.path}}"

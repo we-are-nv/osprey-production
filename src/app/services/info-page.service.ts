@@ -37,7 +37,6 @@ export class InfoPageService {
   getMainPage(id: string){
     this.http.get<any>(this.API_URL+ '/info/single', {params: {id: id}}).subscribe((data:any)=>{
       this.activePage.next(data)
-      console.log(data)
     })
   }
 

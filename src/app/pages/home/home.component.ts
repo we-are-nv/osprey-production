@@ -73,7 +73,6 @@ export class HomeComponent {
 		this.categorySub = this.productService
 			.getCategoriesUpdateListener()
 			.subscribe(data => {
-				console.log('getCategories() data is: ', data);
 				this.productCategories = data.cats;
 				this.categoryListPart = this.productCategories.slice(
 					this.categoryListPosition.first,
@@ -92,9 +91,7 @@ export class HomeComponent {
 			])
 		});
 	}
-	checking(thing: any) {
-		console.log(thing);
-	}
+
 
 	openCalendlyPopup() {
 		Calendly.initPopupWidget({

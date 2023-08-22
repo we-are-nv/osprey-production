@@ -27,12 +27,10 @@ export class SubPageComponent implements OnInit {
       let renderType = renderInfo.type;
       if (renderType == "id") {
         this.pageId = params['childId'];
-        console.log(this.pageId);
         this.infoService.getSubPage(this.pageId);
         this.infoService.getPageListener().subscribe(data => {
           this.pageData = data;
           this.elements = this.pageData.elements;
-          console.log(this.elements);
         });
       } else {
 

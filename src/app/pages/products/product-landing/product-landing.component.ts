@@ -27,26 +27,20 @@ export class ProductLandingComponent implements OnInit {
 
 	categorySub: any;
 	categories: any = [];
-	infoPage: any;
-	activeSubPageId: any;
 
 	constructor(
 		private productService: ProductService,
 		private router: Router,
 		private _Activatedroute: ActivatedRoute,
 		private http: HttpClient,
-		private infoService: InfoPageService
 	) {}
 	ngOnInit(): void {
 		this.customPageInfo = '';
-		this.activeSubPageId = undefined;
 		this._Activatedroute.paramMap.subscribe(params => {
-			//console.log();
 			this.categoryId = params.get('category');
 			// if (this.categoryId == 'top') {
 			// 	this.categoryId = '';
 			// }
-			console.log('categoryId before convert-route: ', this.categoryId);
 			this.http
 				.get<any>(
 					this.API_URL +
@@ -54,7 +48,6 @@ export class ProductLandingComponent implements OnInit {
 						this.categoryId
 				)
 				.subscribe(response => {
-					console.log('product landing response data: ', response);
 					this.productService.getCategories(response._id);
 					// get single data for customPageInfo
 					this.productService
@@ -68,27 +61,14 @@ export class ProductLandingComponent implements OnInit {
 					this.categorySub = this.productService
 						.getCategoriesUpdateListener()
 						.subscribe(data => {
-							console.log(data);
 							this.categories = data.cats;
-							console.log(this.categories);
-							let tempInfoSub = this.infoService.getThumbnails(response._id).subscribe((data:any)=>{
-								this.infoPage = data[0];
-								let tempSubInfoSub = this.infoService.getMainUpdateListener().subscribe(data => {
-									this.activeSubPageId = data.pages[0].id;
-									tempSubInfoSub.unsubscribe();
-									
-									tempInfoSub.unsubscribe()
-								})
-								this.infoService.getMainPage(this.infoPage._id)
-								// this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
-						})
+
 						});
 				});
 		});
 	}
 	getNewCats(data: any) {
 		if (data.hasChild) {
-			console.log(data);
 			this.router.navigate([data.cat_url]);
 		} else if (!data.hasChild && !data.hasProducts) {
 			this.router.navigate([data.redirectTo]);

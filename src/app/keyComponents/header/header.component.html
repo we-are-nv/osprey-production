@@ -40,79 +40,36 @@
 				mat-button
 				class="nav-button"
 				class="navLink"
-				[matMenuTriggerFor]="matproductmenu"
-				#menuTrigger="matMenuTrigger"
-				(mousedown)="menuTrigger.openMenu()"
-				(click)="router.navigate([finalNav.product.headpath])">
+
+				[routerLink]="finalNav.product.headpath">
 				{{ finalNav.product.name }}</a
 			>
-			<mat-menu
-				class="dropdown"
-				#matproductmenu="matMenu">
-				<div
-					(click)="menuTrigger.closeMenu()"
-					(mouseleave)="menuTrigger.closeMenu()">
-					<a
-						class="navMenuDropdownItem"
-						mat-menu-item
-						*ngFor="let link of finalNav.product.childLinks"
-						[routerLink]="link.path"
-						>{{ link.name }}</a
-					>
-				</div>
-			</mat-menu>
+
+
 		</div>
 
 		<!-- Markets -->
 		<div *ngIf="finalNav.market">
 			<a
 				mat-button
+				class="nav-button"
 				class="navLink"
-				[matMenuTriggerFor]="matmarketmenu"
-				[routerLink]="finalNav.market.headpath"
-				#menuTrigger="matMenuTrigger"
-				(mousedown)="menuTrigger.openMenu()">
+
+				[routerLink]="finalNav.market.headpath">
 				{{ finalNav.market.name }}</a
 			>
-			<mat-menu
-				class="dropdown"
-				#matmarketmenu="matMenu">
-				<div (mouseleave)="menuTrigger.closeMenu()">
-					<a
-						mat-menu-item
-						class="navMenuDropdownItem"
-						*ngFor="let link of finalNav.market.childLinks"
-						[routerLink]="link.path"
-						>{{ link.name }}</a
-					>
-				</div>
-			</mat-menu>
 		</div>
 
 		<!-- Services -->
 		<div *ngIf="finalNav.service">
 			<a
 				mat-button
+				class="nav-button"
 				class="navLink"
-				[matMenuTriggerFor]="matservicemenu"
-				#menuTrigger="matMenuTrigger"
-				(mousedown)="menuTrigger.openMenu()"
+
 				[routerLink]="finalNav.service.headpath">
 				{{ finalNav.service.name }}</a
 			>
-			<mat-menu
-				class="dropdown"
-				#matservicemenu="matMenu">
-				<div (mouseleave)="menuTrigger.closeMenu()">
-					<a
-						class="navMenuDropdownItem"
-						mat-menu-item
-						*ngFor="let link of finalNav.service.childLinks"
-						[routerLink]="link.path"
-						>{{ link.name }}</a
-					>
-				</div>
-			</mat-menu>
 		</div>
 		<!-- Services -->
 		<div

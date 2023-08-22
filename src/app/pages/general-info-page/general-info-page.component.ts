@@ -69,7 +69,6 @@ export class GeneralInfoPageComponent implements OnInit {
 				if (this.subPage !== undefined) this.activeSubPageId = this.subPages[0].id;
 				else this.activeSubPageId = this.subPage
 
-        console.log(data)
         if (data.suggestProducts){
           this.suggestedProducts = `info-${data._id}`
         }
@@ -83,7 +82,6 @@ export class GeneralInfoPageComponent implements OnInit {
           this.subPages = data.pages;
           this.bonusCards = data.bonus_cards;
           this.activeSubPageId = this.subPages[0].id;
-          console.log(data)
           if (data.suggestProducts) {
             this.suggestedProducts = `info-${data._id}`
           }
@@ -111,7 +109,6 @@ export class GeneralInfoPageComponent implements OnInit {
             this.subPages = data.pages;
             this.bonusCards = data.bonus_cards;
             this.activeSubPageId = this.subPages[0].id;
-            console.log(data)
             if (data.suggestProducts) {
               this.suggestedProducts = `info-${data._id}`
             }

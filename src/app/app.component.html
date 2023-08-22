@@ -65,33 +65,20 @@
 
 		<!-- Product -->
 		<div *ngIf="finalNav.product">
-			<a mat-button class="nav-button" [matMenuTriggerFor]='matproductmenu'
-				#menuTrigger="matMenuTrigger"> {{finalNav.product.name}}</a>
-			<mat-menu #matproductmenu="matMenu" class="navLink">
-				<a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.product.childLinks"
-					[routerLink]="link.path" (click)="drawer.toggle()">{{link.name}}</a>
-			</mat-menu>
+			<a mat-button class="nav-button" [routerLink]='finalNav.product.headpath' (click)="drawer.toggle()"> {{finalNav.product.name}}</a>
 		</div>
 
 
 		<!-- Markets -->
 		<div *ngIf="finalNav.market">
-			<a mat-button class="nav-button" [matMenuTriggerFor]='matmarketmenu'
-				#menuTrigger="matMenuTrigger"> {{finalNav.market.name}}</a>
-			<mat-menu #matmarketmenu="matMenu" class="navLink">
-				<a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.market.childLinks"
-					[routerLink]="link.path">{{link.name}}</a>
-			</mat-menu>
+			
+			<a mat-button class="nav-button" [routerLink]='finalNav.market.headpath' (click)="drawer.toggle()"> {{finalNav.market.name}}</a>
 		</div>
 
 		<!-- Services -->
 		<div *ngIf="finalNav.service">
-			<a mat-button class="nav-button" [matMenuTriggerFor]='matservicemenu'
-				#menuTrigger="matMenuTrigger"> {{finalNav.service.name}}</a>
-			<mat-menu #matservicemenu="matMenu" class="navLink">
-				<a class="navMenuDropdownItem" mat-menu-item *ngFor="let link of finalNav.market.childLinks"
-					[routerLink]="link.path" (click)="drawer.toggle()">{{link.name}}</a>
-			</mat-menu>
+			
+			<a mat-button class="nav-button" [routerLink]='finalNav.service.headpath' (click)="drawer.toggle()"> {{finalNav.service.name}}</a>
 		</div>
 		<!-- Services -->
 		<div *ngIf="finalNav.resource">

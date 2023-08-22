@@ -11,7 +11,6 @@ export class ContactService {
 
 	sendMessage(form: any) {
 		this.http.post(this.API_URL + '/mail', form).subscribe((data: any) => {
-			console.log(data);
 		});
 	}
 }

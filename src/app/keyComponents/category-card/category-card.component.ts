@@ -12,7 +12,6 @@ export class CategoryCardComponent {
 	ngOnInit(): void {
 		//Called after the constructor, initializing input properties, and the first call to ngOnChanges.
 		//Add 'implements OnInit' to the class.
-		console.log(this.cards);
 	}
 	loadCat(id: string, hasChild: boolean, cat_url:any, hasProducts:boolean, redirectTo:String) {
 		let obj = {

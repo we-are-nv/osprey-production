@@ -24,19 +24,16 @@ export class SearchPageComponent implements OnInit {
 	ngOnInit(): void {
 		this._Activatedroute.params.subscribe(params => {
 			this.onSearchChange(params['p1']);
-			console.log(params['p1']);
 		});
 	}
 
 	searchData: any = {};
 
 	onSearchChange(searchValue: any): void {
-		console.log(searchValue.target.value);
 		this.databaseService
 			.searchAll(searchValue.target?.value)
 			.subscribe((data: any) => {
 				this.searchData = data.results;
-				console.log(this.searchData);
 			});
 	}
 }
