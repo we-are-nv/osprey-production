@@ -18,7 +18,7 @@
         </div>
         <!-- Categories Grabbed from Component Variable -->
         <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-            <mat-card *ngFor="let market of marketsList" class="categoryCard" routerLink="/info-page/markets/{{market._id}}">
+            <mat-card *ngFor="let market of marketsList" class="categoryCard" routerLink="/info-page/market/{{market._id}}">
                 <img mat-card-image [src]="market.thumbnail_image">
                 <h2>{{market.name}}</h2>
                 <span>Explore <mat-icon>circle</mat-icon> </span>

@@ -18,58 +18,45 @@
 	>
 	<section class="bonus-cards">
 		<!-- Navigation -->
+		
 		<mat-card
-			class="navigation-pannel bonus-card-white-accent"
-			*ngIf="subPages.length > 1">
-			<mat-card-header>
-				<mat-card-title class="bonus-card-title"
-					>{{ pageData.name | nameConverter }}
-				</mat-card-title>
-			</mat-card-header>
-			<div class="nav-button-container">
-				<a
-					class="nav-button"
-					*ngFor="let page of subPages"
-					[routerLink]="page.id"
-					(click)="selectPage(page.id)"
-					[ngClass]="{ 'page-active': page.id == activeSubPageId }"
-					>{{ page.name }}
-					<img
-						class="nav-button-icon"
-						src="./assets/images/customIcons/right-arrow-icon.svg"
-						alt=""
-				/></a>
-			</div>
-		</mat-card>
-		<mat-card
-			class="navigation-pannel bonus-card-white-accent"
-			*ngIf="subPages.length <= 1 && siblingPages.length > 1">
+			class="navigation-pannel bonus-card-white-accent">
 			<mat-card-header>
 				<mat-card-title
 					class="bonus-card-title"
 					*ngIf="pageType.length < 13"
-					>All {{ pageType | nameConverter }}s</mat-card-title
+					>{{ pageType | nameConverter }}s</mat-card-title
 				>
 			</mat-card-header>
 			<div class="nav-button-container">
-				<a
+				<mat-accordion>
+					<mat-expansion-panel *ngFor="let page of siblingPages"
+					[routerLink]="'/info-page/' + pageType + '/' + page._id">
+					  <mat-expansion-panel-header>
+						<mat-panel-title>
+							{{ page.name }}
+						</mat-panel-title>
+					  </mat-expansion-panel-header>
+					  <p>I'm visible because I am open</p>
+					</mat-expansion-panel>
+				  </mat-accordion>
+				<!-- <a
 					class="nav-button"
-					*ngFor="let page of siblingPages"
-					[routerLink]="'/info-page/' + pageType + '/' + page._id"
+					
 					routerLinkActive="page-active"
 					>{{ page.name }}
 					<img
 						class="nav-button-icon"
 						src="./assets/images/customIcons/right-arrow-icon.svg"
 						alt=""
-				/></a>
+				/></a> -->
 			</div>
 		</mat-card>
 		<app-bonus-card [card]="pageType"></app-bonus-card>
 	</section>
 
 	<section class="info-side">
-		<router-outlet></router-outlet>
+		<app-sub-page *ngIf="activeSubPageId !== undefined" [subPage]="activeSubPageId"></app-sub-page>
 		<app-similar-products [categoryId]="suggestedProducts"></app-similar-products>
 	</section>
 </section>

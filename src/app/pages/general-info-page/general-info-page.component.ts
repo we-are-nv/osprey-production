@@ -43,83 +43,54 @@ export class GeneralInfoPageComponent implements OnInit {
 		this.subPages = [];
 
 
+    let pageSub = this.infoService.getMainUpdateListener().subscribe(data => {
+      this.pageData = data;
+      this.subPages = data.pages;
+      this.bonusCards = data.bonus_cards;
+      if (this.subPage !== undefined) this.activeSubPageId = this.subPages[0].id;
+      else this.activeSubPageId = this.subPage
+
+      console.log(data)
+      if (data.suggestProducts){
+        this.suggestedProducts = `info-${data._id}`
+      }
+      this.router.navigate([
+        `${this.activeSubPageId}`
+      ]);
+
+      // Get Main Page
+        pageSub.unsubscribe();
+    })
+
+    // When Id's change
+
     this._Activatedroute.params.subscribe(params => {
       let renderInfo: any = this._Activatedroute.snapshot.data;
       let renderType = renderInfo.type;
-      if ((this.type == undefined) || (this.pageId == undefined)){
-				this.pageType = params['type'];
-				this.pageId = params['id'];
-			}else{
-				this.pageType = this.type
-				this.pageId = this.page;
-			}
+      this.pageType = params['type'];
+      this.pageId = params['id'];
 
-      if (renderType == "id") {
-
+      if(this.pageType) {
         let siblingSub = this.infoService.getThumbnails(this.pageType).subscribe((data: any) => {
           this.siblingPages = data;
+          console.log(this.siblingPages)
 
           siblingSub.unsubscribe();
         });
-			// Get Main Page
-			let pageSub = this.infoService.getMainUpdateListener().subscribe(data => {
-				this.pageData = data;
-				this.subPages = data.pages;
-				this.bonusCards = data.bonus_cards;
-				if (this.subPage !== undefined) this.activeSubPageId = this.subPages[0].id;
-				else this.activeSubPageId = this.subPage
+      }
 
-        if (data.suggestProducts){
-          this.suggestedProducts = `info-${data._id}`
-        }
-				this.router.navigate([
-					`${this.activeSubPageId}`
-				]);
+      if (renderType == "id") {
 
-        // Get Main Page
-        let pageSub = this.infoService.getMainUpdateListener().subscribe(data => {
-          this.pageData = data;
-          this.subPages = data.pages;
-          this.bonusCards = data.bonus_cards;
-          this.activeSubPageId = this.subPages[0].id;
-          if (data.suggestProducts) {
-            this.suggestedProducts = `info-${data._id}`
-          }
-          this.router.navigate([
-            `/info-page/${this.pageType}/${this.pageId}/${this.activeSubPageId}`
-          ]);
-
-          pageSub.unsubscribe();
-        });
-      })
-        this.infoService.getMainPage(this.pageId);
+        this.infoService.getMainPage(this.pageId+ "hello");
       } else {
         this.http
         .get<any>(this.API_URL + '/info/convert-route?name=' + params['name'] + '&type='+ params['type'])
         .subscribe(response => {
-          let siblingSub = this.infoService.getThumbnails(this.pageType).subscribe((data: any) => {
-            this.siblingPages = data;
-
-            siblingSub.unsubscribe();
-          });
+        
 
           // Get Main Page
-          let pageSub = this.infoService.getMainUpdateListener().subscribe(data => {
-            this.pageData = data;
-            this.subPages = data.pages;
-            this.bonusCards = data.bonus_cards;
-            this.activeSubPageId = this.subPages[0].id;
-            if (data.suggestProducts) {
-              this.suggestedProducts = `info-${data._id}`
-            }
-            this.router.navigate([
-              `/info/${this.pageType}/${this.pageId}/${response.activeSub}`
-            ]);
 
-            pageSub.unsubscribe();
-          });
-
-          this.infoService.getMainPage(response._id);
+          this.infoService.getMainPage(response._id+"hello");
         })
       }
 

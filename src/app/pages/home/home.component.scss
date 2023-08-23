@@ -59,6 +59,7 @@ p {
 
 .categoryCard {
 	width: 31%;
+	height: auto;
 	margin-bottom: 1.2%;
 
 	transition: background-color 500ms linear;
@@ -325,7 +326,7 @@ span mat-icon {
 
 
 .categoryCard img {
-	height: 70%;
+	height: 20vh;
 	object-fit: cover;
 	background-color: white;
 }
