@@ -35,9 +35,6 @@ export class GeneralInfoPageComponent implements OnInit {
 
 	history: any;
 	ngOnInit() {
-		this.pageData = undefined;
-		this.pageId = '';
-    this.suggestedProducts = ""
 		this.siblingPages = [];
 
 		this.subPages = [];
@@ -81,7 +78,7 @@ export class GeneralInfoPageComponent implements OnInit {
 
       if (renderType == "id") {
 
-        this.infoService.getMainPage(this.pageId+ "hello");
+        this.infoService.getMainPage(this.pageId);
       } else {
         this.http
         .get<any>(this.API_URL + '/info/convert-route?name=' + params['name'] + '&type='+ params['type'])
@@ -89,8 +86,8 @@ export class GeneralInfoPageComponent implements OnInit {
         
 
           // Get Main Page
-
-          this.infoService.getMainPage(response._id+"hello");
+          console.log(response)
+          this.infoService.getMainPage(response._id);
         })
       }
 

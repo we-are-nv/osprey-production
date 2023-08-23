@@ -32,15 +32,13 @@ const routes: Routes = [
 		path: 'info-page/:type/:id',
     data:{type:'id'},
 		component: GeneralInfoPageComponent,
-		children: [{ path: ':childId', component: SubPageComponent,data:{type:'id'}, }]
 	},
 
-  {
-		path: 'info/:type/:name',
-    data:{type:'friendly'},
-		component: GeneralInfoPageComponent,
-		children: [{ path: ':childId', component: SubPageComponent, data:{type:'friendly'} }]
-	},
+//   {
+// 		path: 'info/:type/:name',
+//     data:{type:'friendly'},
+// 		component: GeneralInfoPageComponent,
+// 	},
 
 	// Product pages
 	{ path: 'products/:category', component: ProductLandingComponent },
