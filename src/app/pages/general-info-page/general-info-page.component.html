@@ -20,7 +20,9 @@
 		<!-- Navigation -->
 		
 		<mat-card
-			class="navigation-pannel bonus-card-white-accent">
+			class="navigation-pannel bonus-card-white-accent"
+			*ngIf="siblingPages.length > 1"
+			>
 			<mat-card-header>
 				<mat-card-title
 					class="bonus-card-title"
@@ -30,14 +32,16 @@
 			</mat-card-header>
 			<div class="nav-button-container">
 				<mat-accordion>
-					<mat-expansion-panel *ngFor="let page of siblingPages"
-					[routerLink]="'/info-page/' + pageType + '/' + page._id">
+					<mat-expansion-panel *ngFor="let page of siblingPages" [expanded]="(page._id == pageId)"
+						routerLink="/info-page/{{pageType}}/{{page._id}}">
 					  <mat-expansion-panel-header>
 						<mat-panel-title>
 							{{ page.name }}
 						</mat-panel-title>
 					  </mat-expansion-panel-header>
-					  <p>I'm visible because I am open</p>
+					  <mat-list>
+						<mat-list-item  *ngFor="let subPage of page.pages" (click)="selectPage(subPage?.id?._id)" class="subPageItem sub-{{subPage?.id?._id}}" href="#main-info">{{subPage?.id?.name}}</mat-list-item>
+					  </mat-list>
 					</mat-expansion-panel>
 				  </mat-accordion>
 				<!-- <a

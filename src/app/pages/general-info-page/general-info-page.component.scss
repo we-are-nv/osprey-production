@@ -40,7 +40,7 @@ p{
     background: #232323;
     border-radius: 0px;
     padding: 7%;
-    border-bottom: solid 3px #0065E7;
+    border-bottom: solid 5px #0065E7;
     color: white;
 }
 .nav-button-container{
@@ -69,6 +69,13 @@ p{
 .page-active{
     color:white;
     background-color: #0065E7;
+}
+
+.subPageItem:hover{
+    background-color: #23232323;
+}
+.sub-{
+    display: none;
 }
 
 @media screen and (max-width: 1024px) {

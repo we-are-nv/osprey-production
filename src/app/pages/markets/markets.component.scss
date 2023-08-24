@@ -15,19 +15,18 @@
     justify-content: flex-start;
     width: 80vw;
     margin:auto;
-    justify-content: space-between !important;
 }
 .categoryContainer .categoryCard{
-    width: 22%;
-    margin: 1%;
+    width: 24%;
+    margin:0.3%;
     border-radius:0px ;
     text-align: start;
-    
-    box-shadow: none;
 }
 mat-card{
     border: 1px solid rgba(0, 0, 0, 0.25);
     border-radius: 0%;
+    
+    box-shadow: none;
 }
 mat-card-header{
     height: 12.5vh;
@@ -42,6 +41,11 @@ mat-card-header{
 .categoryCard h1{
     padding-left: 2vh;
     margin-left: 5%;
+    margin-right: 5%;
+}
+h3{
+    margin-left: 9%;
+    padding:2% ;
 }
 .categoryCard span{
     padding-bottom: 2vh;

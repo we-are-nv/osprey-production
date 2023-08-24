@@ -26,8 +26,8 @@ export class InfoPageService {
   }
   constructor(private http: HttpClient) { }
 
-  getThumbnails(type: string){
-    return this.http.get<any>(this.API_URL+ '/info/thumbnail', {params: {type: type}})
+  getThumbnails(type: string, subPage: boolean){
+    return this.http.get<any>(this.API_URL+ '/info/thumbnail', {params: {type: type, showSub: subPage}})
   }
 
   getMainUpdateListener(){

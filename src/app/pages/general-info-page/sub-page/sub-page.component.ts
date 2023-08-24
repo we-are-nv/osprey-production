@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InfoPageService } from 'src/app/services/info-page.service';
 
@@ -7,7 +7,7 @@ import { InfoPageService } from 'src/app/services/info-page.service';
 	templateUrl: './sub-page.component.html',
 	styleUrls: ['./sub-page.component.scss']
 })
-export class SubPageComponent implements OnInit {
+export class SubPageComponent implements OnInit, OnChanges {
 	constructor(
 		private _Activatedroute: ActivatedRoute,
 		private infoService: InfoPageService
@@ -21,29 +21,14 @@ export class SubPageComponent implements OnInit {
 	elements: any;
 
 	ngOnInit(): void {
-		this.pageData = undefined;
-		this._Activatedroute.params.subscribe(params => {
-      let renderInfo: any = this._Activatedroute.snapshot.data;
-      let renderType = renderInfo.type;
-      if (renderType == "id") {
-        this.pageId = params['childId'];
-        this.infoService.getSubPage(this.pageId);
+		console.log(this.subPage)
+        this.infoService.getSubPage(this.subPage);
         this.infoService.getPageListener().subscribe(data => {
           this.pageData = data;
           this.elements = this.pageData.elements;
         });
-      } else {
-
-      }
-
-			if(this.subPage == undefined) this.pageId = params['childId'];
-			else this.pageId = this.subPage;
-			this.infoService.getSubPage(this.pageId);
-			let pagelisten = this.infoService.getPageListener().subscribe(data => {
-				this.pageData = data;
-				this.elements = this.pageData.elements;
-				pagelisten.unsubscribe();
-			});
-		});
+	}
+	ngOnChanges(): void {
+		this.infoService.getSubPage(this.subPage)
 	}
 }

@@ -36,7 +36,7 @@ export class NavloadService {
 
 	generateSingleInfo(type: string, name: string) {
 		let tempSub = this.infoPageService
-			.getThumbnails(type)
+			.getThumbnails(type, false)
 			.subscribe((data: any) => {
 				let pageId = data[0]._id;
 				this.infoPageService.navGetPage(pageId).subscribe((data: any) => {
