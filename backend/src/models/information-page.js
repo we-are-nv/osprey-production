@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const seo_meta = require('./SEO')
 
 const infoPage = mongoose.Schema({
   name: { type: String, required: true },
@@ -11,7 +12,11 @@ const infoPage = mongoose.Schema({
     }
   ],
   searchType: { type: String, required: false },
-
+  seo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref:seo_meta,
+    required:false
+  },
 });
 
 module.exports = mongoose.model('info-pages', infoPage);
