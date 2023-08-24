@@ -44,19 +44,21 @@ export class GeneralInfoPageComponent implements OnInit {
       this.pageData = data;
       this.subPages = data.pages;
       this.bonusCards = data.bonus_cards;
-      if (this.subPage !== undefined) this.activeSubPageId = this.subPages[0].id;
-      else this.activeSubPageId = this.subPage
+      this.activeSubPageId = this.subPages[0].id;
 
       console.log(data)
       if (data.suggestProducts){
         this.suggestedProducts = `info-${data._id}`
       }
-      this.router.navigate([
-        `${this.activeSubPageId}`
-      ]);
-
+      if(this.pageType) {
+        let siblingSub = this.infoService.getThumbnails(this.pageType, true).subscribe((data: any) => {
+          this.siblingPages = data;
+          console.log(this.siblingPages)
+  
+          siblingSub.unsubscribe();
+        });
+      }
       // Get Main Page
-        pageSub.unsubscribe();
     })
 
     // When Id's change
@@ -66,15 +68,9 @@ export class GeneralInfoPageComponent implements OnInit {
       let renderType = renderInfo.type;
       this.pageType = params['type'];
       this.pageId = params['id'];
+      
 
-      if(this.pageType) {
-        let siblingSub = this.infoService.getThumbnails(this.pageType).subscribe((data: any) => {
-          this.siblingPages = data;
-          console.log(this.siblingPages)
-
-          siblingSub.unsubscribe();
-        });
-      }
+      
 
       if (renderType == "id") {
 
@@ -95,10 +91,13 @@ export class GeneralInfoPageComponent implements OnInit {
 
     });
 
+
+    
 	}
 
 	selectPage(id: string) {
 		this.activeSubPageId = id;
+    console.log(this.activeSubPageId);
 	}
 
 	// breadCrumbUpdate(id: string){

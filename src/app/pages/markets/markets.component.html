@@ -20,7 +20,7 @@
         <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
             <mat-card *ngFor="let market of marketsList" class="categoryCard" routerLink="/info-page/market/{{market._id}}">
                 <img mat-card-image [src]="market.thumbnail_image">
-                <h2>{{market.name}}</h2>
+                <h1>{{market.name}}</h1>
                 <span>Explore <mat-icon>circle</mat-icon> </span>
 
             </mat-card>

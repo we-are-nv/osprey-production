@@ -80,11 +80,11 @@ export class HomeComponent {
 				);
 			});
 
-		this.infoPageService.getThumbnails('market').subscribe((data: any) => {
+		this.infoPageService.getThumbnails('market', false).subscribe((data: any) => {
 			this.marketsList = data;
 
 		});
-		this.infoPageService.getThumbnails('service').subscribe((data: any) => {
+		this.infoPageService.getThumbnails('service', false).subscribe((data: any) => {
 			this.serviceList = data;
 			this.serviceList.forEach((item)=>[
 				item["type"] = "service"

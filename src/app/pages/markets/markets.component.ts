@@ -15,7 +15,7 @@ export class MarketsComponent {
 
   constructor(private infoPageService: InfoPageService){}
   ngOnInit(): void {
-    this.infoPageService.getThumbnails(this.type).subscribe((data:any)=>{
+    this.infoPageService.getThumbnails(this.type, false).subscribe((data:any)=>{
       this.marketsList = data
     })
 

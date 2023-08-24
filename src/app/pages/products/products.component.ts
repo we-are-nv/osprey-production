@@ -81,7 +81,7 @@ export class ProductsComponent implements OnInit {
 
 				if(this.products.length <= 0){
 					
-   					this.infoPageService.getThumbnails(this.category._id).subscribe((data:any)=>{
+   					this.infoPageService.getThumbnails(this.category._id, false).subscribe((data:any)=>{
 							let firstPage = data[0];
 							this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
 
