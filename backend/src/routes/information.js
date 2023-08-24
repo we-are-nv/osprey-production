@@ -399,10 +399,10 @@ router.get('/page', async (req, res) => {
 	res.json(foundPage);
 });
 
-router.get('/all', checkAuth, async (req, res) => {
+router.get('/all', async (req, res) => {
 	try {
 		const result = await informationPage.find();
-		res.status(200).json({ message: 'returned data: ' });
+		res.status(200).json({ message: result });
 	} catch (err) {
 		console.error(err);
 		res.status(500).json({ message: 'Internal Server Error' });
@@ -410,15 +410,24 @@ router.get('/all', checkAuth, async (req, res) => {
 });
 
 router.get('/thumbnail', async (req, res) => {
-	const { type = '' } = req.query;
+	const { type = '',showSub = false } = req.query;
 	var query = {};
 	if (type != '') {
 		var query = { type: type };
-	}
+	};
+  if (showSub != false){
+    var popu = {
+      path: 'pages.id',
+      model: informationPage,
+      select: { name: 1 }
+    };
+  }
+
 
 	const foundInfos = await information
 		.find(query)
-		.select({ name: 1, thumbnail_image: 1 });
+		.select({ name: 1, thumbnail_image: 1 })
+    .populate(popu)
 	foundInfos.forEach(function (info) {
 		info.thumbnail_image = `${process.env.S3_BASE}${info.thumbnail_image}`;
 	});
