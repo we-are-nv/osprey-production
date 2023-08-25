@@ -38,7 +38,7 @@ export class NavloadService {
 	}
 
 	generateSingleInfo(type: string, name: string) {
-		this.tempSub = this.infoPageService
+		this.infoPageService
 			.getThumbnails(type, false)
 			.subscribe((data: any) => {
 				let pageId = data[0]._id;
@@ -60,7 +60,6 @@ export class NavloadService {
 					};
 
 					this.finalNav[type] = nav;
-					this.tempSub.unsubscribe();
 				});
 			});
 	}

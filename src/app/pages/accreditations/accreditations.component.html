@@ -88,10 +88,39 @@
 				</mat-card-header>
 				<p>The ATEX directive requires the product to be marked with the CE mark, the ‘EX’ mark and the equipment coding as per the example below:</p>
 				<h3>ATEX marking example</h3>
-				<app-table [tableData]="atex"></app-table>
+
+				<table>
+					<tr>
+						<th>Complies with EU directive</th>
+						<th >EX marking</th>
+						<th >Equipment group</th>
+						<th>Equipment category</th>
+						<th>Environment</th>
+						<th>Explosion protection</th>
+						<th>Protection type</th>
+						<th>Gas group</th>
+						<th>Gas sub-group</th>
+						<th>Temperature class</th>
+					</tr>
+				
+					<tr >
+							<td>Zone 0 (gases)</td>
+							<td rowspan="2">An area in which an explosive mixture is continuously present or present for long periods</td>
+							<td>Class I Division 1 (gases)</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+					</tr>
+				</table>
+
+				<!-- <app-table [tableData]="atex"></app-table> -->
 			</mat-card>
 
-			 		
+			
 		</section>
 
 	
