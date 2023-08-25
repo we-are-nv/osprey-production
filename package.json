@@ -11,7 +11,7 @@
 		"test": "ng test",
 		"dev:ssr": "ng run paragon-angular:serve-ssr",
 		"serve:ssr": "node dist/paragon-angular/server/main.js",
-		"build:ssr": "ng build --configuration production --base-href paragon-angular && ng run paragon-angular:server",
+		"build:ssr": "ng build --configuration production --base-href /paragon-angular/ && ng run paragon-angular:server",
 		"prerender": "ng run paragon-angular:prerender",
 		"local-serve:ssr": "node dist/paragon-angular:serve-ssr --configuration development"
 	},
