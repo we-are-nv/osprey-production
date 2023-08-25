@@ -20,13 +20,14 @@ export class ScrollService {
 				const shouldScrollToTop = this.routesToTop.some(route =>
 					url.includes(route)
 				);
+				
+				let hero = document.getElementById('hero');
+				let main = document.getElementById('main-info');
 
-				if (!shouldScrollToTop) {
-					let element = document.getElementById('hero');
-					element?.scrollIntoView({ behavior: 'smooth' });
-				} else {
-					let element = document.getElementById('main-info');
-					element?.scrollIntoView({ behavior: 'smooth' });
+				if (!shouldScrollToTop && hero) {
+					hero?.scrollIntoView({ behavior: 'smooth' });
+				} else if(main) {
+					main?.scrollIntoView({ behavior: 'smooth' });
 				}
 			}
 		});
