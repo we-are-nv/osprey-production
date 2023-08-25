@@ -21,7 +21,7 @@ export class ScrollService {
 					url.includes(route)
 				);
 
-				if(document ){
+				if(document !== undefined){
 					let hero = document.getElementById('hero');
 					let main = document.getElementById('main-info');
 
