@@ -160,7 +160,11 @@ mat-card{
     width: 80vw;
     margin:auto;
 }
-
+.content{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -178,3 +182,9 @@ table {
   tr:nth-child(odd) {
     background-color: #dddddd;
   }
+
+.full-img{
+  width: 40vw;
+  object-fit: contain;
+  margin: auto;
+}

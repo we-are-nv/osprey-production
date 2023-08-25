@@ -13,10 +13,18 @@
     [centred]="true"
     extraStyle="shorterHero"
     ></app-hero>
+	<section class="content">
+			<mat-card>
+				<p>It’s very important to ensure that the equipment you’re proposing to use is suitable for its purpose taking account of the law, applicable standards, quality, safety, security, reliability and environmental.  You will therefore need to consider elements including temperature, vibration, humidity, IP protection, safety, EMC and cybersecurity.  We detail below some of the more common certifications used to ensure the suitability of components and systems to face marine and oil & gas hazards. </p>
+				<img class="full-img" src="assets/images/atex-img.jpg" alt="">
+			</mat-card>
+	
 	<!-- <app-table [tableData]="atex"></app-table> -->
 			<mat-card class="table">
 				<mat-card-header>
+					<img mat-card-avatar src="assets/images/ex-icon.jpg" alt="">
 					<mat-card-title>
+						
 						<h1>Atex</h1>
 					</mat-card-title>
 				</mat-card-header>
@@ -26,15 +34,9 @@
 				<h3>Classification of equipment</h3>
 					<p>The ATEX directive classifies equipment into groups and categories which is shown on the ATEX product marking table below.</p>
 
-				<app-table [tableData]="atex"></app-table>
-			</mat-card>
-
-			<mat-card>
-				<mat-card-header>
-					<mat-card-title>
-						<h3>Classification of an area</h3>
-					</mat-card-title>
-				</mat-card-header>
+				
+				<h3>Classification of an area</h3>
+				
 				<p>Hazardous areas are divided into Zones (European and IECEX method) or Classes and Divisions (North American method) according to the likelihood of a potentially explosive atmosphere being present.</p>
 				<table>
 					<tr>
@@ -76,9 +78,21 @@
 					</tr>
 				</table>
 			</mat-card>
+			<mat-card>
+				<mat-card-header>
+					<mat-card-title>
+						<h1>
+							Product marking
+						</h1>
+					</mat-card-title>
+				</mat-card-header>
+				<p>The ATEX directive requires the product to be marked with the CE mark, the ‘EX’ mark and the equipment coding as per the example below:</p>
+				<h3>ATEX marking example</h3>
+				<app-table [tableData]="atex"></app-table>
+			</mat-card>
 
 			 		
- 		
+		</section>
 
 	
 

@@ -16,7 +16,7 @@
 <section class="ProductsView">
     <section class="Filter">
 
-        <div class="categories" *ngIf="subCats?.length >= 1">
+        <div class="categories" *ngIf="subCats.length > 0">
             <h1>Categories</h1>
             <button mat-button color="primary" *ngFor="let cat of subCats"  [routerLink]="cat.cat_url">{{cat.name}}</button>
         </div>
@@ -29,7 +29,7 @@
         </div>
     </section>
 
-    <div class="productsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start" >
+    <div class="productsContainer" fxLayout="row wrap" fxLayoutAlign="flex-start" *ngIf="products" >
             <mat-card class="productCard selectable"  *ngFor="let product of products" (click)="loadProduct(product.product_url)">
                     <img mat-card-image *ngIf="product.image !== ''" [src]="product.image">
                     <img mat-card-image *ngIf="product.image == ''" src="./assets/images/ExampleProducts/defaultImage.jpg">

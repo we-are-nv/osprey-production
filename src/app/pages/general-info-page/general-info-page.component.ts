@@ -53,7 +53,6 @@ export class GeneralInfoPageComponent implements OnInit {
       if(this.pageType) {
         let siblingSub = this.infoService.getThumbnails(this.pageType, true).subscribe((data: any) => {
           this.siblingPages = data;
-          console.log(this.siblingPages)
   
           siblingSub.unsubscribe();
         });
@@ -82,7 +81,6 @@ export class GeneralInfoPageComponent implements OnInit {
         
 
           // Get Main Page
-          console.log(response)
           this.infoService.getMainPage(response._id);
         })
       }
