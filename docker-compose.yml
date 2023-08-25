@@ -18,7 +18,7 @@ services:
     ports:
       - '4000:4000'
     volumes:
-      - ./dist/paragonProduction:/app/
+      - ./dist/paragon-angular:/app/
     # labels:
     #   - "traefik.enable=true"
     #   - "traefik.http.routers.paragon.rule=Host(`staging.wearenv.co.uk`) && Path(`/paragon-angular`)"

@@ -15,7 +15,8 @@ export class IconRegisterService implements OnInit {
 		@Inject(PLATFORM_ID) private platformId: string
 	) {
 		const svgUrlBase = 'assets/images/socialMedias/';
-		const domain = isPlatformServer(platformId) ? 'https://localhost:4000/' : '';
+    	const domain = './';
+		//const domain = isPlatformServer(platformId) ? 'https://localhost:4000/' : '';
 
 		this._matIconRegistry.addSvgIcon(
 			`whatsapp-colour`,

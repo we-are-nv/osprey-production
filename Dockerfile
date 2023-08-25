@@ -12,8 +12,8 @@ RUN npm ci --quiet --production
 
 
 # Copy the build files
-COPY dist/paragonProduction/server/main.js ./server/main.js
-COPY dist/paragonProduction/browser ./browser
+COPY dist/paragon-angular/server/main.js ./server/main.js
+COPY dist/paragon-angular/browser ./browser
 
 # Expose the port that the app will listen on
 EXPOSE 4000

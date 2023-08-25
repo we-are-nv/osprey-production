@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "paragonProduction": {
+    "paragon-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/paragonProduction/browser",
+            "outputPath": "dist/paragon-angular/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -86,10 +86,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "paragonProduction:build:production"
+              "browserTarget": "paragon-angular:build:production"
             },
             "development": {
-              "browserTarget": "paragonProduction:build:development"
+              "browserTarget": "paragon-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -97,7 +97,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "paragonProduction:build"
+            "browserTarget": "paragon-angular:build"
           }
         },
         "test": {
@@ -122,7 +122,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/paragonProduction/server",
+            "outputPath": "dist/paragon-angular/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "inlineStyleLanguage": "scss"
@@ -164,12 +164,12 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "paragonProduction:build:development",
-              "serverTarget": "paragonProduction:server:development"
+              "browserTarget": "paragon-angular:build:development",
+              "serverTarget": "paragon-angular:server:development"
             },
             "production": {
-              "browserTarget": "paragonProduction:build:production",
-              "serverTarget": "paragonProduction:server:production"
+              "browserTarget": "paragon-angular:build:production",
+              "serverTarget": "paragon-angular:server:production"
             }
           },
           "defaultConfiguration": "development"
@@ -183,12 +183,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "paragonProduction:build:production",
-              "serverTarget": "paragonProduction:server:production"
+              "browserTarget": "paragon-angular:build:production",
+              "serverTarget": "paragon-angular:server:production"
             },
             "development": {
-              "browserTarget": "paragonProduction:build:development",
-              "serverTarget": "paragonProduction:server:development"
+              "browserTarget": "paragon-angular:build:development",
+              "serverTarget": "paragon-angular:server:development"
             }
           },
           "defaultConfiguration": "production"

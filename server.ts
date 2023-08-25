@@ -16,12 +16,12 @@ export function app(): express.Express {
 
 	const distFolder = environment.LIVE
 		? '/home/web/apps/paragon-new/browser'
-		: 'dist/paragonProduction/browser';
+		: 'dist/paragon-angular/browser';
 
 	// if (environment.LIVE === true) {
 	// 	distFolder = join(process.cwd(), environment.distFolder);
 	// } else {
-	// 	distFolder = join(process.cwd(), 'dist/paragonProduction/browser');
+	// 	distFolder = join(process.cwd(), 'dist/paragon-angular/browser');
 	// }
 
 	const indexHtml = existsSync(join(distFolder, 'index.original.html'))

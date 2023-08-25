@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'paragonProduction'`, () => {
+  it(`should have as title 'paragon-angular'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('paragonProduction');
+    expect(app.title).toEqual('paragon-angular');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('paragonProduction app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('paragon-angular app is running!');
   });
 });
