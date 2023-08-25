@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { InfoPageService } from 'src/app/services/info-page.service';
 
@@ -10,7 +11,8 @@ import { InfoPageService } from 'src/app/services/info-page.service';
 export class SubPageComponent implements OnInit, OnChanges {
 	constructor(
 		private _Activatedroute: ActivatedRoute,
-		private infoService: InfoPageService
+		private infoService: InfoPageService,
+		private meta: Meta
 	) {}
 
 
