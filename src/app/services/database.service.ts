@@ -20,4 +20,5 @@ export class DatabaseService {
 	getCredits(type:any){
 		return this.http.get<any>(this.API_URL+ '/info/accreditations', {params: {page: 1, type:type}});
 	}
+
 }

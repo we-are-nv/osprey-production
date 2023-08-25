@@ -23,4 +23,8 @@ export class AccreditationsComponent implements OnInit{
       console.log(this.ingress)
     })
   }
+
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({block: 'center',behavior: 'smooth'});
+}
 }

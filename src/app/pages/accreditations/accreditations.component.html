@@ -14,18 +14,27 @@
     extraStyle="shorterHero"
     ></app-hero>
 	<section class="content">
+			<mat-card class="nav">
+				<a mat-flat-button (click)="scroll(atexEl)">ATEX</a>
+				<a mat-flat-button (click)="scroll(dnv)">DNV</a>
+				<a mat-flat-button (click)="scroll(lloyds)">LLOYD’S REGISTER  </a>
+				<a mat-flat-button (click)="scroll(iso)">ISO/EN/BS STANDARDS	</a>
+				<a mat-flat-button (click)="scroll(ip)">IP RATING</a>
+
+			</mat-card>
+
 			<mat-card>
 				<p>It’s very important to ensure that the equipment you’re proposing to use is suitable for its purpose taking account of the law, applicable standards, quality, safety, security, reliability and environmental.  You will therefore need to consider elements including temperature, vibration, humidity, IP protection, safety, EMC and cybersecurity.  We detail below some of the more common certifications used to ensure the suitability of components and systems to face marine and oil & gas hazards. </p>
 				<img class="full-img" src="assets/images/atex-img.jpg" alt="">
 			</mat-card>
 	
 	<!-- <app-table [tableData]="atex"></app-table> -->
-			<mat-card class="table">
+			<mat-card >
 				<mat-card-header>
 					<img mat-card-avatar src="assets/images/ex-icon.jpg" alt="">
 					<mat-card-title>
 						
-						<h1>Atex</h1>
+						<h1 #atexEl>Atex</h1>
 					</mat-card-title>
 				</mat-card-header>
 				<p>When electronic or electrical equipment of any type is intended for use in a hazardous area, it must be ATEX certified as required by the EU directive 94/9/EC (the ATEX directive (ATmospheres EXplosives).  Products for use in hazardous areas need to comply with ISO/IEC 80079-34:2018 which defines the quality system required to manufacture Ex products in accordance with the relevant certifications. In Europe, ATEX certification of products for use in potentially hazardous atmospheres is compulsory.  Hazardous areas exist where a potentially explosive mix of air and flammable gasses or air and dust or air, dust and gasses may occur. Outside the EU, similar regulations apply under the IECEX certification syste, <a href="https://www.iecex.com/assets/Uploads/Video/IECEx-Introduction-Animation-2021-MP4-1080G.mp4">see video here</a>.  In North America, products must be listed by UL as suitable for use in hazardous atmospheres. Whilst ATEX and IECEX certification systems are similar, the North American approach is different (see area classification below).</p>
@@ -40,9 +49,9 @@
 				<p>Hazardous areas are divided into Zones (European and IECEX method) or Classes and Divisions (North American method) according to the likelihood of a potentially explosive atmosphere being present.</p>
 				<table>
 					<tr>
-						<th>Header</th>
-						<th >Mark</th>
-						<th >Use</th>
+						<th>European & IECEX classification </th>
+						<th >Definition of zone or division </th>
+						<th >North American classification</th>
 					</tr>
 				
 					<tr >
@@ -104,8 +113,8 @@
 					</tr>
 				
 					<tr >
-							<td>Zone 0 (gases)</td>
-							<td rowspan="2">An area in which an explosive mixture is continuously present or present for long periods</td>
+							<td><img class="icon" src="assets/images/ce-icon.jpg" alt=""></td>
+							<td><img class="icon" src="assets/images/ex-icon.jpg" alt=""></td>
 							<td>II</td>
 							<td>2</td>
 							<td>G</td>
@@ -117,10 +126,218 @@
 					</tr>
 				</table>
 
-				<!-- <app-table [tableData]="atex"></app-table> -->
+				<p>The marking system is explained in the table below:</p>
+
+				<h3>ATEX marking system</h3>
+
+				<app-table [tableData]="atex"></app-table>
 			</mat-card>
 
+			<mat-card >
+				<mat-card-header>
+					<mat-card-title><h1 #dnv>DNV</h1></mat-card-title>
+				</mat-card-header>
+				<img class="half-img" src="assets/images/DNV-img.jpg" alt="">
+				<p>DNV (Det Norske Veritas) is a classification society which is recognised as a leading player in maritime risk assessment and certification.  DNV certification ensures that ships or their components comply with a number of standards. These classes include safety, reliability and environmental impact criteria. Among the certification classes are temperature, vibration, humidity, IP protection, safety and EMC. The certification ensures the reliability of components and systems in the face of marine hazards. </p>
+			</mat-card>
+
+			<mat-card >
+				<mat-card-header>
+					<mat-card-title><h1 #lloyds>LLOYD’S REGISTER</h1></mat-card-title>
+				</mat-card-header>
+				<img class="half-img" src="assets/images/lloyds-img.jpg" alt="">
+				<p>Lloyd’s Register (LR) is a global professional services company specialising in engineering and technology for the maritime industry. They are the world’s first marine classification society, created more than 260 years ago, to improve the safety of ships.  CCTV equipment is tested to 'Test Specification Number 1'.  This specification applies to Lloyd’s Register Type Approval of electrical, control, safety system, instrumentation, internal communication and programmable electronic systems for use in the marine environment.  </p>
+			</mat-card>
+
+
+			<mat-card id="iso">
+				<mat-card-header>
+					<mat-card-title><h1 #iso>ISO/EN/BS STANDARDS</h1></mat-card-title>
+				</mat-card-header>
+				<img class="half-img" src="assets/images/iso-img.jpg" alt="">
+
+				<h3>ISO9001:2015</h3>
+				<p>ISO 9001 is the international standard that specifies requirements for a quality management system (QMS). It describes the fundamental concepts and principles of quality management which may be used be any organisation manufacturing or supplying which has been certified to this quality standard.</p>
+
+				<h3>BS EN 60945:2002</h3>
+				<p>Maritime navigation, control and radiocommunication equipment and systems certifies equipment as being suitable for use on a ship’s bridge.</p>
+
+				<h3>BS IEC 60533:2015</h3>
+				<p>BS IEC 60533 specifies minimum requirements for emission, immunity and performance criteria regarding electromagnetic compatibility (EMC) of electrical and electronic equipment for ships with the metallic hull.</p>
+			</mat-card>
+
+			<mat-card >
+				<mat-card-header>
+					<mat-card-title>
+						<h1 #ip>Ingress Protection</h1>
+					</mat-card-title>
+				</mat-card-header>
+				
+				<img class="full-img" src="assets/images/ingress-img.jpg" alt="">
+
+				<h3>IP Classification</h3>
+
+				<p>An IP Rating (also known as Ingress Protection Rating or International Protection Rating) is a way of showing the effectiveness of electrical enclosures in blocking foreign bodies such as dust, moisture, liquids and accidental contact.  Ingress Protection (IP) ratings measure how resistant a device is against solids and water. IP ratings are determined by the international standard EN 60529 (British BS EN 60529:1992 – Degrees of protection provided by enclosures (IP Code) and European IEC 60509: 1989 – Degrees of protection provided by enclosures (IP Code).</p>
+				<p>IP ratings consist of the letters IP (Ingress Protection), followed by two digits. The higher the number after IP, the better the protection against foreign bodies. Sometimes a number is replaced by an X.  This indicates that the enclosure is not yet rated for that specification.</p>
+				<p>The first digit of the IP rating indicates the level of the enclosure’s protection against the ingress from blocking solid foreign bodies such as dust, tools or fingers that could be hazardous if were to come into contact with electrical components, parts or circuitry within the enclosure.</p>
+				<p>The second digit of the IP rating indicates the level of the enclosure’s protection from blocking internal components against various forms of moisture (sprays, drips or submersion etc).</p>
+
+				<p>The table below give the IP classifications:</p>
+				<table>
+					<tr>
+						<th>First Digit</th>
+						<th>Intrusion Protection (SOLIDS)</th>
+						<th>Second Digit</th>
+						<th>Moisture Protection (LIQUIDS)</th>
+					</tr>
+					<tr>
+						<td>0</td>
+						<td>No protection.</td>
+						<td>0</td>
+						<td>No protection.</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Protected against solid objects over 50mm, e.g. accidental touch by hands.</td>
+						<td>1</td>
+						<td>Protected against vertically falling drops of water, e.g. condensation.</td>
+					</tr>			
+					<tr>
+						<td>2</td>
+						<td>Protected against solid objects over 12mm, e.g. fingers.</td>
+						<td>2</td>
+						<td>Protected against direct sprays of water up to 15 degrees from the vertical.</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Protected against solid objects over 2.5mm, e.g. tools & wires.</td>
+						<td>3</td>
+						<td>Protected against direct sprays of water up to 60 degrees from the vertical.</td>
+					</tr>
+					<tr>			
+						<td>4</td>
+						<td>Protected against solid objects over 1mm, e.g. wires & nails.</td>
+						<td>4</td>
+						<td>Protected against water splashed from all directions, limited ingress permitted.</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Protected against dust limited ingress, no harmful deposits.</td>
+						<td>5</td>
+						<td>Protected against low pressure jets of water from all directions, limited ingress permitted.</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Totally protected against dust.</td>
+						<td>6</td>
+						<td>Protected against strong jets of water, e.g. on ships deck, limited ingress permitted.</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>7</td>
+						<td>Protected against the effects of temporary immersion in water</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>8</td>
+						<td>Protected against the effects of continuous immersion in water having regard to specific conditions</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>9k</td>
+						<td>Protected against powerful high temperature water jets</td>
+					</tr>
+
+				</table>
+
+				<p>For CCTV camera housings used in the marine environment, the devices need to be “totally protected against dust” to ensure no salt or sand can enter the enclosure.  For liquid protection, where cameras are exposed, you will normally require a minimum liquids rating of 7.  However, in locations subject to frequent or strong sea-spray a liquids protection of 8 is recommended.  So in practice, cameras used externally on vessels will need to be IP67 or IP68 rated.</p>
+			</mat-card>
 			
+			<mat-card>
+				<mat-card-header>
+					<mat-card-title>NEMA Classification</mat-card-title>
+				</mat-card-header>
+				
+				<img class="full-img" src="assets/images/nema-img.jpg" alt="">
+
+				<p>The National Electrical Manufacturers Association (NEMA) defines standards used in North America for various grades of electrical enclosures typically used in industrial applications.  IP ratings cover protection only against the ingress of water and solid objects whilst NEMA includes supplementary protection standards against corrosion resistance and atmospheric gasses. NEMA ratings also include distinctions between hazardous and non-hazardous environments.  The table below shows the NEMA testing approximate equivalent to IP rating.</p>
+
+				<table>
+					<tr>
+						<th>NEMA Rating</th>
+						<th>IP Equivalent</th>
+						<th>NEMA Definition</th>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>IP10</td>
+						<td>Enclosures constructed for indoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment and to provide a degree of protection against falling dirt</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>IP11</td>
+						<td>Enclosures constructed for indoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt, and to provide a degree of protection against dripping and light splashing of liquids</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>IP54</td>
+						<td>Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt, rain, sleet, snow and windblown dust; and that will be undamaged by external formation of ice on the enclosure</td>
+					</tr>
+					<tr>
+						<td>3R</td>
+						<td>IP14</td>
+						<td>Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt, rain, sleet and snow; and that will be undamaged by external formation of ice on the enclosure</td>
+					</tr>
+					<tr>
+						<td>3S</td>
+						<td>IP54</td>
+						<td>Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt, rain, sleet, snow and windblown dust; and in which the external mechanism(s) remain operable when ice laden</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>IP56</td>
+						<td>Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt, rain, sleet, snow, windblown dust, splashing water and hose-directed water; and that will be undamaged by external formation of ice on the enclosure</td>
+					</tr>
+					<tr>
+						<td>4X</td>
+						<td>IP56</td>
+						<td>Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt, rain, sleet, snow, windblown dust, splashing water and hose-directed water, and corrosion; and that will be undamaged by external formation of ice on the enclosure</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>IP52</td>
+						<td>Enclosures constructed for indoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt; against settling airborne dust, lint, fibers and flyings: and to provide a degree of protection against dripping and light splashing of liquids</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>IP67</td>
+						<td>Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt; against hose-directed water and the entry of water during occasional temporary submersion at a limited depth; and that will be undamaged by external formation of ice on the enclosure</td>
+					</tr>
+					<tr>
+						<td>6P</td>
+						<td>IP68</td>
+						<td>Enclosures constructed for indoor or outdoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt; against hose-directed water and the entry of water during occasional prolonged submersion at a limited depth; and that will be undamaged by external formation of ice on the enclosure</td>
+					</tr>
+					<tr>
+						<td>12K</td>
+						<td>IP52</td>
+						<td>Enclosures constructed with knockout(s) for indoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt; against circulating dust, lint, fibers and flyings: and to provide a degree of protection to against dripping and light splashing of liquids</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>IP54</td>
+						<td>Enclosures constructed for indoor use; to provide a degree of protection to personnel against incidental contact with the enclosed equipment; to provide a degree of protection against falling dirt; against circulating dust, lint, fibers and flyings: and against the spraying, splashing and seepage of water, oil and non-corrosive coolants.</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+			</mat-card>
 		</section>
 
 	

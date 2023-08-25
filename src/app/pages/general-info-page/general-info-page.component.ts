@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InfoPageService } from 'src/app/services/info-page.service';
 import { environment } from 'src/environments/environment';
@@ -13,7 +14,8 @@ export class GeneralInfoPageComponent implements OnInit {
 		private _Activatedroute: ActivatedRoute,
 		private infoService: InfoPageService,
 		private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private meta: Meta
 	) {}
   private API_URL = environment.API_URL;
 	@Input() isHero: boolean = true;

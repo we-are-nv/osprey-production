@@ -154,6 +154,7 @@ p{
 
 mat-card{
   box-shadow: none;
+  
 }
 
 mat-card{
@@ -170,13 +171,13 @@ table {
     border-collapse: collapse;
     width: 80%;
     margin: auto;
-    font-size: small;
   }
   
   td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    text-align: center;
   }
   
   tr:nth-child(odd) {
@@ -184,7 +185,25 @@ table {
   }
 
 .full-img{
-  width: 40vw;
+  width: 25vw;
   object-fit: contain;
+  margin: auto;
+}
+.half-img{
+  width: 15vw;
+  object-fit: contain;
+  margin: auto;
+}
+.icon{
+  width: 2rem;
+}
+.nav{
+  display: flex;
+  flex-direction: row;
+}
+.nav a{
+  width: max-content;
+  padding-left:3%;
+  padding-right: 3%;
   margin: auto;
 }
