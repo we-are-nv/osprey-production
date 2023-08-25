@@ -1,9 +1,11 @@
-import { Injectable, Output, EventEmitter, HostListener } from '@angular/core';
+import { Injectable, Output, EventEmitter, HostListener, Inject } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ScrollComponent } from './scroll/scroll.component';
+    
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
 	providedIn: 'root'
@@ -13,7 +15,10 @@ export class ScrollService {
 
 	@Output() private konami: EventEmitter<void>;
 
-	constructor(private router: Router, public dialog: MatDialog) {
+	constructor(
+		private router: Router, public dialog: MatDialog,
+		@Inject(DOCUMENT) private document: Document  
+		) {
 		this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {
 				const url = this.router.url;
@@ -21,18 +26,15 @@ export class ScrollService {
 					url.includes(route)
 				);
 
-				if(document !== undefined){
-					let hero = document.getElementById('hero');
-					let main = document.getElementById('main-info');
+					let hero = this.document.getElementById('hero');
+					let main = this.document.getElementById('main-info');
 
 					if (!shouldScrollToTop && hero) {
 						hero?.scrollIntoView({ behavior: 'smooth' });
 					} else if(main) {
 						main?.scrollIntoView({ behavior: 'smooth' });
 					}
-				}
-				
-				
+
 			}
 		});
 	}
