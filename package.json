@@ -9,11 +9,11 @@
 		"build2": "ng build --configuration production --base-href /paragon/",
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
-		"dev:ssr": "ng run paragonProduction:serve-ssr",
-		"serve:ssr": "node dist/paragonProduction/server/main.js",
-		"build:ssr": "ng build --configuration production && ng run paragonProduction:server",
-		"prerender": "ng run paragonProduction:prerender",
-		"local-serve:ssr": "node dist/paragonProduction:serve-ssr --configuration development"
+		"dev:ssr": "ng run paragon-angular:serve-ssr",
+		"serve:ssr": "node dist/paragon-angular/server/main.js",
+		"build:ssr": "ng build --configuration production --base-href paragon-angular && ng run paragon-angular:server",
+		"prerender": "ng run paragon-angular:prerender",
+		"local-serve:ssr": "node dist/paragon-angular:serve-ssr --configuration development"
 	},
 	"private": true,
 	"dependencies": {
