@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { ScrollComponent } from './scroll/scroll.component';
     
 import { DOCUMENT } from '@angular/common';
 
@@ -16,6 +15,7 @@ export class ScrollService {
 	@Output() private konami: EventEmitter<void>;
 
 	constructor(
+		private scroller: ViewportScroller,
 		private router: Router, public dialog: MatDialog,
 		@Inject(DOCUMENT) private document: Document  
 		) {
@@ -25,14 +25,13 @@ export class ScrollService {
 				const shouldScrollToTop = this.routesToTop.some(route =>
 					url.includes(route)
 				);
+					const hero = this.document.getElementById('hero')
+					const main = this.document.getElementById('main-info')
 
-					let hero = this.document.getElementById('hero');
-					let main = this.document.getElementById('main-info');
-
-					if (!shouldScrollToTop && hero) {
-						hero?.scrollIntoView({ behavior: 'smooth' });
-					} else if(main) {
-						main?.scrollIntoView({ behavior: 'smooth' });
+					if (!shouldScrollToTop && hero !== null) {
+						scroller.scrollToAnchor("hero")
+					} else if(main !== null) {
+						scroller.scrollToAnchor("main-info")
 					}
 
 			}
