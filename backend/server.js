@@ -92,7 +92,8 @@ app.use((req, res, next) => {
 		'http://localhost:4200',
 		'http://localhost:4300',
 		'http://18.132.33.23:4000',
-		'http://localhost:50470'
+		'http://localhost:50470',
+    'http://paragon.nv.l-w-b.co'
 	];
 
 

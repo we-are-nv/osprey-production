@@ -14,20 +14,20 @@ export function app(): express.Express {
 
 	console.log(environment.LIVE);
 
-	const distFolder = environment.LIVE
-		? '/home/web/apps/paragon-new/browser'
-		: 'dist/paragon-angular/browser';
-
+	// const distFolder = environment.LIVE
+	// 	? '/home/web/apps/paragon-new/browser'
+	// 	: 'dist/paragon-angular/browser';
+    const distFolder = join(process.cwd(), 'dist/paragon-angular/browser');
 	// if (environment.LIVE === true) {
 	// 	distFolder = join(process.cwd(), environment.distFolder);
 	// } else {
 	// 	distFolder = join(process.cwd(), 'dist/paragon-angular/browser');
 	// }
 
-	const indexHtml = existsSync(join(distFolder, 'index.original.html'))
-		? 'index.original.html'
-		: 'index';
-
+	// const indexHtml = existsSync(join(distFolder, 'index.original.html'))
+	// 	? 'index.original.html'
+	// 	: 'index';
+    const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 	// Our Universal express-engine (found @ https://github.com/angular/universal/tree/main/modules/express-engine)
 	server.engine(
 		'html',
@@ -51,13 +51,11 @@ export function app(): express.Express {
 
 	// All regular routes use the Universal engine
 	server.get('*', (req, res) => {
-		res.render(indexHtml, {
-			req,
-			providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl + '/paragon-angular/' }]
-		});
+		//res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+   res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl  }] });
 	});
 
-	server.all('*', function (req, res) {
+	server.all('*.*', function (req, res) {
 		res.status(200).sendFile('/', { root: distFolder });
 	});
 
