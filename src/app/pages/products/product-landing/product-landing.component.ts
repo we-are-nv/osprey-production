@@ -38,28 +38,25 @@ export class ProductLandingComponent implements OnInit {
 		this.customPageInfo = '';
 		this._Activatedroute.paramMap.subscribe(params => {
 			this.categoryId = params.get('category');
-			console.log(this.categoryId)
+			
 			// if (this.categoryId == 'top') {
 			// 	this.categoryId = '';
 			// }
-			this.http
-				.get<any>(
-					this.API_URL +
-						'/products/categories/convert-route?name=' +
-						this.categoryId
-				)
-				.subscribe(response => {
-					this.productService.getCategories(response._id);
-					
-					// get single data for customPageInfo
-					this.categorySub = this.productService
+			this.categorySub = this.productService
 						.getCategoriesUpdateListener()
 						.subscribe(data => {
 							this.categories = data.cats;
 
 						});
+			this.http.get<any>(	this.API_URL + '/products/categories/convert-route?name=' +this.categoryId)
+				.subscribe(response => {
+					this.categoryId = response._id
+					
+					// get single data for customPageInfo
+					
 				});
-		});
+			});
+			this.productService.getCategories(this.categoryId);
 	}
 	getNewCats(data: any) {
 		if (data.hasChild) {
