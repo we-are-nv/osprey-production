@@ -86,9 +86,11 @@ export class ProductService {
 	}
 
 	getSingleCategory(id: string) {
+		
 		return this.http.get<any>(this.API_URL + '/products/categories/single', {
 			params: {id: id}
 		});
+
 	}
 }
 

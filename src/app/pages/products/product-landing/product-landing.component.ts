@@ -38,6 +38,7 @@ export class ProductLandingComponent implements OnInit {
 		this.customPageInfo = '';
 		this._Activatedroute.paramMap.subscribe(params => {
 			this.categoryId = params.get('category');
+			console.log(this.categoryId)
 			// if (this.categoryId == 'top') {
 			// 	this.categoryId = '';
 			// }
@@ -49,15 +50,8 @@ export class ProductLandingComponent implements OnInit {
 				)
 				.subscribe(response => {
 					this.productService.getCategories(response._id);
+					
 					// get single data for customPageInfo
-					this.productService
-						.getSingleCategory(response._id)
-						.subscribe(singleData => {
-							if (singleData){
-								this.customPageInfo = singleData
-							}
-							this.customPageInfo = singleData;
-						});
 					this.categorySub = this.productService
 						.getCategoriesUpdateListener()
 						.subscribe(data => {
