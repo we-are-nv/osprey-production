@@ -8,8 +8,11 @@ import { ScrollService } from './scrollService/scroll.service';
 @Injectable({
 	providedIn: 'root'
 })
+
+
 export class NavloadService {
 	private API_URL = environment.API_URL;
+	tempSub : any;
 	constructor(private http: HttpClient, private infoPageService: InfoPageService) {}
 
 	finalNav: any = {};
@@ -35,7 +38,7 @@ export class NavloadService {
 	}
 
 	generateSingleInfo(type: string, name: string) {
-		let tempSub = this.infoPageService
+		this.tempSub = this.infoPageService
 			.getThumbnails(type, false)
 			.subscribe((data: any) => {
 				let pageId = data[0]._id;
@@ -57,7 +60,7 @@ export class NavloadService {
 					};
 
 					this.finalNav[type] = nav;
-					tempSub.unsubscribe();
+					this.tempSub.unsubscribe();
 				});
 			});
 	}
