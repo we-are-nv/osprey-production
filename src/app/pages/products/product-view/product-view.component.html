@@ -16,8 +16,8 @@
                     </mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <img mat-card-image *ngIf="product.image !== ''" [src]="product.image">
-                    <img mat-card-image *ngIf="product.image == ''" src="./assets/images/ExampleProducts/defaultImage.jpg">
+                    <img class="main-img" mat-card-image *ngIf="product.image !== ''" [src]="product.image">
+                    <img class="main-img" mat-card-image *ngIf="product.image == ''" src="./assets/images/ExampleProducts/defaultImage.jpg">
                 </mat-card-content>
             </mat-card>
         </div>
@@ -64,7 +64,7 @@
             <p>{{product.description}}</p>
         </mat-tab>
         
-        <mat-tab *ngIf="(product.technicalImages == [])" label="Technical Images">
+        <mat-tab *ngIf="(product.tech_images !== [] && product.tech_images !== undefined)" label="Technical Images">
             Content 3
         </mat-tab>
         <mat-tab label="Specifications">
@@ -87,8 +87,11 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
         </mat-tab>
-        <mat-tab label="Gallery">Gallery</mat-tab>
-        <mat-tab label="Drawings">Drawings</mat-tab>
+        
+        <mat-tab label="Drawings" *ngIf="product.tech_drawings.length >1 ">Drawings</mat-tab>
+        <mat-tab label="Gallery" *ngIf="(product.gallery !== [] && product.gallery !== undefined)">
+
+        </mat-tab>
         <mat-tab label="Downloads">Downloads</mat-tab>
 
     </mat-tab-group>
@@ -99,6 +102,6 @@
 
 
     </div>
-    <app-similar-products [categoryId]="product.category._id "></app-similar-products>
+    <app-similar-products *ngIf="product.category[0] !== undefined" [categoryId]="product.category[0]._id "></app-similar-products>
 
 </section>

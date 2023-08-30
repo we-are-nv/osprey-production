@@ -4,14 +4,9 @@
 	[lowerTitle]="customPageInfo?.data?.info?.sub_heading"
 	[isButtons]="true"
 	[background]="customPageInfo?.data?.info?.banner_image"
-	[button1Data]="{ text: 'See What It Costs', path: 'contactForm', type: 'white' }"
-	[button2Data]="{ text: 'Protect My Home', path: 'https://stackoverflow.com/questions/45581336/how-can-i-use-relativeto-property-in-html-template-along-with-routeractive', type: 'outline' }"
+	[button1Data]="{ text: 'Get A Quote', path: 'contactForm', type: 'outline' }"
+	[scheduled]="true"
 	[centred]="false"
-	[button3Data]="{
-		text: 'Explore Our Services',
-		path: '',
-		type: 'white'
-	}"
 	
 	extraStyle="shorterHero"
 	></app-hero>
@@ -22,14 +17,10 @@
 	lowerTitle="Paragon Security offers a comprehensive range of security products intended to meet the demanding requirements of clients in the United Kingdom, Europe and the World."
 	[isButtons]="true"
 	background="./assets/images/heroBackgrounds/productLanding.png"
-	[button1Data]="{ text: 'See What It Costs', path: '../contactForm', type: 'white' }"
-	[button2Data]="{ text: 'Protect My Home', path: '', type: 'outline' }"
+	[button1Data]="{ text: 'Get A Quote', path: '/contactForm', type: 'white' }"
+	[scheduled]="true"
 	[centred]="false"
-	[button3Data]="{
-		text: 'Explore Our Services',
-		path: '',
-		type: 'white'
-	}"></app-hero>
+	></app-hero>
 
 <app-breadcrumbs [history]="history"></app-breadcrumbs>
 <section class="main">
@@ -66,7 +57,10 @@
 		*ngIf="categoryId !== 'top'"
 		routerLink="/search/{{ categoryId }}">
 		Show All Products
-
+		<!-- <mat-icon	
+			class="buttonIcon"
+			iconPositionEnd
+			>foward</mat-icon> -->
 	</button>
 	<app-category-card
 		[cards]="categories"

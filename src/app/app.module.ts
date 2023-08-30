@@ -29,10 +29,8 @@ import { BonusCardComponent } from './pages/general-info-page/bonus-card/bonus-c
 import { CategoryCardComponent } from './keyComponents/category-card/category-card.component';
 import { SimilarProductsComponent } from './keyComponents/similar-products/similar-products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ScrollService } from './services/scrollService/scroll.service';
 import { SafePipe } from './pages/services/safe.pipe';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
-import { ScrollComponent } from './services/scrollService/scroll/scroll.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
@@ -82,7 +80,6 @@ import { TableComponent } from './pages/accreditations/table/table.component';
 		SimilarProductsComponent,
 		SafePipe,
 		SearchPageComponent,
-		ScrollComponent,
 		NewsDialogComponent,
 		AccreditationsComponent,
 		CarouselSliderComponent,

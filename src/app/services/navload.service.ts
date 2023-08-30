@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ProductService } from './product.service';
 import { InfoPageService } from './info-page.service';
-import { ScrollService } from './scrollService/scroll.service';
 
 @Injectable({
 	providedIn: 'root'

@@ -48,7 +48,6 @@ export class GeneralInfoPageComponent implements OnInit {
       this.bonusCards = data.bonus_cards;
       this.activeSubPageId = this.subPages[0].id;
 
-      console.log(data)
       if (data.suggestProducts){
         this.suggestedProducts = `info-${data._id}`
       }

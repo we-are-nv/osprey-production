@@ -25,6 +25,9 @@ export class ProductsComponent implements OnInit {
 	types: any[];
 	categoryId = '';
 
+
+	searchValue: any;
+
 	category: any;
 
 	subCats: any = [];
@@ -66,7 +69,7 @@ export class ProductsComponent implements OnInit {
             category: [this.categoryId],
 			viewChildren: true,
             page: 1,
-            limit: 12
+            limit: 12 
           });
 
       });
@@ -84,15 +87,17 @@ export class ProductsComponent implements OnInit {
 					{path:'/search/'+this.category._id, friendly: this.category.name}
 				];
 
-				if(this.products.length <= 0){
+				if(this.products.length <= 0 && this.searchValue == ''){
 					
-   					this.infoPageService.getThumbnails(this.category._id, false).subscribe((data:any)=>{
-							let firstPage = data[0];
-							this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
+					this.infoPageService.getThumbnails(this.category._id, false).subscribe((data:any)=>{
+						console.log(data)
+						let firstPage = data[0];
+						
+						// this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
 
-					})
+				 })
 
-				}
+			 }
 			});
 
 
@@ -117,11 +122,12 @@ export class ProductsComponent implements OnInit {
 	}
 
 	// On search
-	onSearchChange(searchValue: any): void {
+	onSearchChange(searchValue: any, page:any): void {
+		this.searchValue = searchValue;
 
 		if(searchValue.target.value.length > 0){
 			this.productService.searchProducts({
-				page: 1,
+				page: page,
 				searchQuery: searchValue.target.value,
 				extra: true
 			});
@@ -136,7 +142,9 @@ export class ProductsComponent implements OnInit {
 		}
 	}
 	changePage(newPage: any) {
-		this.productService.getProducts({category: this.categoryId, page: newPage, viewChildren:true});
+		console.log(this.searchValue.target.value)
+		if(this.searchValue.target.value !== ''){ this.onSearchChange(this.searchValue, newPage)	}
+		else { this.productService.getProducts({category: this.categoryId, page: newPage, viewChildren:true});}
 		let top = document.getElementById('productList');
 		top?.scrollIntoView();
 	}

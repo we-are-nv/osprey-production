@@ -10,11 +10,13 @@
         <h1 class="secondaryTitle" >{{secondaryTitle}}</h1>
         <h4>{{lowerTitle}}</h4>
         <div  class="buttons">
-            <button *ngIf="button1Data" class="titleButton {{button1Data.type}}" routerLink="{{button1Data.path}}"
+            <button *ngIf="button1Data" class="titleButton {{button1Data.type}}" routerLink="/{{button1Data.path}}" 
                 mat-raised-button>{{button1Data.text}} <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></button>
-            <button *ngIf="button2Data" class="titleButton {{button2Data.type}}" routerLink="{{button2Data.path}}"
+            <button *ngIf="scheduled" class="titleButton white" onClick="Calendly.initPopupWidget({url: 'https://calendly.com/paragon-security/30min'});return false;"
+                mat-raised-button>Schedule a Call <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></button>
+            <button *ngIf="button2Data" class="titleButton {{button2Data.type}}" routerLink="/{{button2Data.path}}"
                 mat-raised-button>{{button2Data.text}} <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></button>
-            <button *ngIf="isButtons && isButton3" class="titleButton {{button3Data.type}}" routerLink="{{button3Data.path}}"
+            <button *ngIf="isButtons && isButton3" class="titleButton {{button3Data.type}}" routerLink="/{{button3Data.path}}"
                 mat-raised-button>{{button3Data.text}} <mat-icon iconPositionEnd>arrow_forward_ios</mat-icon></button>
         </div>
     </div>

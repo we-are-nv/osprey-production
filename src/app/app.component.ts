@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
-import { ScrollService } from './services/scrollService/scroll.service';
 import { ProductService } from './services/product.service';
 import { InfoPageService } from './services/info-page.service';
 import { DatabaseService } from './services/database.service';

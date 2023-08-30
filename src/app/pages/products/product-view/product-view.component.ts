@@ -29,11 +29,36 @@ export class ProductViewComponent implements OnInit {
 
 	history: any;
 
+	gallery: [];
+
 	additionalInfo: any = [];
 	displayedColumns: string[] = ['detail', 'value'];
 
 	async ngOnInit() {
 		this.additionalInfo = [];
+		this.productSub = this.productService
+			.getSingleProductUpdateListener()
+			.subscribe(data => {
+				this.product = data;
+				this.history= [
+					{path: '/', friendly: 'Home'},
+					{path: '/products/top', friendly: 'Products'},
+					{path:'/search/'+this.product.category.cat_url, friendly: this.product.category.cat_url},
+					{path:this.product.product_url, friendly: this.product.product_name}
+				];
+
+				if (this.product.product_varients)
+					this.productVarients = this.product.product_varients.data;
+
+				let tempAdditionalInfo = this.product.additional_information.info;
+				this.informationConverter(tempAdditionalInfo);
+
+				console.log(this.product.category[0]._id)
+
+				// Gets all the similar products
+			});
+
+
 
 		this._Activatedroute.params.subscribe(async params => {
 			// Reads parameters from URL
@@ -45,50 +70,12 @@ export class ProductViewComponent implements OnInit {
 					.get<any>(this.API_URL + '/products/convert-route?code=' + params['code'])
 					.subscribe(response => {
 						this.id = response._id;
-						this.productSub = this.productService
-							.getSingleProductUpdateListener()
-							.subscribe(data => {
-								this.product = data;
-								this.history= [
-									{path: '/', friendly: 'Home'},
-									{path: '/products/top', friendly: 'Products'},
-									{path:'/search/'+this.product.category.cat_url, friendly: this.product.category.cat_url},
-									{path:this.product.product_url, friendly: this.product.product_name}
-								];
-
-								if (this.product.product_varients)
-									this.productVarients = this.product.product_varients.data;
-
-								let tempAdditionalInfo = this.product.additional_information.info;
-								this.informationConverter(tempAdditionalInfo);
-
-								// Gets all the similar products
-							});
+						
 						this.productService.getSingleProduct(this.id);
 					});
 			}
 
-			// this.id = params['id'];
-			// //this.category = params['category'];
 
-			// // Get the product from the URL parameters
-
-			// this.productSub = this.productService
-			//     .getSingleProductUpdateListener()
-			//     .subscribe(data => {
-			//         this.product = data;
-			//         console.log(this.product);
-
-			//         if (this.product.product_varients)
-			//             this.productVarients = this.product.product_varients.data;
-
-			//         let tempAdditionalInfo = this.product.additional_information.info;
-			//         this.informationConverter(tempAdditionalInfo);
-
-			//         console.log();
-			//         // Gets all the similar products
-			//     });
-			// this.productService.getSingleProduct(this.id);
 		});
 	}
 

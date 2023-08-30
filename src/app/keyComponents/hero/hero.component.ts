@@ -10,7 +10,7 @@ import { ScrollComponent } from 'src/app/services/scrollService/scroll/scroll.co
 })
 export class HeroComponent implements OnInit {
 	private sequence: any[] = [];
-	constructor(private scrollService: ScrollService, private dialog: MatDialog) {}
+	constructor( private dialog: MatDialog) {}
 
 	ngOnInit() {
 		if (typeof window !== 'undefined') {
@@ -36,26 +36,6 @@ export class HeroComponent implements OnInit {
 
 	@Input() extraStyle: string;
 
-	@HostListener('window:keyup', ['$event'])
-	keyEvent(event: KeyboardEvent) {
-		let contra = [
-			'arrowup',
-			'arrowup',
-			'arrowdown',
-			'arrowdown',
-			'arrowleft',
-			'arrowright',
-			'arrowleft',
-			'arrowright',
-			'b',
-			'a'
-		];
-
-		this.sequence.push(event.key.toLowerCase());
-		if (this.sequence == contra) {
-			const dialogRef = this.dialog.open(ScrollComponent, {
-				data: {}
-			});
-		}
-	}
+	@Input() scheduled: boolean;
+	
 }

@@ -8,9 +8,11 @@
 	extraStyle="shorterHero"
 	[button1Data]="{
 		text: 'Book A Call',
-		path: './contactForm',
-		type: 'black'
-	}"></app-hero>
+		path: '/contactForm',
+		type: 'black',
+	}"
+	[scheduled]="true"
+	></app-hero>
 <!-- <app-breadcrumbs [history]="history"></app-breadcrumbs> -->
 <section
 	class="container"
@@ -34,7 +36,7 @@
 				<mat-accordion>
 					<mat-expansion-panel *ngFor="let page of siblingPages" [expanded]="(page._id == pageId)"
 						routerLink="/info-page/{{pageType}}/{{page._id}}">
-					  <mat-expansion-panel-header>
+					  <mat-expansion-panel-header *ngIf="page.name !== 'Oil & Gas'">
 						<mat-panel-title>
 							{{ page.name }}
 						</mat-panel-title>
@@ -44,16 +46,7 @@
 					  </mat-list>
 					</mat-expansion-panel>
 				  </mat-accordion>
-				<!-- <a
-					class="nav-button"
-					
-					routerLinkActive="page-active"
-					>{{ page.name }}
-					<img
-						class="nav-button-icon"
-						src="./assets/images/customIcons/right-arrow-icon.svg"
-						alt=""
-				/></a> -->
+
 			</div>
 		</mat-card>
 		<app-bonus-card [card]="pageType"></app-bonus-card>
