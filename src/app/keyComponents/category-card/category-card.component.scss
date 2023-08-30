@@ -40,11 +40,13 @@ mat-card-header{
 .categoryCard img{
     height: 20vh;
     object-fit: contain;
+    background-color: white;
 }
 .top{
     object-fit: cover !important;
 }
 .categoryCard h2{
+    margin-top: 5%;
     padding-left: 2vh;
     margin-left: 5%;
 }

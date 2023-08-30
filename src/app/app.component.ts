@@ -5,6 +5,8 @@ import { InfoPageService } from './services/info-page.service';
 import { DatabaseService } from './services/database.service';
 import { NavloadService } from './services/navload.service';
 
+import { Router, NavigationEnd } from '@angular/router';
+
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
@@ -21,14 +23,16 @@ export class AppComponent implements OnInit {
 	constructor(
 		private databaseService: DatabaseService,
 		private navbarService: NavloadService,
+		private router: Router
 	) {}
 	categories: any = [];
 	categorySub: any;
 
 	productNav: any = [];
 	finalNav: any = null;
+      
+    ngOnInit() {
 
-	ngOnInit() {
 		this.navbarService.generateNav();
 		this.finalNav = this.navbarService.finalNav;
 	}

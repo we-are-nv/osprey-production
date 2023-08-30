@@ -66,11 +66,7 @@
 		*ngIf="categoryId !== 'top'"
 		routerLink="/search/{{ categoryId }}">
 		Show All Products
-		<mat-icon	
-			class="buttonIcon"
-			iconPositionEnd
-			>arrow_forward_ios</mat-icon
-		>
+
 	</button>
 	<app-category-card
 		[cards]="categories"

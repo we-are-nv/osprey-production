@@ -14,10 +14,13 @@ export class ProductService {
 
 	//Category Stored Data
 	private categories = new Subject<any>();
+	private category = new Subject<any>();
 
 	// Product Stored Data
 	private products = new Subject<any>(); //List of Products to be observed
 	private singleProduct = new Subject<any>(); //Single Product
+
+
 
 	constructor(private http: HttpClient, public router: Router) {}
 
@@ -87,10 +90,15 @@ export class ProductService {
 
 	getSingleCategory(id: string) {
 		
-		return this.http.get<any>(this.API_URL + '/products/categories/single', {
+		this.http.get<any>(this.API_URL + '/products/categories/single', {
 			params: {id: id}
-		});
+		}).subscribe(data => {
+			this.category.next(data);
+		})
 
+	}
+	getSingleCategoryUpdateListener(){
+		return this.category.asObservable();
 	}
 }
 

@@ -35,6 +35,12 @@ export class ProductsComponent implements OnInit {
 	history: any;
 
 	ngOnInit() {
+		this.productService
+				.getSingleCategoryUpdateListener()
+				.subscribe(data => {
+            this.category = data.data;
+          });
+
 		this._Activatedroute.params.subscribe(params => {
 			this.categoryId = params['category'];
       this.http
@@ -53,9 +59,8 @@ export class ProductsComponent implements OnInit {
 
           
 
-          this.productService.getSingleCategory(this.categoryId).subscribe(data => {
-            this.category = data.data;
-          });
+          this.productService.getSingleCategory(this.categoryId)
+		  
 
 		  this.productService.getProducts({
             category: [this.categoryId],

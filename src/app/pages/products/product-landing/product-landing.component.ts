@@ -27,6 +27,7 @@ export class ProductLandingComponent implements OnInit {
 
 	categorySub: any;
 	categories: any = [];
+	categoryInfoSub: any;
 
 	constructor(
 		private productService: ProductService,
@@ -36,27 +37,35 @@ export class ProductLandingComponent implements OnInit {
 	) {}
 	ngOnInit(): void {
 		this.customPageInfo = '';
+		this.categoryInfoSub = this.productService
+				.getSingleCategoryUpdateListener()
+				.subscribe((data:any)=>{
+					this.customPageInfo = data
+				})
+			this.categorySub = this.productService
+						.getCategoriesUpdateListener()
+						.subscribe((data:any) => {
+							this.categories = data.cats;
+
+						});
 		this._Activatedroute.paramMap.subscribe(params => {
 			this.categoryId = params.get('category');
 			
 			// if (this.categoryId == 'top') {
 			// 	this.categoryId = '';
 			// }
-			this.categorySub = this.productService
-						.getCategoriesUpdateListener()
-						.subscribe(data => {
-							this.categories = data.cats;
-
-						});
+			
+			
 			this.http.get<any>(	this.API_URL + '/products/categories/convert-route?name=' +this.categoryId)
 				.subscribe(response => {
-					this.categoryId = response._id
-					
-					// get single data for customPageInfo
-					
+					this.categoryId = response._id;
+					this.productService.getCategories(this.categoryId);
+					if(this.categoryId !== ''){
+							
+						this.productService.getSingleCategory(this.categoryId);
+					}
 				});
 			});
-			this.productService.getCategories(this.categoryId);
 	}
 	getNewCats(data: any) {
 		if (data.hasChild) {

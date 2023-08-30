@@ -88,7 +88,7 @@ import { TableComponent } from './pages/accreditations/table/table.component';
 		CarouselSliderComponent,
 		TableComponent
 	],
-	providers: [UrlFormatterPipe, provideClientHydration(), ScrollService],
+	providers: [UrlFormatterPipe],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
