@@ -161,7 +161,13 @@ router.get('/product_info', async (req, res) => {
     console.log('Invalid Input. Assuming False');
     console.log(req.query.category)
     if (req.query.category.length > 12){
-      catQuery.push(new ObjectId(req.query.category));
+      try {
+        catQuery.push(new ObjectId(req.query.category));
+      }
+      catch (err){
+        //catQuery.push('');
+      }
+
     }
 
   }
