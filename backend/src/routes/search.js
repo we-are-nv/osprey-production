@@ -106,7 +106,7 @@ const dbSearch = {
 const dbSelect = {
 
   "product": {
-    standard: 'product_name product_code searchType image ',
+    standard: 'product_name product_code searchType image gallery tech_drawings ',
     extra: 'description'
   },
   "page": {
@@ -168,6 +168,16 @@ router.get('/', async (req, res) => {
           escapedResult[
             idx
           ].image = `${process.env.S3_BASE}${escapedResult[idx].image}`;
+        }
+        if (escapedResult[idx].gallery){
+          for (gIdx in escapedResult[idx].gallery){
+            escapedResult[idx].gallery[gIdx] = `${process.env.S3_BASE}${escapedResult[idx].gallery[gIdx]}`;
+          }
+        }
+        if (escapedResult[idx].tech_drawings){
+          for (tIdx in escapedResult[idx].tech_drawings){
+            escapedResult[idx].tech_drawings[tIdx] = `${process.env.S3_BASE}${escapedResult[idx].tech_drawings[tIdx]}`;
+          }
         }
         var friendlyProduct = `/product/${escapedResult[idx].product_code}/${escapedResult[idx].product_name.split(" ").join("-").toLowerCase()}`;
         escapedResult[idx]['product_url'] = friendlyProduct;
