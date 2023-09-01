@@ -370,15 +370,21 @@ router.get('/convert-route', async (req, res) => {
 		const foundProduct = await categories.find({
 			['name']: { $regex: conv, $options: 'i' }
 		});
-		if (foundProduct) {
-			for (idx in foundProduct) {
-				if (foundProduct[idx].name.toLowerCase() == conv) {
-					res.json({ _id: foundProduct[idx]._id });
-				}
-			}
-		} else {
-			res.json({ err: 'prod not found' });
-		}
+    try {
+      if (foundProduct) {
+        for (idx in foundProduct) {
+          if (foundProduct[idx].name.toLowerCase() == conv) {
+            res.json({ _id: foundProduct[idx]._id });
+          }
+        }
+      } else {
+        res.json({ err: 'prod not found' });
+      }
+    }
+    catch (err) {
+      res.json({ err: 'invalid params' });
+    }
+
 	} else {
 		res.json({ err: 'invalid params' });
 	}
