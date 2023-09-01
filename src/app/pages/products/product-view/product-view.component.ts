@@ -48,13 +48,12 @@ export class ProductViewComponent implements OnInit {
 
 				if (this.product.product_varients)
 					this.productVarients = this.product.product_varients.data;
+					this.informationConverter([this.productVarients[0]])
 				if( this.product.additional_information?.info){
 					let tempAdditionalInfo = this.product.additional_information.info;
 					this.informationConverter(tempAdditionalInfo);
 				}
 				
-
-				console.log(this.product)
 
 				// Gets all the similar products
 			});
@@ -80,7 +79,9 @@ export class ProductViewComponent implements OnInit {
 		});
 	}
 
-	selectVarient(i: number) {}
+	selectVarient(i: any) {
+		this.informationConverter([i])
+	}
 	// Converts additional information to readable format
 
 	informationConverter(info: any) {

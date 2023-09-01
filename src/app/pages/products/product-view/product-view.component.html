@@ -42,7 +42,7 @@
                     <h2>{{product.product_varients.friendly}}</h2>
                     <mat-chip-listbox aria-label="Fish selection">
                         <div *ngFor="let option of productVarients; let i = index">
-                            <mat-chip-option (click)="selectVarient(i)">{{option.model_no}}</mat-chip-option>
+                            <mat-chip-option (click)="selectVarient(option)" [selected]="additionalInfo == option">{{option.model_no}}</mat-chip-option>
                         </div>
                     </mat-chip-listbox>
 
