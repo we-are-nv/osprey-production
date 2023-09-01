@@ -216,6 +216,16 @@ router.get('/product_info', async (req, res) => {
     if (result[idx].image) {
       result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
     }
+    if (result[idx].tech_drawings){
+      for (tIdx in result[idx].tech_drawings){
+        result[idx].tech_drawings[tIdx] = `${process.env.S3_BASE}${result[idx].tech_drawings[tIdx]}`;
+      }
+    }
+    if (result[idx].gallery){
+      for (gIdx in result[idx].gallery){
+        result[idx].gallery[gIdx] = `${process.env.S3_BASE}${result[idx].gallery[gIdx]}`;
+      }
+    }
     var formattedName = result[idx].product_name.replace(/[^a-zA-Z ]/g, "").replace(/  +/g, ' ').split(" ").join("-").toLowerCase();
     var url = `/product/${result[idx].product_code}/${formattedName}`;
     result[idx].product_url = url;
