@@ -29,7 +29,6 @@ export class ProductViewComponent implements OnInit {
 
 	history: any;
 
-	gallery: [];
 
 	additionalInfo: any = [];
 	displayedColumns: string[] = ['detail', 'value'];
@@ -49,11 +48,13 @@ export class ProductViewComponent implements OnInit {
 
 				if (this.product.product_varients)
 					this.productVarients = this.product.product_varients.data;
+				if( this.product.additional_information?.info){
+					let tempAdditionalInfo = this.product.additional_information.info;
+					this.informationConverter(tempAdditionalInfo);
+				}
+				
 
-				let tempAdditionalInfo = this.product.additional_information.info;
-				this.informationConverter(tempAdditionalInfo);
-
-				console.log(this.product.category[0]._id)
+				console.log(this.product)
 
 				// Gets all the similar products
 			});

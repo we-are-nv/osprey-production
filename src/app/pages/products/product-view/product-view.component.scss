@@ -33,6 +33,9 @@
 }
 mat-card-header{
     height:5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
     
 }
 mat-card-title{
@@ -116,7 +119,17 @@ button{
         height: 50%;
     }
 }
-
+.imgListContainer{
+    display: block;
+    gap: 5%;
+}
+.imgObj{
+    object-fit: scale-down;
+    min-width: 100px;
+    max-width: 200px;
+    max-height: 200px;
+    margin-right: 2.5%;
+}
 
 // Additional Information
 *{

@@ -24,9 +24,9 @@
         <div class="card">
             <mat-card>
             <mat-card-header>
-                <button mat-raised-button class="" routerLink="/contactForm">Get A Quote <mat-icon iconPositionEnd>calendar</mat-icon></button>
-                <button mat-raised-button class="black" href="">Email Us</button>
-                <button mat-raised-button class="black" routerLink="/contactForm">Call Us</button>
+                <button mat-raised-button class="" routerLink="/contactForm">Get A Quote</button>
+                <button mat-raised-button class="black" href="mailto:info@paragon-security.com">Email Us</button>
+                <button mat-raised-button class="blue" href="tel:00441245210914">Call Us</button>
             </mat-card-header>
             <mat-card-content>
                 <p>
@@ -35,7 +35,7 @@
                         {{feature |characterValidation}}
                         <br><br>  </span>
                         Part No: <span> {{product.product_code}} </span><br>
-                        Category: <span>{{product.category.name}}</span> <br>
+                        Category: <span *ngFor="let cat of product.category">{{cat.name}},</span> <br>
 
                 </p>
                 <div *ngIf="productVarients">
@@ -88,11 +88,22 @@
             </table>
         </mat-tab>
         
-        <mat-tab label="Drawings" *ngIf="product.tech_drawings.length >1 ">Drawings</mat-tab>
-        <mat-tab label="Gallery" *ngIf="(product.gallery !== [] && product.gallery !== undefined)">
+        <mat-tab label="Drawings">
+            <div class="imgListContainer">
+                <img class="imgObj" *ngFor="let img of product.tech_drawings" [src]="img"/>
 
+            </div>
+            
+            <span *ngIf="product.tech_drawings.length <=0">No Technical Drawings Images Found</span>    
         </mat-tab>
-        <mat-tab label="Downloads">Downloads</mat-tab>
+        <mat-tab label="Gallery">
+            <div class="imgListContainer">
+                <img class="imgObj" *ngFor="let img of product.gallery" [src]="img"/>
+
+            </div>
+            <span *ngIf="product.gallery.length <=0">No Galley Images Found</span>
+        </mat-tab>
+        <!-- <mat-tab label="Downloads">Downloads</mat-tab> -->
 
     </mat-tab-group>
 </section>
