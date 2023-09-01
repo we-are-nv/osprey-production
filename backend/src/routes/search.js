@@ -169,6 +169,8 @@ router.get('/', async (req, res) => {
             idx
           ].image = `${process.env.S3_BASE}${escapedResult[idx].image}`;
         }
+        var friendlyProduct = `/product/${escapedResult[idx].product_code}/${escapedResult[idx].product_name.split(" ").join("-").toLowerCase()}`;
+        escapedResult[idx]['product_url'] = friendlyProduct;
         newOutput.push(escapedResult[idx]);
       }
       res.json({
