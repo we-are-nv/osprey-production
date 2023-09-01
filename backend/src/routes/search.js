@@ -155,7 +155,7 @@ router.get('/', async (req, res) => {
       for (idx in result) {
         // Find Image Strings and Add Base URL
         if (result[idx].image) {
-          result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
+          //result[idx].image = `${process.env.S3_BASE}${result[idx].image}`;
         }
       }
       var newOutput = [];
