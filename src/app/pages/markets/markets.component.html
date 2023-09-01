@@ -4,8 +4,8 @@
     lowerTitle="When you need to be sure that systems will perform in demanding environments, you can trust Paragon’s experienced team of engineers, surveyors, designers and project managers to deliver solutions you can trust"
     [isButtons]="true"
     background="./assets/images/heroBackgrounds/marketsLanding.png"
-    [button1Data]="{text:'Book a Call', path:'',  type:'white'}"
-    [button2Data]="{text:'Contact Us', path:'/contact', type:'blue'}"
+    [scheduled]="true"
+    [button2Data]="{text:'Contact Us', path:'/contactForm', type:'blue'}"
 
     ></app-hero>
 <!--
@@ -18,7 +18,7 @@
         </div>
         <!-- Categories Grabbed from Component Variable -->
         <div class="categoryContainer" fxLayout="row wrap" fxLayoutAlign="flex-start">
-            <mat-card *ngFor="let market of marketsList" class="categoryCard" routerLink="/info-page/market/{{market._id}}">
+            <mat-card *ngFor="let market of marketsList" class="categoryCard" [routerLink]="['/info-page/market/', market._id]" (click)="setScroll()">
                 <img mat-card-image [src]="market.thumbnail_image">
                 <h1>{{market.name}}</h1>
                 <span>Explore <mat-icon>circle</mat-icon> </span>

@@ -33,11 +33,11 @@ const routes: Routes = [
 		component: GeneralInfoPageComponent
 	},
 
-//   {
-// 		path: 'info/:type/:name',
-//     data:{type:'friendly'},
-// 		component: GeneralInfoPageComponent,
-// 	},
+  {
+		path: 'info/:type/:name',
+    data:{type:'friendly'},
+		component: GeneralInfoPageComponent,
+	},
 
 	// Product pages
 	{ path: 'products/:category', component: ProductLandingComponent },

@@ -20,4 +20,10 @@ export class MarketsComponent {
     })
 
   }
+
+  setScroll() {
+    console.log("Set Scroll")
+    document.body.scrollTop = 0
+    window.scrollTo(0, 0)
+  }
 }

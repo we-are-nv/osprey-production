@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map, pipe, tap } from 'rxjs';
 import { InfoPageService } from 'src/app/services/info-page.service';
 import { environment } from 'src/environments/environment';
 @Component({
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment';
 	templateUrl: './general-info-page.component.html',
 	styleUrls: ['./general-info-page.component.scss']
 })
-export class GeneralInfoPageComponent implements OnInit {
+export class GeneralInfoPageComponent implements OnInit, AfterViewInit {
 	constructor(
 		private _Activatedroute: ActivatedRoute,
 		private infoService: InfoPageService,
@@ -24,6 +25,7 @@ export class GeneralInfoPageComponent implements OnInit {
 	@Input() subPage: string
 	pageType: string;
 	pageId: string;
+  pageName: string;
 
 	// SubPage Surface Info
 	activeSubPageId: string;
@@ -42,7 +44,9 @@ export class GeneralInfoPageComponent implements OnInit {
 		this.subPages = [];
 
 
-    let pageSub = this.infoService.getMainUpdateListener().subscribe(data => {
+    let pageSub = this.infoService.getMainUpdateListener()
+      .subscribe(data => {
+      
       this.pageData = data;
       this.subPages = data.pages;
       this.bonusCards = data.bonus_cards;
@@ -58,6 +62,14 @@ export class GeneralInfoPageComponent implements OnInit {
           siblingSub.unsubscribe();
         });
       }
+
+      // let cont = document.querySelector(".container")
+
+
+      // //console.log("Show Container", cont);
+      // //document.querySelector(".container")?.scrollIntoView()
+      // window.focus();
+      // window.scrollTo({top: 0})
       // Get Main Page
     })
 
@@ -67,32 +79,45 @@ export class GeneralInfoPageComponent implements OnInit {
       let renderInfo: any = this._Activatedroute.snapshot.data;
       let renderType = renderInfo.type;
       this.pageType = params['type'];
+      this.pageName = params['name']
       this.pageId = params['id'];
-      
 
-      
 
       if (renderType == "id") {
-
-        this.infoService.getMainPage(this.pageId);
+        this.getPageDateBasedonID()  
       } else {
-        this.http
-        .get<any>(this.API_URL + '/info/convert-route?name=' + params['name'] + '&type='+ params['type'])
-        .subscribe(response => {
-        
-
-          // Get Main Page
-          this.infoService.getMainPage(response._id);
-        })
+        this.getPageIDfromPageName()
       }
-
-
-
-    });
-
-
-    
+    });   
 	}
+
+  ngAfterViewInit(){
+    window.scroll(0,0)
+  }
+
+  subscribetoPageData = () => {
+
+  }
+
+  getPageDateBasedonID = () => {
+    //Any Validation 
+    this.infoService.getMainPage(this.pageId);
+  }
+
+  getPageIDfromPageName = () => {
+    this.http
+    .get<any>(this.API_URL + `/info/convert-route?name=${this.pageName}&type=${this.pageType}`)
+    //.subscribe(async (response) => {
+      .pipe(
+        tap((response) => {
+          this.pageId = response._id;
+          // Get Main Page
+          //this.infoService.getMainPage(response._id);
+          this.getPageDateBasedonID()
+        }
+        )
+      );
+  }
 
 	selectPage(id: string) {
 		this.activeSubPageId = id;
