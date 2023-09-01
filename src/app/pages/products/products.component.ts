@@ -42,7 +42,9 @@ export class ProductsComponent implements OnInit {
 		this.productsSub = this.productService
 			.getProductsUpdateListener()
 			.subscribe(data => {
-				this.products = data.products;
+				if(data.products)this.products = data.products;
+				if(data.results)this.products = data.results
+				
 				this.currentPage = data.currentPage;
 				this.totalPages = data.totalPages;
 				this.history= [
@@ -50,7 +52,6 @@ export class ProductsComponent implements OnInit {
 					{path: '/products/top', friendly: 'Products'},
 					{path:'/search/'+this.category._id, friendly: this.category.name}
 				];
-
 				if(this.products.length <= 0 && this.searchValue == ''){
 					
 					this.infoPageService.getThumbnails(this.category._id, false).subscribe((data:any)=>{
@@ -76,7 +77,7 @@ export class ProductsComponent implements OnInit {
 		
 		this._Activatedroute.params.subscribe(params => {
 			this.categoryId = params['category']
-		if(this.categoryId.length <10){
+		if(!this.containsNumbers(this.categoryId)){
       this.http
       .get<any>(
           this.API_URL + '/products/categories/convert-route?name=' + this.categoryId
@@ -95,7 +96,7 @@ export class ProductsComponent implements OnInit {
 		  
 
 		  this.productService.getProducts({
-            category: [this.categoryId],
+            category: [res],
 			viewChildren: true,
             page: 1,
             limit: 12 
@@ -126,6 +127,10 @@ export class ProductsComponent implements OnInit {
 
 	}
 
+	containsNumbers(str: string) {
+		return /[0-9]/.test(str);
+	  }
+
 	currentCategory = null;
 
 	changeType(value: any) {
@@ -133,7 +138,7 @@ export class ProductsComponent implements OnInit {
 		this.productService.getProducts({
 			
 			viewChildren: true,
-			category: this.categoryId,
+			category: [this.categoryId],
 			page: 1,
 			limit: 12
 		});
@@ -153,9 +158,9 @@ export class ProductsComponent implements OnInit {
 				extra: true
 			});
 		}
-		else{
+		else{ 
 			this.productService.getProducts({
-				category: this.categoryId,
+				category: [this.categoryId],
 				page: 1,
 				limit: 12,
 				viewChildren: true,

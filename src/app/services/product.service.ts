@@ -43,7 +43,7 @@ export class ProductService {
 	searchProducts(filter: any) {
 		const query = filter;
 		this.http
-			.get<any>(this.API_URL + '/products/search', {params: query})
+			.get<any>(this.API_URL + '/search', {params: query})
 			.subscribe(response => {
 				this.products.next(response);
 			});
