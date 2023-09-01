@@ -514,7 +514,7 @@ router.get('/search', async (req, res) => {
     limit = 10,
     searchFor = 'product_name',
     searchQuery = '',
-    extra = false
+    extra = true
   } = req.query;
   var query = {};
   // If Category is Decalred
@@ -525,7 +525,7 @@ router.get('/search', async (req, res) => {
   var inject = { [searchFor]: { $regex: searchQuery, $options: 'i' } };
   query = { ...query, ...inject };
   const count = await allProducts.count(query);
-  var selectOptions = 'product_name product_code ';
+  var selectOptions = 'product_name product_code image';
 
   if (extra) {
     selectOptions += 'image description';
@@ -546,6 +546,9 @@ router.get('/search', async (req, res) => {
             idx
           ].image = `${process.env.S3_BASE}${escapedResult[idx].image}`;
         }
+        let formattedName = escapedResult[idx]["product_name"].replace(/[^a-zA-Z ]/g, "").replace(/  +/g, ' ').split(" ").join("-").toLowerCase();
+        var url = `/product/${escapedResult[idx]["product_code"]}/${formattedName}`;
+        escapedResult[idx].product_url = url;
         newOutput.push(escapedResult[idx]);
       }
       res.json({

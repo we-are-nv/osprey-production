@@ -38,43 +38,7 @@ export class ProductsComponent implements OnInit {
 	history: any;
 
 	ngOnInit() {
-		this.productService
-				.getSingleCategoryUpdateListener()
-				.subscribe(data => {
-            this.category = data.data;
-          });
 
-		this._Activatedroute.params.subscribe(params => {
-			this.categoryId = params['category'];
-      this.http
-      .get<any>(
-          this.API_URL + '/products/categories/convert-route?name=' + this.categoryId
-      )
-      .subscribe(response => {
-          let res = response._id;
-          this.categoryId = res;
-		 
-          this.productService.getCategoriesUpdateListener().subscribe((data: any) => {
-            this.subCats = data.cats;
-          });
-
-          this.productService.getCategories(this.categoryId);
-
-          
-
-          this.productService.getSingleCategory(this.categoryId)
-		  
-
-		  this.productService.getProducts({
-            category: [this.categoryId],
-			viewChildren: true,
-            page: 1,
-            limit: 12 
-          });
-
-      });
-
-		});
 		this.productsSub = this.productService
 			.getProductsUpdateListener()
 			.subscribe(data => {
@@ -93,12 +57,69 @@ export class ProductsComponent implements OnInit {
 						console.log(data)
 						let firstPage = data[0];
 						
-						// this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
+						this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])
 
 				 })
 
 			 }
 			});
+
+		this.productService
+				.getSingleCategoryUpdateListener()
+				.subscribe(data => {
+            this.category = data.data;
+          });
+		  this.productService.getCategoriesUpdateListener().subscribe((data: any) => {
+            this.subCats = data.cats;
+          });
+		  
+		
+		this._Activatedroute.params.subscribe(params => {
+			this.categoryId = params['category']
+		if(this.categoryId.length <10){
+      this.http
+      .get<any>(
+          this.API_URL + '/products/categories/convert-route?name=' + this.categoryId
+      )
+      .subscribe(response => {
+          let res = response._id;
+          this.categoryId = res;
+		 
+          
+
+          this.productService.getCategories(this.categoryId);
+
+          
+
+          this.productService.getSingleCategory(this.categoryId)
+		  
+
+		  this.productService.getProducts({
+            category: [this.categoryId],
+			viewChildren: true,
+            page: 1,
+            limit: 12 
+          });
+
+      });
+	}else{
+		this.productService.getCategories(this.categoryId);
+
+          
+
+          this.productService.getSingleCategory(this.categoryId)
+
+		  this.productService.getProducts({
+            category: [this.categoryId],
+			viewChildren: true,
+            page: 1,
+            limit: 12 
+          });
+		  
+	}
+
+		});
+		
 
 
 

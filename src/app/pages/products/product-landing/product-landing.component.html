@@ -1,4 +1,4 @@
-<app-hero *ngIf="customPageInfo && categoryId !== 'top'"
+<app-hero *ngIf="categoryId !== ''"
 	[mainTitle]="customPageInfo?.data?.name"
 	[secondaryTitle]="customPageInfo?.data?.info?.heading"
 	[lowerTitle]="customPageInfo?.data?.info?.sub_heading"
@@ -11,7 +11,7 @@
 	extraStyle="shorterHero"
 	></app-hero>
 
-	<app-hero *ngIf="!customPageInfo"
+	<app-hero *ngIf="categoryId == ''"
 	mainTitle="Products"
 	secondaryTitle="For the most demanding applications"
 	lowerTitle="Paragon Security offers a comprehensive range of security products intended to meet the demanding requirements of clients in the United Kingdom, Europe and the World."
@@ -54,7 +54,7 @@
 		class="prod-load-button "
 		mat-flat-button
 		color="primary"
-		*ngIf="categoryId !== 'top'"
+		*ngIf="categoryId !== ''"
 		routerLink="/search/{{ categoryId }}">
 		Show All Products
 		<!-- <mat-icon	
