@@ -8,6 +8,7 @@ const productInfo = mongoose.Schema({
   product_code: { type: String, required: true },
   product_name: { type: String, required: true },
   image: { type: String, required: true },
+  gallery : { type:Array, required: false},
   description: { type: String, required: true },
   addit_category: { type: String, required: false },
   features: { type: Array, required: false },
@@ -17,7 +18,7 @@ const productInfo = mongoose.Schema({
   product_url: {type:String,required:false},
   manufacturer: { type: String, required: false },
   searchType: { type: String, required: false },
-  tech_drawing: { type: String, required: false },
+  // tech_drawing: { type: String, required: false },
   tech_drawings: { type: Array, required: false },
   category: [{ type: mongoose.Schema.Types.ObjectId, ref: categorys }],
   additional_information: {
