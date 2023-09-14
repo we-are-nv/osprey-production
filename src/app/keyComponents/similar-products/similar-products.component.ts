@@ -19,19 +19,25 @@ export class SimilarProductsComponent implements  OnInit, OnChanges{
   ngOnInit(): void {
     this.similarProductsSub = this.productService.getProductsUpdateListener()
           .subscribe((data)=>{
+            console.log(data)
             this.similarProducts = data.products;
-            if(data.totalPage !== 1){
-               this.similarProducts.forEach((product: any)=>{
-                  if(product._id == this.currentProd){
-                    this.productService.getProducts({
+            var result = this.similarProducts.find((obj: any) => {
+              if(obj._id === this.currentProd && data.totalPages !== 1){
+                this.productService.getProducts({
                       category: this.categoryIdArray,
-                      page:  Math.floor(Math.random() * data.totalPages),
+                      page:  Math.floor(Math.random() * data.totalPages)+1,
                       limit: 4,
                       viewChildren: true,
-                    })
-                  }
                 })
-            }
+              }
+            })
+            // if(){
+            //    this.similarProducts.forEach((product: any)=>{
+            //       if(product._id == this.currentProd){
+            //         
+            //       }
+            //     })
+            // }
            
       });
   }
