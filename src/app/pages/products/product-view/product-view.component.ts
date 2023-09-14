@@ -73,6 +73,8 @@ export class ProductViewComponent implements OnInit {
 						
 						this.productService.getSingleProduct(this.id);
 					});
+			}else{
+				this.productService.getSingleProduct(params['id'])
 			}
 
 

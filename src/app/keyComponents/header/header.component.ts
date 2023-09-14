@@ -52,6 +52,8 @@ export class HeaderComponent implements OnInit {
 	searchData: any = {};
 	searchInput: string = '';
 
+	searchOpened: boolean = false;
+
 	@Input() finalNav: any;
 	@Output() toggleNav: EventEmitter<any> = new EventEmitter();
 	// On scroll detected, Set the toolbar class
@@ -88,6 +90,7 @@ export class HeaderComponent implements OnInit {
 		this.databaseService.searchAll(searchValue).subscribe((data: any) => {
 			this.searchData = data.results;
 			this.searchArray = data.results.product;
+			console.log(this.searchData)
 		});
 	}
 }

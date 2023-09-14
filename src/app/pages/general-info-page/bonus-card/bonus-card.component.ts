@@ -6,13 +6,23 @@ import { FilesService } from 'src/app/services/files.service';
   templateUrl: './bonus-card.component.html',
   styleUrls: ['./bonus-card.component.scss']
 })
+
 export class BonusCardComponent implements OnInit{
+  filesArray: any[];
   constructor(private fileService: FilesService){}
   @Input() card: any;
   ngOnInit(){
     this.fileService.getFilesObservable().subscribe(data =>{
+      this.filesArray = data
     })
     this.fileService.getFiles()
+  }
+
+  openPDF(tag: any){
+    var result = this.filesArray.find(obj => {
+      return obj.ETag === tag
+    })
+    window.open(result.Key, '_blank');
   }
   
 }

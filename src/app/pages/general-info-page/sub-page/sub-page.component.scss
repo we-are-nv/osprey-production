@@ -4,7 +4,6 @@
 #container{
     padding-bottom: 10vh;
 }
-
 h1{
     margin-top:5vh;
     font-size: 1.75rem;
@@ -18,18 +17,17 @@ p{
 
   list-style-type: disc;
 }
-
-// Modular Styling Clases
 .image-Section{
-    display: flex;
-    flex-direction: row;
-    gap: 3%;
-
+    width: fit-content;
+    height: fit-content;
+    float: left;
+    margin: 5%;
 }
-.image-Section .image{
-    max-width: 30%;
-    max-height: 30vh;
+.image{
+    max-width: 40vw;
+    max-height: 30vw;
 }
+// Modular Styling Clases
 
 // Drop Down Items
 .dropdown-section{
@@ -57,7 +55,12 @@ p{
     margin-right: auto;
 }
 
-
+.consultation{
+    background-color:#0065E7 ;
+    color: white;
+    margin-top: 1rem;
+    border-radius: 0px;
+}
 @keyframes openAnimation{
     from{
         transform: rotate(0deg)
@@ -79,5 +82,10 @@ p{
 @media screen and (max-width: 750px) {
     h1{
         text-align: center;
+    }
+}
+@media screen and (max-width: 1100px){
+    .image-Section{
+        float: none;
     }
 }

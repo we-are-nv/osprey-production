@@ -8,11 +8,9 @@
             </div>
 
             <!-- Image Object -->
-            <div *ngIf="element.type == 'image'">
-                <h1>{{element.header}}</h1>
-                <section class="image-Section">
+            <div *ngIf="element.type == 'image'" class="image-Section">
+                <h1 *ngIf="element.header">{{element.header}}</h1>
                 <img class="image" *ngFor="let imgScr of element.src" [src]="imgScr" alt="">
-                </section>
             </div>
             
 
@@ -48,6 +46,9 @@
             </div>
 
             <div *ngIf="element.type == 'embed'" [innerHTML]="element.text" router></div>
+
+            <div *ngIf="element.type == 'consoltation'"><button mat-flat-button class="consultation" (click)="openCalendlyPopup()">Schedule a consultation
+            </button></div>
         </div>
 
 </section>

@@ -121,7 +121,6 @@ export class GeneralInfoPageComponent implements OnInit, AfterViewInit {
 
 	selectPage(id: string) {
 		this.activeSubPageId = id;
-    console.log(this.activeSubPageId);
 	}
 
 	// breadCrumbUpdate(id: string){

@@ -25,9 +25,9 @@
             <mat-card>
             <mat-card-header>
                 <div class="cta-container">
-                    <a mat-raised-button class="contact-button" routerLink="/contactForm">Get A Quote</a>
-                    <a mat-raised-button class="black contact-button" href="mailto:info@paragon-security.com?subject={{product.product_name}} - {{product.product_code}}&body=Hello, I am contact about the {{product.product_name}}">Email Us</a>
-                    <a mat-raised-button class="blue contact-button" href="tel:00441245210914">Call Us</a>
+                    <a mat-raised-button class="contact-button black" routerLink="/contactForm">Get A Quote</a>
+                    <a mat-raised-button class="blue contact-button" href="mailto:info@paragon-security.com?subject={{product.product_name}} - {{product.product_code}}&body=Hello, I am contact about the {{product.product_name}}">Email Us</a>
+                    <a mat-flat-button class="outline contact-button" href="tel:00441245210914">Call Us</a>
                 </div>
                 
             </mat-card-header>
@@ -37,10 +37,26 @@
                         <span class="dot"></span>
                         {{feature |characterValidation}}
                         <br><br>  </span>
-                        Part No: <span> {{product.product_code}} </span><br>
-                        Category: <span *ngFor="let cat of product.category">{{cat.name}},</span> <br>
+                        <table>
+                            <tr>
+                                <th>
+                                    Part No:
+                                </th>
+                                <td>
+                                    <span> {{product.product_code}} </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Category:
+                                </th>
+                                <td>
+                                    <span *ngFor="let cat of product.category">{{cat.name}},</span>
+                                </td>
+                            </tr>
+                        </table>
 
-                </p>
+
                 <div *ngIf="productVarients">
                     <h2>{{product.product_varients.friendly}}</h2>
                     <mat-chip-listbox aria-label="Fish selection">

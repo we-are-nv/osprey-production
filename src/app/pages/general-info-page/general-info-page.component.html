@@ -34,20 +34,28 @@
 			</mat-card-header>
 			<div class="nav-button-container">
 				<mat-accordion>
-					<mat-expansion-panel *ngFor="let page of siblingPages" [expanded]="(page._id == pageId)"
+					<ng-container *ngFor="let page of siblingPages">
+						<mat-expansion-panel  *ngIf="page.pages.length > 1 " [expanded]="(page._id == pageId)"
 						routerLink="/info-page/{{pageType}}/{{page._id}}">
-					  <mat-expansion-panel-header *ngIf="page.name !== 'Oil & Gas'">
-						<mat-panel-title>
-							{{ page.name }}
-						</mat-panel-title>
-					  </mat-expansion-panel-header>
-					  <mat-list>
-						<mat-list-item  *ngFor="let subPage of page.pages" (click)="selectPage(subPage?.id?._id)" class="subPageItem sub-{{subPage?.id?._id}}" href="#main-info">{{subPage?.id?.name}}</mat-list-item>
-					  </mat-list>
-					</mat-expansion-panel>
-				  </mat-accordion>
+						<mat-expansion-panel-header >
+							<mat-panel-title>
+								{{ page.name }}
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+							<button mat-flat-button class="nav-button"  *ngFor="let subPage of page.pages" (click)="selectPage(subPage?.id?._id)" [ngClass]="{'page-active': subPage?.id?._id === activeSubPageId}" class="subPageItem sub-{{subPage?.id?._id}}" >{{subPage?.id?.name}}</button>
+						</mat-expansion-panel>
+					</ng-container>
 
+					
+				  </mat-accordion>
+					<ng-container *ngFor="let page of siblingPages">
+						<button mat-flat-button class="nav-button" routerLinkActive="page-active" *ngIf="page.pages.length == 1" routerLink="/info-page/{{pageType}}/{{page._id}}">
+							{{page.name}}
+						</button>
+					</ng-container>
 			</div>
+			
+			
 		</mat-card>
 		<app-bonus-card [card]="pageType"></app-bonus-card>
 	</section>

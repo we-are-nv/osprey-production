@@ -3,6 +3,7 @@ import { Meta } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { InfoPageService } from 'src/app/services/info-page.service';
 
+declare var Calendly: any;
 @Component({
 	selector: 'app-sub-page',
 	templateUrl: './sub-page.component.html',
@@ -23,15 +24,19 @@ export class SubPageComponent implements OnInit, OnChanges {
 	elements: any;
 
 	ngOnInit(): void {
-		console.log(this.subPage)
         this.infoService.getSubPage(this.subPage);
         this.infoService.getPageListener().subscribe(data => {
           this.pageData = data;
           this.elements = this.pageData.elements;
-		  console.log(data)
         });
 	}
 	ngOnChanges(): void {
 		this.infoService.getSubPage(this.subPage)
+	}
+	openCalendlyPopup() {
+		Calendly.initPopupWidget({
+			url: 'https://calendly.com/paragon-security/30min'
+		});
+		return false; // Prevent default anchor link behavior
 	}
 }

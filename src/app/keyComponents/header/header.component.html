@@ -132,7 +132,7 @@
 		<a
 			class="searchIcon"
 			(click)="activateSearch()"
-			><mat-icon>search</mat-icon></a
+			><mat-icon *ngIf="inputState == 'normal'">search</mat-icon><mat-icon *ngIf="inputState == 'widen'">clear</mat-icon></a
 		>
 		<mat-menu
 			class="dropdown"
