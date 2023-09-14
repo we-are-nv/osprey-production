@@ -10,24 +10,35 @@ export class SimilarProductsComponent implements  OnInit, OnChanges{
   
   
   @Input() categoryArray: any;
+  @Input() currentProd: any;
   similarProducts:any; 
   similarProductsSub: any;
+  categoryIdArray: any;
 
   constructor(private productService:ProductService){}
   ngOnInit(): void {
     this.similarProductsSub = this.productService.getProductsUpdateListener()
           .subscribe((data)=>{
             this.similarProducts = data.products;
-            console.log(data)
+            this.similarProducts.forEach((product: any)=>{
+              if(product._id == this.currentProd){
+                this.productService.getProducts({
+                  category: this.categoryIdArray,
+                  page:  Math.floor(Math.random() * data.totalPages),
+                  limit: 4,
+                  viewChildren: true,
+                })
+              }
+            })
       });
   }
   ngOnChanges(){
-    let categoryIdArray: any[] = []
+    this.categoryIdArray = []
     this.categoryArray.forEach((category:any) =>{
-      categoryIdArray.push(category._id)
+      this.categoryIdArray.push(category._id)
     })
     this.productService.getProducts({
-      category: categoryIdArray,
+      category: this.categoryIdArray,
       page: 1,
       limit: 4,
       viewChildren: true,

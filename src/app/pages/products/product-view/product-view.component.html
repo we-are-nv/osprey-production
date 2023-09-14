@@ -86,7 +86,7 @@
         <mat-tab *ngIf="(product.tech_images !== [] && product.tech_images !== undefined)" label="Technical Images">
             Content 3
         </mat-tab>
-        <mat-tab label="Specifications" *ngIf="additionalInfo.length !==0">
+        <mat-tab label="Specifications">
             <table class="prodcutSpecTable" mat-table  [dataSource]="additionalInfo" class="mat-elevation-z8">
 <!--
                 - Note that these columns can be defined in any order.
@@ -130,6 +130,6 @@
 
 
     </div>
-    <app-similar-products *ngIf="product.category[0] !== undefined" [categoryArray]="product.category"></app-similar-products>
+    <app-similar-products *ngIf="product.category[0] !== undefined" [categoryArray]="product.category" [currentProd]="product._id"></app-similar-products>
 
 </section>
