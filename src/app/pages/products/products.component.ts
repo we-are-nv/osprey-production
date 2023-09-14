@@ -166,8 +166,7 @@ export class ProductsComponent implements OnInit {
 		}
 	}
 	changePage(newPage: any) {
-		console.log(this.searchValue.target.value)
-		if(this.searchValue.target.value !== ''){ this.onSearchChange(this.searchValue, newPage)	}
+		if(this.searchValue?.target.value !== '' && this.searchValue?.target !== undefined){ this.onSearchChange(this.searchValue, newPage)	}
 		else { this.productService.getProducts({category: this.categoryId, page: newPage, viewChildren:true});}
 		let top = document.getElementById('productList');
 		top?.scrollIntoView();
