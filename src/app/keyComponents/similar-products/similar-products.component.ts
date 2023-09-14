@@ -6,10 +6,10 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './similar-products.component.html',
   styleUrls: ['./similar-products.component.scss']
 })
-export class SimilarProductsComponent implements  OnInit{
+export class SimilarProductsComponent implements  OnInit, OnChanges{
   
   
-  @Input() categoryId: any;
+  @Input() categoryArray: any;
   similarProducts:any; 
   similarProductsSub: any;
 
@@ -18,7 +18,20 @@ export class SimilarProductsComponent implements  OnInit{
     this.similarProductsSub = this.productService.getProductsUpdateListener()
           .subscribe((data)=>{
             this.similarProducts = data.products;
+            console.log(data)
       });
+  }
+  ngOnChanges(){
+    let categoryIdArray: any[] = []
+    this.categoryArray.forEach((category:any) =>{
+      categoryIdArray.push(category._id)
+    })
+    this.productService.getProducts({
+      category: categoryIdArray,
+      page: 1,
+      limit: 4,
+      viewChildren: true,
+    })
   }
 
 

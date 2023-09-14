@@ -32,15 +32,12 @@
     display: flex;
 }
 mat-card-header{
-    height:5rem;
-    display: flex;
-    flex-direction: row;
-    gap: 5%;
+    height: 3rem;
     
 }
 mat-card-title{
     font-size: 1.5rem;
-    
+    font-weight: bold;
 }
 mat-card-content{
     display:block !important;
@@ -70,11 +67,17 @@ span{
     border-radius: 50%;
     display: inline-block;
 }
-
-button{
+.cta-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap:5%;
+}
+.contact-button{
     border: 0px;
     width: 100%;
-    margin: auto;
+    text-decoration: none;
+    font-size: medium;
 }
 .outline{
     background-color: transparent;
@@ -126,8 +129,8 @@ button{
 .imgObj{
     object-fit: scale-down;
     min-width: 100px;
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 250px;
+    max-height: 250px;
     margin-right: 2.5%;
 }
 
@@ -135,6 +138,8 @@ button{
 *{
     overflow-y: hidden;
 }
+
+
 
 // similar Products
 .similarProductsInfo{
@@ -147,4 +152,15 @@ button{
 .mat-mdc-table .mdc-data-table__row{
     height: 30px;
     font-size: small;
+}
+
+// tabs style
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    color:rgba(255, 0, 0, 0);
+    background-color: green;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels {
+    color:rgb(255, 0, 0) !important;
+    background-color: yellow;
 }

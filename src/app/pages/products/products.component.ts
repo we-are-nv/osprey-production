@@ -52,10 +52,8 @@ export class ProductsComponent implements OnInit {
 					{path: '/products/top', friendly: 'Products'},
 					{path:'/search/'+this.category._id, friendly: this.category.name}
 				];
-				if(this.products.length <= 0 && this.searchValue == ''){
-					
+				if(this.products.length <= 0){
 					this.infoPageService.getThumbnails(this.category._id, false).subscribe((data:any)=>{
-						console.log(data)
 						let firstPage = data[0];
 						
 						this.router.navigate(['/info-page/' + this.category._id + '/' + firstPage._id])

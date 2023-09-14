@@ -24,9 +24,12 @@
         <div class="card">
             <mat-card>
             <mat-card-header>
-                <button mat-raised-button class="" routerLink="/contactForm">Get A Quote</button>
-                <button mat-raised-button class="black" href="mailto:info@paragon-security.com">Email Us</button>
-                <button mat-raised-button class="blue" href="tel:00441245210914">Call Us</button>
+                <div class="cta-container">
+                    <a mat-raised-button class="contact-button" routerLink="/contactForm">Get A Quote</a>
+                    <a mat-raised-button class="black contact-button" href="mailto:info@paragon-security.com?subject={{product.product_name}} - {{product.product_code}}&body=Hello, I am contact about the {{product.product_name}}">Email Us</a>
+                    <a mat-raised-button class="blue contact-button" href="tel:00441245210914">Call Us</a>
+                </div>
+                
             </mat-card-header>
             <mat-card-content>
                 <p>
@@ -42,7 +45,7 @@
                     <h2>{{product.product_varients.friendly}}</h2>
                     <mat-chip-listbox aria-label="Fish selection">
                         <div *ngFor="let option of productVarients; let i = index">
-                            <mat-chip-option (click)="selectVarient(option)" [selected]="additionalInfo == option">{{option.model_no}}</mat-chip-option>
+                            <mat-chip-option (click)="selectVarient(option)" [selected]="additionalInfo[0].value == option.model_no">{{option.model_no}}</mat-chip-option>
                         </div>
                     </mat-chip-listbox>
 
@@ -67,7 +70,7 @@
         <mat-tab *ngIf="(product.tech_images !== [] && product.tech_images !== undefined)" label="Technical Images">
             Content 3
         </mat-tab>
-        <mat-tab label="Specifications">
+        <mat-tab label="Specifications" *ngIf="additionalInfo.length !==0">
             <table class="prodcutSpecTable" mat-table  [dataSource]="additionalInfo" class="mat-elevation-z8">
 <!--
                 - Note that these columns can be defined in any order.
@@ -88,20 +91,18 @@
             </table>
         </mat-tab>
         
-        <mat-tab label="Drawings">
+        <mat-tab label="Drawings" *ngIf="product.tech_drawings.length !==0">
             <div class="imgListContainer">
                 <img class="imgObj" *ngFor="let img of product.tech_drawings" [src]="img"/>
 
             </div>
-            
-            <span *ngIf="product.tech_drawings.length <=0">No Technical Drawings Images Found</span>    
+              
         </mat-tab>
-        <mat-tab label="Gallery">
+        <mat-tab label="Gallery" *ngIf="product.gallery.length !==0">
             <div class="imgListContainer">
                 <img class="imgObj" *ngFor="let img of product.gallery" [src]="img"/>
 
             </div>
-            <span *ngIf="product.gallery.length <=0">No Galley Images Found</span>
         </mat-tab>
         <!-- <mat-tab label="Downloads">Downloads</mat-tab> -->
 
@@ -113,6 +114,6 @@
 
 
     </div>
-    <app-similar-products *ngIf="product.category[0] !== undefined" [categoryId]="product.category[0]._id "></app-similar-products>
+    <app-similar-products *ngIf="product.category[0] !== undefined" [categoryArray]="product.category"></app-similar-products>
 
 </section>
