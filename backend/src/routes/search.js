@@ -118,7 +118,7 @@ const dbSelect = {
     extra: "banner_image thumbnail_image bonus_cards pages"
   },
   "category": {
-    standard: "name image searchType image ",
+    standard: "name image searchType image cat_url ",
     extra: "info"
   }
 }
@@ -220,19 +220,39 @@ router.get('/all', async (req, res) => {
     var result_retuned = await dbSearch[plainDB]
       .find(inject, selectOptions)
     try {
-      console.log(result_retuned)
+      //console.log(result_retuned)
       for (idx in result_retuned) {
         // Find Image Strings and Add Base URL
         if (result_retuned[idx].image) {
           result_retuned[idx].image = `${process.env.S3_BASE}${result_retuned[idx].image}`;
+          //console.log('Image Patched')
         }
-        if (result_retuned[idx].cat_url) {
-          result_retuned[idx].cat_url = result_retuned[idx].cat_url;
+        if (result_retuned[idx].searchType == "category") {
+          const foundChildren = await categories.find({"parent":result_retuned[idx]._id})
+          if (foundChildren.length > 1){
+            result_retuned[idx].cat_url = `/products/${result_retuned[idx].name.split(" ").join("-").toLowerCase()}`;
+          } else {
+            const hasProds = await product_info.find({"category":[result_retuned[idx]._id]})
+            if (hasProds.length > 1){
+              result_retuned[idx].cat_url = `/search/${result_retuned[idx].name.split(" ").join("-").toLowerCase()}`;
+            } else {
+              const foundInfoss = await information.findOne({"type":result_retuned[idx]._id})
+              console.log(foundInfoss)
+              result_retuned[idx].cat_url = `/info-page/${result_retuned[idx]._id}/${foundInfoss._id}`;
+            }
+            console.log(hasProds.length)
+          }
+          //console.log(foundChildren)
+          //console.log('cat patched')
+
+
+          //console.log(result_retuned[idx].cat_url)
         }
       }
       if (final_result[result_retuned[0].searchType] == undefined) {
         final_result[result_retuned[0].searchType] = []
       };
+      //console.log(result_retuned)
       final_result[result_retuned[0].searchType] = [...final_result[result_retuned[0].searchType], ...result_retuned];
     }
     catch (err) {
@@ -242,7 +262,7 @@ router.get('/all', async (req, res) => {
 
 
   };
-  console.log(final_result)
+  //console.log(final_result)
   res.json({ results: final_result })
 })
 
