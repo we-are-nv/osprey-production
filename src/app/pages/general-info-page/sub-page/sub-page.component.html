@@ -37,7 +37,7 @@
 
             <!-- similar Products -->
             <div class="similarProductsContainer" *ngIf="element.type == 'similarProducts'">
-                <app-similar-products [categoryId]="element.text"></app-similar-products>
+                <app-similar-products [categoryId]="[element.text]" [currentProd]="0"></app-similar-products>
             </div>
 
             <div *ngIf="element.type == 'map'">
