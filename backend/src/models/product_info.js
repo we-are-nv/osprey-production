@@ -9,6 +9,7 @@ const productInfo = mongoose.Schema({
   product_name: { type: String, required: true },
   image: { type: String, required: true },
   gallery : { type:Array, required: false},
+  count : { type:Number, required: false},
   description: { type: String, required: true },
   addit_category: { type: String, required: false },
   features: { type: Array, required: false },

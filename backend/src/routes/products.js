@@ -195,7 +195,8 @@ router.get('/product_info', async (req, res) => {
   const count = await allProducts.count(additQuery, selectOptions);
   const result = await allProducts
     .find(additQuery, selectOptions)
-    .sort({ product_name: sortValue })
+    // .sort({ product_name: sortValue })
+    .sort({count:1})
     .collation({ locale: "en", caseLevel: true })
     .limit(limit * 1)
     .skip((page - 1) * limit)
