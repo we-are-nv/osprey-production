@@ -135,61 +135,69 @@
 			><mat-icon *ngIf="inputState == 'normal'">search</mat-icon><mat-icon *ngIf="inputState == 'widen'">clear</mat-icon></a
 		>
 		<mat-menu
-			class="dropdown"
+			class="dropdown searchMenu"
 			#matservicemenu="matMenu"
 			#searchInput="matMenu"
+			yPosition="below"
 			(mouseleave)="menuTrigger.closeMenu()">
-			<div *ngIf="searchData?.product">
-				<h4 mat-menu-item>Products</h4>
-				<div *ngFor="let product of searchArray; let i = index">
-					<a
-						mat-menu-item
-						*ngIf="i < 3"
-						[routerLink]="'/product/' + product._id">
-						<p>{{ product.product_name }}</p>
-					</a>
-				</div>
-			</div>
-			<div *ngIf="searchData?.category">
-				<h4 mat-menu-item>Categories</h4>
-				<div *ngFor="let category of searchData.category; let i = index">
-					<a
-						mat-menu-item
-						*ngIf="i < 3"
-						[routerLink]="category.cat_url">
-						<p>{{ category.name }}</p>
-					</a>
-				</div>
-			</div>
-			<div *ngIf="searchData?.info">
-				<h4 mat-menu-item>Information</h4>
-				<div *ngFor="let info of searchData.info; let i = index">
-					<a
-						mat-menu-item
-						*ngIf="i < 2"
-						[routerLink]="'/info-page/' + info.type + '/' + info._id">
-						<p>{{ info.name }}</p>
-					</a>
-				</div>
-				<div *ngIf="searchData?.page">
-					<div *ngFor="let page of searchData.page; let i = index">
-						<div
+			<p mat-menu-item *ngIf="!searchData?.product && !searchData?.category && !searchData?.info && (searchedString !== '' ) && (searchedString == inputString.value)">No Items Found</p>
+			<p mat-menu-item *ngIf="searchState == true">Loading</p>
+			<p mat-menu-item *ngIf="(searchedString !== inputString.value) && (searchedString !== '') && (searchState == false)">Press Enter to Search</p>
+
+			<ng-container *ngIf="searchedString == inputString.value">
+				<div *ngIf="searchData?.product">
+					<h4 mat-menu-item>Products</h4>
+					<div *ngFor="let product of searchArray; let i = index">
+						<a
 							mat-menu-item
-							*ngIf="i < 2">
-							<p>{{ page.name }}</p>
-						</div>
+							*ngIf="i < 3"
+							[routerLink]="'/product/' + product._id">
+							<p>{{ product.product_name }}</p>
+						</a>
 					</div>
 				</div>
-				<div
-					class="linkContainer"
-					*ngIf="searchData !== {}">
-					<a
-						class="link"
-						routerLink="searchAll/{{ inputString.value }}"
-						>See All</a
-					>
+				<div *ngIf="searchData?.category">
+					<h4 mat-menu-item>Categories</h4>
+					<div *ngFor="let category of searchData.category; let i = index">
+						<a
+							mat-menu-item
+							*ngIf="i < 3"
+							[routerLink]="category.cat_url">
+							<p>{{ category.name }}</p>
+						</a>
+					</div>
 				</div>
-			</div>
+				<div *ngIf="searchData?.info">
+					<h4 mat-menu-item>Information</h4>
+					<div *ngFor="let info of searchData.info; let i = index">
+						<a
+							mat-menu-item
+							*ngIf="i < 2"
+							[routerLink]="'/info-page/' + info.type + '/' + info._id">
+							<p>{{ info.name }}</p>
+						</a>
+					</div>
+					<div *ngIf="searchData?.page">
+						<div *ngFor="let page of searchData.page; let i = index">
+							<div
+								mat-menu-item
+								*ngIf="i < 2">
+								<p>{{ page.name }}</p>
+							</div>
+						</div>
+					</div>
+					<div
+						class="linkContainer"
+						*ngIf="searchData !== {}">
+						<a
+							class="link"
+							routerLink="searchAll/{{ inputString.value }}"
+							>See All</a
+						>
+					</div>
+				</div>
+			</ng-container>
+			
 		</mat-menu>
 	</div>
 	<div class="contactDetails">

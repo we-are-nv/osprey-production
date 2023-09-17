@@ -99,7 +99,7 @@
 	</p>
 
 <section class="categoryContainer">
-	<mat-card *ngFor="let product of marketsList" class="categoryCard selectable dontShow-{{product.frontPage}}" routerLink="/info-page/{{product.type}}/{{product._id}}">
+	<mat-card *ngFor="let product of marketsList" class="categoryCard selectable dontShow-{{product.frontPage}}" routerLink="/info-page/market/{{product._id}}">
 		<img mat-card-image [src]="product.thumbnail_image" />
 		<h2>{{ product.name }}</h2>
 		<span>Explore <mat-icon>circle</mat-icon> </span>

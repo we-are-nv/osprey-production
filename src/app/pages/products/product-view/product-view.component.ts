@@ -45,10 +45,11 @@ export class ProductViewComponent implements OnInit {
 					{path:'/search/'+this.product.category.cat_url, friendly: this.product.category.cat_url},
 					{path:this.product.product_url, friendly: this.product.product_name}
 				];
-
-				if (this.product.product_varients)
+				console.log(this.product)
+				if (this.product.product_varients){
 					this.productVarients = this.product.product_varients.data;
 					this.informationConverter([this.productVarients[0]])
+				}
 				if( this.product.additional_information?.info){
 					let tempAdditionalInfo = this.product.additional_information.info;
 					this.informationConverter(tempAdditionalInfo);

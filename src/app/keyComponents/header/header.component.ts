@@ -52,6 +52,9 @@ export class HeaderComponent implements OnInit {
 	searchData: any = {};
 	searchInput: string = '';
 
+	searchedString: string = '';
+	searchState: boolean = false;
+
 	searchOpened: boolean = false;
 
 	@Input() finalNav: any;
@@ -86,11 +89,12 @@ export class HeaderComponent implements OnInit {
 
 
 	onSearchChange(searchValue: any): void {
-
+		this.searchState = true;
 		this.databaseService.searchAll(searchValue).subscribe((data: any) => {
 			this.searchData = data.results;
 			this.searchArray = data.results.product;
-			console.log(this.searchData)
+			this.searchedString = searchValue;
+			this.searchState = false;
 		});
 	}
 }
