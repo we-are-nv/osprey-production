@@ -3,7 +3,7 @@
     [lowerTitle]="category.info.sub_heading"
     [isButtons]="true"
     [background]="category.info.banner_image"
-    [button1Data]="{text:'Get a Quote.', path:'/contactForm', type:'outline'}"
+    [button1Data]="{text:'Get a Quote', path:'/contactForm', type:'outline'}"
     [scheduled]="true"
     extraStyle = "shorterHero"
 ></app-hero>
@@ -37,7 +37,7 @@
                     <mat-card-title-group></mat-card-title-group>
 
                 </mat-card-header>
-                <h4 *ngIf="product.product_name.length > 35">{{product.product_name| slice:0:35}}...</h4>
+                <h4 *ngIf="product.product_name.length > 35">{{product.product_name}}...</h4>
                 <h4 *ngIf="product.product_name.length <= 35">{{product.product_name}}</h4>
                 <span>See Product <mat-icon>circle</mat-icon></span>
             </mat-card>
