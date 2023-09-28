@@ -62,9 +62,11 @@
 			iconPositionEnd
 			>foward</mat-icon> -->
 	</button>
-	<app-category-card
-		[cards]="categories"
-		(catRouting)="getNewCats($event)"></app-category-card>
+	<section class="categoryContainer">
+		<app-category-card
+		[categoryId]="categoryId"></app-category-card>
+	</section>
+	
 </section>
 
 <app-quote-form></app-quote-form>

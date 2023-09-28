@@ -42,12 +42,7 @@ export class ProductLandingComponent implements OnInit {
 				.subscribe((data:any)=>{
 					this.customPageInfo = data
 				})
-			this.categorySub = this.productService
-						.getCategoriesUpdateListener()
-						.subscribe((data:any) => {
-							this.categories = data.cats;
-
-						});
+			
 		this._Activatedroute.paramMap.subscribe(params => {
 			this.categoryId = params.get('category');
 			
@@ -59,9 +54,7 @@ export class ProductLandingComponent implements OnInit {
 			this.http.get<any>(	this.API_URL + '/products/categories/convert-route?name=' +this.categoryId)
 				.subscribe(response => {
 					this.categoryId = response._id;
-					this.productService.getCategories(this.categoryId);
 					if(this.categoryId !== ''){
-							
 						this.productService.getSingleCategory(this.categoryId);
 					}
 				});

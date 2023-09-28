@@ -48,7 +48,12 @@
             <div *ngIf="element.type == 'embed'" [innerHTML]="element.text" router></div>
 
             <div *ngIf="element.type == 'consoltation'"><button mat-flat-button class="consultation" (click)="openCalendlyPopup()">Schedule a consultation
-            </button></div>
+            </button>
+            </div>
+            <section class="categoryViewContainer" *ngIf="element.type == 'categoryView'">
+                <app-category-card
+                    [categoryId]="element.text"></app-category-card>
+            </section>
         </div>
 
 </section>

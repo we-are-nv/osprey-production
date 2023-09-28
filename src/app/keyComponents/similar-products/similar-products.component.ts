@@ -22,7 +22,7 @@ export class SimilarProductsComponent implements  OnInit, OnChanges{
             console.log(data)
             this.similarProducts = data.products;
             var result = this.similarProducts.find((obj: any) => {
-              if(obj._id === this.currentProd && data.totalPages !== 1){
+              if(obj._id == this.currentProd && data.totalPages > 5){
                 this.productService.getProducts({
                       category: this.categoryIdArray,
                       page:  Math.floor(Math.random() * data.totalPages)+1,
