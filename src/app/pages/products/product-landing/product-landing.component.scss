@@ -80,7 +80,9 @@ p{
     width: 80vw;
     margin: auto;
 }
-
+.infoBit{
+    white-space: pre-wrap;
+}
 
 @keyframes openAnimation{
     from{

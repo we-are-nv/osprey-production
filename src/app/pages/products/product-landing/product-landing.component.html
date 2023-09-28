@@ -28,7 +28,7 @@
 		<h2>{{customPageInfo?.data?.name}}</h2>
 		<ng-container *ngIf="customPageInfo && customPageInfo !== ''">
 			<p>
-				<span>{{ customPageInfo?.data?.page_text }}</span>
+				<span class="infoBit" [innerHTML]="customPageInfo?.data?.page_text"></span>
 			</p>
       <p><span>Explore all our {{customPageInfo?.data?.name}} products below</span></p>
 		</ng-container>

@@ -4,6 +4,9 @@
 #container{
     padding-bottom: 10vh;
 }
+div{
+    min-width: 60%;
+}
 h1{
     margin-top:5vh;
     font-size: 1.75rem;
@@ -19,13 +22,14 @@ p{
 }
 .image-Section{
     width: fit-content;
-    height: fit-content;
+    height: 40vh;
     float: left;
+    min-width: 30%;
     margin: 5%;
 }
 .image{
-    max-width: 40vw;
-    max-height: 30vw;
+    max-width: 30vw;
+    max-height: 40vh;
 }
 // Modular Styling Clases
 
