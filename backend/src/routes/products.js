@@ -60,7 +60,7 @@ router.get('/product_info', async (req, res) => {
   };
   if (req.query.category && req.query.category.includes('info-')){
     console.log('TRIGGERED ALT')
-    console.log(req.query.category.split("-")[1]);
+   // console.log(req.query.category.split("-")[1]);
     const foundInfo = await information.findOne({_id:req.query.category.split("-")[1]})
     console.log()
     const result = await product_info.find().where('_id').in(foundInfo.suggestProducts).exec();
@@ -159,7 +159,7 @@ router.get('/product_info', async (req, res) => {
     }
   } catch (err) {
     console.log('Invalid Input. Assuming False');
-    console.log(req.query.category)
+   // console.log(req.query.category)
     if (req.query.category.length > 12){
       try {
         catQuery.push(new ObjectId(req.query.category));
@@ -178,7 +178,7 @@ router.get('/product_info', async (req, res) => {
   } else {
     if (catQuery.length == 1){
       additQuery = { category: new mongoose.Types.ObjectId(catQuery[0]) };
-      console.log(catQuery)
+     // console.log(catQuery)
     } else {
       additQuery = {category : { $in:[]}};
       for (cIdx in catQuery) {
@@ -190,8 +190,8 @@ router.get('/product_info', async (req, res) => {
     }
   }
   // Determine count for Pagination
-  console.log('ADDIT')
-  console.log(additQuery)
+  //console.log('ADDIT')
+  //console.log(additQuery)
   const count = await allProducts.count(additQuery, selectOptions);
   const result = await allProducts
     .find(additQuery, selectOptions)
@@ -239,9 +239,9 @@ router.get('/product_info', async (req, res) => {
 
 
     if (req.query.populate_include && result[idx].additional_information && result[idx].additional_information.info) {
-      console.log('HELLO')
+    //  console.log('HELLO')
       var test = result[idx].additional_information.modelName
-      console.log(result[idx].additional_information.modelName)
+    //  console.log(result[idx].additional_information.modelName)
       const usedModel = await productModels.findOne({ "type_name": test });
       var fields = Object.keys(result[idx].additional_information.info);
       var usedFields = [];

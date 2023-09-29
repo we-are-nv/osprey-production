@@ -335,7 +335,7 @@ router.get('/', async (req, res) => {
 		.populate({ path: 'bonus_cards.id' })
     .populate('seo')
 		.populate({ path: 'pages.id' });
-	console.log(foundInfos);
+	//console.log(foundInfos);
 	res.json(foundInfos);
 });
 
@@ -359,7 +359,7 @@ router.get('/single', async (req, res) => {
 			bonusDoc.elements[
 				elementIdx
 			].source.icon = `${process.env.S3_BASE}${bonusDoc.elements[elementIdx].source.icon}`;
-			console.log(bonusDoc.elements[elementIdx].source.icon);
+			//console.log(bonusDoc.elements[elementIdx].source.icon);
 		}
 		for (fileIdx in bonusDoc.files) {
 			foundInfos._doc.bonus_cards[bonusIdx].id.files[
@@ -487,7 +487,7 @@ router.get('/convert-route', async (req, res) => {
   try {
     if (req.query.name && req.query.type) {
       var splitName = req.query.name.split("-").join(" ")
-      console.log(splitName)
+    //  console.log(splitName)
       const foundInfo = await information.findOne({"name":{
         $regex: new RegExp("^" + splitName.toLowerCase(), "i")
       },"type":req.query.type});

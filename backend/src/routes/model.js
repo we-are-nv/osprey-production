@@ -201,7 +201,7 @@ router.post('/paragon/model', async (req, res) => {
 			return;
 		}
 
-		console.log(newValues);
+		//console.log(newValues);
 	}
 	var newModel = new productModels({
 		data: req.body.data,

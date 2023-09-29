@@ -63,22 +63,22 @@ router.get('/', async (req, res, next) => {
         var routeTo = 'default';
         if (!hasChild){
           var productsFound = await product_info.count({category:foundCats[idx]._id});
-          console.log(productsFound)
+        //  console.log(productsFound)
           if (productsFound > 0){
             hasProducts = true;
           } else {
             var foundRedirect = await information.findOne({name:foundCats[idx].name});
 
             if (foundRedirect){
-              console.log(foundRedirect.name)
+             // console.log(foundRedirect.name)
               routeTo = `/info-page/${foundRedirect.type}/${foundRedirect._id}`
             } else {
               var foundRedirect = await informationPage.findOne({name:foundCats[idx].name});
               if (foundRedirect) {
                 routeTo = `/info-page/${foundRedirect.type}/${foundRedirect._id}`;
               } else {
-                console.log('err')
-                console.log(foundCats[idx].name)
+              //  console.log('err')
+             //   console.log(foundCats[idx].name)
               }
 
             }
