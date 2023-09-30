@@ -19,7 +19,6 @@ export class SimilarProductsComponent implements  OnInit, OnChanges{
   ngOnInit(): void {
     this.similarProductsSub = this.productService.getProductsUpdateListener()
           .subscribe((data)=>{
-            console.log(data)
             this.similarProducts = data.products;
             var result = this.similarProducts.find((obj: any) => {
               if(obj._id == this.currentProd && data.totalPages > 5){

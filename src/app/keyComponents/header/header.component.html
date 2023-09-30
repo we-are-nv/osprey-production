@@ -151,7 +151,7 @@
 						<a
 							mat-menu-item
 							*ngIf="i < 3"
-							[routerLink]="'/product/' + product._id">
+							(click)="activateSearch()" [routerLink]="'/product/' + product._id">
 							<p>{{ product.product_name }}</p>
 						</a>
 					</div>
@@ -162,7 +162,7 @@
 						<a
 							mat-menu-item
 							*ngIf="i < 3"
-							[routerLink]="category.cat_url">
+							(click)="activateSearch()" [routerLink]="category.cat_url">
 							<p>{{ category.name }}</p>
 						</a>
 					</div>
@@ -173,18 +173,9 @@
 						<a
 							mat-menu-item
 							*ngIf="i < 2"
-							[routerLink]="'/info-page/' + info.type + '/' + info._id">
+							(click)="activateSearch()" [routerLink]="'/info-page/' + info.type + '/' + info._id">
 							<p>{{ info.name }}</p>
 						</a>
-					</div>
-					<div *ngIf="searchData?.page">
-						<div *ngFor="let page of searchData.page; let i = index">
-							<div
-								mat-menu-item
-								*ngIf="i < 2">
-								<p>{{ page.name }}</p>
-							</div>
-						</div>
 					</div>
 					<div
 						class="linkContainer"

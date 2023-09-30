@@ -78,10 +78,6 @@ export class CarouselSliderComponent implements OnInit, OnChanges, AfterViewInit
 
 	ngAfterViewInit(): void {
 		if (this.carouselTrackRef) {
-			console.log(
-				'Carousel track element reference:',
-				this.carouselTrackRef.nativeElement
-			);
 		}
 	}
 

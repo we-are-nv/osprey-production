@@ -29,7 +29,7 @@
                     <a mat-raised-button class="blue contact-button" href="mailto:info@paragon-security.com?subject={{product.product_name}} - {{product.product_code}}&body=Hello, I am contact about the {{product.product_name}}">Email Us</a>
                     <a mat-flat-button class="outline contact-button" href="tel:00441245210914">Call Us</a>
                 </div>
-
+                
             </mat-card-header>
             <mat-card-content>
                 <p>
@@ -61,7 +61,7 @@
                     <h2>{{product.product_varients.friendly}}</h2>
                     <mat-chip-listbox aria-label="Fish selection">
                         <div *ngFor="let option of productVarients; let i = index">
-                            <mat-chip-option (click)="selectVarient(option)" [selected]="additionalInfo[0].value == option.model_no">{{option.size || option.model_no}}</mat-chip-option>
+                            <mat-chip-option (click)="selectVarient(option)" [selected]="additionalInfo[0].value == option.model_no">{{option.model_no || option.size}}</mat-chip-option>
                         </div>
                     </mat-chip-listbox>
 
@@ -79,13 +79,10 @@
 
 <section class="productTabs" *ngIf="product !== null">
     <mat-tab-group  mat-stretch-tabs="false" mat-align-tabs="start">
-        <mat-tab label="Description" *ngIf="product.description" >
+        <mat-tab label="Description" *ngIf="product.description">
             <p>{{product.description}}</p>
         </mat-tab>
-
-        <mat-tab *ngIf="(product.tech_images !== [] && product.tech_images !== undefined)" label="Technical Images">
-            Content 3
-        </mat-tab>
+        
         <mat-tab label="Specifications">
             <table class="prodcutSpecTable" mat-table  [dataSource]="additionalInfo" class="mat-elevation-z8">
 <!--
@@ -106,13 +103,13 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
         </mat-tab>
-
+        
         <mat-tab label="Drawings" *ngIf="product.tech_drawings.length !==0">
             <div class="imgListContainer">
                 <img class="imgObj" *ngFor="let img of product.tech_drawings" [src]="img"/>
 
             </div>
-
+              
         </mat-tab>
         <mat-tab label="Gallery" *ngIf="product.gallery.length !==0">
             <div class="imgListContainer">

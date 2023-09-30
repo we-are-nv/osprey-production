@@ -23,7 +23,6 @@ export class CategoryCardComponent implements OnChanges, OnInit{
 	}
 
 	ngOnChanges(){
-		console.log(this.categoryId)
 		this.productService.getCategories(this.categoryId);
 	}
 	loadCat(id: string, hasChild: boolean, cat_url:any, hasProducts:boolean, redirectTo:String) {

@@ -28,7 +28,6 @@ export class SubPageComponent implements OnInit, OnChanges {
         this.infoService.getPageListener().subscribe(data => {
           this.pageData = data;
           this.elements = this.pageData.elements;
-		  console.log(this.elements)
         });
 	}
 	ngOnChanges(): void {

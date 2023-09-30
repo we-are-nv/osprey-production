@@ -12,7 +12,6 @@ export class FooterComponent implements OnInit {
 	ngOnInit(): void {
 		this.fileService.getFilesObservable().subscribe((data:any)=>{
 			this.filesArray = data;
-			console.log(data)
 		})
 		this.fileService.getFiles()
 		

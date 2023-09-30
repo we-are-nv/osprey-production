@@ -60,15 +60,5 @@ export class ProductLandingComponent implements OnInit {
 				});
 			});
 	}
-	getNewCats(data: any) {
-		if (data.hasChild) {
-			this.router.navigate([data.cat_url]);
-		} else if (!data.hasChild && !data.hasProducts) {
-			this.router.navigate([data.redirectTo]);
-		} else if (!data.hasChild) {
-			this.categorySub.unsubscribe();
-			this.router.navigate([data.cat_url]);
-		}
-	}
 	loadProds(id: any) {}
 }

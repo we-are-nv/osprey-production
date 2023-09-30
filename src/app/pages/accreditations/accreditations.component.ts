@@ -16,11 +16,9 @@ export class AccreditationsComponent implements OnInit{
   ngOnInit(){
     this.accreditationsService.getCredits('atex').subscribe(data=>{
       this.atex = data.data;
-      console.log(this.atex)
     })
     this.accreditationsService.getCredits('ingress').subscribe(data=>{
       this.ingress = data.data;
-      console.log(this.ingress)
     })
   }
 
